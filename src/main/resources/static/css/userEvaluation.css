@@ -71,43 +71,12 @@ main {
     border: 1px solid #ccc;
 }
 
-/* UC item styles */
-.uc-item {
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+/* Evaluation item */
+.evaluation-item {
     margin-bottom: 20px;
 }
 
-.uc-item h3 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.uc-item p {
-    font-size: 1rem;
-    color: #555;
-    margin: 5px 0;
-}
-
-/* Edit and remove buttons */
-.uc-item button {
-    background-color: #007bff;
-    color: white;
-    padding: 8px 16px;
-    margin-right: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.uc-item button:hover {
-    background-color: #0056b3;
-}
-
-/* Submit button (create UC) */
+/* Submit button */
 button[type="submit"] {
     background-color: #28a745;
     color: white;
@@ -121,25 +90,10 @@ button[type="submit"]:hover {
     background-color: #218838;
 }
 
-/* Footer styles */
 footer {
     margin-top: 30px;
     text-align: center;
     font-size: 14px;
     color: #888;
 }
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    main {
-        padding: 10px;
-    }
-
-    .section input, .section select {
-        padding: 10px;
-    }
-
-    .uc-item button {
-        padding: 6px 12px;
-    }
-}
+    
