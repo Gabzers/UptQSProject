@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Administration</title>
+    <link rel="stylesheet" type="text/css" href="/css/admin.css">
+</head>
+<body>
+    <header>
+        <h1>Academic Administration</h1>
+        <!-- Logout Button -->
+        <button id="logoutBtn" onclick="location.href='/logout'">Logout</button>
+    </header>
+    <main>
+        <!-- Define Semester Period -->
+        <section>
+            <h2>Define Semester Period</h2>
+            <form action="/admin/saveSemester" method="post">
+                <label for="startDate">Semester Start:</label>
+                <input type="date" id="startDate" name="startDate" required>
+                
+                <label for="endDate">Semester End:</label>
+                <input type="date" id="endDate" name="endDate" required>
+                
+                <button type="submit">Save</button>
+            </form>
+        </section>
+
+        <!-- Define Exam Periods -->
+        <section>
+            <h2>Define Exam Periods</h2>
+            <form action="/admin/saveExamPeriods" method="post">
+                <label for="normalExamStart">Regular Exam Start:</label>
+                <input type="date" id="normalExamStart" name="normalExamStart" required>
+
+                <label for="normalExamEnd">Regular Exam End:</label>
+                <input type="date" id="normalExamEnd" name="normalExamEnd" required>
+                
+                <label for="resourceExamStart">Resource Exam Start:</label>
+                <input type="date" id="resourceExamStart" name="resourceExamStart" required>
+
+                <label for="resourceExamEnd">Resource Exam End:</label>
+                <input type="date" id="resourceExamEnd" name="resourceExamEnd" required>
+
+                <label for="specialExamStart">Special Exam Start:</label>
+                <input type="date" id="specialExamStart" name="specialExamStart" required>
+
+                <label for="specialExamEnd">Special Exam End:</label>
+                <input type="date" id="specialExamEnd" name="specialExamEnd" required>
+                
+                <button type="submit">Save</button>
+            </form>
+        </section>
+
+        <!-- Past Semesters List -->
+        <section>
+            <h2>Past Semesters</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Semester</th>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Regular Exam Start</th>
+                        <th>Regular Exam End</th>
+                        <th>Resource Exam Start</th>
+                        <th>Resource Exam End</th>
+                        <th>Special Exam Start</th>
+                        <th>Special Exam End</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2023/2024</td>
+                        <td>2023-09-01</td>
+                        <td>2024-01-31</td>
+                        <td>2023-12-10</td>
+                        <td>2023-12-20</td>
+                        <td>2024-01-05</td>
+                        <td>2024-01-10</td>
+                        <td>2024-01-15</td>
+                        <td>2024-01-20</td>
+                    </tr>
+                    <tr>
+                        <td>2022/2023</td>
+                        <td>2022-09-01</td>
+                        <td>2023-01-31</td>
+                        <td>2022-12-10</td>
+                        <td>2022-12-20</td>
+                        <td>2023-01-05</td>
+                        <td>2023-01-10</td>
+                        <td>2023-01-15</td>
+                        <td>2023-01-20</td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Universidade Portucalense</p>
+    </footer>
+</body>
+</html>

@@ -8,6 +8,6 @@ public class UptWebController {
 
     @GetMapping("/")
     public String home() {
-        return "index"; 
+        return "admin"; 
     }
 }
