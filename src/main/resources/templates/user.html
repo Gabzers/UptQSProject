@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Administration - Create Course Map</title>
+    <link rel="stylesheet" type="text/css" href="/css/user.css">
+</head>
+<body>
+    <header>
+        <h1>Academic Administration - Course Map</h1>
+        <nav>
+            <button onclick="window.location.href='/logout'">Logout</button>
+            <button onclick="window.location.href='/create-course'">Create New UC</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Display the course name (Computer Engineering) -->
+        <section class="section">
+            <h2>Computer Engineering</h2>
+        </section>
+
+        <!-- Select Unit Course -->
+        <section class="section">
+            <h2>Select Unit Course</h2>
+            <label for="course">Unit Course:</label>
+            <select id="course" name="course">
+                <option value="uc1">Inteligência Artificial</option>
+                <option value="uc2">Qualidade de Software</option>
+                <option value="uc3">Laboratório de Aplicações Móveis</option>
+            </select>
+        </section>
+
+        <!-- Define Evaluation Types -->
+        <section class="section">
+            <h2>Define Evaluation Types</h2>
+            <label for="evaluation-type">Evaluation Type:</label>
+            <select id="evaluation-type" name="evaluation-type" onchange="adjustEvaluationRequirements()">
+                <option value="none" selected>None</option>
+                <option value="mixed">Mixed</option>
+                <option value="continuous">Continuous</option>
+            </select>
+
+            <label for="attendance">Attendance Required:</label>
+            <select id="attendance" name="attendance">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <!-- Number of Evaluations to Add -->
+            <label for="num-evaluations">How many evaluations would you like to add?</label>
+            <input type="number" id="num-evaluations" name="num-evaluations" min="1" required onchange="updateEvaluationFields()">
+
+            <!-- Evaluation Type List -->
+            <div id="evaluation-list"></div>
+        </section>
+
+        <!-- Submit Button -->
+        <section class="section">
+            <button type="submit">Save Course Map</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 University - Academic Administration System</p>
+    </footer>
+
+    <script>
+        const evaluationOptions = [
+            'Test', 
+            'Final Exam in Exam Period',
+            'Work Developed Throughout the Semester',
+            'Work Submission',
+            'Group Work Submission',
+            'Work Presentation',
+            'Group Work Presentation',
+            'Monograph',
+            'Individual Practical Exercise',
+            'Pitch',
+            'Final Exam',
+            'Oral Exam'
+        ];
+
+        function adjustEvaluationRequirements() {
+            const evaluationType = document.getElementById('evaluation-type').value;
+            const numEvaluationsField = document.getElementById('num-evaluations');
+            
+            // If the evaluation type is "Mixed", force 2 evaluations, if "Continuous", force 3
+            if (evaluationType === 'mixed') {
+                numEvaluationsField.value = 2;
+                numEvaluationsField.setAttribute('min', 2);
+            } else if (evaluationType === 'continuous') {
+                numEvaluationsField.value = 3;
+                numEvaluationsField.setAttribute('min', 3);
+            } else if (evaluationType === 'none') {
+                numEvaluationsField.value = 0;
+                numEvaluationsField.setAttribute('min', 0);
+            }
+            
+            // After changing type, display the appropriate evaluation options
+            updateEvaluationFields();
+        }
+
+        function updateEvaluationFields() {
+            const numEvaluations = document.getElementById('num-evaluations').value;
+            const evaluationList = document.getElementById('evaluation-list');
+            evaluationList.innerHTML = '';
+
+            // If no evaluations are added, do nothing
+            if (numEvaluations == 0) return;
+
+            for (let i = 0; i < numEvaluations; i++) {
+                const div = document.createElement('div');
+                div.classList.add('evaluation-item');
+                
+                // Evaluation Type
+                const labelType = document.createElement('label');
+                labelType.textContent = `Evaluation ${i + 1} Type:`;
+                const selectType = document.createElement('select');
+                selectType.name = `evaluation-type-${i}`;
+                evaluationOptions.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option;
+                    optionElement.textContent = option;
+                    selectType.appendChild(optionElement);
+                });
+
+                // Weight
+                const labelWeight = document.createElement('label');
+                labelWeight.textContent = `Evaluation ${i + 1} Weight (%):`;
+                const inputWeight = document.createElement('input');
+                inputWeight.type = 'number';
+                inputWeight.name = `evaluation-weight-${i}`;
+                inputWeight.min = '0';
+                inputWeight.max = '100';
+
+                // Exam Period
+                const labelExamPeriod = document.createElement('label');
+                labelExamPeriod.textContent = `Evaluation ${i + 1} Exam Period:`;
+                const selectExamPeriod = document.createElement('select');
+                selectExamPeriod.name = `evaluation-exam-period-${i}`;
+                const periods = ['None','Período Letivo', 'Época de Exames', 'Época de Recurso', 'Época Especial'];
+                periods.forEach(period => {
+                    const optionPeriod = document.createElement('option');
+                    optionPeriod.value = period;
+                    optionPeriod.textContent = period;
+                    selectExamPeriod.appendChild(optionPeriod);
+                });
+
+                // Requires Computer
+                const labelComputer = document.createElement('label');
+                labelComputer.textContent = `Evaluation ${i + 1} Requires Computer:`;
+                const inputComputer = document.createElement('input');
+                inputComputer.type = 'checkbox';
+                inputComputer.name = `evaluation-computer-${i}`;
+
+                // Time of Class (checkbox)
+                const labelClassTime = document.createElement('label');
+                labelClassTime.textContent = `Evaluation ${i + 1} at usual class time?`;
+                const inputClassTime = document.createElement('input');
+                inputClassTime.type = 'checkbox';
+                inputClassTime.name = `evaluation-class-time-${i}`;
+                inputClassTime.id = `evaluation-class-time-${i}`;
+                inputClassTime.onclick = function() { toggleRoomField(i); };
+
+                // Date and Time Start & End
+                const labelDateStart = document.createElement('label');
+                labelDateStart.textContent = `Evaluation ${i + 1} Start Date & Time:`;
+                const inputDateStart = document.createElement('input');
+                inputDateStart.type = 'datetime-local';
+                inputDateStart.name = `evaluation-date-start-${i}`;
+
+                const labelDateEnd = document.createElement('label');
+                labelDateEnd.textContent = `Evaluation ${i + 1} End Date & Time:`;
+                const inputDateEnd = document.createElement('input');
+                inputDateEnd.type = 'datetime-local';
+                inputDateEnd.name = `evaluation-date-end-${i}`;
+
+                // Room (if not usual class time)
+                const labelRoom = document.createElement('label');
+                labelRoom.textContent = `Room for Evaluation ${i + 1}:`;
+                const inputRoom = document.createElement('input');
+                inputRoom.type = 'text';
+                inputRoom.name = `evaluation-room-${i}`;
+                inputRoom.id = `evaluation-room-${i}-input`;
+                inputRoom.value = "Room 1";  // Set default room value to "Room 1"
+
+                // Append all inputs to the div
+                div.appendChild(labelType);
+                div.appendChild(selectType);
+                div.appendChild(labelWeight);
+                div.appendChild(inputWeight);
+                div.appendChild(labelExamPeriod);
+                div.appendChild(selectExamPeriod);
+                div.appendChild(labelComputer);
+                div.appendChild(inputComputer);
+                div.appendChild(labelClassTime);
+                div.appendChild(inputClassTime);
+                div.appendChild(labelDateStart);
+                div.appendChild(inputDateStart);
+                div.appendChild(labelDateEnd);
+                div.appendChild(inputDateEnd);
+                div.appendChild(labelRoom);
+                div.appendChild(inputRoom);
+
+                // Add a visible separator after each evaluation
+                const separator = document.createElement('hr');
+                div.appendChild(separator);
+
+                // Append the evaluation div to the list
+                evaluationList.appendChild(div);
+            }
+        }
+
+        function toggleRoomField(index) {
+            const classTimeCheckbox = document.getElementById(`evaluation-class-time-${index}`);
+            const roomInput = document.getElementById(`evaluation-room-${index}-input`);
+            
+            // If class time is checked, disable the room input and set the value to "Room 1"
+            if (classTimeCheckbox.checked) {
+                roomInput.value = "Room 1";  // Set default room value to "Room 1"
+                roomInput.disabled = true;   // Disable the room input field
+            } else {
+                roomInput.disabled = false;  // Enable the room input field
+            }
+        }
+    </script>
+</body>
+</html>
