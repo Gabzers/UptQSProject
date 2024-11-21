@@ -19,13 +19,14 @@ public class UptWebController {
     }
 
     @GetMapping("/")
-    public String home() {
-        return "user";  // Página inicial que você deseja exibir
-    }
+public String home() {
+    return "redirect:/course-list";  // Redireciona para a URL correta
+}
+
 
     @GetMapping("/back")
     public String back() {
-        return "user";  // Redireciona para a página user.html quando o botão "Back" é clicado
+        return "course-list";  // Redireciona para a página user.html quando o botão "Back" é clicado
     }
 
     @GetMapping("/logout")
@@ -33,30 +34,11 @@ public class UptWebController {
         return "login";  // Redireciona para a página login.html quando o botão "Back" é clicado
     }
 
-    @GetMapping("/user")
-    public String userPage() {
-        return "user";  // Outra página de usuário, caso necessário
-    }
 
     @GetMapping("/createUC")
     public String createUC() {
-        return "userUC";  // Redireciona para a página createUC.html
+        return "create-uc";  // Redireciona para a página createUC.html
     }
 
-    // Método POST para receber os dados do formulário
-    @PostMapping("/create-uc")
-    public String createUC(@RequestParam("uc-name") String nameUC,
-                           @RequestParam("num-students") Integer studentsNumber,
-                           @RequestParam("evaluation-type") String typeUC) {
-        // Criar a nova CurricularUnit com os dados do formulário
-        CurricularUnit curricularUnit = new CurricularUnit();
-        curricularUnit.setNameUC(nameUC);
-        curricularUnit.setStudentsNumber(studentsNumber);
-        curricularUnit.setTypeUC(typeUC);
-
-        // Salvar a CurricularUnit no banco de dados
-        curricularUnitService.saveCurricularUnit(curricularUnit);
-
-        return "redirect:/user";  // Redirecionar para a página de usuário após criar a UC
-    }
+    
 }

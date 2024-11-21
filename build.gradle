@@ -26,8 +26,14 @@ dependencies {
     runtimeOnly 'com.mysql:mysql-connector-j'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation 'mysql:mysql-connector-java'
+
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
+tasks.withType(JavaCompile) {
+    options.compilerArgs << "-parameters"
+}
+

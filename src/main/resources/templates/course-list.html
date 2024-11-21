@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course List - UC Management</title>
+    <link rel="stylesheet" type="text/css" href="/css/user.css">
+</head>
+<body>
+    <header>
+        <h1>Course List</h1>
+        <nav>
+            <button onclick="window.location.href='/logout'">Logout</button>
+            <button onclick="window.location.href='/createUC'">Create UC</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <h2>Available Unit Courses (UCs)</h2>
+            
+            <!-- Check if curricularUnits is not null and not empty -->
+            <div th:if="${curricularUnits != null && curricularUnits.size() > 0}">
+                <!-- Loop through the list of curricular units -->
+                <div th:each="uc : ${curricularUnits}" class="uc-item">
+                    <h3 th:text="${uc.nameUC}">UC Name</h3>
+                    <p><strong>Number of Students:</strong> <span th:text="${uc.studentsNumber}">0</span></p>
+                    <p><strong>Evaluation Type:</strong> <span th:text="${uc.typeUC}">None</span></p>
+                    
+                    <!-- Edit Button -->
+                    <button th:onclick="'window.location.href=\'/edit-uc?id=' + ${uc.id} + '\''">Edit</button>
+                    
+                    <!-- Remove Button as a form -->
+                    <form th:action="@{/remove-uc/{id}(id=${uc.id})}" method="POST" style="display:inline;">
+                        <button type="submit">Remove</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Message when no curricular units are found -->
+            <p th:if="${curricularUnits == null || curricularUnits.size() == 0}">
+                No curricular units found. Please create a new UC.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 University - Academic Administration System</p>
+    </footer>
+
+</body>
+</html>

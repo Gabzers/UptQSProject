@@ -80,4 +80,5 @@ public class CurricularUnitService {
     public void deleteCurricularUnit(Long id) {
         curricularUnitRepository.deleteById(id);
     }
+    
 }
