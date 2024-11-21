@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" type="text/css" href="/css/master_index.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Admin Panel</h1>
+        <div class="header-buttons">
+            <a href="/createAdmin" class="button">Create New Admin</a>
+            <a href="/logout" id="logoutBtn">Logout</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Admin List Section -->
+        <section class="admin-list">
+            <h2>Existing Admins</h2>
+            <table id="admin-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-list">
+                    <!-- Admin list will be populated here by JavaScript -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 University Admin Panel</p>
+    </footer>
+
+    <script>
+        // Simulated data for admins
+        const admins = [
+            { name: 'John Doe', department: 'IT' },
+            { name: 'Jane Smith', department: 'HR' },
+            { name: 'Robert Brown', department: 'Finance' }
+        ];
+
+        // Function to display the list of admins
+        function displayAdmins() {
+            const adminList = document.getElementById('admin-list');
+            adminList.innerHTML = '';  // Clear the table before adding new rows
+            admins.forEach((admin, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${admin.name}</td>
+                    <td>${admin.department}</td>
+                    <td>
+                        <button onclick="editAdmin(${index})">Edit</button>
+                        <button onclick="removeAdmin(${index})">Remove</button>
+                    </td>
+                `;
+                adminList.appendChild(row);
+            });
+        }
+
+        // Function to edit an admin
+        function editAdmin(index) {
+            alert(`Edit admin: ${admins[index].name}`);
+            // You can add functionality to edit admin details here
+        }
+
+        // Function to remove an admin
+        function removeAdmin(index) {
+            if (confirm(`Are you sure you want to remove ${admins[index].name}?`)) {
+                admins.splice(index, 1);  // Remove the admin from the array
+                displayAdmins();  // Update the table after removal
+            }
+        }
+
+        // Display the admins when the page loads
+        window.onload = displayAdmins;
+    </script>
+
+</body>
+
+</html>

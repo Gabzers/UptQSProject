@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Info</title>
+    <link rel="stylesheet" type="text/css" href="/css/master-addAdmin.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='/logout'">Logout</button>
+            <button onclick="window.location.href='/backMaster'">Back</button> <!-- Botão de Voltar -->
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <h2>Create Admin</h2>
+
+            <form action="/create-admin" method="POST">
+                <!-- Admin Name -->
+                <label for="admin-name">Name:</label>
+                <input type="text" id="admin-name" name="admin-name" required>
+
+                <!-- Department -->
+                <label for="admin-department">Department:</label>
+                <input type="text" id="admin-department" name="admin-department" required>
+
+                <!-- Username -->
+                <label for="admin-username">Username:</label>
+                <input type="text" id="admin-username" name="admin-username" required>
+
+                <!-- Password -->
+                <label for="admin-password">Password:</label>
+                <input type="password" id="admin-password" name="admin-password" required>
+
+                <!-- Submit Button -->
+                <button type="submit">Create Admin</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 University - Admin Panel</p>
+    </footer>
+
+</body>
+
+</html>

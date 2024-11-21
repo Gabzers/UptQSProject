@@ -1,0 +1,119 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body of the page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+header nav button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    margin-left: 10px;
+}
+
+header nav button:hover {
+    background-color: #0056b3;
+}
+
+/* Main container */
+main {
+    width: 100%;
+    max-width: 400px; /* Set a max width similar to previous example */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Form Section */
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Ensures form elements stretch to fill the container */
+}
+
+/* Form Labels */
+label {
+    font-size: 14px;
+    color: #333;
+    margin-top: 10px;
+    display: block;
+}
+
+/* Input Fields */
+input,
+select {
+    width: 100%; /* Ensure inputs and selects take full width */
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease;
+}
+
+/* Focus effect for inputs */
+input:focus,
+select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Submit Button */
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #555;
+}
+
+footer p {
+    margin: 0;
+}

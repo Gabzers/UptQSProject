@@ -1,64 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic Administration - Create Course Map</title>
-    <link rel="stylesheet" type="text/css" href="/css/user-evaluation.css">
+    <title>Edit Unit Course (UC)</title>
+    <link rel="stylesheet" type="text/css" href="/css/user_editUC.css">
 </head>
+
 <body>
     <header>
-        <h1>Academic Administration - Course Map</h1>
         <nav>
             <button onclick="window.location.href='/logout'">Logout</button>
-            <button onclick="window.location.href='/back'">Back</button>
+            <button onclick="window.location.href='/backUser'">Back</button>
         </nav>
     </header>
 
     <main>
-        <!-- Display the course name (Computer Engineering) -->
         <section class="section">
-            <h2>Computer Engineering</h2>
-        </section>
+            <h2>Edit Unit Course Details</h2>
 
-        <!-- Select Unit Course -->
-        <section class="section">
-            <h2>Select Unit Course</h2>
-            <label for="course">Unit Course:</label>
-            <select id="course" name="course">
-                <option value="uc1">Inteligência Artificial</option>
-                <option value="uc2">Qualidade de Software</option>
-                <option value="uc3">Laboratório de Aplicações Móveis</option>
-            </select>
-        </section>
+            <!-- Form to update the UC details -->
+            <form th:action="@{/user_editUC/{id}(id=${uc.id})}" method="POST">
+                <label for="nameUC">Name of UC:</label>
+                <input type="text" id="nameUC" name="nameUC" th:value="${uc.nameUC}" required>
+                <br><br>
 
-        <!-- Define Evaluation Types -->
-        <section class="section">
-            <h2>Define Evaluation Types</h2>
-            <label for="evaluation-type">Evaluation Type:</label>
-            <select id="evaluation-type" name="evaluation-type" onchange="adjustEvaluationRequirements()">
-                <option value="none" selected>None</option>
-                <option value="mixed">Mixed</option>
-                <option value="continuous">Continuous</option>
-            </select>
+                <label for="studentsNumber">Number of Students:</label>
+                <input type="number" id="studentsNumber" name="studentsNumber" th:value="${uc.studentsNumber}" required>
+                <br><br>
 
-            <label for="attendance">Attendance Required:</label>
-            <select id="attendance" name="attendance">
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-            </select>
+                <!-- Type of UC - only Continuous or Mixed -->
+                <label for="typeUC">Type of UC:</label>
+                <select name="typeUC" id="typeUC" required>
+                    <option value="Continuous" th:selected="${uc.typeUC == 'Continuous'}">Continuous</option>
+                    <option value="Mixed" th:selected="${uc.typeUC == 'Mixed'}">Mixed</option>
+                </select>
+                <br><br>
 
-            <!-- Number of Evaluations to Add -->
-            <label for="num-evaluations">How many evaluations would you like to add?</label>
-            <input type="number" id="num-evaluations" name="num-evaluations" min="1" required onchange="updateEvaluationFields()">
+                <!-- Automatically Set Evaluation Type Based on UC Type -->
+                <h3>Define Evaluation Types</h3>
 
-            <!-- Evaluation Type List -->
-            <div id="evaluation-list"></div>
-        </section>
+                <label for="attendance">Attendance Required:</label>
+                <select id="attendance" name="attendance">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
 
-        <!-- Submit Button -->
-        <section class="section">
-            <button type="submit">Save Course Map</button>
+                <!-- Number of Evaluations to Add -->
+                <label for="num-evaluations">How many evaluations would you like to add?</label>
+                <input type="number" id="num-evaluations" name="num-evaluations" min="1" required onchange="updateEvaluationFields()">
+                <br><br>
+
+                <!-- Evaluation Type List -->
+                <div id="evaluation-list"></div>
+                <br><br>
+
+                <button type="submit">Update UC</button>
+            </form>
         </section>
     </main>
 
@@ -68,7 +67,7 @@
 
     <script>
         const evaluationOptions = [
-            'Test', 
+            'Test',
             'Final Exam in Exam Period',
             'Work Developed Throughout the Semester',
             'Work Submission',
@@ -82,26 +81,33 @@
             'Oral Exam'
         ];
 
-        function adjustEvaluationRequirements() {
-            const evaluationType = document.getElementById('evaluation-type').value;
+        // Set Evaluation Type Automatically Based on UC Type
+        window.onload = function () {
+            const typeUCField = document.getElementById('typeUC');
             const numEvaluationsField = document.getElementById('num-evaluations');
-            
-            // If the evaluation type is "Mixed", force 2 evaluations, if "Continuous", force 3
-            if (evaluationType === 'mixed') {
+
+            // Update fields on page load
+            updateEvaluationTypeAndMin(typeUCField.value, numEvaluationsField);
+
+            // Add listener for changes in UC type
+            typeUCField.addEventListener('change', function () {
+                updateEvaluationTypeAndMin(this.value, numEvaluationsField);
+            });
+        };
+
+        // Function to update evaluation type and minimum number
+        function updateEvaluationTypeAndMin(typeUC, numEvaluationsField) {
+            if (typeUC === 'Mixed') {
                 numEvaluationsField.value = 2;
                 numEvaluationsField.setAttribute('min', 2);
-            } else if (evaluationType === 'continuous') {
+            } else if (typeUC === 'Continuous') {
                 numEvaluationsField.value = 3;
                 numEvaluationsField.setAttribute('min', 3);
-            } else if (evaluationType === 'none') {
-                numEvaluationsField.value = 0;
-                numEvaluationsField.setAttribute('min', 0);
             }
-            
-            // After changing type, display the appropriate evaluation options
             updateEvaluationFields();
         }
 
+        // Function to update evaluation fields
         function updateEvaluationFields() {
             const numEvaluations = document.getElementById('num-evaluations').value;
             const evaluationList = document.getElementById('evaluation-list');
@@ -113,7 +119,8 @@
             for (let i = 0; i < numEvaluations; i++) {
                 const div = document.createElement('div');
                 div.classList.add('evaluation-item');
-                
+                div.style.marginBottom = '20px'; // Add spacing for better visual separation
+
                 // Evaluation Type
                 const labelType = document.createElement('label');
                 labelType.textContent = `Evaluation ${i + 1} Type:`;
@@ -140,7 +147,7 @@
                 labelExamPeriod.textContent = `Evaluation ${i + 1} Exam Period:`;
                 const selectExamPeriod = document.createElement('select');
                 selectExamPeriod.name = `evaluation-exam-period-${i}`;
-                const periods = ['None','Período Letivo', 'Época de Exames', 'Época de Recurso', 'Época Especial'];
+                const periods = ['None', 'Teaching Period', 'Exam Period', 'Resource Period', 'Special Period'];
                 periods.forEach(period => {
                     const optionPeriod = document.createElement('option');
                     optionPeriod.value = period;
@@ -162,7 +169,7 @@
                 inputClassTime.type = 'checkbox';
                 inputClassTime.name = `evaluation-class-time-${i}`;
                 inputClassTime.id = `evaluation-class-time-${i}`;
-                inputClassTime.onclick = function() { toggleRoomField(i); };
+                inputClassTime.onclick = function () { toggleRoomField(i); };
 
                 // Date and Time Start & End
                 const labelDateStart = document.createElement('label');
@@ -204,27 +211,22 @@
                 div.appendChild(labelRoom);
                 div.appendChild(inputRoom);
 
-                // Add a visible separator after each evaluation
-                const separator = document.createElement('hr');
-                div.appendChild(separator);
-
-                // Append the evaluation div to the list
+                // Append the div to the evaluation list
                 evaluationList.appendChild(div);
             }
         }
 
-        function toggleRoomField(index) {
-            const classTimeCheckbox = document.getElementById(`evaluation-class-time-${index}`);
-            const roomInput = document.getElementById(`evaluation-room-${index}-input`);
-            
-            // If class time is checked, disable the room input and set the value to "Room 1"
+        // Function to disable room input when class time is checked
+        function toggleRoomField(i) {
+            const classTimeCheckbox = document.getElementById(`evaluation-class-time-${i}`);
+            const roomInput = document.getElementById(`evaluation-room-${i}-input`);
             if (classTimeCheckbox.checked) {
-                roomInput.value = "Room 1";  // Set default room value to "Room 1"
-                roomInput.disabled = true;   // Disable the room input field
+                roomInput.disabled = true; // Disable the room input
             } else {
-                roomInput.disabled = false;  // Enable the room input field
+                roomInput.disabled = false; // Enable the room input
             }
         }
     </script>
 </body>
+
 </html>

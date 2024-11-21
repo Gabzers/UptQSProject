@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course List - UC Management</title>
-    <link rel="stylesheet" type="text/css" href="/css/course-list.css">
+    <link rel="stylesheet" type="text/css" href="/css/user_index.css">
 </head>
 <body>
     <header>
@@ -28,7 +28,7 @@
                     <p><strong>Evaluation Type:</strong> <span th:text="${uc.typeUC}">None</span></p>
                     
                     <!-- Edit Button -->
-                    <button th:onclick="'window.location.href=\'/edit-uc?id=' + ${uc.id} + '\''">Edit</button>
+                    <button th:onclick="'window.location.href=\'/user_editUC?id=' + ${uc.id} + '\''">Edit</button>
                     
                     <!-- Remove Button as a form -->
                     <form th:action="@{/remove-uc/{id}(id=${uc.id})}" method="POST" style="display:inline;">

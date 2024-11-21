@@ -17,17 +17,22 @@ public class UptWebController {
 
     @GetMapping("/")
     public String home() {
-        return "redirect:/course-list"; // Redireciona para a URL correta
+        return "redirect:/user"; // Redireciona para a URL correta
     }
 
     @GetMapping("/login")
     public String login() {
-        return "redirect:/course-list"; // Redireciona para a URL correta
+        return "redirect:/user"; // Redireciona para a URL correta
     }
 
-    @GetMapping("/back")
-    public String back() {
-        return "redirect:/course-list"; // Redireciona para a página user.html quando o botão "Back" é clicado
+    @GetMapping("/backUser")
+    public String backUser() {
+        return "redirect:/user"; // Redireciona para a página user.html quando o botão "Back" é clicado
+    }
+
+    @GetMapping("/backMaster")
+    public String backMaster() {
+        return "redirect:/master"; // Redireciona para a página user.html quando o botão "Back" é clicado
     }
 
     @GetMapping("/logout")
@@ -37,12 +42,21 @@ public class UptWebController {
 
     @GetMapping("/createUC")
     public String createUC() {
-        return "create-uc"; // Redireciona para a página createUC.html
+        return "user_createUC"; // Redireciona para a página user_createUC.html
     }
 
+    @GetMapping("/createAdmin")
+    public String createAdmin() {
+        return "master-addAdmin"; // Redireciona para a página createUC.html
+    }
 
     @GetMapping("/admin")
     public String admin() {
-        return "admin"; // Redireciona para a página createUC.html
+        return "admin_index"; // Redireciona para a página createUC.html
+    }
+    
+    @GetMapping("/master")
+    public String master() {
+        return "master_index"; // Redireciona para a página createUC.html
     }
 }
