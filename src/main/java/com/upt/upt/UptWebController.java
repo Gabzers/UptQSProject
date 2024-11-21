@@ -40,4 +40,9 @@ public class UptWebController {
         return "create-uc"; // Redireciona para a página createUC.html
     }
 
+
+    @GetMapping("/admin")
+    public String admin() {
+        return "admin"; // Redireciona para a página createUC.html
+    }
 }
