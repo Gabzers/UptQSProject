@@ -11,18 +11,19 @@ body {
     background-color: #f4f4f4;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 100vh; /* Ensures it takes full height of the screen */
+    justify-content: flex-start; /* Adjust so that the content starts at the top */
+    height: 100vh;
     padding: 20px;
+    gap: 20px; /* Adds space between sections */
 }
 
 /* Header */
 header {
-    text-align: center;
-    margin-bottom: 20px;
     display: flex;
-    justify-content: space-between; /* Positions title and button */
+    justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
 }
 
 h1 {
@@ -30,92 +31,50 @@ h1 {
     color: #333;
 }
 
-/* Logout Button */
-#logoutBtn {
-    background-color: #dc3545; /* Red */
+/* Buttons container */
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* General Button Style */
+button {
+    background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 8px 16px; /* Increased padding */
+    font-size: 16px; /* Slightly larger font */
     border-radius: 4px;
     cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Specific button color for logout */
+#logoutBtn {
+    background-color: #dc3545; /* Red */
 }
 
 #logoutBtn:hover {
     background-color: #c82333; /* Darker red on hover */
 }
 
-/* Titles */
-h2 {
-    color: #333;
-    margin-bottom: 10px;
-}
-
-/* Main container */
-main {
-    flex-grow: 1; /* Takes up remaining space */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
 /* Sections inside the main */
 section {
-    margin-bottom: 30px;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Reduces the space between sections */
 }
 
-/* Form */
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Labels */
-label {
-    display: block;
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 5px;
-}
-
-/* Input fields */
-input[type="date"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    margin-bottom: 15px;
-}
-
-/* Submit button */
-button[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 12px 15px;
-    font-size: 16px;
-    width: 100%;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-button[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-/* Past semesters table */
+/* Tables */
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Adds space between tables */
 }
 
 th, td {
@@ -144,4 +103,64 @@ footer {
     color: #555;
     margin-top: 30px;
     padding: 10px;
+}
+
+/* Edit/Delete Buttons */
+button.edit, button.delete {
+    background-color: #ffc107; /* Yellow */
+    font-size: 16px; /* Slightly larger font */
+    padding: 10px 18px; /* Increased padding */
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.edit:hover {
+    background-color: #e0a800;
+}
+
+button.delete {
+    background-color: #dc3545; /* Red */
+}
+
+button.delete:hover {
+    background-color: #c82333;
+}
+
+button.edit, button.delete {
+    margin-left: 10px; /* Adds space between the buttons */
+}
+
+/* Ensure all sections and tables are well aligned */
+section table {
+    margin-top: 10px; /* Small space between section heading and table */
+}
+
+/* Botões Edit/Delete para a linha Current Year */
+#editCurrentYearBtn, #deleteCurrentYearBtn {
+    background-color: #ffc107; /* Amarelo (Edit) */
+    font-size: 16px;
+    padding: 8px 12px; /* Ajuste do padding */
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#deleteCurrentYearBtn {
+    background-color: #dc3545; /* Vermelho (Delete) */
+}
+
+#editCurrentYearBtn:hover {
+    background-color: #e0a800; /* Hover do botão Edit */
+}
+
+#deleteCurrentYearBtn:hover {
+    background-color: #c82333; /* Hover do botão Delete */
+}
+
+/* Estilo do container na linha Current Year */
+h2 {
+    margin-bottom: 10px;
+}
+
+h2 div {
+    margin-left: auto; /* Move os botões para o máximo à direita */
 }

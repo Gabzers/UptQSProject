@@ -18,23 +18,36 @@
     <main>
         <section class="section">
             <h2>Available Unit Courses (UCs)</h2>
-            
+
             <!-- Check if curricularUnits is not null and not empty -->
             <div th:if="${curricularUnits != null && curricularUnits.size() > 0}">
-                <!-- Loop through the list of curricular units -->
-                <div th:each="uc : ${curricularUnits}" class="uc-item">
-                    <h3 th:text="${uc.nameUC}">UC Name</h3>
-                    <p><strong>Number of Students:</strong> <span th:text="${uc.studentsNumber}">0</span></p>
-                    <p><strong>Evaluation Type:</strong> <span th:text="${uc.typeUC}">None</span></p>
-                    
-                    <!-- Edit Button -->
-                    <button th:onclick="'window.location.href=\'/user_editUC?id=' + ${uc.id} + '\''">Edit</button>
-                    
-                    <!-- Remove Button as a form -->
-                    <form th:action="@{/remove-uc/{id}(id=${uc.id})}" method="POST" style="display:inline;">
-                        <button type="submit">Remove</button>
-                    </form>
-                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>UC Name</th>
+                            <th>Number of Students</th>
+                            <th>Evaluation Type</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Loop through the list of curricular units -->
+                        <tr th:each="uc : ${curricularUnits}">
+                            <td th:text="${uc.nameUC}">UC Name</td>
+                            <td th:text="${uc.studentsNumber}">0</td>
+                            <td th:text="${uc.typeUC}">None</td>
+                            <td>
+                                <!-- Edit Button -->
+                                <button th:onclick="'window.location.href=\'/user_editUC?id=' + ${uc.id} + '\''">Edit</button>
+                                
+                                <!-- Remove Button as a form -->
+                                <form th:action="@{/remove-uc/{id}(id=${uc.id})}" method="POST" style="display:inline;">
+                                    <button type="submit">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
             <!-- Message when no curricular units are found -->

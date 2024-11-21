@@ -35,6 +35,11 @@ public class UptWebController {
         return "redirect:/master"; // Redireciona para a página user.html quando o botão "Back" é clicado
     }
 
+    @GetMapping("/backAdmin")
+    public String backAdmin() {
+        return "redirect:/admin"; // Redireciona para a página user.html quando o botão "Back" é clicado
+    }
+
     @GetMapping("/logout")
     public String logout() {
         return "login"; // Redireciona para a página login.html quando o botão "Back" é clicado
@@ -49,14 +54,34 @@ public class UptWebController {
     public String createAdmin() {
         return "master-addAdmin"; // Redireciona para a página createUC.html
     }
+    
+    @GetMapping("/master")
+    public String master() {
+        return "master_index"; // Redireciona para a página createUC.html
+    }
 
     @GetMapping("/admin")
     public String admin() {
         return "admin_index"; // Redireciona para a página createUC.html
     }
-    
-    @GetMapping("/master")
-    public String master() {
-        return "master_index"; // Redireciona para a página createUC.html
+
+    @GetMapping("/createUser")
+    public String createUser() {
+        return "admin_addUser"; // Redireciona para a página createUC.html
+    }
+
+    @GetMapping("/editUser")
+    public String editUser() {
+        return "admin_editUser"; // Redireciona para a página createUC.html
+    }
+
+    @GetMapping("/newYear")
+    public String newYear() {
+        return "admin_newYear"; // Redireciona para a página createUC.html
+    }
+
+    @GetMapping("/editYear")
+    public String editYear() {
+        return "admin_editYear"; // Redireciona para a página createUC.html
     }
 }
