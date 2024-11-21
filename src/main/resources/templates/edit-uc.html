@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Unit Course (UC)</title>
-    <link rel="stylesheet" type="text/css" href="/css/userUC.css">
+    <link rel="stylesheet" type="text/css" href="/css/edit-uc.css">
 </head>
+
 <body>
     <header>
         <h1>Edit Unit Course (UC)</h1>
@@ -39,8 +41,6 @@
 
                 <!-- Automatically Set Evaluation Type Based on UC Type -->
                 <h3>Define Evaluation Types</h3>
-                <label for="evaluation-type">Evaluation Type:</label>
-                <input type="text" id="evaluation-type" name="evaluation-type" readonly>
 
                 <label for="attendance">Attendance Required:</label>
                 <select id="attendance" name="attendance">
@@ -68,7 +68,7 @@
 
     <script>
         const evaluationOptions = [
-            'Test', 
+            'Test',
             'Final Exam in Exam Period',
             'Work Developed Throughout the Semester',
             'Work Submission',
@@ -83,39 +83,32 @@
         ];
 
         // Set Evaluation Type Automatically Based on UC Type
-        window.onload = function() {
-            const ucType = document.getElementById('typeUC').value;
-            const evaluationTypeField = document.getElementById('evaluation-type');
+        window.onload = function () {
+            const typeUCField = document.getElementById('typeUC');
+            const numEvaluationsField = document.getElementById('num-evaluations');
 
-            if (ucType === 'Mixed') {
-                evaluationTypeField.value = 'Mixed';
-            } else if (ucType === 'Continuous') {
-                evaluationTypeField.value = 'Continuous';
-            }
-            
-            adjustEvaluationRequirements(); // Adjust evaluation requirements based on UC type
+            // Update fields on page load
+            updateEvaluationTypeAndMin(typeUCField.value, numEvaluationsField);
+
+            // Add listener for changes in UC type
+            typeUCField.addEventListener('change', function () {
+                updateEvaluationTypeAndMin(this.value, numEvaluationsField);
+            });
         };
 
-        function adjustEvaluationRequirements() {
-            const evaluationType = document.getElementById('evaluation-type').value;
-            const numEvaluationsField = document.getElementById('num-evaluations');
-            
-            // If the evaluation type is "Mixed", force 2 evaluations, if "Continuous", force 3
-            if (evaluationType === 'Mixed') {
+        // Function to update evaluation type and minimum number
+        function updateEvaluationTypeAndMin(typeUC, numEvaluationsField) {
+            if (typeUC === 'Mixed') {
                 numEvaluationsField.value = 2;
                 numEvaluationsField.setAttribute('min', 2);
-            } else if (evaluationType === 'Continuous') {
+            } else if (typeUC === 'Continuous') {
                 numEvaluationsField.value = 3;
                 numEvaluationsField.setAttribute('min', 3);
-            } else if (evaluationType === 'None') {
-                numEvaluationsField.value = 0;
-                numEvaluationsField.setAttribute('min', 0);
             }
-            
-            // After changing type, display the appropriate evaluation options
             updateEvaluationFields();
         }
 
+        // Function to update evaluation fields
         function updateEvaluationFields() {
             const numEvaluations = document.getElementById('num-evaluations').value;
             const evaluationList = document.getElementById('evaluation-list');
@@ -127,7 +120,8 @@
             for (let i = 0; i < numEvaluations; i++) {
                 const div = document.createElement('div');
                 div.classList.add('evaluation-item');
-                
+                div.style.marginBottom = '20px'; // Add spacing for better visual separation
+
                 // Evaluation Type
                 const labelType = document.createElement('label');
                 labelType.textContent = `Evaluation ${i + 1} Type:`;
@@ -154,7 +148,7 @@
                 labelExamPeriod.textContent = `Evaluation ${i + 1} Exam Period:`;
                 const selectExamPeriod = document.createElement('select');
                 selectExamPeriod.name = `evaluation-exam-period-${i}`;
-                const periods = ['None','Período Letivo', 'Época de Exames', 'Época de Recurso', 'Época Especial'];
+                const periods = ['None', 'Teaching Period', 'Exam Period', 'Resource Period', 'Special Period'];
                 periods.forEach(period => {
                     const optionPeriod = document.createElement('option');
                     optionPeriod.value = period;
@@ -175,8 +169,8 @@
                 const inputClassTime = document.createElement('input');
                 inputClassTime.type = 'checkbox';
                 inputClassTime.name = `evaluation-class-time-${i}`;
-                inputClassTime.id = `evaluation-class-time-${i}`; 
-                inputClassTime.onclick = function() { toggleRoomField(i); };
+                inputClassTime.id = `evaluation-class-time-${i}`;
+                inputClassTime.onclick = function () { toggleRoomField(i); };
 
                 // Date and Time Start & End
                 const labelDateStart = document.createElement('label');
@@ -218,27 +212,22 @@
                 div.appendChild(labelRoom);
                 div.appendChild(inputRoom);
 
-                // Add a visible separator after each evaluation
-                const separator = document.createElement('hr');
-                div.appendChild(separator);
-
-                // Append the evaluation div to the list
+                // Append the div to the evaluation list
                 evaluationList.appendChild(div);
             }
         }
 
-        function toggleRoomField(index) {
-            const classTimeCheckbox = document.getElementById(`evaluation-class-time-${index}`);
-            const roomInput = document.getElementById(`evaluation-room-${index}-input`);
-            
-            // If class time is checked, disable the room input and set the value to "Room 1"
+        // Function to disable room input when class time is checked
+        function toggleRoomField(i) {
+            const classTimeCheckbox = document.getElementById(`evaluation-class-time-${i}`);
+            const roomInput = document.getElementById(`evaluation-room-${i}-input`);
             if (classTimeCheckbox.checked) {
-                roomInput.value = "Room 1";  // Set default room value to "Room 1"
-                roomInput.disabled = true;   // Disable the room input field
+                roomInput.disabled = true; // Disable the room input
             } else {
-                roomInput.disabled = false;  // Enable the room input field
+                roomInput.disabled = false; // Enable the room input
             }
         }
     </script>
 </body>
+
 </html>
