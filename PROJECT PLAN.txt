@@ -1,0 +1,70 @@
+master tem:
+	id
+	lista de admins
+	lista de salas.
+
+utilizador
+	id
+	nome
+	username (login)
+	password
+
+diretor tem: + (extends utilizador)
+	id
+	departamento
+	lista de coordenadores (cada um com o seu curso)
+	lista de semestres passados (anos)
+	
+
+coordenador tem: + (extends utilizador)
+	id
+	curso
+	duração do curso
+	lista de UC's
+
+ano tem:
+	id
+	1º semestre
+	2º semestre
+	epoca especial inicio
+	epoca especial fim
+
+semestre tem:
+	id
+	começo do semestre
+	fim do semestre
+	epoca de exames inicio
+	epoca de exames fim
+	epoca de recurso inicio
+	epoca de recurso fim
+	lista de utilizadores
+	lista de cursos (utilizador -> curso)
+	mapa
+
+UC tem:
+	id
+	nome da UC
+	numero de estudantes
+	tipo de avaliaçao (continua ou n)
+	numero de avaliações pretendidos
+	ano (que ano do curso vai ser lecionado)
+	semestre
+	lista de avaliações
+
+avaliações tem:
+	id
+	tipo de avaliaçao (teste, apresentaçao, etc..)
+	peso da avaliação
+	qual epoca da avaliaçao
+	sala com computador (true / false)
+	exame será feito no tempo de aula? (true false)
+	data e hr do começo da avaliaçao
+	data e hr do fim da avaliaçao
+	sala onde será feita a avaliaçao
+	
+mapa tem:
+	id
+	lista de avaliações de todas as ucs
+	
+
+	
