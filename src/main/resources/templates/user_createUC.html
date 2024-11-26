@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create New Course (UC)</title>
     <link rel="stylesheet" type="text/css" href="/css/user_createUC.css">
 </head>
+
 <body>
     <header>
         <nav>
@@ -20,35 +22,43 @@
 
             <form action="/create-uc" method="POST">
                 <!-- UC Name -->
-                <label for="uc-name">Name of Unit Course (UC):</label>
-                <input type="text" id="uc-name" name="uc-name" required>
-
+                <label for="ucName">Name of Unit Course (UC):</label>
+                <input type="text" id="ucName" name="ucName" required>
+            
                 <!-- Number of Students -->
-                <label for="num-students">Number of Students:</label>
-                <input type="number" id="num-students" name="num-students" min="1" required>
-
+                <label for="ucNumStudents">Number of Students:</label>
+                <input type="number" id="ucNumStudents" name="ucNumStudents" min="1" required>
+            
                 <!-- Evaluation Type -->
-                <label for="evaluation-type">Evaluation Type:</label>
-                <select id="evaluation-type" name="evaluation-type">
+                <label for="ucEvaluationType">Evaluation Type:</label>
+                <select id="ucEvaluationType" name="ucEvaluationType">
                     <option value="None" selected>None</option>
                     <option value="Mixed">Mixed</option>
                     <option value="Continuous">Continuous</option>
                 </select>
-
+            
+                <!-- Number of Evaluations -->
+                <label for="ucEvaluationsCount">Number of Evaluations:</label>
+                <input type="number" id="ucEvaluationsCount" name="ucEvaluationsCount" min="0" required>
+            
                 <!-- Year of the UC -->
-                <label for="uc-year">Year:</label>
-                <select id="uc-year" name="uc-year" required>
+                <label for="ucYear">Year:</label>
+                <select id="ucYear" name="ucYear" required>
                     <option value="1">1st Year</option>
                     <option value="2">2nd Year</option>
                     <option value="3">3rd Year</option>
                 </select>
-
+            
                 <!-- Semester of the UC -->
-                <label for="uc-semester">Semester:</label>
-                <select id="uc-semester" name="uc-semester" required>
+                <label for="ucSemester">Semester:</label>
+                <select id="ucSemester" name="ucSemester" required>
                     <option value="1">1st Semester</option>
                     <option value="2">2nd Semester</option>
                 </select>
+            
+                <!-- Attendance -->
+                <label for="ucAttendance">Attendance Required:</label>
+                <input type="checkbox" id="ucAttendance" name="ucAttendance" value="true">
 
                 <!-- Submit Button -->
                 <button type="submit">Create UC</button>
@@ -61,4 +71,5 @@
     </footer>
 
 </body>
+
 </html>

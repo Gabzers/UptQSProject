@@ -1,11 +1,9 @@
 package com.upt.upt.entity;
 
 import jakarta.persistence.*;
-import java.util.ArrayList;
 
 /**
  * CurricularUnit class represents a curricular unit entity to be mapped to the database.
- * Customized version with ArrayList and user-friendly column names.
  */
 
 @Entity
@@ -16,27 +14,43 @@ public class CurricularUnit {
     @Column(name = "cu_id")
     private Long id; // Curricular Unit ID
 
-    @Column(name = "cu_id_name", nullable = false)
+    @Column(name = "cu_name", nullable = false)
     private String nameUC; // Name of the Curricular Unit
 
-    @Column(name = "cu_id_studentsNumber", nullable = false)
+    @Column(name = "cu_students_number", nullable = false)
     private Integer studentsNumber; // Number of students enrolled
 
-    @Column(name = "cu_id_type", nullable = false)
-    private String typeUC; // Type of Curricular Unit (e.g., "Theory", "Lab")
+    @Column(name = "cu_type", nullable = false)
+    private String evaluationType; // Type of Evaluation (e.g., "Continua", "Mista")
 
-    // @Transient
-    // private ArrayList<Assessment> assessments = new ArrayList<>(); // ArrayList of assessments (not mapped to DB)
+    @Column(name = "cu_attendance", nullable = false)
+    private Boolean attendance; // Indicates if attendance is required
+
+    @Column(name = "cu_evaluations_count", nullable = false)
+    private Integer evaluationsCount; // Number of evaluations planned
+
+    @Column(name = "cu_year", nullable = false)
+    private Integer year; // Year of the course this UC is taught
+
+    @Column(name = "cu_semester", nullable = false)
+    private Integer semester; // Semester of the course this UC is taught
+
+    // @OneToMany(mappedBy = "curricularUnit", cascade = CascadeType.ALL, orphanRemoval = true)
+    // private List<Assessment> assessments = new ArrayList<>(); // List of assessments
 
     public CurricularUnit() {
     }
 
-    public CurricularUnit(Long id, String nameUC, Integer studentsNumber, String typeUC) {
+    public CurricularUnit(Long id, String nameUC, Integer studentsNumber, String evaluationType,
+                          Boolean attendance, Integer evaluationsCount, Integer year, Integer semester) {
         this.id = id;
         this.nameUC = nameUC;
         this.studentsNumber = studentsNumber;
-        this.typeUC = typeUC;
-        // assessments = new ArrayList<>();
+        this.evaluationType = evaluationType;
+        this.attendance = attendance;
+        this.evaluationsCount = evaluationsCount;
+        this.year = year;
+        this.semester = semester;
     }
 
     // Getters and setters
@@ -64,19 +78,51 @@ public class CurricularUnit {
         this.studentsNumber = studentsNumber;
     }
 
-    public String getTypeUC() {
-        return typeUC;
+    public String getEvaluationType() {
+        return evaluationType;
     }
 
-    public void setTypeUC(String typeUC) {
-        this.typeUC = typeUC;
+    public void setEvaluationType(String evaluationType) {
+        this.evaluationType = evaluationType;
     }
 
-    // public ArrayList<Assessment> getAssessments() {
+    public Boolean getAttendance() {
+        return attendance;
+    }
+
+    public void setAttendance(Boolean attendance) {
+        this.attendance = attendance;
+    }
+
+    public Integer getEvaluationsCount() {
+        return evaluationsCount;
+    }
+
+    public void setEvaluationsCount(Integer evaluationsCount) {
+        this.evaluationsCount = evaluationsCount;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public Integer getSemester() {
+        return semester;
+    }
+
+    public void setSemester(Integer semester) {
+        this.semester = semester;
+    }
+
+    // public List<Assessment> getAssessments() {
     //     return assessments;
     // }
 
-    // public void setAssessments(ArrayList<Assessment> assessments) {
+    // public void setAssessments(List<Assessment> assessments) {
     //     this.assessments = assessments;
     // }
 }

@@ -22,37 +22,52 @@
 
             <!-- Form to update the UC details -->
             <form th:action="@{/user_editUC/{id}(id=${uc.id})}" method="POST">
-                <label for="nameUC">Name of UC:</label>
-                <input type="text" id="nameUC" name="nameUC" th:value="${uc.nameUC}" required>
+                <!-- Name of the UC -->
+                <label for="ucName">Name of UC:</label>
+                <input type="text" id="ucName" name="ucName" th:value="${uc.nameUC}" required>
                 <br><br>
 
-                <label for="studentsNumber">Number of Students:</label>
-                <input type="number" id="studentsNumber" name="studentsNumber" th:value="${uc.studentsNumber}" required>
+                <!-- Number of Students -->
+                <label for="ucNumStudents">Number of Students:</label>
+                <input type="number" id="ucNumStudents" name="ucNumStudents" th:value="${uc.studentsNumber}" required>
                 <br><br>
 
-                <!-- Type of UC - only Continuous or Mixed -->
-                <label for="typeUC">Type of UC:</label>
-                <select name="typeUC" id="typeUC" required>
-                    <option value="Continuous" th:selected="${uc.typeUC == 'Continuous'}">Continuous</option>
-                    <option value="Mixed" th:selected="${uc.typeUC == 'Mixed'}">Mixed</option>
+                <!-- Type of UC -->
+                <label for="ucEvaluationType">Type of UC:</label>
+                <select name="ucEvaluationType" id="ucEvaluationType" required>
+                    <option value="Continuous" th:selected="${uc.evaluationType == 'Continuous'}">Continuous</option>
+                    <option value="Mixed" th:selected="${uc.evaluationType == 'Mixed'}">Mixed</option>
                 </select>
                 <br><br>
 
-                <!-- Automatically Set Evaluation Type Based on UC Type -->
-                <h3>Define Evaluation Types</h3>
-
-                <label for="attendance">Attendance Required:</label>
-                <select id="attendance" name="attendance">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
-
-                <!-- Number of Evaluations to Add -->
-                <label for="num-evaluations">How many evaluations would you like to add?</label>
-                <input type="number" id="num-evaluations" name="num-evaluations" min="1" required onchange="updateEvaluationFields()">
+                <!-- Number of Evaluations -->
+                <label for="ucEvaluationsCount">Number of Evaluations:</label>
+                <input type="number" id="ucEvaluationsCount" name="ucEvaluationsCount" min="0" th:value="${uc.evaluationsCount}" required onchange="updateEvaluationFields()">
                 <br><br>
 
-                <!-- Evaluation Type List -->
+                <!-- Year of the UC -->
+                <label for="ucYear">Year:</label>
+                <select id="ucYear" name="ucYear" required>
+                    <option value="1" th:selected="${uc.year == 1}">1st Year</option>
+                    <option value="2" th:selected="${uc.year == 2}">2nd Year</option>
+                    <option value="3" th:selected="${uc.year == 3}">3rd Year</option>
+                </select>
+                <br><br>
+
+                <!-- Semester of the UC -->
+                <label for="ucSemester">Semester:</label>
+                <select id="ucSemester" name="ucSemester" required>
+                    <option value="1" th:selected="${uc.semester == 1}">1st Semester</option>
+                    <option value="2" th:selected="${uc.semester == 2}">2nd Semester</option>
+                </select>
+                <br><br>
+
+                <!-- Attendance Required -->
+                <label for="ucAttendance">Attendance Required:</label>
+                <input type="checkbox" id="ucAttendance" name="ucAttendance" th:checked="${uc.attendance}">
+                <br><br>
+
+                <!-- Dynamic Evaluation Fields -->
                 <div id="evaluation-list"></div>
                 <br><br>
 
@@ -81,151 +96,87 @@
             'Oral Exam'
         ];
 
-        // Set Evaluation Type Automatically Based on UC Type
         window.onload = function () {
-            const typeUCField = document.getElementById('typeUC');
-            const numEvaluationsField = document.getElementById('num-evaluations');
+            const numEvaluationsField = document.getElementById('ucEvaluationsCount');
+            const ucEvaluationTypeField = document.getElementById('ucEvaluationType');
 
             // Update fields on page load
-            updateEvaluationTypeAndMin(typeUCField.value, numEvaluationsField);
+            updateEvaluationTypeAndMin(ucEvaluationTypeField.value);
 
             // Add listener for changes in UC type
-            typeUCField.addEventListener('change', function () {
-                updateEvaluationTypeAndMin(this.value, numEvaluationsField);
+            ucEvaluationTypeField.addEventListener('change', function () {
+                updateEvaluationTypeAndMin(this.value);
             });
+
+            // Initialize evaluation fields based on current number
+            updateEvaluationFields();
         };
 
-        // Function to update evaluation type and minimum number
-        function updateEvaluationTypeAndMin(typeUC, numEvaluationsField) {
+        // Function to update evaluation type and minimum evaluations
+        function updateEvaluationTypeAndMin(typeUC) {
+            const numEvaluationsField = document.getElementById('ucEvaluationsCount');
+
             if (typeUC === 'Mixed') {
-                numEvaluationsField.value = 2;
+                numEvaluationsField.value = Math.max(numEvaluationsField.value, 2);
                 numEvaluationsField.setAttribute('min', 2);
             } else if (typeUC === 'Continuous') {
-                numEvaluationsField.value = 3;
+                numEvaluationsField.value = Math.max(numEvaluationsField.value, 3);
                 numEvaluationsField.setAttribute('min', 3);
             }
             updateEvaluationFields();
         }
 
-        // Function to update evaluation fields
-        function updateEvaluationFields() {
-            const numEvaluations = document.getElementById('num-evaluations').value;
-            const evaluationList = document.getElementById('evaluation-list');
-            evaluationList.innerHTML = '';
+        // // Function to dynamically create evaluation fields
+        // function updateEvaluationFields() {
+        //     const numEvaluations = document.getElementById('ucEvaluationsCount').value;
+        //     const evaluationList = document.getElementById('evaluation-list');
+        //     evaluationList.innerHTML = ''; // Clear previous fields
 
-            // If no evaluations are added, do nothing
-            if (numEvaluations == 0) return;
+        //     if (numEvaluations <= 0) return; // Do nothing if the number is 0 or invalid
 
-            for (let i = 0; i < numEvaluations; i++) {
-                const div = document.createElement('div');
-                div.classList.add('evaluation-item');
-                div.style.marginBottom = '20px'; // Add spacing for better visual separation
+        //     for (let i = 0; i < numEvaluations; i++) {
+        //         const div = document.createElement('div');
+        //         div.classList.add('evaluation-item');
+        //         div.style.marginBottom = '20px';
 
-                // Evaluation Type
-                const labelType = document.createElement('label');
-                labelType.textContent = `Evaluation ${i + 1} Type:`;
-                const selectType = document.createElement('select');
-                selectType.name = `evaluation-type-${i}`;
-                evaluationOptions.forEach(option => {
-                    const optionElement = document.createElement('option');
-                    optionElement.value = option;
-                    optionElement.textContent = option;
-                    selectType.appendChild(optionElement);
-                });
+        //         // Add Evaluation Fields
+        //         div.innerHTML = `
+        //             <label>Evaluation ${i + 1} Type:</label>
+        //             <select name="evaluation-type-${i}">
+        //                 ${evaluationOptions.map(option => `<option value="${option}">${option}</option>`).join('')}
+        //             </select>
+        //             <label>Weight (%):</label>
+        //             <input type="number" name="evaluation-weight-${i}" min="0" max="100" required>
+        //             <label>Exam Period:</label>
+        //             <select name="evaluation-exam-period-${i}">
+        //                 <option value="None">None</option>
+        //                 <option value="Teaching Period">Teaching Period</option>
+        //                 <option value="Exam Period">Exam Period</option>
+        //                 <option value="Resource Period">Resource Period</option>
+        //                 <option value="Special Period">Special Period</option>
+        //             </select>
+        //             <label>Requires Computer:</label>
+        //             <input type="checkbox" name="evaluation-computer-${i}">
+        //             <label>At usual class time?</label>
+        //             <input type="checkbox" name="evaluation-class-time-${i}" id="evaluation-class-time-${i}" onclick="toggleRoomField(${i})">
+        //             <label>Start Date & Time:</label>
+        //             <input type="datetime-local" name="evaluation-date-start-${i}" required>
+        //             <label>End Date & Time:</label>
+        //             <input type="datetime-local" name="evaluation-date-end-${i}" required>
+        //             <label>Room:</label>
+        //             <input type="text" name="evaluation-room-${i}" id="evaluation-room-${i}-input" value="Room 1">
+        //         `;
 
-                // Weight
-                const labelWeight = document.createElement('label');
-                labelWeight.textContent = `Evaluation ${i + 1} Weight (%):`;
-                const inputWeight = document.createElement('input');
-                inputWeight.type = 'number';
-                inputWeight.name = `evaluation-weight-${i}`;
-                inputWeight.min = '0';
-                inputWeight.max = '100';
+        //         evaluationList.appendChild(div);
+        //     }
+        // }
 
-                // Exam Period
-                const labelExamPeriod = document.createElement('label');
-                labelExamPeriod.textContent = `Evaluation ${i + 1} Exam Period:`;
-                const selectExamPeriod = document.createElement('select');
-                selectExamPeriod.name = `evaluation-exam-period-${i}`;
-                const periods = ['None', 'Teaching Period', 'Exam Period', 'Resource Period', 'Special Period'];
-                periods.forEach(period => {
-                    const optionPeriod = document.createElement('option');
-                    optionPeriod.value = period;
-                    optionPeriod.textContent = period;
-                    selectExamPeriod.appendChild(optionPeriod);
-                });
-
-                // Requires Computer
-                const labelComputer = document.createElement('label');
-                labelComputer.textContent = `Evaluation ${i + 1} Requires Computer:`;
-                const inputComputer = document.createElement('input');
-                inputComputer.type = 'checkbox';
-                inputComputer.name = `evaluation-computer-${i}`;
-
-                // Time of Class (checkbox)
-                const labelClassTime = document.createElement('label');
-                labelClassTime.textContent = `Evaluation ${i + 1} at usual class time?`;
-                const inputClassTime = document.createElement('input');
-                inputClassTime.type = 'checkbox';
-                inputClassTime.name = `evaluation-class-time-${i}`;
-                inputClassTime.id = `evaluation-class-time-${i}`;
-                inputClassTime.onclick = function () { toggleRoomField(i); };
-
-                // Date and Time Start & End
-                const labelDateStart = document.createElement('label');
-                labelDateStart.textContent = `Evaluation ${i + 1} Start Date & Time:`;
-                const inputDateStart = document.createElement('input');
-                inputDateStart.type = 'datetime-local';
-                inputDateStart.name = `evaluation-date-start-${i}`;
-
-                const labelDateEnd = document.createElement('label');
-                labelDateEnd.textContent = `Evaluation ${i + 1} End Date & Time:`;
-                const inputDateEnd = document.createElement('input');
-                inputDateEnd.type = 'datetime-local';
-                inputDateEnd.name = `evaluation-date-end-${i}`;
-
-                // Room (if not usual class time)
-                const labelRoom = document.createElement('label');
-                labelRoom.textContent = `Room for Evaluation ${i + 1}:`;
-                const inputRoom = document.createElement('input');
-                inputRoom.type = 'text';
-                inputRoom.name = `evaluation-room-${i}`;
-                inputRoom.id = `evaluation-room-${i}-input`;
-                inputRoom.value = "Room 1";  // Set default room value to "Room 1"
-
-                // Append all inputs to the div
-                div.appendChild(labelType);
-                div.appendChild(selectType);
-                div.appendChild(labelWeight);
-                div.appendChild(inputWeight);
-                div.appendChild(labelExamPeriod);
-                div.appendChild(selectExamPeriod);
-                div.appendChild(labelComputer);
-                div.appendChild(inputComputer);
-                div.appendChild(labelClassTime);
-                div.appendChild(inputClassTime);
-                div.appendChild(labelDateStart);
-                div.appendChild(inputDateStart);
-                div.appendChild(labelDateEnd);
-                div.appendChild(inputDateEnd);
-                div.appendChild(labelRoom);
-                div.appendChild(inputRoom);
-
-                // Append the div to the evaluation list
-                evaluationList.appendChild(div);
-            }
-        }
-
-        // Function to disable room input when class time is checked
-        function toggleRoomField(i) {
-            const classTimeCheckbox = document.getElementById(`evaluation-class-time-${i}`);
-            const roomInput = document.getElementById(`evaluation-room-${i}-input`);
-            if (classTimeCheckbox.checked) {
-                roomInput.disabled = true; // Disable the room input
-            } else {
-                roomInput.disabled = false; // Enable the room input
-            }
-        }
+        // // Toggle Room Field based on class time checkbox
+        // function toggleRoomField(i) {
+        //     const classTimeCheckbox = document.getElementById(`evaluation-class-time-${i}`);
+        //     const roomInput = document.getElementById(`evaluation-room-${i}-input`);
+        //     roomInput.disabled = classTimeCheckbox.checked;
+        // }
     </script>
 </body>
 

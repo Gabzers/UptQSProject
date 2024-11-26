@@ -27,6 +27,10 @@
                             <th>UC Name</th>
                             <th>Number of Students</th>
                             <th>Evaluation Type</th>
+                            <th>Evaluations</th>
+                            <th>Curricular Year</th>
+                            <th>Semester</th>
+                            <th>Attendance</th> <!-- New column for attendance -->
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -35,7 +39,11 @@
                         <tr th:each="uc : ${curricularUnits}">
                             <td th:text="${uc.nameUC}">UC Name</td>
                             <td th:text="${uc.studentsNumber}">0</td>
-                            <td th:text="${uc.typeUC}">None</td>
+                            <td th:text="${uc.evaluationType}">None</td>
+                            <td th:text="${uc.evaluationsCount}">0</td>
+                            <td th:text="${uc.year}">1</td>
+                            <td th:text="${uc.semester}">1</td>
+                            <td th:text="${uc.attendance}">0</td> <!-- Display the attendance -->
                             <td>
                                 <!-- Edit Button -->
                                 <button th:onclick="'window.location.href=\'/user_editUC?id=' + ${uc.id} + '\''">Edit</button>

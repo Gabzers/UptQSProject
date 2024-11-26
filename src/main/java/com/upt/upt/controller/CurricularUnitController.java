@@ -5,10 +5,8 @@ import com.upt.upt.service.CurricularUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.Optional;
 
 @Controller
@@ -21,7 +19,7 @@ public class CurricularUnitController {
         this.curricularUnitService = curricularUnitService;
     }
 
-    // Mapeamento da URL "/user_index"
+    // Mapeamento da URL "/user"
     @GetMapping("/user")
     public String showCourseList(Model model) {
         model.addAttribute("curricularUnits", curricularUnitService.getAllCurricularUnits());
@@ -35,6 +33,7 @@ public class CurricularUnitController {
         return "redirect:/user"; // Redireciona para a lista de UCs
     }
 
+    // Página de edição de UC
     @GetMapping("/user_editUC")
     public String editUC(@RequestParam("id") Long id, Model model) {
         Optional<CurricularUnit> curricularUnit = curricularUnitService.getCurricularUnitById(id);
@@ -46,11 +45,17 @@ public class CurricularUnitController {
         }
     }
 
+    // Atualizar uma UC
     @PostMapping("/user_editUC/{id}")
-    public String updateCurricularUnit(@PathVariable("id") Long id,
-            @RequestParam("nameUC") String nameUC,
-            @RequestParam("studentsNumber") Integer studentsNumber,
-            @RequestParam("typeUC") String typeUC) {
+    public String updateCurricularUnit(
+            @PathVariable("id") Long id,
+            @RequestParam("ucName") String nameUC,
+            @RequestParam("ucNumStudents") Integer studentsNumber,
+            @RequestParam("ucEvaluationType") String evaluationType,
+            @RequestParam("ucAttendance") Boolean attendance, // Novo campo
+            @RequestParam("ucEvaluationsCount") Integer evaluationsCount,
+            @RequestParam("ucYear") Integer year,
+            @RequestParam("ucSemester") Integer semester) {
         try {
             CurricularUnit uc = curricularUnitService.getCurricularUnitById(id)
                     .orElseThrow(() -> new IllegalArgumentException("Invalid UC ID: " + id));
@@ -58,7 +63,11 @@ public class CurricularUnitController {
             // Atualizar os campos da UC
             uc.setNameUC(nameUC);
             uc.setStudentsNumber(studentsNumber);
-            uc.setTypeUC(typeUC);
+            uc.setEvaluationType(evaluationType);
+            uc.setAttendance(attendance); // Atualiza o campo attendance
+            uc.setEvaluationsCount(evaluationsCount);
+            uc.setYear(year);
+            uc.setSemester(semester);
 
             // Salvar a UC atualizada
             curricularUnitService.saveCurricularUnit(uc);
@@ -72,21 +81,29 @@ public class CurricularUnitController {
         }
     }
 
-    // Método POST para receber os dados do formulário
+    // Criar nova UC
     @PostMapping("/create-uc")
-    public String createUC(@RequestParam("uc-name") String nameUC,
-            @RequestParam("num-students") Integer studentsNumber,
-            @RequestParam("evaluation-type") String typeUC) {
+    public String createUC(
+            @RequestParam("ucName") String nameUC,
+            @RequestParam("ucNumStudents") Integer studentsNumber,
+            @RequestParam("ucEvaluationType") String evaluationType,
+            @RequestParam("ucAttendance") Boolean attendance, // Novo campo
+            @RequestParam("ucEvaluationsCount") Integer evaluationsCount,
+            @RequestParam("ucYear") Integer year,
+            @RequestParam("ucSemester") Integer semester) {
         // Criar a nova CurricularUnit com os dados do formulário
         CurricularUnit curricularUnit = new CurricularUnit();
         curricularUnit.setNameUC(nameUC);
         curricularUnit.setStudentsNumber(studentsNumber);
-        curricularUnit.setTypeUC(typeUC);
+        curricularUnit.setEvaluationType(evaluationType);
+        curricularUnit.setAttendance(attendance); // Definir o campo attendance
+        curricularUnit.setEvaluationsCount(evaluationsCount);
+        curricularUnit.setYear(year);
+        curricularUnit.setSemester(semester);
 
         // Salvar a CurricularUnit no banco de dados
         curricularUnitService.saveCurricularUnit(curricularUnit);
 
         return "redirect:/user"; // Redirecionar para a página de usuário após criar a UC
     }
-
 }

@@ -46,6 +46,7 @@ UC tem:
 	nome da UC
 	numero de estudantes
 	tipo de avaliaçao (continua ou n)
+	assiduidade
 	numero de avaliações pretendidos
 	ano (que ano do curso vai ser lecionado)
 	semestre

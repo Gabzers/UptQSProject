@@ -65,7 +65,12 @@ public class CurricularUnitService {
             CurricularUnit curricularUnit = existingCurricularUnit.get();
             curricularUnit.setNameUC(updatedCurricularUnit.getNameUC());
             curricularUnit.setStudentsNumber(updatedCurricularUnit.getStudentsNumber());
-            curricularUnit.setTypeUC(updatedCurricularUnit.getTypeUC());
+            curricularUnit.setEvaluationType(updatedCurricularUnit.getEvaluationType());
+            curricularUnit.setAttendance(updatedCurricularUnit.getAttendance()); // Atualizar o campo attendance
+            curricularUnit.setEvaluationsCount(updatedCurricularUnit.getEvaluationsCount());
+            curricularUnit.setYear(updatedCurricularUnit.getYear());
+            curricularUnit.setSemester(updatedCurricularUnit.getSemester());
+            // curricularUnit.setAssessments(updatedCurricularUnit.getAssessments());
             return curricularUnitRepository.save(curricularUnit);
         } else {
             throw new RuntimeException("Curricular unit not found");
@@ -80,5 +85,4 @@ public class CurricularUnitService {
     public void deleteCurricularUnit(Long id) {
         curricularUnitRepository.deleteById(id);
     }
-    
 }
