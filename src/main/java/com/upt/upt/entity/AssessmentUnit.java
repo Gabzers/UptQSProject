@@ -44,7 +44,7 @@ public class AssessmentUnit {
     private CurricularUnit curricularUnit; // The curricular unit to which the assessment belongs
 
     @ManyToOne
-    @JoinColumn(name = "assessment_map_unit_id", nullable = false)
+    @JoinColumn(name = "assessment_map_unit_id", nullable = true)  // Permite que o valor de 'map' seja nulo
     private MapUnit map; // The map to which this assessment belongs
 
     public AssessmentUnit() {

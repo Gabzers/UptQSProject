@@ -1,8 +1,6 @@
 package com.upt.upt.entity;
 
 import jakarta.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * User class represents a user entity to be mapped to the database.

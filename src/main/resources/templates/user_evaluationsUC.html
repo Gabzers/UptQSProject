@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evaluations - UC Management</title>
     <link rel="stylesheet" type="text/css" href="/css/user_index.css">
 </head>
+
 <body>
     <header>
         <h1>Evaluations for UC</h1>
         <nav>
             <button onclick="window.location.href='/user'">Back</button>
-            <button th:onclick="'window.location.href=\'/user_create_evaluation?curricularUnitId=' + ${uc.id} + '\''">Create Evaluation</button>
+            <button
+                th:onclick="'window.location.href=\'/user_create_evaluation?curricularUnitId=' + ${uc.id} + '\''">Create
+                Evaluation</button>
             <button onclick="window.location.href='/logout'">Logout</button>
         </nav>
     </header>
@@ -43,12 +47,16 @@
                             <td th:text="${evaluation.room}">Room 101</td>
                             <td>
                                 <!-- Edit Button -->
-                                <button th:onclick="'window.location.href=\'/user_edit_evaluation?id=' + ${evaluation.id} + '\''">Edit</button>
+                                <form th:action="@{/user_editEvaluations/{id}(id=${evaluation.id})}" method="GET" style="display:inline;">
+                                    <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
+                                    <button type="submit">Edit</button>
+                                </form>
                                 
-                                <!-- Remove Button as a form -->
-                                <form th:action="@{/remove-evaluation/{id}(id=${evaluation.id})}" method="POST" style="display:inline;">
+                                <form th:action="@{/user_delete_evaluation/{id}(id=${evaluation.id})}" method="POST" style="display:inline;">
+                                    <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
                                     <button type="submit">Remove</button>
                                 </form>
+                                
                             </td>
                         </tr>
                     </tbody>
@@ -67,4 +75,5 @@
     </footer>
 
 </body>
+
 </html>
