@@ -13,7 +13,7 @@ diretor(admin) tem: + (extends utilizador)
 	id
 	departamento
 	lista de coordenadores (cada um com o seu curso)
-	lista de semestres passados (anos)
+	lista de anos
 	
 
 coordenador(user) tem: + (extends utilizador)
@@ -41,7 +41,7 @@ semestre tem:
 	lista de cursos (utilizador -> curso)
 	mapa
 
-UC tem:
+CU tem:
 	id
 	nome da UC
 	numero de estudantes

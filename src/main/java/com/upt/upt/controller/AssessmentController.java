@@ -1,6 +1,6 @@
 package com.upt.upt.controller;
 
-import com.upt.upt.entity.Assessment;
+import com.upt.upt.entity.AssessmentUnit;
 import com.upt.upt.service.AssessmentService;
 import com.upt.upt.service.CurricularUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +40,7 @@ public class AssessmentController {
     // Página de edição de avaliação
     @GetMapping("/assessment_edit")
     public String editAssessment(@RequestParam("id") Long id, Model model) {
-        Optional<Assessment> assessment = assessmentService.getAssessmentById(id);
+        Optional<AssessmentUnit> assessment = assessmentService.getAssessmentById(id);
         if (assessment.isPresent()) {
             model.addAttribute("assessment", assessment.get()); // Passa a avaliação para o modelo
             model.addAttribute("curricularUnits", curricularUnitService.getAllCurricularUnits()); // Passa todas as unidades curriculares
@@ -65,7 +65,7 @@ public class AssessmentController {
             @RequestParam("curricularUnitId") Long curricularUnitId) {
 
         try {
-            Assessment assessment = assessmentService.getAssessmentById(id)
+            AssessmentUnit assessment = assessmentService.getAssessmentById(id)
                     .orElseThrow(() -> new IllegalArgumentException("Invalid assessment ID: " + id));
 
             // Atualizar os campos da avaliação
@@ -108,7 +108,7 @@ public class AssessmentController {
             @RequestParam("curricularUnitId") Long curricularUnitId) {
 
         // Criar a nova Assessment com os dados do formulário
-        Assessment assessment = new Assessment();
+        AssessmentUnit assessment = new AssessmentUnit();
         assessment.setType(type);
         assessment.setWeight(weight);
         assessment.setExamPeriod(examPeriod);

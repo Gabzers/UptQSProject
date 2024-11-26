@@ -1,6 +1,6 @@
 package com.upt.upt.service;
 
-import com.upt.upt.entity.Assessment;
+import com.upt.upt.entity.AssessmentUnit;
 import com.upt.upt.repository.AssessmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class AssessmentService {
      * @param assessment the entity to save
      * @return the persisted entity
      */
-    public Assessment saveAssessment(Assessment assessment) {
+    public AssessmentUnit saveAssessment(AssessmentUnit assessment) {
         return assessmentRepository.save(assessment);
     }
 
@@ -37,7 +37,7 @@ public class AssessmentService {
      *
      * @return the list of entities
      */
-    public List<Assessment> getAllAssessments() {
+    public List<AssessmentUnit> getAllAssessments() {
         return assessmentRepository.findAll();
     }
 
@@ -47,7 +47,7 @@ public class AssessmentService {
      * @param id the ID of the entity
      * @return the entity as an Optional
      */
-    public Optional<Assessment> getAssessmentById(Long id) {
+    public Optional<AssessmentUnit> getAssessmentById(Long id) {
         return assessmentRepository.findById(id);
     }
 
@@ -58,10 +58,10 @@ public class AssessmentService {
      * @param updatedAssessment the updated entity
      * @return the updated entity
      */
-    public Assessment updateAssessment(Long id, Assessment updatedAssessment) {
-        Optional<Assessment> existingAssessment = assessmentRepository.findById(id);
+    public AssessmentUnit updateAssessment(Long id, AssessmentUnit updatedAssessment) {
+        Optional<AssessmentUnit> existingAssessment = assessmentRepository.findById(id);
         if (existingAssessment.isPresent()) {
-            Assessment assessment = existingAssessment.get();
+            AssessmentUnit assessment = existingAssessment.get();
             assessment.setType(updatedAssessment.getType());
             assessment.setWeight(updatedAssessment.getWeight());
             assessment.setExamPeriod(updatedAssessment.getExamPeriod());

@@ -1,14 +1,17 @@
 package com.upt.upt.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 
 /**
  * CurricularUnit class represents a curricular unit entity to be mapped to the database.
  */
-
 @Entity
 @Table(name = "curricular_unit")
 public class CurricularUnit {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cu_id")
@@ -35,14 +38,24 @@ public class CurricularUnit {
     @Column(name = "cu_semester", nullable = false)
     private Integer semester; // Semester of the course this UC is taught
 
-    // @OneToMany(mappedBy = "curricularUnit", cascade = CascadeType.ALL, orphanRemoval = true)
-    // private List<Assessment> assessments = new ArrayList<>(); // List of assessments
+    @ManyToOne
+    @JoinColumn(name = "coordinator_id")  // A foreign key to the CoordinatorUnit
+    private CoordinatorUnit coordinator; // The coordinator for the curricular unit
 
+    @ManyToOne
+    @JoinColumn(name = "semester_id")  // A foreign key to the SemesterUnit
+    private SemesterUnit semesterUnit; // The semester associated with the curricular unit
+
+    @OneToMany(mappedBy = "curricularUnit", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<AssessmentUnit> assessments = new ArrayList<>(); // List of assessments
+
+    // Constructor
     public CurricularUnit() {
     }
 
     public CurricularUnit(Long id, String nameUC, Integer studentsNumber, String evaluationType,
-                          Boolean attendance, Integer evaluationsCount, Integer year, Integer semester) {
+                          Boolean attendance, Integer evaluationsCount, Integer year, Integer semester, 
+                          CoordinatorUnit coordinator, SemesterUnit semesterUnit) {
         this.id = id;
         this.nameUC = nameUC;
         this.studentsNumber = studentsNumber;
@@ -51,6 +64,8 @@ public class CurricularUnit {
         this.evaluationsCount = evaluationsCount;
         this.year = year;
         this.semester = semester;
+        this.coordinator = coordinator;
+        this.semesterUnit = semesterUnit;
     }
 
     // Getters and setters
@@ -118,11 +133,27 @@ public class CurricularUnit {
         this.semester = semester;
     }
 
-    // public List<Assessment> getAssessments() {
-    //     return assessments;
-    // }
+    public CoordinatorUnit getCoordinator() {
+        return coordinator;
+    }
 
-    // public void setAssessments(List<Assessment> assessments) {
-    //     this.assessments = assessments;
-    // }
+    public void setCoordinator(CoordinatorUnit coordinator) {
+        this.coordinator = coordinator;
+    }
+
+    public SemesterUnit getSemesterUnit() {
+        return semesterUnit;
+    }
+
+    public void setSemesterUnit(SemesterUnit semesterUnit) {
+        this.semesterUnit = semesterUnit;
+    }
+
+    public List<AssessmentUnit> getAssessments() {
+        return assessments;
+    }
+
+    public void setAssessments(List<AssessmentUnit> assessments) {
+        this.assessments = assessments;
+    }
 }

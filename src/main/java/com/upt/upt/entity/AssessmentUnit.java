@@ -4,12 +4,11 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 /**
- * Assessment class represents an assessment entity to be mapped to the database.
+ * AssessmentUnit class represents an assessment entity to be mapped to the database.
  */
-
 @Entity
-@Table(name = "assessment")
-public class Assessment {
+@Table(name = "assessment_unit")
+public class AssessmentUnit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,14 +40,18 @@ public class Assessment {
     private String room; // Room where the assessment will take place
 
     @ManyToOne
-    @JoinColumn(name = "curricular_unit_id", nullable = false)
+    @JoinColumn(name = "assessment_curricular_unit_id", nullable = false)
     private CurricularUnit curricularUnit; // The curricular unit to which the assessment belongs
 
-    public Assessment() {
+    @ManyToOne
+    @JoinColumn(name = "assessment_map_unit_id", nullable = false)
+    private MapUnit map; // The map to which this assessment belongs
+
+    public AssessmentUnit() {
     }
 
-    public Assessment(Long id, String type, Integer weight, String examPeriod, Boolean computerRequired,
-                      Boolean classTime, LocalDateTime startTime, LocalDateTime endTime, String room, CurricularUnit curricularUnit) {
+    public AssessmentUnit(Long id, String type, Integer weight, String examPeriod, Boolean computerRequired,
+                          Boolean classTime, LocalDateTime startTime, LocalDateTime endTime, String room, CurricularUnit curricularUnit, MapUnit map) {
         this.id = id;
         this.type = type;
         this.weight = weight;
@@ -59,6 +62,7 @@ public class Assessment {
         this.endTime = endTime;
         this.room = room;
         this.curricularUnit = curricularUnit;
+        this.map = map;
     }
 
     // Getters and setters
@@ -140,5 +144,13 @@ public class Assessment {
 
     public void setCurricularUnit(CurricularUnit curricularUnit) {
         this.curricularUnit = curricularUnit;
+    }
+
+    public MapUnit getMap() {
+        return map;
+    }
+
+    public void setMap(MapUnit map) {
+        this.map = map;
     }
 }
