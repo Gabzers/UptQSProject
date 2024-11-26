@@ -52,7 +52,7 @@ public class CurricularUnitController {
             @RequestParam("ucName") String nameUC,
             @RequestParam("ucNumStudents") Integer studentsNumber,
             @RequestParam("ucEvaluationType") String evaluationType,
-            @RequestParam("ucAttendance") Boolean attendance, // Novo campo
+            @RequestParam(value = "ucAttendance", defaultValue = "false") Boolean attendance, // Novo campo
             @RequestParam("ucEvaluationsCount") Integer evaluationsCount,
             @RequestParam("ucYear") Integer year,
             @RequestParam("ucSemester") Integer semester) {
@@ -83,27 +83,28 @@ public class CurricularUnitController {
 
     // Criar nova UC
     @PostMapping("/create-uc")
-    public String createUC(
-            @RequestParam("ucName") String nameUC,
-            @RequestParam("ucNumStudents") Integer studentsNumber,
-            @RequestParam("ucEvaluationType") String evaluationType,
-            @RequestParam("ucAttendance") Boolean attendance, // Novo campo
-            @RequestParam("ucEvaluationsCount") Integer evaluationsCount,
-            @RequestParam("ucYear") Integer year,
-            @RequestParam("ucSemester") Integer semester) {
-        // Criar a nova CurricularUnit com os dados do formulário
-        CurricularUnit curricularUnit = new CurricularUnit();
-        curricularUnit.setNameUC(nameUC);
-        curricularUnit.setStudentsNumber(studentsNumber);
-        curricularUnit.setEvaluationType(evaluationType);
-        curricularUnit.setAttendance(attendance); // Definir o campo attendance
-        curricularUnit.setEvaluationsCount(evaluationsCount);
-        curricularUnit.setYear(year);
-        curricularUnit.setSemester(semester);
+public String createUC(
+        @RequestParam("ucName") String nameUC,
+        @RequestParam("ucNumStudents") Integer studentsNumber,
+        @RequestParam("ucEvaluationType") String evaluationType,
+        @RequestParam(value = "ucAttendance", defaultValue = "false") Boolean attendance, // Valor padrão
+        @RequestParam("ucEvaluationsCount") Integer evaluationsCount,
+        @RequestParam("ucYear") Integer year,
+        @RequestParam("ucSemester") Integer semester) {
+    // Criar a nova CurricularUnit com os dados do formulário
+    CurricularUnit curricularUnit = new CurricularUnit();
+    curricularUnit.setNameUC(nameUC);
+    curricularUnit.setStudentsNumber(studentsNumber);
+    curricularUnit.setEvaluationType(evaluationType);
+    curricularUnit.setAttendance(attendance); // Definir o campo attendance
+    curricularUnit.setEvaluationsCount(evaluationsCount);
+    curricularUnit.setYear(year);
+    curricularUnit.setSemester(semester);
 
-        // Salvar a CurricularUnit no banco de dados
-        curricularUnitService.saveCurricularUnit(curricularUnit);
+    // Salvar a CurricularUnit no banco de dados
+    curricularUnitService.saveCurricularUnit(curricularUnit);
 
-        return "redirect:/user"; // Redirecionar para a página de usuário após criar a UC
-    }
+    return "redirect:/user"; // Redirecionar para a página de usuário após criar a UC
+}
+
 }
