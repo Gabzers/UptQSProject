@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Evaluation</title>
+    <link rel="stylesheet" type="text/css" href="/css/user_addEvaluations.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='/logout'">Logout</button>
+            <button onclick="window.location.href='/backUser'">Back</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <h2>Add Evaluation</h2>
+
+            <!-- Form to add a new evaluation -->
+            <form action="/user_addEvaluation" method="POST">
+                <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
+
+                <!-- Evaluation Type -->
+                <label for="evaluation-type">Evaluation Type:</label>
+                <select name="evaluation-type" id="evaluation-type" required>
+                    <option value="Test">Test</option>
+                    <option value="Final Exam in Exam Period">Final Exam in Exam Period</option>
+                    <option value="Work Developed Throughout the Semester">Work Developed Throughout the Semester</option>
+                    <option value="Work Submission">Work Submission</option>
+                    <option value="Group Work Submission">Group Work Submission</option>
+                    <option value="Work Presentation">Work Presentation</option>
+                    <option value="Group Work Presentation">Group Work Presentation</option>
+                    <option value="Monograph">Monograph</option>
+                    <option value="Individual Practical Exercise">Individual Practical Exercise</option>
+                    <option value="Pitch">Pitch</option>
+                    <option value="Final Exam">Final Exam</option>
+                    <option value="Oral Exam">Oral Exam</option>
+                </select>
+                <br><br>
+
+                <!-- Weight -->
+                <label for="evaluation-weight">Weight (%):</label>
+                <input type="number" name="evaluation-weight" id="evaluation-weight" min="0" max="100" required>
+                <br><br>
+
+                <!-- Exam Period -->
+                <label for="evaluation-exam-period">Exam Period:</label>
+                <select name="evaluation-exam-period" id="evaluation-exam-period" required>
+                    <option value="None">None</option>
+                    <option value="Teaching Period">Teaching Period</option>
+                    <option value="Exam Period">Exam Period</option>
+                    <option value="Resource Period">Resource Period</option>
+                    <option value="Special Period">Special Period</option>
+                </select>
+                <br><br>
+
+                <!-- Requires Computer -->
+                <label for="evaluation-computer">Requires Computer:</label>
+                <input type="checkbox" name="evaluation-computer" id="evaluation-computer">
+                <br><br>
+
+                <!-- At Usual Class Time -->
+                <label for="evaluation-class-time">At usual class time?</label>
+                <input type="checkbox" name="evaluation-class-time" id="evaluation-class-time">
+                <br><br>
+
+                <!-- Start Date & Time -->
+                <label for="evaluation-date-start">Start Date & Time:</label>
+                <input type="datetime-local" name="evaluation-date-start" id="evaluation-date-start" required>
+                <br><br>
+
+                <!-- End Date & Time -->
+                <label for="evaluation-date-end">End Date & Time:</label>
+                <input type="datetime-local" name="evaluation-date-end" id="evaluation-date-end" required>
+                <br><br>
+
+                <!-- Room -->
+                <label for="evaluation-room">Room:</label>
+                <input type="text" name="evaluation-room" id="evaluation-room" value="Room 1" required>
+                <br><br>
+
+                <button type="submit">Add Evaluation</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 University - Academic Administration System</p>
+    </footer>
+</body>
+
+</html>

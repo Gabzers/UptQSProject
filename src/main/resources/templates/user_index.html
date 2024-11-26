@@ -48,6 +48,9 @@
                                 <!-- Edit Button -->
                                 <button th:onclick="'window.location.href=\'/user_editUC?id=' + ${uc.id} + '\''">Edit</button>
                                 
+                                <!-- Evaluations Button -->
+                                <button th:onclick="'window.location.href=\'/user_evaluationsUC?id=' + ${uc.id} + '\''">Evaluations</button>
+                                
                                 <!-- Remove Button as a form -->
                                 <form th:action="@{/remove-uc/{id}(id=${uc.id})}" method="POST" style="display:inline;">
                                     <button type="submit">Remove</button>

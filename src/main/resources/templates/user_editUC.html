@@ -125,58 +125,6 @@
             }
             updateEvaluationFields();
         }
-
-        // // Function to dynamically create evaluation fields
-        // function updateEvaluationFields() {
-        //     const numEvaluations = document.getElementById('ucEvaluationsCount').value;
-        //     const evaluationList = document.getElementById('evaluation-list');
-        //     evaluationList.innerHTML = ''; // Clear previous fields
-
-        //     if (numEvaluations <= 0) return; // Do nothing if the number is 0 or invalid
-
-        //     for (let i = 0; i < numEvaluations; i++) {
-        //         const div = document.createElement('div');
-        //         div.classList.add('evaluation-item');
-        //         div.style.marginBottom = '20px';
-
-        //         // Add Evaluation Fields
-        //         div.innerHTML = `
-        //             <label>Evaluation ${i + 1} Type:</label>
-        //             <select name="evaluation-type-${i}">
-        //                 ${evaluationOptions.map(option => `<option value="${option}">${option}</option>`).join('')}
-        //             </select>
-        //             <label>Weight (%):</label>
-        //             <input type="number" name="evaluation-weight-${i}" min="0" max="100" required>
-        //             <label>Exam Period:</label>
-        //             <select name="evaluation-exam-period-${i}">
-        //                 <option value="None">None</option>
-        //                 <option value="Teaching Period">Teaching Period</option>
-        //                 <option value="Exam Period">Exam Period</option>
-        //                 <option value="Resource Period">Resource Period</option>
-        //                 <option value="Special Period">Special Period</option>
-        //             </select>
-        //             <label>Requires Computer:</label>
-        //             <input type="checkbox" name="evaluation-computer-${i}">
-        //             <label>At usual class time?</label>
-        //             <input type="checkbox" name="evaluation-class-time-${i}" id="evaluation-class-time-${i}" onclick="toggleRoomField(${i})">
-        //             <label>Start Date & Time:</label>
-        //             <input type="datetime-local" name="evaluation-date-start-${i}" required>
-        //             <label>End Date & Time:</label>
-        //             <input type="datetime-local" name="evaluation-date-end-${i}" required>
-        //             <label>Room:</label>
-        //             <input type="text" name="evaluation-room-${i}" id="evaluation-room-${i}-input" value="Room 1">
-        //         `;
-
-        //         evaluationList.appendChild(div);
-        //     }
-        // }
-
-        // // Toggle Room Field based on class time checkbox
-        // function toggleRoomField(i) {
-        //     const classTimeCheckbox = document.getElementById(`evaluation-class-time-${i}`);
-        //     const roomInput = document.getElementById(`evaluation-room-${i}-input`);
-        //     roomInput.disabled = classTimeCheckbox.checked;
-        // }
     </script>
 </body>
 

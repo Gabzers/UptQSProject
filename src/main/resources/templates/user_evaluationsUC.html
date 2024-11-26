@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluations - UC Management</title>
+    <link rel="stylesheet" type="text/css" href="/css/user_index.css">
+</head>
+<body>
+    <header>
+        <h1>Evaluations for UC</h1>
+        <nav>
+            <button onclick="window.location.href='/user'">Back</button>
+            <button th:onclick="'window.location.href=\'/user_create_evaluation?curricularUnitId=' + ${uc.id} + '\''">Create Evaluation</button>
+            <button onclick="window.location.href='/logout'">Logout</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <h2>Evaluations List</h2>
+
+            <!-- Check if evaluations is not null and not empty -->
+            <div th:if="${evaluations != null && evaluations.size() > 0}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Evaluation Type</th>
+                            <th>Weight</th>
+                            <th>Exam Period</th>
+                            <th>Class Time</th>
+                            <th>Room</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Loop through the list of evaluations -->
+                        <tr th:each="evaluation : ${evaluations}">
+                            <td th:text="${evaluation.type}">Evaluation Type</td>
+                            <td th:text="${evaluation.weight}">0</td>
+                            <td th:text="${evaluation.examPeriod}">None</td>
+                            <td th:text="${evaluation.classTime}">N/A</td>
+                            <td th:text="${evaluation.room}">Room 101</td>
+                            <td>
+                                <!-- Edit Button -->
+                                <button th:onclick="'window.location.href=\'/user_edit_evaluation?id=' + ${evaluation.id} + '\''">Edit</button>
+                                
+                                <!-- Remove Button as a form -->
+                                <form th:action="@{/remove-evaluation/{id}(id=${evaluation.id})}" method="POST" style="display:inline;">
+                                    <button type="submit">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Message when no evaluations are found -->
+            <p th:if="${evaluations == null || evaluations.size() == 0}">
+                No evaluations found for this UC. Please create a new evaluation.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 University - Academic Administration System</p>
+    </footer>
+
+</body>
+</html>
