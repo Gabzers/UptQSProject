@@ -1,22 +1,22 @@
-master tem:
-	id
-	lista de admins
-	lista de salas.
-
 utilizador
 	id
 	nome
 	username (login)
 	password
 
-diretor tem: + (extends utilizador)
+master tem: + (extends utilizador)
+	id
+	lista de admins (não precisa de ser atributo, quero que todos os masters vejam todas as listas)
+	lista de salas (não precisa de ser atributo, quero que todos os masters vejam todas as listas)
+
+diretor(admin) tem: + (extends utilizador)
 	id
 	departamento
 	lista de coordenadores (cada um com o seu curso)
 	lista de semestres passados (anos)
 	
 
-coordenador tem: + (extends utilizador)
+coordenador(user) tem: + (extends utilizador)
 	id
 	curso
 	duração do curso
@@ -66,6 +66,14 @@ avaliações tem:
 mapa tem:
 	id
 	lista de avaliações de todas as ucs
+
+sala tem:
+	id
+	numero de sala
+	designaçao (auditorio, sala de aula, laboratorio,)
+	tipo de material (mesas ou computadores)
+	nº de lugares
+	edificio (nº de piso ou outro edificio)
 	
 
 	

@@ -50,9 +50,24 @@ public class UptWebController {
         return "user_createUC"; // Redireciona para a página user_createUC.html
     }
 
+    @GetMapping("/createMaster")
+    public String createMaster() {
+        return "master_addMaster"; // Redireciona para a página createUC.html
+    }
+
     @GetMapping("/createAdmin")
     public String createAdmin() {
-        return "master-addAdmin"; // Redireciona para a página createUC.html
+        return "master_addAdmin"; // Redireciona para a página createUC.html
+    }
+
+    @GetMapping("/viewSemester")
+    public String viewSemester() {
+        return "admin_viewSemester"; // Redireciona para a página createUC.html
+    }
+    
+    @GetMapping("/createRoom")
+    public String createRoom() {
+        return "master_addRoom"; // Redireciona para a página createUC.html
     }
     
     @GetMapping("/master")

@@ -16,7 +16,7 @@
             <!-- Add User Button -->
             <button onclick="location.href='/createUser'" id="addUserBtn">Add User</button>
             <!-- Add Semester Button -->
-            <button onclick="location.href='/newYear'" href="/newYear" id="newYear">New Year</button>
+            <button onclick="location.href='/newYear'" id="newYear">New Year</button>
             <!-- Logout Button -->
             <button id="logoutBtn" onclick="location.href='/logout'">Logout</button>
         </div>
@@ -68,97 +68,86 @@
             <thead>
                 <tr>
                     <th>Semester</th>
-                    <th>Academic Year</th>
                     <th>Start</th>
                     <th>End</th>
+                    <th>Exam Period Start</th>
+                    <th>Exam Period End</th>
+                    <th>Resit Period Start</th>
+                    <th>Resit Period End</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>1st</td>
-                    <td>2024/2025</td>
-                    <td>2024-09-01</td>
-                    <td>2025-01-31</td>
+                    <td>2023-09-01</td>
+                    <td>2024-01-31</td>
+                    <td>2024-02-01</td>
+                    <td>2024-02-15</td>
+                    <td>2024-03-01</td>
+                    <td>2024-03-15</td>
                     <td>
-                        <button class="viewUCsBtn">View UC's</button>
+                        <button onclick="location.href='/userList/1st/2023-2024'" class="viewUsersBtn">User List</button>
+                        <button onclick="location.href='/courseList/1st/2023-2024'" class="viewCoursesBtn">Course List</button>
+                        <button onclick="location.href='/map/1st/2023-2024'" class="viewMapBtn">Open Map</button>
                     </td>
                 </tr>
                 <tr>
                     <td>2nd</td>
-                    <td>2024/2025</td>
-                    <td>2025-02-01</td>
-                    <td>2025-06-30</td>
+                    <td>2024-02-01</td>
+                    <td>2024-06-30</td>
+                    <td>2024-07-01</td>
+                    <td>2024-07-15</td>
+                    <td>2024-08-01</td>
+                    <td>2024-08-15</td>
                     <td>
-                        <button class="viewUCsBtn">View UC's</button>
+                        <button onclick="location.href='/userList/2nd/2023-2024'" class="viewUsersBtn">User List</button>
+                        <button onclick="location.href='/courseList/2nd/2023-2024'" class="viewCoursesBtn">Course List</button>
+                        <button onclick="location.href='/map/2nd/2023-2024'" class="viewMapBtn">Open Map</button>
                     </td>
                 </tr>
             </tbody>
         </table>
     </section>
 
-    <!-- Past Semesters List -->
+    <!-- Past Years List -->
     <section>
         <h2>Past Years</h2>
         <table>
             <thead>
                 <tr>
-                    <th>Semester</th>
                     <th>Academic Year</th>
-                    <th>Start</th>
-                    <th>End</th>
+                    <th>Special Exam Period Start</th>
+                    <th>Special Exam Period End</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>1st</td>
                     <td>2023/2024</td>
-                    <td>2023-09-01</td>
-                    <td>2024-01-31</td>
+                    <td>2024-07-01</td>
+                    <td>2024-07-15</td>
                     <td>
-                        <button class="deleteBtn">Delete Year</button>
-                        <button class="viewUCsBtn">View UC's</button>
+                        <button onclick="location.href='/viewSemester'" class="viewSemestersBtn">View Semesters</button>
+                        <button onclick="location.href='/deleteYear/2023-2024'" class="deleteBtn">Delete</button>
                     </td>
                 </tr>
                 <tr>
-                    <td>2nd</td>
                     <td>2022/2023</td>
-                    <td>2022-09-01</td>
-                    <td>2023-01-31</td>
+                    <td>2023-07-01</td>
+                    <td>2023-07-15</td>
                     <td>
-                        <button class="deleteBtn">Delete Year</button>
-                        <button class="viewUCsBtn">View UC's</button>
+                        <button onclick="location.href='/viewSemesters/2022-2023'" class="viewSemestersBtn">View Semesters</button>
+                        <button onclick="location.href='/deleteYear/2022-2023'" class="deleteBtn">Delete</button>
                     </td>
                 </tr>
                 <tr>
-                    <td>1st</td>
                     <td>2021/2022</td>
-                    <td>2021-09-01</td>
-                    <td>2022-01-31</td>
+                    <td>2022-07-01</td>
+                    <td>2022-07-15</td>
                     <td>
-                        <button class="deleteBtn">Delete Year</button>
-                        <button class="viewUCsBtn">View UC's</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2nd</td>
-                    <td>2020/2021</td>
-                    <td>2020-09-01</td>
-                    <td>2021-01-31</td>
-                    <td>
-                        <button class="deleteBtn">Delete Year</button>
-                        <button class="viewUCsBtn">View UC's</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1st</td>
-                    <td>2019/2020</td>
-                    <td>2019-09-01</td>
-                    <td>2020-01-31</td>
-                    <td>
-                        <button class="deleteBtn">Delete Year</button>
-                        <button class="viewUCsBtn">View UC's</button>
+                        <button onclick="location.href='/viewSemesters/2021-2022'" class="viewSemestersBtn">View Semesters</button>
+                        <button onclick="location.href='/deleteYear/2021-2022'" class="deleteBtn">Delete</button>
                     </td>
                 </tr>
                 <!-- Add more rows as needed -->

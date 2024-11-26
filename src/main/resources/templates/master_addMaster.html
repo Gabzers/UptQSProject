@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Master</title>
+    <link rel="stylesheet" type="text/css" href="/css/master_addMaster.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='/logout'">Logout</button>
+            <button onclick="window.location.href='/backMaster'">Back</button> <!-- Back Button -->
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <h2>Add Master</h2>
+
+            <form action="/create-master" method="POST">
+                <!-- Name -->
+                <label for="master-name">Name:</label>
+                <input type="text" id="master-name" name="master-name" required>
+
+                <!-- Username -->
+                <label for="master-username">Username:</label>
+                <input type="text" id="master-username" name="master-username" required>
+
+                <!-- Password -->
+                <label for="master-password">Password:</label>
+                <input type="password" id="master-password" name="master-password" required>
+
+                <!-- Submit Button -->
+                <button type="submit">Add Master</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 University - Admin Panel</p>
+    </footer>
+</body>
+
+</html>
