@@ -62,6 +62,7 @@ avaliações tem:
 	data e hr do começo da avaliaçao
 	data e hr do fim da avaliaçao
 	sala onde será feita a avaliaçao
+	nota minima
 	
 mapa tem:
 	id
