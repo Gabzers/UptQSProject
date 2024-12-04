@@ -35,10 +35,6 @@ public class UptWebController {
         return "user_createUC"; // Redireciona para a página user_createUC.html
     }
 
-    @GetMapping("/createMaster")
-    public String createMaster() {
-        return "master_addMaster"; // Redireciona para a página master_addMaster.html
-    }
 
     @GetMapping("/viewSemester")
     public String viewSemester() {

@@ -7,11 +7,17 @@ utilizador (vamos cagar nisto, trabalho a +)
 
 master tem: + (extends utilizador)
 	id
+	nome
+	username (login)
+	password
 	lista de admins (não precisa de ser atributo, quero que todos os masters vejam todas as listas)
 	lista de salas (não precisa de ser atributo, quero que todos os masters vejam todas as listas)
 
 diretor(admin) tem: + (extends utilizador)
 	id
+	nome
+	username (login)
+	password
 	departamento
 	lista de coordenadores (cada um com o seu curso)
 	lista de anos
@@ -19,6 +25,9 @@ diretor(admin) tem: + (extends utilizador)
 
 coordenador(user) tem: + (extends utilizador)
 	id
+	nome
+	username (login)
+	password
 	curso
 	duração do curso (anos)
 	lista de UC's

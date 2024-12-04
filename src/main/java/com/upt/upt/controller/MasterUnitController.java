@@ -1,7 +1,11 @@
 package com.upt.upt.controller;
 
 import com.upt.upt.entity.DirectorUnit;
+import com.upt.upt.entity.MasterUnit;
+import com.upt.upt.entity.RoomUnit;
 import com.upt.upt.service.DirectorUnitService;
+import com.upt.upt.service.MasterUnitService;
+import com.upt.upt.service.RoomUnitService;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,128 +22,144 @@ public class MasterUnitController {
     @Autowired
     private DirectorUnitService directorUnitService;
 
-        /**
-     * Displays a list of all DirectorUnit entities.
+    @Autowired
+    private MasterUnitService masterUnitService;
+    
+    @Autowired
+    private RoomUnitService roomUnitService;
+
+    /**
+     * Displays a list of all DirectorUnit entities, MasterUnit entities, and RoomUnit entities.
      *
      * @param model The model to pass data to the view
      * @return The name of the view to display the master
      */
     @GetMapping
-    public String listDirectors(Model model) {
+    public String listDirectorsMastersAndRooms(Model model) {
+        // Obter todos os diretores
         List<DirectorUnit> directorUnits = directorUnitService.getAllDirectors();
         model.addAttribute("directorUnits", directorUnits);
-        return "master_index"; // Name of the view template
-    }
 
-        /**
-     * Displays the form for creating a new DirectorUnit.
-     *
-     * @return The name of the view to create a new director
-     */
-    @GetMapping("/create-director")
-    public String showCreateDirectorForm() {
-        return "master_addDirector"; // The page for adding a director
-    }
+        // Obter todos os masters
+        List<MasterUnit> masterUnits = masterUnitService.getAllMasters();
+        model.addAttribute("masterUnits", masterUnits);
 
-    /**
-     * Creates a new DirectorUnit from the provided form data.
-     *
-     * @param directorName     The name of the director
-     * @param directorDepartment The department of the director
-     * @param directorUsername The username for the director
-     * @param directorPassword The password for the director
-     * @return A redirect to the list of master or an error page
-     */
-    @PostMapping("/create-director")
-    public String createDirector(@RequestParam("director-name") String directorName,
-            @RequestParam("director-department") String directorDepartment,
-            @RequestParam("director-username") String directorUsername,
-            @RequestParam("director-password") String directorPassword) {
-        try {
-            DirectorUnit newDirector = new DirectorUnit();
-            newDirector.setName(directorName);
-            newDirector.setDepartment(directorDepartment);
-            newDirector.setUsername(directorUsername);
-            newDirector.setPassword(directorPassword);
+        // Obter todas as salas
+        List<RoomUnit> roomUnits = roomUnitService.getAllRooms();
+        model.addAttribute("roomUnits", roomUnits);
 
-            directorUnitService.saveDirector(newDirector);
-            return "redirect:/master"; // Redirect to the list of master
-        } catch (IllegalArgumentException e) {
-            return "redirect:/master/create?error=Incomplete information";
-        } catch (RuntimeException e) {
-            return "redirect:/master/create?error=Duplicate entry or integrity constraint violated";
-        }
+        return "master_index"; // Nome do template
     }
 
     /**
-     * Displays the form for editing an existing DirectorUnit.
+     * Displays a list of all MasterUnit entities.
      *
-     * @param id    The ID of the director to be edited
      * @param model The model to pass data to the view
-     * @return The name of the view to edit the director
+     * @return The name of the view to display the master units
      */
-    @GetMapping("/edit-director")
-public String showEditDirectorForm(@RequestParam("id") Long id, Model model) {
-    Optional<DirectorUnit> directorOptional = directorUnitService.getDirectorById(id);
-    if (directorOptional.isPresent()) {
-        model.addAttribute("director", directorOptional.get());
-        return "master_editDirector"; // The page for editing a director
-    }
-    return "redirect:/master?error=Director not found"; // Redirect if the director is not found
-}
+    // @GetMapping
+    // public String listMasters(Model model) {
+    // List<MasterUnit> masterUnits = masterUnitService.getAllMasters();
+    // model.addAttribute("masterUnits", masterUnits);
+    // return "master_index"; // View template for listing masters
+    // }
 
-/**
-     * Deletes a DirectorUnit.
+    /**
+     * Displays the form for creating a new MasterUnit.
      *
-     * @param id The ID of the director to be deleted
-     * @return A redirect to the list of master
+     * @return The name of the view to create a new master
      */
-    @PostMapping("/remove-director/{id}")
-    public String removeDirector(@PathVariable("id") Long id) {
-        directorUnitService.deleteDirector(id); // Remove the director from the database
-        return "redirect:/master"; // Redirect to the list of directors
+    @GetMapping("/create-master")
+    public String showCreateMasterForm() {
+        return "master_addMaster"; // The page for adding a master
     }
 
-    // Página de edição de Diretor
-    @GetMapping("/director-edit/{id}")
-    public String editDirector(@PathVariable("id") Long id, Model model) {
-        Optional<DirectorUnit> director = directorUnitService.getDirectorById(id);
-        if (director.isPresent()) {
-            model.addAttribute("director", director.get()); // Pass the director to the model
-            return "director_editUser"; // Return the edit page
-        } else {
-            return "redirect:/directors"; // Redirect to the list if director not found
+    /**
+     * Creates a new MasterUnit from the provided form data.
+     *
+     * @param name     The name of the master unit
+     * @param username The username for the master unit
+     * @param password The password for the master unit
+     * @return A redirect to the list of master units or an error page
+     */
+    @PostMapping("/create-master")
+    public String createMaster(
+            @RequestParam("master-name") String name,
+            @RequestParam("master-username") String username,
+            @RequestParam("master-password") String password) {
+        try {
+            MasterUnit newMaster = new MasterUnit();
+            newMaster.setName(name);
+            newMaster.setUsername(username);
+            newMaster.setPassword(password);
+
+            masterUnitService.saveMaster(newMaster);
+            return "redirect:/master"; // Redirect to the list of masters
+        } catch (IllegalArgumentException e) {
+            return "redirect:/master/create-master?error=Incomplete information";
+        } catch (RuntimeException e) {
+            return "redirect:/master/create-master?error=Duplicate entry or integrity constraint violated";
         }
     }
 
-    // Atualizar um Diretor
-    @PostMapping("/director-edit/{id}")
-    public String updateDirector(
+    /**
+     * Deletes a MasterUnit.
+     *
+     * @param id The ID of the master unit to be deleted
+     * @return A redirect to the list of master units
+     */
+    @PostMapping("/remove-master/{id}")
+    public String removeMaster(@PathVariable("id") Long id) {
+        masterUnitService.deleteMaster(id);
+        return "redirect:/master"; // Redirect to the list of masters
+    }
+
+    /**
+     * Displays the form for editing an existing MasterUnit.
+     *
+     * @param id    The ID of the master to be edited
+     * @param model The model to pass data to the view
+     * @return The name of the view to edit the master
+     */
+    @GetMapping("/edit-master")
+    public String showEditMasterForm(@RequestParam("id") Long id, Model model) {
+        Optional<MasterUnit> masterOptional = masterUnitService.getMasterById(id);
+        if (masterOptional.isPresent()) {
+            model.addAttribute("master", masterOptional.get());
+            return "master_editMaster"; // The page for editing a master
+        }
+        return "redirect:/master?error=Master not found"; // Redirect if the master is not found
+    }
+
+    /**
+     * Updates an existing MasterUnit.
+     *
+     * @param id       The ID of the master unit to be updated
+     * @param name     The updated name of the master unit
+     * @param username The updated username of the master unit
+     * @param password The updated password of the master unit
+     * @return A redirect to the list of master units
+     */
+    @PostMapping("/edit-master/{id}")
+    public String updateMaster(
             @PathVariable("id") Long id,
-            @RequestParam("director-name") String name,
-            @RequestParam("director-department") String department,
-            @RequestParam("director-username") String username,
-            @RequestParam(value = "director-password", required = false) String password) {
-
+            @RequestParam("master-name") String name,
+            @RequestParam("master-username") String username,
+            @RequestParam(value = "master-password", required = false) String password) {
         try {
-            DirectorUnit director = directorUnitService.getDirectorById(id)
-                    .orElseThrow(() -> new IllegalArgumentException("Invalid Director ID: " + id));
+            MasterUnit master = masterUnitService.getMasterById(id)
+                    .orElseThrow(() -> new IllegalArgumentException("Invalid Master ID: " + id));
 
-            // Update the director's fields
-            director.setName(name);
-            director.setDepartment(department); // Assuming `course` maps to `department`
-            director.setUsername(username);
-            director.setPassword(password != null && !password.isEmpty() ? password : director.getPassword()); // Update password if provided
+            master.setName(name);
+            master.setUsername(username);
+            master.setPassword(password != null && !password.isEmpty() ? password : master.getPassword());
 
-            // Save the updated director
-            directorUnitService.saveDirector(director);
-
-            // Redirect to the list of directors after update
+            masterUnitService.saveMaster(master);
             return "redirect:/master";
         } catch (Exception e) {
-            // Log the error and return to the edit page
             e.printStackTrace();
-            return "redirect:/director-editUser/" + id + "?error=true";
+            return "redirect:/edit-master/" + id + "?error=true";
         }
     }
+
 }

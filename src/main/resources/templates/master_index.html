@@ -13,10 +13,10 @@
     <header>
         <h1>Director Panel</h1>
         <div class="header-buttons">
-            <a href="/createMaster" class="button">Create New Master</a>
+            <a href="/master/create-master" class="button">Create New Master</a>
             <a href="/master/create-director" class="button">Create New Director</a>
-            <a href="/createRoom" class="button">Create New Room</a>
-            <a href="/logout" id="logoutBtn">Logout</a>
+            <a href="/master/create-room" class="button">Create New Room</a>
+            <a href="/master/logout" id="logoutBtn">Logout</a>
         </div>
     </header>
 
@@ -32,9 +32,19 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody id="master-list">
-                    <!-- Master list will be populated here by JavaScript -->
+                <tbody>
+                    <tr th:each="master : ${masterUnits}">
+                        <td th:text="${master.name}">Master Name</td>
+                        <td>
+                            <button th:onclick="'window.location.href=\'/master/edit-master?id=' + ${master.id} + '\''">Edit</button>
+                            
+                            <form th:action="@{/master/remove-master/{id}(id=${master.id})}" method="POST" style="display:inline;">
+                                <button type="submit">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
                 </tbody>
+                
             </table>
         </section>
 
@@ -83,8 +93,21 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody id="room-list">
-                    <!-- Room list will be populated here by JavaScript -->
+                <tbody>
+                    <tr th:each="room : ${roomUnits}">
+                        <td th:text="${room.roomNumber}">Room Number</td>
+                        <td th:text="${room.designation}">Designation</td>
+                        <td th:text="${room.materialType}">Material Type</td>
+                        <td th:text="${room.seatsCount}">Number of Seats</td>
+                        <td th:text="${room.building}">Building</td>
+                        <td>
+                            <button th:onclick="'window.location.href=\'/master/edit-room?id=' + ${room.id} + '\''">Edit</button>
+                            
+                            <form th:action="@{/master/remove-room/{id}(id=${room.id})}" method="POST" style="display:inline;">
+                                <button type="submit">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </section>

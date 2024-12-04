@@ -14,7 +14,6 @@ import java.util.Optional;
  * Controller for managing DirectorUnit entities.
  */
 @Controller
-@RequestMapping("/director")
 public class DirectorUnitController {
 
     @Autowired
@@ -26,7 +25,7 @@ public class DirectorUnitController {
      * @param model The model to pass data to the view
      * @return The name of the view to display the master
      */
-    @GetMapping
+    @GetMapping("/director")
     public String listDirectors(Model model) {
         List<DirectorUnit> directorUnits = directorUnitService.getAllDirectors();
         model.addAttribute("directorUnits", directorUnits);
@@ -34,11 +33,31 @@ public class DirectorUnitController {
     }
 
     /**
+     * Displays the new year page.
+     *
+     * @return The name of the view for the new year page
+     */
+    @GetMapping("/director/newYear")
+    public String newYear() {
+        return "director_newYear"; // Redirect to the new year page
+    }
+
+    /**
+     * Displays the edit year page.
+     *
+     * @return The name of the view for the edit year page
+     */
+    @GetMapping("/director/editYear")
+    public String editYear() {
+        return "director_editYear"; // Redirect to the edit year page
+    }
+
+    /**
      * Displays the form for creating a new DirectorUnit.
      *
      * @return The name of the view to create a new director
      */
-    @GetMapping("/create-director")
+    @GetMapping("/master/create-director")
     public String showCreateDirectorForm() {
         return "master_addDirector"; // The page for adding a director
     }
@@ -46,13 +65,13 @@ public class DirectorUnitController {
     /**
      * Creates a new DirectorUnit from the provided form data.
      *
-     * @param directorName     The name of the director
+     * @param directorName       The name of the director
      * @param directorDepartment The department of the director
-     * @param directorUsername The username for the director
-     * @param directorPassword The password for the director
+     * @param directorUsername   The username for the director
+     * @param directorPassword   The password for the director
      * @return A redirect to the list of master or an error page
      */
-    @PostMapping("/create-director")
+    @PostMapping("/master/create-director")
     public String createDirector(@RequestParam("director-name") String directorName,
             @RequestParam("director-department") String directorDepartment,
             @RequestParam("director-username") String directorUsername,
@@ -80,16 +99,15 @@ public class DirectorUnitController {
      * @param model The model to pass data to the view
      * @return The name of the view to edit the director
      */
-    @GetMapping("/edit-director")
-public String showEditDirectorForm(@RequestParam("id") Long id, Model model) {
-    Optional<DirectorUnit> directorOptional = directorUnitService.getDirectorById(id);
-    if (directorOptional.isPresent()) {
-        model.addAttribute("director", directorOptional.get());
-        return "master_editDirector"; // The page for editing a director
+    @GetMapping("/master/edit-director")
+    public String showEditDirectorForm(@RequestParam("id") Long id, Model model) {
+        Optional<DirectorUnit> directorOptional = directorUnitService.getDirectorById(id);
+        if (directorOptional.isPresent()) {
+            model.addAttribute("director", directorOptional.get());
+            return "master_editDirector"; // The page for editing a director
+        }
+        return "redirect:/master?error=Director not found"; // Redirect if the director is not found
     }
-    return "redirect:/master?error=Director not found"; // Redirect if the director is not found
-}
-
 
     /**
      * Deletes a DirectorUnit.
@@ -97,42 +115,56 @@ public String showEditDirectorForm(@RequestParam("id") Long id, Model model) {
      * @param id The ID of the director to be deleted
      * @return A redirect to the list of master
      */
-    @PostMapping("/remove-director/{id}")
+    @PostMapping("/master/remove-director/{id}")
     public String removeDirector(@PathVariable("id") Long id) {
         directorUnitService.deleteDirector(id); // Remove the director from the database
         return "redirect:/master"; // Redirect to the list of directors
     }
 
-    /**
-     * Displays the user edit page.
-     *
-     * @return The name of the view for user edit
-     */
-    @GetMapping("/director-editUser")
-    public String editUser() {
-        return "director_editUser"; // Redirect to the user edit page
+    // Página de edição de Diretor
+    @GetMapping("/master/director-edit/{id}")
+    public String editDirector(@PathVariable("id") Long id, Model model) {
+        Optional<DirectorUnit> director = directorUnitService.getDirectorById(id);
+        if (director.isPresent()) {
+            model.addAttribute("director", director.get()); // Pass the director to the model
+            return "director_editUser"; // Return the edit page
+        } else {
+            return "redirect:/directors"; // Redirect to the list if director not found
+        }
     }
 
-    /**
-     * Displays the new year page.
-     *
-     * @return The name of the view for the new year page
-     */
-    @GetMapping("/newYear")
-    public String newYear() {
-        return "director_newYear"; // Redirect to the new year page
-    }
+    // Atualizar um Diretor
+    @PostMapping("/master/director-edit/{id}")
+    public String updateDirector(
+            @PathVariable("id") Long id,
+            @RequestParam("director-name") String name,
+            @RequestParam("director-department") String department,
+            @RequestParam("director-username") String username,
+            @RequestParam(value = "director-password", required = false) String password) {
 
-    /**
-     * Displays the edit year page.
-     *
-     * @return The name of the view for the edit year page
-     */
-    @GetMapping("/editYear")
-    public String editYear() {
-        return "director_editYear"; // Redirect to the edit year page
-    }
+        try {
+            DirectorUnit director = directorUnitService.getDirectorById(id)
+                    .orElseThrow(() -> new IllegalArgumentException("Invalid Director ID: " + id));
 
-    
+            // Update the director's fields
+            director.setName(name);
+            director.setDepartment(department); // Assuming `course` maps to `department`
+            director.setUsername(username);
+            director.setPassword(password != null && !password.isEmpty() ? password : director.getPassword()); // Update
+                                                                                                               // password
+                                                                                                               // if
+                                                                                                               // provided
+
+            // Save the updated director
+            directorUnitService.saveDirector(director);
+
+            // Redirect to the list of directors after update
+            return "redirect:/master";
+        } catch (Exception e) {
+            // Log the error and return to the edit page
+            e.printStackTrace();
+            return "redirect:/director-editUser/" + id + "?error=true";
+        }
+    }
     
 }
