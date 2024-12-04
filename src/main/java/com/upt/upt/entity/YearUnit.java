@@ -3,7 +3,8 @@ package com.upt.upt.entity;
 import jakarta.persistence.*;
 
 /**
- * YearUnit class represents an academic year, including information about the semesters and special exam periods.
+ * YearUnit class represents an academic year, including information about the
+ * semesters and special exam periods.
  */
 @Entity
 @Table(name = "year_unit")
@@ -28,19 +29,21 @@ public class YearUnit {
 
     // Relacionamento ManyToOne com a entidade DirectorUnit
     @ManyToOne
-    @JoinColumn(name = "director_unit_id", nullable = false) // Chave estrangeira para DirectorUnit
-    private DirectorUnit directorUnity;
+    @JoinColumn(name = "director_unit_id", nullable = false)
+    private DirectorUnit directorUnit;
 
     // Constructor
-    public YearUnit() {}
+    public YearUnit() {
+    }
 
-    public YearUnit(Long id, String firstSemester, String secondSemester, String specialExamStart, String specialExamEnd, DirectorUnit directorUnity) {
+    public YearUnit(Long id, String firstSemester, String secondSemester, String specialExamStart,
+            String specialExamEnd, DirectorUnit directorUnit) {
         this.id = id;
         this.firstSemester = firstSemester;
         this.secondSemester = secondSemester;
         this.specialExamStart = specialExamStart;
         this.specialExamEnd = specialExamEnd;
-        this.directorUnity = directorUnity;
+        this.directorUnit = directorUnit;
     }
 
     // Getters and setters
@@ -84,11 +87,11 @@ public class YearUnit {
         this.specialExamEnd = specialExamEnd;
     }
 
-    public DirectorUnit getDirectorUnity() {
-        return directorUnity;
+    public DirectorUnit getDirectorUnit() {
+        return directorUnit;
     }
 
-    public void setDirectorUnity(DirectorUnit directorUnity) {
-        this.directorUnity = directorUnity;
+    public void setDirectorUnit(DirectorUnit directorUnit) {
+        this.directorUnit = directorUnit;
     }
 }

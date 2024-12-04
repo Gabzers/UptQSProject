@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Evaluation</title>
-    <link rel="stylesheet" type="text/css" href="/css/user_editEvaluation.css">
+    <link rel="stylesheet" type="text/css" href="/css/user_editEvaluations.css">
 </head>
 
 <body>
     <header>
         <nav>
             <button onclick="window.location.href='/logout'">Logout</button>
-            <button onclick="window.location.href='/backUser'">Back</button>
+            <button onclick="window.location.href=document.referrer">Back</button>
         </nav>
     </header>
 
@@ -21,11 +21,8 @@
             <h2>Edit Evaluation</h2>
 
             <!-- Form to edit an existing evaluation -->
-            <form action="/user_editEvaluations/{id}" method="POST">
-                <!-- Curricular Unit ID (hidden field) -->
-                <input type="hidden" name="curricularUnitId" th:value="${assessment.curricularUnitId}" />
-
-                <!-- Evaluation ID (hidden field) -->
+            <form th:action="@{/user_editEvaluations/{assessmentId}(assessmentId=${assessment.id})}" method="POST">
+                <input type="hidden" name="curricularUnitId" value="${curricularUnitId}">
                 <input type="hidden" name="assessmentId" th:value="${assessment.id}" />
 
                 <!-- Evaluation Type -->
@@ -48,7 +45,7 @@
 
                 <!-- Weight -->
                 <label for="evaluation-weight">Weight (%):</label>
-                <input type="number" name="assessmentWeight" id="evaluation-weight" min="0" max="100" value="${assessment.weight}" required>
+                <input type="number" name="assessmentWeight" id="evaluation-weight" min="0" max="100" th:value="${assessment.weight}" required>
                 <br><br>
 
                 <!-- Exam Period -->
@@ -74,17 +71,17 @@
 
                 <!-- Start Date & Time -->
                 <label for="evaluation-date-start">Start Date & Time:</label>
-                <input type="datetime-local" name="assessmentStartTime" id="evaluation-date-start" value="${assessment.startTime}" required>
+                <input type="datetime-local" name="assessmentStartTime" id="evaluation-date-start" th:value="${assessment.startTime}" required>
                 <br><br>
 
                 <!-- End Date & Time -->
                 <label for="evaluation-date-end">End Date & Time:</label>
-                <input type="datetime-local" name="assessmentEndTime" id="evaluation-date-end" value="${assessment.endTime}" required>
+                <input type="datetime-local" name="assessmentEndTime" id="evaluation-date-end" th:value="${assessment.endTime}" required>
                 <br><br>
 
                 <!-- Room -->
                 <label for="evaluation-room">Room:</label>
-                <input type="text" name="assessmentRoom" id="evaluation-room" value="${assessment.room}" required>
+                <input type="text" name="assessmentRoom" id="evaluation-room" th:value="${assessment.room}" required>
                 <br><br>
 
                 <button type="submit">Update Evaluation</button>

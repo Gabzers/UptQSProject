@@ -1,8 +1,9 @@
-utilizador
+utilizador (vamos cagar nisto, trabalho a +)
 	id
 	nome
 	username (login)
 	password
+	usertype;
 
 master tem: + (extends utilizador)
 	id
@@ -19,7 +20,7 @@ diretor(admin) tem: + (extends utilizador)
 coordenador(user) tem: + (extends utilizador)
 	id
 	curso
-	duração do curso
+	duração do curso (anos)
 	lista de UC's
 
 ano tem:
@@ -68,7 +69,7 @@ mapa tem:
 	id
 	lista de avaliações de todas as ucs
 
-sala tem:
+sala tem -:
 	id
 	numero de sala
 	designaçao (auditorio, sala de aula, laboratorio,)

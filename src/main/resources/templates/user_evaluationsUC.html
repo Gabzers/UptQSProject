@@ -12,7 +12,7 @@
     <header>
         <h1>Evaluations for UC</h1>
         <nav>
-            <button onclick="window.location.href='/user'">Back</button>
+            <button onclick="window.location.href=document.referrer">Back</button>
             <button
                 th:onclick="'window.location.href=\'/user_create_evaluation?curricularUnitId=' + ${uc.id} + '\''">Create
                 Evaluation</button>
@@ -34,6 +34,7 @@
                             <th>Exam Period</th>
                             <th>Class Time</th>
                             <th>Room</th>
+                            <th>Minimum Grade</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -45,6 +46,7 @@
                             <td th:text="${evaluation.examPeriod}">None</td>
                             <td th:text="${evaluation.classTime}">N/A</td>
                             <td th:text="${evaluation.room}">Room 101</td>
+                            <td th:text="${evaluation.minimumGrade}">0.0</td>
                             <td>
                                 <!-- Edit Button -->
                                 <form th:action="@{/user_editEvaluations/{id}(id=${evaluation.id})}" method="GET" style="display:inline;">

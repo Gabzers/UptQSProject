@@ -39,6 +39,9 @@ public class AssessmentUnit {
     @Column(name = "assessment_room", nullable = false)
     private String room; // Room where the assessment will take place
 
+    @Column(name = "assessment_minimum_grade", nullable = false)
+    private Double minimumGrade; // Minimum grade required for the assessment
+
     @ManyToOne
     @JoinColumn(name = "assessment_curricular_unit_id", nullable = false)
     private CurricularUnit curricularUnit; // The curricular unit to which the assessment belongs
@@ -51,7 +54,8 @@ public class AssessmentUnit {
     }
 
     public AssessmentUnit(Long id, String type, Integer weight, String examPeriod, Boolean computerRequired,
-                          Boolean classTime, LocalDateTime startTime, LocalDateTime endTime, String room, CurricularUnit curricularUnit, MapUnit map) {
+                          Boolean classTime, LocalDateTime startTime, LocalDateTime endTime, String room, 
+                          Double minimumGrade, CurricularUnit curricularUnit, MapUnit map) {
         this.id = id;
         this.type = type;
         this.weight = weight;
@@ -61,6 +65,7 @@ public class AssessmentUnit {
         this.startTime = startTime;
         this.endTime = endTime;
         this.room = room;
+        this.minimumGrade = minimumGrade;
         this.curricularUnit = curricularUnit;
         this.map = map;
     }
@@ -136,6 +141,14 @@ public class AssessmentUnit {
 
     public void setRoom(String room) {
         this.room = room;
+    }
+
+    public Double getMinimumGrade() {
+        return minimumGrade;
+    }
+
+    public void setMinimumGrade(Double minimumGrade) {
+        this.minimumGrade = minimumGrade;
     }
 
     public CurricularUnit getCurricularUnit() {

@@ -12,7 +12,7 @@
     <header>
         <nav>
             <button onclick="window.location.href='/logout'">Logout</button>
-            <button onclick="window.location.href='/backUser'">Back</button>
+            <button onclick="window.location.href=document.referrer">Back</button>
         </nav>
     </header>
 
@@ -61,16 +61,14 @@
                 <br><br>
 
                 <!-- Requires Computer -->
-<label for="evaluation-computer-required">Computer Required:</label>
-<input type="checkbox" id="evaluation-computer-required" name="assessmentComputerRequired" value="true">
-<br><br>
+                <label for="evaluation-computer-required">Computer Required:</label>
+                <input type="checkbox" id="evaluation-computer-required" name="assessmentComputerRequired" value="true">
+                <br><br>
 
-<!-- Class Time -->
-<label for="evaluation-class-time">Class Time:</label>
-<input type="checkbox" id="evaluation-class-time" name="assessmentClassTime" value="true">
-<br><br>
-
-
+                <!-- Class Time -->
+                <label for="evaluation-class-time">Class Time:</label>
+                <input type="checkbox" id="evaluation-class-time" name="assessmentClassTime" value="true">
+                <br><br>
 
                 <!-- Start Date & Time -->
                 <label for="evaluation-date-start">Start Date & Time:</label>
@@ -85,6 +83,11 @@
                 <!-- Room -->
                 <label for="evaluation-room">Room:</label>
                 <input type="text" name="assessmentRoom" id="evaluation-room" value="Room 1" required>
+                <br><br>
+
+                <!-- Minimum Grade -->
+                <label for="evaluation-minimum-grade">Minimum Grade:</label>
+                <input type="number" name="assessmentMinimumGrade" id="evaluation-minimum-grade" min="0" max="20" step="0.1" required>
                 <br><br>
 
                 <button type="submit">Add Evaluation</button>

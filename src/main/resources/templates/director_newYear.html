@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create New Academic Year - Academic Administration</title>
-    <link rel="stylesheet" type="text/css" href="/css/admin_newYear.css">
+    <title>Create New Academic Year - Academic Directoristration</title>
+    <link rel="stylesheet" type="text/css" href="/css/director_newYear.css">
 </head>
 
 <body>
@@ -14,8 +14,7 @@
         <!-- Logout Button -->
         <div class="button-container">
             <button id="logoutBtn" onclick="location.href='/logout'">Logout</button>
-            <!-- Link to go back to the main page -->
-            <button onclick="location.href='/admin'">Back</button>
+            <button onclick="window.location.href=document.referrer">Back</button>
         </div>
     </header>
 
@@ -24,7 +23,7 @@
         <section>
             <h1>Create New Academic Year</h1>
             <h2>Define First Semester Period</h2>
-            <form action="/admin/saveSemester" method="post">
+            <form action="/director/saveSemester" method="post">
                 <h3>Semester Dates</h3>
                 <label for="firstStartDate">Semester Start:</label>
                 <input type="date" id="firstStartDate" name="startDate" required>
@@ -50,7 +49,7 @@
         <!-- Second Semester -->
         <section>
             <h2>Define Second Semester Period</h2>
-            <form action="/admin/saveSemester" method="post">
+            <form action="/director/saveSemester" method="post">
                 <h3>Semester Dates</h3>
                 <label for="secondStartDate">Semester Start:</label>
                 <input type="date" id="secondStartDate" name="startDate" required>
@@ -76,7 +75,7 @@
         <!-- Define Special Exam Period -->
         <section>
             <h2>Define Special Exam Period</h2>
-            <form action="/admin/saveNewYear" method="post">
+            <form action="/director/saveNewYear" method="post">
                 <label for="specialExamStart">Special Exam Start:</label>
                 <input type="date" id="specialExamStart" name="specialExamStart" required>
 

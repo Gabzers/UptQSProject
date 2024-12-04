@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
+    <title>Director Panel</title>
     <link rel="stylesheet" type="text/css" href="/css/master_index.css">
 </head>
 
 <body>
 
     <header>
-        <h1>Admin Panel</h1>
+        <h1>Director Panel</h1>
         <div class="header-buttons">
             <a href="/createMaster" class="button">Create New Master</a>
-            <a href="/createAdmin" class="button">Create New Admin</a>
+            <a href="/master/create-director" class="button">Create New Director</a>
             <a href="/createRoom" class="button">Create New Room</a>
             <a href="/logout" id="logoutBtn">Logout</a>
         </div>
@@ -37,20 +37,35 @@
                 </tbody>
             </table>
         </section>
-        <!-- Admin List Section -->
-        <section class="admin-list">
-            <h2>Existing Admins</h2>
-            <table id="admin-table">
+
+        <!-- Director List Section -->
+        <section class="director-list">
+            <h2>Existing Directors</h2>
+            <table id="director-table">
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>Department</th>
+                        <th>Username</th> <!-- Exibindo o atributo 'username' -->
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody id="admin-list">
-                    <!-- Admin list will be populated here by JavaScript -->
+                <tbody>
+                    <tr th:each="director : ${directorUnits}">
+                        <td th:text="${director.name}">Director Name</td>
+                        <td th:text="${director.department}">Department</td>
+                        <td th:text="${director.username}">Username</td>
+                        <td>
+                            <button th:onclick="'window.location.href=\'/master/edit-director?id=' + ${director.id} + '\''">Edit</button>
+                            
+                            <form th:action="@{/master/remove-director/{id}(id=${director.id})}" method="POST" style="display:inline;">
+                                <button type="submit">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
                 </tbody>
+                
+                
             </table>
         </section>
 
@@ -76,177 +91,8 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 University Admin Panel</p>
+        <p>&copy; 2024 University Master Panel</p>
     </footer>
-
-    <script>
-        // Simulated data for admins
-        const admins = [
-            { name: 'John Doe', department: 'IT' },
-            { name: 'Jane Smith', department: 'HR' },
-            { name: 'Robert Brown', department: 'Finance' }
-        ];
-
-        // Simulated data for rooms
-        let rooms = [
-            { number: '101', designation: 'Auditorium', material: 'Chairs', seats: 100, building: '1st Floor' },
-            { number: '202', designation: 'Lab', material: 'Computers', seats: 30, building: '2nd Floor' },
-            { number: '303', designation: 'Classroom', material: 'Desks', seats: 40, building: '3rd Floor' }
-        ];
-
-        // Function to display the list of admins
-        function displayAdmins() {
-            const adminList = document.getElementById('admin-list');
-            adminList.innerHTML = '';  // Clear the table before adding new rows
-            admins.forEach((admin, index) => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${admin.name}</td>
-                    <td>${admin.department}</td>
-                    <td>
-                        <button onclick="editAdmin(${index})">Edit</button>
-                        <button onclick="removeAdmin(${index})">Remove</button>
-                    </td>
-                `;
-                adminList.appendChild(row);
-            });
-        }
-
-        // Function to display the list of rooms
-        function displayRooms() {
-            const roomList = document.getElementById('room-list');
-            roomList.innerHTML = '';  // Clear the table before adding new rows
-            rooms.forEach((room, index) => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${room.number}</td>
-                    <td>${room.designation}</td>
-                    <td>${room.material}</td>
-                    <td>${room.seats}</td>
-                    <td>${room.building}</td>
-                    <td>
-                        <button onclick="editRoom(${index})">Edit</button>
-                        <button onclick="removeRoom(${index})">Remove</button>
-                    </td>
-                `;
-                roomList.appendChild(row);
-            });
-        }
-
-        // Function to create a new room
-        function createRoom() {
-            const number = prompt('Enter Room Number:');
-            const designation = prompt('Enter Designation (Auditorium, Lab, Classroom, etc.):');
-            const material = prompt('Enter Material Type (Chairs, Desks, Computers, etc.):');
-            const seats = parseInt(prompt('Enter Number of Seats:'), 10);
-            const building = prompt('Enter Building (e.g., Main Building, 1st Floor):');
-
-            if (number && designation && material && !isNaN(seats) && building) {
-                rooms.push({ number, designation, material, seats, building });
-                displayRooms();
-            } else {
-                alert('Invalid input. Room creation failed.');
-            }
-        }
-
-        // Function to edit a room
-        function editRoom(index) {
-            const room = rooms[index];
-            const number = prompt('Enter New Room Number:', room.number);
-            const designation = prompt('Enter New Designation:', room.designation);
-            const material = prompt('Enter New Material Type:', room.material);
-            const seats = parseInt(prompt('Enter New Number of Seats:', room.seats), 10);
-            const building = prompt('Enter New Building:', room.building);
-
-            if (number && designation && material && !isNaN(seats) && building) {
-                rooms[index] = { number, designation, material, seats, building };
-                displayRooms();
-            } else {
-                alert('Invalid input. Room update failed.');
-            }
-        }
-
-        // Function to remove a room
-        function removeRoom(index) {
-            if (confirm(`Are you sure you want to remove Room ${rooms[index].number}?`)) {
-                rooms.splice(index, 1);  // Remove the room from the array
-                displayRooms();  // Update the table after removal
-            }
-        }
-
-        // Function to edit an admin
-        function editAdmin(index) {
-            alert(`Edit admin: ${admins[index].name}`);
-            // You can add functionality to edit admin details here
-        }
-
-        // Function to remove an admin
-        function removeAdmin(index) {
-            if (confirm(`Are you sure you want to remove ${admins[index].name}?`)) {
-                admins.splice(index, 1);  // Remove the admin from the array
-                displayAdmins();  // Update the table after removal
-            }
-        }
-
-        // Display the admins and rooms when the page loads
-        window.onload = () => {
-            displayAdmins();
-            displayRooms();
-        };
-
-        // Simulated data for masters
-        const masters = [
-            { name: 'Master A' },
-            { name: 'Master B' },
-            { name: 'Master C' }
-        ];
-
-        // Function to display the list of masters
-        function displayMasters() {
-            const masterList = document.getElementById('master-list');
-            masterList.innerHTML = ''; // Clear the table before adding new rows
-            masters.forEach((master, index) => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-            <td>${master.name}</td>
-            <td>
-                <button onclick="editMaster(${index})">Edit</button>
-                <button onclick="removeMaster(${index})">Remove</button>
-            </td>
-        `;
-                masterList.appendChild(row);
-            });
-        }
-
-        // Function to edit a master
-        function editMaster(index) {
-            const master = masters[index];
-            const newName = prompt('Enter New Name:', master.name);
-
-            if (newName) {
-                masters[index] = { name: newName };
-                displayMasters();
-            } else {
-                alert('Invalid input. Master update failed.');
-            }
-        }
-
-        // Function to remove a master
-        function removeMaster(index) {
-            if (confirm(`Are you sure you want to remove ${masters[index].name}?`)) {
-                masters.splice(index, 1); // Remove the master from the array
-                displayMasters(); // Update the table after removal
-            }
-        }
-
-        // Display the masters, admins, and rooms when the page loads
-        window.onload = () => {
-            displayMasters();
-            displayAdmins();
-            displayRooms();
-        };
-
-    </script>
 
 </body>
 

@@ -12,7 +12,7 @@
     <header>
         <nav>
             <button onclick="window.location.href='/logout'">Logout</button>
-            <button onclick="window.location.href='/backMaster'">Back</button> <!-- Back Button -->
+            <button onclick="window.location.href=document.referrer">Back</button>
         </nav>
     </header>
 
@@ -20,7 +20,7 @@
         <section class="section">
             <h2>Add Master</h2>
 
-            <form action="/create-master" method="POST">
+            <form action="/master/create-master" method="POST">
                 <!-- Name -->
                 <label for="master-name">Name:</label>
                 <input type="text" id="master-name" name="master-name" required>
@@ -40,7 +40,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 University - Admin Panel</p>
+        <p>&copy; 2024 University - Director Panel</p>
     </footer>
 </body>
 

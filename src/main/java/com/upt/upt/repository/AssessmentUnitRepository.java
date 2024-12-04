@@ -15,7 +15,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AssessmentUnitRepository extends JpaRepository<AssessmentUnit, Long> {
-        // Adiciona o método para buscar avaliações pela unidade curricular
-        List<AssessmentUnit> findByCurricularUnitId(Long curricularUnitId);
-        Optional<AssessmentUnit> findByCurricularUnitIdAndId(Long curricularUnitId, Long id);
+        // Método para buscar avaliações pela unidade curricular
+    List<AssessmentUnit> findByCurricularUnitId(Long curricularUnitId);
+
+    // Método para buscar avaliação por unidade curricular e id da avaliação
+    Optional<AssessmentUnit> findByCurricularUnitIdAndId(Long curricularUnitId, Long id);
 }

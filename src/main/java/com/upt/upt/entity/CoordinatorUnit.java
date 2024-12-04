@@ -1,61 +1,90 @@
 package com.upt.upt.entity;
 
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.*;
-
 /**
- * CoordinatorUnity class represents a coordinator entity with details about their course, duration, and curricular units.
+ * CoordinatorUnit class represents a coordinator entity with details about their course, duration, and curricular units.
  */
 @Entity
-public class CoordinatorUnit extends UserUnit {
+public class CoordinatorUnit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "coordinator_id")
     private Long id;
 
-    @Column(name = "coordinator_course", nullable = false)
+    @Column(name = "coordinator_name", nullable = false)
+    private String name;
+
+    @Column(name = "coordinator_username", nullable = false, unique = true)
+    private String username;
+
+    @Column(name = "coordinator_password", nullable = false)
+    private String password;
+
+    @Column(name = "coordinator_course", nullable = true)
     private String course;
 
-    @Column(name = "coordinator_duration", nullable = false)
+    @Column(name = "coordinator_duration", nullable = true)
     private Integer duration;
 
     @ManyToOne
-    @JoinColumn(name = "director_unit_id", nullable = false)  // Nome da coluna que armazena a relação com DirectorUnit
-    private DirectorUnit directorUnity;  // Adicionar referência ao DirectorUnit
+    @JoinColumn(name = "director_unit_id", nullable = true)  // Nome da coluna que armazena a relação com DirectorUnit
+    private DirectorUnit directorUnit;
 
     @OneToMany(mappedBy = "coordinator", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Column(name = "coordinator_uc_list")
     private List<CurricularUnit> curricularUnits = new ArrayList<>();
 
     @ManyToMany
-    @JoinTable(
-        name = "coordinator_semester",  // Nome da tabela intermediária
-        joinColumns = @JoinColumn(name = "coordinator_id"),  // Coluna de chave estrangeira para CoordinatorUnit
-        inverseJoinColumns = @JoinColumn(name = "semester_id")  // Coluna de chave estrangeira para SemesterUnit
-    )
-    private List<SemesterUnit> semesters = new ArrayList<>();  // Semestres associados ao coordenador
+    private List<SemesterUnit> semesters = new ArrayList<>();
 
-    // Construtores, getters e setters
+    // Construtores
     public CoordinatorUnit() {}
 
-    public CoordinatorUnit(Long id, String name, String username, String password, String course, Integer duration, DirectorUnit directorUnity, List<CurricularUnit> curricularUnits) {
-        super(id, name, username, password);
+    public CoordinatorUnit(Long id, String name, String username, String password, String course, Integer duration, DirectorUnit directorUnit, List<CurricularUnit> curricularUnits) {
         this.id = id;
+        this.name = name;
+        this.username = username;
+        this.password = password;
         this.course = course;
         this.duration = duration;
-        this.directorUnity = directorUnity;
+        this.directorUnit = directorUnit;
         this.curricularUnits = curricularUnits;
     }
 
+    // Getters e setters
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getCourse() {
@@ -74,16 +103,27 @@ public class CoordinatorUnit extends UserUnit {
         this.duration = duration;
     }
 
-    public DirectorUnit getDirectorUnity() {
-        return directorUnity;
+    public DirectorUnit getDirectorUnit() {
+        return directorUnit;
     }
 
-    public void setDirectorUnity(DirectorUnit directorUnity) {
-        this.directorUnity = directorUnity;
+    public void setDirectorUnit(DirectorUnit directorUnit) {
+        this.directorUnit = directorUnit;
     }
 
     public List<CurricularUnit> getCurricularUnits() {
         return curricularUnits;
     }
 
+    public void setCurricularUnits(List<CurricularUnit> curricularUnits) {
+        this.curricularUnits = curricularUnits;
+    }
+
+    public List<SemesterUnit> getSemesters() {
+        return semesters;
+    }
+
+    public void setSemesters(List<SemesterUnit> semesters) {
+        this.semesters = semesters;
+    }
 }

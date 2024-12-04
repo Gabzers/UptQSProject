@@ -3,32 +3,65 @@ package com.upt.upt.entity;
 import jakarta.persistence.*;
 
 /**
- * Master class extends User and represents a master user with additional attributes.
+ * MasterUnit class represents a master user with additional attributes.
  */
 @Entity
-public class MasterUnit extends UserUnit {
+public class MasterUnit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "master_id")
     private Long id; // Master ID
 
-    // Constructors
-    public MasterUnit() {
-        super();
-    }
+    @Column(name = "master_name", nullable = false)
+    private String name;
+
+    @Column(name = "master_username", nullable = false, unique = true)
+    private String username;
+
+    @Column(name = "master_password", nullable = false)
+    private String password;
+
+    // Construtores
+    public MasterUnit() {}
 
     public MasterUnit(Long id, String name, String username, String password) {
-        super(id, name, username, password); // Calls the constructor of the User class
         this.id = id;
+        this.name = name;
+        this.username = username;
+        this.password = password;
     }
 
-    // Getters and Setters
+    // Getters e Setters
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
