@@ -38,4 +38,8 @@ public class YearUnitService {
     public SemesterUnit saveSemesterUnit(SemesterUnit semesterUnit) {
         return semesterUnitRepository.save(semesterUnit);
     }
+
+    public Optional<YearUnit> getMostRecentYearUnit() {
+        return yearUnitRepository.findTopByOrderByFirstSemesterStartDateDesc();
+    }
 }

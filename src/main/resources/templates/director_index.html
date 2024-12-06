@@ -53,55 +53,28 @@
         </table>
     </section>
 
-    <!-- Current Semester -->
+    <!-- Current Year -->
     <section>
-        <h2 style="display: flex; justify-content: space-between; align-items: center;">
-            Current Year
-            <div style="display: flex; gap: 10px;">
-                <button onclick="location.href='/year/edit'" class="edit" id="editCurrentYearBtn">Edit</button>
-                <button class="delete" id="deleteCurrentYearBtn">Delete</button>
-            </div>
-        </h2>
+        <h2>Current Year</h2>
         <table>
             <thead>
                 <tr>
-                    <th>Semester</th>
-                    <th>Start</th>
-                    <th>End</th>
-                    <th>Exam Period Start</th>
-                    <th>Exam Period End</th>
-                    <th>Resit Period Start</th>
-                    <th>Resit Period End</th>
+                    <th>Academic Year</th>
+                    <th>Special Exam Period Start</th>
+                    <th>Special Exam Period End</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1st</td>
-                    <td>2023-09-01</td>
-                    <td>2024-01-31</td>
-                    <td>2024-02-01</td>
-                    <td>2024-02-15</td>
-                    <td>2024-03-01</td>
-                    <td>2024-03-15</td>
+                <tr th:if="${currentYear != null}">
+                    <td th:text="${currentYear.firstSemester.startDate}"></td>
+                    <td th:text="${currentYear.specialExamStart}"></td>
+                    <td th:text="${currentYear.specialExamEnd}"></td>
                     <td>
-                        <button onclick="location.href='/director/userList/1st/2023-2024'" class="viewUsersBtn">User List</button>
-                        <button onclick="location.href='/director/courseList/1st/2023-2024'" class="viewCoursesBtn">Course List</button>
-                        <button onclick="location.href='/director/map/1st/2023-2024'" class="viewMapBtn">Open Map</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2nd</td>
-                    <td>2024-02-01</td>
-                    <td>2024-06-30</td>
-                    <td>2024-07-01</td>
-                    <td>2024-07-15</td>
-                    <td>2024-08-01</td>
-                    <td>2024-08-15</td>
-                    <td>
-                        <button onclick="location.href='/director/userList/2nd/2023-2024'" class="viewUsersBtn">User List</button>
-                        <button onclick="location.href='/director/courseList/2nd/2023-2024'" class="viewCoursesBtn">Course List</button>
-                        <button onclick="location.href='/director/map/2nd/2023-2024'" class="viewMapBtn">Open Map</button>
+                        <button th:if="${currentYear.id == mostRecentYear.id}" th:onclick="'location.href=\'/director/edit-year?id=' + ${currentYear.id} + '\''" class="editBtn">Edit</button>
+                        <form th:action="@{/director/delete-year/{id}(id=${currentYear.id})}" method="POST" style="display:inline;">
+                            <button type="submit" class="deleteBtn">Delete</button>
+                        </form>
                     </td>
                 </tr>
             </tbody>
@@ -115,18 +88,14 @@
             <thead>
                 <tr>
                     <th>Academic Year</th>
-                    <!-- Remove Year Name Column -->
-                    <!-- <th>Year Name</th> -->
                     <th>Special Exam Period Start</th>
                     <th>Special Exam Period End</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="yearUnit : ${yearUnits}">
+                <tr th:each="yearUnit : ${yearUnits}" th:if="${yearUnit != currentYear}">
                     <td th:text="${yearUnit.firstSemester.startDate}"></td>
-                    <!-- Remove Year Name Column -->
-                    <!-- <td th:text="${yearUnit.name}"></td> -->
                     <td th:text="${yearUnit.specialExamStart}"></td>
                     <td th:text="${yearUnit.specialExamEnd}"></td>
                     <td>

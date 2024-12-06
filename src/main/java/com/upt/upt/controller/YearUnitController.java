@@ -94,13 +94,14 @@ public class YearUnitController {
     @GetMapping("/edit-year")
     public String editYearForm(@RequestParam("id") Long id, Model model) {
         Optional<YearUnit> yearUnit = yearUnitService.getYearUnitById(id);
-        if (yearUnit.isPresent()) {
+        Optional<YearUnit> mostRecentYear = yearUnitService.getMostRecentYearUnit();
+        if (yearUnit.isPresent() && mostRecentYear.isPresent() && yearUnit.get().getId().equals(mostRecentYear.get().getId())) {
             model.addAttribute("yearUnit", yearUnit.get());
             model.addAttribute("firstSemester", yearUnit.get().getFirstSemester());
             model.addAttribute("secondSemester", yearUnit.get().getSecondSemester());
             return "director_editYear";
         }
-        return "redirect:/director?error=Year not found";
+        return "redirect:/director?error=Year not found or not the most recent year";
     }
 
     @PostMapping("/update-year/{id}")
@@ -121,7 +122,8 @@ public class YearUnitController {
                              @RequestParam("specialExamStart") String specialExamStart,
                              @RequestParam("specialExamEnd") String specialExamEnd) {
         Optional<YearUnit> existingYearUnit = yearUnitService.getYearUnitById(id);
-        if (existingYearUnit.isPresent()) {
+        Optional<YearUnit> mostRecentYear = yearUnitService.getMostRecentYearUnit();
+        if (existingYearUnit.isPresent() && mostRecentYear.isPresent() && existingYearUnit.get().getId().equals(mostRecentYear.get().getId())) {
             YearUnit updatedYearUnit = existingYearUnit.get();
 
             // Update first semester attributes
@@ -160,6 +162,8 @@ public class YearUnitController {
             }
 
             yearUnitService.saveYearUnit(updatedYearUnit);
+        } else {
+            return "redirect:/director?error=Year not found or not the most recent year";
         }
         return "redirect:/director";
     }
@@ -168,5 +172,16 @@ public class YearUnitController {
     public String deleteYear(@PathVariable("id") Long id) {
         yearUnitService.deleteYearUnit(id);
         return "redirect:/director";
+    }
+
+    @GetMapping("/current-year")
+    public String getCurrentYear(Model model) {
+        Optional<YearUnit> currentYear = yearUnitService.getMostRecentYearUnit();
+        if (currentYear.isPresent()) {
+            model.addAttribute("currentYear", currentYear.get());
+        } else {
+            model.addAttribute("currentYear", null);
+        }
+        return "director_currentYear";
     }
 }

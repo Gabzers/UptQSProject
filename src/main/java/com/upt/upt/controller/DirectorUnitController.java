@@ -37,6 +37,15 @@ public class DirectorUnitController {
         List<CoordinatorUnit> coordinators = coordinatorService.getAllCoordinators();
         model.addAttribute("coordinators", coordinators);
 
+        Optional<YearUnit> currentYear = yearUnitService.getMostRecentYearUnit();
+        if (currentYear.isPresent()) {
+            model.addAttribute("currentYear", currentYear.get());
+            model.addAttribute("mostRecentYear", currentYear.get());
+        } else {
+            model.addAttribute("currentYear", null);
+            model.addAttribute("mostRecentYear", null);
+        }
+
         List<YearUnit> yearUnits = yearUnitService.getAllYearUnits();
         model.addAttribute("yearUnits", yearUnits);
 
