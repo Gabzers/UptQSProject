@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface DirectorUnitRepository extends JpaRepository<DirectorUnit, Long> {
+    DirectorUnit findByUsernameAndPassword(String username, String password);
+    DirectorUnit findByUsername(String username); // Adicione este método
 }

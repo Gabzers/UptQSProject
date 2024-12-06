@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create New Course (UC)</title>
+    <title>Create UC</title>
     <link rel="stylesheet" type="text/css" href="/css/user_createUC.css">
 </head>
 
 <body>
     <header>
         <nav>
-            <button onclick="window.location.href='/logout'">Logout</button>
+            <button onclick="window.location.href='/user/logout'">Logout</button>
             <button onclick="window.location.href=document.referrer">Back</button>
         </nav>
     </header>
@@ -20,7 +20,7 @@
         <section class="section">
             <h2>Create Unit Course</h2>
 
-            <form action="/create-uc" method="POST">
+            <form th:action="@{/user/create-uc}" method="post">
                 <!-- UC Name -->
                 <label for="ucName">Name of Unit Course (UC):</label>
                 <input type="text" id="ucName" name="ucName" required>

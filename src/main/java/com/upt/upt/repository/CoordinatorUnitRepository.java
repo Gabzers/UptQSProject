@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface CoordinatorUnitRepository extends JpaRepository<CoordinatorUnit, Long> {
+    CoordinatorUnit findByUsernameAndPassword(String username, String password);
+    CoordinatorUnit findByUsername(String username); // Adicione este método
 }

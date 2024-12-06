@@ -11,7 +11,7 @@
 <body>
     <header>
         <nav>
-            <button onclick="window.location.href='/logout'">Logout</button>
+            <button onclick="window.location.href='/user/logout'">Logout</button>
             <button onclick="window.location.href=document.referrer">Back</button>
         </nav>
     </header>
@@ -21,7 +21,7 @@
             <h2>Edit Evaluation</h2>
 
             <!-- Form to edit an existing evaluation -->
-            <form th:action="@{/user_editEvaluations/{assessmentId}(assessmentId=${assessment.id})}" method="POST">
+            <form th:action="@{/user/user_editEvaluations/{assessmentId}(assessmentId=${assessment.id})}" method="POST">
                 <input type="hidden" name="curricularUnitId" th:value="${uc.id}">
                 <input type="hidden" name="assessmentId" th:value="${assessment.id}" />
 

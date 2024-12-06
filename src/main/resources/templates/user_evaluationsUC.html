@@ -14,9 +14,9 @@
         <nav>
             <button onclick="window.location.href='/user'">Back</button>
             <button
-                th:onclick="'window.location.href=\'/user_create_evaluation?curricularUnitId=' + ${uc.id} + '\''">Create
+                th:onclick="'window.location.href=\'/user/user_create_evaluation?curricularUnitId=' + ${uc.id} + '\''">Create
                 Evaluation</button>
-            <button onclick="window.location.href='/logout'">Logout</button>
+            <button onclick="window.location.href='/user/logout'">Logout</button>
         </nav>
     </header>
 
@@ -49,12 +49,12 @@
                             <td th:text="${evaluation.minimumGrade}">0.0</td>
                             <td>
                                 <!-- Edit Button -->
-                                <form th:action="@{/user_editEvaluations/{id}(id=${evaluation.id})}" method="GET" style="display:inline;">
+                                <form th:action="@{/user/user_editEvaluations/{id}(id=${evaluation.id})}" method="GET" style="display:inline;">
                                     <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
                                     <button type="submit">Edit</button>
                                 </form>
                                 
-                                <form th:action="@{/user_delete_evaluation/{id}(id=${evaluation.id})}" method="POST" style="display:inline;">
+                                <form th:action="@{/user/user_delete_evaluation/{id}(id=${evaluation.id})}" method="POST" style="display:inline;">
                                     <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
                                     <button type="submit">Remove</button>
                                 </form>

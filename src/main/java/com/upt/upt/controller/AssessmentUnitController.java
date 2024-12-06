@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("/user")
 public class AssessmentUnitController {
 
     @Autowired

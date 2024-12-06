@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("/user")
 public class CurricularUnitController {
 
     private final CurricularUnitService curricularUnitService;
@@ -20,7 +21,7 @@ public class CurricularUnitController {
     }
 
     // Mapeamento da URL "/user"
-    @GetMapping("/user")
+    @GetMapping("")
     public String showCourseList(Model model) {
         model.addAttribute("curricularUnits", curricularUnitService.getAllCurricularUnits());
         return "user_index"; // Retorna o nome do arquivo HTML "user_index.html"
@@ -81,9 +82,15 @@ public class CurricularUnitController {
         }
     }
 
+    // Página de criação de UC
+    @GetMapping("/create-uc")
+    public String createUC() {
+        return "user_createUC"; // Redireciona para a página user_createUC.html
+    }
+
     // Criar nova UC
     @PostMapping("/create-uc")
-    public String createUC(
+    public String createCurricularUnit(
             @RequestParam("ucName") String nameUC,
             @RequestParam("ucNumStudents") Integer studentsNumber,
             @RequestParam("ucEvaluationType") String evaluationType,
@@ -107,10 +114,4 @@ public class CurricularUnitController {
         return "redirect:/user"; // Redirecionar para a página de usuário após criar a UC
     }
 
-    // Remove or rename the logout method to avoid conflict
-    // @PostMapping("/logout")
-    // public String logout() {
-    //     // Logout logic here
-    //     return "redirect:/login";
-    // }
 }

@@ -10,9 +10,9 @@
     <header>
         <h1>Course List</h1>
         <nav>
-            <button onclick="window.location.href='/createUC'">Create UC</button>
-            <button onclick="window.location.href='/map'">Assessment Course Map</button>
-            <button onclick="window.location.href='/logout'">Logout</button>
+            <button onclick="window.location.href='/user/create-uc'">Create UC</button>
+            <button onclick="window.location.href='/user/map'">Assessment Course Map</button>
+            <button onclick="window.location.href='/user/logout'">Logout</button>
         </nav>
     </header>
 
@@ -47,13 +47,13 @@
                             <td th:text="${uc.attendance}">0</td> <!-- Display the attendance -->
                             <td>
                                 <!-- Edit Button -->
-                                <button th:onclick="'window.location.href=\'/user_editUC?id=' + ${uc.id} + '\''">Edit</button>
+                                <button th:onclick="'window.location.href=\'/user/user_editUC?id=' + ${uc.id} + '\''">Edit</button>
                                 
                                 <!-- Evaluations Button -->
-                                <button th:onclick="'window.location.href=\'/user_evaluationsUC?id=' + ${uc.id} + '\''">Evaluations</button>
+                                <button th:onclick="'window.location.href=\'/user/user_evaluationsUC?id=' + ${uc.id} + '\''">Evaluations</button>
                                 
                                 <!-- Remove Button as a form -->
-                                <form th:action="@{/remove-uc/{id}(id=${uc.id})}" method="POST" style="display:inline;">
+                                <form th:action="@{/user/remove-uc/{id}(id=${uc.id})}" method="POST" style="display:inline;">
                                     <button type="submit">Remove</button>
                                 </form>
                             </td>
