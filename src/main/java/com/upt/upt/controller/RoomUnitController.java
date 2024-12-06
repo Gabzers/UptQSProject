@@ -84,6 +84,61 @@ public class RoomUnitController {
     }
 
     /**
+     * Displays the form for editing an existing RoomUnit.
+     *
+     * @param id The ID of the room to edit
+     * @param model The model to pass data to the view
+     * @return The name of the view to edit the room
+     */
+    @GetMapping("/edit-room")
+    public String showEditRoomForm(@RequestParam("id") Long id, Model model) {
+        RoomUnit room = roomUnitService.getRoomById(id);
+        model.addAttribute("room", room);
+        return "master_editRoom"; // The page for editing a room
+    }
+
+    /**
+     * Updates an existing RoomUnit with the provided form data.
+     *
+     * @param id The ID of the room to update
+     * @param roomNumber The room number
+     * @param designation The room designation
+     * @param materialType The type of material in the room
+     * @param seatsCount The number of seats in the room
+     * @param building The building where the room is located
+     * @param model The model to pass error messages to the view
+     * @return A redirect to the list of rooms or an error page
+     */
+    @PostMapping("/edit-room")
+    public String editRoom(
+            @RequestParam("room-id") Long id,
+            @RequestParam("room-number") String roomNumber,
+            @RequestParam("room-designation") String designation,
+            @RequestParam("room-material-type") String materialType,
+            @RequestParam("room-seats-count") Integer seatsCount,
+            @RequestParam("room-building") String building,
+            Model model) {
+
+        try {
+            RoomUnit updatedRoom = new RoomUnit();
+            updatedRoom.setRoomNumber(roomNumber);
+            updatedRoom.setDesignation(designation);
+            updatedRoom.setMaterialType(materialType);
+            updatedRoom.setSeatsCount(seatsCount);
+            updatedRoom.setBuilding(building);
+
+            roomUnitService.updateRoom(id, updatedRoom);
+            return "redirect:/master_index"; // Redirect to the list of rooms
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("error", "Incomplete information");
+            return "master_editRoom";  // Return to the edit room page with error
+        } catch (RuntimeException e) {
+            model.addAttribute("error", "Duplicate entry or integrity constraint violated");
+            return "master_editRoom";  // Return to the edit room page with error
+        }
+    }
+
+    /**
      * Deletes a RoomUnit.
      *
      * @param id The ID of the room unit to be deleted

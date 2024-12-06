@@ -29,12 +29,14 @@
                 <thead>
                     <tr>
                         <th>Name</th>
+                        <th>Username</th> <!-- New column for username -->
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="master : ${masterUnits}">
                         <td th:text="${master.name}">Master Name</td>
+                        <td th:text="${master.username}">Username</td> <!-- Display username -->
                         <td>
                             <button th:onclick="'window.location.href=\'/master/edit-master?id=' + ${master.id} + '\''">Edit</button>
                             

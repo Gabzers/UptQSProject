@@ -27,19 +27,21 @@ header {
     width: 100%;
 }
 
-header button {
+/* Standard Button Styling */
+header button, button[type="submit"] {
     background-color: #007bff;
     color: white;
-    padding: 8px 15px;
+    padding: 10px 20px;
     border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
     border: none;
-    margin-left: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-header button:hover {
+header button:hover, button[type="submit"]:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 /* Main container */
@@ -80,19 +82,8 @@ input {
 
 /* Submit Button */
 button[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
     width: 100%; /* Ensure the button takes the full width */
-    border: none;
     margin-top: 10px;
-}
-
-button[type="submit"]:hover {
-    background-color: #0056b3;
 }
 
 /* Footer */
