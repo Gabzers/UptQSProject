@@ -164,3 +164,18 @@ h2 {
 h2 div {
     margin-left: auto; /* Move os botões para o máximo à direita */
 }
+
+/* Align buttons to the right */
+.right-align {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px; /* Adds space between buttons */
+}
+
+/* Add spacing after the text */
+.spaced {
+    margin-top: 10px; /* Adds space above the buttons */
+    display: flex;
+    gap: 10px; /* Adds space between buttons */
+    margin-left: 20px; /* Adds space between text and buttons */
+}

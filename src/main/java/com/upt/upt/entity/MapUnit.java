@@ -1,7 +1,6 @@
 package com.upt.upt.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,14 +21,16 @@ public class MapUnit {
     @Column(name = "map_assessments")
     private List<AssessmentUnit> assessments = new ArrayList<>(); // List of assessments in the map
 
-    @OneToOne(mappedBy = "map")
-    private SemesterUnit semesterUnit; // The semester this map is associated with
+    @OneToOne
+    @JoinColumn(name = "semester_id", referencedColumnName = "semester_id")
+    private SemesterUnit semesterUnit; // Semester associated with the map
 
     // Constructors
     public MapUnit() {}
 
-    public MapUnit(Long id) {
+    public MapUnit(Long id, SemesterUnit semesterUnit) {
         this.id = id;
+        this.semesterUnit = semesterUnit;
     }
 
     // Getters and Setters
@@ -74,6 +75,7 @@ public class MapUnit {
     public String toString() {
         return "MapUnit{" +
                 "id=" + id +
+                ", semesterUnit=" + semesterUnit +
                 '}';
     }
 }

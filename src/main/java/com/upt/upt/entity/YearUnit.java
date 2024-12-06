@@ -17,13 +17,13 @@ public class YearUnit {
     @Column(name = "year_id")
     private Long id; // Year ID
 
-    @Column(name = "year_first_semester", nullable = false)
-    @NotNull
-    private String firstSemester; // 1º semestre (Start and End Dates)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "year_first_semester", referencedColumnName = "semester_id")
+    private SemesterUnit firstSemester; // 1º semestre
 
-    @Column(name = "year_second_semester", nullable = false)
-    @NotNull
-    private String secondSemester; // 2º semestre (Start and End Dates)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "year_second_semester", referencedColumnName = "semester_id")
+    private SemesterUnit secondSemester; // 2º semestre
 
     @Column(name = "year_special_exam_start", nullable = false)
     @NotNull
@@ -35,14 +35,14 @@ public class YearUnit {
 
     // Relacionamento ManyToOne com a entidade DirectorUnit
     @ManyToOne
-    @JoinColumn(name = "director_unit_id", nullable = false)
+    @JoinColumn(name = "year_director_unit_id", nullable = false)
     private DirectorUnit directorUnit;
 
     // Constructor
     public YearUnit() {
     }
 
-    public YearUnit(Long id, String firstSemester, String secondSemester, String specialExamStart,
+    public YearUnit(Long id, SemesterUnit firstSemester, SemesterUnit secondSemester, String specialExamStart,
             String specialExamEnd, DirectorUnit directorUnit) {
         this.id = id;
         this.firstSemester = firstSemester;
@@ -61,19 +61,19 @@ public class YearUnit {
         this.id = id;
     }
 
-    public String getFirstSemester() {
+    public SemesterUnit getFirstSemester() {
         return firstSemester;
     }
 
-    public void setFirstSemester(String firstSemester) {
+    public void setFirstSemester(SemesterUnit firstSemester) {
         this.firstSemester = firstSemester;
     }
 
-    public String getSecondSemester() {
+    public SemesterUnit getSecondSemester() {
         return secondSemester;
     }
 
-    public void setSecondSemester(String secondSemester) {
+    public void setSecondSemester(SemesterUnit secondSemester) {
         this.secondSemester = secondSemester;
     }
 
@@ -118,10 +118,11 @@ public class YearUnit {
     public String toString() {
         return "YearUnit{" +
                 "id=" + id +
-                ", firstSemester='" + firstSemester + '\'' +
-                ", secondSemester='" + secondSemester + '\'' +
+                ", firstSemester=" + firstSemester +
+                ", secondSemester=" + secondSemester +
                 ", specialExamStart='" + specialExamStart + '\'' +
                 ", specialExamEnd='" + specialExamEnd + '\'' +
+                ", directorUnit=" + directorUnit +
                 '}';
     }
 }

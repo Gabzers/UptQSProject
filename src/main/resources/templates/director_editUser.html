@@ -20,26 +20,26 @@
         <section class="section">
             <h2>Edit User</h2>
 
-            <form action="/director-editUuser" method="POST">
+            <form th:action="@{/director/edit/{id}(id=${coordinator.id})}" method="POST">
                 <!-- User Name -->
-                <label for="user-name">Name:</label>
-                <input type="text" id="user-name" name="user-name" value="<!-- Insert current user name here -->" required>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" th:value="${coordinator.name}" required>
 
                 <!-- Course -->
-                <label for="user-course">Course:</label>
-                <input type="text" id="user-course" name="user-course" value="<!-- Insert current course name here -->" required>
+                <label for="course">Course:</label>
+                <input type="text" id="course" name="course" th:value="${coordinator.course}" required>
 
                 <!-- Course Duration -->
-                <label for="course-duration">Course Duration (years):</label>
-                <input type="number" id="course-duration" name="course-duration" value="<!-- Insert current course duration here -->" min="1" required>
+                <label for="duration">Course Duration (years):</label>
+                <input type="number" id="duration" name="duration" th:value="${coordinator.duration}" min="1" required>
 
                 <!-- Username -->
-                <label for="user-username">Username:</label>
-                <input type="text" id="user-username" name="user-username" value="<!-- Insert current username here -->" required>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" th:value="${coordinator.username}" required>
 
                 <!-- Password -->
-                <label for="user-password">Password:</label>
-                <input type="password" id="user-password" name="user-password" required placeholder="Leave blank to keep the current password">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Leave blank to keep the current password">
 
                 <!-- Submit Button -->
                 <button type="submit">Save Changes</button>

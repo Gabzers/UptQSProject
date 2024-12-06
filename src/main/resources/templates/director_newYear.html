@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create New Academic Year - Academic Directoristration</title>
+    <title>Create New Academic Year - Academic Administration</title>
     <link rel="stylesheet" type="text/css" href="/css/director_newYear.css">
 </head>
 
 <body>
     <header>
-        <h1></h1>
+        <h1>Create New Academic Year</h1>
         <!-- Logout Button -->
         <div class="button-container">
             <button id="logoutBtn" onclick="location.href='/logout'">Logout</button>
@@ -19,63 +19,61 @@
     </header>
 
     <main>
-        <!-- First Semester -->
-        <section>
-            <h1>Create New Academic Year</h1>
-            <h2>Define First Semester Period</h2>
-            <form action="/director/saveSemester" method="post">
+        <form action="/director/save-year" method="post">
+            <!-- Hidden input for directorUnit.id -->
+            <input type="hidden" name="directorUnit.id" value="2"> <!-- Replace with actual directorUnit.id -->
+
+            <!-- First Semester -->
+            <section>
+                <h2>Define First Semester Period</h2>
                 <h3>Semester Dates</h3>
                 <label for="firstStartDate">Semester Start:</label>
-                <input type="date" id="firstStartDate" name="startDate" required>
+                <input type="date" id="firstStartDate" name="firstSemester.startDate" required>
 
                 <label for="firstEndDate">Semester End:</label>
-                <input type="date" id="firstEndDate" name="endDate" required>
+                <input type="date" id="firstEndDate" name="firstSemester.endDate" required>
 
                 <h3>Define Exam Periods</h3>
                 <label for="firstNormalExamStart">Regular Exam Start:</label>
-                <input type="date" id="firstNormalExamStart" name="normalExamStart" required>
+                <input type="date" id="firstNormalExamStart" name="firstSemester.examPeriodStart" required>
 
                 <label for="firstNormalExamEnd">Regular Exam End:</label>
-                <input type="date" id="firstNormalExamEnd" name="normalExamEnd" required>
+                <input type="date" id="firstNormalExamEnd" name="firstSemester.examPeriodEnd" required>
 
                 <label for="firstResourceExamStart">Resource Exam Start:</label>
-                <input type="date" id="firstResourceExamStart" name="resourceExamStart" required>
+                <input type="date" id="firstResourceExamStart" name="firstSemester.resitPeriodStart" required>
 
                 <label for="firstResourceExamEnd">Resource Exam End:</label>
-                <input type="date" id="firstResourceExamEnd" name="resourceExamEnd" required>
-            </form>
-        </section>
+                <input type="date" id="firstResourceExamEnd" name="firstSemester.resitPeriodEnd" required>
+            </section>
 
-        <!-- Second Semester -->
-        <section>
-            <h2>Define Second Semester Period</h2>
-            <form action="/director/saveSemester" method="post">
+            <!-- Second Semester -->
+            <section>
+                <h2>Define Second Semester Period</h2>
                 <h3>Semester Dates</h3>
                 <label for="secondStartDate">Semester Start:</label>
-                <input type="date" id="secondStartDate" name="startDate" required>
+                <input type="date" id="secondStartDate" name="secondSemester.startDate" required>
 
                 <label for="secondEndDate">Semester End:</label>
-                <input type="date" id="secondEndDate" name="endDate" required>
+                <input type="date" id="secondEndDate" name="secondSemester.endDate" required>
 
                 <h3>Define Exam Periods</h3>
                 <label for="secondNormalExamStart">Regular Exam Start:</label>
-                <input type="date" id="secondNormalExamStart" name="normalExamStart" required>
+                <input type="date" id="secondNormalExamStart" name="secondSemester.examPeriodStart" required>
 
                 <label for="secondNormalExamEnd">Regular Exam End:</label>
-                <input type="date" id="secondNormalExamEnd" name="normalExamEnd" required>
+                <input type="date" id="secondNormalExamEnd" name="secondSemester.examPeriodEnd" required>
 
                 <label for="secondResourceExamStart">Resource Exam Start:</label>
-                <input type="date" id="secondResourceExamStart" name="resourceExamStart" required>
+                <input type="date" id="secondResourceExamStart" name="secondSemester.resitPeriodStart" required>
 
                 <label for="secondResourceExamEnd">Resource Exam End:</label>
-                <input type="date" id="secondResourceExamEnd" name="resourceExamEnd" required>
-            </form>
-        </section>
+                <input type="date" id="secondResourceExamEnd" name="secondSemester.resitPeriodEnd" required>
+            </section>
 
-        <!-- Define Special Exam Period -->
-        <section>
-            <h2>Define Special Exam Period</h2>
-            <form action="/director/saveNewYear" method="post">
+            <!-- Define Special Exam Period -->
+            <section>
+                <h2>Define Special Exam Period</h2>
                 <label for="specialExamStart">Special Exam Start:</label>
                 <input type="date" id="specialExamStart" name="specialExamStart" required>
 
@@ -83,8 +81,8 @@
                 <input type="date" id="specialExamEnd" name="specialExamEnd" required>
 
                 <button type="submit">Save New Year</button>
-            </form>
-        </section>
+            </section>
+        </form>
     </main>
 
     <footer>

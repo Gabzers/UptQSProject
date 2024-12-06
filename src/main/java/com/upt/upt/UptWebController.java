@@ -1,19 +1,10 @@
 package com.upt.upt;
 
-import com.upt.upt.service.CurricularUnitService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class UptWebController {
-
-    private final CurricularUnitService curricularUnitService;
-
-    @Autowired
-    public UptWebController(CurricularUnitService curricularUnitService) {
-        this.curricularUnitService = curricularUnitService;
-    }
 
     @GetMapping("/")
     public String home() {

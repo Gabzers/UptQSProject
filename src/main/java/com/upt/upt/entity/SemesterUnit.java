@@ -2,14 +2,10 @@ package com.upt.upt.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 /**
- * SemesterUnit class represents a semester entity with details about its periods and associated users and courses.
+ * SemesterUnit class represents a semester entity with details about its periods.
  */
 @Entity
 @Table(name = "semester_unit")
@@ -44,16 +40,8 @@ public class SemesterUnit {
     @NotNull
     private String resitPeriodEnd; // End date of the resit period
 
-    @ManyToMany(mappedBy = "semesters") // Mapeamento inverso da relação muitos para muitos
-    private Set<CoordinatorUnit> coordinators = new HashSet<>(); // List of users associated with the semester
-
-    @OneToMany(mappedBy = "semesterUnit", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Column(name = "semester_courses")
-    private List<CurricularUnit> courses = new ArrayList<>(); // List of courses associated with the semester
-
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "map_unit_id")
-    private MapUnit map;  // Mapeamento do semestre para o mapa
+    @OneToOne(mappedBy = "semesterUnit")
+    private MapUnit map; // Map associated with the semester
 
     // Constructors
     public SemesterUnit() {}
@@ -126,14 +114,6 @@ public class SemesterUnit {
         this.resitPeriodEnd = resitPeriodEnd;
     }
 
-    public List<CurricularUnit> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(List<CurricularUnit> courses) {
-        this.courses = courses;
-    }
-
     public MapUnit getMap() {
         return map;
     }
@@ -165,6 +145,7 @@ public class SemesterUnit {
                 ", examPeriodEnd='" + examPeriodEnd + '\'' +
                 ", resitPeriodStart='" + resitPeriodStart + '\'' +
                 ", resitPeriodEnd='" + resitPeriodEnd + '\'' +
+                ", map=" + map +
                 '}';
     }
 }

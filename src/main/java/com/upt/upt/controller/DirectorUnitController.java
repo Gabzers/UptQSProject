@@ -1,7 +1,11 @@
 package com.upt.upt.controller;
 
+import com.upt.upt.entity.CoordinatorUnit;
 import com.upt.upt.entity.DirectorUnit;
+import com.upt.upt.entity.YearUnit;
+import com.upt.upt.service.CoordinatorUnitService;
 import com.upt.upt.service.DirectorUnitService;
+import com.upt.upt.service.YearUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,37 +23,36 @@ public class DirectorUnitController {
     @Autowired
     private DirectorUnitService directorUnitService;
 
-    /**
-     * Displays a list of all DirectorUnit entities.
-     *
-     * @param model The model to pass data to the view
-     * @return The name of the view to display the master
-     */
+    @Autowired
+    private CoordinatorUnitService coordinatorService;
+
+    @Autowired
+    private YearUnitService yearUnitService;
+
     @GetMapping("/director")
     public String listDirectors(Model model) {
         List<DirectorUnit> directorUnits = directorUnitService.getAllDirectors();
         model.addAttribute("directorUnits", directorUnits);
+
+        List<CoordinatorUnit> coordinators = coordinatorService.getAllCoordinators();
+        model.addAttribute("coordinators", coordinators);
+
+        List<YearUnit> yearUnits = yearUnitService.getAllYearUnits();
+        model.addAttribute("yearUnits", yearUnits);
+
         return "director_index"; // Name of the view template
     }
 
-    /**
-     * Displays the new year page.
-     *
-     * @return The name of the view for the new year page
-     */
-    @GetMapping("/director/newYear")
-    public String newYear() {
-        return "director_newYear"; // Redirect to the new year page
-    }
-
-    /**
-     * Displays the edit year page.
-     *
-     * @return The name of the view for the edit year page
-     */
-    @GetMapping("/director/editYear")
-    public String editYear() {
-        return "director_editYear"; // Redirect to the edit year page
+    @GetMapping("/director/viewSemester/{id}")
+    public String viewSemesters(@PathVariable("id") Long id, Model model) {
+        Optional<YearUnit> yearUnit = yearUnitService.getYearUnitById(id);
+        if (yearUnit.isPresent()) {
+            model.addAttribute("yearUnit", yearUnit.get());
+            model.addAttribute("firstSemester", yearUnit.get().getFirstSemester());
+            model.addAttribute("secondSemester", yearUnit.get().getSecondSemester());
+            return "director_viewSemester"; // Name of the view template
+        }
+        return "redirect:/director?error=Year not found";
     }
 
     /**
@@ -166,5 +169,4 @@ public class DirectorUnitController {
             return "redirect:/director-editUser/" + id + "?error=true";
         }
     }
-    
 }

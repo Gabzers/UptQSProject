@@ -1,0 +1,655 @@
+2024-12-06 18:07:43 - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-06 18:07:43 - Starting UptWebApplication using Java 21.0.5 with PID 19920 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\bin\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-06 18:07:43 - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-06 18:07:43 - No active profile set, falling back to 1 default profile: "default"
+2024-12-06 18:07:45 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-06 18:07:45 - Finished Spring Data repository scanning in 177 ms. Found 9 JPA repository interfaces.
+2024-12-06 18:07:46 - Tomcat initialized with port 8080 (http)
+2024-12-06 18:07:46 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-06 18:07:46 - Starting service [Tomcat]
+2024-12-06 18:07:46 - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-06 18:07:46 - Initializing Spring embedded WebApplicationContext
+2024-12-06 18:07:46 - Root WebApplicationContext: initialization completed in 3413 ms
+2024-12-06 18:07:47 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-06 18:07:47 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-06 18:07:47 - HHH000026: Second-level cache disabled
+2024-12-06 18:07:48 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-06 18:07:48 - HikariPool-1 - Starting...
+2024-12-06 18:07:48 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@56266bda
+2024-12-06 18:07:48 - HikariPool-1 - Start completed.
+2024-12-06 18:07:48 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-06 18:07:48 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-06 18:07:50 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-06 18:07:50 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-06 18:07:51 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-06 18:07:52 - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-06 18:07:52 - Tomcat started on port 8080 (http) with context path '/'
+2024-12-06 18:07:52 - Started UptWebApplication in 10.24 seconds (process running for 10.766)
+2024-12-06 18:10:05 - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-06 18:10:05 - Starting UptWebApplication using Java 21.0.5 with PID 20284 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\bin\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-06 18:10:05 - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-06 18:10:05 - No active profile set, falling back to 1 default profile: "default"
+2024-12-06 18:10:07 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-06 18:10:07 - Finished Spring Data repository scanning in 155 ms. Found 9 JPA repository interfaces.
+2024-12-06 18:10:08 - Tomcat initialized with port 8080 (http)
+2024-12-06 18:10:08 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-06 18:10:08 - Starting service [Tomcat]
+2024-12-06 18:10:08 - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-06 18:10:09 - Initializing Spring embedded WebApplicationContext
+2024-12-06 18:10:09 - Root WebApplicationContext: initialization completed in 3504 ms
+2024-12-06 18:10:09 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-06 18:10:09 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-06 18:10:09 - HHH000026: Second-level cache disabled
+2024-12-06 18:10:10 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-06 18:10:10 - HikariPool-1 - Starting...
+2024-12-06 18:10:10 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@70a24f9
+2024-12-06 18:10:10 - HikariPool-1 - Start completed.
+2024-12-06 18:10:10 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-06 18:10:10 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-06 18:10:12 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-06 18:10:13 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-06 18:10:13 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-06 18:10:15 - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-06 18:10:15 - Tomcat started on port 8080 (http) with context path '/'
+2024-12-06 18:10:15 - Started UptWebApplication in 10.495 seconds (process running for 11.105)
+2024-12-06 18:11:04 - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-06 18:11:04 - Starting UptWebApplication using Java 21.0.5 with PID 21864 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\bin\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-06 18:11:04 - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-06 18:11:04 - No active profile set, falling back to 1 default profile: "default"
+2024-12-06 18:11:07 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-06 18:11:07 - Finished Spring Data repository scanning in 205 ms. Found 9 JPA repository interfaces.
+2024-12-06 18:11:08 - Tomcat initialized with port 8080 (http)
+2024-12-06 18:11:08 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-06 18:11:08 - Starting service [Tomcat]
+2024-12-06 18:11:08 - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-06 18:11:09 - Initializing Spring embedded WebApplicationContext
+2024-12-06 18:11:09 - Root WebApplicationContext: initialization completed in 4161 ms
+2024-12-06 18:11:09 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-06 18:11:09 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-06 18:11:09 - HHH000026: Second-level cache disabled
+2024-12-06 18:11:10 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-06 18:11:10 - HikariPool-1 - Starting...
+2024-12-06 18:11:10 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@51b51641
+2024-12-06 18:11:10 - HikariPool-1 - Start completed.
+2024-12-06 18:11:10 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-06 18:11:10 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-06 18:11:13 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-06 18:11:13 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-06 18:11:15 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-06 18:11:16 - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-06 18:11:16 - Tomcat started on port 8080 (http) with context path '/'
+2024-12-06 18:11:16 - Started UptWebApplication in 12.784 seconds (process running for 13.454)
+2024-12-06 18:11:34 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-06 18:11:34 - Initializing Servlet 'dispatcherServlet'
+2024-12-06 18:11:34 - Completed initialization in 2 ms
+2024-12-06 18:11:35 - Saved FirstSemester ID: 31
+2024-12-06 18:11:35 - Saved SecondSemester ID: 32
+2024-12-06 18:11:35 - SQL Error: 1364, SQLState: HY000
+2024-12-06 18:11:35 - Field 'year_first_semester' doesn't have a default value
+2024-12-06 18:11:35 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.orm.jpa.JpaSystemException: could not execute statement [Field 'year_first_semester' doesn't have a default value] [insert into year_unit (director_unit_id,first_semester_id,second_semester_id,special_exam_end,special_exam_start) values (?,?,?,?,?)]] with root cause
+java.sql.SQLException: Field 'year_first_semester' doesn't have a default value
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1054)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1003)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1312)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:988)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194)
+	at org.hibernate.id.insert.GetGeneratedKeysDelegate.performMutation(GetGeneratedKeysDelegate.java:116)
+	at org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.performNonBatchedOperations(MutationExecutorSingleNonBatched.java:47)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:55)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.doStaticInserts(InsertCoordinatorStandard.java:194)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.coordinateInsert(InsertCoordinatorStandard.java:132)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.insert(InsertCoordinatorStandard.java:95)
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:85)
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:671)
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:292)
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:273)
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:323)
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:391)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:305)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:224)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:137)
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:175)
+	at org.hibernate.event.internal.DefaultPersistEventListener.persist(DefaultPersistEventListener.java:93)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:77)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:54)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:757)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:741)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.orm.jpa.ExtendedEntityManagerCreator$ExtendedEntityManagerInvocationHandler.invoke(ExtendedEntityManagerCreator.java:364)
+	at jdk.proxy2/jdk.proxy2.$Proxy124.persist(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler.invoke(SharedEntityManagerCreator.java:319)
+	at jdk.proxy2/jdk.proxy2.$Proxy124.persist(Unknown Source)
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.save(SimpleJpaRepository.java:628)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:355)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker$RepositoryFragmentMethodInvoker.lambda$new$0(RepositoryMethodInvoker.java:277)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158)
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:516)
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:285)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:628)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:173)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:148)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:70)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:379)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:165)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
+	at jdk.proxy2/jdk.proxy2.$Proxy135.save(Unknown Source)
+	at com.upt.upt.service.YearUnitService.saveYearUnit(YearUnitService.java:31)
+	at com.upt.upt.controller.YearUnitController.saveNewYear(YearUnitController.java:90)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-12-06 18:14:14 - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-06 18:14:14 - Starting UptWebApplication using Java 21.0.5 with PID 22384 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\bin\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-06 18:14:14 - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-06 18:14:14 - No active profile set, falling back to 1 default profile: "default"
+2024-12-06 18:14:16 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-06 18:14:16 - Finished Spring Data repository scanning in 138 ms. Found 9 JPA repository interfaces.
+2024-12-06 18:14:17 - Tomcat initialized with port 8080 (http)
+2024-12-06 18:14:17 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-06 18:14:17 - Starting service [Tomcat]
+2024-12-06 18:14:17 - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-06 18:14:17 - Initializing Spring embedded WebApplicationContext
+2024-12-06 18:14:17 - Root WebApplicationContext: initialization completed in 2704 ms
+2024-12-06 18:14:17 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-06 18:14:17 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-06 18:14:18 - HHH000026: Second-level cache disabled
+2024-12-06 18:14:18 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-06 18:14:18 - HikariPool-1 - Starting...
+2024-12-06 18:14:18 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@139089a4
+2024-12-06 18:14:18 - HikariPool-1 - Start completed.
+2024-12-06 18:14:18 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-06 18:14:18 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-06 18:14:20 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-06 18:14:20 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-06 18:14:21 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-06 18:14:22 - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-06 18:14:22 - Tomcat started on port 8080 (http) with context path '/'
+2024-12-06 18:14:22 - Started UptWebApplication in 8.037 seconds (process running for 8.52)
+2024-12-06 18:14:31 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-06 18:14:31 - Initializing Servlet 'dispatcherServlet'
+2024-12-06 18:14:31 - Completed initialization in 2 ms
+2024-12-06 18:14:31 - SQL Error: 1364, SQLState: HY000
+2024-12-06 18:14:31 - Field 'year_first_semester' doesn't have a default value
+2024-12-06 18:14:31 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.orm.jpa.JpaSystemException: could not execute statement [Field 'year_first_semester' doesn't have a default value] [insert into year_unit (director_unit_id,first_semester_id,second_semester_id,special_exam_end,special_exam_start) values (?,?,?,?,?)]] with root cause
+java.sql.SQLException: Field 'year_first_semester' doesn't have a default value
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1054)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1003)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1312)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:988)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194)
+	at org.hibernate.id.insert.GetGeneratedKeysDelegate.performMutation(GetGeneratedKeysDelegate.java:116)
+	at org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.performNonBatchedOperations(MutationExecutorSingleNonBatched.java:47)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:55)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.doStaticInserts(InsertCoordinatorStandard.java:194)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.coordinateInsert(InsertCoordinatorStandard.java:132)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.insert(InsertCoordinatorStandard.java:95)
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:85)
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:671)
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:292)
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:273)
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:323)
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:391)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:305)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:224)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:137)
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:175)
+	at org.hibernate.event.internal.DefaultPersistEventListener.persist(DefaultPersistEventListener.java:93)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:77)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:54)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:757)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:741)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.orm.jpa.ExtendedEntityManagerCreator$ExtendedEntityManagerInvocationHandler.invoke(ExtendedEntityManagerCreator.java:364)
+	at jdk.proxy2/jdk.proxy2.$Proxy124.persist(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler.invoke(SharedEntityManagerCreator.java:319)
+	at jdk.proxy2/jdk.proxy2.$Proxy124.persist(Unknown Source)
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.save(SimpleJpaRepository.java:628)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:355)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker$RepositoryFragmentMethodInvoker.lambda$new$0(RepositoryMethodInvoker.java:277)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158)
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:516)
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:285)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:628)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:173)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:148)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:70)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:379)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:165)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
+	at jdk.proxy2/jdk.proxy2.$Proxy135.save(Unknown Source)
+	at com.upt.upt.service.YearUnitService.saveYearUnit(YearUnitService.java:31)
+	at com.upt.upt.controller.YearUnitController.saveNewYear(YearUnitController.java:94)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-12-06 18:35:48 - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-06 18:35:48 - Starting UptWebApplication using Java 21.0.5 with PID 19228 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\bin\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-06 18:35:48 - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-06 18:35:48 - No active profile set, falling back to 1 default profile: "default"
+2024-12-06 18:35:49 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-06 18:35:50 - Finished Spring Data repository scanning in 183 ms. Found 9 JPA repository interfaces.
+2024-12-06 18:35:51 - Tomcat initialized with port 8080 (http)
+2024-12-06 18:35:51 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-06 18:35:51 - Starting service [Tomcat]
+2024-12-06 18:35:51 - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-06 18:35:51 - Initializing Spring embedded WebApplicationContext
+2024-12-06 18:35:51 - Root WebApplicationContext: initialization completed in 3549 ms
+2024-12-06 18:35:52 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-06 18:35:52 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-06 18:35:52 - HHH000026: Second-level cache disabled
+2024-12-06 18:35:52 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-06 18:35:53 - HikariPool-1 - Starting...
+2024-12-06 18:35:53 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@42b4df5a
+2024-12-06 18:35:53 - HikariPool-1 - Start completed.
+2024-12-06 18:35:53 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-06 18:35:53 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-06 18:35:55 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-06 18:35:57 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-06 18:35:58 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-06 18:35:59 - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-06 18:36:00 - Tomcat started on port 8080 (http) with context path '/'
+2024-12-06 18:36:00 - Started UptWebApplication in 12.478 seconds (process running for 13.337)
+2024-12-06 18:37:21 - Starting UptWebApplication using Java 21.0.5 with PID 1668 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\bin\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-06 18:37:21 - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-06 18:37:21 - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-06 18:37:21 - No active profile set, falling back to 1 default profile: "default"
+2024-12-06 18:37:22 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-06 18:37:23 - Finished Spring Data repository scanning in 150 ms. Found 9 JPA repository interfaces.
+2024-12-06 18:37:24 - Tomcat initialized with port 8080 (http)
+2024-12-06 18:37:24 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-06 18:37:24 - Starting service [Tomcat]
+2024-12-06 18:37:24 - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-06 18:37:24 - Initializing Spring embedded WebApplicationContext
+2024-12-06 18:37:24 - Root WebApplicationContext: initialization completed in 2985 ms
+2024-12-06 18:37:24 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-06 18:37:24 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-06 18:37:25 - HHH000026: Second-level cache disabled
+2024-12-06 18:37:25 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-06 18:37:25 - HikariPool-1 - Starting...
+2024-12-06 18:37:26 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@139089a4
+2024-12-06 18:37:26 - HikariPool-1 - Start completed.
+2024-12-06 18:37:26 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-06 18:37:26 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-06 18:37:28 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-06 18:37:28 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-06 18:37:29 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-06 18:37:30 - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-06 18:37:31 - Tomcat started on port 8080 (http) with context path '/'
+2024-12-06 18:37:31 - Started UptWebApplication in 10.632 seconds (process running for 11.176)
+2024-12-06 18:37:31 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-06 18:37:31 - Initializing Servlet 'dispatcherServlet'
+2024-12-06 18:37:31 - Completed initialization in 2 ms
+2024-12-06 18:40:03 - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-06 18:40:03 - Starting UptWebApplication using Java 21.0.5 with PID 9196 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\bin\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-06 18:40:03 - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-06 18:40:03 - No active profile set, falling back to 1 default profile: "default"
+2024-12-06 18:40:04 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-06 18:40:04 - Finished Spring Data repository scanning in 247 ms. Found 9 JPA repository interfaces.
+2024-12-06 18:40:06 - Tomcat initialized with port 8080 (http)
+2024-12-06 18:40:06 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-06 18:40:06 - Starting service [Tomcat]
+2024-12-06 18:40:06 - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-06 18:40:06 - Initializing Spring embedded WebApplicationContext
+2024-12-06 18:40:06 - Root WebApplicationContext: initialization completed in 3169 ms
+2024-12-06 18:40:06 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-06 18:40:06 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-06 18:40:06 - HHH000026: Second-level cache disabled
+2024-12-06 18:40:07 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-06 18:40:07 - HikariPool-1 - Starting...
+2024-12-06 18:40:07 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@20890a1a
+2024-12-06 18:40:07 - HikariPool-1 - Start completed.
+2024-12-06 18:40:07 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-06 18:40:07 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-06 18:40:09 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-06 18:40:09 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-06 18:40:10 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-06 18:40:11 - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-06 18:40:11 - Tomcat started on port 8080 (http) with context path '/'
+2024-12-06 18:40:11 - Started UptWebApplication in 9.117 seconds (process running for 9.694)
+2024-12-06 18:40:13 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-06 18:40:13 - Initializing Servlet 'dispatcherServlet'
+2024-12-06 18:40:13 - Completed initialization in 1 ms
+2024-12-06 18:42:41 - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-06 18:42:42 - Starting UptWebApplication using Java 21.0.5 with PID 20488 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\bin\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-06 18:42:42 - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-06 18:42:42 - No active profile set, falling back to 1 default profile: "default"
+2024-12-06 18:42:43 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-06 18:42:43 - Finished Spring Data repository scanning in 141 ms. Found 9 JPA repository interfaces.
+2024-12-06 18:42:44 - Tomcat initialized with port 8080 (http)
+2024-12-06 18:42:44 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-06 18:42:44 - Starting service [Tomcat]
+2024-12-06 18:42:44 - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-06 18:42:44 - Initializing Spring embedded WebApplicationContext
+2024-12-06 18:42:44 - Root WebApplicationContext: initialization completed in 2649 ms
+2024-12-06 18:42:45 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-06 18:42:45 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-06 18:42:45 - HHH000026: Second-level cache disabled
+2024-12-06 18:42:45 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-06 18:42:45 - HikariPool-1 - Starting...
+2024-12-06 18:42:46 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@51b51641
+2024-12-06 18:42:46 - HikariPool-1 - Start completed.
+2024-12-06 18:42:46 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-06 18:42:46 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-06 18:42:47 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-06 18:42:48 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-06 18:42:48 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-06 18:42:49 - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-06 18:42:49 - Tomcat started on port 8080 (http) with context path '/'
+2024-12-06 18:42:49 - Started UptWebApplication in 8.003 seconds (process running for 8.537)
+2024-12-06 18:43:13 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-06 18:43:13 - Initializing Servlet 'dispatcherServlet'
+2024-12-06 18:43:13 - Completed initialization in 2 ms
+2024-12-06 18:51:00 - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-06 18:51:00 - Starting UptWebApplication using Java 21.0.5 with PID 19624 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\bin\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-06 18:51:00 - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-06 18:51:00 - No active profile set, falling back to 1 default profile: "default"
+2024-12-06 18:51:02 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-06 18:51:02 - Finished Spring Data repository scanning in 176 ms. Found 9 JPA repository interfaces.
+2024-12-06 18:51:03 - Tomcat initialized with port 8080 (http)
+2024-12-06 18:51:03 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-06 18:51:03 - Starting service [Tomcat]
+2024-12-06 18:51:03 - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-06 18:51:03 - Initializing Spring embedded WebApplicationContext
+2024-12-06 18:51:03 - Root WebApplicationContext: initialization completed in 3082 ms
+2024-12-06 18:51:04 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-06 18:51:04 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-06 18:51:04 - HHH000026: Second-level cache disabled
+2024-12-06 18:51:04 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-06 18:51:04 - HikariPool-1 - Starting...
+2024-12-06 18:51:05 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@61554b6b
+2024-12-06 18:51:05 - HikariPool-1 - Start completed.
+2024-12-06 18:51:05 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-06 18:51:05 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-06 18:51:07 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-06 18:51:07 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-06 18:51:08 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-06 18:51:08 - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-06 18:51:09 - Tomcat started on port 8080 (http) with context path '/'
+2024-12-06 18:51:09 - Started UptWebApplication in 8.974 seconds (process running for 9.476)
+2024-12-06 18:51:18 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-06 18:51:18 - Initializing Servlet 'dispatcherServlet'
+2024-12-06 18:51:18 - Completed initialization in 1 ms
+2024-12-06 18:54:18 - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-06 18:54:18 - Starting UptWebApplication using Java 21.0.5 with PID 23424 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\bin\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-06 18:54:18 - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-06 18:54:18 - No active profile set, falling back to 1 default profile: "default"
+2024-12-06 18:54:20 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-06 18:54:20 - Finished Spring Data repository scanning in 181 ms. Found 9 JPA repository interfaces.
+2024-12-06 18:54:22 - Tomcat initialized with port 8080 (http)
+2024-12-06 18:54:22 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-06 18:54:22 - Starting service [Tomcat]
+2024-12-06 18:54:22 - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-06 18:54:22 - Initializing Spring embedded WebApplicationContext
+2024-12-06 18:54:22 - Root WebApplicationContext: initialization completed in 3791 ms
+2024-12-06 18:54:22 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-06 18:54:23 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-06 18:54:23 - HHH000026: Second-level cache disabled
+2024-12-06 18:54:23 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-06 18:54:23 - HikariPool-1 - Starting...
+2024-12-06 18:54:24 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6a6e9289
+2024-12-06 18:54:24 - HikariPool-1 - Start completed.
+2024-12-06 18:54:24 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-06 18:54:24 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-06 18:54:26 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-06 18:54:26 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-06 18:54:27 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-06 18:54:28 - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-06 18:54:28 - Tomcat started on port 8080 (http) with context path '/'
+2024-12-06 18:54:28 - Started UptWebApplication in 10.988 seconds (process running for 11.564)
+2024-12-06 18:54:28 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-06 18:54:28 - Initializing Servlet 'dispatcherServlet'
+2024-12-06 18:54:28 - Completed initialization in 2 ms
+2024-12-06 19:00:04 - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-06 19:00:04 - Starting UptWebApplication using Java 21.0.5 with PID 21256 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\bin\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-06 19:00:04 - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-06 19:00:04 - No active profile set, falling back to 1 default profile: "default"
+2024-12-06 19:00:06 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-06 19:00:06 - Finished Spring Data repository scanning in 138 ms. Found 9 JPA repository interfaces.
+2024-12-06 19:00:07 - Tomcat initialized with port 8080 (http)
+2024-12-06 19:00:07 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-06 19:00:07 - Starting service [Tomcat]
+2024-12-06 19:00:07 - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-06 19:00:08 - Initializing Spring embedded WebApplicationContext
+2024-12-06 19:00:08 - Root WebApplicationContext: initialization completed in 2942 ms
+2024-12-06 19:00:08 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-06 19:00:08 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-06 19:00:08 - HHH000026: Second-level cache disabled
+2024-12-06 19:00:09 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-06 19:00:09 - HikariPool-1 - Starting...
+2024-12-06 19:00:09 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@252c6cdb
+2024-12-06 19:00:09 - HikariPool-1 - Start completed.
+2024-12-06 19:00:09 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-06 19:00:09 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-06 19:00:12 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-06 19:00:12 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-06 19:00:12 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-06 19:00:13 - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-06 19:00:13 - Tomcat started on port 8080 (http) with context path '/'
+2024-12-06 19:00:13 - Started UptWebApplication in 9.659 seconds (process running for 10.275)
+2024-12-06 19:00:17 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-06 19:00:17 - Initializing Servlet 'dispatcherServlet'
+2024-12-06 19:00:17 - Completed initialization in 2 ms
+2024-12-06 19:01:37 - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-06 19:01:37 - Starting UptWebApplication using Java 21.0.5 with PID 21312 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\bin\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-06 19:01:37 - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-06 19:01:37 - No active profile set, falling back to 1 default profile: "default"
+2024-12-06 19:01:38 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-06 19:01:38 - Finished Spring Data repository scanning in 252 ms. Found 9 JPA repository interfaces.
+2024-12-06 19:01:39 - Tomcat initialized with port 8080 (http)
+2024-12-06 19:01:39 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-06 19:01:39 - Starting service [Tomcat]
+2024-12-06 19:01:39 - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-06 19:01:39 - Initializing Spring embedded WebApplicationContext
+2024-12-06 19:01:39 - Root WebApplicationContext: initialization completed in 2727 ms
+2024-12-06 19:01:40 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-06 19:01:40 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-06 19:01:40 - HHH000026: Second-level cache disabled
+2024-12-06 19:01:40 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-06 19:01:40 - HikariPool-1 - Starting...
+2024-12-06 19:01:41 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@53b7bf01
+2024-12-06 19:01:41 - HikariPool-1 - Start completed.
+2024-12-06 19:01:41 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-06 19:01:41 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-06 19:01:42 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-06 19:01:43 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-06 19:01:44 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-06 19:01:45 - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-06 19:01:45 - Tomcat started on port 8080 (http) with context path '/'
+2024-12-06 19:01:45 - Started UptWebApplication in 8.785 seconds (process running for 9.245)
+2024-12-06 19:01:47 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-06 19:01:47 - Initializing Servlet 'dispatcherServlet'
+2024-12-06 19:01:47 - Completed initialization in 1 ms
+2024-12-06 19:03:25 - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-06 19:03:25 - Starting UptWebApplication using Java 21.0.5 with PID 18368 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\bin\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-06 19:03:25 - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-06 19:03:25 - No active profile set, falling back to 1 default profile: "default"
+2024-12-06 19:03:27 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-06 19:03:27 - Finished Spring Data repository scanning in 139 ms. Found 9 JPA repository interfaces.
+2024-12-06 19:03:28 - Tomcat initialized with port 8080 (http)
+2024-12-06 19:03:28 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-06 19:03:28 - Starting service [Tomcat]
+2024-12-06 19:03:28 - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-06 19:03:28 - Initializing Spring embedded WebApplicationContext
+2024-12-06 19:03:28 - Root WebApplicationContext: initialization completed in 2389 ms
+2024-12-06 19:03:28 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-06 19:03:28 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-06 19:03:28 - HHH000026: Second-level cache disabled
+2024-12-06 19:03:29 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-06 19:03:29 - HikariPool-1 - Starting...
+2024-12-06 19:03:29 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@53b7bf01
+2024-12-06 19:03:29 - HikariPool-1 - Start completed.
+2024-12-06 19:03:29 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-06 19:03:29 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-06 19:03:31 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-06 19:03:31 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-06 19:03:32 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-06 19:03:32 - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-06 19:03:32 - Tomcat started on port 8080 (http) with context path '/'
+2024-12-06 19:03:32 - Started UptWebApplication in 7.553 seconds (process running for 8.009)
+2024-12-06 19:03:35 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-06 19:03:35 - Initializing Servlet 'dispatcherServlet'
+2024-12-06 19:03:35 - Completed initialization in 2 ms
+2024-12-06 19:04:42 - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-06 19:04:42 - Starting UptWebApplication using Java 21.0.5 with PID 8188 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\bin\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-06 19:04:42 - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-06 19:04:42 - No active profile set, falling back to 1 default profile: "default"
+2024-12-06 19:04:44 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-06 19:04:44 - Finished Spring Data repository scanning in 144 ms. Found 9 JPA repository interfaces.
+2024-12-06 19:04:45 - Tomcat initialized with port 8080 (http)
+2024-12-06 19:04:45 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-06 19:04:45 - Starting service [Tomcat]
+2024-12-06 19:04:45 - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-06 19:04:45 - Initializing Spring embedded WebApplicationContext
+2024-12-06 19:04:45 - Root WebApplicationContext: initialization completed in 2450 ms
+2024-12-06 19:04:45 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-06 19:04:45 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-06 19:04:45 - HHH000026: Second-level cache disabled
+2024-12-06 19:04:46 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-06 19:04:46 - HikariPool-1 - Starting...
+2024-12-06 19:04:46 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@42b4df5a
+2024-12-06 19:04:46 - HikariPool-1 - Start completed.
+2024-12-06 19:04:46 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-06 19:04:46 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-06 19:04:48 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-06 19:04:48 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-06 19:04:49 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-06 19:04:50 - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-06 19:04:50 - Tomcat started on port 8080 (http) with context path '/'
+2024-12-06 19:04:50 - Started UptWebApplication in 8.314 seconds (process running for 8.906)
+2024-12-06 19:04:51 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-06 19:04:51 - Initializing Servlet 'dispatcherServlet'
+2024-12-06 19:04:51 - Completed initialization in 2 ms

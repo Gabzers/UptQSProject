@@ -4,69 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Semesters</title>
+    <title>View Semesters - Academic Administration</title>
     <link rel="stylesheet" type="text/css" href="/css/director_viewSemester.css">
 </head>
 
 <body>
     <header>
         <h1>View Semesters</h1>
-        <!-- Navigation Buttons -->
-        <div class="buttons">
+        <!-- Logout Button -->
+        <div class="button-container">
+            <button id="logoutBtn" onclick="location.href='/logout'">Logout</button>
             <button onclick="window.location.href=document.referrer">Back</button>
-            <button onclick="location.href='/logout'" id="logoutBtn">Logout</button>
         </div>
     </header>
 
-    <!-- Semester List -->
-    <section>
-        <h2>Semesters for 2023/2024</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Semester</th>
-                    <th>Start</th>
-                    <th>End</th>
-                    <th>Exam Period Start</th>
-                    <th>Exam Period End</th>
-                    <th>Resit Period Start</th>
-                    <th>Resit Period End</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1st</td>
-                    <td>2023-09-01</td>
-                    <td>2024-01-31</td>
-                    <td>2024-02-01</td>
-                    <td>2024-02-15</td>
-                    <td>2024-03-01</td>
-                    <td>2024-03-15</td>
-                    <td>
-                        <button onclick="location.href='/userList/1st/2023-2024'" class="viewUsersBtn">User List</button>
-                        <button onclick="location.href='/courseList/1st/2023-2024'" class="viewCoursesBtn">Course List</button>
-                        <button onclick="location.href='/map/1st/2023-2024'" class="viewMapBtn">Open Map</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2nd</td>
-                    <td>2024-02-01</td>
-                    <td>2024-06-30</td>
-                    <td>2024-07-01</td>
-                    <td>2024-07-15</td>
-                    <td>2024-08-01</td>
-                    <td>2024-08-15</td>
-                    <td>
-                        <button onclick="location.href='/userList/2nd/2023-2024'" class="viewUsersBtn">User List</button>
-                        <button onclick="location.href='/courseList/2nd/2023-2024'" class="viewCoursesBtn">Course List</button>
-                        <button onclick="location.href='/map/2nd/2023-2024'" class="viewMapBtn">Open Map</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    </section>
+    <main>
+        <section>
+            <h2>First Semester</h2>
+            <p><strong>Start Date:</strong> <span th:text="${firstSemester.startDate}"></span></p>
+            <p><strong>End Date:</strong> <span th:text="${firstSemester.endDate}"></span></p>
+            <p><strong>Exam Period Start:</strong> <span th:text="${firstSemester.examPeriodStart}"></span></p>
+            <p><strong>Exam Period End:</strong> <span th:text="${firstSemester.examPeriodEnd}"></span></p>
+            <p><strong>Resit Period Start:</strong> <span th:text="${firstSemester.resitPeriodStart}"></span></p>
+            <p><strong>Resit Period End:</strong> <span th:text="${firstSemester.resitPeriodEnd}"></span></p>
+            <div class="button-container right-align spaced">
+                <button th:onclick="'location.href=\'/director/userList/1st/' + ${yearUnit.id} + '\''">User List</button>
+                <button th:onclick="'location.href=\'/director/courseList/1st/' + ${yearUnit.id} + '\''">Course List</button>
+                <button th:onclick="'location.href=\'/director/map/1st/' + ${yearUnit.id} + '\''">Open Map</button>
+            </div>
+        </section>
+
+        <section>
+            <h2>Second Semester</h2>
+            <p><strong>Start Date:</strong> <span th:text="${secondSemester.startDate}"></span></p>
+            <p><strong>End Date:</strong> <span th:text="${secondSemester.endDate}"></span></p>
+            <p><strong>Exam Period Start:</strong> <span th:text="${secondSemester.examPeriodStart}"></span></p>
+            <p><strong>Exam Period End:</strong> <span th:text="${secondSemester.examPeriodEnd}"></span></p>
+            <p><strong>Resit Period Start:</strong> <span th:text="${secondSemester.resitPeriodStart}"></span></p>
+            <p><strong>Resit Period End:</strong> <span th:text="${secondSemester.resitPeriodEnd}"></span></p>
+            <div class="button-container right-align spaced">
+                <button th:onclick="'location.href=\'/director/userList/2nd/' + ${yearUnit.id} + '\''">User List</button>
+                <button th:onclick="'location.href=\'/director/courseList/2nd/' + ${yearUnit.id} + '\''">Course List</button>
+                <button th:onclick="'location.href=\'/director/map/2nd/' + ${yearUnit.id} + '\''">Open Map</button>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <p>&copy; 2024 Universidade Portucalense</p>
