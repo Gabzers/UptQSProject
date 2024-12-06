@@ -107,4 +107,10 @@ public class CurricularUnitController {
         return "redirect:/user"; // Redirecionar para a página de usuário após criar a UC
     }
 
+    // Remove or rename the logout method to avoid conflict
+    // @PostMapping("/logout")
+    // public String logout() {
+    //     // Logout logic here
+    //     return "redirect:/login";
+    // }
 }

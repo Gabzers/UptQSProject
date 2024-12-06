@@ -1,7 +1,9 @@
 package com.upt.upt.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * AssessmentUnit class represents an assessment entity to be mapped to the database.
@@ -16,30 +18,41 @@ public class AssessmentUnit {
     private Long id; // Assessment ID
 
     @Column(name = "assessment_type", nullable = false)
+    @NotNull
     private String type; // Type of assessment (e.g., "Test", "Presentation")
 
     @Column(name = "assessment_weight", nullable = false)
+    @Min(0)
+    @Max(100)
     private Integer weight; // Weight of the assessment (in percentage)
 
     @Column(name = "assessment_exam_period", nullable = false)
+    @NotNull
     private String examPeriod; // Exam period for the assessment (e.g., "Teaching Period", "Exam Period")
 
     @Column(name = "assessment_computer_required", nullable = false)
+    @NotNull
     private Boolean computerRequired; // Indicates if a computer is required for the assessment
 
     @Column(name = "assessment_class_time", nullable = false)
+    @NotNull
     private Boolean classTime; // Indicates if the exam will be held during class time
 
     @Column(name = "assessment_start_time", nullable = false)
+    @NotNull
     private LocalDateTime startTime; // Start date and time of the assessment
 
     @Column(name = "assessment_end_time", nullable = false)
+    @NotNull
     private LocalDateTime endTime; // End date and time of the assessment
 
     @Column(name = "assessment_room", nullable = false)
+    @NotNull
     private String room; // Room where the assessment will take place
 
     @Column(name = "assessment_minimum_grade", nullable = false)
+    @Min(0)
+    @Max(20)
     private Double minimumGrade; // Minimum grade required for the assessment
 
     @ManyToOne
@@ -50,6 +63,7 @@ public class AssessmentUnit {
     @JoinColumn(name = "assessment_map_unit_id", nullable = true)  // Permite que o valor de 'map' seja nulo
     private MapUnit map; // The map to which this assessment belongs
 
+    // Constructors
     public AssessmentUnit() {
     }
 
@@ -165,5 +179,34 @@ public class AssessmentUnit {
 
     public void setMap(MapUnit map) {
         this.map = map;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AssessmentUnit that = (AssessmentUnit) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "AssessmentUnit{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                ", weight=" + weight +
+                ", examPeriod='" + examPeriod + '\'' +
+                ", computerRequired=" + computerRequired +
+                ", classTime=" + classTime +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", room='" + room + '\'' +
+                ", minimumGrade=" + minimumGrade +
+                '}';
     }
 }

@@ -1,6 +1,8 @@
 package com.upt.upt.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+import java.util.Objects;
 
 /**
  * MasterUnit class represents a master user with additional attributes.
@@ -14,12 +16,15 @@ public class MasterUnit {
     private Long id; // Master ID
 
     @Column(name = "master_name", nullable = false)
+    @NotNull
     private String name;
 
     @Column(name = "master_username", nullable = false, unique = true)
+    @NotNull
     private String username;
 
     @Column(name = "master_password", nullable = false)
+    @NotNull
     private String password;
 
     // Construtores
@@ -63,5 +68,28 @@ public class MasterUnit {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MasterUnit that = (MasterUnit) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "MasterUnit{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

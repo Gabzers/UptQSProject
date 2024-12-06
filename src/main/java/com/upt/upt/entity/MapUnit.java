@@ -1,8 +1,10 @@
 package com.upt.upt.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * MapUnit class represents a map of assessments for a given semester.
@@ -53,5 +55,25 @@ public class MapUnit {
 
     public void setSemesterUnit(SemesterUnit semesterUnit) {
         this.semesterUnit = semesterUnit;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MapUnit mapUnit = (MapUnit) o;
+        return Objects.equals(id, mapUnit.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "MapUnit{" +
+                "id=" + id +
+                '}';
     }
 }

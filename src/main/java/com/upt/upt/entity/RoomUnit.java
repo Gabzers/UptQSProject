@@ -1,6 +1,8 @@
 package com.upt.upt.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+import java.util.Objects;
 
 /**
  * RoomUnit class represents a room with its specific attributes, such as number, type, material, etc.
@@ -15,18 +17,23 @@ public class RoomUnit {
     private Long id; // ID of the room
 
     @Column(name = "room_number", nullable = false)
+    @NotNull
     private String roomNumber; // Room number (e.g., 101, A2)
 
     @Column(name = "room_designation", nullable = false)
+    @NotNull
     private String designation; // Room designation (e.g., auditorium, classroom, laboratory)
 
     @Column(name = "room_material_type", nullable = false)
+    @NotNull
     private String materialType; // Type of material (e.g., desks or computers)
 
     @Column(name = "room_seats_count", nullable = false)
+    @Min(0)
     private Integer seatsCount; // Number of seats in the room
 
     @Column(name = "room_building", nullable = false)
+    @NotNull
     private String building; // Building information (e.g., floor number or different building)
 
     // Constructors
@@ -88,5 +95,30 @@ public class RoomUnit {
 
     public void setBuilding(String building) {
         this.building = building;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RoomUnit roomUnit = (RoomUnit) o;
+        return Objects.equals(id, roomUnit.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "RoomUnit{" +
+                "id=" + id +
+                ", roomNumber='" + roomNumber + '\'' +
+                ", designation='" + designation + '\'' +
+                ", materialType='" + materialType + '\'' +
+                ", seatsCount=" + seatsCount +
+                ", building='" + building + '\'' +
+                '}';
     }
 }

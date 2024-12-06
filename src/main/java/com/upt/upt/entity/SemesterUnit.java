@@ -1,10 +1,11 @@
 package com.upt.upt.entity;
 
 import jakarta.persistence.*;
-
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -20,21 +21,27 @@ public class SemesterUnit {
     private Long id; // ID of the semester
 
     @Column(name = "semester_start", nullable = false)
+    @NotNull
     private String startDate; // Start date of the semester
 
     @Column(name = "semester_end", nullable = false)
+    @NotNull
     private String endDate; // End date of the semester
 
     @Column(name = "semester_exam_period_start", nullable = false)
+    @NotNull
     private String examPeriodStart; // Start date of the exam period
 
     @Column(name = "semester_exam_period_end", nullable = false)
+    @NotNull
     private String examPeriodEnd; // End date of the exam period
 
     @Column(name = "semester_resit_period_start", nullable = false)
+    @NotNull
     private String resitPeriodStart; // Start date of the resit period
 
     @Column(name = "semester_resit_period_end", nullable = false)
+    @NotNull
     private String resitPeriodEnd; // End date of the resit period
 
     @ManyToMany(mappedBy = "semesters") // Mapeamento inverso da relação muitos para muitos
@@ -133,5 +140,31 @@ public class SemesterUnit {
 
     public void setMap(MapUnit map) {
         this.map = map;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SemesterUnit that = (SemesterUnit) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "SemesterUnit{" +
+                "id=" + id +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", examPeriodStart='" + examPeriodStart + '\'' +
+                ", examPeriodEnd='" + examPeriodEnd + '\'' +
+                ", resitPeriodStart='" + resitPeriodStart + '\'' +
+                ", resitPeriodEnd='" + resitPeriodEnd + '\'' +
+                '}';
     }
 }

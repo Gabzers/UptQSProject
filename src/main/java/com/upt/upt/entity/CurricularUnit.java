@@ -2,8 +2,10 @@ package com.upt.upt.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Objects;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
 
 /**
  * CurricularUnit class represents a curricular unit entity to be mapped to the database.
@@ -17,22 +19,27 @@ public class CurricularUnit {
     @Column(name = "cu_id")
     private Long id; // Curricular Unit ID
 
-    @Column(name = "cu_name", nullable = false)
+    @Column(name = "cu_name", nullable = false, length = 100)
+    @Size(max = 100)
     private String nameUC; // Name of the Curricular Unit
 
     @Column(name = "cu_students_number", nullable = false)
+    @Min(0)
     private Integer studentsNumber; // Number of students enrolled
 
-    @Column(name = "cu_type", nullable = false)
+    @Column(name = "cu_type", nullable = false, length = 50)
+    @Size(max = 50)
     private String evaluationType; // Type of Evaluation (e.g., "Continua", "Mista")
 
     @Column(name = "cu_attendance", nullable = false)
     private Boolean attendance; // Indicates if attendance is required
 
     @Column(name = "cu_evaluations_count", nullable = false)
+    @Min(0)
     private Integer evaluationsCount; // Number of evaluations planned
 
     @Column(name = "cu_year", nullable = false)
+    @Min(1)
     private Integer year; // Year of the course this UC is taught
 
     @Column(name = "cu_semester", nullable = false)
@@ -155,5 +162,32 @@ public class CurricularUnit {
 
     public void setAssessments(List<AssessmentUnit> assessments) {
         this.assessments = assessments;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CurricularUnit that = (CurricularUnit) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "CurricularUnit{" +
+                "id=" + id +
+                ", nameUC='" + nameUC + '\'' +
+                ", studentsNumber=" + studentsNumber +
+                ", evaluationType='" + evaluationType + '\'' +
+                ", attendance=" + attendance +
+                ", evaluationsCount=" + evaluationsCount +
+                ", year=" + year +
+                ", semester=" + semester +
+                '}';
     }
 }

@@ -1,8 +1,10 @@
 package com.upt.upt.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * CoordinatorUnit class represents a coordinator entity with details about their course, duration, and curricular units.
@@ -16,12 +18,15 @@ public class CoordinatorUnit {
     private Long id;
 
     @Column(name = "coordinator_name", nullable = false)
+    @NotNull
     private String name;
 
     @Column(name = "coordinator_username", nullable = false, unique = true)
+    @NotNull
     private String username;
 
     @Column(name = "coordinator_password", nullable = false)
+    @NotNull
     private String password;
 
     @Column(name = "coordinator_course", nullable = true)
@@ -125,5 +130,30 @@ public class CoordinatorUnit {
 
     public void setSemesters(List<SemesterUnit> semesters) {
         this.semesters = semesters;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CoordinatorUnit that = (CoordinatorUnit) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "CoordinatorUnit{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", course='" + course + '\'' +
+                ", duration=" + duration +
+                '}';
     }
 }
