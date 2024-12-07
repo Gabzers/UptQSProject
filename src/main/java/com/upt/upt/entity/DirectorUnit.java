@@ -5,6 +5,8 @@ import jakarta.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
+import java.time.LocalDate;
 
 /**
  * DirectorUnit class represents a director of a department.
@@ -109,6 +111,29 @@ public class DirectorUnit {
 
     public void setAcademicYears(List<YearUnit> academicYears) {
         this.academicYears = academicYears;
+    }
+
+    public void addCoordinator(CoordinatorUnit coordinator) {
+        coordinators.add(coordinator);
+        coordinator.setDirectorUnit(this);
+    }
+
+    public void addAcademicYear(YearUnit year) {
+        academicYears.add(year);
+        year.setDirectorUnit(this);
+    }
+
+    public YearUnit getCurrentYear() {
+        return academicYears.stream()
+                .filter(YearUnit::isCurrentYear)
+                .findFirst()
+                .orElse(null);
+    }
+
+    public List<YearUnit> getPastYears() {
+        return academicYears.stream()
+                .filter(year -> !year.isCurrentYear())
+                .collect(Collectors.toList());
     }
 
     @Override

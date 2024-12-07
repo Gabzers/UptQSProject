@@ -88,3 +88,13 @@ sala tem -:
 	
 
 FALTA:
+ajeitar todas as ligaçoes entre classes
+mapas
+feedback se a uc tem + de 2 ou 3 avaliaçoes
+mostrar quais dias e horas estao livres para uma avaliação daquele estilo
+atribuir sala automaticamente de acordo com os dados escolhidos
+mostrar mapa de avaliaçoes com salas atual
+não permitir a entrada de contas por url (sem login)
+verificações (essa sala ja foi inserida, username ja existe, )
+mostrar lista de UCS no ano clicado
+mostrar lista de coordenadores de um semestre, + curso, + mapa

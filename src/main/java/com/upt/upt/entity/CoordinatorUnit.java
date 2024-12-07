@@ -36,7 +36,7 @@ public class CoordinatorUnit {
     private Integer duration;
 
     @ManyToOne
-    @JoinColumn(name = "director_unit_id", nullable = true)  // Nome da coluna que armazena a relação com DirectorUnit
+    @JoinColumn(name = "director_unit_id", nullable = true)
     private DirectorUnit directorUnit;
 
     @OneToMany(mappedBy = "coordinator", cascade = CascadeType.ALL, orphanRemoval = true)

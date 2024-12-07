@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/director")
@@ -25,6 +26,23 @@ public class YearUnitController {
 
     @Autowired
     private DirectorUnitService directorUnitService;
+
+    @GetMapping("/years")
+    public String getDirectorYears(HttpSession session, Model model) {
+        Long directorId = (Long) session.getAttribute("userId");
+        if (directorId != null) {
+            Optional<DirectorUnit> directorOpt = directorUnitService.getDirectorById(directorId);
+            if (directorOpt.isPresent()) {
+                DirectorUnit director = directorOpt.get();
+                model.addAttribute("loggedInDirector", director);
+            } else {
+                return "redirect:/login?error=Director not found";
+            }
+        } else {
+            return "redirect:/login?error=Session expired";
+        }
+        return "director_index";
+    }
 
     @GetMapping("/create-year")
     public String newYearForm(Model model) {
@@ -49,7 +67,8 @@ public class YearUnitController {
                               @RequestParam("secondSemester.resitPeriodStart") String secondResitPeriodStart,
                               @RequestParam("secondSemester.resitPeriodEnd") String secondResitPeriodEnd,
                               @RequestParam("specialExamStart") String specialExamStart,
-                              @RequestParam("specialExamEnd") String specialExamEnd) {
+                              @RequestParam("specialExamEnd") String specialExamEnd,
+                              HttpSession session) {
         // Create and set the first semester attributes
         SemesterUnit firstSemester = new SemesterUnit();
         firstSemester.setStartDate(firstStartDate);
@@ -76,11 +95,11 @@ public class YearUnitController {
         yearUnit.setSpecialExamStart(specialExamStart);
         yearUnit.setSpecialExamEnd(specialExamEnd);
 
-        // Use the director unit ID 2
-        Long directorUnitId = 2L;
-        Optional<DirectorUnit> directorUnit = directorUnitService.getDirectorById(directorUnitId);
+        Long directorId = (Long) session.getAttribute("userId");
+        Optional<DirectorUnit> directorUnit = directorUnitService.getDirectorById(directorId);
         if (directorUnit.isPresent()) {
-            yearUnit.setDirectorUnit(directorUnit.get());
+            DirectorUnit director = directorUnit.get();
+            director.addAcademicYear(yearUnit);
         } else {
             // Handle the case where the director unit is not found
             return "redirect:/director?error=Director not found";
@@ -120,7 +139,8 @@ public class YearUnitController {
                              @RequestParam("secondSemester.resitPeriodStart") String secondResitPeriodStart,
                              @RequestParam("secondSemester.resitPeriodEnd") String secondResitPeriodEnd,
                              @RequestParam("specialExamStart") String specialExamStart,
-                             @RequestParam("specialExamEnd") String specialExamEnd) {
+                             @RequestParam("specialExamEnd") String specialExamEnd,
+                             HttpSession session) {
         Optional<YearUnit> existingYearUnit = yearUnitService.getYearUnitById(id);
         Optional<YearUnit> mostRecentYear = yearUnitService.getMostRecentYearUnit();
         if (existingYearUnit.isPresent() && mostRecentYear.isPresent() && existingYearUnit.get().getId().equals(mostRecentYear.get().getId())) {
@@ -151,9 +171,8 @@ public class YearUnitController {
             updatedYearUnit.setSpecialExamStart(specialExamStart);
             updatedYearUnit.setSpecialExamEnd(specialExamEnd);
 
-            // Use the director unit ID 2
-            Long directorUnitId = 2L;
-            Optional<DirectorUnit> directorUnit = directorUnitService.getDirectorById(directorUnitId);
+            Long directorId = (Long) session.getAttribute("userId");
+            Optional<DirectorUnit> directorUnit = directorUnitService.getDirectorById(directorId);
             if (directorUnit.isPresent()) {
                 updatedYearUnit.setDirectorUnit(directorUnit.get());
             } else {

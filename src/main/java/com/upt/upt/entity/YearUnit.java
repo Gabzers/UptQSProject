@@ -3,6 +3,7 @@ package com.upt.upt.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.util.Objects;
+import java.time.LocalDate;
 
 /**
  * YearUnit class represents an academic year, including information about the
@@ -99,6 +100,13 @@ public class YearUnit {
 
     public void setDirectorUnit(DirectorUnit directorUnit) {
         this.directorUnit = directorUnit;
+    }
+
+    public boolean isCurrentYear() {
+        LocalDate now = LocalDate.now();
+        LocalDate firstSemesterEndDate = LocalDate.parse(firstSemester.getEndDate());
+        LocalDate secondSemesterEndDate = LocalDate.parse(secondSemester.getEndDate());
+        return !firstSemesterEndDate.isBefore(now) && !secondSemesterEndDate.isBefore(now);
     }
 
     @Override

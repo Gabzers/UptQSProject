@@ -10,6 +10,8 @@ import com.upt.upt.repository.DirectorUnitRepository;
 import com.upt.upt.repository.CoordinatorUnitRepository;
 import com.upt.upt.entity.UserType;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -59,6 +61,10 @@ public class UserService {
             default:
                 return null;
         }
+    }
+
+    public Optional<DirectorUnit> getDirectorById(Long id) {
+        return directorUnitRepository.findById(id);
     }
 
 }

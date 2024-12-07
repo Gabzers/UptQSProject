@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.servlet.http.HttpSession;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -30,26 +32,23 @@ public class DirectorUnitController {
     private YearUnitService yearUnitService;
 
     @GetMapping("/director")
-    public String listDirectors(Model model) {
-        List<DirectorUnit> directorUnits = directorUnitService.getAllDirectors();
-        model.addAttribute("directorUnits", directorUnits);
-
-        List<CoordinatorUnit> coordinators = coordinatorService.getAllCoordinators();
-        model.addAttribute("coordinators", coordinators);
-
-        Optional<YearUnit> currentYear = yearUnitService.getMostRecentYearUnit();
-        if (currentYear.isPresent()) {
-            model.addAttribute("currentYear", currentYear.get());
-            model.addAttribute("mostRecentYear", currentYear.get());
+    public String listDirectors(HttpSession session, Model model) {
+        Long directorId = (Long) session.getAttribute("userId");
+        if (directorId != null) {
+            Optional<DirectorUnit> directorOpt = directorUnitService.getDirectorById(directorId);
+            if (directorOpt.isPresent()) {
+                DirectorUnit director = directorOpt.get();
+                model.addAttribute("loggedInDirector", director);
+                model.addAttribute("coordinators", director.getCoordinators());
+                model.addAttribute("currentYear", director.getCurrentYear());
+                model.addAttribute("pastYears", director.getPastYears());
+            } else {
+                return "redirect:/login?error=Director not found";
+            }
         } else {
-            model.addAttribute("currentYear", null);
-            model.addAttribute("mostRecentYear", null);
+            return "redirect:/login?error=Session expired";
         }
-
-        List<YearUnit> yearUnits = yearUnitService.getAllYearUnits();
-        model.addAttribute("yearUnits", yearUnits);
-
-        return "director_index"; // Name of the view template
+        return "director_index";
     }
 
     @GetMapping("/director/viewSemester/{id}")
