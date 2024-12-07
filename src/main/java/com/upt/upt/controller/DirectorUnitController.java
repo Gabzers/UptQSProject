@@ -42,6 +42,8 @@ public class DirectorUnitController {
                 model.addAttribute("coordinators", director.getCoordinators());
                 model.addAttribute("currentYear", director.getCurrentYear());
                 model.addAttribute("pastYears", director.getPastYears());
+                Optional<YearUnit> mostRecentYear = yearUnitService.getMostRecentYearUnit();
+                model.addAttribute("mostRecentYear", mostRecentYear.orElse(null));
             } else {
                 return "redirect:/login?error=Director not found";
             }

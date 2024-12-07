@@ -22,7 +22,7 @@ public class MapUnit {
     private List<AssessmentUnit> assessments = new ArrayList<>(); // List of assessments in the map
 
     @OneToOne
-    @JoinColumn(name = "semester_id", referencedColumnName = "semester_id")
+    @JoinColumn(name = "semester_unit_id", referencedColumnName = "semester_id")
     private SemesterUnit semesterUnit; // Semester associated with the map
 
     // Constructors
@@ -75,7 +75,7 @@ public class MapUnit {
     public String toString() {
         return "MapUnit{" +
                 "id=" + id +
-                ", semesterUnit=" + semesterUnit +
+                // Exclude semesterUnit to avoid infinite loop
                 '}';
     }
 }

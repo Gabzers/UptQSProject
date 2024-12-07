@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface YearUnitRepository extends JpaRepository<YearUnit, Long> {
     Optional<YearUnit> findTopByOrderByFirstSemesterStartDateDesc();
+    Optional<YearUnit> findTopByOrderByIdDesc();
 }

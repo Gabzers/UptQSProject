@@ -104,9 +104,9 @@ public class YearUnit {
 
     public boolean isCurrentYear() {
         LocalDate now = LocalDate.now();
-        LocalDate firstSemesterEndDate = LocalDate.parse(firstSemester.getEndDate());
+        LocalDate firstSemesterStartDate = LocalDate.parse(firstSemester.getStartDate());
         LocalDate secondSemesterEndDate = LocalDate.parse(secondSemester.getEndDate());
-        return !firstSemesterEndDate.isBefore(now) && !secondSemesterEndDate.isBefore(now);
+        return (now.isEqual(firstSemesterStartDate) || now.isAfter(firstSemesterStartDate)) && now.isBefore(secondSemesterEndDate);
     }
 
     @Override

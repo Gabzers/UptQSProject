@@ -40,6 +40,6 @@ public class YearUnitService {
     }
 
     public Optional<YearUnit> getMostRecentYearUnit() {
-        return yearUnitRepository.findTopByOrderByFirstSemesterStartDateDesc();
+        return yearUnitRepository.findTopByOrderByIdDesc();
     }
 }

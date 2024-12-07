@@ -6,6 +6,8 @@ import com.upt.upt.entity.YearUnit;
 import com.upt.upt.service.SemesterUnitService;
 import com.upt.upt.service.YearUnitService;
 import com.upt.upt.service.DirectorUnitService;
+import com.upt.upt.entity.MapUnit;
+import com.upt.upt.service.MapUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +28,30 @@ public class YearUnitController {
 
     @Autowired
     private DirectorUnitService directorUnitService;
+
+    @Autowired
+    private MapUnitService mapUnitService;
+
+    private SemesterUnit updateSemester(SemesterUnit semester, String startDate, String endDate, String examPeriodStart, String examPeriodEnd, String resitPeriodStart, String resitPeriodEnd) {
+        semester.setStartDate(startDate);
+        semester.setEndDate(endDate);
+        semester.setExamPeriodStart(examPeriodStart);
+        semester.setExamPeriodEnd(examPeriodEnd);
+        semester.setResitPeriodStart(resitPeriodStart);
+        semester.setResitPeriodEnd(resitPeriodEnd);
+        SemesterUnit savedSemester = semesterUnitService.saveSemesterUnit(semester);
+
+        // Create and associate a new map for the semester if not already present
+        if (savedSemester.getMapUnit() == null) {
+            MapUnit semesterMap = new MapUnit();
+            semesterMap.setSemesterUnit(savedSemester);
+            mapUnitService.saveMapUnit(semesterMap);
+            savedSemester.setMapUnit(semesterMap);
+            semesterUnitService.saveSemesterUnit(savedSemester); // Save the updated semester with the map
+        }
+
+        return savedSemester;
+    }
 
     @GetMapping("/years")
     public String getDirectorYears(HttpSession session, Model model) {
@@ -69,29 +95,18 @@ public class YearUnitController {
                               @RequestParam("specialExamStart") String specialExamStart,
                               @RequestParam("specialExamEnd") String specialExamEnd,
                               HttpSession session) {
+
         // Create and set the first semester attributes
         SemesterUnit firstSemester = new SemesterUnit();
-        firstSemester.setStartDate(firstStartDate);
-        firstSemester.setEndDate(firstEndDate);
-        firstSemester.setExamPeriodStart(firstExamPeriodStart);
-        firstSemester.setExamPeriodEnd(firstExamPeriodEnd);
-        firstSemester.setResitPeriodStart(firstResitPeriodStart);
-        firstSemester.setResitPeriodEnd(firstResitPeriodEnd);
-        SemesterUnit savedFirstSemester = semesterUnitService.saveSemesterUnit(firstSemester);
+        firstSemester = updateSemester(firstSemester, firstStartDate, firstEndDate, firstExamPeriodStart, firstExamPeriodEnd, firstResitPeriodStart, firstResitPeriodEnd);
 
         // Create and set the second semester attributes
         SemesterUnit secondSemester = new SemesterUnit();
-        secondSemester.setStartDate(secondStartDate);
-        secondSemester.setEndDate(secondEndDate);
-        secondSemester.setExamPeriodStart(secondExamPeriodStart);
-        secondSemester.setExamPeriodEnd(secondExamPeriodEnd);
-        secondSemester.setResitPeriodStart(secondResitPeriodStart);
-        secondSemester.setResitPeriodEnd(secondResitPeriodEnd);
-        SemesterUnit savedSecondSemester = semesterUnitService.saveSemesterUnit(secondSemester);
+        secondSemester = updateSemester(secondSemester, secondStartDate, secondEndDate, secondExamPeriodStart, secondExamPeriodEnd, secondResitPeriodStart, secondResitPeriodEnd);
 
         // Set the saved semesters to the year unit
-        yearUnit.setFirstSemester(savedFirstSemester);
-        yearUnit.setSecondSemester(savedSecondSemester);
+        yearUnit.setFirstSemester(firstSemester);
+        yearUnit.setSecondSemester(secondSemester);
         yearUnit.setSpecialExamStart(specialExamStart);
         yearUnit.setSpecialExamEnd(specialExamEnd);
 
@@ -99,6 +114,7 @@ public class YearUnitController {
         Optional<DirectorUnit> directorUnit = directorUnitService.getDirectorById(directorId);
         if (directorUnit.isPresent()) {
             DirectorUnit director = directorUnit.get();
+            yearUnit.setDirectorUnit(director);
             director.addAcademicYear(yearUnit);
         } else {
             // Handle the case where the director unit is not found
@@ -148,26 +164,14 @@ public class YearUnitController {
 
             // Update first semester attributes
             SemesterUnit firstSemester = updatedYearUnit.getFirstSemester();
-            firstSemester.setStartDate(firstStartDate);
-            firstSemester.setEndDate(firstEndDate);
-            firstSemester.setExamPeriodStart(firstExamPeriodStart);
-            firstSemester.setExamPeriodEnd(firstExamPeriodEnd);
-            firstSemester.setResitPeriodStart(firstResitPeriodStart);
-            firstSemester.setResitPeriodEnd(firstResitPeriodEnd);
-            SemesterUnit savedFirstSemester = semesterUnitService.saveSemesterUnit(firstSemester);
+            firstSemester = updateSemester(firstSemester, firstStartDate, firstEndDate, firstExamPeriodStart, firstExamPeriodEnd, firstResitPeriodStart, firstResitPeriodEnd);
 
             // Update second semester attributes
             SemesterUnit secondSemester = updatedYearUnit.getSecondSemester();
-            secondSemester.setStartDate(secondStartDate);
-            secondSemester.setEndDate(secondEndDate);
-            secondSemester.setExamPeriodStart(secondExamPeriodStart);
-            secondSemester.setExamPeriodEnd(secondExamPeriodEnd);
-            secondSemester.setResitPeriodStart(secondResitPeriodStart);
-            secondSemester.setResitPeriodEnd(secondResitPeriodEnd);
-            SemesterUnit savedSecondSemester = semesterUnitService.saveSemesterUnit(secondSemester);
+            secondSemester = updateSemester(secondSemester, secondStartDate, secondEndDate, secondExamPeriodStart, secondExamPeriodEnd, secondResitPeriodStart, secondResitPeriodEnd);
 
-            updatedYearUnit.setFirstSemester(savedFirstSemester);
-            updatedYearUnit.setSecondSemester(savedSecondSemester);
+            updatedYearUnit.setFirstSemester(firstSemester);
+            updatedYearUnit.setSecondSemester(secondSemester);
             updatedYearUnit.setSpecialExamStart(specialExamStart);
             updatedYearUnit.setSpecialExamEnd(specialExamEnd);
 

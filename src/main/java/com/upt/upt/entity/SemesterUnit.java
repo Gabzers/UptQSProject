@@ -40,8 +40,8 @@ public class SemesterUnit {
     @NotNull
     private String resitPeriodEnd; // End date of the resit period
 
-    @OneToOne(mappedBy = "semesterUnit")
-    private MapUnit map; // Map associated with the semester
+    @OneToOne(mappedBy = "semesterUnit", cascade = CascadeType.ALL, orphanRemoval = true)
+    private MapUnit mapUnit; // Map associated with the semester
 
     // Constructors
     public SemesterUnit() {}
@@ -114,12 +114,12 @@ public class SemesterUnit {
         this.resitPeriodEnd = resitPeriodEnd;
     }
 
-    public MapUnit getMap() {
-        return map;
+    public MapUnit getMapUnit() {
+        return mapUnit;
     }
 
-    public void setMap(MapUnit map) {
-        this.map = map;
+    public void setMapUnit(MapUnit mapUnit) {
+        this.mapUnit = mapUnit;
     }
 
     @Override
@@ -145,7 +145,7 @@ public class SemesterUnit {
                 ", examPeriodEnd='" + examPeriodEnd + '\'' +
                 ", resitPeriodStart='" + resitPeriodStart + '\'' +
                 ", resitPeriodEnd='" + resitPeriodEnd + '\'' +
-                ", map=" + map +
+                // Exclude mapUnit to avoid infinite loop
                 '}';
     }
 }

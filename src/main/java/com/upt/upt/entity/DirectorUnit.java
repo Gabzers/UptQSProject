@@ -124,7 +124,7 @@ public class DirectorUnit {
     }
 
     public YearUnit getCurrentYear() {
-        return academicYears.stream()
+        return this.academicYears.stream()
                 .filter(YearUnit::isCurrentYear)
                 .findFirst()
                 .orElse(null);
