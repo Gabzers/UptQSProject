@@ -14,6 +14,8 @@ body {
     justify-content: space-between;
     height: 100vh;
     padding: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+    gap: 20px;
 }
 
 /* Header */
@@ -24,17 +26,17 @@ header {
     margin-bottom: 20px;
 }
 
+/* Header Buttons */
+.header-buttons {
+    display: flex;
+    gap: 10px;
+}
+
 h1 {
     font-size: 24px;
     color: #333;
     text-align: left; /* Align title to the left */
     flex-grow: 1;
-}
-
-/* Header Buttons */
-.header-buttons {
-    display: flex;
-    gap: 10px;
 }
 
 /* Standard Button Styling */
@@ -48,6 +50,7 @@ h1 {
     cursor: pointer;
     border: none;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 .button:hover, #logoutBtn:hover, button:hover {
@@ -86,7 +89,7 @@ button:nth-child(2):hover {
 h2 {
     color: #333;
     margin-bottom: 10px;
-    animation: fadeIn 1s ease-in-out;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 /* Main container */
@@ -95,7 +98,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    animation: slideIn 1s ease-in-out;
+    animation: slideIn 0.5s ease-in-out;
 }
 
 /* Sections inside the main */
@@ -106,6 +109,7 @@ section {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: slideIn 0.5s ease-in-out;
 }
 
 section:hover {
@@ -120,6 +124,7 @@ table {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 th, td {
@@ -135,6 +140,7 @@ th {
 
 tbody tr:hover {
     background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
 }
 
 tbody tr:nth-child(even) {
@@ -184,7 +190,7 @@ footer {
     color: #555;
     margin-top: 30px;
     padding: 10px;
-    animation: fadeIn 1s ease-in-out;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 /* Animations */

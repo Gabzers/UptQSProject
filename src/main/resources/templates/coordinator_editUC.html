@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Unit Course (UC)</title>
-    <link rel="stylesheet" type="text/css" href="/css/user_editUC.css">
+    <link rel="stylesheet" type="text/css" href="/css/coordinator_editUC.css">
 </head>
 
 <body>
     <header>
         <nav>
-            <button onclick="window.location.href='/user/logout'">Logout</button>
+            <button onclick="window.location.href='/logout'">Logout</button>
             <button onclick="window.location.href=document.referrer">Back</button>
         </nav>
     </header>
@@ -21,7 +21,7 @@
             <h2>Edit Unit Course Details</h2>
 
             <!-- Form to update the UC details -->
-            <form th:action="@{/user/user_editUC/{id}(id=${uc.id})}" method="POST">
+            <form th:action="@{/coordinator/coordinator_editUC/{id}(id=${uc.id})}" method="POST">
                 <!-- Name of the UC -->
                 <label for="ucName">Name of UC:</label>
                 <input type="text" id="ucName" name="ucName" th:value="${uc.nameUC}" required>

@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Year</title>
-    <link rel="stylesheet" type="text/css" href="/css/director_editYear.css">
+    <link rel="stylesheet" type="text/css" href="/css/director_editYear.css?v=1.0">
 </head>
 <body>
     <header>
         <h1>Edit Year</h1>
-        <button onclick="location.href='/director'">Back</button>
+        <nav>
+            <button onclick="location.href='/director'">Back</button>
+            <button onclick="location.href='/logout'">Logout</button>
+        </nav>
+        
     </header>
     <main>
         <form th:action="@{/director/update-year/{id}(id=${yearUnit.id})}" method="post">

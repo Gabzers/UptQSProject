@@ -14,21 +14,20 @@ body {
     justify-content: flex-start; /* Adjust so that the content starts at the top */
     height: 100vh;
     padding: 20px;
-    gap: 20px; /* Adds space between sections */
+    gap: 20px;
     animation: fadeIn 0.5s ease-in-out;
 }
 
 /* Header */
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Positions title and buttons on opposite sides */
     align-items: center;
     margin-bottom: 20px;
-    width: 100%;
 }
 
 /* Header Buttons */
-.buttons {
+.header-buttons {
     display: flex;
     gap: 10px;
 }
@@ -38,53 +37,59 @@ h1 {
     color: #333;
 }
 
-/* Buttons container */
-.buttons {
+nav {
     display: flex;
     gap: 10px;
 }
 
-/* General Button Style */
-button, #logoutBtn {
+/* Standard Button Styling */
+button, button.edit, button.delete {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 20px; /* Increased padding */
-    font-size: 16px; /* Slightly larger font */
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
     animation: fadeIn 0.5s ease-in-out;
+    text-transform: none; /* Remove caps lock */
 }
 
-button:hover, #logoutBtn:hover {
+button:hover, button.edit:hover {
     background-color: #0056b3;
     transform: scale(1.05);
 }
 
-/* Specific button color for logout */
-#logoutBtn {
-    background-color: #dc3545; /* Red */
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    animation: fadeIn 0.5s ease-in-out;
-    padding: 10px 20px;
-    border-radius: 5px;
+button.delete {
+    background-color: #dc3545;
 }
 
-#logoutBtn:hover {
-    background-color: #c82333; /* Darker red on hover */
+button.delete:hover {
+    background-color: #c82333;
     transform: scale(1.05);
 }
 
-/* Sections inside the main */
+/* Main Section */
+main {
+    width: 100%;
+    animation: slideIn 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Ensure items stretch to fill the container */
+}
+
+/* UC list section */
 section {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px; /* Reduces the space between sections */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: slideIn 0.5s ease-in-out;
+    margin-bottom: 10px; /* Adjusted margin to move the table up */
+    width: 100%; /* Ensure section takes full width */
 }
 
 section:hover {
@@ -96,7 +101,7 @@ section:hover {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px; /* Adds space between tables */
+    margin-top: 0; /* Remove margin to move the table up */
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -135,71 +140,36 @@ footer {
 
 /* Edit/Delete Buttons */
 button.edit, button.delete {
-    background-color: #ffc107; /* Yellow */
-    font-size: 16px; /* Slightly larger font */
-    padding: 10px 18px; /* Increased padding */
-    border-radius: 4px;
+    background-color: #007bff;
+    font-size: 16px;
+    padding: 10px 20px;
+    font-family: Arial, sans-serif;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    animation: fadeIn 0.5s ease-in-out;
+    text-transform: none; /* Remove caps lock */
 }
 
 button.edit:hover {
-    background-color: #e0a800;
-    transform: scale(1.05);
+    background-color: #0056b3;
 }
 
 button.delete {
-    background-color: #dc3545; /* Red */
+    background-color: #dc3545;
 }
 
 button.delete:hover {
     background-color: #c82333;
-    transform: scale(1.05);
 }
 
 button.edit, button.delete {
-    margin-left: 10px; /* Adds space between the buttons */
+    margin-left: 10px;
 }
 
-/* Ensure all sections and tables are well aligned */
-section table {
-    margin-top: 10px; /* Small space between section heading and table */
-}
-
-/* Botões Edit/Delete para a linha Current Year */
-#editCurrentYearBtn, #deleteCurrentYearBtn {
-    background-color: #ffc107; /* Amarelo (Edit) */
-    font-size: 16px;
-    padding: 8px 12px; /* Ajuste do padding */
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-#deleteCurrentYearBtn {
-    background-color: #dc3545; /* Vermelho (Delete) */
-}
-
-#editCurrentYearBtn:hover {
-    background-color: #e0a800; /* Hover do botão Edit */
-    transform: scale(1.05);
-}
-
-#deleteCurrentYearBtn:hover {
-    background-color: #c82333; /* Hover do botão Delete */
-    transform: scale(1.05);
-}
-
-/* Estilo do container na linha Current Year */
+/* Titles */
 h2 {
+    color: #333;
     margin-bottom: 10px;
     animation: fadeIn 0.5s ease-in-out;
-}
-
-h2 div {
-    margin-left: auto; /* Move os botões para o máximo à direita */
 }
 
 /* Animations */

@@ -15,6 +15,7 @@ body {
     height: 100vh;
     padding: 20px;
     gap: 20px; /* Adds space between sections */
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 /* Header */
@@ -38,7 +39,7 @@ h1 {
 }
 
 /* General Button Style */
-button {
+button, #logoutBtn {
     background-color: #007bff;
     color: white;
     border: none;
@@ -46,19 +47,24 @@ button {
     font-size: 16px; /* Slightly larger font */
     border-radius: 4px;
     cursor: pointer;
+    animation: fadeIn 0.5s ease-in-out;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-button:hover {
+button:hover, #logoutBtn:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 /* Specific button color for logout */
 #logoutBtn {
     background-color: #dc3545; /* Red */
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 #logoutBtn:hover {
     background-color: #c82333; /* Darker red on hover */
+    transform: scale(1.05);
 }
 
 /* Sections inside the main */
@@ -68,6 +74,7 @@ section {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px; /* Reduces the space between sections */
+    animation: slideIn 0.5s ease-in-out;
 }
 
 /* Tables */
@@ -178,4 +185,25 @@ h2 div {
     display: flex;
     gap: 10px; /* Adds space between buttons */
     margin-left: 20px; /* Adds space between text and buttons */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }

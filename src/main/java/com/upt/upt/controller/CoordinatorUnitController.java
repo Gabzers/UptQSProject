@@ -25,10 +25,10 @@ public class CoordinatorUnitController {
      * @param model The model to pass data to the view
      * @return The name of the view for the create form
      */
-    @GetMapping("/create-user")
+    @GetMapping("/create-coordinator")
     public String createCoordinatorForm(Model model) {
         model.addAttribute("coordinator", new CoordinatorUnit());
-        return "director_addUser"; // Name of the view template for the form
+        return "director_addCoordinator"; // Name of the view template for the form
     }
 
     /**
@@ -37,7 +37,7 @@ public class CoordinatorUnitController {
      * @param coordinator The CoordinatorUnit to save
      * @return Redirect to the list of coordinators
      */
-    @PostMapping("/create-user")
+    @PostMapping("/create-coordinator")
     public String saveCoordinator(@ModelAttribute CoordinatorUnit coordinator) {
         coordinatorService.saveCoordinator(coordinator);
         return "redirect:/director";
@@ -50,12 +50,12 @@ public class CoordinatorUnitController {
      * @param model The model to pass data to the view
      * @return The name of the view for the edit form
      */
-    @GetMapping("/edit/{id}")
+    @GetMapping("/edit-coordinator/{id}")
     public String editCoordinatorForm(@PathVariable("id") Long id, Model model) {
         Optional<CoordinatorUnit> coordinator = coordinatorService.getCoordinatorById(id);
         if (coordinator.isPresent()) {
             model.addAttribute("coordinator", coordinator.get());
-            return "director_editUser"; // Name of the view template for the form
+            return "director_editCoordinator"; // Name of the view template for the form
         } else {
             return "redirect:/director";
         }
@@ -68,7 +68,7 @@ public class CoordinatorUnitController {
      * @param coordinator The updated CoordinatorUnit
      * @return Redirect to the list of coordinators
      */
-    @PostMapping("/edit/{id}")
+    @PostMapping("/edit-coordinator/{id}")
     public String updateCoordinator(@PathVariable("id") Long id, @ModelAttribute CoordinatorUnit coordinator) {
         Optional<CoordinatorUnit> existingCoordinator = coordinatorService.getCoordinatorById(id);
         if (existingCoordinator.isPresent()) {
@@ -91,7 +91,7 @@ public class CoordinatorUnitController {
      * @param id The ID of the CoordinatorUnit to delete
      * @return Redirect to the list of coordinators
      */
-    @PostMapping("/delete/{id}")
+    @PostMapping("/delete-coordinator/{id}")
     public String deleteCoordinator(@PathVariable("id") Long id) {
         coordinatorService.deleteCoordinator(id);
         return "redirect:/director";

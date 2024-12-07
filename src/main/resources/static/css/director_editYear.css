@@ -15,19 +15,19 @@ body {
     min-height: 100vh;
     padding: 0;
     justify-content: flex-start;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 /* Header */
 header {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Ajuste para espaçar o h1 e os botões */
     align-items: center;
-    padding: 20px 40px;
+    padding: 10px 20px; /* Ajuste o padding para melhor espaçamento */
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; /* Ajuste para encostar o header ao topo */
+    right: 10px;
     z-index: 10;
     background-color: transparent;
 }
@@ -36,13 +36,15 @@ header h1 {
     font-size: 24px;
     color: #333;
     margin-bottom: 20px; /* Adicionado para espaçar o h1 dos elementos abaixo */
+    margin-left: 10px; /* Ajuste para encostar o h1 mais à esquerda */
+    margin-top: 10px; /* Adicionado para descer o h1 */
 }
 
 h1 {
     margin-bottom: 10px;
 }
 
-header button {
+header button, button[type="submit"] {
     background-color: #007bff;
     color: white;
     padding: 10px 20px;
@@ -50,21 +52,25 @@ header button {
     font-size: 14px;
     cursor: pointer;
     border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
-header button:hover {
+header button:hover, button[type="submit"]:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 /* Main container (the box) */
 main {
     width: 100%;
-    max-width: 800px;
-    background-color: white;
-    border-radius: 10px;
+    max-width: 400px; /* Limit the width of the form */
+    background-color: #fff;
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 30px;
+    padding: 20px 20px 40px; /* Padding adjusted for better spacing */
     margin-top: 120px;
+    animation: slideIn 0.5s ease-in-out;
 }
 
 /* Form Section */
@@ -115,10 +121,13 @@ button[type="submit"] {
     width: 100%;
     border: none;
     margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 button[type="submit"]:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 /* Footer */
@@ -134,4 +143,25 @@ footer {
 
 footer p {
     margin: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }

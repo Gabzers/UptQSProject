@@ -14,7 +14,7 @@
         <!-- Logout Button -->
         <div class="button-container">
             <button id="logoutBtn" onclick="location.href='/logout'">Logout</button>
-            <button onclick="window.location.href=document.referrer">Back</button>
+            <button id="logoutBtn" onclick="location.href='/director'">Back</button>
         </div>
     </header>
 
@@ -28,7 +28,7 @@
             <p><strong>Resit Period Start:</strong> <span th:text="${firstSemester.resitPeriodStart}"></span></p>
             <p><strong>Resit Period End:</strong> <span th:text="${firstSemester.resitPeriodEnd}"></span></p>
             <div class="button-container right-align spaced">
-                <button th:onclick="'location.href=\'/director/userList/1st/' + ${yearUnit.id} + '\''">User List</button>
+                <button th:onclick="'location.href=\'/director/coordinatorList/1st/' + ${yearUnit.id} + '\''">Coordinator List</button>
                 <button th:onclick="'location.href=\'/director/courseList/1st/' + ${yearUnit.id} + '\''">Course List</button>
                 <button th:onclick="'location.href=\'/director/map/1st/' + ${yearUnit.id} + '\''">Open Map</button>
             </div>
@@ -43,7 +43,7 @@
             <p><strong>Resit Period Start:</strong> <span th:text="${secondSemester.resitPeriodStart}"></span></p>
             <p><strong>Resit Period End:</strong> <span th:text="${secondSemester.resitPeriodEnd}"></span></p>
             <div class="button-container right-align spaced">
-                <button th:onclick="'location.href=\'/director/userList/2nd/' + ${yearUnit.id} + '\''">User List</button>
+                <button th:onclick="'location.href=\'/director/coordinatorList/2nd/' + ${yearUnit.id} + '\''">Coordinator List</button>
                 <button th:onclick="'location.href=\'/director/courseList/2nd/' + ${yearUnit.id} + '\''">Course List</button>
                 <button th:onclick="'location.href=\'/director/map/2nd/' + ${yearUnit.id} + '\''">Open Map</button>
             </div>

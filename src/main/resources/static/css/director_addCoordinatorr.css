@@ -15,6 +15,7 @@ body {
     height: 100vh;
     padding: 20px;
     flex-direction: column;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 /* Header */
@@ -27,19 +28,22 @@ header {
     width: 100%;
 }
 
-header button {
+/* Standard Button Styling */
+header button, button[type="submit"] {
     background-color: #007bff;
     color: white;
-    padding: 8px 15px;
+    padding: 10px 20px;
     border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
     border: none;
-    margin-left: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
-header button:hover {
+header button:hover, button[type="submit"]:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 /* Main container */
@@ -51,6 +55,7 @@ main {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative; /* Position relative to place the buttons */
     padding: 20px 20px 40px; /* Padding adjusted for better spacing */
+    animation: slideIn 0.5s ease-in-out;
 }
 
 /* Form Section */
@@ -80,19 +85,8 @@ input {
 
 /* Submit Button */
 button[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    width: 100%; /* Ensure the button takes the full width */
-    border: none;
+    width: 100%;
     margin-top: 10px;
-}
-
-button[type="submit"]:hover {
-    background-color: #0056b3;
 }
 
 /* Footer */
@@ -105,4 +99,25 @@ footer {
 
 footer p {
     margin: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }

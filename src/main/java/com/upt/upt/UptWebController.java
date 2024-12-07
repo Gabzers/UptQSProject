@@ -23,7 +23,7 @@ public class UptWebController {
 
     @GetMapping("/")
     public String home() {
-        return "redirect:/user"; // Redireciona para a URL correta
+        return "redirect:/login"; // Redireciona para a URL correta
     }
 
     @GetMapping("/login")
@@ -38,16 +38,6 @@ public class UptWebController {
     public String logout(HttpSession session) {
         session.invalidate(); // Invalida a sessão
         return "redirect:/login"; // Redireciona para a página login.html
-    }
-
-    @GetMapping("/viewSemester")
-    public String viewSemester() {
-        return "director_viewSemester"; // Redireciona para a página director_viewSemester.html
-    }
-    
-    @GetMapping("/createRoom")
-    public String createRoom() {
-        return "master_addRoom"; // Redireciona para a página master_addRoom.html
     }
 
     @PostMapping("/validate-login")
@@ -67,7 +57,7 @@ public class UptWebController {
                 case DIRECTOR:
                     return "redirect:/director";
                 case COORDINATOR:
-                    return "redirect:/user";
+                    return "redirect:/coordinator";
                 default:
                     return "redirect:/login?error=Invalid user type";
             }

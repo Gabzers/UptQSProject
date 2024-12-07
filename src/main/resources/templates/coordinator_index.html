@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course List - UC Management</title>
-    <link rel="stylesheet" type="text/css" href="/css/user_index.css">
+    <link rel="stylesheet" type="text/css" href="/css/coordinator_index.css?v=1.0">
 </head>
 <body>
     <header>
         <h1>Course List</h1>
-        <nav>
-            <button onclick="window.location.href='/user/create-uc'">Create UC</button>
-            <button onclick="window.location.href='/user/map'">Assessment Course Map</button>
-            <button onclick="window.location.href='/user/logout'">Logout</button>
+        <nav class="header-buttons">
+            <button onclick="window.location.href='/coordinator/create-uc'">Create UC</button>
+            <button onclick="window.location.href='/coordinator/map'">Assessment Course Map</button>
+            <button id="logoutBtn" onclick="window.location.href='/logout'">Logout</button>
         </nav>
     </header>
 
@@ -47,14 +47,14 @@
                             <td th:text="${uc.attendance}">0</td> <!-- Display the attendance -->
                             <td>
                                 <!-- Edit Button -->
-                                <button th:onclick="'window.location.href=\'/user/user_editUC?id=' + ${uc.id} + '\''">Edit</button>
+                                <button class="edit" th:onclick="'window.location.href=\'/coordinator/coordinator_editUC?id=' + ${uc.id} + '\''">Edit</button>
                                 
                                 <!-- Evaluations Button -->
-                                <button th:onclick="'window.location.href=\'/user/user_evaluationsUC?id=' + ${uc.id} + '\''">Evaluations</button>
+                                <button class="edit" th:onclick="'window.location.href=\'/coordinator/coordinator_evaluationsUC?id=' + ${uc.id} + '\''">Evaluations</button>
                                 
                                 <!-- Remove Button as a form -->
-                                <form th:action="@{/user/remove-uc/{id}(id=${uc.id})}" method="POST" style="display:inline;">
-                                    <button type="submit">Remove</button>
+                                <form th:action="@{/coordinator/remove-uc/{id}(id=${uc.id})}" method="POST" style="display:inline;">
+                                    <button class="delete" type="submit">Remove</button>
                                 </form>
                             </td>
                         </tr>

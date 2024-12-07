@@ -13,8 +13,8 @@
         <h1>Academic Administration</h1>
         <!-- Buttons aligned together -->
         <div class="buttons">
-            <!-- Add User Button -->
-            <button onclick="location.href='/director/create-user'" id="addUserBtn">Add User</button>
+            <!-- Add Coordinator Button -->
+            <button onclick="location.href='/director/create-coordinator'" id="addUserBtn">Add Coordinator</button>
             <!-- Add Semester Button -->
             <button onclick="location.href='/director/create-year'" id="newYear">New Year</button>
             <!-- Logout Button -->
@@ -22,9 +22,9 @@
         </div>
     </header>
 
-    <!-- Users List -->
+    <!-- Coordinators List -->
     <section id="usersList">
-        <h2>User List</h2>
+        <h2>Coordinator List</h2>
         <table>
             <thead>
                 <tr>
@@ -43,8 +43,8 @@
                     <td th:text="${coordinator.duration}">Duration</td>
                     <td th:text="${coordinator.username}">Username</td>
                     <td>
-                        <button th:onclick="'location.href=\'/director/edit/' + ${coordinator.id} + '\''" class="editBtn">Edit</button>
-                        <form th:action="@{/director/delete/{id}(id=${coordinator.id})}" method="POST" style="display:inline;">
+                        <button th:onclick="'location.href=\'/director/edit-coordinator/' + ${coordinator.id} + '\''" class="editBtn">Edit</button>
+                        <form th:action="@{/director/delete-coordinator/{id}(id=${coordinator.id})}" method="POST" style="display:inline;">
                             <button type="submit" class="deleteBtn">Delete</button>
                         </form>
                     </td>

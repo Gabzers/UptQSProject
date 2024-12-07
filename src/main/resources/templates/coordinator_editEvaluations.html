@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Evaluation</title>
-    <link rel="stylesheet" type="text/css" href="/css/user_editEvaluations.css">
+    <link rel="stylesheet" type="text/css" href="/css/coordinator_editEvaluations.css">
 </head>
 
 <body>
     <header>
         <nav>
-            <button onclick="window.location.href='/user/logout'">Logout</button>
+            <button onclick="window.location.href='/logout'">Logout</button>
             <button onclick="window.location.href=document.referrer">Back</button>
         </nav>
     </header>
@@ -21,7 +21,7 @@
             <h2>Edit Evaluation</h2>
 
             <!-- Form to edit an existing evaluation -->
-            <form th:action="@{/user/user_editEvaluations/{assessmentId}(assessmentId=${assessment.id})}" method="POST">
+            <form th:action="@{/coordinator/coordinator_editEvaluations/{assessmentId}(assessmentId=${assessment.id})}" method="POST">
                 <input type="hidden" name="curricularUnitId" th:value="${uc.id}">
                 <input type="hidden" name="assessmentId" th:value="${assessment.id}" />
 

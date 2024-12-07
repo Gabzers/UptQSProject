@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/coordinator")
 public class AssessmentUnitController {
 
     @Autowired
@@ -23,31 +23,31 @@ public class AssessmentUnitController {
     private CurricularUnitService curricularUnitService;
 
     // Página de avaliações da UC
-    @GetMapping("/user_evaluationsUC")
+    @GetMapping("/coordinator_evaluationsUC")
     public String evaluationsUC(@RequestParam("id") Long id, Model model) {
         Optional<CurricularUnit> curricularUnit = curricularUnitService.getCurricularUnitById(id);
         if (curricularUnit.isPresent()) {
             model.addAttribute("uc", curricularUnit.get());
             model.addAttribute("evaluations", assessmentService.getAssessmentsByCurricularUnit(id)); // Método atualizado
-            return "user_evaluationsUC";
+            return "coordinator_evaluationsUC";
         } else {
-            return "redirect:/user";
+            return "redirect:/coordinator";
         }
     }
 
     // Página para criar nova avaliação
-    @GetMapping("/user_create_evaluation")
+    @GetMapping("/coordinator_create_evaluation")
     public String createEvaluationPage(@RequestParam("curricularUnitId") Long curricularUnitId, Model model) {
         Optional<CurricularUnit> curricularUnit = curricularUnitService.getCurricularUnitById(curricularUnitId);
         if (curricularUnit.isPresent()) {
             model.addAttribute("uc", curricularUnit.get());
-            return "user_addEvaluations";
+            return "coordinator_addEvaluations";
         } else {
-            return "redirect:/user";
+            return "redirect:/coordinator";
         }
     }
 
-    @PostMapping("/user_addEvaluation")
+    @PostMapping("/coordinator_addEvaluation")
     public String saveEvaluation(@RequestParam("curricularUnitId") Long curricularUnitId,
             @RequestParam("assessmentType") String assessmentType,
             @RequestParam("assessmentWeight") Integer assessmentWeight,
@@ -71,7 +71,7 @@ public class AssessmentUnitController {
 
         Optional<CurricularUnit> curricularUnit = curricularUnitService.getCurricularUnitById(curricularUnitId);
         if (!curricularUnit.isPresent()) {
-            return "redirect:/user";
+            return "redirect:/coordinator";
         }
 
         // Cria e configura a nova avaliação
@@ -89,10 +89,10 @@ public class AssessmentUnitController {
 
         assessmentService.saveAssessment(assessmentUnit); // Salva no banco de dados
 
-        return "redirect:/user_evaluationsUC?id=" + curricularUnitId;
+        return "redirect:/coordinator/coordinator_evaluationsUC?id=" + curricularUnitId;
     }
 
-    @GetMapping("/user_editEvaluations/{assessmentId}")
+    @GetMapping("/coordinator_editEvaluations/{assessmentId}")
     public String editEvaluation(@PathVariable("assessmentId") Long assessmentId,
                                  @RequestParam("curricularUnitId") Long curricularUnitId,
                                  Model model) {
@@ -106,16 +106,16 @@ public class AssessmentUnitController {
             if (assessment.isPresent()) {
                 model.addAttribute("assessment", assessment.get());  // Adiciona o objeto assessment ao modelo
                 model.addAttribute("uc", curricularUnit.get());      // Adiciona a unidade curricular ao modelo
-                return "user_editEvaluations"; // Página para adicionar/editar avaliação
+                return "coordinator_editEvaluations"; // Página para adicionar/editar avaliação
             } else {
-                return "redirect:/user"; // Redireciona caso a avaliação não exista
+                return "redirect:/coordinator"; // Redireciona caso a avaliação não exista
             }
         } else {
-            return "redirect:/user"; // Caso a unidade curricular não exista, redireciona
+            return "redirect:/coordinator"; // Caso a unidade curricular não exista, redireciona
         }
     }
 
-    @PostMapping("/user_editEvaluations/{id}")
+    @PostMapping("/coordinator_editEvaluations/{id}")
     public String updateEvaluation(
             @PathVariable("id") Long id,
             @RequestParam("curricularUnitId") Long curricularUnitId,
@@ -141,7 +141,7 @@ public class AssessmentUnitController {
 
         Optional<AssessmentUnit> assessmentUnitOptional = assessmentService.findById(id);
         if (!assessmentUnitOptional.isPresent()) {
-            return "redirect:/user";
+            return "redirect:/coordinator";
         }
 
         AssessmentUnit assessmentUnit = assessmentUnitOptional.get();
@@ -157,13 +157,13 @@ public class AssessmentUnitController {
 
         assessmentService.saveAssessment(assessmentUnit); // Atualiza a avaliação no banco
 
-        return "redirect:/user_evaluationsUC?id=" + curricularUnitId;
+        return "redirect:/coordinator/coordinator_evaluationsUC?id=" + curricularUnitId;
     }
 
-    @PostMapping("/user_delete_evaluation/{id}")
+    @PostMapping("/coordinator_delete_evaluation/{id}")
     public String deleteEvaluation(@PathVariable("id") Long id,
                                    @RequestParam("curricularUnitId") Long curricularUnitId) {
         assessmentService.deleteAssessment(curricularUnitId, id); // Deleta a avaliação
-        return "redirect:/user_evaluationsUC?id=" + curricularUnitId;
+        return "redirect:/coordinator/coordinator_evaluationsUC?id=" + curricularUnitId;
     }
 }

@@ -139,7 +139,7 @@ public class DirectorUnitController {
         Optional<DirectorUnit> director = directorUnitService.getDirectorById(id);
         if (director.isPresent()) {
             model.addAttribute("director", director.get()); // Pass the director to the model
-            return "director_editUser"; // Return the edit page
+            return "director_editCoordinator"; // Return the edit page
         } else {
             return "redirect:/directors"; // Redirect to the list if director not found
         }
@@ -175,7 +175,7 @@ public class DirectorUnitController {
         } catch (Exception e) {
             // Log the error and return to the edit page
             e.printStackTrace();
-            return "redirect:/director-editUser/" + id + "?error=true";
+            return "redirect:/director-editCoordinator/" + id + "?error=true";
         }
     }
 }

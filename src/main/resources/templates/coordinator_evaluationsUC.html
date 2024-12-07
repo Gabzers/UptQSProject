@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evaluations - UC Management</title>
-    <link rel="stylesheet" type="text/css" href="/css/user_index.css">
+    <link rel="stylesheet" type="text/css" href="/css/coordinator_evaluationsUC.css">
 </head>
 
 <body>
     <header>
         <h1>Evaluations for UC</h1>
         <nav>
-            <button onclick="window.location.href='/user'">Back</button>
+            <button onclick="window.location.href='/coordinator'">Back</button>
             <button
-                th:onclick="'window.location.href=\'/user/user_create_evaluation?curricularUnitId=' + ${uc.id} + '\''">Create
+                th:onclick="'window.location.href=\'/coordinator/coordinator_create_evaluation?curricularUnitId=' + ${uc.id} + '\''">Create
                 Evaluation</button>
-            <button onclick="window.location.href='/user/logout'">Logout</button>
+            <button onclick="window.location.href='/logout'">Logout</button>
         </nav>
     </header>
 
@@ -49,12 +49,12 @@
                             <td th:text="${evaluation.minimumGrade}">0.0</td>
                             <td>
                                 <!-- Edit Button -->
-                                <form th:action="@{/user/user_editEvaluations/{id}(id=${evaluation.id})}" method="GET" style="display:inline;">
+                                <form th:action="@{/coordinator/coordinator_editEvaluations/{id}(id=${evaluation.id})}" method="GET" style="display:inline;">
                                     <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
                                     <button type="submit">Edit</button>
                                 </form>
                                 
-                                <form th:action="@{/user/user_delete_evaluation/{id}(id=${evaluation.id})}" method="POST" style="display:inline;">
+                                <form th:action="@{/coordinator/coordinator_delete_evaluation/{id}(id=${evaluation.id})}" method="POST" style="display:inline;">
                                     <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
                                     <button type="submit">Remove</button>
                                 </form>

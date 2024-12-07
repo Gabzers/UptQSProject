@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/coordinator")
 public class CurricularUnitController {
 
     private final CurricularUnitService curricularUnitService;
@@ -20,34 +20,34 @@ public class CurricularUnitController {
         this.curricularUnitService = curricularUnitService;
     }
 
-    // Mapeamento da URL "/user"
+    // Mapeamento da URL "/coordinator"
     @GetMapping("")
     public String showCourseList(Model model) {
         model.addAttribute("curricularUnits", curricularUnitService.getAllCurricularUnits());
-        return "user_index"; // Retorna o nome do arquivo HTML "user_index.html"
+        return "coordinator_index"; // Retorna o nome do arquivo HTML "coordinator_index.html"
     }
 
     // Remover a UC
     @PostMapping("/remove-uc/{id}")
     public String removeCurricularUnit(@PathVariable("id") Long id) {
         curricularUnitService.deleteCurricularUnit(id); // Remove a UC do banco de dados
-        return "redirect:/user"; // Redireciona para a lista de UCs
+        return "redirect:/coordinator"; // Redireciona para a lista de UCs
     }
 
     // Página de edição de UC
-    @GetMapping("/user_editUC")
+    @GetMapping("/coordinator_editUC")
     public String editUC(@RequestParam("id") Long id, Model model) {
         Optional<CurricularUnit> curricularUnit = curricularUnitService.getCurricularUnitById(id);
         if (curricularUnit.isPresent()) {
             model.addAttribute("uc", curricularUnit.get()); // Passa a UC para o modelo
-            return "user_editUC"; // Retorna a página de edição
+            return "coordinator_editUC"; // Retorna a página de edição
         } else {
-            return "redirect:/user"; // Caso não encontre a UC, redireciona para a lista
+            return "redirect:/coordinator"; // Caso não encontre a UC, redireciona para a lista
         }
     }
 
     // Atualizar uma UC
-    @PostMapping("/user_editUC/{id}")
+    @PostMapping("/coordinator_editUC/{id}")
     public String updateCurricularUnit(
             @PathVariable("id") Long id,
             @RequestParam("ucName") String nameUC,
@@ -74,18 +74,18 @@ public class CurricularUnitController {
             curricularUnitService.saveCurricularUnit(uc);
 
             // Redirecionar para a lista de UCs após a atualização
-            return "redirect:/user";
+            return "redirect:/coordinator";
         } catch (Exception e) {
             // Logar o erro e retornar para a página de edição
             e.printStackTrace();
-            return "redirect:/user_editUC/" + id + "?error=true";
+            return "redirect:/coordinator_editUC/" + id + "?error=true";
         }
     }
 
     // Página de criação de UC
     @GetMapping("/create-uc")
     public String createUC() {
-        return "user_createUC"; // Redireciona para a página user_createUC.html
+        return "coordinator_createUC"; // Redireciona para a página coordinator_createUC.html
     }
 
     // Criar nova UC
@@ -111,7 +111,7 @@ public class CurricularUnitController {
         // Salvar a CurricularUnit no banco de dados
         curricularUnitService.saveCurricularUnit(curricularUnit);
 
-        return "redirect:/user"; // Redirecionar para a página de usuário após criar a UC
+        return "redirect:/coordinator"; // Redirecionar para a página de usuário após criar a UC
     }
 
 }

@@ -10,105 +10,90 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    padding: 0;
-    justify-content: flex-start;
+    height: 100vh;
+    padding: 20px;
+    flex-direction: column;
     animation: fadeIn 0.5s ease-in-out;
 }
 
 /* Header */
 header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between; /* Ajuste para espaçar o h1 e os botões */
-    align-items: center;
-    padding: 10px 20px; /* Ajuste o padding para melhor espaçamento */
     position: absolute;
-    top: 0; /* Ajuste para encostar o header ao topo */
-    right: 10px;
-    left: 0;
-    z-index: 10;
-    background-color: transparent;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
 }
 
-header h1 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px; /* Adicionado para espaçar o h1 dos elementos abaixo */
-    margin-left: 10px; /* Ajuste para encostar o h1 mais à esquerda */
-    margin-top: 10px; /* Adicionado para descer o h1 */
-}
-
-h1 {
-    margin-bottom: 10px;
-}
-
-header button, button[type="submit"] {
+header nav button, button[type="submit"] {
     background-color: #007bff;
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
     cursor: pointer;
     border: none;
-    animation: fadeIn 0.5s ease-in-out;
+    margin-left: 10px;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 0.5s ease-in-out;
+    text-transform: none; /* Remove caps lock */
 }
 
-header button:hover, button[type="submit"]:hover {
+header nav button:hover, button[type="submit"]:hover {
     background-color: #0056b3;
     transform: scale(1.05);
 }
 
-/* Main container (the box) */
+/* Main container */
 main {
     width: 100%;
-    max-width: 400px; /* Limit the width of the form */
-    background-color: white;
+    max-width: 400px; /* Set a max width similar to previous example */
+    background-color: #fff;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px 20px 40px; /* Padding adjusted for better spacing */
-    margin-top: 120px;
+    position: relative;
+    overflow: hidden;
     animation: slideIn 0.5s ease-in-out;
 }
 
 /* Form Section */
-section {
-    margin-bottom: 20px;
-}
-
-/* Headings */
-section h2 {
-    font-size: 18px;
-    margin-bottom: 10px; /* Espaço extra abaixo do h2 */
-    color: #333;
-}
-
-section h3 {
-    font-size: 16px;
-    margin-top: 15px; /* Espaço extra acima do h3 */
-    margin-bottom: 10px; /* Espaço extra abaixo do h3 */
-    color: #555;
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Ensures form elements stretch to fill the container */
 }
 
 /* Form Labels */
 label {
     font-size: 14px;
     color: #333;
+    margin-top: 10px;
     display: block;
-    margin-top: 15px;
 }
 
-/* Form Inputs */
-input {
-    width: 100%;
+/* Input Fields */
+input,
+select {
+    width: 100%; /* Ensure inputs and selects take full width */
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 14px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease;
+}
+
+/* Focus effect for inputs */
+input:focus,
+select:focus {
+    border-color: #007bff;
+    outline: none;
 }
 
 /* Submit Button */
@@ -118,23 +103,32 @@ button[type="submit"] {
     padding: 12px 20px;
     border-radius: 5px;
     font-size: 16px;
+    font-family: Arial, sans-serif;
     cursor: pointer;
     width: 100%;
     border: none;
-    margin-top: 20px;
-    animation: fadeIn 0.5s ease-in-out;
+    margin-top: 10px;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 0.5s ease-in-out;
+    text-transform: none; /* Remove caps lock */
+}
+
+/* Ensure all buttons have animations */
+nav button, button[type="submit"] {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+nav button:hover, button[type="submit"]:hover {
+    transform: scale(1.05);
 }
 
 /* Footer */
 footer {
-    margin-top: 30px;
+    margin-top: 20px;
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
     color: #555;
-    padding: 20px;
-    width: 100%;
-    background-color: #f1f1f1;
 }
 
 footer p {

@@ -16,6 +16,7 @@ body {
     min-height: 100vh; /* Ensures full viewport height */
     padding: 20px;
     text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 /* Header styles */
@@ -40,6 +41,7 @@ main {
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+    animation: slideIn 0.5s ease-in-out;
 }
 
 /* Section styles */
@@ -94,17 +96,20 @@ nav button {
     padding: 10px 20px;
     border: none;
     cursor: pointer;
-    font-size: 0.875rem;
-    transition: background-color 0.3s ease;
-    border-radius: 4px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 5px;
     flex: 1;
     max-width: 120px;
-    text-transform: uppercase; /* Adds a uniform look */
+    text-transform: none; /* Remove caps lock */
     letter-spacing: 1px;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 nav button:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 /* Last button (submit button) */
@@ -114,15 +119,19 @@ button[type="submit"] {
     padding: 12px 20px;
     border: none;
     cursor: pointer;
-    font-size: 1rem;
-    border-radius: 4px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    border-radius: 5px;
     max-width: 150px;
-    text-transform: uppercase;
+    text-transform: none; /* Remove caps lock */
     letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 button[type="submit"]:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 /* Form helper text or error messages */
@@ -209,4 +218,34 @@ footer {
 
 .evaluation-separator::after {
     right: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+nav button, button[type="submit"] {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+nav button:hover, button[type="submit"]:hover {
+    transform: scale(1.05);
 }

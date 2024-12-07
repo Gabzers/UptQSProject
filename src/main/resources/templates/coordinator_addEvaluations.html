@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Evaluation</title>
-    <link rel="stylesheet" type="text/css" href="/css/user_addEvaluations.css">
+    <link rel="stylesheet" type="text/css" href="/css/coordinator_addEvaluations.css">
 </head>
 
 <body>
     <header>
         <nav>
-            <button onclick="window.location.href='/user/logout'">Logout</button>
+            <button onclick="window.location.href='/logout'">Logout</button>
             <button onclick="window.location.href=document.referrer">Back</button>
         </nav>
     </header>
@@ -21,7 +21,7 @@
             <h2>Add Evaluation</h2>
 
             <!-- Form to add a new evaluation -->
-            <form action="/user/user_addEvaluation" method="POST">
+            <form action="/coordinator/coordinator_addEvaluation" method="POST">
                 <!-- Curricular Unit ID -->
                 <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
 
