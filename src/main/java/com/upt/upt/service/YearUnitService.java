@@ -42,4 +42,8 @@ public class YearUnitService {
     public Optional<YearUnit> getMostRecentYearUnit() {
         return yearUnitRepository.findTopByOrderByIdDesc();
     }
+
+    public Optional<SemesterUnit> getSemesterUnitById(Long id) {
+        return semesterUnitRepository.findById(id);
+    }
 }

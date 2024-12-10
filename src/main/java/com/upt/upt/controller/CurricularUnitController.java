@@ -2,8 +2,11 @@ package com.upt.upt.controller;
 
 import com.upt.upt.entity.CoordinatorUnit;
 import com.upt.upt.entity.CurricularUnit;
+import com.upt.upt.entity.YearUnit;
+import com.upt.upt.entity.SemesterUnit;
 import com.upt.upt.service.CurricularUnitService;
 import com.upt.upt.service.CoordinatorUnitService;
+import com.upt.upt.service.YearUnitService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -13,6 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+import org.springframework.http.ResponseEntity;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/coordinator")
@@ -20,11 +25,13 @@ public class CurricularUnitController {
 
     private final CurricularUnitService curricularUnitService;
     private final CoordinatorUnitService coordinatorUnitService;
+    private final YearUnitService yearUnitService;
 
     @Autowired
-    public CurricularUnitController(CurricularUnitService curricularUnitService, CoordinatorUnitService coordinatorUnitService) {
+    public CurricularUnitController(CurricularUnitService curricularUnitService, CoordinatorUnitService coordinatorUnitService, YearUnitService yearUnitService) {
         this.curricularUnitService = curricularUnitService;
         this.coordinatorUnitService = coordinatorUnitService;
+        this.yearUnitService = yearUnitService;
     }
 
     // Mapeamento da URL "/coordinator"
@@ -106,6 +113,19 @@ public class CurricularUnitController {
         return "coordinator_createUC"; // Redireciona para a página coordinator_createUC.html
     }
 
+    @GetMapping("/get-semester-id")
+    @ResponseBody
+    public ResponseEntity<?> getSemesterId(@RequestParam("semester") Integer semester) {
+        Optional<YearUnit> mostRecentYear = yearUnitService.getMostRecentYearUnit();
+        if (mostRecentYear.isPresent()) {
+            YearUnit yearUnit = mostRecentYear.get();
+            Long semesterId = semester == 1 ? yearUnit.getFirstSemester().getId() : yearUnit.getSecondSemester().getId();
+            return ResponseEntity.ok().body(Map.of("semesterId", semesterId));
+        } else {
+            return ResponseEntity.badRequest().body("Year not found");
+        }
+    }
+
     // Criar nova UC
     @PostMapping("/create-uc")
     public String createCurricularUnit(
@@ -116,6 +136,7 @@ public class CurricularUnitController {
             @RequestParam("ucEvaluationsCount") Integer evaluationsCount,
             @RequestParam("ucYear") Integer year,
             @RequestParam("ucSemester") Integer semester,
+            @RequestParam("semesterId") Long semesterId,
             HttpSession session) {
         // Criar a nova CurricularUnit com os dados do formulário
         CurricularUnit curricularUnit = new CurricularUnit();
@@ -126,6 +147,14 @@ public class CurricularUnitController {
         curricularUnit.setEvaluationsCount(evaluationsCount);
         curricularUnit.setYear(year);
         curricularUnit.setSemester(semester);
+
+        // Set the semester unit based on the selected semester
+        Optional<SemesterUnit> semesterUnitOpt = yearUnitService.getSemesterUnitById(semesterId);
+        if (semesterUnitOpt.isPresent()) {
+            curricularUnit.setSemesterUnit(semesterUnitOpt.get());
+        } else {
+            return "redirect:/coordinator?error=Semester not found";
+        }
 
         // Associar a UC com o coordenador
         Long coordinatorId = (Long) session.getAttribute("userId");
