@@ -132,6 +132,11 @@ public class CoordinatorUnit {
         this.semesters = semesters;
     }
 
+    public void addCurricularUnit(CurricularUnit curricularUnit) {
+        curricularUnits.add(curricularUnit);
+        curricularUnit.setCoordinator(this);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

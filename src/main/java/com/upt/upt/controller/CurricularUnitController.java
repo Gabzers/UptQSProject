@@ -1,7 +1,12 @@
 package com.upt.upt.controller;
 
+import com.upt.upt.entity.CoordinatorUnit;
 import com.upt.upt.entity.CurricularUnit;
 import com.upt.upt.service.CurricularUnitService;
+import com.upt.upt.service.CoordinatorUnitService;
+
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,16 +19,29 @@ import java.util.Optional;
 public class CurricularUnitController {
 
     private final CurricularUnitService curricularUnitService;
+    private final CoordinatorUnitService coordinatorUnitService;
 
     @Autowired
-    public CurricularUnitController(CurricularUnitService curricularUnitService) {
+    public CurricularUnitController(CurricularUnitService curricularUnitService, CoordinatorUnitService coordinatorUnitService) {
         this.curricularUnitService = curricularUnitService;
+        this.coordinatorUnitService = coordinatorUnitService;
     }
 
     // Mapeamento da URL "/coordinator"
     @GetMapping("")
-    public String showCourseList(Model model) {
-        model.addAttribute("curricularUnits", curricularUnitService.getAllCurricularUnits());
+    public String showCourseList(Model model, HttpSession session) {
+        Long coordinatorId = (Long) session.getAttribute("userId");
+        if (coordinatorId != null) {
+            Optional<CoordinatorUnit> coordinatorOpt = coordinatorUnitService.getCoordinatorById(coordinatorId);
+            if (coordinatorOpt.isPresent()) {
+                CoordinatorUnit coordinator = coordinatorOpt.get();
+                model.addAttribute("curricularUnits", coordinator.getCurricularUnits());
+            } else {
+                return "redirect:/login?error=Coordinator not found";
+            }
+        } else {
+            return "redirect:/login?error=Session expired";
+        }
         return "coordinator_index"; // Retorna o nome do arquivo HTML "coordinator_index.html"
     }
 
@@ -97,7 +115,8 @@ public class CurricularUnitController {
             @RequestParam(value = "ucAttendance", defaultValue = "false") Boolean attendance, // Valor padrão
             @RequestParam("ucEvaluationsCount") Integer evaluationsCount,
             @RequestParam("ucYear") Integer year,
-            @RequestParam("ucSemester") Integer semester) {
+            @RequestParam("ucSemester") Integer semester,
+            HttpSession session) {
         // Criar a nova CurricularUnit com os dados do formulário
         CurricularUnit curricularUnit = new CurricularUnit();
         curricularUnit.setNameUC(nameUC);
@@ -107,6 +126,17 @@ public class CurricularUnitController {
         curricularUnit.setEvaluationsCount(evaluationsCount);
         curricularUnit.setYear(year);
         curricularUnit.setSemester(semester);
+
+        // Associar a UC com o coordenador
+        Long coordinatorId = (Long) session.getAttribute("userId");
+        Optional<CoordinatorUnit> coordinatorUnit = coordinatorUnitService.getCoordinatorById(coordinatorId);
+        if (coordinatorUnit.isPresent()) {
+            CoordinatorUnit coordinator = coordinatorUnit.get();
+            coordinator.addCurricularUnit(curricularUnit); // Adicionar a UC à lista do coordenador
+        } else {
+            // Handle the case where the coordinator unit is not found
+            return "redirect:/coordinator?error=Coordinator not found";
+        }
 
         // Salvar a CurricularUnit no banco de dados
         curricularUnitService.saveCurricularUnit(curricularUnit);
