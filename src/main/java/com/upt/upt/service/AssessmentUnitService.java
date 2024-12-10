@@ -5,6 +5,7 @@ import com.upt.upt.repository.AssessmentUnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,6 +42,13 @@ public class AssessmentUnitService {
     // Busca todas as avaliações
     public List<AssessmentUnit> getAllAssessments() {
         return assessmentRepository.findAll();
+    }
+
+    // Método para buscar avaliações por coordenador
+    public List<AssessmentUnit> getAssessmentsByCoordinator(Long coordinatorId) {
+        List<AssessmentUnit> assessments = assessmentRepository.findByCurricularUnitCoordinatorId(coordinatorId);
+        assessments.sort(Comparator.comparing(AssessmentUnit::getStartTime));
+        return assessments;
     }
 
     // Atualiza uma avaliação existente

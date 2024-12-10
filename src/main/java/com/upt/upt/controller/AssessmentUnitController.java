@@ -2,6 +2,8 @@ package com.upt.upt.controller;
 
 import com.upt.upt.entity.AssessmentUnit;
 import com.upt.upt.entity.CurricularUnit;
+import com.upt.upt.entity.MapUnit;
+import com.upt.upt.entity.SemesterUnit;
 import com.upt.upt.service.AssessmentUnitService;
 import com.upt.upt.service.CurricularUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -86,6 +89,12 @@ public class AssessmentUnitController {
         assessmentUnit.setRoom(assessmentRoom);
         assessmentUnit.setCurricularUnit(curricularUnit.get());
         assessmentUnit.setMinimumGrade(assessmentMinimumGrade);
+
+        // Fetch the semester of the UC and add the assessment to the map of that semester
+        SemesterUnit semesterUnit = curricularUnit.get().getSemesterUnit();
+        MapUnit mapUnit = semesterUnit.getMapUnit();
+        mapUnit.getAssessments().add(assessmentUnit);
+        assessmentUnit.setMap(mapUnit);
 
         assessmentService.saveAssessment(assessmentUnit); // Salva no banco de dados
 
@@ -165,5 +174,16 @@ public class AssessmentUnitController {
                                    @RequestParam("curricularUnitId") Long curricularUnitId) {
         assessmentService.deleteAssessment(curricularUnitId, id); // Deleta a avaliação
         return "redirect:/coordinator/coordinator_evaluationsUC?id=" + curricularUnitId;
+    }
+
+    @GetMapping("/map")
+    public String showAssessmentMap(Model model, HttpSession session) {
+        Long coordinatorId = (Long) session.getAttribute("userId");
+        if (coordinatorId != null) {
+            model.addAttribute("assessments", assessmentService.getAssessmentsByCoordinator(coordinatorId));
+            return "coordinator_map";
+        } else {
+            return "redirect:/login?error=Session expired";
+        }
     }
 }

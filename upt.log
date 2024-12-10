@@ -502,3 +502,903 @@
 2024-12-10T23:05:35.363Z DEBUG 25064 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
 2024-12-10T23:05:35.372Z DEBUG 25064 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
 2024-12-10T23:05:35.378Z DEBUG 25064 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:33:48.116Z  INFO 5016 --- [upt] [main] com.upt.upt.UptWebApplication            : Starting UptWebApplication using Java 21.0.5 with PID 5016 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\build\classes\java\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-10T23:33:48.126Z DEBUG 5016 --- [upt] [main] com.upt.upt.UptWebApplication            : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-10T23:33:48.133Z  INFO 5016 --- [upt] [main] com.upt.upt.UptWebApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-12-10T23:33:49.504Z  INFO 5016 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-10T23:33:49.681Z  INFO 5016 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 144 ms. Found 9 JPA repository interfaces.
+2024-12-10T23:33:50.702Z  INFO 5016 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-10T23:33:50.722Z  INFO 5016 --- [upt] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-10T23:33:50.723Z  INFO 5016 --- [upt] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-10T23:33:50.814Z  INFO 5016 --- [upt] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-10T23:33:50.816Z  INFO 5016 --- [upt] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2595 ms
+2024-12-10T23:33:51.045Z  INFO 5016 --- [upt] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-10T23:33:51.127Z  INFO 5016 --- [upt] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-10T23:33:51.182Z  INFO 5016 --- [upt] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-10T23:33:51.671Z  INFO 5016 --- [upt] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-10T23:33:51.837Z  INFO 5016 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-10T23:33:52.494Z  INFO 5016 --- [upt] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3eb9c575
+2024-12-10T23:33:52.499Z  INFO 5016 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-10T23:33:52.587Z  WARN 5016 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-10T23:33:52.592Z  WARN 5016 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-10T23:33:55.543Z  INFO 5016 --- [upt] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-10T23:33:55.730Z  INFO 5016 --- [upt] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-10T23:33:57.321Z  WARN 5016 --- [upt] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-10T23:33:57.908Z DEBUG 5016 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 50 mappings in 'requestMappingHandlerMapping'
+2024-12-10T23:33:58.077Z DEBUG 5016 --- [upt] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-10T23:33:58.141Z DEBUG 5016 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-10T23:33:58.203Z DEBUG 5016 --- [upt] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-10T23:33:58.407Z  INFO 5016 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-10T23:33:58.417Z  INFO 5016 --- [upt] [main] com.upt.upt.UptWebApplication            : Started UptWebApplication in 11.002 seconds (process running for 11.52)
+2024-12-10T23:33:58.574Z  INFO 5016 --- [upt] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-10T23:33:58.575Z  INFO 5016 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-10T23:33:58.576Z DEBUG 5016 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-12-10T23:33:58.576Z DEBUG 5016 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-12-10T23:33:58.577Z DEBUG 5016 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-12-10T23:33:58.578Z DEBUG 5016 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@798d8247
+2024-12-10T23:33:58.579Z DEBUG 5016 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@71f86562
+2024-12-10T23:33:58.580Z DEBUG 5016 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-12-10T23:33:58.582Z  INFO 5016 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2024-12-10T23:33:58.595Z DEBUG 5016 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:33:58.638Z DEBUG 5016 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:33:58.755Z DEBUG 5016 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:33:58.761Z DEBUG 5016 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:33:58.783Z DEBUG 5016 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/login?error=Session%20expired", parameters={masked}
+2024-12-10T23:33:58.787Z DEBUG 5016 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-10T23:33:58.837Z DEBUG 5016 --- [upt] [http-nio-8080-exec-3] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:33:59.434Z DEBUG 5016 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:34:03.388Z DEBUG 5016 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-10T23:34:03.392Z DEBUG 5016 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-10T23:34:03.635Z DEBUG 5016 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:34:03.636Z DEBUG 5016 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:34:03.642Z DEBUG 5016 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:34:03.643Z DEBUG 5016 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:34:03.681Z DEBUG 5016 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:34:03.732Z DEBUG 5016 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:34:07.365Z DEBUG 5016 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-10T23:34:07.366Z DEBUG 5016 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-10T23:34:07.380Z DEBUG 5016 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:34:07.381Z DEBUG 5016 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:34:07.389Z DEBUG 5016 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/login?error=Invalid%20credentials", parameters={masked}
+2024-12-10T23:34:07.390Z DEBUG 5016 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-10T23:34:07.394Z DEBUG 5016 --- [upt] [http-nio-8080-exec-7] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:34:07.398Z DEBUG 5016 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:34:10.383Z DEBUG 5016 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-10T23:34:10.384Z DEBUG 5016 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-10T23:34:10.396Z DEBUG 5016 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:34:10.396Z DEBUG 5016 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:34:10.402Z DEBUG 5016 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/login?error=Invalid%20credentials", parameters={masked}
+2024-12-10T23:34:10.403Z DEBUG 5016 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-10T23:34:10.405Z DEBUG 5016 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:34:10.407Z DEBUG 5016 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:34:16.341Z DEBUG 5016 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-10T23:34:16.341Z DEBUG 5016 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-10T23:34:16.355Z DEBUG 5016 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:34:16.356Z DEBUG 5016 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:34:16.362Z DEBUG 5016 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/director", parameters={}
+2024-12-10T23:34:16.363Z DEBUG 5016 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#listDirectors(HttpSession, Model)
+2024-12-10T23:34:16.391Z DEBUG 5016 --- [upt] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:34:16.436Z DEBUG 5016 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:34:18.596Z DEBUG 5016 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/logout", parameters={}
+2024-12-10T23:34:18.598Z DEBUG 5016 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#logout(HttpSession)
+2024-12-10T23:34:18.600Z DEBUG 5016 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:34:18.602Z DEBUG 5016 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:34:18.608Z DEBUG 5016 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-12-10T23:34:18.609Z DEBUG 5016 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-10T23:34:18.612Z DEBUG 5016 --- [upt] [http-nio-8080-exec-3] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:34:18.623Z DEBUG 5016 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:34:20.982Z DEBUG 5016 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-10T23:34:20.983Z DEBUG 5016 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-10T23:34:21.006Z DEBUG 5016 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:34:21.008Z DEBUG 5016 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:34:21.017Z DEBUG 5016 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:34:21.019Z DEBUG 5016 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:34:21.029Z DEBUG 5016 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:34:21.034Z DEBUG 5016 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:34:23.943Z DEBUG 5016 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/create-uc", parameters={}
+2024-12-10T23:34:23.944Z DEBUG 5016 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#createUC()
+2024-12-10T23:34:23.946Z DEBUG 5016 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:34:23.952Z DEBUG 5016 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:34:42.837Z DEBUG 5016 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/create-uc", parameters={masked}
+2024-12-10T23:34:42.839Z DEBUG 5016 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#createCurricularUnit(String, Integer, String, Boolean, Integer, Integer, Integer, Long, HttpSession)
+2024-12-10T23:34:42.849Z DEBUG 5016 --- [upt] [http-nio-8080-exec-7] o.s.web.method.HandlerMethod             : Could not resolve parameter [7] in public java.lang.String com.upt.upt.controller.CurricularUnitController.createCurricularUnit(java.lang.String,java.lang.Integer,java.lang.String,java.lang.Boolean,java.lang.Integer,java.lang.Integer,java.lang.Integer,java.lang.Long,jakarta.servlet.http.HttpSession): Method parameter 'semesterId': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "firstSemesterId"
+2024-12-10T23:34:42.854Z  WARN 5016 --- [upt] [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'semesterId': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "firstSemesterId"]
+2024-12-10T23:34:42.857Z DEBUG 5016 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2024-12-10T23:34:42.879Z DEBUG 5016 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for POST "/error", parameters={masked}
+2024-12-10T23:34:42.886Z DEBUG 5016 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2024-12-10T23:34:42.934Z DEBUG 5016 --- [upt] [http-nio-8080-exec-7] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2024-12-10T23:34:42.950Z DEBUG 5016 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 400
+2024-12-10T23:35:42.535Z  INFO 8540 --- [upt] [main] com.upt.upt.UptWebApplication            : Starting UptWebApplication using Java 21.0.5 with PID 8540 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\build\classes\java\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-10T23:35:42.540Z DEBUG 8540 --- [upt] [main] com.upt.upt.UptWebApplication            : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-10T23:35:42.545Z  INFO 8540 --- [upt] [main] com.upt.upt.UptWebApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-12-10T23:35:43.590Z  INFO 8540 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-10T23:35:43.807Z  INFO 8540 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 206 ms. Found 9 JPA repository interfaces.
+2024-12-10T23:35:45.057Z  INFO 8540 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-10T23:35:45.086Z  INFO 8540 --- [upt] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-10T23:35:45.088Z  INFO 8540 --- [upt] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-10T23:35:45.189Z  INFO 8540 --- [upt] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-10T23:35:45.190Z  INFO 8540 --- [upt] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2562 ms
+2024-12-10T23:35:45.405Z  INFO 8540 --- [upt] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-10T23:35:45.498Z  INFO 8540 --- [upt] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-10T23:35:45.570Z  INFO 8540 --- [upt] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-10T23:35:46.018Z  INFO 8540 --- [upt] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-10T23:35:46.069Z  INFO 8540 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-10T23:35:46.483Z  INFO 8540 --- [upt] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@323e026d
+2024-12-10T23:35:46.486Z  INFO 8540 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-10T23:35:46.564Z  WARN 8540 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-10T23:35:46.566Z  WARN 8540 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-10T23:35:48.300Z  INFO 8540 --- [upt] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-10T23:35:48.479Z  INFO 8540 --- [upt] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-10T23:35:49.202Z  WARN 8540 --- [upt] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-10T23:35:49.419Z DEBUG 8540 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 51 mappings in 'requestMappingHandlerMapping'
+2024-12-10T23:35:49.539Z DEBUG 8540 --- [upt] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-10T23:35:49.594Z DEBUG 8540 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-10T23:35:49.656Z DEBUG 8540 --- [upt] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-10T23:35:49.931Z  INFO 8540 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-10T23:35:49.943Z  INFO 8540 --- [upt] [main] com.upt.upt.UptWebApplication            : Started UptWebApplication in 8.036 seconds (process running for 8.586)
+2024-12-10T23:35:52.413Z  INFO 8540 --- [upt] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-10T23:35:52.414Z  INFO 8540 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-10T23:35:52.415Z DEBUG 8540 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-12-10T23:35:52.415Z DEBUG 8540 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-12-10T23:35:52.416Z DEBUG 8540 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-12-10T23:35:52.417Z DEBUG 8540 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@7c6557da
+2024-12-10T23:35:52.419Z DEBUG 8540 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@63df2eb8
+2024-12-10T23:35:52.420Z DEBUG 8540 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-12-10T23:35:52.421Z  INFO 8540 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2024-12-10T23:35:52.435Z DEBUG 8540 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:35:52.462Z DEBUG 8540 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:35:52.520Z DEBUG 8540 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:35:52.523Z DEBUG 8540 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:35:52.531Z DEBUG 8540 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/login?error=Session%20expired", parameters={masked}
+2024-12-10T23:35:52.531Z DEBUG 8540 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-10T23:35:52.557Z DEBUG 8540 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:35:52.861Z DEBUG 8540 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:35:59.413Z DEBUG 8540 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-10T23:35:59.416Z DEBUG 8540 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-10T23:35:59.710Z DEBUG 8540 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:35:59.712Z DEBUG 8540 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:35:59.717Z DEBUG 8540 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:35:59.718Z DEBUG 8540 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:35:59.746Z DEBUG 8540 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:35:59.771Z DEBUG 8540 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:36:10.407Z DEBUG 8540 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/create-uc", parameters={}
+2024-12-10T23:36:10.409Z DEBUG 8540 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#createUC()
+2024-12-10T23:36:10.411Z DEBUG 8540 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:36:10.420Z DEBUG 8540 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:36:17.466Z DEBUG 8540 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/create-uc", parameters={masked}
+2024-12-10T23:36:17.467Z DEBUG 8540 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#createCurricularUnit(String, Integer, String, Boolean, Integer, Integer, Integer, Long, HttpSession)
+2024-12-10T23:36:17.476Z DEBUG 8540 --- [upt] [http-nio-8080-exec-6] o.s.web.method.HandlerMethod             : Could not resolve parameter [7] in public java.lang.String com.upt.upt.controller.CurricularUnitController.createCurricularUnit(java.lang.String,java.lang.Integer,java.lang.String,java.lang.Boolean,java.lang.Integer,java.lang.Integer,java.lang.Integer,java.lang.Long,jakarta.servlet.http.HttpSession): Required request parameter 'semesterId' for method parameter type Long is present but converted to null
+2024-12-10T23:36:17.485Z  WARN 8540 --- [upt] [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'semesterId' for method parameter type Long is present but converted to null]
+2024-12-10T23:36:17.487Z DEBUG 8540 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2024-12-10T23:36:17.497Z DEBUG 8540 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for POST "/error", parameters={masked}
+2024-12-10T23:36:17.499Z DEBUG 8540 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2024-12-10T23:36:17.522Z DEBUG 8540 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2024-12-10T23:36:17.531Z DEBUG 8540 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 400
+2024-12-10T23:37:27.263Z  INFO 3088 --- [upt] [main] com.upt.upt.UptWebApplication            : Starting UptWebApplication using Java 21.0.5 with PID 3088 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\build\classes\java\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-10T23:37:27.268Z DEBUG 3088 --- [upt] [main] com.upt.upt.UptWebApplication            : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-10T23:37:27.270Z  INFO 3088 --- [upt] [main] com.upt.upt.UptWebApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-12-10T23:37:28.622Z  INFO 3088 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-10T23:37:28.737Z  INFO 3088 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 105 ms. Found 9 JPA repository interfaces.
+2024-12-10T23:37:30.539Z  INFO 3088 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-10T23:37:30.590Z  INFO 3088 --- [upt] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-10T23:37:30.594Z  INFO 3088 --- [upt] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-10T23:37:30.739Z  INFO 3088 --- [upt] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-10T23:37:30.741Z  INFO 3088 --- [upt] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3343 ms
+2024-12-10T23:37:31.082Z  INFO 3088 --- [upt] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-10T23:37:31.276Z  INFO 3088 --- [upt] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-10T23:37:31.348Z  INFO 3088 --- [upt] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-10T23:37:31.839Z  INFO 3088 --- [upt] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-10T23:37:31.891Z  INFO 3088 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-10T23:37:32.527Z  INFO 3088 --- [upt] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3f322610
+2024-12-10T23:37:32.532Z  INFO 3088 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-10T23:37:32.607Z  WARN 3088 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-10T23:37:32.610Z  WARN 3088 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-10T23:37:35.111Z  INFO 3088 --- [upt] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-10T23:37:35.287Z  INFO 3088 --- [upt] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-10T23:37:36.197Z  WARN 3088 --- [upt] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-10T23:37:36.376Z DEBUG 3088 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 51 mappings in 'requestMappingHandlerMapping'
+2024-12-10T23:37:36.481Z DEBUG 3088 --- [upt] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-10T23:37:36.525Z DEBUG 3088 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-10T23:37:36.573Z DEBUG 3088 --- [upt] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-10T23:37:36.805Z  INFO 3088 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-10T23:37:36.816Z  INFO 3088 --- [upt] [main] com.upt.upt.UptWebApplication            : Started UptWebApplication in 10.176 seconds (process running for 10.703)
+2024-12-10T23:37:39.705Z  INFO 3088 --- [upt] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-10T23:37:39.707Z  INFO 3088 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-10T23:37:39.708Z DEBUG 3088 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-12-10T23:37:39.709Z DEBUG 3088 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-12-10T23:37:39.711Z DEBUG 3088 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-12-10T23:37:39.715Z DEBUG 3088 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@7c6557da
+2024-12-10T23:37:39.717Z DEBUG 3088 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@6908674b
+2024-12-10T23:37:39.721Z DEBUG 3088 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-12-10T23:37:39.724Z  INFO 3088 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 16 ms
+2024-12-10T23:37:39.746Z DEBUG 3088 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:37:39.790Z DEBUG 3088 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:37:39.839Z DEBUG 3088 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:37:39.841Z DEBUG 3088 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:37:39.849Z DEBUG 3088 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/login?error=Session%20expired", parameters={masked}
+2024-12-10T23:37:39.850Z DEBUG 3088 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-10T23:37:39.868Z DEBUG 3088 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:37:40.166Z DEBUG 3088 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:37:44.806Z DEBUG 3088 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-10T23:37:44.807Z DEBUG 3088 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-10T23:37:45.040Z DEBUG 3088 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:37:45.041Z DEBUG 3088 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:37:45.046Z DEBUG 3088 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:37:45.047Z DEBUG 3088 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:37:45.069Z DEBUG 3088 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:37:45.089Z DEBUG 3088 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:37:46.509Z DEBUG 3088 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/create-uc", parameters={}
+2024-12-10T23:37:46.511Z DEBUG 3088 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#createUC()
+2024-12-10T23:37:46.512Z DEBUG 3088 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:37:46.519Z DEBUG 3088 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:37:55.637Z DEBUG 3088 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/get-semester-id?semester=2", parameters={masked}
+2024-12-10T23:37:55.638Z DEBUG 3088 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#getSemesterId(Integer)
+2024-12-10T23:37:55.668Z DEBUG 3088 --- [upt] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-12-10T23:37:55.669Z DEBUG 3088 --- [upt] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{semesterId=58}]
+2024-12-10T23:37:55.690Z DEBUG 3088 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:38:01.671Z DEBUG 3088 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/create-uc", parameters={masked}
+2024-12-10T23:38:01.676Z DEBUG 3088 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#createCurricularUnit(String, Integer, String, Boolean, Integer, Integer, Integer, Long, HttpSession)
+2024-12-10T23:38:01.811Z DEBUG 3088 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:38:01.813Z DEBUG 3088 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:38:01.821Z DEBUG 3088 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:38:01.822Z DEBUG 3088 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:38:01.829Z DEBUG 3088 --- [upt] [http-nio-8080-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:38:01.858Z DEBUG 3088 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:38:08.664Z DEBUG 3088 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=4", parameters={masked}
+2024-12-10T23:38:08.666Z DEBUG 3088 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#evaluationsUC(Long, Model)
+2024-12-10T23:38:08.680Z DEBUG 3088 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:38:08.686Z DEBUG 3088 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:40:31.795Z  INFO 19392 --- [upt] [main] com.upt.upt.UptWebApplication            : Starting UptWebApplication using Java 21.0.5 with PID 19392 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\build\classes\java\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-10T23:40:31.799Z DEBUG 19392 --- [upt] [main] com.upt.upt.UptWebApplication            : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-10T23:40:31.800Z  INFO 19392 --- [upt] [main] com.upt.upt.UptWebApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-12-10T23:40:32.872Z  INFO 19392 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-10T23:40:32.985Z  INFO 19392 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 102 ms. Found 9 JPA repository interfaces.
+2024-12-10T23:40:33.919Z  INFO 19392 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-10T23:40:33.947Z  INFO 19392 --- [upt] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-10T23:40:33.949Z  INFO 19392 --- [upt] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-10T23:40:34.041Z  INFO 19392 --- [upt] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-10T23:40:34.042Z  INFO 19392 --- [upt] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2157 ms
+2024-12-10T23:40:34.259Z  INFO 19392 --- [upt] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-10T23:40:34.355Z  INFO 19392 --- [upt] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-10T23:40:34.415Z  INFO 19392 --- [upt] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-10T23:40:34.883Z  INFO 19392 --- [upt] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-10T23:40:34.947Z  INFO 19392 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-10T23:40:35.518Z  INFO 19392 --- [upt] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3f322610
+2024-12-10T23:40:35.521Z  INFO 19392 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-10T23:40:35.594Z  WARN 19392 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-10T23:40:35.596Z  WARN 19392 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-10T23:40:37.260Z  INFO 19392 --- [upt] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-10T23:40:37.437Z  INFO 19392 --- [upt] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-10T23:40:38.081Z  WARN 19392 --- [upt] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-10T23:40:38.279Z DEBUG 19392 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 51 mappings in 'requestMappingHandlerMapping'
+2024-12-10T23:40:38.389Z DEBUG 19392 --- [upt] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-10T23:40:38.437Z DEBUG 19392 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-10T23:40:38.486Z DEBUG 19392 --- [upt] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-10T23:40:38.663Z  INFO 19392 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-10T23:40:38.673Z  INFO 19392 --- [upt] [main] com.upt.upt.UptWebApplication            : Started UptWebApplication in 7.47 seconds (process running for 8.101)
+2024-12-10T23:41:02.255Z  INFO 19392 --- [upt] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-10T23:41:02.256Z  INFO 19392 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-10T23:41:02.257Z DEBUG 19392 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-12-10T23:41:02.257Z DEBUG 19392 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-12-10T23:41:02.258Z DEBUG 19392 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-12-10T23:41:02.259Z DEBUG 19392 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@7c6557da
+2024-12-10T23:41:02.260Z DEBUG 19392 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@6908674b
+2024-12-10T23:41:02.262Z DEBUG 19392 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-12-10T23:41:02.263Z  INFO 19392 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2024-12-10T23:41:02.279Z DEBUG 19392 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:41:02.300Z DEBUG 19392 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:41:02.371Z DEBUG 19392 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:41:02.376Z DEBUG 19392 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:41:02.393Z DEBUG 19392 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/login?error=Session%20expired", parameters={masked}
+2024-12-10T23:41:02.395Z DEBUG 19392 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-10T23:41:02.433Z DEBUG 19392 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:41:02.974Z DEBUG 19392 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:41:05.424Z DEBUG 19392 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-10T23:41:05.425Z DEBUG 19392 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-10T23:41:05.663Z DEBUG 19392 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:41:05.664Z DEBUG 19392 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:41:05.672Z DEBUG 19392 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:41:05.673Z DEBUG 19392 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:41:05.755Z DEBUG 19392 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:41:05.880Z DEBUG 19392 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:41:07.793Z DEBUG 19392 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=4", parameters={masked}
+2024-12-10T23:41:07.795Z DEBUG 19392 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#evaluationsUC(Long, Model)
+2024-12-10T23:41:07.808Z DEBUG 19392 --- [upt] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:41:07.815Z DEBUG 19392 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:41:09.744Z DEBUG 19392 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_create_evaluation?curricularUnitId=4", parameters={masked}
+2024-12-10T23:41:09.746Z DEBUG 19392 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#createEvaluationPage(Long, Model)
+2024-12-10T23:41:09.753Z DEBUG 19392 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:41:09.760Z DEBUG 19392 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:41:22.956Z DEBUG 19392 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_addEvaluation", parameters={masked}
+2024-12-10T23:41:22.959Z DEBUG 19392 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#saveEvaluation(Long, String, Integer, String, Boolean, Boolean, String, String, String, Double)
+2024-12-10T23:41:23.146Z DEBUG 19392 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:41:23.147Z DEBUG 19392 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:41:23.156Z DEBUG 19392 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=4", parameters={masked}
+2024-12-10T23:41:23.158Z DEBUG 19392 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#evaluationsUC(Long, Model)
+2024-12-10T23:41:23.174Z DEBUG 19392 --- [upt] [http-nio-8080-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:41:23.187Z DEBUG 19392 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:41:37.137Z DEBUG 19392 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:41:37.140Z DEBUG 19392 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:41:37.147Z DEBUG 19392 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:41:37.158Z DEBUG 19392 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:47:43.707Z  INFO 33028 --- [upt] [main] com.upt.upt.UptWebApplication            : Starting UptWebApplication using Java 21.0.5 with PID 33028 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\build\classes\java\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-10T23:47:43.710Z DEBUG 33028 --- [upt] [main] com.upt.upt.UptWebApplication            : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-10T23:47:43.711Z  INFO 33028 --- [upt] [main] com.upt.upt.UptWebApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-12-10T23:47:45.070Z  INFO 33028 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-10T23:47:45.191Z  INFO 33028 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 109 ms. Found 9 JPA repository interfaces.
+2024-12-10T23:47:46.494Z  INFO 33028 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-10T23:47:46.519Z  INFO 33028 --- [upt] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-10T23:47:46.520Z  INFO 33028 --- [upt] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-10T23:47:46.624Z  INFO 33028 --- [upt] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-10T23:47:46.625Z  INFO 33028 --- [upt] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2826 ms
+2024-12-10T23:47:46.840Z  INFO 33028 --- [upt] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-10T23:47:46.942Z  INFO 33028 --- [upt] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-10T23:47:47.006Z  INFO 33028 --- [upt] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-10T23:47:47.419Z  INFO 33028 --- [upt] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-10T23:47:47.470Z  INFO 33028 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-10T23:47:47.920Z  INFO 33028 --- [upt] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1716c037
+2024-12-10T23:47:47.924Z  INFO 33028 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-10T23:47:48.006Z  WARN 33028 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-10T23:47:48.008Z  WARN 33028 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-10T23:47:49.973Z  INFO 33028 --- [upt] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-10T23:47:50.159Z  INFO 33028 --- [upt] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-10T23:47:50.985Z  WARN 33028 --- [upt] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-10T23:47:51.214Z DEBUG 33028 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 52 mappings in 'requestMappingHandlerMapping'
+2024-12-10T23:47:51.391Z DEBUG 33028 --- [upt] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-10T23:47:51.455Z DEBUG 33028 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-10T23:47:51.524Z DEBUG 33028 --- [upt] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-10T23:47:51.995Z  INFO 33028 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-10T23:47:52.032Z  INFO 33028 --- [upt] [main] com.upt.upt.UptWebApplication            : Started UptWebApplication in 9.02 seconds (process running for 9.525)
+2024-12-10T23:47:55.315Z  INFO 33028 --- [upt] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-10T23:47:55.316Z  INFO 33028 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-10T23:47:55.318Z DEBUG 33028 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-12-10T23:47:55.319Z DEBUG 33028 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-12-10T23:47:55.320Z DEBUG 33028 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-12-10T23:47:55.322Z DEBUG 33028 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@1e387974
+2024-12-10T23:47:55.327Z DEBUG 33028 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@5e572b08
+2024-12-10T23:47:55.328Z DEBUG 33028 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-12-10T23:47:55.331Z  INFO 33028 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 14 ms
+2024-12-10T23:47:55.385Z DEBUG 33028 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:47:55.411Z DEBUG 33028 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:47:55.631Z DEBUG 33028 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:47:55.647Z DEBUG 33028 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:47:55.777Z DEBUG 33028 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/login?error=Session%20expired", parameters={masked}
+2024-12-10T23:47:55.778Z DEBUG 33028 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-10T23:47:55.846Z DEBUG 33028 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:47:56.585Z DEBUG 33028 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:47:59.635Z DEBUG 33028 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-10T23:47:59.636Z DEBUG 33028 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-10T23:47:59.891Z DEBUG 33028 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:47:59.892Z DEBUG 33028 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:47:59.898Z DEBUG 33028 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:47:59.898Z DEBUG 33028 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:47:59.928Z DEBUG 33028 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:47:59.973Z DEBUG 33028 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:48:02.789Z DEBUG 33028 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/map", parameters={}
+2024-12-10T23:48:02.791Z DEBUG 33028 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#showAssessmentMap(Model)
+2024-12-10T23:48:02.815Z DEBUG 33028 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:48:02.832Z ERROR 33028 --- [upt] [http-nio-8080-exec-5] org.thymeleaf.TemplateEngine             : [THYMELEAF][http-nio-8080-exec-5] Exception processing template "coordinator_map": Exception evaluating SpringEL expression: "#dates.format(assessment.startTime, 'yyyy-MM-dd HH:mm')" (template: "coordinator_map" - line 49, col 33)
+
+org.thymeleaf.exceptions.TemplateProcessingException: Exception evaluating SpringEL expression: "#dates.format(assessment.startTime, 'yyyy-MM-dd HH:mm')" (template: "coordinator_map" - line 49, col 33)
+	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:292) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardExpressionAttributeTagProcessor.doProcess(AbstractStandardExpressionAttributeTagProcessor.java:144) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.OpenElementTag.beHandled(OpenElementTag.java:205) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.Model.process(Model.java:282) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.Model.process(Model.java:290) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.IteratedGatheringModelProcessable.processIterationModel(IteratedGatheringModelProcessable.java:368) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.IteratedGatheringModelProcessable.process(IteratedGatheringModelProcessable.java:222) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleCloseElement(ProcessorTemplateHandler.java:1640) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.CloseElementTag.beHandled(CloseElementTag.java:139) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateModel.process(TemplateModel.java:136) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:661) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1432) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1168) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.31.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.31.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1004E: Method call: Method format(java.time.LocalDateTime,java.lang.String) cannot be found on type org.thymeleaf.expression.Dates
+	at org.springframework.expression.spel.ast.MethodReference.findAccessorForMethod(MethodReference.java:238) ~[spring-expression-6.1.14.jar:6.1.14]
+	at org.springframework.expression.spel.ast.MethodReference.getValueInternal(MethodReference.java:148) ~[spring-expression-6.1.14.jar:6.1.14]
+	at org.springframework.expression.spel.ast.MethodReference$MethodValueRef.getValue(MethodReference.java:401) ~[spring-expression-6.1.14.jar:6.1.14]
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:97) ~[spring-expression-6.1.14.jar:6.1.14]
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:114) ~[spring-expression-6.1.14.jar:6.1.14]
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:338) ~[spring-expression-6.1.14.jar:6.1.14]
+	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:265) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	... 64 common frames omitted
+
+2024-12-10T23:48:02.857Z DEBUG 33028 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Error rendering view [org.thymeleaf.spring6.view.ThymeleafView@73c3caee]
+
+org.thymeleaf.exceptions.TemplateProcessingException: Exception evaluating SpringEL expression: "#dates.format(assessment.startTime, 'yyyy-MM-dd HH:mm')" (template: "coordinator_map" - line 49, col 33)
+	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:292) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardExpressionAttributeTagProcessor.doProcess(AbstractStandardExpressionAttributeTagProcessor.java:144) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.OpenElementTag.beHandled(OpenElementTag.java:205) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.Model.process(Model.java:282) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.Model.process(Model.java:290) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.IteratedGatheringModelProcessable.processIterationModel(IteratedGatheringModelProcessable.java:368) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.IteratedGatheringModelProcessable.process(IteratedGatheringModelProcessable.java:222) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleCloseElement(ProcessorTemplateHandler.java:1640) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.CloseElementTag.beHandled(CloseElementTag.java:139) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateModel.process(TemplateModel.java:136) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:661) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1432) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1168) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.31.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.31.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1004E: Method call: Method format(java.time.LocalDateTime,java.lang.String) cannot be found on type org.thymeleaf.expression.Dates
+	at org.springframework.expression.spel.ast.MethodReference.findAccessorForMethod(MethodReference.java:238) ~[spring-expression-6.1.14.jar:6.1.14]
+	at org.springframework.expression.spel.ast.MethodReference.getValueInternal(MethodReference.java:148) ~[spring-expression-6.1.14.jar:6.1.14]
+	at org.springframework.expression.spel.ast.MethodReference$MethodValueRef.getValue(MethodReference.java:401) ~[spring-expression-6.1.14.jar:6.1.14]
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:97) ~[spring-expression-6.1.14.jar:6.1.14]
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:114) ~[spring-expression-6.1.14.jar:6.1.14]
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:338) ~[spring-expression-6.1.14.jar:6.1.14]
+	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:265) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	... 64 common frames omitted
+
+2024-12-10T23:48:02.871Z DEBUG 33028 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Failed to complete request: org.thymeleaf.exceptions.TemplateProcessingException: Exception evaluating SpringEL expression: "#dates.format(assessment.startTime, 'yyyy-MM-dd HH:mm')" (template: "coordinator_map" - line 49, col 33)
+2024-12-10T23:48:02.873Z ERROR 33028 --- [upt] [http-nio-8080-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.thymeleaf.exceptions.TemplateProcessingException: Exception evaluating SpringEL expression: "#dates.format(assessment.startTime, 'yyyy-MM-dd HH:mm')" (template: "coordinator_map" - line 49, col 33)] with root cause
+
+org.springframework.expression.spel.SpelEvaluationException: EL1004E: Method call: Method format(java.time.LocalDateTime,java.lang.String) cannot be found on type org.thymeleaf.expression.Dates
+	at org.springframework.expression.spel.ast.MethodReference.findAccessorForMethod(MethodReference.java:238) ~[spring-expression-6.1.14.jar:6.1.14]
+	at org.springframework.expression.spel.ast.MethodReference.getValueInternal(MethodReference.java:148) ~[spring-expression-6.1.14.jar:6.1.14]
+	at org.springframework.expression.spel.ast.MethodReference$MethodValueRef.getValue(MethodReference.java:401) ~[spring-expression-6.1.14.jar:6.1.14]
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:97) ~[spring-expression-6.1.14.jar:6.1.14]
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:114) ~[spring-expression-6.1.14.jar:6.1.14]
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:338) ~[spring-expression-6.1.14.jar:6.1.14]
+	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:265) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardExpressionAttributeTagProcessor.doProcess(AbstractStandardExpressionAttributeTagProcessor.java:144) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.OpenElementTag.beHandled(OpenElementTag.java:205) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.Model.process(Model.java:282) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.Model.process(Model.java:290) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.IteratedGatheringModelProcessable.processIterationModel(IteratedGatheringModelProcessable.java:368) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.IteratedGatheringModelProcessable.process(IteratedGatheringModelProcessable.java:222) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleCloseElement(ProcessorTemplateHandler.java:1640) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.CloseElementTag.beHandled(CloseElementTag.java:139) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateModel.process(TemplateModel.java:136) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:661) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1432) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1168) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.31.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.31.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-12-10T23:48:02.895Z DEBUG 33028 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-12-10T23:48:02.906Z DEBUG 33028 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2024-12-10T23:48:02.940Z DEBUG 33028 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2024-12-10T23:48:02.947Z DEBUG 33028 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 500
+2024-12-10T23:49:26.331Z  INFO 27000 --- [upt] [main] com.upt.upt.UptWebApplication            : Starting UptWebApplication using Java 21.0.5 with PID 27000 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\build\classes\java\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-10T23:49:26.333Z DEBUG 27000 --- [upt] [main] com.upt.upt.UptWebApplication            : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-10T23:49:26.334Z  INFO 27000 --- [upt] [main] com.upt.upt.UptWebApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-12-10T23:49:27.818Z  INFO 27000 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-10T23:49:27.945Z  INFO 27000 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 112 ms. Found 9 JPA repository interfaces.
+2024-12-10T23:49:29.290Z  INFO 27000 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-10T23:49:29.322Z  INFO 27000 --- [upt] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-10T23:49:29.323Z  INFO 27000 --- [upt] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-10T23:49:29.461Z  INFO 27000 --- [upt] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-10T23:49:29.462Z  INFO 27000 --- [upt] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3053 ms
+2024-12-10T23:49:30.039Z  INFO 27000 --- [upt] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-10T23:49:30.277Z  INFO 27000 --- [upt] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-10T23:49:30.344Z  INFO 27000 --- [upt] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-10T23:49:31.013Z  INFO 27000 --- [upt] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-10T23:49:31.111Z  INFO 27000 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-10T23:49:31.743Z  INFO 27000 --- [upt] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1716c037
+2024-12-10T23:49:31.746Z  INFO 27000 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-10T23:49:31.811Z  WARN 27000 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-10T23:49:31.814Z  WARN 27000 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-10T23:49:33.835Z  INFO 27000 --- [upt] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-10T23:49:33.984Z  INFO 27000 --- [upt] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-10T23:49:35.068Z  WARN 27000 --- [upt] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-10T23:49:35.751Z DEBUG 27000 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 52 mappings in 'requestMappingHandlerMapping'
+2024-12-10T23:49:36.071Z DEBUG 27000 --- [upt] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-10T23:49:36.164Z DEBUG 27000 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-10T23:49:36.295Z DEBUG 27000 --- [upt] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-10T23:49:36.576Z  INFO 27000 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-10T23:49:36.626Z  INFO 27000 --- [upt] [main] com.upt.upt.UptWebApplication            : Started UptWebApplication in 11.248 seconds (process running for 11.9)
+2024-12-10T23:49:37.568Z  INFO 27000 --- [upt] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-10T23:49:37.569Z  INFO 27000 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-10T23:49:37.570Z DEBUG 27000 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-12-10T23:49:37.570Z DEBUG 27000 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-12-10T23:49:37.572Z DEBUG 27000 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-12-10T23:49:37.573Z DEBUG 27000 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@1e387974
+2024-12-10T23:49:37.575Z DEBUG 27000 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@5e572b08
+2024-12-10T23:49:37.576Z DEBUG 27000 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-12-10T23:49:37.577Z  INFO 27000 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2024-12-10T23:49:37.591Z DEBUG 27000 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-10T23:49:37.613Z DEBUG 27000 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-10T23:49:38.070Z DEBUG 27000 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:49:38.074Z DEBUG 27000 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:49:38.084Z DEBUG 27000 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:49:38.086Z DEBUG 27000 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:49:38.130Z DEBUG 27000 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:49:38.631Z DEBUG 27000 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:49:40.765Z DEBUG 27000 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/map", parameters={}
+2024-12-10T23:49:40.766Z DEBUG 27000 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#showAssessmentMap(Model)
+2024-12-10T23:49:40.789Z DEBUG 27000 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:49:40.812Z DEBUG 27000 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:49:40.836Z DEBUG 27000 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_map.css?v=0", parameters={masked}
+2024-12-10T23:49:40.841Z DEBUG 27000 --- [upt] [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-10T23:49:40.853Z DEBUG 27000 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:53:06.382Z  INFO 33328 --- [upt] [main] com.upt.upt.UptWebApplication            : Starting UptWebApplication using Java 21.0.5 with PID 33328 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\build\classes\java\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-10T23:53:06.386Z DEBUG 33328 --- [upt] [main] com.upt.upt.UptWebApplication            : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-10T23:53:06.389Z  INFO 33328 --- [upt] [main] com.upt.upt.UptWebApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-12-10T23:53:08.167Z  INFO 33328 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-10T23:53:08.414Z  INFO 33328 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 216 ms. Found 9 JPA repository interfaces.
+2024-12-10T23:53:10.271Z  INFO 33328 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-10T23:53:10.318Z  INFO 33328 --- [upt] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-10T23:53:10.321Z  INFO 33328 --- [upt] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-10T23:53:10.522Z  INFO 33328 --- [upt] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-10T23:53:10.524Z  INFO 33328 --- [upt] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3989 ms
+2024-12-10T23:53:11.132Z  INFO 33328 --- [upt] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-10T23:53:11.263Z  INFO 33328 --- [upt] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-10T23:53:11.348Z  INFO 33328 --- [upt] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-10T23:53:11.998Z  INFO 33328 --- [upt] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-10T23:53:12.100Z  INFO 33328 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-10T23:53:12.786Z  INFO 33328 --- [upt] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1716c037
+2024-12-10T23:53:12.790Z  INFO 33328 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-10T23:53:12.870Z  WARN 33328 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-10T23:53:12.872Z  WARN 33328 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-10T23:53:15.480Z  INFO 33328 --- [upt] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-10T23:53:15.653Z  INFO 33328 --- [upt] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-10T23:53:16.628Z  WARN 33328 --- [upt] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-10T23:53:16.850Z DEBUG 33328 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 52 mappings in 'requestMappingHandlerMapping'
+2024-12-10T23:53:16.992Z DEBUG 33328 --- [upt] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-10T23:53:17.060Z DEBUG 33328 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-10T23:53:17.157Z DEBUG 33328 --- [upt] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-10T23:53:17.381Z  INFO 33328 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-10T23:53:17.423Z  INFO 33328 --- [upt] [main] com.upt.upt.UptWebApplication            : Started UptWebApplication in 11.826 seconds (process running for 12.554)
+2024-12-10T23:53:23.361Z  INFO 33328 --- [upt] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-10T23:53:23.366Z  INFO 33328 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-10T23:53:23.369Z DEBUG 33328 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-12-10T23:53:23.370Z DEBUG 33328 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-12-10T23:53:23.372Z DEBUG 33328 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-12-10T23:53:23.375Z DEBUG 33328 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@642b2176
+2024-12-10T23:53:23.382Z DEBUG 33328 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@3f910f36
+2024-12-10T23:53:23.385Z DEBUG 33328 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-12-10T23:53:23.387Z  INFO 33328 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 19 ms
+2024-12-10T23:53:23.414Z DEBUG 33328 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:53:23.454Z DEBUG 33328 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:53:23.531Z DEBUG 33328 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:53:23.533Z DEBUG 33328 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:53:23.540Z DEBUG 33328 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/login?error=Session%20expired", parameters={masked}
+2024-12-10T23:53:23.542Z DEBUG 33328 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-10T23:53:23.562Z DEBUG 33328 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:53:23.919Z DEBUG 33328 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:53:26.375Z DEBUG 33328 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-10T23:53:26.376Z DEBUG 33328 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-10T23:53:26.633Z DEBUG 33328 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:53:26.634Z DEBUG 33328 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:53:26.640Z DEBUG 33328 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:53:26.641Z DEBUG 33328 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:53:26.668Z DEBUG 33328 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:53:26.718Z DEBUG 33328 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:53:29.336Z DEBUG 33328 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/map", parameters={}
+2024-12-10T23:53:29.337Z DEBUG 33328 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#showAssessmentMap(Model, HttpSession)
+2024-12-10T23:53:29.350Z DEBUG 33328 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:53:29.367Z DEBUG 33328 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:53:29.393Z DEBUG 33328 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_map.css?v=0", parameters={masked}
+2024-12-10T23:53:29.399Z DEBUG 33328 --- [upt] [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-10T23:53:29.404Z DEBUG 33328 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-10T23:53:33.983Z DEBUG 33328 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/logout", parameters={}
+2024-12-10T23:53:33.985Z DEBUG 33328 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#logout(HttpSession)
+2024-12-10T23:53:33.987Z DEBUG 33328 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:53:33.988Z DEBUG 33328 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:53:33.994Z DEBUG 33328 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-12-10T23:53:33.995Z DEBUG 33328 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-10T23:53:33.997Z DEBUG 33328 --- [upt] [http-nio-8080-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:53:34.000Z DEBUG 33328 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:53:39.002Z DEBUG 33328 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-10T23:53:39.004Z DEBUG 33328 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-10T23:53:39.019Z DEBUG 33328 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:53:39.020Z DEBUG 33328 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:53:39.026Z DEBUG 33328 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:53:39.027Z DEBUG 33328 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:53:39.034Z DEBUG 33328 --- [upt] [http-nio-8080-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:53:39.041Z DEBUG 33328 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:53:45.560Z DEBUG 33328 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/map", parameters={}
+2024-12-10T23:53:45.561Z DEBUG 33328 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#showAssessmentMap(Model, HttpSession)
+2024-12-10T23:53:45.572Z DEBUG 33328 --- [upt] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:53:45.578Z DEBUG 33328 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:53:48.097Z DEBUG 33328 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:53:48.098Z DEBUG 33328 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:53:48.106Z DEBUG 33328 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:53:48.112Z DEBUG 33328 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:54:00.279Z DEBUG 33328 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/map", parameters={}
+2024-12-10T23:54:00.280Z DEBUG 33328 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#showAssessmentMap(Model, HttpSession)
+2024-12-10T23:54:00.290Z DEBUG 33328 --- [upt] [http-nio-8080-exec-3] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:54:00.296Z DEBUG 33328 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:54:00.330Z DEBUG 33328 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_map.css?v=0", parameters={masked}
+2024-12-10T23:54:00.334Z DEBUG 33328 --- [upt] [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-10T23:54:00.338Z DEBUG 33328 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-10T23:54:05.165Z DEBUG 33328 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:54:05.167Z DEBUG 33328 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:54:05.173Z DEBUG 33328 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:54:05.178Z DEBUG 33328 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:54:10.243Z DEBUG 33328 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=4", parameters={masked}
+2024-12-10T23:54:10.245Z DEBUG 33328 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#evaluationsUC(Long, Model)
+2024-12-10T23:54:10.263Z DEBUG 33328 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:54:10.276Z DEBUG 33328 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:54:15.869Z DEBUG 33328 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_create_evaluation?curricularUnitId=4", parameters={masked}
+2024-12-10T23:54:15.871Z DEBUG 33328 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#createEvaluationPage(Long, Model)
+2024-12-10T23:54:15.878Z DEBUG 33328 --- [upt] [http-nio-8080-exec-7] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:54:15.885Z DEBUG 33328 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:54:36.754Z DEBUG 33328 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_addEvaluation", parameters={masked}
+2024-12-10T23:54:36.756Z DEBUG 33328 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#saveEvaluation(Long, String, Integer, String, Boolean, Boolean, String, String, String, Double)
+2024-12-10T23:54:36.966Z DEBUG 33328 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:54:36.968Z DEBUG 33328 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:54:36.982Z DEBUG 33328 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=4", parameters={masked}
+2024-12-10T23:54:36.987Z DEBUG 33328 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#evaluationsUC(Long, Model)
+2024-12-10T23:54:37.030Z DEBUG 33328 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:54:37.042Z DEBUG 33328 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:54:42.557Z DEBUG 33328 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:54:42.559Z DEBUG 33328 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:54:42.566Z DEBUG 33328 --- [upt] [http-nio-8080-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:54:42.571Z DEBUG 33328 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:54:44.622Z DEBUG 33328 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/map", parameters={}
+2024-12-10T23:54:44.625Z DEBUG 33328 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#showAssessmentMap(Model, HttpSession)
+2024-12-10T23:54:44.634Z DEBUG 33328 --- [upt] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:54:44.640Z DEBUG 33328 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:54:44.670Z DEBUG 33328 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_map.css?v=0", parameters={masked}
+2024-12-10T23:54:44.672Z DEBUG 33328 --- [upt] [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-10T23:54:44.678Z DEBUG 33328 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-10T23:57:08.944Z  INFO 31852 --- [upt] [main] com.upt.upt.UptWebApplication            : Starting UptWebApplication using Java 21.0.5 with PID 31852 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\build\classes\java\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-10T23:57:08.947Z DEBUG 31852 --- [upt] [main] com.upt.upt.UptWebApplication            : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-10T23:57:08.948Z  INFO 31852 --- [upt] [main] com.upt.upt.UptWebApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-12-10T23:57:09.979Z  INFO 31852 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-10T23:57:10.092Z  INFO 31852 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 101 ms. Found 9 JPA repository interfaces.
+2024-12-10T23:57:11.132Z  INFO 31852 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-10T23:57:11.158Z  INFO 31852 --- [upt] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-10T23:57:11.159Z  INFO 31852 --- [upt] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-10T23:57:11.254Z  INFO 31852 --- [upt] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-10T23:57:11.255Z  INFO 31852 --- [upt] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2232 ms
+2024-12-10T23:57:11.529Z  INFO 31852 --- [upt] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-10T23:57:11.658Z  INFO 31852 --- [upt] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-10T23:57:11.734Z  INFO 31852 --- [upt] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-10T23:57:12.203Z  INFO 31852 --- [upt] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-10T23:57:12.252Z  INFO 31852 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-10T23:57:12.675Z  INFO 31852 --- [upt] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5bb97fe7
+2024-12-10T23:57:12.678Z  INFO 31852 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-10T23:57:12.747Z  WARN 31852 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-10T23:57:12.749Z  WARN 31852 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-10T23:57:14.845Z  INFO 31852 --- [upt] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-10T23:57:15.028Z  INFO 31852 --- [upt] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-10T23:57:15.712Z  WARN 31852 --- [upt] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-10T23:57:15.901Z DEBUG 31852 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 52 mappings in 'requestMappingHandlerMapping'
+2024-12-10T23:57:16.008Z DEBUG 31852 --- [upt] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-10T23:57:16.056Z DEBUG 31852 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-10T23:57:16.108Z DEBUG 31852 --- [upt] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-10T23:57:16.312Z  INFO 31852 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-10T23:57:16.326Z  INFO 31852 --- [upt] [main] com.upt.upt.UptWebApplication            : Started UptWebApplication in 8.024 seconds (process running for 8.534)
+2024-12-10T23:57:28.004Z  INFO 31852 --- [upt] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-10T23:57:28.004Z  INFO 31852 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-10T23:57:28.005Z DEBUG 31852 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-12-10T23:57:28.006Z DEBUG 31852 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-12-10T23:57:28.006Z DEBUG 31852 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-12-10T23:57:28.008Z DEBUG 31852 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@66011fbc
+2024-12-10T23:57:28.009Z DEBUG 31852 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@49c72fb7
+2024-12-10T23:57:28.010Z DEBUG 31852 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-12-10T23:57:28.011Z  INFO 31852 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2024-12-10T23:57:28.022Z DEBUG 31852 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/map", parameters={}
+2024-12-10T23:57:28.035Z DEBUG 31852 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#showAssessmentMap(Model, HttpSession)
+2024-12-10T23:57:28.081Z DEBUG 31852 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:57:28.084Z DEBUG 31852 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:57:28.091Z DEBUG 31852 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/login?error=Session%20expired", parameters={masked}
+2024-12-10T23:57:28.092Z DEBUG 31852 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-10T23:57:28.109Z DEBUG 31852 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:57:28.397Z DEBUG 31852 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:57:32.589Z DEBUG 31852 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-10T23:57:32.590Z DEBUG 31852 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-10T23:57:32.884Z DEBUG 31852 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:57:32.890Z DEBUG 31852 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:57:32.900Z DEBUG 31852 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:57:32.901Z DEBUG 31852 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:57:33.028Z DEBUG 31852 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:57:33.106Z DEBUG 31852 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:57:35.265Z DEBUG 31852 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/map", parameters={}
+2024-12-10T23:57:35.267Z DEBUG 31852 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#showAssessmentMap(Model, HttpSession)
+2024-12-10T23:57:35.279Z DEBUG 31852 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:57:35.298Z DEBUG 31852 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:57:35.325Z DEBUG 31852 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_map.css?v=0", parameters={masked}
+2024-12-10T23:57:35.333Z DEBUG 31852 --- [upt] [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-10T23:57:35.351Z DEBUG 31852 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:57:41.151Z DEBUG 31852 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:57:41.152Z DEBUG 31852 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:57:41.158Z DEBUG 31852 --- [upt] [http-nio-8080-exec-7] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:57:41.164Z DEBUG 31852 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:57:42.536Z DEBUG 31852 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=4", parameters={masked}
+2024-12-10T23:57:42.538Z DEBUG 31852 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#evaluationsUC(Long, Model)
+2024-12-10T23:57:42.555Z DEBUG 31852 --- [upt] [http-nio-8080-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:57:42.567Z DEBUG 31852 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:57:48.224Z DEBUG 31852 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:57:48.227Z DEBUG 31852 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:57:48.234Z DEBUG 31852 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:57:48.241Z DEBUG 31852 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:58:00.413Z DEBUG 31852 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=4", parameters={masked}
+2024-12-10T23:58:00.415Z DEBUG 31852 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#evaluationsUC(Long, Model)
+2024-12-10T23:58:00.429Z DEBUG 31852 --- [upt] [http-nio-8080-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:58:00.435Z DEBUG 31852 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:58:02.493Z DEBUG 31852 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:58:02.496Z DEBUG 31852 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:58:02.504Z DEBUG 31852 --- [upt] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:58:02.510Z DEBUG 31852 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:58:03.500Z DEBUG 31852 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/map", parameters={}
+2024-12-10T23:58:03.501Z DEBUG 31852 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#showAssessmentMap(Model, HttpSession)
+2024-12-10T23:58:03.512Z DEBUG 31852 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:58:03.518Z DEBUG 31852 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:58:03.539Z DEBUG 31852 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_map.css?v=0", parameters={masked}
+2024-12-10T23:58:03.542Z DEBUG 31852 --- [upt] [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-10T23:58:03.547Z DEBUG 31852 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-10T23:58:05.188Z DEBUG 31852 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-10T23:58:05.189Z DEBUG 31852 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-10T23:58:05.197Z DEBUG 31852 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:58:05.202Z DEBUG 31852 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:58:06.207Z DEBUG 31852 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/logout", parameters={}
+2024-12-10T23:58:06.208Z DEBUG 31852 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#logout(HttpSession)
+2024-12-10T23:58:06.210Z DEBUG 31852 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:58:06.212Z DEBUG 31852 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:58:06.218Z DEBUG 31852 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-12-10T23:58:06.219Z DEBUG 31852 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-10T23:58:06.221Z DEBUG 31852 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:58:06.226Z DEBUG 31852 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:58:10.993Z DEBUG 31852 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-10T23:58:10.994Z DEBUG 31852 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-10T23:58:11.021Z DEBUG 31852 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-10T23:58:11.023Z DEBUG 31852 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-10T23:58:11.030Z DEBUG 31852 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/director", parameters={}
+2024-12-10T23:58:11.030Z DEBUG 31852 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#listDirectors(HttpSession, Model)
+2024-12-10T23:58:11.055Z DEBUG 31852 --- [upt] [http-nio-8080-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:58:11.094Z DEBUG 31852 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:58:17.506Z DEBUG 31852 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/director/viewSemester/3", parameters={}
+2024-12-10T23:58:17.510Z DEBUG 31852 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#viewSemesters(Long, Model)
+2024-12-10T23:58:17.520Z DEBUG 31852 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:58:17.531Z DEBUG 31852 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-10T23:58:23.901Z DEBUG 31852 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/director", parameters={}
+2024-12-10T23:58:23.902Z DEBUG 31852 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#listDirectors(HttpSession, Model)
+2024-12-10T23:58:23.916Z DEBUG 31852 --- [upt] [http-nio-8080-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-10T23:58:23.924Z DEBUG 31852 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
