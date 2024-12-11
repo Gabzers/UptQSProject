@@ -1,5 +1,6 @@
 package com.upt.upt.controller;
 
+import com.upt.upt.entity.AssessmentUnit;
 import com.upt.upt.entity.CoordinatorUnit;
 import com.upt.upt.entity.DirectorUnit;
 import com.upt.upt.entity.YearUnit;
@@ -32,6 +33,10 @@ public class DirectorUnitController {
 
     @Autowired
     private YearUnitService yearUnitService;
+
+    private boolean noAssessmentsForPeriod(List<AssessmentUnit> assessments, String period) {
+        return assessments.stream().noneMatch(a -> period.equals(a.getExamPeriod()));
+    }
 
     @GetMapping("/director")
     public String listDirectors(HttpSession session, Model model) {
@@ -76,7 +81,11 @@ public class DirectorUnitController {
         Optional<YearUnit> yearUnit = yearUnitService.getYearUnitById(yearId);
         if (yearUnit.isPresent()) {
             SemesterUnit semesterUnit = "1st".equals(semester) ? yearUnit.get().getFirstSemester() : yearUnit.get().getSecondSemester();
+            List<AssessmentUnit> assessments = semesterUnit.getMapUnit().getAssessments();
             model.addAttribute("mapUnit", semesterUnit.getMapUnit());
+            model.addAttribute("noNormalPeriod", noAssessmentsForPeriod(assessments, "Teaching Period") && noAssessmentsForPeriod(assessments, "Exam Period"));
+            model.addAttribute("noResourcePeriod", noAssessmentsForPeriod(assessments, "Resource Period"));
+            model.addAttribute("noSpecialPeriod", noAssessmentsForPeriod(assessments, "Special Period"));
             return "director_viewSemesterMap";
         }
         return "redirect:/director?error=Year not found";
