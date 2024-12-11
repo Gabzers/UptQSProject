@@ -1,12 +1,17 @@
 package com.upt.upt.controller;
 
 import com.upt.upt.entity.AssessmentUnit;
+import com.upt.upt.entity.CoordinatorUnit;
 import com.upt.upt.entity.CurricularUnit;
+import com.upt.upt.entity.DirectorUnit;
 import com.upt.upt.entity.MapUnit;
 import com.upt.upt.entity.SemesterUnit;
+import com.upt.upt.entity.YearUnit;
 import com.upt.upt.service.AssessmentUnitService;
+import com.upt.upt.service.CoordinatorUnitService;
 import com.upt.upt.service.CurricularUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.upt.upt.service.YearUnitService;
 import com.upt.upt.service.SemesterUnitService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import jakarta.servlet.http.HttpSession;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -27,6 +33,11 @@ public class AssessmentUnitController {
     private CurricularUnitService curricularUnitService;
     @Autowired
     private SemesterUnitService semesterUnitService;
+    @Autowired
+    private CoordinatorUnitService coordinatorUnitService;
+
+    @Autowired
+    private YearUnitService yearUnitService;
 
     // Página de avaliações da UC
     // Página de avaliações da UC
@@ -69,6 +80,7 @@ public class AssessmentUnitController {
             @RequestParam("assessmentEndTime") String assessmentEndTime,
             @RequestParam("assessmentRoom") String assessmentRoom,
             @RequestParam("assessmentMinimumGrade") Double assessmentMinimumGrade,
+            @RequestParam("ucEvaluationType") String ucEvaluationType,
             Model model) {
 
         if (assessmentExamPeriod == null || assessmentExamPeriod.isEmpty() || assessmentExamPeriod.equals("Select Exam Period")) {
@@ -97,16 +109,17 @@ public class AssessmentUnitController {
             model.addAttribute("error", "Evaluations already complete.");
             return "coordinator_addEvaluations";
         }
-        if ("Mixed".equals(uc.getEvaluationType()) && !uc.hasExamPeriodEvaluation()) {
-            model.addAttribute("uc", uc);
-            model.addAttribute("error", "For Mixed evaluation type, at least one evaluation must be of type 'Exam Period'.");
-            return "coordinator_addEvaluations";
-        }
 
         int totalWeight = uc.getAssessments().stream().mapToInt(AssessmentUnit::getWeight).sum() + assessmentWeight;
         if (totalWeight > 100) {
             model.addAttribute("uc", uc);
             model.addAttribute("error", "The total weight of all evaluations must not exceed 100%.");
+            return "coordinator_addEvaluations";
+        }
+
+        if ("Mixed".equals(ucEvaluationType) && uc.getAssessments().size() == uc.getEvaluationsCount() - 1 && !uc.hasExamPeriodEvaluation() && !"Exam Period".equals(assessmentExamPeriod)) {
+            model.addAttribute("uc", uc);
+            model.addAttribute("error", "For Mixed evaluation type, at least one evaluation must be of type 'Exam Period'.");
             return "coordinator_addEvaluations";
         }
 
@@ -187,12 +200,25 @@ public class AssessmentUnitController {
         LocalDateTime startTime = LocalDateTime.parse(assessmentStartTime);
         LocalDateTime endTime = LocalDateTime.parse(assessmentEndTime);
 
+        Optional<CurricularUnit> curricularUnit = curricularUnitService.getCurricularUnitById(curricularUnitId);
+        if (!curricularUnit.isPresent()) {
+            return "redirect:/coordinator";
+        }
+
+        CurricularUnit uc = curricularUnit.get();
         Optional<AssessmentUnit> assessmentUnitOptional = assessmentService.findById(id);
         if (!assessmentUnitOptional.isPresent()) {
             return "redirect:/coordinator";
         }
 
         AssessmentUnit assessmentUnit = assessmentUnitOptional.get();
+        int totalWeight = uc.getAssessments().stream().mapToInt(AssessmentUnit::getWeight).sum() - assessmentUnit.getWeight() + assessmentWeight;
+        if (totalWeight > 100) {
+            model.addAttribute("uc", uc);
+            model.addAttribute("assessment", assessmentUnit);
+            model.addAttribute("error", "The total weight of all evaluations must not exceed 100%.");
+            return "coordinator_editEvaluations";
+        }
         assessmentUnit.setType(assessmentType);
         assessmentUnit.setWeight(assessmentWeight);
         assessmentUnit.setExamPeriod(assessmentExamPeriod);
@@ -219,10 +245,26 @@ public class AssessmentUnitController {
     public String showAssessmentMap(Model model, HttpSession session) {
         Long coordinatorId = (Long) session.getAttribute("userId");
         if (coordinatorId != null) {
-            model.addAttribute("assessments", assessmentService.getAssessmentsByCoordinator(coordinatorId));
-            return "coordinator_map";
+            Optional<CoordinatorUnit> coordinatorOpt = coordinatorUnitService.getCoordinatorById(coordinatorId);
+            if (coordinatorOpt.isPresent()) {
+                CoordinatorUnit coordinator = coordinatorOpt.get();
+                DirectorUnit director = coordinator.getDirectorUnit();
+                Optional<YearUnit> mostRecentYearOpt = yearUnitService.getMostRecentYearUnitByDirector(director.getId());
+                if (mostRecentYearOpt.isPresent()) {
+                    YearUnit mostRecentYear = mostRecentYearOpt.get();
+                    List<AssessmentUnit> firstSemesterAssessments = assessmentService.getAssessmentsBySemester(mostRecentYear.getFirstSemester().getId());
+                    List<AssessmentUnit> secondSemesterAssessments = assessmentService.getAssessmentsBySemester(mostRecentYear.getSecondSemester().getId());
+                    model.addAttribute("firstSemesterAssessments", firstSemesterAssessments);
+                    model.addAttribute("secondSemesterAssessments", secondSemesterAssessments);
+                } else {
+                    return "redirect:/login?error=Most recent year not found";
+                }
+            } else {
+                return "redirect:/login?error=Coordinator not found";
+            }
         } else {
             return "redirect:/login?error=Session expired";
         }
+        return "coordinator_map";
     }
 }

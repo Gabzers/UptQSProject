@@ -21,7 +21,7 @@
             <h2>Edit Evaluation</h2>
 
             <!-- Form to edit an existing evaluation -->
-            <form th:action="@{/coordinator/coordinator_editEvaluations/{assessmentId}(assessmentId=${assessment.id})}" method="POST" onsubmit="return validateForm()">
+            <form th:if="${assessment != null}" th:action="@{/coordinator/coordinator_editEvaluations/{assessmentId}(assessmentId=${assessment.id})}" method="POST" onsubmit="return validateForm()">
                 <input type="hidden" name="curricularUnitId" th:value="${uc.id}">
                 <input type="hidden" name="assessmentId" th:value="${assessment.id}" />
 
@@ -51,7 +51,7 @@
                 <!-- Exam Period -->
                 <label for="evaluation-exam-period">Exam Period:</label>
                 <select name="assessmentExamPeriod" id="evaluation-exam-period" required>
-                    <option value="">Select Exam Period</option>
+                    <option value="">None</option>
                     <option value="Teaching Period" th:selected="${assessment.examPeriod == 'Teaching Period'}">Teaching Period</option>
                     <option value="Exam Period" th:selected="${assessment.examPeriod == 'Exam Period'}">Exam Period</option>
                     <option value="Resource Period" th:selected="${assessment.examPeriod == 'Resource Period'}">Resource Period</option>
@@ -92,6 +92,7 @@
 
                 <button type="submit">Update Evaluation</button>
             </form>
+            <p th:if="${error != null}" style="color: red;" th:text="${error}"></p>
         </section>
     </main>
 
