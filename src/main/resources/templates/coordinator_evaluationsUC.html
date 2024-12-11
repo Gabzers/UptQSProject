@@ -77,6 +77,11 @@
             <p th:if="${uc.evaluationType == 'Mixed' && !uc.hasExamPeriodEvaluation()}" style="color: red;">
                 For Mixed evaluation type, at least one evaluation must be of type 'Exam Period'.
             </p>
+            
+            <!-- Message if the total weight of all evaluations does not reach 100% -->
+            <p th:if="${uc.isTotalWeightLessThan100()}" style="color: red;">
+                The total weight of all evaluations must reach 100%.
+            </p>
         </section>
     </main>
 

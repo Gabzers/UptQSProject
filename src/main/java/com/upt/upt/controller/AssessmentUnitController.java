@@ -103,6 +103,13 @@ public class AssessmentUnitController {
             return "coordinator_addEvaluations";
         }
 
+        int totalWeight = uc.getAssessments().stream().mapToInt(AssessmentUnit::getWeight).sum() + assessmentWeight;
+        if (totalWeight > 100) {
+            model.addAttribute("uc", uc);
+            model.addAttribute("error", "The total weight of all evaluations must not exceed 100%.");
+            return "coordinator_addEvaluations";
+        }
+
         // Cria e configura a nova avaliação
         AssessmentUnit assessmentUnit = new AssessmentUnit();
         assessmentUnit.setType(assessmentType);

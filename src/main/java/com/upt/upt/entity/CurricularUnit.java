@@ -168,6 +168,22 @@ public class CurricularUnit {
         return assessments.stream().anyMatch(assessment -> "Exam Period".equals(assessment.getExamPeriod()));
     }
 
+    public boolean isMixedAndMissingExamPeriod() {
+        return "Mixed".equals(this.evaluationType) && !this.hasExamPeriodEvaluation();
+    }
+
+    public boolean isEvaluationsCountMismatch() {
+        return this.evaluationsCount != this.assessments.size();
+    }
+
+    public boolean isTotalWeightInvalid() {
+        return this.assessments.stream().mapToInt(AssessmentUnit::getWeight).sum() != 100;
+    }
+
+    public boolean isTotalWeightLessThan100() {
+        return this.assessments.stream().mapToInt(AssessmentUnit::getWeight).sum() < 100;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
