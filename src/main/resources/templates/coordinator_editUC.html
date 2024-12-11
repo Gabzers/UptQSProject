@@ -35,6 +35,7 @@
                 <!-- Type of UC -->
                 <label for="ucEvaluationType">Type of UC:</label>
                 <select name="ucEvaluationType" id="ucEvaluationType" required onchange="updateEvaluationTypeAndMin(this.value)">
+                    <option value="" disabled>None Selected</option>
                     <option value="Continuous" th:selected="${uc.evaluationType == 'Continuous'}">Continuous</option>
                     <option value="Mixed" th:selected="${uc.evaluationType == 'Mixed'}">Mixed</option>
                 </select>
