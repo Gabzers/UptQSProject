@@ -73,7 +73,7 @@ public class RoomUnitController {
             newRoom.setBuilding(building);
 
             roomUnitService.createRoom(newRoom);  // Método correto de salvar
-            return "redirect:master_index"; // Redirect to the list of rooms
+            return "redirect:/master"; // Redirect to the list of rooms
         } catch (IllegalArgumentException e) {
             model.addAttribute("error", "Incomplete information");
             return "master_addRoom";  // Return to the create room page with error
@@ -128,7 +128,7 @@ public class RoomUnitController {
             updatedRoom.setBuilding(building);
 
             roomUnitService.updateRoom(id, updatedRoom);
-            return "redirect:/master_index"; // Redirect to the list of rooms
+            return "redirect:/master"; // Redirect to the list of rooms
         } catch (IllegalArgumentException e) {
             model.addAttribute("error", "Incomplete information");
             return "master_editRoom";  // Return to the edit room page with error

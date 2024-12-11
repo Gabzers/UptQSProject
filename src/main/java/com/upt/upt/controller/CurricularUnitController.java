@@ -17,9 +17,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 import org.springframework.http.ResponseEntity;
+
+import java.util.List;
 import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/coordinator")
@@ -45,7 +48,16 @@ public class CurricularUnitController {
             Optional<CoordinatorUnit> coordinatorOpt = coordinatorUnitService.getCoordinatorById(coordinatorId);
             if (coordinatorOpt.isPresent()) {
                 CoordinatorUnit coordinator = coordinatorOpt.get();
-                model.addAttribute("curricularUnits", coordinator.getCurricularUnits());
+                Optional<YearUnit> mostRecentYearOpt = yearUnitService.getMostRecentYearUnit();
+                if (mostRecentYearOpt.isPresent()) {
+                    YearUnit mostRecentYear = mostRecentYearOpt.get();
+                    List<CurricularUnit> filteredUnits = coordinator.getCurricularUnits().stream()
+                            .filter(uc -> isUCInMostRecentYear(uc, mostRecentYear))
+                            .collect(Collectors.toList());
+                    model.addAttribute("curricularUnits", filteredUnits);
+                } else {
+                    return "redirect:/login?error=Most recent year not found";
+                }
             } else {
                 return "redirect:/login?error=Coordinator not found";
             }
@@ -53,6 +65,11 @@ public class CurricularUnitController {
             return "redirect:/login?error=Session expired";
         }
         return "coordinator_index"; // Retorna o nome do arquivo HTML "coordinator_index.html"
+    }
+
+    private boolean isUCInMostRecentYear(CurricularUnit uc, YearUnit mostRecentYear) {
+        return mostRecentYear.getFirstSemester().getCurricularUnits().contains(uc) ||
+               mostRecentYear.getSecondSemester().getCurricularUnits().contains(uc);
     }
 
     // Remover a UC

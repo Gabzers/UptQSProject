@@ -115,3 +115,5 @@ apresentação de trabalhos;
 - a  hora de entrega dos trabalhos deve estar uniformizada (ex: 23h59m); ??
 sempre que possível, evitar apresentações de trabalhos de UC do mesmo ano no mesmo dia;
 - devem ser colocadas todas as percentagens de ponderação para que a soma seja de 100%. <- ***
+
+não permitir a criaçao de COORDINATOR sem YEAR criado

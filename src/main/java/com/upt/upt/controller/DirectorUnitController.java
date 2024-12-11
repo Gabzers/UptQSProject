@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Controller for managing DirectorUnit entities.
@@ -41,10 +42,12 @@ public class DirectorUnitController {
                 DirectorUnit director = directorOpt.get();
                 model.addAttribute("loggedInDirector", director);
                 model.addAttribute("coordinators", director.getCoordinators());
-                model.addAttribute("currentYear", director.getCurrentYear());
-                model.addAttribute("pastYears", director.getPastYears());
                 Optional<YearUnit> mostRecentYear = yearUnitService.getMostRecentYearUnit();
                 model.addAttribute("mostRecentYear", mostRecentYear.orElse(null));
+                model.addAttribute("currentYear", mostRecentYear.orElse(null));
+                model.addAttribute("pastYears", director.getPastYears().stream()
+                        .filter(year -> !year.equals(mostRecentYear.orElse(null)))
+                        .collect(Collectors.toList()));
             } else {
                 return "redirect:/login?error=Director not found";
             }
