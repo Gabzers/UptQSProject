@@ -236,6 +236,10 @@ public class AssessmentUnitController {
         return "redirect:/coordinator/coordinator_evaluationsUC?id=" + curricularUnitId;
     }
 
+    private boolean noAssessmentsForPeriod(List<AssessmentUnit> assessments, String period) {
+        return assessments.stream().noneMatch(a -> period.equals(a.getExamPeriod()));
+    }
+
     @GetMapping("/map")
     public String showAssessmentMap(Model model, HttpSession session) {
         Long coordinatorId = (Long) session.getAttribute("userId");
@@ -253,6 +257,12 @@ public class AssessmentUnitController {
                     List<AssessmentUnit> secondSemesterAssessments = assessmentService.getAssessmentsBySemester(currentYear.getSecondSemester().getId());
                     model.addAttribute("firstSemesterAssessments", firstSemesterAssessments);
                     model.addAttribute("secondSemesterAssessments", secondSemesterAssessments);
+                    model.addAttribute("noNormalPeriodFirstSemester", noAssessmentsForPeriod(firstSemesterAssessments, "Teaching Period") && noAssessmentsForPeriod(firstSemesterAssessments, "Exam Period"));
+                    model.addAttribute("noResourcePeriodFirstSemester", noAssessmentsForPeriod(firstSemesterAssessments, "Resource Period"));
+                    model.addAttribute("noSpecialPeriodFirstSemester", noAssessmentsForPeriod(firstSemesterAssessments, "Special Period"));
+                    model.addAttribute("noNormalPeriodSecondSemester", noAssessmentsForPeriod(secondSemesterAssessments, "Teaching Period") && noAssessmentsForPeriod(secondSemesterAssessments, "Exam Period"));
+                    model.addAttribute("noResourcePeriodSecondSemester", noAssessmentsForPeriod(secondSemesterAssessments, "Resource Period"));
+                    model.addAttribute("noSpecialPeriodSecondSemester", noAssessmentsForPeriod(secondSemesterAssessments, "Special Period"));
                 } else {
                     return "redirect:/login?error=Current year not found";
                 }

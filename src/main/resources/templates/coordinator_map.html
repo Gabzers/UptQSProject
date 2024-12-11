@@ -19,6 +19,7 @@
         <section class="section">
             <h2>First Semester Assessments</h2>
             <div th:if="${firstSemesterAssessments != null && firstSemesterAssessments.size() > 0}">
+                <h3>Normal Period</h3>
                 <table>
                     <thead>
                         <tr>
@@ -35,8 +36,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="assessment : ${firstSemesterAssessments}">
-                            <td th:text="${assessment.curricularUnit.nameUC}">UC Name</td>
+                        <tr th:each="assessment : ${firstSemesterAssessments}" th:if="${assessment.examPeriod == 'Teaching Period' || assessment.examPeriod == 'Exam Period'}">
+                            <td th:text="${assessment.curricularUnit != null ? assessment.curricularUnit.nameUC : 'N/A'}">UC Name</td>
                             <td th:text="${assessment.type}">Assessment Type</td>
                             <td th:text="${assessment.weight}">0</td>
                             <td th:text="${assessment.examPeriod}">Exam Period</td>
@@ -46,6 +47,77 @@
                             <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
                             <td th:text="${assessment.room}">Room</td>
                             <td th:text="${assessment.minimumGrade}">0.0</td>
+                        </tr>
+                        <tr th:if="${noNormalPeriodFirstSemester}">
+                            <td colspan="10" class="no-assessments">No assessments listed for Normal Period.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>Resource Period</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>UC Name</th>
+                            <th>Assessment Type</th>
+                            <th>Weight</th>
+                            <th>Exam Period</th>
+                            <th>Computer Required</th>
+                            <th>Class Time</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Room</th>
+                            <th>Minimum Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="assessment : ${firstSemesterAssessments}" th:if="${assessment.examPeriod == 'Resource Period'}">
+                            <td th:text="${assessment.curricularUnit != null ? assessment.curricularUnit.nameUC : 'N/A'}">UC Name</td>
+                            <td th:text="${assessment.type}">Assessment Type</td>
+                            <td th:text="${assessment.weight}">0</td>
+                            <td th:text="${assessment.examPeriod}">Exam Period</td>
+                            <td th:text="${assessment.computerRequired ? 'Yes' : 'No'}">No</td>
+                            <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
+                            <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
+                            <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
+                            <td th:text="${assessment.room}">Room</td>
+                            <td th:text="${assessment.minimumGrade}">0.0</td>
+                        </tr>
+                        <tr th:if="${noResourcePeriodFirstSemester}">
+                            <td colspan="10" class="no-assessments">No assessments listed for Resource Period.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>Special Period</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>UC Name</th>
+                            <th>Assessment Type</th>
+                            <th>Weight</th>
+                            <th>Exam Period</th>
+                            <th>Computer Required</th>
+                            <th>Class Time</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Room</th>
+                            <th>Minimum Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="assessment : ${firstSemesterAssessments}" th:if="${assessment.examPeriod == 'Special Period'}">
+                            <td th:text="${assessment.curricularUnit != null ? assessment.curricularUnit.nameUC : 'N/A'}">UC Name</td>
+                            <td th:text="${assessment.type}">Assessment Type</td>
+                            <td th:text="${assessment.weight}">0</td>
+                            <td th:text="${assessment.examPeriod}">Exam Period</td>
+                            <td th:text="${assessment.computerRequired ? 'Yes' : 'No'}">No</td>
+                            <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
+                            <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
+                            <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
+                            <td th:text="${assessment.room}">Room</td>
+                            <td th:text="${assessment.minimumGrade}">0.0</td>
+                        </tr>
+                        <tr th:if="${noSpecialPeriodFirstSemester}">
+                            <td colspan="10" class="no-assessments">No assessments listed for Special Period.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -58,6 +130,7 @@
         <section class="section">
             <h2>Second Semester Assessments</h2>
             <div th:if="${secondSemesterAssessments != null && secondSemesterAssessments.size() > 0}">
+                <h3>Normal Period</h3>
                 <table>
                     <thead>
                         <tr>
@@ -74,8 +147,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="assessment : ${secondSemesterAssessments}">
-                            <td th:text="${assessment.curricularUnit.nameUC}">UC Name</td>
+                        <tr th:each="assessment : ${secondSemesterAssessments}" th:if="${assessment.examPeriod == 'Teaching Period' || assessment.examPeriod == 'Exam Period'}">
+                            <td th:text="${assessment.curricularUnit != null ? assessment.curricularUnit.nameUC : 'N/A'}">UC Name</td>
                             <td th:text="${assessment.type}">Assessment Type</td>
                             <td th:text="${assessment.weight}">0</td>
                             <td th:text="${assessment.examPeriod}">Exam Period</td>
@@ -85,6 +158,77 @@
                             <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
                             <td th:text="${assessment.room}">Room</td>
                             <td th:text="${assessment.minimumGrade}">0.0</td>
+                        </tr>
+                        <tr th:if="${noNormalPeriodSecondSemester}">
+                            <td colspan="10" class="no-assessments">No assessments listed for Normal Period.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>Resource Period</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>UC Name</th>
+                            <th>Assessment Type</th>
+                            <th>Weight</th>
+                            <th>Exam Period</th>
+                            <th>Computer Required</th>
+                            <th>Class Time</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Room</th>
+                            <th>Minimum Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="assessment : ${secondSemesterAssessments}" th:if="${assessment.examPeriod == 'Resource Period'}">
+                            <td th:text="${assessment.curricularUnit != null ? assessment.curricularUnit.nameUC : 'N/A'}">UC Name</td>
+                            <td th:text="${assessment.type}">Assessment Type</td>
+                            <td th:text="${assessment.weight}">0</td>
+                            <td th:text="${assessment.examPeriod}">Exam Period</td>
+                            <td th:text="${assessment.computerRequired ? 'Yes' : 'No'}">No</td>
+                            <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
+                            <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
+                            <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
+                            <td th:text="${assessment.room}">Room</td>
+                            <td th:text="${assessment.minimumGrade}">0.0</td>
+                        </tr>
+                        <tr th:if="${noResourcePeriodSecondSemester}">
+                            <td colspan="10" class="no-assessments">No assessments listed for Resource Period.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>Special Period</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>UC Name</th>
+                            <th>Assessment Type</th>
+                            <th>Weight</th>
+                            <th>Exam Period</th>
+                            <th>Computer Required</th>
+                            <th>Class Time</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Room</th>
+                            <th>Minimum Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="assessment : ${secondSemesterAssessments}" th:if="${assessment.examPeriod == 'Special Period'}">
+                            <td th:text="${assessment.curricularUnit != null ? assessment.curricularUnit.nameUC : 'N/A'}">UC Name</td>
+                            <td th:text="${assessment.type}">Assessment Type</td>
+                            <td th:text="${assessment.weight}">0</td>
+                            <td th:text="${assessment.examPeriod}">Exam Period</td>
+                            <td th:text="${assessment.computerRequired ? 'Yes' : 'No'}">No</td>
+                            <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
+                            <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
+                            <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
+                            <td th:text="${assessment.room}">Room</td>
+                            <td th:text="${assessment.minimumGrade}">0.0</td>
+                        </tr>
+                        <tr th:if="${noSpecialPeriodSecondSemester}">
+                            <td colspan="10" class="no-assessments">No assessments listed for Special Period.</td>
                         </tr>
                     </tbody>
                 </table>
