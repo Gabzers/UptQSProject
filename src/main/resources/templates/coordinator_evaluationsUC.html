@@ -72,6 +72,11 @@
             <p th:if="${evaluations == null || evaluations.size() == 0}">
                 No evaluations found for this UC. Please create a new evaluation.
             </p>
+            
+            <!-- Message for Mixed evaluation type without Exam Period evaluation -->
+            <p th:if="${uc.evaluationType == 'Mixed' && !uc.hasExamPeriodEvaluation()}" style="color: red;">
+                For Mixed evaluation type, at least one evaluation must be of type 'Exam Period'.
+            </p>
         </section>
     </main>
 

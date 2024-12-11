@@ -164,6 +164,10 @@ public class CurricularUnit {
         this.assessments = assessments;
     }
 
+    public boolean hasExamPeriodEvaluation() {
+        return assessments.stream().anyMatch(assessment -> "Exam Period".equals(assessment.getExamPeriod()));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

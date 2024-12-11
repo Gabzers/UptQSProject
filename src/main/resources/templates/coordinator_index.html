@@ -37,7 +37,7 @@
                             <td th:text="${uc.nameUC}">UC Name</td>
                             <td th:text="${uc.studentsNumber}">0</td>
                             <td th:text="${uc.evaluationType}">None</td>
-                            <td th:classappend="${uc.evaluationsCount == uc.assessments.size()} ? 'valid' : 'invalid'">
+                            <td th:classappend="${(uc.evaluationType == 'Mixed' && !uc.hasExamPeriodEvaluation()) || (uc.evaluationsCount != uc.assessments.size())} ? 'invalid' : ''">
                                 <span th:text="${uc.assessments.size()} + ' / ' + ${uc.evaluationsCount}"></span>
                             </td>
                             <td th:text="${uc.year}">1</td>
@@ -78,7 +78,7 @@
                             <td th:text="${uc.nameUC}">UC Name</td>
                             <td th:text="${uc.studentsNumber}">0</td>
                             <td th:text="${uc.evaluationType}">None</td>
-                            <td th:classappend="${uc.evaluationsCount == uc.assessments.size()} ? 'valid' : 'invalid'">
+                            <td th:classappend="${(uc.evaluationType == 'Mixed' && !uc.hasExamPeriodEvaluation()) || (uc.evaluationsCount != uc.assessments.size())} ? 'invalid' : ''">
                                 <span th:text="${uc.assessments.size()} + ' / ' + ${uc.evaluationsCount}"></span>
                             </td>
                             <td th:text="${uc.year}">1</td>

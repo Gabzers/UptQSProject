@@ -12,7 +12,7 @@
     <header>
         <nav>
             <button onclick="window.location.href='/logout'">Logout</button>
-            <button onclick="window.location.href=document.referrer">Back</button>
+            <button th:onclick="'window.location.href=\'/coordinator/coordinator_evaluationsUC?id=' + ${uc.id} + '\''">Back</button>
         </nav>
     </header>
 
@@ -21,7 +21,7 @@
             <h2>Edit Evaluation</h2>
 
             <!-- Form to edit an existing evaluation -->
-            <form th:action="@{/coordinator/coordinator_editEvaluations/{assessmentId}(assessmentId=${assessment.id})}" method="POST">
+            <form th:action="@{/coordinator/coordinator_editEvaluations/{assessmentId}(assessmentId=${assessment.id})}" method="POST" onsubmit="return validateForm()">
                 <input type="hidden" name="curricularUnitId" th:value="${uc.id}">
                 <input type="hidden" name="assessmentId" th:value="${assessment.id}" />
 
@@ -51,12 +51,13 @@
                 <!-- Exam Period -->
                 <label for="evaluation-exam-period">Exam Period:</label>
                 <select name="assessmentExamPeriod" id="evaluation-exam-period" required>
-                    <option value="None" th:selected="${assessment.examPeriod == 'None'}">None</option>
+                    <option value="">Select Exam Period</option>
                     <option value="Teaching Period" th:selected="${assessment.examPeriod == 'Teaching Period'}">Teaching Period</option>
                     <option value="Exam Period" th:selected="${assessment.examPeriod == 'Exam Period'}">Exam Period</option>
                     <option value="Resource Period" th:selected="${assessment.examPeriod == 'Resource Period'}">Resource Period</option>
                     <option value="Special Period" th:selected="${assessment.examPeriod == 'Special Period'}">Special Period</option>
                 </select>
+                <span id="exam-period-error" style="color: red; display: none;">Please select an exam period.</span>
                 <br><br>
 
                 <!-- Requires Computer -->
@@ -97,6 +98,17 @@
     <footer>
         <p>&copy; 2024 University - Academic Administration System</p>
     </footer>
+
+    <script>
+        function validateForm() {
+            const examPeriod = document.getElementById('evaluation-exam-period').value;
+            if (!examPeriod) {
+                document.getElementById('exam-period-error').style.display = 'inline';
+                return false;
+            }
+            return true;
+        }
+    </script>
 </body>
 
 </html>

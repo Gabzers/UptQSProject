@@ -68,7 +68,13 @@ public class AssessmentUnitController {
             @RequestParam("assessmentStartTime") String assessmentStartTime,
             @RequestParam("assessmentEndTime") String assessmentEndTime,
             @RequestParam("assessmentRoom") String assessmentRoom,
-            @RequestParam("assessmentMinimumGrade") Double assessmentMinimumGrade) {
+            @RequestParam("assessmentMinimumGrade") Double assessmentMinimumGrade,
+            Model model) {
+
+        if (assessmentExamPeriod == null || assessmentExamPeriod.isEmpty() || assessmentExamPeriod.equals("Select Exam Period")) {
+            model.addAttribute("error", "Exam Period is required.");
+            return "coordinator_addEvaluations";
+        }
 
         if (computerRequired == null) {
             computerRequired = false;
@@ -83,6 +89,18 @@ public class AssessmentUnitController {
         Optional<CurricularUnit> curricularUnit = curricularUnitService.getCurricularUnitById(curricularUnitId);
         if (!curricularUnit.isPresent()) {
             return "redirect:/coordinator";
+        }
+
+        CurricularUnit uc = curricularUnit.get();
+        if (uc.getEvaluationsCount() == uc.getAssessments().size()) {
+            model.addAttribute("uc", uc);
+            model.addAttribute("error", "Evaluations already complete.");
+            return "coordinator_addEvaluations";
+        }
+        if ("Mixed".equals(uc.getEvaluationType()) && !uc.hasExamPeriodEvaluation()) {
+            model.addAttribute("uc", uc);
+            model.addAttribute("error", "For Mixed evaluation type, at least one evaluation must be of type 'Exam Period'.");
+            return "coordinator_addEvaluations";
         }
 
         // Cria e configura a nova avaliação
@@ -144,7 +162,13 @@ public class AssessmentUnitController {
             @RequestParam("assessmentStartTime") String assessmentStartTime,
             @RequestParam("assessmentEndTime") String assessmentEndTime,
             @RequestParam("assessmentRoom") String assessmentRoom,
-            @RequestParam("assessmentMinimumGrade") Double assessmentMinimumGrade) {
+            @RequestParam("assessmentMinimumGrade") Double assessmentMinimumGrade,
+            Model model) {
+
+        if (assessmentExamPeriod == null || assessmentExamPeriod.isEmpty() || assessmentExamPeriod.equals("Select Exam Period")) {
+            model.addAttribute("error", "Exam Period is required.");
+            return "coordinator_editEvaluations";
+        }
 
         if (computerRequired == null) {
             computerRequired = false;
