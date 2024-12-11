@@ -93,13 +93,14 @@ public class CurricularUnitController {
 
     // Página de edição de UC
     @GetMapping("/coordinator_editUC")
-    public String editUC(@RequestParam("id") Long id, Model model) {
+    public String editUC(@RequestParam("id") Long id, @RequestParam("semester") Integer semester, Model model) {
         Optional<CurricularUnit> curricularUnit = curricularUnitService.getCurricularUnitById(id);
         if (curricularUnit.isPresent()) {
-            model.addAttribute("uc", curricularUnit.get()); // Passa a UC para o modelo
-            return "coordinator_editUC"; // Retorna a página de edição
+            model.addAttribute("uc", curricularUnit.get());
+            model.addAttribute("semester", semester); // Pass the semester to the model
+            return "coordinator_editUC";
         } else {
-            return "redirect:/coordinator"; // Caso não encontre a UC, redireciona para a lista
+            return "redirect:/coordinator";
         }
     }
 
@@ -114,6 +115,7 @@ public class CurricularUnitController {
             @RequestParam("ucEvaluationsCount") Integer evaluationsCount,
             @RequestParam("ucYear") Integer year,
             @RequestParam("ucSemester") Integer semester,
+            HttpSession session,
             Model model) {
         try {
             CurricularUnit uc = curricularUnitService.getCurricularUnitById(id)
@@ -144,6 +146,31 @@ public class CurricularUnitController {
             uc.setAttendance(attendance); // Atualiza o campo attendance
             uc.setEvaluationsCount(evaluationsCount);
             uc.setYear(year);
+
+            // Check if semester has changed
+            if (!uc.getSemester().equals(semester)) {
+                // Remove UC from the old semester
+                SemesterUnit oldSemesterUnit = uc.getSemesterUnit();
+                oldSemesterUnit.removeCurricularUnit(uc);
+
+                // Get the coordinator and director
+                Long coordinatorId = (Long) session.getAttribute("userId");
+                CoordinatorUnit coordinator = coordinatorUnitService.getCoordinatorById(coordinatorId)
+                        .orElseThrow(() -> new IllegalArgumentException("Coordinator not found"));
+                DirectorUnit director = coordinator.getDirectorUnit();
+
+                // Get the most recent year
+                List<YearUnit> directorYears = director.getPastYears();
+                YearUnit currentYear = directorYears.stream()
+                        .max((y1, y2) -> y1.getFirstSemester().getStartDate().compareTo(y2.getFirstSemester().getStartDate()))
+                        .orElseThrow(() -> new IllegalArgumentException("Current year not found"));
+
+                // Add UC to the new semester
+                SemesterUnit newSemesterUnit = semester == 1 ? currentYear.getFirstSemester() : currentYear.getSecondSemester();
+                newSemesterUnit.addCurricularUnit(uc);
+                uc.setSemesterUnit(newSemesterUnit);
+            }
+
             uc.setSemester(semester);
 
             // Salvar a UC atualizada

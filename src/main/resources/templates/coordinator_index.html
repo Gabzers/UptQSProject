@@ -48,7 +48,7 @@
                             <td th:text="${uc.year}">1</td>
                             <td th:text="${uc.attendance}">0</td>
                             <td>
-                                <button class="edit" th:onclick="'window.location.href=\'/coordinator/coordinator_editUC?id=' + ${uc.id} + '\''">Edit</button>
+                                <button class="edit" th:onclick="'window.location.href=\'/coordinator/coordinator_editUC?id=' + ${uc.id} + '&semester=1' + '\''">Edit</button>
                                 <button class="edit" th:onclick="'window.location.href=\'/coordinator/coordinator_evaluationsUC?id=' + ${uc.id} + '\''">Evaluations</button>
                                 <form th:action="@{/coordinator/remove-uc/{id}(id=${uc.id})}" method="POST" style="display:inline;">
                                     <button class="delete" type="submit">Remove</button>
@@ -89,7 +89,7 @@
                             <td th:text="${uc.year}">1</td>
                             <td th:text="${uc.attendance}">0</td>
                             <td>
-                                <button class="edit" th:onclick="'window.location.href=\'/coordinator/coordinator_editUC?id=' + ${uc.id} + '\''">Edit</button>
+                                <button class="edit" th:onclick="'window.location.href=\'/coordinator/coordinator_editUC?id=' + ${uc.id} + '&semester=2' + '\''">Edit</button>
                                 <button class="edit" th:onclick="'window.location.href=\'/coordinator/coordinator_evaluationsUC?id=' + ${uc.id} + '\''">Evaluations</button>
                                 <form th:action="@{/coordinator/remove-uc/{id}(id=${uc.id})}" method="POST" style="display:inline;">
                                     <button class="delete" type="submit">Remove</button>
