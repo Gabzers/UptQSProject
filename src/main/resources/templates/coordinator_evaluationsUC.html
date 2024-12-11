@@ -21,10 +21,9 @@
     </header>
 
     <main>
-        <section class="section">
-            <h2>Evaluations List</h2>
 
-            <!-- Check if evaluations is not null and not empty -->
+        <section class="section">
+            <h2>Normal Period</h2>
             <div th:if="${evaluations != null && evaluations.size() > 0}">
                 <table>
                     <thead>
@@ -39,8 +38,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Loop through the list of evaluations -->
-                        <tr th:each="evaluation : ${evaluations}">
+                        <tr th:each="evaluation : ${evaluations}" th:if="${evaluation.examPeriod == 'Teaching Period' || evaluation.examPeriod == 'Exam Period'}">
                             <td th:text="${evaluation.type}">Evaluation Type</td>
                             <td th:text="${evaluation.weight}">0</td>
                             <td th:text="${evaluation.examPeriod}">None</td>
@@ -48,40 +46,115 @@
                             <td th:text="${evaluation.room}">Room 101</td>
                             <td th:text="${evaluation.minimumGrade}">0.0</td>
                             <td>
-                                <!-- Edit Button -->
                                 <form th:action="@{/coordinator/coordinator_editEvaluations/{id}(id=${evaluation.id})}" method="GET" style="display:inline;">
                                     <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
-                                    <button type="submit">Edit</button>
+                                    <button type="submit" class="edit">Edit</button>
                                 </form>
-                                
                                 <form th:action="@{/coordinator/coordinator_delete_evaluation/{id}(id=${evaluation.id})}" method="POST" style="display:inline;">
                                     <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
-                                    <button type="submit">Remove</button>
+                                    <button type="submit" class="delete">Remove</button>
                                 </form>
-                                
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <p th:classappend="${uc.evaluationsCount == evaluations.size()} ? 'valid' : 'invalid'">
-                    <span th:text="'Evaluations: ' + ${evaluations.size()} + ' / ' + ${uc.evaluationsCount}"></span>
-                </p>
+                <div th:if="${normalPeriodTotalWeight != 100}" style="color: red;">
+                    <p>The total weight of evaluations for Normal Period must be exactly 100%. Current weight: <span th:text="${normalPeriodTotalWeight}"></span>%</p>
+                </div>
             </div>
+            <div th:if="${evaluations == null || evaluations.size() == 0}">
+                <p>No evaluations found for Normal Period.</p>
+            </div>
+        </section>
 
-            <!-- Message when no evaluations are found -->
-            <p th:if="${evaluations == null || evaluations.size() == 0}">
-                No evaluations found for this UC. Please create a new evaluation.
-            </p>
-            
-            <!-- Message for Mixed evaluation type without Exam Period evaluation -->
-            <p th:if="${uc.evaluationType == 'Mixed' && !uc.hasExamPeriodEvaluation()}" style="color: red;">
-                For Mixed evaluation type, at least one evaluation must be of type 'Exam Period'.
-            </p>
-            
-            <!-- Message if the total weight of all evaluations does not reach 100% -->
-            <p th:if="${uc.isTotalWeightLessThan100()}" style="color: red;">
-                The total weight of all evaluations must reach 100%.
-            </p>
+        <section class="section">
+            <h2>Resource Period</h2>
+            <div th:if="${evaluations != null && evaluations.size() > 0}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Evaluation Type</th>
+                            <th>Weight</th>
+                            <th>Exam Period</th>
+                            <th>Class Time</th>
+                            <th>Room</th>
+                            <th>Minimum Grade</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="evaluation : ${evaluations}" th:if="${evaluation.examPeriod == 'Resource Period'}">
+                            <td th:text="${evaluation.type}">Evaluation Type</td>
+                            <td th:text="${evaluation.weight}">0</td>
+                            <td th:text="${evaluation.examPeriod}">None</td>
+                            <td th:text="${evaluation.classTime}">N/A</td>
+                            <td th:text="${evaluation.room}">Room 101</td>
+                            <td th:text="${evaluation.minimumGrade}">0.0</td>
+                            <td>
+                                <form th:action="@{/coordinator/coordinator_editEvaluations/{id}(id=${evaluation.id})}" method="GET" style="display:inline;">
+                                    <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
+                                    <button type="submit" class="edit">Edit</button>
+                                </form>
+                                <form th:action="@{/coordinator/coordinator_delete_evaluation/{id}(id=${evaluation.id})}" method="POST" style="display:inline;">
+                                    <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
+                                    <button type="submit" class="delete">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div th:if="${resourcePeriodTotalWeight != 100}" style="color: red;">
+                    <p>The total weight of evaluations for Resource Period must be exactly 100%. Current weight: <span th:text="${resourcePeriodTotalWeight}"></span>%</p>
+                </div>
+            </div>
+            <div th:if="${evaluations == null || evaluations.size() == 0}">
+                <p>No evaluations found for Resource Period.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Special Period</h2>
+            <div th:if="${evaluations != null && evaluations.size() > 0}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Evaluation Type</th>
+                            <th>Weight</th>
+                            <th>Exam Period</th>
+                            <th>Class Time</th>
+                            <th>Room</th>
+                            <th>Minimum Grade</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="evaluation : ${evaluations}" th:if="${evaluation.examPeriod == 'Special Period'}">
+                            <td th:text="${evaluation.type}">Evaluation Type</td>
+                            <td th:text="${evaluation.weight}">0</td>
+                            <td th:text="${evaluation.examPeriod}">None</td>
+                            <td th:text="${evaluation.classTime}">N/A</td>
+                            <td th:text="${evaluation.room}">Room 101</td>
+                            <td th:text="${evaluation.minimumGrade}">0.0</td>
+                            <td>
+                                <form th:action="@{/coordinator/coordinator_editEvaluations/{id}(id=${evaluation.id})}" method="GET" style="display:inline;">
+                                    <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
+                                    <button type="submit" class="edit">Edit</button>
+                                </form>
+                                <form th:action="@{/coordinator/coordinator_delete_evaluation/{id}(id=${evaluation.id})}" method="POST" style="display:inline;">
+                                    <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
+                                    <button type="submit" class="delete">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div th:if="${specialPeriodTotalWeight != 100}" style="color: red;">
+                    <p>The total weight of evaluations for Special Period must be exactly 100%. Current weight: <span th:text="${specialPeriodTotalWeight}"></span>%</p>
+                </div>
+            </div>
+            <div th:if="${evaluations == null || evaluations.size() == 0}">
+                <p>No evaluations found for Special Period.</p>
+            </div>
         </section>
     </main>
 

@@ -86,6 +86,8 @@ ajustar view semesters director
 
 FALTA:
 
+CORRIGIR AVALIAÇÕES, FAZER 1 TABELA PARA EPOCA NORMAL, RECUROS E ESPECIAL
+
 mostrar quais dias e horas estao livres para uma avaliação daquele estilo
 atribuir sala automaticamente de acordo com os dados escolhidos 
 

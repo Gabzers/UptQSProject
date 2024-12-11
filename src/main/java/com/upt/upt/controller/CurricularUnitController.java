@@ -1,10 +1,12 @@
 package com.upt.upt.controller;
 
+import com.upt.upt.entity.AssessmentUnit;
 import com.upt.upt.entity.CoordinatorUnit;
 import com.upt.upt.entity.CurricularUnit;
 import com.upt.upt.entity.DirectorUnit;
 import com.upt.upt.entity.YearUnit;
 import com.upt.upt.entity.SemesterUnit;
+import com.upt.upt.service.AssessmentUnitService;
 import com.upt.upt.service.CurricularUnitService;
 import com.upt.upt.service.CoordinatorUnitService;
 import com.upt.upt.service.YearUnitService;
@@ -33,12 +35,14 @@ public class CurricularUnitController {
     private final CurricularUnitService curricularUnitService;
     private final CoordinatorUnitService coordinatorUnitService;
     private final YearUnitService yearUnitService;
+    private final AssessmentUnitService assessmentUnitService;
 
     @Autowired
-    public CurricularUnitController(CurricularUnitService curricularUnitService, CoordinatorUnitService coordinatorUnitService, YearUnitService yearUnitService) {
+    public CurricularUnitController(CurricularUnitService curricularUnitService, CoordinatorUnitService coordinatorUnitService, YearUnitService yearUnitService, AssessmentUnitService assessmentUnitService) {
         this.curricularUnitService = curricularUnitService;
         this.coordinatorUnitService = coordinatorUnitService;
         this.yearUnitService = yearUnitService;
+        this.assessmentUnitService = assessmentUnitService;
     }
 
     // Mapeamento da URL "/coordinator"
@@ -233,6 +237,44 @@ public class CurricularUnitController {
         curricularUnitService.saveCurricularUnit(curricularUnit);
 
         return "redirect:/coordinator"; // Redirecionar para a página de usuário após criar a UC
+    }
+
+    @GetMapping("/coordinator_evaluationsUC")
+    public String evaluationsUCCurricular(@RequestParam("id") Long id, Model model) {
+        Optional<CurricularUnit> curricularUnit = curricularUnitService.getCurricularUnitById(id);
+        if (curricularUnit.isPresent()) {
+            CurricularUnit uc = curricularUnit.get();
+            List<AssessmentUnit> evaluations = assessmentUnitService.getAssessmentsByCurricularUnit(id);
+
+            int normalPeriodTotalWeight = evaluations.stream()
+                    .filter(e -> "Teaching Period".equals(e.getExamPeriod()) || "Exam Period".equals(e.getExamPeriod()))
+                    .mapToInt(AssessmentUnit::getWeight)
+                    .sum();
+
+            int resourcePeriodTotalWeight = evaluations.stream()
+                    .filter(e -> "Resource Period".equals(e.getExamPeriod()))
+                    .mapToInt(AssessmentUnit::getWeight)
+                    .sum();
+
+            int specialPeriodTotalWeight = evaluations.stream()
+                    .filter(e -> "Special Period".equals(e.getExamPeriod()))
+                    .mapToInt(AssessmentUnit::getWeight)
+                    .sum();
+
+            logger.info("Normal Period Total Weight: {}", normalPeriodTotalWeight);
+            logger.info("Resource Period Total Weight: {}", resourcePeriodTotalWeight);
+            logger.info("Special Period Total Weight: {}", specialPeriodTotalWeight);
+
+            model.addAttribute("uc", uc);
+            model.addAttribute("evaluations", evaluations);
+            model.addAttribute("normalPeriodTotalWeight", normalPeriodTotalWeight);
+            model.addAttribute("resourcePeriodTotalWeight", resourcePeriodTotalWeight);
+            model.addAttribute("specialPeriodTotalWeight", specialPeriodTotalWeight);
+
+            return "coordinator_evaluationsUC";
+        } else {
+            return "redirect:/coordinator";
+        }
     }
 
 }

@@ -39,20 +39,6 @@ public class AssessmentUnitController {
     @Autowired
     private YearUnitService yearUnitService;
 
-    // Página de avaliações da UC
-    // Página de avaliações da UC
-    @GetMapping("/coordinator_evaluationsUC")
-    public String evaluationsUC(@RequestParam("id") Long id, Model model) {
-        Optional<CurricularUnit> curricularUnit = curricularUnitService.getCurricularUnitById(id);
-        if (curricularUnit.isPresent()) {
-            model.addAttribute("uc", curricularUnit.get());
-            model.addAttribute("evaluations", assessmentService.getAssessmentsByCurricularUnit(id)); // Método atualizado
-            return "coordinator_evaluationsUC";
-        } else {
-            return "redirect:/coordinator";
-        }
-    }
-
     // Página para criar nova avaliação
     @GetMapping("/coordinator_create_evaluation")
     public String createEvaluationPage(@RequestParam("curricularUnitId") Long curricularUnitId, Model model) {
@@ -110,10 +96,14 @@ public class AssessmentUnitController {
             return "coordinator_addEvaluations";
         }
 
-        int totalWeight = uc.getAssessments().stream().mapToInt(AssessmentUnit::getWeight).sum() + assessmentWeight;
-        if (totalWeight > 100) {
+        int periodTotalWeight = uc.getAssessments().stream()
+                .filter(e -> assessmentExamPeriod.equals(e.getExamPeriod()))
+                .mapToInt(AssessmentUnit::getWeight)
+                .sum() + assessmentWeight;
+
+        if (periodTotalWeight > 100) {
             model.addAttribute("uc", uc);
-            model.addAttribute("error", "The total weight of all evaluations must not exceed 100%.");
+            model.addAttribute("error", "The total weight of evaluations for this period must not exceed 100%.");
             return "coordinator_addEvaluations";
         }
 
@@ -212,13 +202,18 @@ public class AssessmentUnitController {
         }
 
         AssessmentUnit assessmentUnit = assessmentUnitOptional.get();
-        int totalWeight = uc.getAssessments().stream().mapToInt(AssessmentUnit::getWeight).sum() - assessmentUnit.getWeight() + assessmentWeight;
-        if (totalWeight > 100) {
+        int periodTotalWeight = uc.getAssessments().stream()
+                .filter(e -> assessmentExamPeriod.equals(e.getExamPeriod()))
+                .mapToInt(AssessmentUnit::getWeight)
+                .sum() - assessmentUnit.getWeight() + assessmentWeight;
+
+        if (periodTotalWeight > 100) {
             model.addAttribute("uc", uc);
             model.addAttribute("assessment", assessmentUnit);
-            model.addAttribute("error", "The total weight of all evaluations must not exceed 100%.");
+            model.addAttribute("error", "The total weight of evaluations for this period must not exceed 100%.");
             return "coordinator_editEvaluations";
         }
+
         assessmentUnit.setType(assessmentType);
         assessmentUnit.setWeight(assessmentWeight);
         assessmentUnit.setExamPeriod(assessmentExamPeriod);

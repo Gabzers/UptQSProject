@@ -177,7 +177,22 @@ public class CurricularUnit {
     }
 
     public boolean isTotalWeightInvalid() {
-        return this.assessments.stream().mapToInt(AssessmentUnit::getWeight).sum() != 100;
+        int normalPeriodTotalWeight = assessments.stream()
+                .filter(e -> "Teaching Period".equals(e.getExamPeriod()) || "Exam Period".equals(e.getExamPeriod()))
+                .mapToInt(AssessmentUnit::getWeight)
+                .sum();
+
+        int resourcePeriodTotalWeight = assessments.stream()
+                .filter(e -> "Resource Period".equals(e.getExamPeriod()))
+                .mapToInt(AssessmentUnit::getWeight)
+                .sum();
+
+        int specialPeriodTotalWeight = assessments.stream()
+                .filter(e -> "Special Period".equals(e.getExamPeriod()))
+                .mapToInt(AssessmentUnit::getWeight)
+                .sum();
+
+        return normalPeriodTotalWeight != 100 || resourcePeriodTotalWeight != 100 || specialPeriodTotalWeight != 100;
     }
 
     public boolean isTotalWeightLessThan100() {
