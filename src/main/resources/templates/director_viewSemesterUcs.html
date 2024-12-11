@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Semester UCs - Academic Administration</title>
+    <link rel="stylesheet" type="text/css" href="/css/coordinator_map.css">
+</head>
+<body>
+    <header>
+        <h1>Semester UCs</h1>
+        <div class="button-container">
+            <button onclick="location.href='/logout'">Logout</button>
+            <button onclick="window.location.href=document.referrer">Back</button>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2>UCs for Semester</h2>
+            <div id="uc-container">
+                <!-- Check if semesterUnit is not null and has UCs -->
+                <div th:if="${semesterUnit != null && semesterUnit.curricularUnits.size() > 0}">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>UC Name</th>
+                                <th>Students Number</th>
+                                <th>Evaluation Type</th>
+                                <th>Attendance</th>
+                                <th>Evaluations Count</th>
+                                <th>Year</th>
+                                <th>Semester</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Loop through the list of UCs -->
+                            <tr th:each="uc : ${semesterUnit.curricularUnits}">
+                                <td th:text="${uc.nameUC}">UC Name</td>
+                                <td th:text="${uc.studentsNumber}">Students Number</td>
+                                <td th:text="${uc.evaluationType}">Evaluation Type</td>
+                                <td th:text="${uc.attendance ? 'Yes' : 'No'}">Attendance</td>
+                                <td th:text="${uc.evaluationsCount}">Evaluations Count</td>
+                                <td th:text="${uc.year}">Year</td>
+                                <td th:text="${uc.semester}">Semester</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Message when no UCs are found -->
+                <p th:if="${semesterUnit == null || semesterUnit.curricularUnits.size() == 0}">
+                    No UCs found.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Universidade Portucalense</p>
+    </footer>
+</body>
+</html>

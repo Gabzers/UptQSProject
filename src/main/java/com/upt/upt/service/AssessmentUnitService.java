@@ -1,6 +1,7 @@
 package com.upt.upt.service;
 
 import com.upt.upt.entity.AssessmentUnit;
+import com.upt.upt.entity.MapUnit;
 import com.upt.upt.repository.AssessmentUnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -75,5 +76,10 @@ public class AssessmentUnitService {
         } else {
             throw new RuntimeException("Assessment not found");
         }
+    }
+
+    // Método para buscar avaliações de um MapUnit
+    public List<AssessmentUnit> getAssessmentsFromMapUnit(MapUnit mapUnit) {
+        return mapUnit.getAssessments();
     }
 }

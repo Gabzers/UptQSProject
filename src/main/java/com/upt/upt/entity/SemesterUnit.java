@@ -2,6 +2,7 @@ package com.upt.upt.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -43,6 +44,9 @@ public class SemesterUnit {
     @OneToOne(mappedBy = "semesterUnit", cascade = CascadeType.ALL, orphanRemoval = true)
     private MapUnit mapUnit; // Map associated with the semester
 
+    @OneToMany(mappedBy = "semesterUnit", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CurricularUnit> curricularUnits; // List of curricular units associated with the semester
+
     // Constructors
     public SemesterUnit() {}
 
@@ -55,6 +59,18 @@ public class SemesterUnit {
         this.examPeriodEnd = examPeriodEnd;
         this.resitPeriodStart = resitPeriodStart;
         this.resitPeriodEnd = resitPeriodEnd;
+    }
+
+    public SemesterUnit(Long id, String startDate, String endDate, String examPeriodStart, String examPeriodEnd,
+                        String resitPeriodStart, String resitPeriodEnd, List<CurricularUnit> curricularUnits) {
+        this.id = id;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.examPeriodStart = examPeriodStart;
+        this.examPeriodEnd = examPeriodEnd;
+        this.resitPeriodStart = resitPeriodStart;
+        this.resitPeriodEnd = resitPeriodEnd;
+        this.curricularUnits = curricularUnits;
     }
 
     // Getters and Setters
@@ -120,6 +136,24 @@ public class SemesterUnit {
 
     public void setMapUnit(MapUnit mapUnit) {
         this.mapUnit = mapUnit;
+    }
+
+    public List<CurricularUnit> getCurricularUnits() {
+        return curricularUnits;
+    }
+
+    public void setCurricularUnits(List<CurricularUnit> curricularUnits) {
+        this.curricularUnits = curricularUnits;
+    }
+
+    public void addCurricularUnit(CurricularUnit curricularUnit) {
+        this.curricularUnits.add(curricularUnit);
+        curricularUnit.setSemesterUnit(this);
+    }
+
+    public void removeCurricularUnit(CurricularUnit curricularUnit) {
+        this.curricularUnits.remove(curricularUnit);
+        curricularUnit.setSemesterUnit(null);
     }
 
     @Override

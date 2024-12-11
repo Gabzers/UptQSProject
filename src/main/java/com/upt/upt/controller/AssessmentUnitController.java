@@ -7,6 +7,7 @@ import com.upt.upt.entity.SemesterUnit;
 import com.upt.upt.service.AssessmentUnitService;
 import com.upt.upt.service.CurricularUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.upt.upt.service.SemesterUnitService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,10 @@ public class AssessmentUnitController {
 
     @Autowired
     private CurricularUnitService curricularUnitService;
+    @Autowired
+    private SemesterUnitService semesterUnitService;
 
+    // Página de avaliações da UC
     // Página de avaliações da UC
     @GetMapping("/coordinator_evaluationsUC")
     public String evaluationsUC(@RequestParam("id") Long id, Model model) {

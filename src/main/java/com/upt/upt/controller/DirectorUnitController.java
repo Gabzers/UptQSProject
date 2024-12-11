@@ -3,6 +3,7 @@ package com.upt.upt.controller;
 import com.upt.upt.entity.CoordinatorUnit;
 import com.upt.upt.entity.DirectorUnit;
 import com.upt.upt.entity.YearUnit;
+import com.upt.upt.entity.SemesterUnit;
 import com.upt.upt.service.CoordinatorUnitService;
 import com.upt.upt.service.DirectorUnitService;
 import com.upt.upt.service.YearUnitService;
@@ -61,6 +62,28 @@ public class DirectorUnitController {
             model.addAttribute("firstSemester", yearUnit.get().getFirstSemester());
             model.addAttribute("secondSemester", yearUnit.get().getSecondSemester());
             return "director_viewSemester"; // Name of the view template
+        }
+        return "redirect:/director?error=Year not found";
+    }
+
+    @GetMapping("/director/map/{semester}/{yearId}")
+    public String viewSemesterMap(@PathVariable("semester") String semester, @PathVariable("yearId") Long yearId, Model model) {
+        Optional<YearUnit> yearUnit = yearUnitService.getYearUnitById(yearId);
+        if (yearUnit.isPresent()) {
+            SemesterUnit semesterUnit = "1st".equals(semester) ? yearUnit.get().getFirstSemester() : yearUnit.get().getSecondSemester();
+            model.addAttribute("mapUnit", semesterUnit.getMapUnit());
+            return "director_viewSemesterMap";
+        }
+        return "redirect:/director?error=Year not found";
+    }
+
+    @GetMapping("/director/ucs/{semester}/{yearId}")
+    public String viewSemesterUcs(@PathVariable("semester") String semester, @PathVariable("yearId") Long yearId, Model model) {
+        Optional<YearUnit> yearUnit = yearUnitService.getYearUnitById(yearId);
+        if (yearUnit.isPresent()) {
+            SemesterUnit semesterUnit = "1st".equals(semester) ? yearUnit.get().getFirstSemester() : yearUnit.get().getSecondSemester();
+            model.addAttribute("semesterUnit", semesterUnit);
+            return "director_viewSemesterUcs";
         }
         return "redirect:/director?error=Year not found";
     }

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Semester Map - Academic Administration</title>
+    <link rel="stylesheet" type="text/css" href="/css/coordinator_map.css">
+</head>
+
+<body>
+    <header>
+        <h1>Semester Map</h1>
+        <div class="button-container">
+            <button onclick="location.href='/logout'">Logout</button>
+            <button onclick="window.location.href=document.referrer">Back</button>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2>Map for Semester</h2>
+            <div id="map-container">
+                <!-- Check if mapUnit is not null and has assessments -->
+                <div th:if="${mapUnit != null && mapUnit.assessments.size() > 0}">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>UC Name</th>
+                                <th>Students Number</th>
+                                <th>Evaluation Type</th>
+                                <th>Attendance</th>
+                                <th>Evaluations Count</th>
+                                <th>Year</th>
+                                <th>Semester</th>
+                                <th>Assessment Type</th>
+                                <th>Weight</th>
+                                <th>Exam Period</th>
+                                <th>Computer Required</th>
+                                <th>Class Time</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                                <th>Room</th>
+                                <th>Minimum Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Loop through the list of assessments -->
+                            <tr th:each="assessment : ${mapUnit.assessments}">
+                                <td th:text="${assessment.curricularUnit.nameUC}">UC Name</td>
+                                <td th:text="${assessment.curricularUnit.studentsNumber}">Students Number</td>
+                                <td th:text="${assessment.curricularUnit.evaluationType}">Evaluation Type</td>
+                                <td th:text="${assessment.curricularUnit.attendance ? 'Yes' : 'No'}">Attendance</td>
+                                <td th:text="${assessment.curricularUnit.evaluationsCount}">Evaluations Count</td>
+                                <td th:text="${assessment.curricularUnit.year}">Year</td>
+                                <td th:text="${assessment.curricularUnit.semester}">Semester</td>
+                                <td th:text="${assessment.type}">Assessment Type</td>
+                                <td th:text="${assessment.weight}">0</td>
+                                <td th:text="${assessment.examPeriod}">Exam Period</td>
+                                <td th:text="${assessment.computerRequired ? 'Yes' : 'No'}">No</td>
+                                <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
+                                <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
+                                <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
+                                <td th:text="${assessment.room}">Room</td>
+                                <td th:text="${assessment.minimumGrade}">0.0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Message when no assessments are found -->
+                <p th:if="${mapUnit == null || mapUnit.assessments.size() == 0}">
+                    No assessments found.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Universidade Portucalense</p>
+    </footer>
+</body>
+
+</html>

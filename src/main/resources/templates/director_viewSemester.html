@@ -28,8 +28,7 @@
             <p><strong>Resit Period Start:</strong> <span th:text="${firstSemester.resitPeriodStart}"></span></p>
             <p><strong>Resit Period End:</strong> <span th:text="${firstSemester.resitPeriodEnd}"></span></p>
             <div class="button-container right-align spaced">
-                <button th:onclick="'location.href=\'/director/coordinatorList/1st/' + ${yearUnit.id} + '\''">Coordinator List</button>
-                <button th:onclick="'location.href=\'/director/courseList/1st/' + ${yearUnit.id} + '\''">Course List</button>
+                <button th:onclick="'location.href=\'/director/ucs/1st/' + ${yearUnit.id} + '\''">UCs</button>
                 <button th:onclick="'location.href=\'/director/map/1st/' + ${yearUnit.id} + '\''">Open Map</button>
             </div>
         </section>
@@ -43,8 +42,7 @@
             <p><strong>Resit Period Start:</strong> <span th:text="${secondSemester.resitPeriodStart}"></span></p>
             <p><strong>Resit Period End:</strong> <span th:text="${secondSemester.resitPeriodEnd}"></span></p>
             <div class="button-container right-align spaced">
-                <button th:onclick="'location.href=\'/director/coordinatorList/2nd/' + ${yearUnit.id} + '\''">Coordinator List</button>
-                <button th:onclick="'location.href=\'/director/courseList/2nd/' + ${yearUnit.id} + '\''">Course List</button>
+                <button th:onclick="'location.href=\'/director/ucs/2nd/' + ${yearUnit.id} + '\''">UCs</button>
                 <button th:onclick="'location.href=\'/director/map/2nd/' + ${yearUnit.id} + '\''">Open Map</button>
             </div>
         </section>

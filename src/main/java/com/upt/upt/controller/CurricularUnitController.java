@@ -18,11 +18,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 import org.springframework.http.ResponseEntity;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Controller
 @RequestMapping("/coordinator")
 public class CurricularUnitController {
 
+    private static final Logger logger = LoggerFactory.getLogger(CurricularUnitController.class);
     private final CurricularUnitService curricularUnitService;
     private final CoordinatorUnitService coordinatorUnitService;
     private final YearUnitService yearUnitService;
@@ -136,8 +139,8 @@ public class CurricularUnitController {
             @RequestParam("ucEvaluationsCount") Integer evaluationsCount,
             @RequestParam("ucYear") Integer year,
             @RequestParam("ucSemester") Integer semester,
-            @RequestParam("semesterId") Long semesterId,
             HttpSession session) {
+
         // Criar a nova CurricularUnit com os dados do formulário
         CurricularUnit curricularUnit = new CurricularUnit();
         curricularUnit.setNameUC(nameUC);
@@ -148,12 +151,14 @@ public class CurricularUnitController {
         curricularUnit.setYear(year);
         curricularUnit.setSemester(semester);
 
-        // Set the semester unit based on the selected semester
-        Optional<SemesterUnit> semesterUnitOpt = yearUnitService.getSemesterUnitById(semesterId);
-        if (semesterUnitOpt.isPresent()) {
-            curricularUnit.setSemesterUnit(semesterUnitOpt.get());
+        // Associar a UC ao semestre correto com base no ano e semestre
+        Optional<YearUnit> mostRecentYear = yearUnitService.getMostRecentYearUnit();
+        if (mostRecentYear.isPresent()) {
+            YearUnit yearUnit = mostRecentYear.get();
+            SemesterUnit semesterUnit = semester == 1 ? yearUnit.getFirstSemester() : yearUnit.getSecondSemester();
+            semesterUnit.addCurricularUnit(curricularUnit); // Add the UC to the semester
         } else {
-            return "redirect:/coordinator?error=Semester not found";
+            return "redirect:/coordinator?error=Year not found";
         }
 
         // Associar a UC com o coordenador
