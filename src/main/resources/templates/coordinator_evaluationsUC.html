@@ -63,6 +63,9 @@
                         </tr>
                     </tbody>
                 </table>
+                <p th:classappend="${uc.evaluationsCount == evaluations.size()} ? 'valid' : 'invalid'">
+                    <span th:text="'Evaluations: ' + ${evaluations.size()} + ' / ' + ${uc.evaluationsCount}"></span>
+                </p>
             </div>
 
             <!-- Message when no evaluations are found -->

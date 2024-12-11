@@ -192,3 +192,13 @@ h2 {
         opacity: 1;
     }
 }
+
+.valid {
+    color: green;
+    font-weight: bold;
+}
+
+.invalid {
+    color: red;
+    font-weight: bold;
+}

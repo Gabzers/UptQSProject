@@ -47,7 +47,11 @@ public class AssessmentUnitController {
     public String createEvaluationPage(@RequestParam("curricularUnitId") Long curricularUnitId, Model model) {
         Optional<CurricularUnit> curricularUnit = curricularUnitService.getCurricularUnitById(curricularUnitId);
         if (curricularUnit.isPresent()) {
-            model.addAttribute("uc", curricularUnit.get());
+            CurricularUnit uc = curricularUnit.get();
+            if (uc.getEvaluationsCount() == uc.getAssessments().size()) {
+                return "redirect:/coordinator/coordinator_evaluationsUC?id=" + curricularUnitId + "&error=Evaluations already complete";
+            }
+            model.addAttribute("uc", uc);
             return "coordinator_addEvaluations";
         } else {
             return "redirect:/coordinator";

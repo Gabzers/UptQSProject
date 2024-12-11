@@ -37,7 +37,9 @@
                             <td th:text="${uc.nameUC}">UC Name</td>
                             <td th:text="${uc.studentsNumber}">0</td>
                             <td th:text="${uc.evaluationType}">None</td>
-                            <td th:text="${uc.evaluationsCount}">0</td>
+                            <td th:classappend="${uc.evaluationsCount == uc.assessments.size()} ? 'valid' : 'invalid'">
+                                <span th:text="${uc.assessments.size()} + ' / ' + ${uc.evaluationsCount}"></span>
+                            </td>
                             <td th:text="${uc.year}">1</td>
                             <td th:text="${uc.attendance}">0</td>
                             <td>
@@ -76,7 +78,9 @@
                             <td th:text="${uc.nameUC}">UC Name</td>
                             <td th:text="${uc.studentsNumber}">0</td>
                             <td th:text="${uc.evaluationType}">None</td>
-                            <td th:text="${uc.evaluationsCount}">0</td>
+                            <td th:classappend="${uc.evaluationsCount == uc.assessments.size()} ? 'valid' : 'invalid'">
+                                <span th:text="${uc.assessments.size()} + ' / ' + ${uc.evaluationsCount}"></span>
+                            </td>
                             <td th:text="${uc.year}">1</td>
                             <td th:text="${uc.attendance}">0</td>
                             <td>
