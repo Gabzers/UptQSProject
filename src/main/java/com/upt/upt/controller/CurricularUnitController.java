@@ -261,6 +261,10 @@ public class CurricularUnitController {
                     .mapToInt(AssessmentUnit::getWeight)
                     .sum();
 
+            List<AssessmentUnit> normalPeriodAssessments = evaluations.stream()
+                    .filter(e -> "Teaching Period".equals(e.getExamPeriod()) || "Exam Period".equals(e.getExamPeriod()))
+                    .collect(Collectors.toList());
+
             logger.info("Normal Period Total Weight: {}", normalPeriodTotalWeight);
             logger.info("Resource Period Total Weight: {}", resourcePeriodTotalWeight);
             logger.info("Special Period Total Weight: {}", specialPeriodTotalWeight);
@@ -270,6 +274,7 @@ public class CurricularUnitController {
             model.addAttribute("normalPeriodTotalWeight", normalPeriodTotalWeight);
             model.addAttribute("resourcePeriodTotalWeight", resourcePeriodTotalWeight);
             model.addAttribute("specialPeriodTotalWeight", specialPeriodTotalWeight);
+            model.addAttribute("normalPeriodAssessments", normalPeriodAssessments);
 
             return "coordinator_evaluationsUC";
         } else {

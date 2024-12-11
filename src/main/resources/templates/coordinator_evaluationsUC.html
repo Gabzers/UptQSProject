@@ -61,6 +61,12 @@
                 <div th:if="${normalPeriodTotalWeight != 100}" style="color: red;">
                     <p>The total weight of evaluations for Normal Period must be exactly 100%. Current weight: <span th:text="${normalPeriodTotalWeight}"></span>%</p>
                 </div>
+                <div th:if="${uc.evaluationType == 'Mixed' && normalPeriodAssessments.size() < 2}" style="color: red;">
+                    <p>For Mixed evaluation type, there must be at least 2 assessments in Normal Period. Current count: <span th:text="${normalPeriodAssessments.size()}"></span></p>
+                </div>
+                <div th:if="${uc.evaluationType == 'Continuous' && normalPeriodAssessments.size() < 3}" style="color: red;">
+                    <p>For Continuous evaluation type, there must be at least 3 assessments in Normal Period. Current count: <span th:text="${normalPeriodAssessments.size()}"></span></p>
+                </div>
             </div>
             <div th:if="${evaluations == null || evaluations.size() == 0}">
                 <p>No evaluations found for Normal Period.</p>

@@ -3,6 +3,7 @@ package com.upt.upt.entity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
@@ -197,6 +198,12 @@ public class CurricularUnit {
 
     public boolean isTotalWeightLessThan100() {
         return this.assessments.stream().mapToInt(AssessmentUnit::getWeight).sum() < 100;
+    }
+
+    public List<AssessmentUnit> getNormalPeriodAssessments() {
+        return assessments.stream()
+                .filter(e -> "Teaching Period".equals(e.getExamPeriod()) || "Exam Period".equals(e.getExamPeriod()))
+                .collect(Collectors.toList());
     }
 
     @Override

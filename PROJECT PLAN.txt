@@ -113,3 +113,20 @@ apresentação de trabalhos;
 
 - a  hora de entrega dos trabalhos deve estar uniformizada (ex: 23h59m); ??
 sempre que possível, evitar apresentações de trabalhos de UC do mesmo ano no mesmo dia;
+
+
+
+falta adaptar as avaliaçoes caso seja: (retirar room, coisas assim, teste final na epoca de exames -> selecionar epoca de exames, etc..)
+As avaliações podem ser classificadas como:
+o Teste
+o Teste final na época de exames
+o Trabalhos desenvolvidos ao longo do semestre
+o Entrega de trabalho
+o Entrega de trabalho de grupo
+o Apresentação de trabalho
+o Apresentação de trabalho de grupo
+o Monografia
+o Exercício prático individual
+o Pitch
+o Exame final
+o Prova Oral
