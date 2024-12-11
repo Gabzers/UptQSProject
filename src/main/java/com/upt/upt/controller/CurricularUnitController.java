@@ -107,10 +107,29 @@ public class CurricularUnitController {
             @RequestParam(value = "ucAttendance", defaultValue = "false") Boolean attendance, // Novo campo
             @RequestParam("ucEvaluationsCount") Integer evaluationsCount,
             @RequestParam("ucYear") Integer year,
-            @RequestParam("ucSemester") Integer semester) {
+            @RequestParam("ucSemester") Integer semester,
+            Model model) {
         try {
             CurricularUnit uc = curricularUnitService.getCurricularUnitById(id)
                     .orElseThrow(() -> new IllegalArgumentException("Invalid UC ID: " + id));
+
+            // Check if the new evaluations count is less than the current number of assessments
+            if (evaluationsCount < uc.getAssessments().size()) {
+                model.addAttribute("uc", uc);
+                model.addAttribute("error", "You must remove some evaluations before reducing the evaluations count.");
+                return "coordinator_editUC";
+            }
+
+            // Check minimum evaluations based on evaluation type
+            if (evaluationType.equals("Mixed") && evaluationsCount < 2) {
+                model.addAttribute("uc", uc);
+                model.addAttribute("error", "For Mixed evaluation type, at least 2 evaluations are required.");
+                return "coordinator_editUC";
+            } else if (evaluationType.equals("Continuous") && evaluationsCount < 3) {
+                model.addAttribute("uc", uc);
+                model.addAttribute("error", "For Continuous evaluation type, at least 3 evaluations are required.");
+                return "coordinator_editUC";
+            }
 
             // Atualizar os campos da UC
             uc.setNameUC(nameUC);
@@ -162,7 +181,17 @@ public class CurricularUnitController {
             @RequestParam("ucEvaluationsCount") Integer evaluationsCount,
             @RequestParam("ucYear") Integer year,
             @RequestParam("ucSemester") Integer semester,
-            HttpSession session) {
+            HttpSession session,
+            Model model) {
+
+        // Check minimum evaluations based on evaluation type
+        if (evaluationType.equals("Mixed") && evaluationsCount < 2) {
+            model.addAttribute("error", "For Mixed evaluation type, at least 2 evaluations are required.");
+            return "coordinator_createUC";
+        } else if (evaluationType.equals("Continuous") && evaluationsCount < 3) {
+            model.addAttribute("error", "For Continuous evaluation type, at least 3 evaluations are required.");
+            return "coordinator_createUC";
+        }
 
         // Criar a nova CurricularUnit com os dados do formulário
         CurricularUnit curricularUnit = new CurricularUnit();

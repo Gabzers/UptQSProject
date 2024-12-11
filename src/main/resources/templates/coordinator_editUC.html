@@ -12,7 +12,7 @@
     <header>
         <nav>
             <button onclick="window.location.href='/logout'">Logout</button>
-            <button onclick="window.location.href=document.referrer">Back</button>
+            <button onclick="window.location.href='/coordinator'">Back</button>
         </nav>
     </header>
 
@@ -34,7 +34,7 @@
 
                 <!-- Type of UC -->
                 <label for="ucEvaluationType">Type of UC:</label>
-                <select name="ucEvaluationType" id="ucEvaluationType" required>
+                <select name="ucEvaluationType" id="ucEvaluationType" required onchange="updateEvaluationTypeAndMin(this.value)">
                     <option value="Continuous" th:selected="${uc.evaluationType == 'Continuous'}">Continuous</option>
                     <option value="Mixed" th:selected="${uc.evaluationType == 'Mixed'}">Mixed</option>
                 </select>
@@ -74,6 +74,11 @@
                 <button type="submit">Update UC</button>
             </form>
         </section>
+
+        <!-- Error Message -->
+        <div th:if="${error != null}">
+            <p class="error-message" th:text="${error}"></p>
+        </div>
     </main>
 
     <footer>

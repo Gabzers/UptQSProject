@@ -31,7 +31,7 @@
             
                 <!-- Evaluation Type -->
                 <label for="ucEvaluationType">Evaluation Type:</label>
-                <select id="ucEvaluationType" name="ucEvaluationType">
+                <select id="ucEvaluationType" name="ucEvaluationType" required onchange="updateEvaluationTypeAndMin(this.value)">
                     <option value="None" selected>None</option>
                     <option value="Mixed">Mixed</option>
                     <option value="Continuous">Continuous</option>
@@ -39,7 +39,7 @@
             
                 <!-- Number of Evaluations -->
                 <label for="ucEvaluationsCount">Number of Evaluations:</label>
-                <input type="number" id="ucEvaluationsCount" name="ucEvaluationsCount" min="0" required>
+                <input type="number" id="ucEvaluationsCount" name="ucEvaluationsCount" min="0" required onchange="updateEvaluationFields()">
             
                 <!-- Year of the UC -->
                 <label for="ucYear">Year:</label>
@@ -63,6 +63,11 @@
                 <!-- Submit Button -->
                 <button type="submit">Create UC</button>
             </form>
+
+            <!-- Error Message -->
+            <div th:if="${error != null}"></div>
+                <p class="error-message" th:text="${error}"></p>
+            </div>
         </section>
     </main>
 
@@ -70,7 +75,52 @@
         <p>&copy; 2024 University - Academic Administration System</p>
     </footer>
 
+    <script>
+        const evaluationOptions = [
+            'Test',
+            'Final Exam in Exam Period',
+            'Work Developed Throughout the Semester',
+            'Work Submission',
+            'Group Work Submission',
+            'Work Presentation',
+            'Group Work Presentation',
+            'Monograph',
+            'Individual Practical Exercise',
+            'Pitch',
+            'Final Exam',
+            'Oral Exam'
+        ];
 
+        window.onload = function () {
+            const numEvaluationsField = document.getElementById('ucEvaluationsCount');
+            const ucEvaluationTypeField = document.getElementById('ucEvaluationType');
+
+            // Update fields on page load
+            updateEvaluationTypeAndMin(ucEvaluationTypeField.value);
+
+            // Add listener for changes in UC type
+            ucEvaluationTypeField.addEventListener('change', function () {
+                updateEvaluationTypeAndMin(this.value);
+            });
+
+            // Initialize evaluation fields based on current number
+            updateEvaluationFields();
+        };
+
+        // Function to update evaluation type and minimum evaluations
+        function updateEvaluationTypeAndMin(typeUC) {
+            const numEvaluationsField = document.getElementById('ucEvaluationsCount');
+
+            if (typeUC === 'Mixed') {
+                numEvaluationsField.value = Math.max(numEvaluationsField.value, 2);
+                numEvaluationsField.setAttribute('min', 2);
+            } else if (typeUC === 'Continuous') {
+                numEvaluationsField.value = Math.max(numEvaluationsField.value, 3);
+                numEvaluationsField.setAttribute('min', 3);
+            }
+            updateEvaluationFields();
+        }
+    </script>
 </body>
 
 </html>
