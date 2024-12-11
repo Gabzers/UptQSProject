@@ -43,6 +43,10 @@ public class YearUnitService {
         return yearUnitRepository.findTopByOrderByIdDesc();
     }
 
+    public Optional<YearUnit> getMostRecentYearUnitByDirector(Long directorId) {
+        return yearUnitRepository.findTopByDirectorUnitIdOrderByIdDesc(directorId);
+    }
+
     public Optional<SemesterUnit> getSemesterUnitById(Long id) {
         return semesterUnitRepository.findById(id);
     }

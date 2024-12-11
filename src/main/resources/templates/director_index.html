@@ -95,7 +95,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="yearUnit : ${loggedInDirector.pastYears}" th:if="${yearUnit.directorUnit.id == loggedInDirector.id}">
+                <tr th:each="yearUnit : ${pastYears}" th:if="${yearUnit.directorUnit.id == loggedInDirector.id}">
                     <td th:text="${yearUnit.firstSemester.startDate}"></td>
                     <td th:text="${yearUnit.specialExamStart}"></td>
                     <td th:text="${yearUnit.specialExamEnd}"></td>

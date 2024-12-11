@@ -2,6 +2,7 @@ package com.upt.upt.controller;
 
 import com.upt.upt.entity.CoordinatorUnit;
 import com.upt.upt.entity.CurricularUnit;
+import com.upt.upt.entity.DirectorUnit;
 import com.upt.upt.entity.YearUnit;
 import com.upt.upt.entity.SemesterUnit;
 import com.upt.upt.service.CurricularUnitService;
@@ -48,13 +49,18 @@ public class CurricularUnitController {
             Optional<CoordinatorUnit> coordinatorOpt = coordinatorUnitService.getCoordinatorById(coordinatorId);
             if (coordinatorOpt.isPresent()) {
                 CoordinatorUnit coordinator = coordinatorOpt.get();
-                Optional<YearUnit> mostRecentYearOpt = yearUnitService.getMostRecentYearUnit();
+                DirectorUnit director = coordinator.getDirectorUnit();
+                Optional<YearUnit> mostRecentYearOpt = yearUnitService.getMostRecentYearUnitByDirector(director.getId());
                 if (mostRecentYearOpt.isPresent()) {
                     YearUnit mostRecentYear = mostRecentYearOpt.get();
-                    List<CurricularUnit> filteredUnits = coordinator.getCurricularUnits().stream()
-                            .filter(uc -> isUCInMostRecentYear(uc, mostRecentYear))
+                    List<CurricularUnit> firstSemesterUnits = coordinator.getCurricularUnits().stream()
+                            .filter(uc -> mostRecentYear.getFirstSemester().getCurricularUnits().contains(uc))
                             .collect(Collectors.toList());
-                    model.addAttribute("curricularUnits", filteredUnits);
+                    List<CurricularUnit> secondSemesterUnits = coordinator.getCurricularUnits().stream()
+                            .filter(uc -> mostRecentYear.getSecondSemester().getCurricularUnits().contains(uc))
+                            .collect(Collectors.toList());
+                    model.addAttribute("firstSemesterUnits", firstSemesterUnits);
+                    model.addAttribute("secondSemesterUnits", secondSemesterUnits);
                 } else {
                     return "redirect:/login?error=Most recent year not found";
                 }
@@ -168,22 +174,23 @@ public class CurricularUnitController {
         curricularUnit.setYear(year);
         curricularUnit.setSemester(semester);
 
-        // Associar a UC ao semestre correto com base no ano e semestre
-        Optional<YearUnit> mostRecentYear = yearUnitService.getMostRecentYearUnit();
-        if (mostRecentYear.isPresent()) {
-            YearUnit yearUnit = mostRecentYear.get();
-            SemesterUnit semesterUnit = semester == 1 ? yearUnit.getFirstSemester() : yearUnit.getSecondSemester();
-            semesterUnit.addCurricularUnit(curricularUnit); // Add the UC to the semester
-        } else {
-            return "redirect:/coordinator?error=Year not found";
-        }
-
         // Associar a UC com o coordenador
         Long coordinatorId = (Long) session.getAttribute("userId");
         Optional<CoordinatorUnit> coordinatorUnit = coordinatorUnitService.getCoordinatorById(coordinatorId);
         if (coordinatorUnit.isPresent()) {
             CoordinatorUnit coordinator = coordinatorUnit.get();
             coordinator.addCurricularUnit(curricularUnit); // Adicionar a UC à lista do coordenador
+
+            // Associar a UC ao semestre correto com base no ano e semestre do diretor do coordenador
+            DirectorUnit director = coordinator.getDirectorUnit();
+            Optional<YearUnit> mostRecentYear = yearUnitService.getMostRecentYearUnitByDirector(director.getId());
+            if (mostRecentYear.isPresent()) {
+                YearUnit yearUnit = mostRecentYear.get();
+                SemesterUnit semesterUnit = semester == 1 ? yearUnit.getFirstSemester() : yearUnit.getSecondSemester();
+                semesterUnit.addCurricularUnit(curricularUnit); // Add the UC to the semester
+            } else {
+                return "redirect:/coordinator?error=Year not found";
+            }
         } else {
             // Handle the case where the coordinator unit is not found
             return "redirect:/coordinator?error=Coordinator not found";

@@ -42,12 +42,14 @@ public class DirectorUnitController {
                 DirectorUnit director = directorOpt.get();
                 model.addAttribute("loggedInDirector", director);
                 model.addAttribute("coordinators", director.getCoordinators());
-                Optional<YearUnit> mostRecentYear = yearUnitService.getMostRecentYearUnit();
+                List<YearUnit> directorYears = director.getPastYears();
+                Optional<YearUnit> mostRecentYear = directorYears.stream().max((y1, y2) -> y1.getFirstSemester().getStartDate().compareTo(y2.getFirstSemester().getStartDate()));
                 model.addAttribute("mostRecentYear", mostRecentYear.orElse(null));
                 model.addAttribute("currentYear", mostRecentYear.orElse(null));
-                model.addAttribute("pastYears", director.getPastYears().stream()
-                        .filter(year -> !year.equals(mostRecentYear.orElse(null)))
-                        .collect(Collectors.toList()));
+                model.addAttribute("pastYears", directorYears.stream()
+                    .filter(year -> mostRecentYear.isPresent() && !year.equals(mostRecentYear.get()))
+                    .sorted((y1, y2) -> y2.getFirstSemester().getStartDate().compareTo(y1.getFirstSemester().getStartDate()))
+                    .collect(Collectors.toList()));
             } else {
                 return "redirect:/login?error=Director not found";
             }

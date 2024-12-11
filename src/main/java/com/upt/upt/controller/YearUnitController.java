@@ -8,12 +8,15 @@ import com.upt.upt.service.YearUnitService;
 import com.upt.upt.service.DirectorUnitService;
 import com.upt.upt.entity.MapUnit;
 import com.upt.upt.service.MapUnitService;
+
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -61,6 +64,13 @@ public class YearUnitController {
             if (directorOpt.isPresent()) {
                 DirectorUnit director = directorOpt.get();
                 model.addAttribute("loggedInDirector", director);
+                List<YearUnit> directorYears = director.getPastYears();
+                Optional<YearUnit> mostRecentYear = directorYears.stream().max((y1, y2) -> y1.getFirstSemester().getStartDate().compareTo(y2.getFirstSemester().getStartDate()));
+                model.addAttribute("mostRecentYear", mostRecentYear.orElse(null));
+                model.addAttribute("pastYears", directorYears.stream()
+                    .filter(year -> mostRecentYear.isPresent() && !year.equals(mostRecentYear.get()))
+                    .sorted((y1, y2) -> y2.getFirstSemester().getStartDate().compareTo(y1.getFirstSemester().getStartDate()))
+                    .collect(Collectors.toList()));
             } else {
                 return "redirect:/login?error=Director not found";
             }

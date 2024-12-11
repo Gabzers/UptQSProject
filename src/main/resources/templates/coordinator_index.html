@@ -18,10 +18,8 @@
 
     <main>
         <section class="section">
-            <h2>Available Unit Courses (UCs)</h2>
-
-            <!-- Check if curricularUnits is not null and not empty -->
-            <div th:if="${curricularUnits != null && curricularUnits.size() > 0}">
+            <h2>Available Unit Courses (UCs) - First Semester</h2>
+            <div th:if="${firstSemesterUnits != null && firstSemesterUnits.size() > 0}">
                 <table>
                     <thead>
                         <tr>
@@ -30,29 +28,21 @@
                             <th>Evaluation Type</th>
                             <th>Evaluations</th>
                             <th>Curricular Year</th>
-                            <th>Semester</th>
-                            <th>Attendance</th> <!-- New column for attendance -->
+                            <th>Attendance</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Loop through the list of curricular units -->
-                        <tr th:each="uc : ${curricularUnits}">
+                        <tr th:each="uc : ${firstSemesterUnits}">
                             <td th:text="${uc.nameUC}">UC Name</td>
                             <td th:text="${uc.studentsNumber}">0</td>
                             <td th:text="${uc.evaluationType}">None</td>
                             <td th:text="${uc.evaluationsCount}">0</td>
                             <td th:text="${uc.year}">1</td>
-                            <td th:text="${uc.semester}">1</td>
-                            <td th:text="${uc.attendance}">0</td> <!-- Display the attendance -->
+                            <td th:text="${uc.attendance}">0</td>
                             <td>
-                                <!-- Edit Button -->
                                 <button class="edit" th:onclick="'window.location.href=\'/coordinator/coordinator_editUC?id=' + ${uc.id} + '\''">Edit</button>
-                                
-                                <!-- Evaluations Button -->
                                 <button class="edit" th:onclick="'window.location.href=\'/coordinator/coordinator_evaluationsUC?id=' + ${uc.id} + '\''">Evaluations</button>
-                                
-                                <!-- Remove Button as a form -->
                                 <form th:action="@{/coordinator/remove-uc/{id}(id=${uc.id})}" method="POST" style="display:inline;">
                                     <button class="delete" type="submit">Remove</button>
                                 </form>
@@ -61,10 +51,47 @@
                     </tbody>
                 </table>
             </div>
+            <p th:if="${firstSemesterUnits == null || firstSemesterUnits.size() == 0}">
+                No curricular units found for the first semester. Please create a new UC.
+            </p>
+        </section>
 
-            <!-- Message when no curricular units are found -->
-            <p th:if="${curricularUnits == null || curricularUnits.size() == 0}">
-                No curricular units found. Please create a new UC.
+        <section class="section">
+            <h2>Available Unit Courses (UCs) - Second Semester</h2>
+            <div th:if="${secondSemesterUnits != null && secondSemesterUnits.size() > 0}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>UC Name</th>
+                            <th>Number of Students</th>
+                            <th>Evaluation Type</th>
+                            <th>Evaluations</th>
+                            <th>Curricular Year</th>
+                            <th>Attendance</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="uc : ${secondSemesterUnits}">
+                            <td th:text="${uc.nameUC}">UC Name</td>
+                            <td th:text="${uc.studentsNumber}">0</td>
+                            <td th:text="${uc.evaluationType}">None</td>
+                            <td th:text="${uc.evaluationsCount}">0</td>
+                            <td th:text="${uc.year}">1</td>
+                            <td th:text="${uc.attendance}">0</td>
+                            <td>
+                                <button class="edit" th:onclick="'window.location.href=\'/coordinator/coordinator_editUC?id=' + ${uc.id} + '\''">Edit</button>
+                                <button class="edit" th:onclick="'window.location.href=\'/coordinator/coordinator_evaluationsUC?id=' + ${uc.id} + '\''">Evaluations</button>
+                                <form th:action="@{/coordinator/remove-uc/{id}(id=${uc.id})}" method="POST" style="display:inline;">
+                                    <button class="delete" type="submit">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p th:if="${secondSemesterUnits == null || secondSemesterUnits.size() == 0}">
+                No curricular units found for the second semester. Please create a new UC.
             </p>
         </section>
     </main>

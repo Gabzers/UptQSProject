@@ -86,8 +86,8 @@ ajustar view semesters director
 
 FALTA:
 
-director mostrar mapa de avaliações e lista de cursos de um semestre <-
-ao criar novo ano, "resetar" a lista de UCs do coordinator (listar de alguma forma apenas as UCs que estejam naquele mais recente ano e tambem na lista do coordinator, ou cria se uma lista nova.)
+apresentar apenas as UCS criadas no ano mais recente do director
+listar mapa em UC
 
 feedback se a uc tem + de 2 ou 3 avaliaçoes <- *
 mostrar quais dias e horas estao livres para uma avaliação daquele estilo
@@ -95,10 +95,10 @@ atribuir sala automaticamente de acordo com os dados escolhidos
 
 não permitir a entrada de contas por url (sem login)
 verificações (essa sala ja foi inserida, username ja existe, )
-mostrar lista de UCS no ano clicado
 
-editar current year no director
-
+editar current year no director <-
+ano mais recente erro <-
+não permitir a criaçao de COORDINATOR sem YEAR criado
 
 
 (atenção aos requisitos em avaliaçao)
@@ -115,5 +115,3 @@ apresentação de trabalhos;
 - a  hora de entrega dos trabalhos deve estar uniformizada (ex: 23h59m); ??
 sempre que possível, evitar apresentações de trabalhos de UC do mesmo ano no mesmo dia;
 - devem ser colocadas todas as percentagens de ponderação para que a soma seja de 100%. <- ***
-
-não permitir a criaçao de COORDINATOR sem YEAR criado
