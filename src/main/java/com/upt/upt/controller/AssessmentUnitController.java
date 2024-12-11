@@ -249,15 +249,17 @@ public class AssessmentUnitController {
             if (coordinatorOpt.isPresent()) {
                 CoordinatorUnit coordinator = coordinatorOpt.get();
                 DirectorUnit director = coordinator.getDirectorUnit();
-                Optional<YearUnit> mostRecentYearOpt = yearUnitService.getMostRecentYearUnitByDirector(director.getId());
-                if (mostRecentYearOpt.isPresent()) {
-                    YearUnit mostRecentYear = mostRecentYearOpt.get();
-                    List<AssessmentUnit> firstSemesterAssessments = assessmentService.getAssessmentsBySemester(mostRecentYear.getFirstSemester().getId());
-                    List<AssessmentUnit> secondSemesterAssessments = assessmentService.getAssessmentsBySemester(mostRecentYear.getSecondSemester().getId());
+                List<YearUnit> directorYears = director.getPastYears();
+                Optional<YearUnit> currentYearOpt = directorYears.stream()
+                        .max((y1, y2) -> y1.getFirstSemester().getStartDate().compareTo(y2.getFirstSemester().getStartDate()));
+                if (currentYearOpt.isPresent()) {
+                    YearUnit currentYear = currentYearOpt.get();
+                    List<AssessmentUnit> firstSemesterAssessments = assessmentService.getAssessmentsBySemester(currentYear.getFirstSemester().getId());
+                    List<AssessmentUnit> secondSemesterAssessments = assessmentService.getAssessmentsBySemester(currentYear.getSecondSemester().getId());
                     model.addAttribute("firstSemesterAssessments", firstSemesterAssessments);
                     model.addAttribute("secondSemesterAssessments", secondSemesterAssessments);
                 } else {
-                    return "redirect:/login?error=Most recent year not found";
+                    return "redirect:/login?error=Current year not found";
                 }
             } else {
                 return "redirect:/login?error=Coordinator not found";

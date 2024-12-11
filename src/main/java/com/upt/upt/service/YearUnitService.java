@@ -47,6 +47,12 @@ public class YearUnitService {
         return yearUnitRepository.findTopByDirectorUnitIdOrderByIdDesc(directorId);
     }
 
+    public Optional<YearUnit> getCurrentYearUnitByDirector(Long directorId) {
+        return yearUnitRepository.findByDirectorUnitId(directorId).stream()
+                .filter(YearUnit::isCurrentYear)
+                .max((y1, y2) -> y1.getFirstSemester().getStartDate().compareTo(y2.getFirstSemester().getStartDate()));
+    }
+
     public Optional<SemesterUnit> getSemesterUnitById(Long id) {
         return semesterUnitRepository.findById(id);
     }

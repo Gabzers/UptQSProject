@@ -86,18 +86,12 @@ ajustar view semesters director
 
 FALTA:
 
-apresentar apenas as UCS criadas no ano mais recente do director
-listar mapa em UC
-
-feedback se a uc tem + de 2 ou 3 avaliaçoes <- *
 mostrar quais dias e horas estao livres para uma avaliação daquele estilo
 atribuir sala automaticamente de acordo com os dados escolhidos 
 
 não permitir a entrada de contas por url (sem login)
 verificações (essa sala ja foi inserida, username ja existe, )
 
-editar current year no director <-
-ano mais recente erro <-
 não permitir a criaçao de COORDINATOR sem YEAR criado
 
 
@@ -105,13 +99,15 @@ não permitir a criaçao de COORDINATOR sem YEAR criado
 
 - sempre que possível, evitar coincidência de datas entre provas de 
 diferentes anos para evitar os adiamentos por sobreposição;
+
 - sempre que exequível, quando existirem datas de provas em dias 
 seguidos de anos diferentes, devem respeitar as 24h para ser possível aos 
 estudantes com UC em atraso se apresentarem aos dois momentos de 
 avaliação;
+
 - confirmar que é respeitado um intervalo mínimo de 24h em momentos 
 de avaliação que pertençam ao mesmo ano/semestre, com exceção da 
 apresentação de trabalhos;
+
 - a  hora de entrega dos trabalhos deve estar uniformizada (ex: 23h59m); ??
 sempre que possível, evitar apresentações de trabalhos de UC do mesmo ano no mesmo dia;
-- devem ser colocadas todas as percentagens de ponderação para que a soma seja de 100%. <- ***

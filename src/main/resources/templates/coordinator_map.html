@@ -17,10 +17,8 @@
 
     <main>
         <section class="section">
-            <h2>All Assessments</h2>
-
-            <!-- Check if assessments is not null and not empty -->
-            <div th:if="${assessments != null && assessments.size() > 0}">
+            <h2>First Semester Assessments</h2>
+            <div th:if="${firstSemesterAssessments != null && firstSemesterAssessments.size() > 0}">
                 <table>
                     <thead>
                         <tr>
@@ -37,8 +35,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Loop through the list of assessments -->
-                        <tr th:each="assessment : ${assessments}">
+                        <tr th:each="assessment : ${firstSemesterAssessments}">
                             <td th:text="${assessment.curricularUnit.nameUC}">UC Name</td>
                             <td th:text="${assessment.type}">Assessment Type</td>
                             <td th:text="${assessment.weight}">0</td>
@@ -53,10 +50,47 @@
                     </tbody>
                 </table>
             </div>
+            <p th:if="${firstSemesterAssessments == null || firstSemesterAssessments.size() == 0}">
+                No assessments found for the first semester.
+            </p>
+        </section>
 
-            <!-- Message when no assessments are found -->
-            <p th:if="${assessments == null || assessments.size() == 0}">
-                No assessments found.
+        <section class="section">
+            <h2>Second Semester Assessments</h2>
+            <div th:if="${secondSemesterAssessments != null && secondSemesterAssessments.size() > 0}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>UC Name</th>
+                            <th>Assessment Type</th>
+                            <th>Weight</th>
+                            <th>Exam Period</th>
+                            <th>Computer Required</th>
+                            <th>Class Time</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Room</th>
+                            <th>Minimum Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="assessment : ${secondSemesterAssessments}">
+                            <td th:text="${assessment.curricularUnit.nameUC}">UC Name</td>
+                            <td th:text="${assessment.type}">Assessment Type</td>
+                            <td th:text="${assessment.weight}">0</td>
+                            <td th:text="${assessment.examPeriod}">Exam Period</td>
+                            <td th:text="${assessment.computerRequired ? 'Yes' : 'No'}">No</td>
+                            <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
+                            <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
+                            <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
+                            <td th:text="${assessment.room}">Room</td>
+                            <td th:text="${assessment.minimumGrade}">0.0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p th:if="${secondSemesterAssessments == null || secondSemesterAssessments.size() == 0}">
+                No assessments found for the second semester.
             </p>
         </section>
     </main>

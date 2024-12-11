@@ -50,19 +50,21 @@ public class CurricularUnitController {
             if (coordinatorOpt.isPresent()) {
                 CoordinatorUnit coordinator = coordinatorOpt.get();
                 DirectorUnit director = coordinator.getDirectorUnit();
-                Optional<YearUnit> mostRecentYearOpt = yearUnitService.getMostRecentYearUnitByDirector(director.getId());
-                if (mostRecentYearOpt.isPresent()) {
-                    YearUnit mostRecentYear = mostRecentYearOpt.get();
+                List<YearUnit> directorYears = director.getPastYears();
+                Optional<YearUnit> currentYearOpt = directorYears.stream()
+                        .max((y1, y2) -> y1.getFirstSemester().getStartDate().compareTo(y2.getFirstSemester().getStartDate()));
+                if (currentYearOpt.isPresent()) {
+                    YearUnit currentYear = currentYearOpt.get();
                     List<CurricularUnit> firstSemesterUnits = coordinator.getCurricularUnits().stream()
-                            .filter(uc -> mostRecentYear.getFirstSemester().getCurricularUnits().contains(uc))
+                            .filter(uc -> currentYear.getFirstSemester().getCurricularUnits().contains(uc))
                             .collect(Collectors.toList());
                     List<CurricularUnit> secondSemesterUnits = coordinator.getCurricularUnits().stream()
-                            .filter(uc -> mostRecentYear.getSecondSemester().getCurricularUnits().contains(uc))
+                            .filter(uc -> currentYear.getSecondSemester().getCurricularUnits().contains(uc))
                             .collect(Collectors.toList());
                     model.addAttribute("firstSemesterUnits", firstSemesterUnits);
                     model.addAttribute("secondSemesterUnits", secondSemesterUnits);
                 } else {
-                    return "redirect:/login?error=Most recent year not found";
+                    return "redirect:/login?error=Current year not found";
                 }
             } else {
                 return "redirect:/login?error=Coordinator not found";
@@ -212,13 +214,15 @@ public class CurricularUnitController {
 
             // Associar a UC ao semestre correto com base no ano e semestre do diretor do coordenador
             DirectorUnit director = coordinator.getDirectorUnit();
-            Optional<YearUnit> mostRecentYear = yearUnitService.getMostRecentYearUnitByDirector(director.getId());
-            if (mostRecentYear.isPresent()) {
-                YearUnit yearUnit = mostRecentYear.get();
-                SemesterUnit semesterUnit = semester == 1 ? yearUnit.getFirstSemester() : yearUnit.getSecondSemester();
+            List<YearUnit> directorYears = director.getPastYears();
+            Optional<YearUnit> currentYearOpt = directorYears.stream()
+                    .max((y1, y2) -> y1.getFirstSemester().getStartDate().compareTo(y2.getFirstSemester().getStartDate()));
+            if (currentYearOpt.isPresent()) {
+                YearUnit currentYear = currentYearOpt.get();
+                SemesterUnit semesterUnit = semester == 1 ? currentYear.getFirstSemester() : currentYear.getSecondSemester();
                 semesterUnit.addCurricularUnit(curricularUnit); // Add the UC to the semester
             } else {
-                return "redirect:/coordinator?error=Year not found";
+                return "redirect:/coordinator?error=Current year not found";
             }
         } else {
             // Handle the case where the coordinator unit is not found

@@ -52,6 +52,11 @@ public class AssessmentUnitService {
         return assessments;
     }
 
+    // Método para buscar avaliações por semestre
+    public List<AssessmentUnit> getAssessmentsBySemester(Long semesterId) {
+        return assessmentRepository.findByCurricularUnit_SemesterUnit_Id(semesterId);
+    }
+
     // Atualiza uma avaliação existente
     public AssessmentUnit updateAssessment(Long id, AssessmentUnit updatedAssessment) {
         Optional<AssessmentUnit> existingAssessment = assessmentRepository.findById(id);
