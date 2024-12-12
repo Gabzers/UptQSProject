@@ -33,6 +33,7 @@
                             <th>Exam Period</th>
                             <th>Class Time</th>
                             <th>Room</th>
+                            <th>Room Building</th>
                             <th>Minimum Grade</th>
                             <th>Actions</th>
                         </tr>
@@ -43,7 +44,8 @@
                             <td th:text="${evaluation.weight}">0</td>
                             <td th:text="${evaluation.examPeriod}">None</td>
                             <td th:text="${evaluation.classTime}">N/A</td>
-                            <td th:text="${evaluation.room}">Room 101</td>
+                            <td th:text="${evaluation.room.roomNumber}">Room</td>
+                            <td th:text="${evaluation.room.building}">Room Building</td>
                             <td th:text="${evaluation.minimumGrade}">0.0</td>
                             <td>
                                 <form th:action="@{/coordinator/coordinator_editEvaluations/{id}(id=${evaluation.id})}" method="GET" style="display:inline;">
@@ -84,6 +86,7 @@
                             <th>Exam Period</th>
                             <th>Class Time</th>
                             <th>Room</th>
+                            <th>Room Building</th>
                             <th>Minimum Grade</th>
                             <th>Actions</th>
                         </tr>
@@ -94,7 +97,8 @@
                             <td th:text="${evaluation.weight}">0</td>
                             <td th:text="${evaluation.examPeriod}">None</td>
                             <td th:text="${evaluation.classTime}">N/A</td>
-                            <td th:text="${evaluation.room}">Room 101</td>
+                            <td th:text="${evaluation.room.roomNumber}">Room</td>
+                            <td th:text="${evaluation.room.building}">Room Building</td>
                             <td th:text="${evaluation.minimumGrade}">0.0</td>
                             <td>
                                 <form th:action="@{/coordinator/coordinator_editEvaluations/{id}(id=${evaluation.id})}" method="GET" style="display:inline;">
@@ -129,6 +133,7 @@
                             <th>Exam Period</th>
                             <th>Class Time</th>
                             <th>Room</th>
+                            <th>Room Building</th>
                             <th>Minimum Grade</th>
                             <th>Actions</th>
                         </tr>
@@ -139,7 +144,8 @@
                             <td th:text="${evaluation.weight}">0</td>
                             <td th:text="${evaluation.examPeriod}">None</td>
                             <td th:text="${evaluation.classTime}">N/A</td>
-                            <td th:text="${evaluation.room}">Room 101</td>
+                            <td th:text="${evaluation.room.roomNumber}">Room</td>
+                            <td th:text="${evaluation.room.building}">Room Building</td>
                             <td th:text="${evaluation.minimumGrade}">0.0</td>
                             <td>
                                 <form th:action="@{/coordinator/coordinator_editEvaluations/{id}(id=${evaluation.id})}" method="GET" style="display:inline;">

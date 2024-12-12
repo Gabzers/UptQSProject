@@ -3,6 +3,8 @@ package com.upt.upt.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.util.Objects;
+import java.util.List; // Add import for List
+import java.util.ArrayList; // Add import for ArrayList
 
 /**
  * RoomUnit class represents a room with its specific attributes, such as number, type, material, etc.
@@ -35,6 +37,9 @@ public class RoomUnit {
     @Column(name = "room_building", nullable = false)
     @NotNull
     private String building; // Building information (e.g., floor number or different building)
+
+    @OneToMany(mappedBy = "room")
+    private List<AssessmentUnit> assessments = new ArrayList<>(); // List of assessments in the room
 
     // Constructors
     public RoomUnit() {}
@@ -95,6 +100,14 @@ public class RoomUnit {
 
     public void setBuilding(String building) {
         this.building = building;
+    }
+
+    public List<AssessmentUnit> getAssessments() {
+        return assessments;
+    }
+
+    public void setAssessments(List<AssessmentUnit> assessments) {
+        this.assessments = assessments;
     }
 
     @Override

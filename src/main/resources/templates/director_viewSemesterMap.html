@@ -40,6 +40,7 @@
                             <th>Start Time</th>
                             <th>End Time</th>
                             <th>Room</th>
+                            <th>Room Building</th>
                             <th>Minimum Grade</th>
                         </tr>
                     </thead>
@@ -59,11 +60,12 @@
                             <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
                             <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
                             <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
-                            <td th:text="${assessment.room}">Room</td>
+                            <td th:text="${assessment.room.roomNumber}">Room</td>
+                            <td th:text="${assessment.room.building}">Room Building</td>
                             <td th:text="${assessment.minimumGrade}">0.0</td>
                         </tr>
                         <tr th:if="${noNormalPeriod}">
-                            <td colspan="15" class="no-assessments">No assessments listed for Normal Period.</td>
+                            <td colspan="16" class="no-assessments">No assessments listed for Normal Period.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -86,6 +88,7 @@
                             <th>Start Time</th>
                             <th>End Time</th>
                             <th>Room</th>
+                            <th>Room Building</th>
                             <th>Minimum Grade</th>
                         </tr>
                     </thead>
@@ -105,11 +108,12 @@
                             <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
                             <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
                             <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
-                            <td th:text="${assessment.room}">Room</td>
+                            <td th:text="${assessment.room.roomNumber}">Room</td>
+                            <td th:text="${assessment.room.building}">Room Building</td>
                             <td th:text="${assessment.minimumGrade}">0.0</td>
                         </tr>
                         <tr th:if="${noResourcePeriod}">
-                            <td colspan="15" class="no-assessments">No assessments listed for Resource Period.</td>
+                            <td colspan="16" class="no-assessments">No assessments listed for Resource Period.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -132,6 +136,7 @@
                             <th>Start Time</th>
                             <th>End Time</th>
                             <th>Room</th>
+                            <th>Room Building</th>
                             <th>Minimum Grade</th>
                         </tr>
                     </thead>
@@ -151,11 +156,12 @@
                             <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
                             <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
                             <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
-                            <td th:text="${assessment.room}">Room</td>
+                            <td th:text="${assessment.room.roomNumber}">Room</td>
+                            <td th:text="${assessment.room.building}">Room Building</td>
                             <td th:text="${assessment.minimumGrade}">0.0</td>
                         </tr>
                         <tr th:if="${noSpecialPeriod}">
-                            <td colspan="15" class="no-assessments">No assessments listed for Special Period.</td>
+                            <td colspan="16" class="no-assessments">No assessments listed for Special Period.</td>
                         </tr>
                     </tbody>
                 </table>

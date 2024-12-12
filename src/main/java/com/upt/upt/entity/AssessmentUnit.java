@@ -46,9 +46,9 @@ public class AssessmentUnit {
     @NotNull
     private LocalDateTime endTime; // End date and time of the assessment
 
-    @Column(name = "assessment_room", nullable = false)
-    @NotNull
-    private String room; // Room where the assessment will take place
+    @ManyToOne
+    @JoinColumn(name = "assessment_room_id", nullable = false)
+    private RoomUnit room; // Room where the assessment will take place
 
     @Column(name = "assessment_minimum_grade", nullable = false)
     @Min(0)
@@ -68,7 +68,7 @@ public class AssessmentUnit {
     }
 
     public AssessmentUnit(Long id, String type, Integer weight, String examPeriod, Boolean computerRequired,
-                          Boolean classTime, LocalDateTime startTime, LocalDateTime endTime, String room, 
+                          Boolean classTime, LocalDateTime startTime, LocalDateTime endTime, RoomUnit room, 
                           Double minimumGrade, CurricularUnit curricularUnit, MapUnit map) {
         this.id = id;
         this.type = type;
@@ -149,11 +149,11 @@ public class AssessmentUnit {
         this.endTime = endTime;
     }
 
-    public String getRoom() {
+    public RoomUnit getRoom() {
         return room;
     }
 
-    public void setRoom(String room) {
+    public void setRoom(RoomUnit room) {
         this.room = room;
     }
 

@@ -32,6 +32,7 @@
                             <th>Start Time</th>
                             <th>End Time</th>
                             <th>Room</th>
+                            <th>Room Building</th>
                             <th>Minimum Grade</th>
                         </tr>
                     </thead>
@@ -45,11 +46,12 @@
                             <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
                             <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
                             <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
-                            <td th:text="${assessment.room}">Room</td>
+                            <td th:text="${assessment.room.roomNumber}">Room</td>
+                            <td th:text="${assessment.room.building}">Room Building</td>
                             <td th:text="${assessment.minimumGrade}">0.0</td>
                         </tr>
                         <tr th:if="${noNormalPeriodFirstSemester}">
-                            <td colspan="10" class="no-assessments">No assessments listed for Normal Period.</td>
+                            <td colspan="11" class="no-assessments">No assessments listed for Normal Period.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -66,6 +68,7 @@
                             <th>Start Time</th>
                             <th>End Time</th>
                             <th>Room</th>
+                            <th>Room Building</th>
                             <th>Minimum Grade</th>
                         </tr>
                     </thead>
@@ -79,11 +82,12 @@
                             <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
                             <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
                             <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
-                            <td th:text="${assessment.room}">Room</td>
+                            <td th:text="${assessment.room.roomNumber}">Room</td>
+                            <td th:text="${assessment.room.building}">Room Building</td>
                             <td th:text="${assessment.minimumGrade}">0.0</td>
                         </tr>
                         <tr th:if="${noResourcePeriodFirstSemester}">
-                            <td colspan="10" class="no-assessments">No assessments listed for Resource Period.</td>
+                            <td colspan="11" class="no-assessments">No assessments listed for Resource Period.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -100,6 +104,7 @@
                             <th>Start Time</th>
                             <th>End Time</th>
                             <th>Room</th>
+                            <th>Room Building</th>
                             <th>Minimum Grade</th>
                         </tr>
                     </thead>
@@ -113,11 +118,12 @@
                             <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
                             <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
                             <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
-                            <td th:text="${assessment.room}">Room</td>
+                            <td th:text="${assessment.room.roomNumber}">Room</td>
+                            <td th:text="${assessment.room.building}">Room Building</td>
                             <td th:text="${assessment.minimumGrade}">0.0</td>
                         </tr>
                         <tr th:if="${noSpecialPeriodFirstSemester}">
-                            <td colspan="10" class="no-assessments">No assessments listed for Special Period.</td>
+                            <td colspan="11" class="no-assessments">No assessments listed for Special Period.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -143,6 +149,7 @@
                             <th>Start Time</th>
                             <th>End Time</th>
                             <th>Room</th>
+                            <th>Room Building</th>
                             <th>Minimum Grade</th>
                         </tr>
                     </thead>
@@ -156,11 +163,12 @@
                             <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
                             <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
                             <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
-                            <td th:text="${assessment.room}">Room</td>
+                            <td th:text="${assessment.room.roomNumber}">Room</td>
+                            <td th:text="${assessment.room.building}">Room Building</td>
                             <td th:text="${assessment.minimumGrade}">0.0</td>
                         </tr>
                         <tr th:if="${noNormalPeriodSecondSemester}">
-                            <td colspan="10" class="no-assessments">No assessments listed for Normal Period.</td>
+                            <td colspan="11" class="no-assessments">No assessments listed for Normal Period.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -177,6 +185,7 @@
                             <th>Start Time</th>
                             <th>End Time</th>
                             <th>Room</th>
+                            <th>Room Building</th>
                             <th>Minimum Grade</th>
                         </tr>
                     </thead>
@@ -190,11 +199,12 @@
                             <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
                             <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
                             <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
-                            <td th:text="${assessment.room}">Room</td>
+                            <td th:text="${assessment.room.roomNumber}">Room</td>
+                            <td th:text="${assessment.room.building}">Room Building</td>
                             <td th:text="${assessment.minimumGrade}">0.0</td>
                         </tr>
                         <tr th:if="${noResourcePeriodSecondSemester}">
-                            <td colspan="10" class="no-assessments">No assessments listed for Resource Period.</td>
+                            <td colspan="11" class="no-assessments">No assessments listed for Resource Period.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -211,6 +221,7 @@
                             <th>Start Time</th>
                             <th>End Time</th>
                             <th>Room</th>
+                            <th>Room Building</th>
                             <th>Minimum Grade</th>
                         </tr>
                     </thead>
@@ -224,11 +235,12 @@
                             <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
                             <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
                             <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
-                            <td th:text="${assessment.room}">Room</td>
+                            <td th:text="${assessment.room.roomNumber}">Room</td>
+                            <td th:text="${assessment.room.building}">Room Building</td>
                             <td th:text="${assessment.minimumGrade}">0.0</td>
                         </tr>
                         <tr th:if="${noSpecialPeriodSecondSemester}">
-                            <td colspan="10" class="no-assessments">No assessments listed for Special Period.</td>
+                            <td colspan="11" class="no-assessments">No assessments listed for Special Period.</td>
                         </tr>
                     </tbody>
                 </table>

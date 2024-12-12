@@ -26,6 +26,9 @@ import java.util.Map;
 import java.util.HashMap;
 import java.time.format.DateTimeFormatter;
 
+import com.upt.upt.entity.RoomUnit;
+import com.upt.upt.service.RoomUnitService;
+
 @Controller
 @RequestMapping("/coordinator")
 public class AssessmentUnitController {
@@ -43,6 +46,9 @@ public class AssessmentUnitController {
     @Autowired
     private YearUnitService yearUnitService;
 
+    @Autowired
+    private RoomUnitService roomUnitService;
+
     // Página para criar nova avaliação
     @GetMapping("/coordinator_create_evaluation")
     public String createEvaluationPage(@RequestParam("curricularUnitId") Long curricularUnitId, Model model) {
@@ -53,6 +59,8 @@ public class AssessmentUnitController {
                 return "redirect:/coordinator/coordinator_evaluationsUC?id=" + curricularUnitId + "&error=Evaluations already complete";
             }
             model.addAttribute("uc", uc);
+            List<RoomUnit> rooms = roomUnitService.getAllRooms();
+            model.addAttribute("rooms", rooms); // Add rooms to the model
             return "coordinator_addEvaluations";
         } else {
             return "redirect:/coordinator";
@@ -68,7 +76,7 @@ public class AssessmentUnitController {
             @RequestParam(value = "assessmentClassTime", required = false) Boolean classTime,
             @RequestParam("assessmentStartTime") String assessmentStartTime,
             @RequestParam("assessmentEndTime") String assessmentEndTime,
-            @RequestParam("assessmentRoom") String assessmentRoom,
+            @RequestParam("assessmentRoomId") Long assessmentRoomId,
             @RequestParam("assessmentMinimumGrade") Double assessmentMinimumGrade,
             @RequestParam("ucEvaluationType") String ucEvaluationType,
             HttpSession session,
@@ -157,6 +165,12 @@ public class AssessmentUnitController {
             return "coordinator_addEvaluations";
         }
 
+        RoomUnit room = roomUnitService.getRoomById(assessmentRoomId);
+        if (room == null) {
+            model.addAttribute("error", "Room not found.");
+            return "coordinator_addEvaluations";
+        }
+
         // Cria e configura a nova avaliação
         AssessmentUnit assessmentUnit = new AssessmentUnit();
         assessmentUnit.setType(assessmentType);
@@ -166,7 +180,7 @@ public class AssessmentUnitController {
         assessmentUnit.setClassTime(classTime);
         assessmentUnit.setStartTime(startTime);
         assessmentUnit.setEndTime(endTime);
-        assessmentUnit.setRoom(assessmentRoom);
+        assessmentUnit.setRoom(room);
         assessmentUnit.setCurricularUnit(curricularUnit.get());
         assessmentUnit.setMinimumGrade(assessmentMinimumGrade);
 
@@ -221,7 +235,7 @@ public class AssessmentUnitController {
             @RequestParam(value = "assessmentClassTime", required = false) Boolean classTime,
             @RequestParam("assessmentStartTime") String assessmentStartTime,
             @RequestParam("assessmentEndTime") String assessmentEndTime,
-            @RequestParam("assessmentRoom") String assessmentRoom,
+            @RequestParam("assessmentRoomId") Long assessmentRoomId,
             @RequestParam("assessmentMinimumGrade") Double assessmentMinimumGrade,
             Model model) {
 
@@ -265,6 +279,12 @@ public class AssessmentUnitController {
             return "coordinator_editEvaluations";
         }
 
+        RoomUnit room = roomUnitService.getRoomById(assessmentRoomId);
+        if (room == null) {
+            model.addAttribute("error", "Room not found.");
+            return "coordinator_editEvaluations";
+        }
+
         assessmentUnit.setType(assessmentType);
         assessmentUnit.setWeight(assessmentWeight);
         assessmentUnit.setExamPeriod(assessmentExamPeriod);
@@ -272,7 +292,7 @@ public class AssessmentUnitController {
         assessmentUnit.setClassTime(classTime);
         assessmentUnit.setStartTime(startTime);
         assessmentUnit.setEndTime(endTime);
-        assessmentUnit.setRoom(assessmentRoom);
+        assessmentUnit.setRoom(room);
         assessmentUnit.setMinimumGrade(assessmentMinimumGrade);
 
         assessmentService.saveAssessment(assessmentUnit); // Atualiza a avaliação no banco
