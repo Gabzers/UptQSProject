@@ -78,6 +78,7 @@ sala tem -:
 	tipo de material (mesas ou computadores)
 	nº de lugares
 	edificio (nº de piso ou outro edificio)
+	lista de avaliações
 	
 
 
@@ -112,6 +113,9 @@ apresentação de trabalhos;
 - a  hora de entrega dos trabalhos deve estar uniformizada (ex: 23h59m); ??
 sempre que possível, evitar apresentações de trabalhos de UC do mesmo ano no mesmo dia;
 
+- periodos de year e semester so não podem começar em uma data e terminar numa anterior
+
+- quando a COORDINATOR tem + de 3 anos ou - de anos de curso, adaptar a criaçao de UCS, para selecionar todos os anos possiveis
 
 
 falta adaptar as avaliaçoes caso seja: (retirar room, coisas assim, teste final na epoca de exames -> selecionar epoca de exames, etc..)

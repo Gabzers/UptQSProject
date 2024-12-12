@@ -1,76 +1,87 @@
-/* Reset basic styles */
+/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* General body styles */
+/* Body of the page */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Align content to the top */
-    align-items: center;         /* Center horizontally */
-    min-height: 100vh; /* Ensures full viewport height */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     padding: 20px;
-    text-align: center;
+    flex-direction: column;
     animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Header styles */
+/* Header */
 header {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: flex-end;
     width: 100%;
-    text-align: center;
-    margin-bottom: 20px;
 }
 
-h1 {
-    color: #333;
-    font-size: 2rem;
-    margin-bottom: 10px;
+/* Standard Button Styling */
+header button, button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+header button:hover, button[type="submit"]:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 /* Main container */
 main {
     width: 100%;
-    max-width: 600px; /* Adjusted width */
+    max-width: 400px; /* Limit the width of the form */
     background-color: #fff;
-    padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* Position relative to place the buttons */
+    padding: 20px 20px 40px; /* Padding adjusted for better spacing */
     animation: slideIn 0.5s ease-in-out;
+    margin-top: 50px; /* Center the form vertically */
 }
 
-/* Section styles */
+/* Form Section */
 .section {
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Ensure inputs stretch to the full width */
 }
 
-h2 {
-    font-size: 1.4rem;
-    color: #333;
-    margin-bottom: 15px;
-}
-
-/* Labels and Inputs */
+/* Form Labels and Inputs */
 label {
+    font-size: 14px;
+    color: #333;
+    margin-top: 5px; /* Reduced margin */
     display: block;
-    margin-bottom: 8px;
-    font-size: 1rem;
-    color: #555;
 }
 
-input, select, button {
-    width: 100%;
-    padding: 12px; /* Slightly increased padding for better usability */
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-    background-color: #fff;
+input, select {
+    width: 100%; /* Ensure the input fields take the full width */
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 10px; /* Reduced margin */
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -80,144 +91,44 @@ input:focus, select:focus {
     outline: none;
 }
 
-/* Navigation buttons container */
-nav {
-    width: 100%;
+/* Custom styles for select elements */
+select {
+    appearance: none;
+    background-color: #fff;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23007bff" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 8px 10px;
+}
+
+/* Custom styles for checkboxes */
+input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+}
+
+.checkbox-container {
     display: flex;
-    justify-content: flex-end; /* Align buttons to the right */
-    gap: 10px; /* Space between buttons */
-    margin-top: 10px;
+    align-items: center;
+    margin-bottom: 10px; /* Reduced margin */
 }
 
-/* Navigation buttons */
-nav button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    font-family: Arial, sans-serif;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    border-radius: 5px;
-    flex: 1;
-    max-width: 120px;
-    text-transform: none; /* Remove caps lock */
-    letter-spacing: 1px;
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-nav button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-}
-
-/* Last button (submit button) */
+/* Submit Button */
 button[type="submit"] {
-    background-color: #007bff; /* Changed to blue */
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    font-family: Arial, sans-serif;
-    border-radius: 5px;
-    max-width: 150px;
-    text-transform: none; /* Remove caps lock */
-    letter-spacing: 1px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-button[type="submit"]:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-}
-
-/* Form helper text or error messages */
-form p {
-    font-size: 0.9rem;
-    color: #f00;
-    text-align: left;
-    margin-bottom: 10px;
-}
-
-/* Footer styles */
-footer {
-    margin-top: 30px;
-    text-align: center;
-    font-size: 14px;
-    color: #888;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    main {
-        padding: 15px;
-    }
-
-    h1, h2 {
-        font-size: 1.5rem;
-    }
-
-    input, select, button {
-        padding: 10px;
-    }
-
-    nav {
-        flex-wrap: wrap;
-    }
-
-    nav button {
-        flex: none;
-        width: 100%;
-        max-width: none;
-    }
-}
-
-/* Specific styles for dynamic elements (evaluation list) */
-.evaluation-item {
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #fafafa;
-}
-
-.evaluation-item label {
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-/* Separador visual entre avaliações */
-.evaluation-separator {
     width: 100%;
+    margin-top: 10px;
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
     text-align: center;
-    margin: 20px 0; /* Espaçamento entre avaliações */
-    font-size: 0.9rem;
-    color: #777; /* Cor neutra */
-    letter-spacing: 1.5px; /* Espaçamento entre caracteres */
-    position: relative;
+    font-size: 12px;
+    color: #555;
 }
 
-.evaluation-separator::before,
-.evaluation-separator::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background-color: #ccc; /* Cor da linha */
-    display: inline-block;
-    position: absolute;
-    top: 50%;
-    width: 45%;
-}
-
-.evaluation-separator::before {
-    left: 0;
-}
-
-.evaluation-separator::after {
-    right: 0;
+footer p {
+    margin: 0;
 }
 
 /* Animations */
@@ -241,11 +152,64 @@ footer {
     }
 }
 
-nav button, button[type="submit"] {
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    animation: fadeIn 0.5s ease-in-out;
+/* Valid date styles */
+.valid-date {
+    background-color: #d4edda;
 }
 
-nav button:hover, button[type="submit"]:hover {
-    transform: scale(1.05);
+/* Error message styles */
+.error-message {
+    color: red;
+    display: none;
+}
+
+/* Flatpickr valid date styles */
+.flatpickr-day.valid-date {
+    background-color: #d4edda !important;
+    color: #000 !important;
+}
+
+/* Flatpickr styles */
+.flatpickr-calendar {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+}
+
+.flatpickr-day {
+    color: #ecf0f1;
+}
+
+.flatpickr-day:hover {
+    background-color: #34495e;
+}
+
+.flatpickr-day.today {
+    background-color: #1abc9c;
+    color: #fff;
+}
+
+.flatpickr-day.selected {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.flatpickr-day.disabled {
+    color: #7f8c8d;
+}
+
+.flatpickr-month {
+    background-color: #34495e;
+}
+
+.flatpickr-weekdays {
+    background-color: #34495e;
+}
+
+.flatpickr-weekday {
+    color: #ecf0f1;
+}
+
+.flatpickr-time {
+    background-color: #34495e;
+    color: #ecf0f1;
 }

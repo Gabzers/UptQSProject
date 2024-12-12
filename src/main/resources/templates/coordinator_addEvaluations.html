@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Evaluation</title>
     <link rel="stylesheet" type="text/css" href="/css/coordinator_addEvaluations.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
 </head>
 
 <body>
@@ -28,7 +30,7 @@
 
                 <!-- Evaluation Type -->
                 <label for="evaluation-type">Evaluation Type:</label>
-                <select name="assessmentType" id="evaluation-type" required>
+                <select name="assessmentType" id="evaluation-type" required onchange="highlightValidDates()">
                     <option value="Test">Test</option>
                     <option value="Final Exam in Exam Period">Final Exam in Exam Period</option>
                     <option value="Work Developed Throughout the Semester">Work Developed Throughout the Semester
@@ -52,14 +54,14 @@
 
                 <!-- Exam Period -->
                 <label for="evaluation-exam-period">Exam Period:</label>
-                <select name="assessmentExamPeriod" id="evaluation-exam-period" required>
+                <select name="assessmentExamPeriod" id="evaluation-exam-period" required onchange="highlightValidDates()">
                     <option value="">None</option>
                     <option value="Teaching Period">Teaching Period</option>
                     <option value="Exam Period">Exam Period</option>
                     <option value="Resource Period">Resource Period</option>
                     <option value="Special Period">Special Period</option>
                 </select>
-                <span id="exam-period-error" style="color: red; display: none;">Please select an exam period.</span>
+                <span id="exam-period-error" class="error-message">Please select an exam period.</span>
                 <br><br>
 
                 <!-- Requires Computer -->
@@ -74,12 +76,12 @@
 
                 <!-- Start Date & Time -->
                 <label for="evaluation-date-start">Start Date & Time:</label>
-                <input type="datetime-local" name="assessmentStartTime" id="evaluation-date-start" required>
+                <input type="text" name="assessmentStartTime" id="evaluation-date-start" required disabled>
                 <br><br>
 
                 <!-- End Date & Time -->
                 <label for="evaluation-date-end">End Date & Time:</label>
-                <input type="datetime-local" name="assessmentEndTime" id="evaluation-date-end" required>
+                <input type="text" name="assessmentEndTime" id="evaluation-date-end" required disabled>
                 <br><br>
 
                 <!-- Room -->
@@ -94,7 +96,7 @@
 
                 <button type="submit">Add Evaluation</button>
             </form>
-            <p th:if="${error != null}" style="color: red;" th:text="${error}"></p>
+            <p th:if="${error != null}" class="error-message" th:text="${error}"></p>
         </section>
     </main>
 
@@ -102,16 +104,8 @@
         <p>&copy; 2024 University - Academic Administration System</p>
     </footer>
 
-    <script>
-        function validateForm() {
-            const examPeriod = document.getElementById('evaluation-exam-period').value;
-            if (!examPeriod) {
-                document.getElementById('exam-period-error').style.display = 'inline';
-                return false;
-            }
-            return true;
-        }
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="/js/coordinator_addEvaluations.js"></script>
 </body>
 
 </html>

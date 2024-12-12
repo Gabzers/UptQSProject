@@ -18,9 +18,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.servlet.http.HttpSession;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.Map;
+import java.util.HashMap;
+import java.time.format.DateTimeFormatter;
 
 @Controller
 @RequestMapping("/coordinator")
@@ -67,6 +71,7 @@ public class AssessmentUnitController {
             @RequestParam("assessmentRoom") String assessmentRoom,
             @RequestParam("assessmentMinimumGrade") Double assessmentMinimumGrade,
             @RequestParam("ucEvaluationType") String ucEvaluationType,
+            HttpSession session,
             Model model) {
 
         if (assessmentExamPeriod == null || assessmentExamPeriod.isEmpty() || assessmentExamPeriod.equals("Select Exam Period")) {
@@ -81,8 +86,9 @@ public class AssessmentUnitController {
             classTime = false;
         }
 
-        LocalDateTime startTime = LocalDateTime.parse(assessmentStartTime);
-        LocalDateTime endTime = LocalDateTime.parse(assessmentEndTime);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        LocalDateTime startTime = LocalDateTime.parse(assessmentStartTime, formatter);
+        LocalDateTime endTime = LocalDateTime.parse(assessmentEndTime, formatter);
 
         Optional<CurricularUnit> curricularUnit = curricularUnitService.getCurricularUnitById(curricularUnitId);
         if (!curricularUnit.isPresent()) {
@@ -94,6 +100,44 @@ public class AssessmentUnitController {
             model.addAttribute("uc", uc);
             model.addAttribute("error", "Evaluations already complete.");
             return "coordinator_addEvaluations";
+        }
+
+        // Fetch the most recent year and the corresponding semester
+        Long coordinatorId = (Long) session.getAttribute("userId");
+        CoordinatorUnit coordinator = coordinatorUnitService.getCoordinatorById(coordinatorId)
+                .orElseThrow(() -> new IllegalArgumentException("Coordinator not found"));
+        DirectorUnit director = coordinator.getDirectorUnit();
+        YearUnit mostRecentYear = director.getPastYears().stream()
+                .max((y1, y2) -> y1.getFirstSemester().getStartDate().compareTo(y2.getFirstSemester().getStartDate()))
+                .orElseThrow(() -> new IllegalArgumentException("Current year not found"));
+
+        SemesterUnit semesterUnit = uc.getSemester() == 1 ? mostRecentYear.getFirstSemester() : mostRecentYear.getSecondSemester();
+
+        // Validate assessment dates based on the exam period
+        if ("Teaching Period".equals(assessmentExamPeriod) || "Exam Period".equals(assessmentExamPeriod)) {
+            LocalDate semesterStart = LocalDate.parse(semesterUnit.getStartDate());
+            LocalDate semesterEnd = LocalDate.parse(semesterUnit.getEndDate());
+            if (startTime.toLocalDate().isBefore(semesterStart) || endTime.toLocalDate().isAfter(semesterEnd)) {
+                model.addAttribute("uc", uc);
+                model.addAttribute("error", "Assessment dates must be within the semester dates.");
+                return "coordinator_addEvaluations";
+            }
+        } else if ("Resource Period".equals(assessmentExamPeriod)) {
+            LocalDate resitStart = LocalDate.parse(semesterUnit.getResitPeriodStart());
+            LocalDate resitEnd = LocalDate.parse(semesterUnit.getResitPeriodEnd());
+            if (startTime.toLocalDate().isBefore(resitStart) || endTime.toLocalDate().isAfter(resitEnd)) {
+                model.addAttribute("uc", uc);
+                model.addAttribute("error", "Assessment dates must be within the resit period dates.");
+                return "coordinator_addEvaluations";
+            }
+        } else if ("Special Period".equals(assessmentExamPeriod)) {
+            LocalDate specialStart = LocalDate.parse(mostRecentYear.getSpecialExamStart());
+            LocalDate specialEnd = LocalDate.parse(mostRecentYear.getSpecialExamEnd());
+            if (startTime.toLocalDate().isBefore(specialStart) || endTime.toLocalDate().isAfter(specialEnd)) {
+                model.addAttribute("uc", uc);
+                model.addAttribute("error", "Assessment dates must be within the special period dates.");
+                return "coordinator_addEvaluations";
+            }
         }
 
         int periodTotalWeight = uc.getAssessments().stream()
@@ -127,7 +171,6 @@ public class AssessmentUnitController {
         assessmentUnit.setMinimumGrade(assessmentMinimumGrade);
 
         // Fetch the semester of the UC and add the assessment to the map of that semester
-        SemesterUnit semesterUnit = curricularUnit.get().getSemesterUnit();
         MapUnit mapUnit = semesterUnit.getMapUnit();
         mapUnit.getAssessments().add(assessmentUnit);
         assessmentUnit.setMap(mapUnit);
@@ -149,7 +192,14 @@ public class AssessmentUnitController {
             Optional<AssessmentUnit> assessment = assessmentService.getAssessmentByUnitAndId(curricularUnitId, assessmentId);
 
             if (assessment.isPresent()) {
-                model.addAttribute("assessment", assessment.get());  // Adiciona o objeto assessment ao modelo
+                AssessmentUnit assessmentUnit = assessment.get();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+                String formattedStartTime = assessmentUnit.getStartTime().format(formatter);
+                String formattedEndTime = assessmentUnit.getEndTime().format(formatter);
+
+                model.addAttribute("assessment", assessmentUnit);  // Adiciona o objeto assessment ao modelo
+                model.addAttribute("formattedStartTime", formattedStartTime); // Adiciona a data formatada ao modelo
+                model.addAttribute("formattedEndTime", formattedEndTime); // Adiciona a data formatada ao modelo
                 model.addAttribute("uc", curricularUnit.get());      // Adiciona a unidade curricular ao modelo
                 return "coordinator_editEvaluations"; // Página para adicionar/editar avaliação
             } else {
@@ -187,8 +237,9 @@ public class AssessmentUnitController {
             classTime = false;
         }
 
-        LocalDateTime startTime = LocalDateTime.parse(assessmentStartTime);
-        LocalDateTime endTime = LocalDateTime.parse(assessmentEndTime);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        LocalDateTime startTime = LocalDateTime.parse(assessmentStartTime, formatter);
+        LocalDateTime endTime = LocalDateTime.parse(assessmentEndTime, formatter);
 
         Optional<CurricularUnit> curricularUnit = curricularUnitService.getCurricularUnitById(curricularUnitId);
         if (!curricularUnit.isPresent()) {
@@ -273,5 +324,48 @@ public class AssessmentUnitController {
             return "redirect:/login?error=Session expired";
         }
         return "coordinator_map";
+    }
+
+    @GetMapping("/getValidDateRanges")
+    @ResponseBody
+    public Map<String, String> getValidDateRanges(@RequestParam("examPeriod") String examPeriod, HttpSession session) {
+        Long coordinatorId = (Long) session.getAttribute("userId");
+        if (coordinatorId == null) {
+            throw new IllegalArgumentException("User ID is not present in the session");
+        }
+
+        CoordinatorUnit coordinator = coordinatorUnitService.getCoordinatorById(coordinatorId)
+                .orElseThrow(() -> new IllegalArgumentException("Coordinator not found"));
+        DirectorUnit director = coordinator.getDirectorUnit();
+        YearUnit mostRecentYear = director.getPastYears().stream()
+                .max((y1, y2) -> y1.getFirstSemester().getStartDate().compareTo(y2.getFirstSemester().getStartDate()))
+                .orElseThrow(() -> new IllegalArgumentException("Current year not found"));
+
+        SemesterUnit firstSemester = mostRecentYear.getFirstSemester();
+        SemesterUnit secondSemester = mostRecentYear.getSecondSemester();
+
+        Map<String, String> validDateRanges = new HashMap<>();
+        switch (examPeriod) {
+            case "Teaching Period":
+                validDateRanges.put("start", firstSemester.getStartDate());
+                validDateRanges.put("end", firstSemester.getEndDate());
+                break;
+            case "Exam Period":
+                validDateRanges.put("start", firstSemester.getExamPeriodStart());
+                validDateRanges.put("end", firstSemester.getExamPeriodEnd());
+                break;
+            case "Resource Period":
+                validDateRanges.put("start", firstSemester.getResitPeriodStart());
+                validDateRanges.put("end", firstSemester.getResitPeriodEnd());
+                break;
+            case "Special Period":
+                validDateRanges.put("start", mostRecentYear.getSpecialExamStart());
+                validDateRanges.put("end", mostRecentYear.getSpecialExamEnd());
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid exam period");
+        }
+
+        return validDateRanges;
     }
 }
