@@ -1,3 +1,25 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const startDateInput = document.getElementById('evaluation-date-start');
+    const endDateInput = document.getElementById('evaluation-date-end');
+    const examPeriod = document.getElementById('evaluation-exam-period').value;
+
+    if (!examPeriod) {
+        startDateInput.disabled = true;
+        endDateInput.disabled = true;
+    }
+
+    flatpickr(startDateInput, {
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+        time_24hr: true
+    });
+    flatpickr(endDateInput, {
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+        time_24hr: true
+    });
+});
+
 function validateForm() {
     const examPeriod = document.getElementById('evaluation-exam-period').value;
     if (!examPeriod) {

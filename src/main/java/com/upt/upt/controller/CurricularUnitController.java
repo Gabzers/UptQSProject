@@ -54,11 +54,8 @@ public class CurricularUnitController {
             if (coordinatorOpt.isPresent()) {
                 CoordinatorUnit coordinator = coordinatorOpt.get();
                 DirectorUnit director = coordinator.getDirectorUnit();
-                List<YearUnit> directorYears = director.getPastYears();
-                Optional<YearUnit> currentYearOpt = directorYears.stream()
-                        .max((y1, y2) -> y1.getFirstSemester().getStartDate().compareTo(y2.getFirstSemester().getStartDate()));
-                if (currentYearOpt.isPresent()) {
-                    YearUnit currentYear = currentYearOpt.get();
+                YearUnit currentYear = director.getCurrentYear();
+                if (currentYear != null) {
                     List<CurricularUnit> firstSemesterUnits = coordinator.getCurricularUnits().stream()
                             .filter(uc -> currentYear.getFirstSemester().getCurricularUnits().contains(uc))
                             .collect(Collectors.toList());
@@ -160,10 +157,7 @@ public class CurricularUnitController {
                 DirectorUnit director = coordinator.getDirectorUnit();
 
                 // Get the most recent year
-                List<YearUnit> directorYears = director.getPastYears();
-                YearUnit currentYear = directorYears.stream()
-                        .max((y1, y2) -> y1.getFirstSemester().getStartDate().compareTo(y2.getFirstSemester().getStartDate()))
-                        .orElseThrow(() -> new IllegalArgumentException("Current year not found"));
+                YearUnit currentYear = director.getCurrentYear();
 
                 // Add UC to the new semester
                 SemesterUnit newSemesterUnit = semester == 1 ? currentYear.getFirstSemester() : currentYear.getSecondSemester();
@@ -245,11 +239,8 @@ public class CurricularUnitController {
 
             // Associar a UC ao semestre correto com base no ano e semestre do diretor do coordenador
             DirectorUnit director = coordinator.getDirectorUnit();
-            List<YearUnit> directorYears = director.getPastYears();
-            Optional<YearUnit> currentYearOpt = directorYears.stream()
-                    .max((y1, y2) -> y1.getFirstSemester().getStartDate().compareTo(y2.getFirstSemester().getStartDate()));
-            if (currentYearOpt.isPresent()) {
-                YearUnit currentYear = currentYearOpt.get();
+            YearUnit currentYear = director.getCurrentYear();
+            if (currentYear != null) {
                 SemesterUnit semesterUnit = semester == 1 ? currentYear.getFirstSemester() : currentYear.getSecondSemester();
                 semesterUnit.addCurricularUnit(curricularUnit); // Add the UC to the semester
             } else {

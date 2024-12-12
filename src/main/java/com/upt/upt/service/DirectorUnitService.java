@@ -1,12 +1,16 @@
 package com.upt.upt.service;
 
 import com.upt.upt.entity.DirectorUnit;
+import com.upt.upt.entity.YearUnit;
 import com.upt.upt.repository.DirectorUnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 
 /**
  * Service class for managing DirectorUnit entities.
@@ -79,5 +83,17 @@ public class DirectorUnitService {
      */
     public void deleteDirector(Long id) {
         directorUnitRepository.deleteById(id); // Remove o diretor pelo ID
+    }
+
+    /**
+     * Get the most recent year created by the director.
+     *
+     * @param director the director entity
+     * @return the most recent year as a YearUnit
+     */
+    public YearUnit getMostRecentYear(DirectorUnit director) {
+        return director.getPastYears().stream()
+            .max(Comparator.comparing(y -> LocalDate.parse(y.getFirstSemester().getStartDate())))
+            .orElse(null);
     }
 }

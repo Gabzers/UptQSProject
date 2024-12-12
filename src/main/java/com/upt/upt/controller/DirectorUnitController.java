@@ -18,6 +18,7 @@ import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.Comparator;
 
 /**
  * Controller for managing DirectorUnit entities.
@@ -47,14 +48,15 @@ public class DirectorUnitController {
                 DirectorUnit director = directorOpt.get();
                 model.addAttribute("loggedInDirector", director);
                 model.addAttribute("coordinators", director.getCoordinators());
-                List<YearUnit> directorYears = director.getPastYears();
-                Optional<YearUnit> mostRecentYear = directorYears.stream().max((y1, y2) -> y1.getFirstSemester().getStartDate().compareTo(y2.getFirstSemester().getStartDate()));
-                model.addAttribute("mostRecentYear", mostRecentYear.orElse(null));
-                model.addAttribute("currentYear", mostRecentYear.orElse(null));
-                model.addAttribute("pastYears", directorYears.stream()
-                    .filter(year -> mostRecentYear.isPresent() && !year.equals(mostRecentYear.get()))
-                    .sorted((y1, y2) -> y2.getFirstSemester().getStartDate().compareTo(y1.getFirstSemester().getStartDate()))
-                    .collect(Collectors.toList()));
+                List<YearUnit> directorYears = director.getAcademicYears();
+                if (!directorYears.isEmpty()) {
+                    YearUnit currentYear = director.getCurrentYear();
+                    model.addAttribute("currentYear", currentYear);
+                    model.addAttribute("pastYears", director.getPastYears());
+                } else {
+                    model.addAttribute("currentYear", null);
+                    model.addAttribute("pastYears", List.of());
+                }
             } else {
                 return "redirect:/login?error=Director not found";
             }
@@ -200,10 +202,7 @@ public class DirectorUnitController {
             director.setName(name);
             director.setDepartment(department); // Assuming `course` maps to `department`
             director.setUsername(username);
-            director.setPassword(password != null && !password.isEmpty() ? password : director.getPassword()); // Update
-                                                                                                               // password
-                                                                                                               // if
-                                                                                                               // provided
+            director.setPassword(password != null && !password.isEmpty() ? password : director.getPassword()); // Update password if provided
 
             // Save the updated director
             directorUnitService.saveDirector(director);

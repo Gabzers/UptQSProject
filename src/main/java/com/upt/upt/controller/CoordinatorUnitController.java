@@ -41,20 +41,16 @@ public class CoordinatorUnitController {
     @PostMapping("/create-coordinator")
     public String saveCoordinator(@ModelAttribute CoordinatorUnit coordinator, HttpSession session) {
         Long directorId = (Long) session.getAttribute("userId");
-        logger.debug("Director ID from session: {}", directorId);
         if (directorId != null) {
             Optional<DirectorUnit> directorOpt = directorUnitService.getDirectorById(directorId);
             if (directorOpt.isPresent()) {
                 DirectorUnit director = directorOpt.get();
                 director.addCoordinator(coordinator);
-                logger.debug("Saving coordinator: {}", coordinator);
                 coordinatorService.saveCoordinator(coordinator);
             } else {
-                logger.error("Director not found for ID: {}", directorId);
                 return "redirect:/login?error=Director not found";
             }
         } else {
-            logger.error("Director ID is null in session");
             return "redirect:/login?error=Session expired";
         }
         return "redirect:/director";

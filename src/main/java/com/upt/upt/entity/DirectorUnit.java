@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.time.LocalDate;
+import java.util.Comparator;
 
 /**
  * DirectorUnit class represents a director of a department.
@@ -42,7 +42,7 @@ public class DirectorUnit {
     @OneToMany(mappedBy = "directorUnit", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<YearUnit> academicYears = new ArrayList<>();
 
-    // Construtores
+    // Constructors
     public DirectorUnit() {}
 
     public DirectorUnit(Long id, String name, String username, String password, String department,
@@ -56,7 +56,7 @@ public class DirectorUnit {
         this.academicYears = academicYears;
     }
 
-    // Getters e setters
+    // Getters and setters
     public Long getId() {
         return id;
     }
@@ -125,14 +125,15 @@ public class DirectorUnit {
 
     public YearUnit getCurrentYear() {
         return this.academicYears.stream()
-                .filter(YearUnit::isCurrentYear)
-                .findFirst()
+                .max(Comparator.comparing(YearUnit::getId))
                 .orElse(null);
     }
 
     public List<YearUnit> getPastYears() {
+        YearUnit currentYear = getCurrentYear();
         return academicYears.stream()
-                .filter(year -> !year.isCurrentYear())
+                .filter(year -> !year.equals(currentYear))
+                .sorted(Comparator.comparing(YearUnit::getId).reversed())
                 .collect(Collectors.toList());
     }
 

@@ -34,6 +34,8 @@
                             <th>Class Time</th>
                             <th>Room</th>
                             <th>Room Building</th>
+                            <th>Start Date & Time</th>
+                            <th>End Date & Time</th>
                             <th>Minimum Grade</th>
                             <th>Actions</th>
                         </tr>
@@ -46,6 +48,8 @@
                             <td th:text="${evaluation.classTime}">N/A</td>
                             <td th:text="${evaluation.room.roomNumber}">Room</td>
                             <td th:text="${evaluation.room.building}">Room Building</td>
+                            <td th:text="${#temporals.format(evaluation.startTime, 'yyyy-MM-dd HH:mm')}">Start Date & Time</td>
+                            <td th:text="${#temporals.format(evaluation.endTime, 'yyyy-MM-dd HH:mm')}">End Date & Time</td>
                             <td th:text="${evaluation.minimumGrade}">0.0</td>
                             <td>
                                 <form th:action="@{/coordinator/coordinator_editEvaluations/{id}(id=${evaluation.id})}" method="GET" style="display:inline;">
@@ -87,6 +91,8 @@
                             <th>Class Time</th>
                             <th>Room</th>
                             <th>Room Building</th>
+                            <th>Start Date & Time</th>
+                            <th>End Date & Time</th>
                             <th>Minimum Grade</th>
                             <th>Actions</th>
                         </tr>
@@ -99,6 +105,8 @@
                             <td th:text="${evaluation.classTime}">N/A</td>
                             <td th:text="${evaluation.room.roomNumber}">Room</td>
                             <td th:text="${evaluation.room.building}">Room Building</td>
+                            <td th:text="${#temporals.format(evaluation.startTime, 'yyyy-MM-dd HH:mm')}">Start Date & Time</td>
+                            <td th:text="${#temporals.format(evaluation.endTime, 'yyyy-MM-dd HH:mm')}">End Date & Time</td>
                             <td th:text="${evaluation.minimumGrade}">0.0</td>
                             <td>
                                 <form th:action="@{/coordinator/coordinator_editEvaluations/{id}(id=${evaluation.id})}" method="GET" style="display:inline;">
@@ -134,6 +142,8 @@
                             <th>Class Time</th>
                             <th>Room</th>
                             <th>Room Building</th>
+                            <th>Start Date & Time</th>
+                            <th>End Date & Time</th>
                             <th>Minimum Grade</th>
                             <th>Actions</th>
                         </tr>
@@ -146,6 +156,8 @@
                             <td th:text="${evaluation.classTime}">N/A</td>
                             <td th:text="${evaluation.room.roomNumber}">Room</td>
                             <td th:text="${evaluation.room.building}">Room Building</td>
+                            <td th:text="${#temporals.format(evaluation.startTime, 'yyyy-MM-dd HH:mm')}">Start Date & Time</td>
+                            <td th:text="${#temporals.format(evaluation.endTime, 'yyyy-MM-dd HH:mm')}">End Date & Time</td>
                             <td th:text="${evaluation.minimumGrade}">0.0</td>
                             <td>
                                 <form th:action="@{/coordinator/coordinator_editEvaluations/{id}(id=${evaluation.id})}" method="GET" style="display:inline;">

@@ -66,14 +66,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:if="${mostRecentYear != null && mostRecentYear.directorUnit.id == loggedInDirector.id}">
-                    <td th:text="${mostRecentYear.firstSemester.startDate}"></td>
-                    <td th:text="${mostRecentYear.specialExamStart}"></td>
-                    <td th:text="${mostRecentYear.specialExamEnd}"></td>
+                <tr th:if="${currentYear != null}">
+                    <td th:text="${currentYear.firstSemester.startDate}"></td>
+                    <td th:text="${currentYear.specialExamStart}"></td>
+                    <td th:text="${currentYear.specialExamEnd}"></td>
                     <td>
-                        <button th:onclick="'location.href=\'/director/edit-year?id=' + ${mostRecentYear.id} + '\''" class="editBtn">Edit</button>
-                        <button th:onclick="'location.href=\'/director/viewSemester/' + ${mostRecentYear.id} + '\''" class="viewSemestersBtn">View Semester</button>
-                        <form th:action="@{/director/delete-year/{id}(id=${mostRecentYear.id})}" method="POST" style="display:inline;">
+                        <button th:onclick="'location.href=\'/director/edit-year?id=' + ${currentYear.id} + '\''" class="editBtn">Edit</button>
+                        <button th:onclick="'location.href=\'/director/viewSemester/' + ${currentYear.id} + '\''" class="viewSemestersBtn">View Semester</button>
+                        <form th:action="@{/director/delete-year/{id}(id=${currentYear.id})}" method="POST" style="display:inline;">
                             <button type="submit" class="deleteBtn">Delete</button>
                         </form>
                     </td>
@@ -95,7 +95,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="yearUnit : ${pastYears}" th:if="${yearUnit.directorUnit.id == loggedInDirector.id}">
+                <tr th:each="yearUnit : ${pastYears}">
                     <td th:text="${yearUnit.firstSemester.startDate}"></td>
                     <td th:text="${yearUnit.specialExamStart}"></td>
                     <td th:text="${yearUnit.specialExamEnd}"></td>

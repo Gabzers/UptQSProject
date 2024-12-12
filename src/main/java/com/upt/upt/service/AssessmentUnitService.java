@@ -6,6 +6,7 @@ import com.upt.upt.repository.AssessmentUnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -86,5 +87,17 @@ public class AssessmentUnitService {
     // Método para buscar avaliações de um MapUnit
     public List<AssessmentUnit> getAssessmentsFromMapUnit(MapUnit mapUnit) {
         return mapUnit.getAssessments();
+    }
+
+    // Método para verificar a disponibilidade da sala
+    public boolean isRoomAvailable(Long roomId, LocalDateTime startTime, LocalDateTime endTime) {
+        List<AssessmentUnit> assessments = assessmentRepository.findByRoomId(roomId);
+        for (AssessmentUnit assessment : assessments) {
+            if (startTime.isEqual(assessment.getStartTime()) || 
+                (startTime.isBefore(assessment.getEndTime()) && endTime.isAfter(assessment.getStartTime()))) {
+                return false; // Sala não está disponível
+            }
+        }
+        return true; // Sala está disponível
     }
 }

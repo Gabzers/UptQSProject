@@ -160,7 +160,9 @@ footer p {
 /* Error message styles */
 .error-message {
     color: red;
-    display: none;
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
 }
 
 /* Flatpickr valid date styles */
