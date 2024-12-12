@@ -1,8 +1,10 @@
 package com.upt.upt.controller;
 
 import com.upt.upt.entity.RoomUnit;
+import com.upt.upt.entity.AssessmentUnit;
 import com.upt.upt.service.RoomUnitService;
-import java.util.List;  // Correção da importação
+import com.upt.upt.service.AssessmentUnitService;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,9 @@ public class RoomUnitController {
 
     @Autowired
     private RoomUnitService roomUnitService;
+
+    @Autowired
+    private AssessmentUnitService assessmentUnitService;
 
     /**
      * Displays a list of all RoomUnit entities.
@@ -146,8 +151,18 @@ public class RoomUnitController {
      */
     @PostMapping("/remove-room/{id}")
     public String removeRoom(@PathVariable("id") Long id) {
+        // Fetch the room and its associated assessments
+        RoomUnit room = roomUnitService.getRoomById(id);
+        List<AssessmentUnit> assessments = room.getAssessments();
+
+        // Delete the associated assessments
+        for (AssessmentUnit assessment : assessments) {
+            assessmentUnitService.deleteAssessment(assessment.getCurricularUnit().getId(), assessment.getId());
+        }
+
+        // Delete the room
         roomUnitService.deleteRoom(id);
-        return "redirect:master_index"; // Redirect to the list of rooms
+        return "redirect:/master"; // Redirect to the list of rooms
     }
 
 }
