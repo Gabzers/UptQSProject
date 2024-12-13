@@ -206,6 +206,10 @@ public class CurricularUnit {
                 .collect(Collectors.toList());
     }
 
+    public boolean hasAssessments() {
+        return !this.assessments.isEmpty();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

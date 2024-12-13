@@ -29,7 +29,9 @@
 
                 <!-- Number of Students -->
                 <label for="ucNumStudents">Number of Students:</label>
-                <input type="number" id="ucNumStudents" name="ucNumStudents" th:value="${uc.studentsNumber}" required>
+                <input type="number" id="ucNumStudents" name="ucNumStudents" th:value="${uc.studentsNumber}" th:disabled="${uc.assessments.size() > 0}" required>
+                <input type="hidden" name="ucNumStudents" th:value="${uc.studentsNumber}">
+                <p th:if="${uc.assessments.size() > 0}" class="warning-message">Number of students cannot be changed because there are existing assessments.</p>
                 <br><br>
 
                 <!-- Type of UC -->
@@ -87,20 +89,6 @@
     </footer>
 
     <script>
-        const evaluationOptions = [
-            'Test',
-            'Final Exam in Exam Period',
-            'Work Developed Throughout the Semester',
-            'Work Submission',
-            'Group Work Submission',
-            'Work Presentation',
-            'Group Work Presentation',
-            'Monograph',
-            'Individual Practical Exercise',
-            'Pitch',
-            'Final Exam',
-            'Oral Exam'
-        ];
 
         window.onload = function () {
             const numEvaluationsField = document.getElementById('ucEvaluationsCount');

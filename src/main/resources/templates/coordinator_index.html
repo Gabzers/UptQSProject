@@ -40,7 +40,7 @@
                     <tbody>
                         <tr th:each="uc : ${firstSemesterUnits}">
                             <td th:text="${uc.nameUC}">UC Name</td>
-                            <td th:text="${uc.studentsNumber}">0</td>
+                            <td th:text="${uc.studentsNumber}" th:attr="data-assessments=${uc.assessments.size()}">0</td>
                             <td th:text="${uc.evaluationType}">None</td>
                             <td th:classappend="${uc.isMixedAndMissingExamPeriod() || uc.isEvaluationsCountMismatch() || uc.isTotalWeightInvalid() || (uc.evaluationType == 'Mixed' && uc.getNormalPeriodAssessments().size() < 2) || (uc.evaluationType == 'Continuous' && uc.getNormalPeriodAssessments().size() < 3)} ? 'invalid' : ''">
                                 <span th:text="${uc.assessments.size()} + ' / ' + ${uc.evaluationsCount}"></span>
@@ -81,7 +81,7 @@
                     <tbody>
                         <tr th:each="uc : ${secondSemesterUnits}">
                             <td th:text="${uc.nameUC}">UC Name</td>
-                            <td th:text="${uc.studentsNumber}">0</td>
+                            <td th:text="${uc.studentsNumber}" th:attr="data-assessments=${uc.assessments.size()}">0</td>
                             <td th:text="${uc.evaluationType}">None</td>
                             <td th:classappend="${uc.isMixedAndMissingExamPeriod() || uc.isEvaluationsCountMismatch() || uc.isTotalWeightInvalid() || (uc.evaluationType == 'Mixed' && uc.getNormalPeriodAssessments().size() < 2) || (uc.evaluationType == 'Continuous' && uc.getNormalPeriodAssessments().size() < 3)} ? 'invalid' : ''">
                                 <span th:text="${uc.assessments.size()} + ' / ' + ${uc.evaluationsCount}"></span>

@@ -93,7 +93,7 @@ não permitir a criaçao de COORDINATOR sem YEAR criado
 
 (atenção aos requisitos em avaliaçao)
 
--> corrigir editar avaliação(n funciona) / ano(n funciona e remover lista) / UC (remover listas ao editar para evitar bugs ou aviso)
+-> corrigir editar avaliação(n funciona)
 
 - sempre que exequível, quando existirem datas de provas em dias 
 seguidos de anos diferentes, devem respeitar as 24h para ser possível aos 
@@ -102,9 +102,9 @@ avaliação;
 
 - quando a COORDINATOR tem + de 3 anos ou - de anos de curso, adaptar a criaçao de UCS, para selecionar todos os anos possiveis
 
-- nao permitir users iguais
+- ao retirar room, apagar avaliaçoes q estao nessa room
 
-falta adaptar as avaliaçoes caso seja: (retirar room, coisas assim, teste final na epoca de exames -> selecionar epoca de exames, etc..)
+falta adaptar as avaliaçoes caso seja:
 o Teste final na época de exames
 
 -> *** ajustar nomes, resource e assessment em todo o projeto

@@ -1,6 +1,8 @@
 package com.upt.upt.repository;
 
 import com.upt.upt.entity.CurricularUnit;
+import com.upt.upt.entity.MapUnit;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

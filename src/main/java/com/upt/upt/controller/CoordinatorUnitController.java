@@ -1,11 +1,13 @@
 package com.upt.upt.controller;
 
 import com.upt.upt.entity.CoordinatorUnit;
+import com.upt.upt.entity.CurricularUnit;
 import com.upt.upt.entity.DirectorUnit;
 import com.upt.upt.entity.UserType;
 import com.upt.upt.service.CoordinatorUnitService;
 import com.upt.upt.service.DirectorUnitService;
 import com.upt.upt.service.UserService;
+import com.upt.upt.service.CurricularUnitService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -33,9 +36,11 @@ public class CoordinatorUnitController {
 
     @Autowired
     private DirectorUnitService directorUnitService;
-
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CurricularUnitService curricularUnitService;
 
     private Optional<DirectorUnit> verifyDirector(HttpSession session) {
         Long directorId = (Long) session.getAttribute("userId");
