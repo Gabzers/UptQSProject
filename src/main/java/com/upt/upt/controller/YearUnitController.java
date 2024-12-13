@@ -64,10 +64,12 @@ public class YearUnitController {
 
     @PostMapping("/save-year")
     public String saveNewYear(@ModelAttribute YearUnit yearUnit, @RequestParam Map<String, String> params, HttpSession session, Model model) {
-        if (verifyDirector(session).isEmpty()) {
+        Optional<DirectorUnit> directorOpt = verifyDirector(session);
+        if (directorOpt.isEmpty()) {
             return "redirect:/login?error=Unauthorized access";
         }
-        if (!yearUnitService.validateYearDates(params, model)) {
+        Long directorId = directorOpt.get().getId();
+        if (!yearUnitService.validateYearDates(params, model, directorId)) {
             return "director_newYear";
         }
         yearUnitService.saveNewYear(yearUnit, params, session);
@@ -91,10 +93,12 @@ public class YearUnitController {
 
     @PostMapping("/update-year/{id}")
     public String updateYear(@PathVariable("id") Long id, @ModelAttribute YearUnit yearUnit, @RequestParam Map<String, String> params, HttpSession session, Model model) {
-        if (verifyDirector(session).isEmpty()) {
+        Optional<DirectorUnit> directorOpt = verifyDirector(session);
+        if (directorOpt.isEmpty()) {
             return "redirect:/login?error=Unauthorized access";
         }
-        if (!yearUnitService.validateYearDates(params, model)) {
+        Long directorId = directorOpt.get().getId();
+        if (!yearUnitService.validateYearDates(params, model, directorId)) {
             return "director_editYear";
         }
         yearUnitService.updateYear(id, yearUnit, params, session);

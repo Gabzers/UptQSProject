@@ -13,13 +13,17 @@
             <button onclick="location.href='/director'">Back</button>
             <button onclick="location.href='/logout'">Logout</button>
         </nav>
-        
     </header>
     <main>
         <form th:action="@{/director/update-year/{id}(id=${yearUnit.id})}" th:object="${yearUnit}" method="post">
             <!-- Display error message if present -->
             <div th:if="${error}" class="error-message">
                 <p th:text="${error}"></p>
+            </div>
+
+            <!-- Display overlap error message if present -->
+            <div th:if="${overlapError}" class="error-message">
+                <p th:text="${overlapError}"></p>
             </div>
 
             <section>
@@ -62,7 +66,7 @@
             <button type="submit">Save</button>
         </form>
     </main>
-    <footer></footer>
+    <footer>
         <p>&copy; 2024 Universidade Portucalense</p>
     </footer>
 </body>
