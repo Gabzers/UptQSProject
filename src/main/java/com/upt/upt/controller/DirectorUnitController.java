@@ -98,6 +98,43 @@ public class DirectorUnitController {
         return "redirect:/director?error=Year not found";
     }
 
+    @GetMapping("/director/edit-coordinator")
+    public String showEditCoordinatorForm(@RequestParam("id") Long id, Model model, HttpSession session) {
+        Optional<DirectorUnit> directorOpt = verifyDirector(session);
+        if (directorOpt.isPresent()) {
+            Optional<CoordinatorUnit> coordinatorOpt = coordinatorService.getCoordinatorById(id);
+            if (coordinatorOpt.isPresent()) {
+                model.addAttribute("coordinator", coordinatorOpt.get());
+                return "director_editCoordinator";
+            }
+            return "redirect:/director?error=Coordinator not found";
+        }
+        return "redirect:/login?error=Session expired";
+    }
+
+    @PostMapping("/director/update-coordinator/{id}")
+    public String updateCoordinator(@PathVariable("id") Long id, @RequestParam Map<String, String> params, HttpSession session) {
+        Optional<DirectorUnit> directorOpt = verifyDirector(session);
+        if (directorOpt.isPresent()) {
+            try {
+                CoordinatorUnit existingCoordinator = coordinatorService.getCoordinatorById(id).orElseThrow(() -> new IllegalArgumentException("Coordinator not found"));
+                existingCoordinator.setName(params.get("name"));
+                existingCoordinator.setCourse(params.get("course"));
+                existingCoordinator.setDuration(Integer.parseInt(params.get("duration")));
+                existingCoordinator.setUsername(params.get("username"));
+                if (params.get("password") != null && !params.get("password").isEmpty()) {
+                    existingCoordinator.setPassword(params.get("password"));
+                }
+                coordinatorService.saveCoordinator(existingCoordinator);
+                return "redirect:/director";
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "redirect:/director/edit-coordinator?id=" + id + "&error=true";
+            }
+        }
+        return "redirect:/login?error=Session expired";
+    }
+
     @GetMapping("/master/create-director")
     public String showCreateDirectorForm(HttpSession session) {
         if (!verifyMaster(session)) {

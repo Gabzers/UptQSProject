@@ -4,12 +4,14 @@ import com.upt.upt.entity.*;
 import com.upt.upt.repository.CurricularUnitRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Service class for managing CurricularUnit entities.
@@ -21,12 +23,16 @@ public class CurricularUnitService {
 
     private final CurricularUnitRepository curricularUnitRepository;
     private final CoordinatorUnitService coordinatorUnitService;
+    private final AssessmentUnitService assessmentUnitService;
+    private final YearUnitService yearUnitService;
 
-    @Autowired
-    public CurricularUnitService(CurricularUnitRepository curricularUnitRepository, CoordinatorUnitService coordinatorUnitService) {
+    public CurricularUnitService(CurricularUnitRepository curricularUnitRepository, CoordinatorUnitService coordinatorUnitService, AssessmentUnitService assessmentUnitService, YearUnitService yearUnitService) {
+        this.assessmentUnitService = assessmentUnitService;
         this.curricularUnitRepository = curricularUnitRepository;
         this.coordinatorUnitService = coordinatorUnitService;
+        this.yearUnitService = yearUnitService;
     }
+    
 
     /**
      * Save a curricular unit.
@@ -166,5 +172,151 @@ public class CurricularUnitService {
         }
 
         return curricularUnit;
+    }
+
+    public void populateCourseList(Model model, CoordinatorUnit coordinator) {
+        DirectorUnit director = coordinator.getDirectorUnit();
+        YearUnit currentYear = director.getCurrentYear();
+        if (currentYear != null) {
+            List<CurricularUnit> firstSemesterUnits = coordinator.getCurricularUnits().stream()
+                    .filter(uc -> currentYear.getFirstSemester().getCurricularUnits().contains(uc))
+                    .collect(Collectors.toList());
+            List<CurricularUnit> secondSemesterUnits = coordinator.getCurricularUnits().stream()
+                    .filter(uc -> currentYear.getSecondSemester().getCurricularUnits().contains(uc))
+                    .collect(Collectors.toList());
+            model.addAttribute("firstSemesterUnits", firstSemesterUnits);
+            model.addAttribute("secondSemesterUnits", secondSemesterUnits);
+        } else {
+            throw new IllegalArgumentException("Current year not found");
+        }
+    }
+
+    public String prepareEditUCPage(Long id, Integer semester, Model model) {
+        Optional<CurricularUnit> curricularUnit = getCurricularUnitById(id);
+        if (curricularUnit.isPresent()) {
+            model.addAttribute("uc", curricularUnit.get());
+            model.addAttribute("semester", semester);
+            return "coordinator_editUC";
+        } else {
+            return "redirect:/coordinator";
+        }
+    }
+
+    public String updateCurricularUnit(Long id, String nameUC, Integer studentsNumber, String evaluationType, Boolean attendance, Integer evaluationsCount, Integer year, Integer semester, HttpSession session, Model model) {
+        try {
+            CurricularUnit uc = getCurricularUnitById(id)
+                    .orElseThrow(() -> new IllegalArgumentException("Invalid UC ID: " + id));
+
+            if (!validateEvaluationsCount(uc, evaluationsCount, evaluationType, model)) {
+                return "coordinator_editUC";
+            }
+
+            updateCurricularUnitFields(uc, Map.of(
+                    "ucName", nameUC,
+                    "ucNumStudents", studentsNumber.toString(),
+                    "ucEvaluationType", evaluationType,
+                    "ucAttendance", attendance.toString(),
+                    "ucEvaluationsCount", evaluationsCount.toString(),
+                    "ucYear", year.toString(),
+                    "ucSemester", semester.toString()
+            ));
+
+            if (!uc.getSemester().equals(semester)) {
+                updateCurricularUnitSemester(uc, semester, session);
+            }
+
+            saveCurricularUnit(uc);
+            return "redirect:/coordinator";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/coordinator_editUC/" + id + "?error=true";
+        }
+    }
+
+    public ResponseEntity<?> getSemesterId(Integer semester) {
+        Optional<YearUnit> mostRecentYear = yearUnitService.getMostRecentYearUnit();
+        if (mostRecentYear.isPresent()) {
+            YearUnit yearUnit = mostRecentYear.get();
+            Long semesterId = semester == 1 ? yearUnit.getFirstSemester().getId() : yearUnit.getSecondSemester().getId();
+            return ResponseEntity.ok().body(Map.of("semesterId", semesterId));
+        } else {
+            return ResponseEntity.badRequest().body("Year not found");
+        }
+    }
+
+    public String createCurricularUnit(String nameUC, Integer studentsNumber, String evaluationType, Boolean attendance, Integer evaluationsCount, Integer year, Integer semester, HttpSession session, Model model) {
+        if (!validateEvaluationsCount(null, evaluationsCount, evaluationType, model)) {
+            return "coordinator_createUC";
+        }
+
+        CurricularUnit curricularUnit = new CurricularUnit();
+        updateCurricularUnitFields(curricularUnit, Map.of(
+                "ucName", nameUC,
+                "ucNumStudents", studentsNumber.toString(),
+                "ucEvaluationType", evaluationType,
+                "ucAttendance", attendance.toString(),
+                "ucEvaluationsCount", evaluationsCount.toString(),
+                "ucYear", year.toString(),
+                "ucSemester", semester.toString()
+        ));
+
+        Long coordinatorId = (Long) session.getAttribute("userId");
+        Optional<CoordinatorUnit> coordinatorUnit = coordinatorUnitService.getCoordinatorById(coordinatorId);
+        if (coordinatorUnit.isPresent()) {
+            CoordinatorUnit coordinator = coordinatorUnit.get();
+            coordinator.addCurricularUnit(curricularUnit);
+
+            DirectorUnit director = coordinator.getDirectorUnit();
+            YearUnit currentYear = director.getCurrentYear();
+            if (currentYear != null) {
+                SemesterUnit semesterUnit = semester == 1 ? currentYear.getFirstSemester() : currentYear.getSecondSemester();
+                semesterUnit.addCurricularUnit(curricularUnit);
+            } else {
+                return "redirect:/coordinator?error=Current year not found";
+            }
+        } else {
+            return "redirect:/coordinator?error=Coordinator not found";
+        }
+
+        saveCurricularUnit(curricularUnit);
+        return "redirect:/coordinator";
+    }
+
+    public String prepareEvaluationsUCPage(Long id, Model model) {
+        Optional<CurricularUnit> curricularUnit = getCurricularUnitById(id);
+        if (curricularUnit.isPresent()) {
+            CurricularUnit uc = curricularUnit.get();
+            List<AssessmentUnit> evaluations = assessmentUnitService.getAssessmentsByCurricularUnit(id);
+
+            int normalPeriodTotalWeight = evaluations.stream()
+                    .filter(e -> "Teaching Period".equals(e.getExamPeriod()) || "Exam Period".equals(e.getExamPeriod()))
+                    .mapToInt(AssessmentUnit::getWeight)
+                    .sum();
+
+            int resourcePeriodTotalWeight = evaluations.stream()
+                    .filter(e -> "Resource Period".equals(e.getExamPeriod()))
+                    .mapToInt(AssessmentUnit::getWeight)
+                    .sum();
+
+            int specialPeriodTotalWeight = evaluations.stream()
+                    .filter(e -> "Special Period".equals(e.getExamPeriod()))
+                    .mapToInt(AssessmentUnit::getWeight)
+                    .sum();
+
+            List<AssessmentUnit> normalPeriodAssessments = evaluations.stream()
+                    .filter(e -> "Teaching Period".equals(e.getExamPeriod()) || "Exam Period".equals(e.getExamPeriod()))
+                    .collect(Collectors.toList());
+
+            model.addAttribute("uc", uc);
+            model.addAttribute("evaluations", evaluations);
+            model.addAttribute("normalPeriodTotalWeight", normalPeriodTotalWeight);
+            model.addAttribute("resourcePeriodTotalWeight", resourcePeriodTotalWeight);
+            model.addAttribute("specialPeriodTotalWeight", specialPeriodTotalWeight);
+            model.addAttribute("normalPeriodAssessments", normalPeriodAssessments);
+
+            return "coordinator_evaluationsUC";
+        } else {
+            return "redirect:/coordinator";
+        }
     }
 }

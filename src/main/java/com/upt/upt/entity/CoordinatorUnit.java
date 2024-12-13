@@ -29,14 +29,14 @@ public class CoordinatorUnit {
     @NotNull
     private String password;
 
-    @Column(name = "coordinator_course", nullable = true)
+    @Column(name = "coordinator_course")
     private String course;
 
-    @Column(name = "coordinator_duration", nullable = true)
+    @Column(name = "coordinator_duration")
     private Integer duration;
 
     @ManyToOne
-    @JoinColumn(name = "director_unit_id", nullable = true)
+    @JoinColumn(name = "director_unit_id")
     private DirectorUnit directorUnit;
 
     @OneToMany(mappedBy = "coordinator", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -45,7 +45,7 @@ public class CoordinatorUnit {
     @ManyToMany
     private List<SemesterUnit> semesters = new ArrayList<>();
 
-    // Construtores
+    // Constructors
     public CoordinatorUnit() {}
 
     public CoordinatorUnit(Long id, String name, String username, String password, String course, Integer duration, DirectorUnit directorUnit, List<CurricularUnit> curricularUnits) {
@@ -59,7 +59,7 @@ public class CoordinatorUnit {
         this.curricularUnits = curricularUnits;
     }
 
-    // Getters e setters
+    // Getters and setters
     public Long getId() {
         return id;
     }

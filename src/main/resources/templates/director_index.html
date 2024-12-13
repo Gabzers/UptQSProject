@@ -43,7 +43,7 @@
                     <td th:text="${coordinator.duration}">Duration</td>
                     <td th:text="${coordinator.username}">Username</td>
                     <td>
-                        <button th:onclick="'location.href=\'/director/edit-coordinator/' + ${coordinator.id} + '\''" class="editBtn">Edit</button>
+                        <button th:onclick="'location.href=\'/director/edit-coordinator?id=' + ${coordinator.id} + '\''" class="editBtn">Edit</button>
                         <form th:action="@{/director/delete-coordinator/{id}(id=${coordinator.id})}" method="POST" style="display:inline;">
                             <button type="submit" class="deleteBtn">Delete</button>
                         </form>
