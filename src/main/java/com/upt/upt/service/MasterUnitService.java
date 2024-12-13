@@ -50,4 +50,42 @@ public class MasterUnitService {
     public void deleteMaster(Long id) {
         masterUnitRepository.deleteById(id);
     }
+
+    /**
+     * Creates a new MasterUnit entity.
+     *
+     * @param name The name of the master unit
+     * @param username The username for the master unit
+     * @param password The password for the master unit
+     * @return The created MasterUnit entity
+     */
+    public MasterUnit createMaster(String name, String username, String password) {
+        MasterUnit newMaster = new MasterUnit();
+        newMaster.setName(name);
+        newMaster.setUsername(username);
+        newMaster.setPassword(password);
+        return newMaster;
+    }
+
+    /**
+     * Updates an existing MasterUnit entity.
+     *
+     * @param id The ID of the master unit to be updated
+     * @param name The updated name of the master unit
+     * @param username The updated username of the master unit
+     * @param password The updated password of the master unit
+     * @return The updated MasterUnit entity
+     */
+    public MasterUnit updateMaster(Long id, String name, String username, String password) {
+        MasterUnit master = getMasterById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid Master ID: " + id));
+
+        master.setName(name);
+        master.setUsername(username);
+        if (password != null && !password.isEmpty()) {
+            master.setPassword(password);
+        }
+
+        return master;
+    }
 }

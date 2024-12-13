@@ -2,14 +2,18 @@ package com.upt.upt.controller;
 
 import com.upt.upt.entity.RoomUnit;
 import com.upt.upt.entity.AssessmentUnit;
+import com.upt.upt.entity.UserType;
 import com.upt.upt.service.RoomUnitService;
 import com.upt.upt.service.AssessmentUnitService;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Controller for handling requests related to RoomUnit entities.
@@ -24,145 +28,80 @@ public class RoomUnitController {
     @Autowired
     private AssessmentUnitService assessmentUnitService;
 
-    /**
-     * Displays a list of all RoomUnit entities.
-     *
-     * @param model The model to pass data to the view
-     * @return The name of the view to display the room units
-     */
+    private boolean verifyMaster(HttpSession session) {
+        UserType userType = (UserType) session.getAttribute("userType");
+        return userType == UserType.MASTER;
+    }
+
     @GetMapping("/rooms")
-    public String listRooms(Model model) {
-        // Get all rooms
-        List<RoomUnit> roomUnits = roomUnitService.getAllRooms();
-        model.addAttribute("roomUnits", roomUnits);
-
-        return "master_index"; // Redirect to master_index page with room data
+    public String listRooms(Model model, HttpSession session) {
+        if (!verifyMaster(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
+        model.addAttribute("roomUnits", roomUnitService.getAllRooms());
+        return "master_index";
     }
 
-    /**
-     * Displays the form for creating a new RoomUnit.
-     *
-     * @return The name of the view to create a new room
-     */
     @GetMapping("/create-room")
-    public String showCreateRoomForm() {
-        return "master_addRoom"; // The page for adding a room
+    public String showCreateRoomForm(HttpSession session) {
+        if (!verifyMaster(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
+        return "master_addRoom";
     }
 
-    /**
-     * Creates a new RoomUnit from the provided form data.
-     *
-     * @param roomNumber   The room number
-     * @param designation  The room designation
-     * @param materialType The type of material in the room
-     * @param seatsCount   The number of seats in the room
-     * @param building     The building where the room is located
-     * @param model        The model to pass error messages to the view
-     * @return A redirect to the list of rooms or an error page
-     */
     @PostMapping("/create-room")
-    public String createRoom(
-            @RequestParam("room-number") String roomNumber,
-            @RequestParam("room-designation") String designation,
-            @RequestParam("room-material-type") String materialType,
-            @RequestParam("room-seats-count") Integer seatsCount,
-            @RequestParam("room-building") String building,
-            Model model) {
-
+    public String createRoom(@RequestParam Map<String, String> params, Model model, HttpSession session) {
+        if (!verifyMaster(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
         try {
-            RoomUnit newRoom = new RoomUnit();
-            newRoom.setRoomNumber(roomNumber);
-            newRoom.setDesignation(designation);
-            newRoom.setMaterialType(materialType);
-            newRoom.setSeatsCount(seatsCount);
-            newRoom.setBuilding(building);
-
-            roomUnitService.createRoom(newRoom);  // Método correto de salvar
-            return "redirect:/master"; // Redirect to the list of rooms
+            RoomUnit newRoom = roomUnitService.createRoom(params);
+            roomUnitService.saveRoom(newRoom);
+            return "redirect:/master";
         } catch (IllegalArgumentException e) {
             model.addAttribute("error", "Incomplete information");
-            return "master_addRoom";  // Return to the create room page with error
+            return "master_addRoom";
         } catch (RuntimeException e) {
             model.addAttribute("error", "Duplicate entry or integrity constraint violated");
-            return "master_addRoom";  // Return to the create room page with error
+            return "master_addRoom";
         }
     }
 
-    /**
-     * Displays the form for editing an existing RoomUnit.
-     *
-     * @param id The ID of the room to edit
-     * @param model The model to pass data to the view
-     * @return The name of the view to edit the room
-     */
     @GetMapping("/edit-room")
-    public String showEditRoomForm(@RequestParam("id") Long id, Model model) {
+    public String showEditRoomForm(@RequestParam("id") Long id, Model model, HttpSession session) {
+        if (!verifyMaster(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
         RoomUnit room = roomUnitService.getRoomById(id);
         model.addAttribute("room", room);
-        return "master_editRoom"; // The page for editing a room
+        return "master_editRoom";
     }
 
-    /**
-     * Updates an existing RoomUnit with the provided form data.
-     *
-     * @param id The ID of the room to update
-     * @param roomNumber The room number
-     * @param designation The room designation
-     * @param materialType The type of material in the room
-     * @param seatsCount The number of seats in the room
-     * @param building The building where the room is located
-     * @param model The model to pass error messages to the view
-     * @return A redirect to the list of rooms or an error page
-     */
     @PostMapping("/edit-room")
-    public String editRoom(
-            @RequestParam("room-id") Long id,
-            @RequestParam("room-number") String roomNumber,
-            @RequestParam("room-designation") String designation,
-            @RequestParam("room-material-type") String materialType,
-            @RequestParam("room-seats-count") Integer seatsCount,
-            @RequestParam("room-building") String building,
-            Model model) {
-
+    public String editRoom(@RequestParam Map<String, String> params, Model model, HttpSession session) {
+        if (!verifyMaster(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
         try {
-            RoomUnit updatedRoom = new RoomUnit();
-            updatedRoom.setRoomNumber(roomNumber);
-            updatedRoom.setDesignation(designation);
-            updatedRoom.setMaterialType(materialType);
-            updatedRoom.setSeatsCount(seatsCount);
-            updatedRoom.setBuilding(building);
-
-            roomUnitService.updateRoom(id, updatedRoom);
-            return "redirect:/master"; // Redirect to the list of rooms
+            RoomUnit updatedRoom = roomUnitService.updateRoom(params);
+            roomUnitService.saveRoom(updatedRoom);
+            return "redirect:/master";
         } catch (IllegalArgumentException e) {
             model.addAttribute("error", "Incomplete information");
-            return "master_editRoom";  // Return to the edit room page with error
+            return "master_editRoom";
         } catch (RuntimeException e) {
             model.addAttribute("error", "Duplicate entry or integrity constraint violated");
-            return "master_editRoom";  // Return to the edit room page with error
+            return "master_editRoom";
         }
     }
 
-    /**
-     * Deletes a RoomUnit.
-     *
-     * @param id The ID of the room unit to be deleted
-     * @return A redirect to the list of rooms
-     */
     @PostMapping("/remove-room/{id}")
-    public String removeRoom(@PathVariable("id") Long id) {
-        // Fetch the room and its associated assessments
-        RoomUnit room = roomUnitService.getRoomById(id);
-        List<AssessmentUnit> assessments = room.getAssessments();
-
-        // Delete the associated assessments
-        for (AssessmentUnit assessment : assessments) {
-            assessmentUnitService.deleteAssessment(assessment.getCurricularUnit().getId(), assessment.getId());
+    public String removeRoom(@PathVariable("id") Long id, HttpSession session) {
+        if (!verifyMaster(session)) {
+            return "redirect:/login?error=Unauthorized access";
         }
-
-        // Delete the room
-        roomUnitService.deleteRoom(id);
-        return "redirect:/master"; // Redirect to the list of rooms
+        roomUnitService.deleteRoomWithAssessments(id);
+        return "redirect:/master";
     }
-
 }

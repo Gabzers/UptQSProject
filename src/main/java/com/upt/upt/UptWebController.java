@@ -63,5 +63,4 @@ public class UptWebController {
             return "redirect:/login?error=Invalid credentials";
         }
     }
-
 }

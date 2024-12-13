@@ -1,11 +1,13 @@
 package com.upt.upt.service;
 
 import com.upt.upt.entity.RoomUnit;
+import com.upt.upt.entity.AssessmentUnit;
 import com.upt.upt.repository.RoomUnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -27,38 +29,59 @@ public class RoomUnitService {
      * @param roomUnit the RoomUnit entity to save
      * @return the saved RoomUnit
      */
-    public RoomUnit createRoom(RoomUnit roomUnit) {
+    public RoomUnit saveRoom(RoomUnit roomUnit) {
         return roomUnitRepository.save(roomUnit);
     }
 
     /**
-     * Update an existing RoomUnit.
+     * Create a new RoomUnit from parameters.
      *
-     * @param id       the ID of the RoomUnit to update
-     * @param roomUnit the updated RoomUnit entity
-     * @return the updated RoomUnit if found, or null if not found
+     * @param params the parameters to create the RoomUnit
+     * @return the created RoomUnit
      */
-    public RoomUnit updateRoom(Long id, RoomUnit roomUnit) {
-        Optional<RoomUnit> existingRoom = roomUnitRepository.findById(id);
-        if (existingRoom.isPresent()) {
-            RoomUnit updatedRoom = existingRoom.get();
-            updatedRoom.setRoomNumber(roomUnit.getRoomNumber());
-            updatedRoom.setDesignation(roomUnit.getDesignation());
-            updatedRoom.setMaterialType(roomUnit.getMaterialType());
-            updatedRoom.setSeatsCount(roomUnit.getSeatsCount());
-            updatedRoom.setBuilding(roomUnit.getBuilding());
-            return roomUnitRepository.save(updatedRoom);
-        }
-        return null;
+    public RoomUnit createRoom(Map<String, String> params) {
+        RoomUnit newRoom = new RoomUnit();
+        newRoom.setRoomNumber(params.get("room-number"));
+        newRoom.setDesignation(params.get("room-designation"));
+        newRoom.setMaterialType(params.get("room-material-type"));
+        newRoom.setSeatsCount(Integer.parseInt(params.get("room-seats-count")));
+        newRoom.setBuilding(params.get("room-building"));
+        return newRoom;
     }
 
     /**
-     * Delete a RoomUnit by ID.
+     * Update an existing RoomUnit from parameters.
+     *
+     * @param params the parameters to update the RoomUnit
+     * @return the updated RoomUnit
+     */
+    public RoomUnit updateRoom(Map<String, String> params) {
+        Long id = Long.parseLong(params.get("room-id"));
+        RoomUnit roomUnit = getRoomById(id);
+        if (roomUnit != null) {
+            roomUnit.setRoomNumber(params.get("room-number"));
+            roomUnit.setDesignation(params.get("room-designation"));
+            roomUnit.setMaterialType(params.get("room-material-type"));
+            roomUnit.setSeatsCount(Integer.parseInt(params.get("room-seats-count")));
+            roomUnit.setBuilding(params.get("room-building"));
+        }
+        return roomUnit;
+    }
+
+    /**
+     * Delete a RoomUnit by ID along with its associated assessments.
      *
      * @param id the ID of the RoomUnit to delete
      */
-    public void deleteRoom(Long id) {
-        roomUnitRepository.deleteById(id);
+    public void deleteRoomWithAssessments(Long id) {
+        RoomUnit room = getRoomById(id);
+        if (room != null) {
+            List<AssessmentUnit> assessments = room.getAssessments();
+            for (AssessmentUnit assessment : assessments) {
+                assessment.setRoom(null);
+            }
+            roomUnitRepository.delete(room);
+        }
     }
 
     /**

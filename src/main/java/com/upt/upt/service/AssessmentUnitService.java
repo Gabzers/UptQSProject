@@ -1,14 +1,21 @@
 package com.upt.upt.service;
 
 import com.upt.upt.entity.AssessmentUnit;
+import com.upt.upt.entity.CurricularUnit;
 import com.upt.upt.entity.MapUnit;
+import com.upt.upt.entity.SemesterUnit;
+import com.upt.upt.entity.YearUnit;
 import com.upt.upt.repository.AssessmentUnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -99,5 +106,80 @@ public class AssessmentUnitService {
             }
         }
         return true; // Sala está disponível
+    }
+
+    // Método para validar as datas de avaliação
+    public boolean validateAssessmentDates(String assessmentExamPeriod, LocalDateTime startTime, LocalDateTime endTime, SemesterUnit semesterUnit, YearUnit currentYear, Model model, Long curricularUnitId) {
+        LocalDate semesterStart, semesterEnd;
+        switch (assessmentExamPeriod) {
+            case "Teaching Period":
+            case "Exam Period":
+                semesterStart = LocalDate.parse(semesterUnit.getStartDate());
+                semesterEnd = LocalDate.parse(semesterUnit.getEndDate());
+                if (startTime.toLocalDate().isBefore(semesterStart) || endTime.toLocalDate().isAfter(semesterEnd)) {
+                    model.addAttribute("error", "Assessment dates must be within the semester dates.");
+                    return false;
+                }
+                break;
+            case "Resource Period":
+                semesterStart = LocalDate.parse(semesterUnit.getResitPeriodStart());
+                semesterEnd = LocalDate.parse(semesterUnit.getResitPeriodEnd());
+                if (startTime.toLocalDate().isBefore(semesterStart) || endTime.toLocalDate().isAfter(semesterEnd)) {
+                    model.addAttribute("error", "Assessment dates must be within the resit period dates.");
+                    return false;
+                }
+                break;
+            case "Special Period":
+                semesterStart = LocalDate.parse(currentYear.getSpecialExamStart());
+                semesterEnd = LocalDate.parse(currentYear.getSpecialExamEnd());
+                if (startTime.toLocalDate().isBefore(semesterStart) || endTime.toLocalDate().isAfter(semesterEnd)) {
+                    model.addAttribute("error", "Assessment dates must be within the special period dates.");
+                    return false;
+                }
+                break;
+            default:
+                model.addAttribute("error", "Invalid exam period.");
+                return false;
+        }
+        return true;
+    }
+
+    public int calculatePeriodTotalWeight(CurricularUnit uc, String assessmentExamPeriod, int newAssessmentWeight) {
+        return uc.getAssessments().stream()
+                .filter(e -> assessmentExamPeriod.equals(e.getExamPeriod()))
+                .mapToInt(AssessmentUnit::getWeight)
+                .sum() + newAssessmentWeight;
+    }
+
+    public boolean noAssessmentsForPeriod(List<AssessmentUnit> assessments, String period) {
+        return assessments.stream().noneMatch(a -> period.equals(a.getExamPeriod()));
+    }
+
+    public Map<String, String> getValidDateRanges(String examPeriod, CurricularUnit curricularUnit, YearUnit currentYear) {
+        SemesterUnit semesterUnit = curricularUnit.getSemester() == 1 ? currentYear.getFirstSemester() : currentYear.getSecondSemester();
+
+        Map<String, String> validDateRanges = new HashMap<>();
+        switch (examPeriod) {
+            case "Teaching Period":
+                validDateRanges.put("start", semesterUnit.getStartDate());
+                validDateRanges.put("end", semesterUnit.getEndDate());
+                break;
+            case "Exam Period":
+                validDateRanges.put("start", semesterUnit.getExamPeriodStart());
+                validDateRanges.put("end", semesterUnit.getExamPeriodEnd());
+                break;
+            case "Resource Period":
+                validDateRanges.put("start", semesterUnit.getResitPeriodStart());
+                validDateRanges.put("end", semesterUnit.getResitPeriodEnd());
+                break;
+            case "Special Period":
+                validDateRanges.put("start", currentYear.getSpecialExamStart());
+                validDateRanges.put("end", currentYear.getSpecialExamEnd());
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid exam period");
+        }
+
+        return validDateRanges;
     }
 }

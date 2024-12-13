@@ -14,7 +14,7 @@
         <!-- Logout Button -->
         <div class="button-container">
             <button id="logoutBtn" onclick="location.href='/logout'">Logout</button>
-            <button onclick="window.location.href=document.referrer">Back</button>
+            <button onclick="location.href='/director'">Back</button>
         </div>
     </header>
 
@@ -22,6 +22,11 @@
         <form action="/director/save-year" method="post">
             <!-- Hidden input for directorUnit.id -->
             <input type="hidden" name="directorUnit.id" value="2"> <!-- Replace with actual directorUnit.id -->
+
+            <!-- Display error message if present -->
+            <div th:if="${error}" class="error-message">
+                <p th:text="${error}"></p>
+            </div>
 
             <!-- First Semester -->
             <section>

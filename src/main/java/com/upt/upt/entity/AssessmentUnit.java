@@ -205,7 +205,7 @@ public class AssessmentUnit {
                 ", classTime=" + classTime +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
-                ", room='" + room + '\'' +
+                ", room=" + room +
                 ", minimumGrade=" + minimumGrade +
                 '}';
     }

@@ -11,6 +11,7 @@ async function highlightValidDates() {
     const examPeriod = document.getElementById('evaluation-exam-period').value;
     const startDateInput = document.getElementById('evaluation-date-start');
     const endDateInput = document.getElementById('evaluation-date-end');
+    const curricularUnitId = document.getElementById('curricular-unit-id').value;
 
     if (!examPeriod) {
         startDateInput.disabled = true;
@@ -22,7 +23,7 @@ async function highlightValidDates() {
     endDateInput.disabled = false;
 
     try {
-        const response = await fetch(`/coordinator/getValidDateRanges?examPeriod=${examPeriod}`);
+        const response = await fetch(`/coordinator/getValidDateRanges?examPeriod=${examPeriod}&curricularUnitId=${curricularUnitId}`);
         if (response.ok) {
             const validDateRanges = await response.json();
             const { start, end } = validDateRanges;

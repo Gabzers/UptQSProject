@@ -1,10 +1,12 @@
 package com.upt.upt.service;
 
 import com.upt.upt.entity.CoordinatorUnit;
+import com.upt.upt.entity.DirectorUnit;
 import com.upt.upt.repository.CoordinatorUnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +17,9 @@ import java.util.Optional;
 public class CoordinatorUnitService {
 
     private final CoordinatorUnitRepository coordinatorRepository;
+
+    @Autowired
+    private DirectorUnitService directorUnitService;
 
     @Autowired
     public CoordinatorUnitService(CoordinatorUnitRepository coordinatorRepository) {
@@ -57,5 +62,46 @@ public class CoordinatorUnitService {
      */
     public void deleteCoordinator(Long id) {
         coordinatorRepository.deleteById(id);
+    }
+
+    /**
+     * Saves a CoordinatorUnit with the associated DirectorUnit.
+     *
+     * @param coordinator The CoordinatorUnit to save
+     * @param session The current HTTP session
+     */
+    public void saveCoordinatorWithDirector(CoordinatorUnit coordinator, HttpSession session) {
+        Long directorId = (Long) session.getAttribute("userId");
+        Optional<DirectorUnit> directorOpt = directorUnitService.getDirectorById(directorId);
+        if (directorOpt.isPresent()) {
+            DirectorUnit director = directorOpt.get();
+            director.addCoordinator(coordinator);
+            saveCoordinator(coordinator);
+        } else {
+            throw new IllegalArgumentException("Director not found");
+        }
+    }
+
+    /**
+     * Updates an existing CoordinatorUnit.
+     *
+     * @param id The ID of the CoordinatorUnit to update
+     * @param coordinator The updated CoordinatorUnit data
+     */
+    public void updateCoordinator(Long id, CoordinatorUnit coordinator) {
+        Optional<CoordinatorUnit> existingCoordinator = getCoordinatorById(id);
+        if (existingCoordinator.isPresent()) {
+            CoordinatorUnit updatedCoordinator = existingCoordinator.get();
+            updatedCoordinator.setName(coordinator.getName());
+            updatedCoordinator.setCourse(coordinator.getCourse());
+            updatedCoordinator.setDuration(coordinator.getDuration());
+            updatedCoordinator.setUsername(coordinator.getUsername());
+            if (coordinator.getPassword() != null && !coordinator.getPassword().isEmpty()) {
+                updatedCoordinator.setPassword(coordinator.getPassword());
+            }
+            saveCoordinator(updatedCoordinator);
+        } else {
+            throw new IllegalArgumentException("Coordinator not found");
+        }
     }
 }

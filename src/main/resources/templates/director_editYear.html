@@ -16,43 +16,48 @@
         
     </header>
     <main>
-        <form th:action="@{/director/update-year/{id}(id=${yearUnit.id})}" method="post">
+        <form th:action="@{/director/update-year/{id}(id=${yearUnit.id})}" th:object="${yearUnit}" method="post">
+            <!-- Display error message if present -->
+            <div th:if="${error}" class="error-message">
+                <p th:text="${error}"></p>
+            </div>
+
             <section>
                 <h2>First Semester</h2>
                 <label for="firstSemester.startDate">Start Date</label>
-                <input type="date" id="firstSemester.startDate" name="firstSemester.startDate" th:value="${firstSemester.startDate}">
+                <input type="date" id="firstSemester.startDate" th:field="*{firstSemester.startDate}">
                 <label for="firstSemester.endDate">End Date</label>
-                <input type="date" id="firstSemester.endDate" name="firstSemester.endDate" th:value="${firstSemester.endDate}">
+                <input type="date" id="firstSemester.endDate" th:field="*{firstSemester.endDate}">
                 <label for="firstSemester.examPeriodStart">Exam Period Start</label>
-                <input type="date" id="firstSemester.examPeriodStart" name="firstSemester.examPeriodStart" th:value="${firstSemester.examPeriodStart}">
+                <input type="date" id="firstSemester.examPeriodStart" th:field="*{firstSemester.examPeriodStart}">
                 <label for="firstSemester.examPeriodEnd">Exam Period End</label>
-                <input type="date" id="firstSemester.examPeriodEnd" name="firstSemester.examPeriodEnd" th:value="${firstSemester.examPeriodEnd}">
+                <input type="date" id="firstSemester.examPeriodEnd" th:field="*{firstSemester.examPeriodEnd}">
                 <label for="firstSemester.resitPeriodStart">Resit Period Start</label>
-                <input type="date" id="firstSemester.resitPeriodStart" name="firstSemester.resitPeriodStart" th:value="${firstSemester.resitPeriodStart}">
+                <input type="date" id="firstSemester.resitPeriodStart" th:field="*{firstSemester.resitPeriodStart}">
                 <label for="firstSemester.resitPeriodEnd">Resit Period End</label>
-                <input type="date" id="firstSemester.resitPeriodEnd" name="firstSemester.resitPeriodEnd" th:value="${firstSemester.resitPeriodEnd}">
+                <input type="date" id="firstSemester.resitPeriodEnd" th:field="*{firstSemester.resitPeriodEnd}">
             </section>
             <section>
                 <h2>Second Semester</h2>
                 <label for="secondSemester.startDate">Start Date</label>
-                <input type="date" id="secondSemester.startDate" name="secondSemester.startDate" th:value="${secondSemester.startDate}">
+                <input type="date" id="secondSemester.startDate" th:field="*{secondSemester.startDate}">
                 <label for="secondSemester.endDate">End Date</label>
-                <input type="date" id="secondSemester.endDate" name="secondSemester.endDate" th:value="${secondSemester.endDate}">
+                <input type="date" id="secondSemester.endDate" th:field="*{secondSemester.endDate}">
                 <label for="secondSemester.examPeriodStart">Exam Period Start</label>
-                <input type="date" id="secondSemester.examPeriodStart" name="secondSemester.examPeriodStart" th:value="${secondSemester.examPeriodStart}">
+                <input type="date" id="secondSemester.examPeriodStart" th:field="*{secondSemester.examPeriodStart}">
                 <label for="secondSemester.examPeriodEnd">Exam Period End</label>
-                <input type="date" id="secondSemester.examPeriodEnd" name="secondSemester.examPeriodEnd" th:value="${secondSemester.examPeriodEnd}">
+                <input type="date" id="secondSemester.examPeriodEnd" th:field="*{secondSemester.examPeriodEnd}">
                 <label for="secondSemester.resitPeriodStart">Resit Period Start</label>
-                <input type="date" id="secondSemester.resitPeriodStart" name="secondSemester.resitPeriodStart" th:value="${secondSemester.resitPeriodStart}">
+                <input type="date" id="secondSemester.resitPeriodStart" th:field="*{secondSemester.resitPeriodStart}">
                 <label for="secondSemester.resitPeriodEnd">Resit Period End</label>
-                <input type="date" id="secondSemester.resitPeriodEnd" name="secondSemester.resitPeriodEnd" th:value="${secondSemester.resitPeriodEnd}">
+                <input type="date" id="secondSemester.resitPeriodEnd" th:field="*{secondSemester.resitPeriodEnd}">
             </section>
             <section>
                 <h2>Special Exam Period</h2>
                 <label for="specialExamStart">Special Exam Period Start</label>
-                <input type="date" id="specialExamStart" name="specialExamStart" th:value="${yearUnit.specialExamStart}">
+                <input type="date" id="specialExamStart" th:field="*{specialExamStart}">
                 <label for="specialExamEnd">Special Exam Period End</label>
-                <input type="date" id="specialExamEnd" name="specialExamEnd" th:value="${yearUnit.specialExamEnd}">
+                <input type="date" id="specialExamEnd" th:field="*{specialExamEnd}">
             </section>
             <button type="submit">Save</button>
         </form>

@@ -1,12 +1,14 @@
 package com.upt.upt.service;
 
 import com.upt.upt.entity.DirectorUnit;
+import com.upt.upt.entity.AssessmentUnit;
 import com.upt.upt.entity.YearUnit;
 import com.upt.upt.repository.DirectorUnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -59,21 +61,21 @@ public class DirectorUnitService {
      * Update a director unit.
      *
      * @param id the ID of the entity to update
-     * @param updatedDirectorUnit the updated entity
+     * @param params the updated entity parameters
      * @return the updated entity
      */
-    public DirectorUnit updateDirector(Long id, DirectorUnit updatedDirectorUnit) {
-        Optional<DirectorUnit> existingDirectorUnit = directorUnitRepository.findById(id);
-        if (existingDirectorUnit.isPresent()) {
-            DirectorUnit directorUnit = existingDirectorUnit.get();
-            directorUnit.setName(updatedDirectorUnit.getName());
-            directorUnit.setDepartment(updatedDirectorUnit.getDepartment());
-            directorUnit.setUsername(updatedDirectorUnit.getUsername());
-            directorUnit.setPassword(updatedDirectorUnit.getPassword());
-            return directorUnitRepository.save(directorUnit);
-        } else {
-            throw new RuntimeException("Director unit not found");
+    public DirectorUnit updateDirector(Long id, Map<String, String> params) {
+        DirectorUnit director = getDirectorById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid Director ID: " + id));
+
+        director.setName(params.get("director-name"));
+        director.setDepartment(params.get("director-department"));
+        director.setUsername(params.get("director-username"));
+        if (params.get("director-password") != null && !params.get("director-password").isEmpty()) {
+            director.setPassword(params.get("director-password"));
         }
+
+        return director;
     }
 
     /**
@@ -95,5 +97,18 @@ public class DirectorUnitService {
         return director.getPastYears().stream()
             .max(Comparator.comparing(y -> LocalDate.parse(y.getFirstSemester().getStartDate())))
             .orElse(null);
+    }
+
+    public boolean noAssessmentsForPeriod(List<AssessmentUnit> assessments, String period) {
+        return assessments.stream().noneMatch(a -> period.equals(a.getExamPeriod()));
+    }
+
+    public DirectorUnit createDirector(Map<String, String> params) {
+        DirectorUnit newDirector = new DirectorUnit();
+        newDirector.setName(params.get("director-name"));
+        newDirector.setDepartment(params.get("director-department"));
+        newDirector.setUsername(params.get("director-username"));
+        newDirector.setPassword(params.get("director-password"));
+        return newDirector;
     }
 }

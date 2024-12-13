@@ -1,22 +1,15 @@
 package com.upt.upt.controller;
 
-import com.upt.upt.entity.DirectorUnit;
-import com.upt.upt.entity.SemesterUnit;
-import com.upt.upt.entity.YearUnit;
-import com.upt.upt.service.SemesterUnitService;
-import com.upt.upt.service.YearUnitService;
-import com.upt.upt.service.DirectorUnitService;
-import com.upt.upt.entity.MapUnit;
-import com.upt.upt.service.MapUnitService;
-
-import java.util.List;
+import com.upt.upt.entity.*;
+import com.upt.upt.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -27,54 +20,30 @@ public class YearUnitController {
     private YearUnitService yearUnitService;
 
     @Autowired
-    private SemesterUnitService semesterUnitService;
-
-    @Autowired
     private DirectorUnitService directorUnitService;
 
-    @Autowired
-    private MapUnitService mapUnitService;
-
-    private SemesterUnit updateSemester(SemesterUnit semester, String startDate, String endDate, String examPeriodStart, String examPeriodEnd, String resitPeriodStart, String resitPeriodEnd) {
-        semester.setStartDate(startDate);
-        semester.setEndDate(endDate);
-        semester.setExamPeriodStart(examPeriodStart);
-        semester.setExamPeriodEnd(examPeriodEnd);
-        semester.setResitPeriodStart(resitPeriodStart);
-        semester.setResitPeriodEnd(resitPeriodEnd);
-        SemesterUnit savedSemester = semesterUnitService.saveSemesterUnit(semester);
-
-        // Create and associate a new map for the semester if not already present
-        if (savedSemester.getMapUnit() == null) {
-            MapUnit semesterMap = new MapUnit();
-            semesterMap.setSemesterUnit(savedSemester);
-            mapUnitService.saveMapUnit(semesterMap);
-            savedSemester.setMapUnit(semesterMap);
-            semesterUnitService.saveSemesterUnit(savedSemester); // Save the updated semester with the map
+    private Optional<DirectorUnit> verifyDirector(HttpSession session) {
+        Long directorId = (Long) session.getAttribute("userId");
+        if (directorId == null) {
+            return Optional.empty();
         }
-
-        return savedSemester;
+        return directorUnitService.getDirectorById(directorId);
     }
 
     @GetMapping("/years")
     public String getDirectorYears(HttpSession session, Model model) {
-        Long directorId = (Long) session.getAttribute("userId");
-        if (directorId != null) {
-            Optional<DirectorUnit> directorOpt = directorUnitService.getDirectorById(directorId);
-            if (directorOpt.isPresent()) {
-                DirectorUnit director = directorOpt.get();
-                model.addAttribute("loggedInDirector", director);
-                List<YearUnit> directorYears = director.getAcademicYears();
-                if (!directorYears.isEmpty()) {
-                    YearUnit currentYear = director.getCurrentYear();
-                    model.addAttribute("currentYear", currentYear);
-                    model.addAttribute("pastYears", director.getPastYears());
-                } else {
-                    model.addAttribute("currentYear", null);
-                    model.addAttribute("pastYears", List.of());
-                }
+        Optional<DirectorUnit> directorOpt = verifyDirector(session);
+        if (directorOpt.isPresent()) {
+            DirectorUnit director = directorOpt.get();
+            model.addAttribute("loggedInDirector", director);
+            List<YearUnit> directorYears = director.getAcademicYears();
+            if (!directorYears.isEmpty()) {
+                YearUnit currentYear = director.getCurrentYear();
+                model.addAttribute("currentYear", currentYear);
+                model.addAttribute("pastYears", director.getPastYears());
             } else {
-                return "redirect:/login?error=Director not found";
+                model.addAttribute("currentYear", null);
+                model.addAttribute("pastYears", List.of());
             }
         } else {
             return "redirect:/login?error=Session expired";
@@ -83,7 +52,10 @@ public class YearUnitController {
     }
 
     @GetMapping("/create-year")
-    public String newYearForm(Model model) {
+    public String newYearForm(HttpSession session, Model model) {
+        if (verifyDirector(session).isEmpty()) {
+            return "redirect:/login?error=Unauthorized access";
+        }
         model.addAttribute("yearUnit", new YearUnit());
         model.addAttribute("firstSemester", new SemesterUnit());
         model.addAttribute("secondSemester", new SemesterUnit());
@@ -91,55 +63,22 @@ public class YearUnitController {
     }
 
     @PostMapping("/save-year")
-    public String saveNewYear(@ModelAttribute YearUnit yearUnit,
-                              @RequestParam("firstSemester.startDate") String firstStartDate,
-                              @RequestParam("firstSemester.endDate") String firstEndDate,
-                              @RequestParam("firstSemester.examPeriodStart") String firstExamPeriodStart,
-                              @RequestParam("firstSemester.examPeriodEnd") String firstExamPeriodEnd,
-                              @RequestParam("firstSemester.resitPeriodStart") String firstResitPeriodStart,
-                              @RequestParam("firstSemester.resitPeriodEnd") String firstResitPeriodEnd,
-                              @RequestParam("secondSemester.startDate") String secondStartDate,
-                              @RequestParam("secondSemester.endDate") String secondEndDate,
-                              @RequestParam("secondSemester.examPeriodStart") String secondExamPeriodStart,
-                              @RequestParam("secondSemester.examPeriodEnd") String secondExamPeriodEnd,
-                              @RequestParam("secondSemester.resitPeriodStart") String secondResitPeriodStart,
-                              @RequestParam("secondSemester.resitPeriodEnd") String secondResitPeriodEnd,
-                              @RequestParam("specialExamStart") String specialExamStart,
-                              @RequestParam("specialExamEnd") String specialExamEnd,
-                              HttpSession session) {
-
-        // Create and set the first semester attributes
-        SemesterUnit firstSemester = new SemesterUnit();
-        firstSemester = updateSemester(firstSemester, firstStartDate, firstEndDate, firstExamPeriodStart, firstExamPeriodEnd, firstResitPeriodStart, firstResitPeriodEnd);
-
-        // Create and set the second semester attributes
-        SemesterUnit secondSemester = new SemesterUnit();
-        secondSemester = updateSemester(secondSemester, secondStartDate, secondEndDate, secondExamPeriodStart, secondExamPeriodEnd, secondResitPeriodStart, secondResitPeriodEnd);
-
-        // Set the saved semesters to the year unit
-        yearUnit.setFirstSemester(firstSemester);
-        yearUnit.setSecondSemester(secondSemester);
-        yearUnit.setSpecialExamStart(specialExamStart);
-        yearUnit.setSpecialExamEnd(specialExamEnd);
-
-        Long directorId = (Long) session.getAttribute("userId");
-        Optional<DirectorUnit> directorUnit = directorUnitService.getDirectorById(directorId);
-        if (directorUnit.isPresent()) {
-            DirectorUnit director = directorUnit.get();
-            yearUnit.setDirectorUnit(director);
-            director.addAcademicYear(yearUnit);
-        } else {
-            // Handle the case where the director unit is not found
-            return "redirect:/director?error=Director not found";
+    public String saveNewYear(@ModelAttribute YearUnit yearUnit, @RequestParam Map<String, String> params, HttpSession session, Model model) {
+        if (verifyDirector(session).isEmpty()) {
+            return "redirect:/login?error=Unauthorized access";
         }
-
-        // Save the year unit
-        yearUnitService.saveYearUnit(yearUnit);
+        if (!yearUnitService.validateYearDates(params, model)) {
+            return "director_newYear";
+        }
+        yearUnitService.saveNewYear(yearUnit, params, session);
         return "redirect:/director";
     }
 
     @GetMapping("/edit-year")
-    public String editYearForm(@RequestParam("id") Long id, Model model) {
+    public String editYearForm(@RequestParam("id") Long id, HttpSession session, Model model) {
+        if (verifyDirector(session).isEmpty()) {
+            return "redirect:/login?error=Unauthorized access";
+        }
         Optional<YearUnit> yearUnit = yearUnitService.getYearUnitById(id);
         if (yearUnit.isPresent()) {
             model.addAttribute("yearUnit", yearUnit.get());
@@ -151,70 +90,33 @@ public class YearUnitController {
     }
 
     @PostMapping("/update-year/{id}")
-    public String updateYear(@PathVariable("id") Long id,
-                             @ModelAttribute YearUnit yearUnit,
-                             @RequestParam("firstSemester.startDate") String firstStartDate,
-                             @RequestParam("firstSemester.endDate") String firstEndDate,
-                             @RequestParam("firstSemester.examPeriodStart") String firstExamPeriodStart,
-                             @RequestParam("firstSemester.examPeriodEnd") String firstExamPeriodEnd,
-                             @RequestParam("firstSemester.resitPeriodStart") String firstResitPeriodStart,
-                             @RequestParam("firstSemester.resitPeriodEnd") String firstResitPeriodEnd,
-                             @RequestParam("secondSemester.startDate") String secondStartDate,
-                             @RequestParam("secondSemester.endDate") String secondEndDate,
-                             @RequestParam("secondSemester.examPeriodStart") String secondExamPeriodStart,
-                             @RequestParam("secondSemester.examPeriodEnd") String secondExamPeriodEnd,
-                             @RequestParam("secondSemester.resitPeriodStart") String secondResitPeriodStart,
-                             @RequestParam("secondSemester.resitPeriodEnd") String secondResitPeriodEnd,
-                             @RequestParam("specialExamStart") String specialExamStart,
-                             @RequestParam("specialExamEnd") String specialExamEnd,
-                             HttpSession session) {
-        Optional<YearUnit> existingYearUnit = yearUnitService.getYearUnitById(id);
-        if (existingYearUnit.isPresent()) {
-            YearUnit updatedYearUnit = existingYearUnit.get();
-
-            // Update first semester attributes
-            SemesterUnit firstSemester = updatedYearUnit.getFirstSemester();
-            firstSemester = updateSemester(firstSemester, firstStartDate, firstEndDate, firstExamPeriodStart, firstExamPeriodEnd, firstResitPeriodStart, firstResitPeriodEnd);
-
-            // Update second semester attributes
-            SemesterUnit secondSemester = updatedYearUnit.getSecondSemester();
-            secondSemester = updateSemester(secondSemester, secondStartDate, secondEndDate, secondExamPeriodStart, secondExamPeriodEnd, secondResitPeriodStart, secondResitPeriodEnd);
-
-            updatedYearUnit.setFirstSemester(firstSemester);
-            updatedYearUnit.setSecondSemester(secondSemester);
-            updatedYearUnit.setSpecialExamStart(specialExamStart);
-            updatedYearUnit.setSpecialExamEnd(specialExamEnd);
-
-            Long directorId = (Long) session.getAttribute("userId");
-            Optional<DirectorUnit> directorUnit = directorUnitService.getDirectorById(directorId);
-            if (directorUnit.isPresent()) {
-                updatedYearUnit.setDirectorUnit(directorUnit.get());
-            } else {
-                // Handle the case where the director unit is not found
-                return "redirect:/director?error=Director not found";
-            }
-
-            yearUnitService.saveYearUnit(updatedYearUnit);
-        } else {
-            return "redirect:/director?error=Year not found";
+    public String updateYear(@PathVariable("id") Long id, @ModelAttribute YearUnit yearUnit, @RequestParam Map<String, String> params, HttpSession session, Model model) {
+        if (verifyDirector(session).isEmpty()) {
+            return "redirect:/login?error=Unauthorized access";
         }
+        if (!yearUnitService.validateYearDates(params, model)) {
+            return "director_editYear";
+        }
+        yearUnitService.updateYear(id, yearUnit, params, session);
         return "redirect:/director";
     }
 
     @PostMapping("/delete-year/{id}")
-    public String deleteYear(@PathVariable("id") Long id) {
+    public String deleteYear(@PathVariable("id") Long id, HttpSession session) {
+        if (verifyDirector(session).isEmpty()) {
+            return "redirect:/login?error=Unauthorized access";
+        }
         yearUnitService.deleteYearUnit(id);
         return "redirect:/director";
     }
 
     @GetMapping("/current-year")
-    public String getCurrentYear(Model model) {
-        Optional<YearUnit> currentYear = yearUnitService.getMostRecentYearUnit();
-        if (currentYear.isPresent()) {
-            model.addAttribute("currentYear", currentYear.get());
-        } else {
-            model.addAttribute("currentYear", null);
+    public String getCurrentYear(HttpSession session, Model model) {
+        if (verifyDirector(session).isEmpty()) {
+            return "redirect:/login?error=Unauthorized access";
         }
+        Optional<YearUnit> currentYear = yearUnitService.getMostRecentYearUnit();
+        model.addAttribute("currentYear", currentYear.orElse(null));
         return "director_currentYear";
     }
 }
