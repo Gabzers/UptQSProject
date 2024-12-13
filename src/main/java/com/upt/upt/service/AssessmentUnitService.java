@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class AssessmentUnitService {
@@ -181,5 +182,28 @@ public class AssessmentUnitService {
         }
 
         return validDateRanges;
+    }
+
+    public List<AssessmentUnit> getAssessmentsByYear(int year) {
+        return assessmentRepository.findByCurricularUnit_Year(year);
+    }
+
+    // Método para buscar avaliações de diferentes anos, mas da mesma UC
+    public List<AssessmentUnit> getAssessmentsByDifferentYearsSameUC(Long curricularUnitId) {
+        List<AssessmentUnit> allAssessments = assessmentRepository.findByCurricularUnitId(curricularUnitId);
+        return allAssessments.stream()
+                .filter(assessment -> !assessment.getCurricularUnit().getYear().equals(assessment.getCurricularUnit().getYear()))
+                .collect(Collectors.toList());
+    }
+
+    // Método para buscar avaliações por ano, semestre e coordenador
+    public List<AssessmentUnit> getAssessmentsByYearAndSemesterAndCoordinator(int year, int semester, Long coordinatorId) {
+        return assessmentRepository.findByCurricularUnit_YearAndCurricularUnit_SemesterAndCurricularUnit_CoordinatorId(year, semester, coordinatorId);
+    }
+
+
+    // Método para buscar avaliações de diferentes anos, mas do mesmo semestre e coordenador
+    public List<AssessmentUnit> getAssessmentsByDifferentYearsSameSemesterAndCoordinator(int semester, Long coordinatorId, int year) {
+        return assessmentRepository.findByCurricularUnit_SemesterAndCurricularUnit_CoordinatorIdAndCurricularUnit_YearNot(semester, coordinatorId, year);
     }
 }

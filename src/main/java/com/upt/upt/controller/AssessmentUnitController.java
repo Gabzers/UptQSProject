@@ -1,7 +1,18 @@
 package com.upt.upt.controller;
 
-import com.upt.upt.entity.*;
-import com.upt.upt.service.*;
+import com.upt.upt.entity.AssessmentUnit;
+import com.upt.upt.entity.CurricularUnit;
+import com.upt.upt.entity.CoordinatorUnit;
+import com.upt.upt.entity.DirectorUnit;
+import com.upt.upt.entity.MapUnit;
+import com.upt.upt.entity.RoomUnit;
+import com.upt.upt.entity.SemesterUnit;
+import com.upt.upt.entity.YearUnit;
+import com.upt.upt.service.AssessmentUnitService;
+import com.upt.upt.service.CurricularUnitService;
+import com.upt.upt.service.CoordinatorUnitService;
+import com.upt.upt.service.RoomUnitService;
+import com.upt.upt.service.YearUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,17 +20,21 @@ import org.springframework.web.bind.annotation.*;
 
 import jakarta.servlet.http.HttpSession;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
+/**
+ * Controller for handling requests related to AssessmentUnit entities.
+ */
 @Controller
 @RequestMapping("/coordinator")
 public class AssessmentUnitController {
 
     @Autowired
-    private AssessmentUnitService assessmentService;
+    private AssessmentUnitService assessmentUnitService;
 
     @Autowired
     private CurricularUnitService curricularUnitService;
@@ -72,13 +87,22 @@ public class AssessmentUnitController {
         String assessmentExamPeriod = params.get("assessmentExamPeriod");
         if (assessmentExamPeriod == null || assessmentExamPeriod.isEmpty() || assessmentExamPeriod.equals("Select Exam Period")) {
             model.addAttribute("error", "Exam Period is required.");
-            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId;
+            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=Exam Period is required.";
         }
 
         Boolean computerRequired = params.get("assessmentComputerRequired") != null;
         Boolean classTime = params.get("assessmentClassTime") != null;
-        LocalDateTime startTime = LocalDateTime.parse(params.get("assessmentStartTime"));
-        LocalDateTime endTime = LocalDateTime.parse(params.get("assessmentEndTime"));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        String startTimeStr = params.get("assessmentStartTime");
+        String endTimeStr = params.get("assessmentEndTime");
+
+        if (startTimeStr.isEmpty() || endTimeStr.isEmpty()) {
+            model.addAttribute("error", "Start and end date and time are required.");
+            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=Start and end date and time are required.";
+        }
+
+        LocalDateTime startTime = LocalDateTime.parse(startTimeStr, formatter);
+        LocalDateTime endTime = LocalDateTime.parse(endTimeStr, formatter);
 
         Optional<CurricularUnit> curricularUnit = curricularUnitService.getCurricularUnitById(curricularUnitId);
         if (!curricularUnit.isPresent()) {
@@ -88,7 +112,7 @@ public class AssessmentUnitController {
         CurricularUnit uc = curricularUnit.get();
         if (uc.getEvaluationsCount() == uc.getAssessments().size()) {
             model.addAttribute("error", "Evaluations already complete.");
-            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId;
+            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=Evaluations already complete.";
         }
 
         Long coordinatorId = (Long) session.getAttribute("userId");
@@ -98,31 +122,80 @@ public class AssessmentUnitController {
         YearUnit currentYear = director.getCurrentYear();
         SemesterUnit semesterUnit = uc.getSemester() == 1 ? currentYear.getFirstSemester() : currentYear.getSecondSemester();
 
-        if (!assessmentService.validateAssessmentDates(assessmentExamPeriod, startTime, endTime, semesterUnit, currentYear, model, curricularUnitId)) {
-            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId;
+        if (!assessmentUnitService.validateAssessmentDates(assessmentExamPeriod, startTime, endTime, semesterUnit, currentYear, model, curricularUnitId)) {
+            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=Assessment dates must be within the valid period.";
         }
 
-        int periodTotalWeight = assessmentService.calculatePeriodTotalWeight(uc, assessmentExamPeriod, Integer.parseInt(params.get("assessmentWeight")));
+        int periodTotalWeight = assessmentUnitService.calculatePeriodTotalWeight(uc, assessmentExamPeriod, Integer.parseInt(params.get("assessmentWeight")));
 
         if (periodTotalWeight > 100) {
             model.addAttribute("error", "The total weight of evaluations for this period must not exceed 100%.");
-            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId;
+            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=The total weight of evaluations for this period must not exceed 100%.";
         }
 
         if ("Mixed".equals(params.get("ucEvaluationType")) && uc.getAssessments().size() == uc.getEvaluationsCount() - 1 && !uc.hasExamPeriodEvaluation() && !"Exam Period".equals(assessmentExamPeriod)) {
             model.addAttribute("error", "For Mixed evaluation type, at least one evaluation must be of type 'Exam Period'.");
-            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId;
+            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=For Mixed evaluation type, at least one evaluation must be of type 'Exam Period'.";
         }
 
-        RoomUnit room = roomUnitService.getRoomById(Long.parseLong(params.get("assessmentRoomId")));
+        // Fetch available rooms based on the number of students and computer requirement
+        List<RoomUnit> availableRooms = new ArrayList<>(roomUnitService.getAvailableRooms(uc.getStudentsNumber(), computerRequired, startTime, endTime));
+        if (availableRooms.isEmpty()) {
+            model.addAttribute("error", "No available rooms found for the specified criteria.");
+            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=No available rooms found for the specified criteria.";
+        }
+
+        // Sort rooms by the number of seats closest to the number of students
+        availableRooms.sort((r1, r2) -> {
+            int diff1 = Math.abs(r1.getSeatsCount() - uc.getStudentsNumber());
+            int diff2 = Math.abs(r2.getSeatsCount() - uc.getStudentsNumber());
+            return Integer.compare(diff1, diff2);
+        });
+
+        RoomUnit room = null;
+        for (RoomUnit availableRoom : availableRooms) {
+            if (assessmentUnitService.isRoomAvailable(availableRoom.getId(), startTime, endTime)) {
+                room = availableRoom;
+                break;
+            }
+        }
+
         if (room == null) {
-            model.addAttribute("error", "Room not found.");
-            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId;
+            List<RoomUnit> allRooms = new ArrayList<>(roomUnitService.getAllRooms());
+            allRooms.sort((r1, r2) -> {
+                int diff1 = Math.abs(r1.getSeatsCount() - uc.getStudentsNumber());
+                int diff2 = Math.abs(r2.getSeatsCount() - uc.getStudentsNumber());
+                return Integer.compare(diff1, diff2);
+            });
+            for (RoomUnit availableRoom : allRooms) {
+                if (assessmentUnitService.isRoomAvailable(availableRoom.getId(), startTime, endTime)) {
+                    room = availableRoom;
+                    break;
+                }
+            }
         }
 
-        if (!assessmentService.isRoomAvailable(room.getId(), startTime, endTime)) {
-            model.addAttribute("error", "The selected room is not available at the specified time.");
-            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId;
+        if (room == null) {
+            model.addAttribute("error", "No available rooms found for the specified time.");
+            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=No available rooms found for the specified time.";
+        }
+
+        // Validate no overlap with other assessments in the same year/semester within the same coordinator
+        List<AssessmentUnit> assessmentsInSameYearSemester = assessmentUnitService.getAssessmentsByYearAndSemesterAndCoordinator(uc.getYear(), uc.getSemester(), coordinatorId);
+        for (AssessmentUnit assessment : assessmentsInSameYearSemester) {
+            if (!assessment.getType().equals("Work Presentation") && assessment.getStartTime().isBefore(endTime.plusHours(24)) && assessment.getEndTime().isAfter(startTime.minusHours(24))) {
+                model.addAttribute("error", "There must be at least 24 hours between assessments in the same year/semester.");
+                return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=There must be at least 24 hours between assessments in the same year/semester.";
+            }
+        }
+
+        // Validate no overlap with other assessments of different years but same UC within the same coordinator
+        List<AssessmentUnit> assessmentsInDifferentYearsSameUC = assessmentUnitService.getAssessmentsByDifferentYearsSameSemesterAndCoordinator(uc.getSemester(), coordinatorId, uc.getYear());
+        for (AssessmentUnit assessment : assessmentsInDifferentYearsSameUC) {
+            if (assessment.getStartTime().isBefore(endTime.plusHours(24)) && assessment.getEndTime().isAfter(startTime.minusHours(24))) {
+                model.addAttribute("error", "Avoid scheduling assessments of different years but same UC on overlapping dates.");
+                return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=Avoid scheduling assessments of different years but same UC on overlapping dates.";
+            }
         }
 
         AssessmentUnit assessmentUnit = new AssessmentUnit();
@@ -137,7 +210,11 @@ public class AssessmentUnitController {
         assessmentUnit.setCurricularUnit(uc);
         assessmentUnit.setMinimumGrade(Double.parseDouble(params.get("assessmentMinimumGrade")));
 
-        assessmentService.saveAssessment(assessmentUnit);
+        // Assign the assessment to the map of the current semester
+        MapUnit map = semesterUnit.getMapUnit();
+        assessmentUnit.setMap(map);
+
+        assessmentUnitService.saveAssessment(assessmentUnit);
 
         return "redirect:/coordinator/coordinator_evaluationsUC?id=" + curricularUnitId;
     }
@@ -149,7 +226,7 @@ public class AssessmentUnitController {
         }
         Optional<CurricularUnit> curricularUnit = curricularUnitService.getCurricularUnitById(curricularUnitId);
         if (curricularUnit.isPresent()) {
-            Optional<AssessmentUnit> assessment = assessmentService.getAssessmentByUnitAndId(curricularUnitId, assessmentId);
+            Optional<AssessmentUnit> assessment = assessmentUnitService.getAssessmentByUnitAndId(curricularUnitId, assessmentId);
             if (assessment.isPresent()) {
                 AssessmentUnit assessmentUnit = assessment.get();
                 model.addAttribute("assessment", assessmentUnit);
@@ -176,8 +253,17 @@ public class AssessmentUnitController {
 
         Boolean computerRequired = params.get("assessmentComputerRequired") != null;
         Boolean classTime = params.get("assessmentClassTime") != null;
-        LocalDateTime startTime = LocalDateTime.parse(params.get("assessmentStartTime"));
-        LocalDateTime endTime = LocalDateTime.parse(params.get("assessmentEndTime"));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        String startTimeStr = params.get("assessmentStartTime");
+        String endTimeStr = params.get("assessmentEndTime");
+
+        if (startTimeStr.isEmpty() || endTimeStr.isEmpty()) {
+            model.addAttribute("error", "Start and end date and time are required.");
+            return "redirect:/coordinator/coordinator_editEvaluations/" + id + "?curricularUnitId=" + curricularUnitId;
+        }
+
+        LocalDateTime startTime = LocalDateTime.parse(startTimeStr, formatter);
+        LocalDateTime endTime = LocalDateTime.parse(endTimeStr, formatter);
 
         Optional<CurricularUnit> curricularUnit = curricularUnitService.getCurricularUnitById(curricularUnitId);
         if (!curricularUnit.isPresent()) {
@@ -185,13 +271,13 @@ public class AssessmentUnitController {
         }
 
         CurricularUnit uc = curricularUnit.get();
-        Optional<AssessmentUnit> assessmentUnitOptional = assessmentService.findById(id);
+        Optional<AssessmentUnit> assessmentUnitOptional = assessmentUnitService.findById(id);
         if (!assessmentUnitOptional.isPresent()) {
             return "redirect:/coordinator";
         }
 
         AssessmentUnit assessmentUnit = assessmentUnitOptional.get();
-        int periodTotalWeight = assessmentService.calculatePeriodTotalWeight(uc, assessmentExamPeriod, Integer.parseInt(params.get("assessmentWeight"))) - assessmentUnit.getWeight();
+        int periodTotalWeight = assessmentUnitService.calculatePeriodTotalWeight(uc, assessmentExamPeriod, Integer.parseInt(params.get("assessmentWeight"))) - assessmentUnit.getWeight();
 
         if (periodTotalWeight > 100) {
             model.addAttribute("uc", uc);
@@ -216,7 +302,7 @@ public class AssessmentUnitController {
         assessmentUnit.setRoom(room);
         assessmentUnit.setMinimumGrade(Double.parseDouble(params.get("assessmentMinimumGrade")));
 
-        assessmentService.saveAssessment(assessmentUnit);
+        assessmentUnitService.saveAssessment(assessmentUnit);
 
         return "redirect:/coordinator/coordinator_evaluationsUC?id=" + curricularUnitId;
     }
@@ -226,40 +312,8 @@ public class AssessmentUnitController {
         if (verifyCoordinator(session).isEmpty()) {
             return "redirect:/login?error=Unauthorized access";
         }
-        assessmentService.deleteAssessment(curricularUnitId, id);
+        assessmentUnitService.deleteAssessment(curricularUnitId, id);
         return "redirect:/coordinator/coordinator_evaluationsUC?id=" + curricularUnitId;
-    }
-
-    @GetMapping("/map")
-    public String showAssessmentMap(Model model, HttpSession session) {
-        Optional<CoordinatorUnit> coordinatorOpt = verifyCoordinator(session);
-        if (coordinatorOpt.isPresent()) {
-            CoordinatorUnit coordinator = coordinatorOpt.get();
-            DirectorUnit director = coordinator.getDirectorUnit();
-            YearUnit currentYear = director.getCurrentYear();
-            if (currentYear != null) {
-                List<CurricularUnit> coordinatorUnits = coordinator.getCurricularUnits();
-                List<AssessmentUnit> firstSemesterAssessments = assessmentService.getAssessmentsBySemester(currentYear.getFirstSemester().getId()).stream()
-                        .filter(assessment -> coordinatorUnits.contains(assessment.getCurricularUnit()))
-                        .collect(Collectors.toList());
-                List<AssessmentUnit> secondSemesterAssessments = assessmentService.getAssessmentsBySemester(currentYear.getSecondSemester().getId()).stream()
-                        .filter(assessment -> coordinatorUnits.contains(assessment.getCurricularUnit()))
-                        .collect(Collectors.toList());
-                model.addAttribute("firstSemesterAssessments", firstSemesterAssessments);
-                model.addAttribute("secondSemesterAssessments", secondSemesterAssessments);
-                model.addAttribute("noNormalPeriodFirstSemester", assessmentService.noAssessmentsForPeriod(firstSemesterAssessments, "Teaching Period") && assessmentService.noAssessmentsForPeriod(firstSemesterAssessments, "Exam Period"));
-                model.addAttribute("noResourcePeriodFirstSemester", assessmentService.noAssessmentsForPeriod(firstSemesterAssessments, "Resource Period"));
-                model.addAttribute("noSpecialPeriodFirstSemester", assessmentService.noAssessmentsForPeriod(firstSemesterAssessments, "Special Period"));
-                model.addAttribute("noNormalPeriodSecondSemester", assessmentService.noAssessmentsForPeriod(secondSemesterAssessments, "Teaching Period") && assessmentService.noAssessmentsForPeriod(secondSemesterAssessments, "Exam Period"));
-                model.addAttribute("noResourcePeriodSecondSemester", assessmentService.noAssessmentsForPeriod(secondSemesterAssessments, "Resource Period"));
-                model.addAttribute("noSpecialPeriodSecondSemester", assessmentService.noAssessmentsForPeriod(secondSemesterAssessments, "Special Period"));
-            } else {
-                return "redirect:/login?error=Current year not found";
-            }
-        } else {
-            return "redirect:/login?error=Coordinator not found";
-        }
-        return "coordinator_map";
     }
 
     @GetMapping("/getValidDateRanges")
@@ -277,6 +331,20 @@ public class AssessmentUnitController {
         CurricularUnit curricularUnit = curricularUnitService.getCurricularUnitById(curricularUnitId)
                 .orElseThrow(() -> new IllegalArgumentException("Curricular Unit not found"));
 
-        return assessmentService.getValidDateRanges(examPeriod, curricularUnit, currentYear);
+        return assessmentUnitService.getValidDateRanges(examPeriod, curricularUnit, currentYear);
+    }
+
+    @GetMapping("/availableRooms")
+    @ResponseBody
+    public List<RoomUnit> getAvailableRooms(@RequestParam("startTime") String startTimeStr, @RequestParam("endTime") String endTimeStr, @RequestParam("computerRequired") boolean computerRequired, @RequestParam("numStudents") int numStudents, HttpSession session) {
+        if (verifyCoordinator(session).isEmpty()) {
+            throw new IllegalArgumentException("Unauthorized access");
+        }
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        LocalDateTime startTime = LocalDateTime.parse(startTimeStr, formatter);
+        LocalDateTime endTime = LocalDateTime.parse(endTimeStr, formatter);
+
+        return roomUnitService.getAvailableRooms(numStudents, computerRequired, startTime, endTime);
     }
 }

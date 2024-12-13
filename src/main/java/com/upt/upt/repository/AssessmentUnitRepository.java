@@ -32,4 +32,16 @@ public interface AssessmentUnitRepository extends JpaRepository<AssessmentUnit, 
 
     // Método para buscar avaliações por sala
     List<AssessmentUnit> findByRoomId(Long roomId);
+
+    // Método para buscar avaliações por ano
+    List<AssessmentUnit> findByCurricularUnit_Year(Integer year);
+
+    // Método para buscar avaliações por semestre
+    List<AssessmentUnit> findByCurricularUnit_Semester(Integer semester);
+
+    // Método para buscar avaliações por ano, semestre e coordenador
+    List<AssessmentUnit> findByCurricularUnit_YearAndCurricularUnit_SemesterAndCurricularUnit_CoordinatorId(int year, int semester, Long coordinatorId);
+
+    // Método para buscar avaliações de diferentes anos, mas do mesmo semestre e coordenador
+    List<AssessmentUnit> findByCurricularUnit_SemesterAndCurricularUnit_CoordinatorIdAndCurricularUnit_YearNot(int semester, Long coordinatorId, int year);
 }

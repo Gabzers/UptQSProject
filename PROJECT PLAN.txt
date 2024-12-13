@@ -88,18 +88,10 @@ ajustar view semesters director
 FALTA:
 
 mostrar quais dias e horas estao livres para uma avaliação daquele estilo
-atribuir sala automaticamente de acordo com os dados escolhidos 
-
-não permitir a entrada de contas por url (sem login)
-verificações (essa sala ja foi inserida, username ja existe, )
 
 não permitir a criaçao de COORDINATOR sem YEAR criado
 
-
 (atenção aos requisitos em avaliaçao)
-
-- sempre que possível, evitar coincidência de datas entre provas de 
-diferentes anos para evitar os adiamentos por sobreposição;
 
 - sempre que exequível, quando existirem datas de provas em dias 
 seguidos de anos diferentes, devem respeitar as 24h para ser possível aos 
@@ -109,14 +101,13 @@ avaliação;
 - confirmar que é respeitado um intervalo mínimo de 24h em momentos 
 de avaliação que pertençam ao mesmo ano/semestre, com exceção da 
 apresentação de trabalhos;
-
-- a  hora de entrega dos trabalhos deve estar uniformizada (ex: 23h59m); ??
 sempre que possível, evitar apresentações de trabalhos de UC do mesmo ano no mesmo dia;
 
-- periodos de year e semester so não podem começar em uma data e terminar numa anterior
+- a  hora de entrega dos trabalhos deve estar uniformizada (ex: 23h59m); ??
 
 - quando a COORDINATOR tem + de 3 anos ou - de anos de curso, adaptar a criaçao de UCS, para selecionar todos os anos possiveis
 
+- nao permitir users iguais
 
 falta adaptar as avaliaçoes caso seja: (retirar room, coisas assim, teste final na epoca de exames -> selecionar epoca de exames, etc..)
 As avaliações podem ser classificadas como:

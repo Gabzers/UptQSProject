@@ -6,9 +6,12 @@ import com.upt.upt.repository.RoomUnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.time.LocalDateTime;
 
 /**
  * Service class for managing RoomUnit operations.
@@ -21,6 +24,20 @@ public class RoomUnitService {
     @Autowired
     public RoomUnitService(RoomUnitRepository roomUnitRepository) {
         this.roomUnitRepository = roomUnitRepository;
+    }
+
+    /**
+     * Check if a room is available during the specified time.
+     *
+     * @param roomId the ID of the room
+     * @param startTime the start time of the availability
+     * @param endTime the end time of the availability
+     * @return true if the room is available, false otherwise
+     */
+    private boolean isRoomAvailable(Long roomId, LocalDateTime startTime, LocalDateTime endTime) {
+        // Implement the logic to check room availability
+        // This is a placeholder implementation
+        return true;
     }
 
     /**
@@ -131,5 +148,35 @@ public class RoomUnitService {
      */
     public List<RoomUnit> getRoomsByMaterialType(String materialType) {
         return roomUnitRepository.findByMaterialType(materialType);
+    }
+
+    /**
+     * Get available rooms based on the number of students and computer requirement.
+     *
+     * @param numStudents the number of students
+     * @param computerRequired whether a computer is required
+     * @param startTime the start time of the availability
+     * @param endTime the end time of the availability
+     * @return a list of available rooms
+     */
+    public List<RoomUnit> getAvailableRooms(int numStudents, boolean computerRequired, LocalDateTime startTime, LocalDateTime endTime) {
+        String requiredMaterialType = computerRequired ? "Computers" : "Desks";
+        
+        // Fetch all rooms that meet the criteria
+        List<RoomUnit> rooms = roomUnitRepository.findAll().stream()
+                .filter(room -> room.getSeatsCount() >= numStudents && (room.getMaterialType().equals(requiredMaterialType) || room.getMaterialType().equals("Amphitheater")))
+                .collect(Collectors.toList());
+
+        // Filter out rooms that are not available during the specified time
+        List<RoomUnit> availableRooms = rooms.stream()
+                .filter(room -> isRoomAvailable(room.getId(), startTime, endTime))
+                .collect(Collectors.toList());
+
+        // Find the room with the closest capacity to the number of students
+        RoomUnit bestFitRoom = availableRooms.stream()
+                .min((room1, room2) -> Integer.compare(Math.abs(room1.getSeatsCount() - numStudents), Math.abs(room2.getSeatsCount() - numStudents)))
+                .orElse(null);
+
+        return bestFitRoom != null ? List.of(bestFitRoom) : List.of();
     }
 }
