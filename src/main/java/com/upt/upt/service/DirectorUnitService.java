@@ -24,6 +24,9 @@ public class DirectorUnitService {
     private final DirectorUnitRepository directorUnitRepository;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     public DirectorUnitService(DirectorUnitRepository directorUnitRepository) {
         this.directorUnitRepository = directorUnitRepository;
     }
@@ -103,7 +106,20 @@ public class DirectorUnitService {
         return assessments.stream().noneMatch(a -> period.equals(a.getExamPeriod()));
     }
 
+    /**
+     * Checks if a DirectorUnit with the given username already exists.
+     *
+     * @param username The username to check
+     * @return true if the username exists, false otherwise
+     */
+    public boolean usernameExists(String username) {
+        return directorUnitRepository.findByUsername(username).isPresent();
+    }
+
     public DirectorUnit createDirector(Map<String, String> params) {
+        if (userService.usernameExists(params.get("director-username"))) {
+            throw new IllegalArgumentException("Username already exists");
+        }
         DirectorUnit newDirector = new DirectorUnit();
         newDirector.setName(params.get("director-name"));
         newDirector.setDepartment(params.get("director-department"));

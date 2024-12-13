@@ -9594,3 +9594,623 @@ com.upt.upt.controller.CoordinatorUnitController#updateCoordinator(Long, Coordin
 2024-12-13T16:31:24.151Z DEBUG 8004 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#viewSemesters(Long, Model)
 2024-12-13T16:31:24.160Z DEBUG 8004 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
 2024-12-13T16:31:24.164Z DEBUG 8004 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:44:08.310Z  INFO 8508 --- [upt] [main] com.upt.upt.UptWebApplication            : Starting UptWebApplication using Java 21.0.5 with PID 8508 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\build\classes\java\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-13T16:44:08.313Z DEBUG 8508 --- [upt] [main] com.upt.upt.UptWebApplication            : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-13T16:44:08.316Z  INFO 8508 --- [upt] [main] com.upt.upt.UptWebApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-12-13T16:44:09.698Z  INFO 8508 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-13T16:44:09.846Z  INFO 8508 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 136 ms. Found 9 JPA repository interfaces.
+2024-12-13T16:44:10.846Z  INFO 8508 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-13T16:44:10.884Z  INFO 8508 --- [upt] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-13T16:44:10.885Z  INFO 8508 --- [upt] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-13T16:44:10.976Z  INFO 8508 --- [upt] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-13T16:44:10.976Z  INFO 8508 --- [upt] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2562 ms
+2024-12-13T16:44:11.194Z  INFO 8508 --- [upt] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-13T16:44:11.308Z  INFO 8508 --- [upt] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-13T16:44:11.369Z  INFO 8508 --- [upt] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-13T16:44:11.864Z  INFO 8508 --- [upt] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-13T16:44:11.919Z  INFO 8508 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-13T16:44:12.379Z  INFO 8508 --- [upt] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@33187485
+2024-12-13T16:44:12.382Z  INFO 8508 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-13T16:44:12.451Z  WARN 8508 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-13T16:44:12.454Z  WARN 8508 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-13T16:44:14.131Z  INFO 8508 --- [upt] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-13T16:44:14.310Z  INFO 8508 --- [upt] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-13T16:44:14.999Z  WARN 8508 --- [upt] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-13T16:44:15.174Z DEBUG 8508 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 58 mappings in 'requestMappingHandlerMapping'
+2024-12-13T16:44:15.439Z DEBUG 8508 --- [upt] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-13T16:44:15.536Z DEBUG 8508 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-13T16:44:15.673Z DEBUG 8508 --- [upt] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-13T16:44:15.883Z  INFO 8508 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-13T16:44:15.892Z  INFO 8508 --- [upt] [main] com.upt.upt.UptWebApplication            : Started UptWebApplication in 8.181 seconds (process running for 8.75)
+2024-12-13T16:44:16.008Z  INFO 8508 --- [upt] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-13T16:44:16.008Z  INFO 8508 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-13T16:44:16.011Z DEBUG 8508 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-12-13T16:44:16.012Z DEBUG 8508 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-12-13T16:44:16.013Z DEBUG 8508 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-12-13T16:44:16.016Z DEBUG 8508 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@1e14ed59
+2024-12-13T16:44:16.020Z DEBUG 8508 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@9120cb5
+2024-12-13T16:44:16.021Z DEBUG 8508 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-12-13T16:44:16.028Z  INFO 8508 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2024-12-13T16:44:16.053Z DEBUG 8508 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/logout", parameters={}
+2024-12-13T16:44:16.069Z DEBUG 8508 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#logout(HttpSession)
+2024-12-13T16:44:16.129Z DEBUG 8508 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:44:16.132Z DEBUG 8508 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:44:16.139Z DEBUG 8508 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-12-13T16:44:16.140Z DEBUG 8508 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-13T16:44:16.160Z DEBUG 8508 --- [upt] [http-nio-8080-exec-3] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:44:16.559Z DEBUG 8508 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:44:16.589Z DEBUG 8508 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/css/login.css", parameters={}
+2024-12-13T16:44:16.591Z DEBUG 8508 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/js/login.js", parameters={}
+2024-12-13T16:44:16.599Z DEBUG 8508 --- [upt] [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:44:16.599Z DEBUG 8508 --- [upt] [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:44:16.616Z DEBUG 8508 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:44:16.616Z DEBUG 8508 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:44:19.087Z DEBUG 8508 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-13T16:44:19.088Z DEBUG 8508 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-13T16:44:19.432Z DEBUG 8508 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:44:19.433Z DEBUG 8508 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:44:19.438Z DEBUG 8508 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/director", parameters={}
+2024-12-13T16:44:19.439Z DEBUG 8508 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#listDirectors(HttpSession, Model)
+2024-12-13T16:44:19.492Z DEBUG 8508 --- [upt] [http-nio-8080-exec-7] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:44:19.536Z DEBUG 8508 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:44:19.568Z DEBUG 8508 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/css/director_index.css", parameters={}
+2024-12-13T16:44:19.578Z DEBUG 8508 --- [upt] [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:44:19.586Z DEBUG 8508 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:44:21.448Z DEBUG 8508 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/director/create-coordinator", parameters={}
+2024-12-13T16:44:21.450Z DEBUG 8508 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CoordinatorUnitController#createCoordinatorForm(HttpSession, Model)
+2024-12-13T16:44:21.457Z DEBUG 8508 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:44:21.462Z DEBUG 8508 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:44:21.491Z DEBUG 8508 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/css/director_addCoordinatorr.css", parameters={}
+2024-12-13T16:44:21.493Z DEBUG 8508 --- [upt] [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:44:21.499Z DEBUG 8508 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:44:25.369Z DEBUG 8508 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/director/create-coordinator", parameters={masked}
+2024-12-13T16:44:25.370Z DEBUG 8508 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CoordinatorUnitController#saveCoordinator(CoordinatorUnit, HttpSession)
+2024-12-13T16:44:25.397Z DEBUG 8508 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:44:25.399Z DEBUG 8508 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:44:25.408Z DEBUG 8508 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/director/create-coordinator?error=Username%20already%20exists", parameters={masked}
+2024-12-13T16:44:25.409Z DEBUG 8508 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CoordinatorUnitController#createCoordinatorForm(HttpSession, Model)
+2024-12-13T16:44:25.417Z DEBUG 8508 --- [upt] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:44:25.422Z DEBUG 8508 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:44:25.467Z DEBUG 8508 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/css/director_addCoordinatorr.css", parameters={}
+2024-12-13T16:44:25.468Z DEBUG 8508 --- [upt] [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:44:25.471Z DEBUG 8508 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:44:34.916Z DEBUG 8508 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/director/create-coordinator", parameters={masked}
+2024-12-13T16:44:34.917Z DEBUG 8508 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CoordinatorUnitController#saveCoordinator(CoordinatorUnit, HttpSession)
+2024-12-13T16:44:34.932Z DEBUG 8508 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:44:34.934Z DEBUG 8508 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:44:34.940Z DEBUG 8508 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/director/create-coordinator?error=Username%20already%20exists", parameters={masked}
+2024-12-13T16:44:34.941Z DEBUG 8508 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CoordinatorUnitController#createCoordinatorForm(HttpSession, Model)
+2024-12-13T16:44:34.948Z DEBUG 8508 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:44:34.951Z DEBUG 8508 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:44:34.976Z DEBUG 8508 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/css/director_addCoordinatorr.css", parameters={}
+2024-12-13T16:44:34.978Z DEBUG 8508 --- [upt] [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:44:34.982Z DEBUG 8508 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:44:38.769Z DEBUG 8508 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/director/create-coordinator?error=Username%20already%20exists", parameters={masked}
+2024-12-13T16:44:38.770Z DEBUG 8508 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CoordinatorUnitController#createCoordinatorForm(HttpSession, Model)
+2024-12-13T16:44:38.778Z DEBUG 8508 --- [upt] [http-nio-8080-exec-7] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:44:38.780Z DEBUG 8508 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:44:38.803Z DEBUG 8508 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/css/director_addCoordinatorr.css", parameters={}
+2024-12-13T16:44:38.807Z DEBUG 8508 --- [upt] [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:44:38.810Z DEBUG 8508 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:44:40.596Z DEBUG 8508 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/director/create-coordinator?error=Username%20already%20exists", parameters={masked}
+2024-12-13T16:44:40.599Z DEBUG 8508 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CoordinatorUnitController#createCoordinatorForm(HttpSession, Model)
+2024-12-13T16:44:40.605Z DEBUG 8508 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:44:40.607Z DEBUG 8508 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:45:51.721Z  INFO 13964 --- [upt] [main] com.upt.upt.UptWebApplication            : Starting UptWebApplication using Java 21.0.5 with PID 13964 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\build\classes\java\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-13T16:45:51.724Z DEBUG 13964 --- [upt] [main] com.upt.upt.UptWebApplication            : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-13T16:45:51.726Z  INFO 13964 --- [upt] [main] com.upt.upt.UptWebApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-12-13T16:45:53.152Z  INFO 13964 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-13T16:45:53.457Z  INFO 13964 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 295 ms. Found 9 JPA repository interfaces.
+2024-12-13T16:45:54.891Z  INFO 13964 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-13T16:45:54.910Z  INFO 13964 --- [upt] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-13T16:45:54.912Z  INFO 13964 --- [upt] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-13T16:45:55.044Z  INFO 13964 --- [upt] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-13T16:45:55.071Z  INFO 13964 --- [upt] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3250 ms
+2024-12-13T16:45:55.317Z  INFO 13964 --- [upt] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-13T16:45:55.418Z  INFO 13964 --- [upt] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-13T16:45:55.475Z  INFO 13964 --- [upt] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-13T16:45:55.920Z  INFO 13964 --- [upt] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-13T16:45:55.971Z  INFO 13964 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-13T16:45:56.442Z  INFO 13964 --- [upt] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5a8d676e
+2024-12-13T16:45:56.444Z  INFO 13964 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-13T16:45:56.509Z  WARN 13964 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-13T16:45:56.510Z  WARN 13964 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-13T16:45:58.383Z  INFO 13964 --- [upt] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-13T16:45:58.559Z  INFO 13964 --- [upt] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-13T16:45:59.274Z  WARN 13964 --- [upt] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-13T16:45:59.462Z DEBUG 13964 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 58 mappings in 'requestMappingHandlerMapping'
+2024-12-13T16:45:59.633Z DEBUG 13964 --- [upt] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-13T16:45:59.681Z DEBUG 13964 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-13T16:45:59.729Z DEBUG 13964 --- [upt] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-13T16:45:59.911Z  INFO 13964 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-13T16:45:59.921Z  INFO 13964 --- [upt] [main] com.upt.upt.UptWebApplication            : Started UptWebApplication in 8.795 seconds (process running for 9.282)
+2024-12-13T16:46:00.031Z  INFO 13964 --- [upt] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-13T16:46:00.032Z  INFO 13964 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-13T16:46:00.033Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-12-13T16:46:00.034Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-12-13T16:46:00.034Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-12-13T16:46:00.036Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@5fdcc63f
+2024-12-13T16:46:00.037Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@2d732cda
+2024-12-13T16:46:00.038Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-12-13T16:46:00.041Z  INFO 13964 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2024-12-13T16:46:00.073Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/director/create-coordinator?error=Username%20already%20exists", parameters={masked}
+2024-12-13T16:46:00.091Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CoordinatorUnitController#createCoordinatorForm(HttpSession, Model)
+2024-12-13T16:46:00.157Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:46:00.159Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:46:00.166Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/login?error=Unauthorized%20access", parameters={masked}
+2024-12-13T16:46:00.167Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-13T16:46:00.205Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:46:00.528Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:46:00.553Z DEBUG 13964 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/css/login.css", parameters={}
+2024-12-13T16:46:00.554Z DEBUG 13964 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/js/login.js", parameters={}
+2024-12-13T16:46:00.567Z DEBUG 13964 --- [upt] [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:46:00.567Z DEBUG 13964 --- [upt] [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:46:00.582Z DEBUG 13964 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:46:00.582Z DEBUG 13964 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:46:03.526Z DEBUG 13964 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-13T16:46:03.528Z DEBUG 13964 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-13T16:46:03.814Z DEBUG 13964 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:46:03.816Z DEBUG 13964 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:46:03.827Z DEBUG 13964 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-13T16:46:03.828Z DEBUG 13964 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-13T16:46:03.885Z DEBUG 13964 --- [upt] [http-nio-8080-exec-7] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:46:03.948Z DEBUG 13964 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:46:03.996Z DEBUG 13964 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_index.css?v=0", parameters={masked}
+2024-12-13T16:46:04.008Z DEBUG 13964 --- [upt] [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:46:04.020Z DEBUG 13964 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:46:05.013Z DEBUG 13964 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/map", parameters={}
+2024-12-13T16:46:05.014Z DEBUG 13964 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MapUnitController#showAssessmentMap(Model, HttpSession)
+2024-12-13T16:46:05.059Z DEBUG 13964 --- [upt] [http-nio-8080-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:46:05.096Z DEBUG 13964 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:46:05.124Z DEBUG 13964 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_map.css?v=0", parameters={masked}
+2024-12-13T16:46:05.125Z DEBUG 13964 --- [upt] [http-nio-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:46:05.128Z DEBUG 13964 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:46:06.313Z DEBUG 13964 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/logout", parameters={}
+2024-12-13T16:46:06.314Z DEBUG 13964 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#logout(HttpSession)
+2024-12-13T16:46:06.317Z DEBUG 13964 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:46:06.318Z DEBUG 13964 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:46:06.325Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-12-13T16:46:06.326Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-13T16:46:06.329Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:46:06.339Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:46:06.369Z DEBUG 13964 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/js/login.js", parameters={}
+2024-12-13T16:46:06.369Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/css/login.css", parameters={}
+2024-12-13T16:46:06.371Z DEBUG 13964 --- [upt] [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:46:06.372Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:46:06.375Z DEBUG 13964 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:46:06.376Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:46:08.250Z DEBUG 13964 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-13T16:46:08.251Z DEBUG 13964 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-13T16:46:08.263Z DEBUG 13964 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:46:08.264Z DEBUG 13964 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:46:08.276Z DEBUG 13964 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/master", parameters={}
+2024-12-13T16:46:08.278Z DEBUG 13964 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MasterUnitController#listDirectorsMastersAndRooms(Model, HttpSession)
+2024-12-13T16:46:08.337Z DEBUG 13964 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:46:08.412Z DEBUG 13964 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/css/master_index.css", parameters={}
+2024-12-13T16:46:08.413Z DEBUG 13964 --- [upt] [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:46:08.416Z DEBUG 13964 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:46:08.448Z DEBUG 13964 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:46:10.405Z DEBUG 13964 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/master/create-master", parameters={}
+2024-12-13T16:46:10.406Z DEBUG 13964 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MasterUnitController#showCreateMasterForm(HttpSession)
+2024-12-13T16:46:10.409Z DEBUG 13964 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:46:10.413Z DEBUG 13964 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:46:10.447Z DEBUG 13964 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/css/master_addMaster.css", parameters={}
+2024-12-13T16:46:10.449Z DEBUG 13964 --- [upt] [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:46:10.453Z DEBUG 13964 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:46:12.689Z DEBUG 13964 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/master/create-master", parameters={masked}
+2024-12-13T16:46:12.691Z DEBUG 13964 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MasterUnitController#createMaster(String, String, String, HttpSession)
+2024-12-13T16:46:12.699Z DEBUG 13964 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:46:12.701Z DEBUG 13964 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:46:12.711Z DEBUG 13964 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/master/create-master?error=Username%20already%20exists", parameters={masked}
+2024-12-13T16:46:12.714Z DEBUG 13964 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MasterUnitController#showCreateMasterForm(HttpSession)
+2024-12-13T16:46:12.715Z DEBUG 13964 --- [upt] [http-nio-8080-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:46:12.723Z DEBUG 13964 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:46:12.763Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/css/master_addMaster.css", parameters={}
+2024-12-13T16:46:12.776Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:46:12.778Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:46:16.527Z DEBUG 13964 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/master/create-master", parameters={masked}
+2024-12-13T16:46:16.528Z DEBUG 13964 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MasterUnitController#createMaster(String, String, String, HttpSession)
+2024-12-13T16:46:16.541Z DEBUG 13964 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:46:16.543Z DEBUG 13964 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:46:16.548Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/master/create-master?error=Username%20already%20exists", parameters={masked}
+2024-12-13T16:46:16.549Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MasterUnitController#showCreateMasterForm(HttpSession)
+2024-12-13T16:46:16.551Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:46:16.553Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:46:16.578Z DEBUG 13964 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/css/master_addMaster.css", parameters={}
+2024-12-13T16:46:16.580Z DEBUG 13964 --- [upt] [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:46:16.582Z DEBUG 13964 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:46:18.700Z DEBUG 13964 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/logout", parameters={}
+2024-12-13T16:46:18.703Z DEBUG 13964 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#logout(HttpSession)
+2024-12-13T16:46:18.704Z DEBUG 13964 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:46:18.706Z DEBUG 13964 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:46:18.712Z DEBUG 13964 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-12-13T16:46:18.715Z DEBUG 13964 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-13T16:46:18.721Z DEBUG 13964 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:46:18.727Z DEBUG 13964 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:46:18.761Z DEBUG 13964 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/css/login.css", parameters={}
+2024-12-13T16:46:18.761Z DEBUG 13964 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/js/login.js", parameters={}
+2024-12-13T16:46:18.763Z DEBUG 13964 --- [upt] [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:46:18.763Z DEBUG 13964 --- [upt] [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:46:18.766Z DEBUG 13964 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:46:18.767Z DEBUG 13964 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:46:21.909Z DEBUG 13964 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/director", parameters={}
+2024-12-13T16:46:21.911Z DEBUG 13964 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#listDirectors(HttpSession, Model)
+2024-12-13T16:46:21.913Z DEBUG 13964 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:46:21.914Z DEBUG 13964 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:46:21.921Z DEBUG 13964 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/login?error=Session%20expired", parameters={masked}
+2024-12-13T16:46:21.921Z DEBUG 13964 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-13T16:46:21.924Z DEBUG 13964 --- [upt] [http-nio-8080-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:46:21.926Z DEBUG 13964 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:46:21.961Z DEBUG 13964 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/js/login.js", parameters={}
+2024-12-13T16:46:21.961Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/css/login.css", parameters={}
+2024-12-13T16:46:21.963Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:46:21.963Z DEBUG 13964 --- [upt] [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:46:21.966Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:46:21.967Z DEBUG 13964 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:46:25.608Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-13T16:46:25.609Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-13T16:46:25.623Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:46:25.624Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:46:25.630Z DEBUG 13964 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/login?error=Invalid%20credentials", parameters={masked}
+2024-12-13T16:46:25.632Z DEBUG 13964 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-13T16:46:25.634Z DEBUG 13964 --- [upt] [http-nio-8080-exec-3] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:46:25.657Z DEBUG 13964 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/css/login.css", parameters={}
+2024-12-13T16:46:25.664Z DEBUG 13964 --- [upt] [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:46:25.638Z DEBUG 13964 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:46:25.667Z DEBUG 13964 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:46:25.674Z DEBUG 13964 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/js/login.js", parameters={}
+2024-12-13T16:46:25.679Z DEBUG 13964 --- [upt] [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:46:25.687Z DEBUG 13964 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:46:27.778Z DEBUG 13964 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-13T16:46:27.779Z DEBUG 13964 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-13T16:46:27.788Z DEBUG 13964 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:46:27.789Z DEBUG 13964 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:46:27.794Z DEBUG 13964 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/master", parameters={}
+2024-12-13T16:46:27.794Z DEBUG 13964 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MasterUnitController#listDirectorsMastersAndRooms(Model, HttpSession)
+2024-12-13T16:46:27.823Z DEBUG 13964 --- [upt] [http-nio-8080-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:46:27.884Z DEBUG 13964 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/css/master_index.css", parameters={}
+2024-12-13T16:46:27.887Z DEBUG 13964 --- [upt] [http-nio-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:46:27.888Z DEBUG 13964 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:46:27.889Z DEBUG 13964 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:46:30.290Z DEBUG 13964 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/master/create-director", parameters={}
+2024-12-13T16:46:30.291Z DEBUG 13964 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#showCreateDirectorForm(HttpSession)
+2024-12-13T16:46:30.296Z DEBUG 13964 --- [upt] [http-nio-8080-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:46:30.304Z DEBUG 13964 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:46:30.330Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/css/master_addDirector.css", parameters={}
+2024-12-13T16:46:30.334Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:46:30.339Z DEBUG 13964 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:46:35.538Z DEBUG 13964 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/master/create-director", parameters={masked}
+2024-12-13T16:46:35.539Z DEBUG 13964 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#createDirector(Map, HttpSession)
+2024-12-13T16:46:35.551Z DEBUG 13964 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:46:35.552Z DEBUG 13964 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:46:35.560Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/master/create?error=Username%20already%20exists", parameters={masked}
+2024-12-13T16:46:35.562Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:46:35.565Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-12-13T16:46:35.569Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource master/create.]
+2024-12-13T16:46:35.571Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-12-13T16:46:35.582Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error?error=Username%20already%20exists", parameters={masked}
+2024-12-13T16:46:35.585Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2024-12-13T16:46:35.600Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2024-12-13T16:46:35.615Z DEBUG 13964 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2024-12-13T16:50:56.978Z  INFO 13912 --- [upt] [main] com.upt.upt.UptWebApplication            : Starting UptWebApplication using Java 21.0.5 with PID 13912 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\build\classes\java\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-13T16:50:56.981Z DEBUG 13912 --- [upt] [main] com.upt.upt.UptWebApplication            : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-13T16:50:56.982Z  INFO 13912 --- [upt] [main] com.upt.upt.UptWebApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-12-13T16:50:59.103Z  INFO 13912 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-13T16:50:59.392Z  INFO 13912 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 273 ms. Found 9 JPA repository interfaces.
+2024-12-13T16:51:01.317Z  INFO 13912 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-13T16:51:01.363Z  INFO 13912 --- [upt] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-13T16:51:01.364Z  INFO 13912 --- [upt] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-13T16:51:01.546Z  INFO 13912 --- [upt] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-13T16:51:01.547Z  INFO 13912 --- [upt] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4468 ms
+2024-12-13T16:51:02.375Z  INFO 13912 --- [upt] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-13T16:51:02.552Z  INFO 13912 --- [upt] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-13T16:51:02.676Z  INFO 13912 --- [upt] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-13T16:51:04.283Z  INFO 13912 --- [upt] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-13T16:51:04.507Z  INFO 13912 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-13T16:51:05.496Z  INFO 13912 --- [upt] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@41938e1e
+2024-12-13T16:51:05.500Z  INFO 13912 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-13T16:51:05.581Z  WARN 13912 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-13T16:51:05.585Z  WARN 13912 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-13T16:51:07.961Z  INFO 13912 --- [upt] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-13T16:51:08.230Z  INFO 13912 --- [upt] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-13T16:51:10.719Z  WARN 13912 --- [upt] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-13T16:51:11.468Z DEBUG 13912 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 58 mappings in 'requestMappingHandlerMapping'
+2024-12-13T16:51:11.948Z DEBUG 13912 --- [upt] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-13T16:51:12.164Z DEBUG 13912 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-13T16:51:12.243Z DEBUG 13912 --- [upt] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-13T16:51:12.970Z  INFO 13912 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-13T16:51:13.004Z  INFO 13912 --- [upt] [main] com.upt.upt.UptWebApplication            : Started UptWebApplication in 16.728 seconds (process running for 17.322)
+2024-12-13T16:52:00.869Z  INFO 8472 --- [upt] [main] com.upt.upt.UptWebApplication            : Starting UptWebApplication using Java 21.0.5 with PID 8472 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\build\classes\java\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-13T16:52:00.872Z DEBUG 8472 --- [upt] [main] com.upt.upt.UptWebApplication            : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-13T16:52:00.874Z  INFO 8472 --- [upt] [main] com.upt.upt.UptWebApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-12-13T16:52:03.822Z  INFO 8472 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-13T16:52:04.055Z  INFO 8472 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 215 ms. Found 9 JPA repository interfaces.
+2024-12-13T16:52:06.019Z  INFO 8472 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-13T16:52:06.050Z  INFO 8472 --- [upt] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-13T16:52:06.051Z  INFO 8472 --- [upt] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-13T16:52:06.167Z  INFO 8472 --- [upt] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-13T16:52:06.168Z  INFO 8472 --- [upt] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5098 ms
+2024-12-13T16:52:06.404Z  INFO 8472 --- [upt] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-13T16:52:06.515Z  INFO 8472 --- [upt] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-13T16:52:06.571Z  INFO 8472 --- [upt] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-13T16:52:07.986Z  INFO 8472 --- [upt] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-13T16:52:08.109Z  INFO 8472 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-13T16:52:09.132Z  INFO 8472 --- [upt] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@33187485
+2024-12-13T16:52:09.143Z  INFO 8472 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-13T16:52:09.234Z  WARN 8472 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-13T16:52:09.238Z  WARN 8472 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-13T16:52:12.806Z  INFO 8472 --- [upt] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-13T16:52:13.122Z  INFO 8472 --- [upt] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-13T16:52:15.077Z  WARN 8472 --- [upt] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-13T16:52:15.912Z DEBUG 8472 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 58 mappings in 'requestMappingHandlerMapping'
+2024-12-13T16:52:16.377Z DEBUG 8472 --- [upt] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-13T16:52:16.535Z DEBUG 8472 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-13T16:52:16.819Z DEBUG 8472 --- [upt] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-13T16:52:17.623Z  INFO 8472 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-13T16:52:17.665Z  INFO 8472 --- [upt] [main] com.upt.upt.UptWebApplication            : Started UptWebApplication in 17.653 seconds (process running for 18.411)
+2024-12-13T16:52:28.758Z  INFO 8472 --- [upt] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-13T16:52:28.759Z  INFO 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-13T16:52:28.760Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-12-13T16:52:28.761Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-12-13T16:52:28.762Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-12-13T16:52:28.763Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@1e14ed59
+2024-12-13T16:52:28.764Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@9120cb5
+2024-12-13T16:52:28.765Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-12-13T16:52:28.766Z  INFO 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2024-12-13T16:52:28.778Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/master/create-director", parameters={}
+2024-12-13T16:52:28.792Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#showCreateDirectorForm(HttpSession)
+2024-12-13T16:52:28.873Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:52:28.877Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:52:28.892Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/login?error=Unauthorized%20access", parameters={masked}
+2024-12-13T16:52:28.894Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-13T16:52:28.923Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:52:29.453Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:52:29.473Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/css/login.css", parameters={}
+2024-12-13T16:52:29.474Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/js/login.js", parameters={}
+2024-12-13T16:52:29.479Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:52:29.479Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:52:29.489Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:52:29.491Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:52:43.785Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-13T16:52:43.786Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-13T16:52:43.994Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:52:43.998Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:52:44.006Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/director", parameters={}
+2024-12-13T16:52:44.007Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#listDirectors(HttpSession, Model)
+2024-12-13T16:52:44.044Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:52:44.075Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:52:44.100Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/css/director_index.css", parameters={}
+2024-12-13T16:52:44.102Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:52:44.110Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:52:49.889Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/logout", parameters={}
+2024-12-13T16:52:49.890Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#logout(HttpSession)
+2024-12-13T16:52:49.893Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:52:49.894Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:52:49.901Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-12-13T16:52:49.902Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-13T16:52:49.904Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:52:49.906Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:52:53.223Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-13T16:52:53.225Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-13T16:52:53.235Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:52:53.236Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:52:53.242Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/master", parameters={}
+2024-12-13T16:52:53.243Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MasterUnitController#listDirectorsMastersAndRooms(Model, HttpSession)
+2024-12-13T16:52:53.269Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:52:53.346Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/css/master_index.css", parameters={}
+2024-12-13T16:52:53.347Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:52:53.349Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:52:53.369Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:52:58.359Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/master/create-master", parameters={}
+2024-12-13T16:52:58.361Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MasterUnitController#showCreateMasterForm(HttpSession)
+2024-12-13T16:52:58.364Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:52:58.383Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:52:58.410Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/css/master_addMaster.css", parameters={}
+2024-12-13T16:52:58.411Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:52:58.413Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:53:03.017Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/master/create-master", parameters={masked}
+2024-12-13T16:53:03.018Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MasterUnitController#createMaster(String, String, String, HttpSession)
+2024-12-13T16:53:03.029Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:53:03.030Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:53:03.038Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/master/create-master?error=Username%20already%20exists", parameters={masked}
+2024-12-13T16:53:03.038Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MasterUnitController#showCreateMasterForm(HttpSession)
+2024-12-13T16:53:03.040Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:53:03.043Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:53:05.722Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/director", parameters={}
+2024-12-13T16:53:05.725Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#listDirectors(HttpSession, Model)
+2024-12-13T16:53:05.736Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:53:05.744Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:53:08.743Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/logout", parameters={}
+2024-12-13T16:53:08.745Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#logout(HttpSession)
+2024-12-13T16:53:08.766Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:53:08.766Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:53:08.772Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-12-13T16:53:08.773Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-13T16:53:08.774Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:53:08.776Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:53:12.130Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-13T16:53:12.131Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-13T16:53:12.142Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:53:12.143Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:53:12.151Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/master", parameters={}
+2024-12-13T16:53:12.152Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MasterUnitController#listDirectorsMastersAndRooms(Model, HttpSession)
+2024-12-13T16:53:12.182Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:53:12.251Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:53:18.129Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/master/create-master", parameters={}
+2024-12-13T16:53:18.130Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MasterUnitController#showCreateMasterForm(HttpSession)
+2024-12-13T16:53:18.133Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:53:18.139Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:53:20.923Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/master/create-master", parameters={masked}
+2024-12-13T16:53:20.924Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MasterUnitController#createMaster(String, String, String, HttpSession)
+2024-12-13T16:53:20.929Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:53:20.931Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:53:20.936Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/master/create-master?error=Username%20already%20exists", parameters={masked}
+2024-12-13T16:53:20.938Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MasterUnitController#showCreateMasterForm(HttpSession)
+2024-12-13T16:53:20.940Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:53:20.942Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:53:22.465Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/director", parameters={}
+2024-12-13T16:53:22.466Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#listDirectors(HttpSession, Model)
+2024-12-13T16:53:22.478Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:53:22.484Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:53:28.099Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/director", parameters={}
+2024-12-13T16:53:28.100Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#listDirectors(HttpSession, Model)
+2024-12-13T16:53:28.116Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:53:28.121Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:53:28.166Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/css/director_index.css", parameters={}
+2024-12-13T16:53:28.169Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:53:28.171Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:53:28.856Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/director", parameters={}
+2024-12-13T16:53:28.857Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#listDirectors(HttpSession, Model)
+2024-12-13T16:53:28.865Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:53:28.870Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:53:33.496Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/logout", parameters={}
+2024-12-13T16:53:33.497Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#logout(HttpSession)
+2024-12-13T16:53:33.498Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:53:33.499Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:53:33.506Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-12-13T16:53:33.506Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-13T16:53:33.507Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:53:33.510Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:53:33.530Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/css/login.css", parameters={}
+2024-12-13T16:53:33.540Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:53:33.542Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/js/login.js", parameters={}
+2024-12-13T16:53:33.543Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:53:33.543Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:53:33.547Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:53:35.737Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/director", parameters={}
+2024-12-13T16:53:35.738Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#listDirectors(HttpSession, Model)
+2024-12-13T16:53:35.739Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:53:35.741Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:53:35.748Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/login?error=Session%20expired", parameters={masked}
+2024-12-13T16:53:35.749Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-13T16:53:35.751Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:53:35.752Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:53:38.898Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-13T16:53:38.898Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-13T16:53:38.906Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:53:38.907Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:53:38.912Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/master", parameters={}
+2024-12-13T16:53:38.913Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MasterUnitController#listDirectorsMastersAndRooms(Model, HttpSession)
+2024-12-13T16:53:38.931Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:53:38.948Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:53:38.988Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/css/master_index.css", parameters={}
+2024-12-13T16:53:38.990Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:53:38.993Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:53:43.658Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/director", parameters={}
+2024-12-13T16:53:43.659Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#listDirectors(HttpSession, Model)
+2024-12-13T16:53:43.670Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:53:43.675Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:53:50.137Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/director", parameters={}
+2024-12-13T16:53:50.137Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#listDirectors(HttpSession, Model)
+2024-12-13T16:53:50.157Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:53:50.164Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:53:52.720Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/logout", parameters={}
+2024-12-13T16:53:52.722Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#logout(HttpSession)
+2024-12-13T16:53:52.723Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:53:52.726Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:53:52.734Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-12-13T16:53:52.735Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-13T16:53:52.737Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:53:52.739Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:53:59.730Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-13T16:53:59.731Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-13T16:53:59.748Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:53:59.749Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:53:59.754Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-13T16:53:59.755Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-13T16:53:59.765Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:53:59.794Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:53:59.819Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_index.css?v=0", parameters={masked}
+2024-12-13T16:53:59.822Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:53:59.825Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:54:02.219Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/master", parameters={}
+2024-12-13T16:54:02.220Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MasterUnitController#listDirectorsMastersAndRooms(Model, HttpSession)
+2024-12-13T16:54:02.223Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:54:02.225Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:54:02.232Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/login?error=Unauthorized%20access", parameters={masked}
+2024-12-13T16:54:02.233Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-13T16:54:02.235Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:54:02.237Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:54:08.191Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/director/edit-year?id=3", parameters={masked}
+2024-12-13T16:54:08.193Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.YearUnitController#editYearForm(Long, HttpSession, Model)
+2024-12-13T16:54:08.214Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:54:08.215Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:54:08.224Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/director?error=Year%20not%20found", parameters={masked}
+2024-12-13T16:54:08.225Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#listDirectors(HttpSession, Model)
+2024-12-13T16:54:08.237Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:54:08.244Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:54:15.180Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/logout", parameters={}
+2024-12-13T16:54:15.182Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#logout(HttpSession)
+2024-12-13T16:54:15.184Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:54:15.185Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:54:15.193Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-12-13T16:54:15.193Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-13T16:54:15.196Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:54:15.198Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:54:17.376Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-13T16:54:17.377Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-13T16:54:17.398Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:54:17.399Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:54:17.406Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-13T16:54:17.406Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-13T16:54:17.417Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:54:17.432Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:54:23.484Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/director", parameters={}
+2024-12-13T16:54:23.484Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#listDirectors(HttpSession, Model)
+2024-12-13T16:54:23.494Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:54:23.499Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:54:23.527Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/css/director_index.css", parameters={}
+2024-12-13T16:54:23.529Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:54:23.531Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:54:25.164Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/logout", parameters={}
+2024-12-13T16:54:25.168Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#logout(HttpSession)
+2024-12-13T16:54:25.173Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:54:25.173Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:54:25.181Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-12-13T16:54:25.182Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-13T16:54:25.185Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:54:25.186Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:54:25.209Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/css/login.css", parameters={}
+2024-12-13T16:54:25.215Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:54:25.215Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/js/login.js", parameters={}
+2024-12-13T16:54:25.216Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:54:25.219Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:54:25.222Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:54:29.736Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-13T16:54:29.737Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-13T16:54:29.746Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:54:29.747Z DEBUG 8472 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:54:29.752Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/master", parameters={}
+2024-12-13T16:54:29.753Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MasterUnitController#listDirectorsMastersAndRooms(Model, HttpSession)
+2024-12-13T16:54:29.770Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:54:29.792Z DEBUG 8472 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:54:29.803Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/css/master_index.css", parameters={}
+2024-12-13T16:54:29.808Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:54:29.814Z DEBUG 8472 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:54:46.552Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/master/create-director", parameters={}
+2024-12-13T16:54:46.553Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#showCreateDirectorForm(HttpSession)
+2024-12-13T16:54:46.560Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:54:46.570Z DEBUG 8472 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:54:46.612Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/css/master_addDirector.css", parameters={}
+2024-12-13T16:54:46.616Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-13T16:54:46.619Z DEBUG 8472 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-13T16:54:51.715Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/master/create-director", parameters={masked}
+2024-12-13T16:54:51.716Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#createDirector(Map, HttpSession)
+2024-12-13T16:54:51.727Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:54:51.728Z DEBUG 8472 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:54:51.737Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/master/create-director?error=Username%20already%20exists", parameters={masked}
+2024-12-13T16:54:51.737Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#showCreateDirectorForm(HttpSession)
+2024-12-13T16:54:51.744Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:54:51.766Z DEBUG 8472 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:54:53.407Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/master", parameters={}
+2024-12-13T16:54:53.408Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MasterUnitController#listDirectorsMastersAndRooms(Model, HttpSession)
+2024-12-13T16:54:53.428Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:54:53.444Z DEBUG 8472 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-13T16:54:56.203Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/logout", parameters={}
+2024-12-13T16:54:56.205Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#logout(HttpSession)
+2024-12-13T16:54:56.207Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-13T16:54:56.209Z DEBUG 8472 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-13T16:54:56.222Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-12-13T16:54:56.223Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-13T16:54:56.224Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-13T16:54:56.226Z DEBUG 8472 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK

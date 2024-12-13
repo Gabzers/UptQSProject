@@ -25,6 +25,9 @@ public class DirectorUnitController {
     @Autowired
     private YearUnitService yearUnitService;
 
+    @Autowired
+    private UserService userService;
+
     private Optional<DirectorUnit> verifyDirector(HttpSession session) {
         Long directorId = (Long) session.getAttribute("userId");
         if (directorId == null) {
@@ -38,8 +41,16 @@ public class DirectorUnitController {
         return userType == UserType.MASTER;
     }
 
+    private boolean isDirector(HttpSession session) {
+        UserType userType = (UserType) session.getAttribute("userType");
+        return userType == UserType.DIRECTOR;
+    }
+
     @GetMapping("/director")
     public String listDirectors(HttpSession session, Model model) {
+        if (!isDirector(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
         Optional<DirectorUnit> directorOpt = verifyDirector(session);
         if (directorOpt.isPresent()) {
             DirectorUnit director = directorOpt.get();
@@ -61,7 +72,10 @@ public class DirectorUnitController {
     }
 
     @GetMapping("/director/viewSemester/{id}")
-    public String viewSemesters(@PathVariable("id") Long id, Model model) {
+    public String viewSemesters(@PathVariable("id") Long id, Model model, HttpSession session) {
+        if (!isDirector(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
         Optional<YearUnit> yearUnit = yearUnitService.getYearUnitById(id);
         if (yearUnit.isPresent()) {
             model.addAttribute("yearUnit", yearUnit.get());
@@ -73,7 +87,10 @@ public class DirectorUnitController {
     }
 
     @GetMapping("/director/map/{semester}/{yearId}")
-    public String viewSemesterMap(@PathVariable("semester") String semester, @PathVariable("yearId") Long yearId, Model model) {
+    public String viewSemesterMap(@PathVariable("semester") String semester, @PathVariable("yearId") Long yearId, Model model, HttpSession session) {
+        if (!isDirector(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
         Optional<YearUnit> yearUnit = yearUnitService.getYearUnitById(yearId);
         if (yearUnit.isPresent()) {
             SemesterUnit semesterUnit = "1st".equals(semester) ? yearUnit.get().getFirstSemester() : yearUnit.get().getSecondSemester();
@@ -88,7 +105,10 @@ public class DirectorUnitController {
     }
 
     @GetMapping("/director/ucs/{semester}/{yearId}")
-    public String viewSemesterUcs(@PathVariable("semester") String semester, @PathVariable("yearId") Long yearId, Model model) {
+    public String viewSemesterUcs(@PathVariable("semester") String semester, @PathVariable("yearId") Long yearId, Model model, HttpSession session) {
+        if (!isDirector(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
         Optional<YearUnit> yearUnit = yearUnitService.getYearUnitById(yearId);
         if (yearUnit.isPresent()) {
             SemesterUnit semesterUnit = "1st".equals(semester) ? yearUnit.get().getFirstSemester() : yearUnit.get().getSecondSemester();
@@ -100,6 +120,9 @@ public class DirectorUnitController {
 
     @GetMapping("/director/edit-coordinator")
     public String showEditCoordinatorForm(@RequestParam("id") Long id, Model model, HttpSession session) {
+        if (!isDirector(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
         Optional<DirectorUnit> directorOpt = verifyDirector(session);
         if (directorOpt.isPresent()) {
             Optional<CoordinatorUnit> coordinatorOpt = coordinatorService.getCoordinatorById(id);
@@ -114,6 +137,9 @@ public class DirectorUnitController {
 
     @PostMapping("/director/update-coordinator/{id}")
     public String updateCoordinator(@PathVariable("id") Long id, @RequestParam Map<String, String> params, HttpSession session) {
+        if (!isDirector(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
         Optional<DirectorUnit> directorOpt = verifyDirector(session);
         if (directorOpt.isPresent()) {
             try {
@@ -149,13 +175,16 @@ public class DirectorUnitController {
             return "redirect:/login?error=Unauthorized access";
         }
         try {
+            if (userService.usernameExists(params.get("director-username"))) {
+                throw new IllegalArgumentException("Username already exists");
+            }
             DirectorUnit newDirector = directorUnitService.createDirector(params);
             directorUnitService.saveDirector(newDirector);
             return "redirect:/master";
         } catch (IllegalArgumentException e) {
-            return "redirect:/master/create?error=Incomplete information";
+            return "redirect:/master/create-director?error=" + e.getMessage();
         } catch (RuntimeException e) {
-            return "redirect:/master/create?error=Duplicate entry or integrity constraint violated";
+            return "redirect:/master/create-director?error=Duplicate entry or integrity constraint violated";
         }
     }
 
@@ -201,6 +230,9 @@ public class DirectorUnitController {
             return "redirect:/login?error=Unauthorized access";
         }
         try {
+            if (userService.usernameExists(params.get("director-username"))) {
+                throw new IllegalArgumentException("Username already exists");
+            }
             DirectorUnit director = directorUnitService.updateDirector(id, params);
             directorUnitService.saveDirector(director);
             return "redirect:/master";

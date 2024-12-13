@@ -14,6 +14,9 @@ public class MasterUnitService {
     @Autowired
     private MasterUnitRepository masterUnitRepository;
 
+    @Autowired
+    private UserService userService;
+
     /**
      * Fetches all MasterUnit entities from the database.
      *
@@ -52,6 +55,16 @@ public class MasterUnitService {
     }
 
     /**
+     * Checks if a MasterUnit with the given username already exists.
+     *
+     * @param username The username to check
+     * @return true if the username exists, false otherwise
+     */
+    public boolean usernameExists(String username) {
+        return masterUnitRepository.findByUsername(username).isPresent();
+    }
+
+    /**
      * Creates a new MasterUnit entity.
      *
      * @param name The name of the master unit
@@ -60,6 +73,9 @@ public class MasterUnitService {
      * @return The created MasterUnit entity
      */
     public MasterUnit createMaster(String name, String username, String password) {
+        if (userService.usernameExists(username)) {
+            throw new IllegalArgumentException("Username already exists");
+        }
         MasterUnit newMaster = new MasterUnit();
         newMaster.setName(name);
         newMaster.setUsername(username);

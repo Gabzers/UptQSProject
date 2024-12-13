@@ -47,17 +47,17 @@ public class UserService {
     public Long getUserIdByUsername(String username, UserType userType) {
         switch (userType) {
             case MASTER:
-                MasterUnit master = masterUnitRepository.findByUsername(username);
-                Long masterId = master != null ? master.getId() : null;
-                return masterId;
+                return masterUnitRepository.findByUsername(username)
+                        .map(MasterUnit::getId)
+                        .orElse(null);
             case DIRECTOR:
-                DirectorUnit director = directorUnitRepository.findByUsername(username);
-                Long directorId = director != null ? director.getId() : null;
-                return directorId;
+                return directorUnitRepository.findByUsername(username)
+                        .map(DirectorUnit::getId)
+                        .orElse(null);
             case COORDINATOR:
-                CoordinatorUnit coordinator = coordinatorUnitRepository.findByUsername(username);
-                Long coordinatorId = coordinator != null ? coordinator.getId() : null;
-                return coordinatorId;
+                return coordinatorUnitRepository.findByUsername(username)
+                        .map(CoordinatorUnit::getId)
+                        .orElse(null);
             default:
                 return null;
         }
@@ -67,4 +67,9 @@ public class UserService {
         return directorUnitRepository.findById(id);
     }
 
+    public boolean usernameExists(String username) {
+        return masterUnitRepository.findByUsername(username).isPresent() ||
+               directorUnitRepository.findByUsername(username).isPresent() ||
+               coordinatorUnitRepository.findByUsername(username).isPresent();
+    }
 }

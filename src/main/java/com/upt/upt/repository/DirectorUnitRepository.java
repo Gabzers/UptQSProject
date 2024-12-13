@@ -4,6 +4,8 @@ import com.upt.upt.entity.DirectorUnit;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 /**
  * Repository interface for DirectorUnit entity.
  * Provides CRUD operations and query capabilities.
@@ -11,5 +13,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DirectorUnitRepository extends JpaRepository<DirectorUnit, Long> {
     DirectorUnit findByUsernameAndPassword(String username, String password);
-    DirectorUnit findByUsername(String username); // Adicione este método
+    Optional<DirectorUnit> findByUsername(String username); // Update to return Optional
 }

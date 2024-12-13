@@ -26,14 +26,14 @@ public class RoomUnitController {
     @Autowired
     private AssessmentUnitService assessmentUnitService;
 
-    private boolean verifyMaster(HttpSession session) {
+    private boolean isMaster(HttpSession session) {
         UserType userType = (UserType) session.getAttribute("userType");
         return userType == UserType.MASTER;
     }
 
     @GetMapping("/rooms")
     public String listRooms(Model model, HttpSession session) {
-        if (!verifyMaster(session)) {
+        if (!isMaster(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
         model.addAttribute("roomUnits", roomUnitService.getAllRooms());
@@ -42,7 +42,7 @@ public class RoomUnitController {
 
     @GetMapping("/create-room")
     public String showCreateRoomForm(HttpSession session) {
-        if (!verifyMaster(session)) {
+        if (!isMaster(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
         return "master_addRoom";
@@ -50,7 +50,7 @@ public class RoomUnitController {
 
     @PostMapping("/create-room")
     public String createRoom(@RequestParam Map<String, String> params, Model model, HttpSession session) {
-        if (!verifyMaster(session)) {
+        if (!isMaster(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
         try {
@@ -68,7 +68,7 @@ public class RoomUnitController {
 
     @GetMapping("/edit-room")
     public String showEditRoomForm(@RequestParam("id") Long id, Model model, HttpSession session) {
-        if (!verifyMaster(session)) {
+        if (!isMaster(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
         RoomUnit room = roomUnitService.getRoomById(id);
@@ -78,7 +78,7 @@ public class RoomUnitController {
 
     @PostMapping("/edit-room")
     public String editRoom(@RequestParam Map<String, String> params, Model model, HttpSession session) {
-        if (!verifyMaster(session)) {
+        if (!isMaster(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
         try {
@@ -96,7 +96,7 @@ public class RoomUnitController {
 
     @PostMapping("/remove-room/{id}")
     public String removeRoom(@PathVariable("id") Long id, HttpSession session) {
-        if (!verifyMaster(session)) {
+        if (!isMaster(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
         roomUnitService.deleteRoomWithAssessments(id);

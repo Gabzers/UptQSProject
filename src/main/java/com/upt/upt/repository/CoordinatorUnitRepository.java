@@ -4,6 +4,8 @@ import com.upt.upt.entity.CoordinatorUnit;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 /**
  * Repository interface for CoordinatorUnit entity.
  * Provides CRUD operations and query capabilities.
@@ -11,5 +13,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CoordinatorUnitRepository extends JpaRepository<CoordinatorUnit, Long> {
     CoordinatorUnit findByUsernameAndPassword(String username, String password);
-    CoordinatorUnit findByUsername(String username);
+    Optional<CoordinatorUnit> findByUsername(String username);
 }

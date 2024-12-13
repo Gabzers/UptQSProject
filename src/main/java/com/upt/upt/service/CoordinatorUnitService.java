@@ -22,6 +22,9 @@ public class CoordinatorUnitService {
     private DirectorUnitService directorUnitService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     public CoordinatorUnitService(CoordinatorUnitRepository coordinatorRepository) {
         this.coordinatorRepository = coordinatorRepository;
     }
@@ -65,12 +68,25 @@ public class CoordinatorUnitService {
     }
 
     /**
+     * Checks if a CoordinatorUnit with the given username already exists.
+     *
+     * @param username The username to check
+     * @return true if the username exists, false otherwise
+     */
+    public boolean usernameExists(String username) {
+        return coordinatorRepository.findByUsername(username).isPresent();
+    }
+
+    /**
      * Saves a CoordinatorUnit with the associated DirectorUnit.
      *
      * @param coordinator The CoordinatorUnit to save
      * @param session The current HTTP session
      */
     public void saveCoordinatorWithDirector(CoordinatorUnit coordinator, HttpSession session) {
+        if (userService.usernameExists(coordinator.getUsername())) {
+            throw new IllegalArgumentException("Username already exists");
+        }
         Long directorId = (Long) session.getAttribute("userId");
         Optional<DirectorUnit> directorOpt = directorUnitService.getDirectorById(directorId);
         if (directorOpt.isPresent()) {

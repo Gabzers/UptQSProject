@@ -6,6 +6,7 @@ import com.upt.upt.entity.CurricularUnit;
 import com.upt.upt.entity.DirectorUnit;
 import com.upt.upt.entity.YearUnit;
 import com.upt.upt.entity.SemesterUnit;
+import com.upt.upt.entity.UserType;
 import com.upt.upt.service.AssessmentUnitService;
 import com.upt.upt.service.CurricularUnitService;
 import com.upt.upt.service.CoordinatorUnitService;
@@ -54,9 +55,17 @@ public class CurricularUnitController {
         return coordinatorUnitService.getCoordinatorById(coordinatorId);
     }
 
+    private boolean isCoordinator(HttpSession session) {
+        UserType userType = (UserType) session.getAttribute("userType");
+        return userType == UserType.COORDINATOR;
+    }
+
     // Mapeamento da URL "/coordinator"
     @GetMapping("")
     public String showCourseList(Model model, HttpSession session) {
+        if (!isCoordinator(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
         Optional<CoordinatorUnit> coordinatorOpt = verifyCoordinator(session);
         if (coordinatorOpt.isEmpty()) {
             return "redirect:/login?error=Unauthorized access";
@@ -83,7 +92,7 @@ public class CurricularUnitController {
     // Remover a UC
     @PostMapping("/remove-uc/{id}")
     public String removeCurricularUnit(@PathVariable("id") Long id, HttpSession session) {
-        if (verifyCoordinator(session).isEmpty()) {
+        if (!isCoordinator(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
         curricularUnitService.deleteCurricularUnit(id); // Remove a UC do banco de dados
@@ -93,7 +102,7 @@ public class CurricularUnitController {
     // Página de edição de UC
     @GetMapping("/coordinator_editUC")
     public String editUC(@RequestParam("id") Long id, @RequestParam("semester") Integer semester, Model model, HttpSession session) {
-        if (verifyCoordinator(session).isEmpty()) {
+        if (!isCoordinator(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
         return curricularUnitService.prepareEditUCPage(id, semester, model);
@@ -112,7 +121,7 @@ public class CurricularUnitController {
             @RequestParam("ucSemester") Integer semester,
             HttpSession session,
             Model model) {
-        if (verifyCoordinator(session).isEmpty()) {
+        if (!isCoordinator(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
         return curricularUnitService.updateCurricularUnit(id, nameUC, studentsNumber, evaluationType, attendance, evaluationsCount, year, semester, session, model);
@@ -121,7 +130,7 @@ public class CurricularUnitController {
     // Página de criação de UC
     @GetMapping("/create-uc")
     public String createUC(HttpSession session) {
-        if (verifyCoordinator(session).isEmpty()) {
+        if (!isCoordinator(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
         return "coordinator_createUC"; // Redireciona para a página coordinator_createUC.html
@@ -130,7 +139,7 @@ public class CurricularUnitController {
     @GetMapping("/get-semester-id")
     @ResponseBody
     public ResponseEntity<?> getSemesterId(@RequestParam("semester") Integer semester, HttpSession session) {
-        if (verifyCoordinator(session).isEmpty()) {
+        if (!isCoordinator(session)) {
             return ResponseEntity.status(401).body("Unauthorized access");
         }
         return curricularUnitService.getSemesterId(semester);
@@ -148,7 +157,7 @@ public class CurricularUnitController {
             @RequestParam("ucSemester") Integer semester,
             HttpSession session,
             Model model) {
-        if (verifyCoordinator(session).isEmpty()) {
+        if (!isCoordinator(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
         return curricularUnitService.createCurricularUnit(nameUC, studentsNumber, evaluationType, attendance, evaluationsCount, year, semester, session, model);
@@ -156,7 +165,7 @@ public class CurricularUnitController {
 
     @GetMapping("/coordinator_evaluationsUC")
     public String evaluationsUCCurricular(@RequestParam("id") Long id, Model model, HttpSession session) {
-        if (verifyCoordinator(session).isEmpty()) {
+        if (!isCoordinator(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
         return curricularUnitService.prepareEvaluationsUCPage(id, model);

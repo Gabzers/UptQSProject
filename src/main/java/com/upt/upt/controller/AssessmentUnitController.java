@@ -7,6 +7,7 @@ import com.upt.upt.entity.DirectorUnit;
 import com.upt.upt.entity.MapUnit;
 import com.upt.upt.entity.RoomUnit;
 import com.upt.upt.entity.SemesterUnit;
+import com.upt.upt.entity.UserType;
 import com.upt.upt.entity.YearUnit;
 import com.upt.upt.service.AssessmentUnitService;
 import com.upt.upt.service.CurricularUnitService;
@@ -56,9 +57,14 @@ public class AssessmentUnitController {
         return coordinatorUnitService.getCoordinatorById(coordinatorId);
     }
 
+    private boolean isCoordinator(HttpSession session) {
+        UserType userType = (UserType) session.getAttribute("userType");
+        return userType == UserType.COORDINATOR;
+    }
+
     @GetMapping("/coordinator_create_evaluation")
     public String createEvaluationPage(@RequestParam("curricularUnitId") Long curricularUnitId, Model model, @RequestParam(value = "error", required = false) String error, HttpSession session) {
-        if (verifyCoordinator(session).isEmpty()) {
+        if (!isCoordinator(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
         Optional<CurricularUnit> curricularUnit = curricularUnitService.getCurricularUnitById(curricularUnitId);
@@ -80,7 +86,7 @@ public class AssessmentUnitController {
 
     @PostMapping("/coordinator_addEvaluation")
     public String saveEvaluation(@RequestParam Map<String, String> params, HttpSession session, Model model) {
-        if (verifyCoordinator(session).isEmpty()) {
+        if (!isCoordinator(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
         Long curricularUnitId = Long.parseLong(params.get("curricularUnitId"));
@@ -236,7 +242,7 @@ public class AssessmentUnitController {
 
     @GetMapping("/coordinator_editEvaluations/{assessmentId}")
     public String editEvaluation(@PathVariable("assessmentId") Long assessmentId, @RequestParam("curricularUnitId") Long curricularUnitId, Model model, HttpSession session) {
-        if (verifyCoordinator(session).isEmpty()) {
+        if (!isCoordinator(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
         Optional<CurricularUnit> curricularUnit = curricularUnitService.getCurricularUnitById(curricularUnitId);
@@ -256,7 +262,7 @@ public class AssessmentUnitController {
 
     @PostMapping("/coordinator_editEvaluations/{id}")
     public String updateEvaluation(@PathVariable("id") Long id, @RequestParam Map<String, String> params, Model model, HttpSession session) {
-        if (verifyCoordinator(session).isEmpty()) {
+        if (!isCoordinator(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
         Long curricularUnitId = Long.parseLong(params.get("curricularUnitId"));
@@ -324,7 +330,7 @@ public class AssessmentUnitController {
 
     @PostMapping("/coordinator_delete_evaluation/{id}")
     public String deleteEvaluation(@PathVariable("id") Long id, @RequestParam("curricularUnitId") Long curricularUnitId, HttpSession session) {
-        if (verifyCoordinator(session).isEmpty()) {
+        if (!isCoordinator(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
         assessmentUnitService.deleteAssessment(curricularUnitId, id);
@@ -334,7 +340,7 @@ public class AssessmentUnitController {
     @GetMapping("/getValidDateRanges")
     @ResponseBody
     public Map<String, String> getValidDateRanges(@RequestParam("examPeriod") String examPeriod, @RequestParam("curricularUnitId") Long curricularUnitId, HttpSession session) {
-        if (verifyCoordinator(session).isEmpty()) {
+        if (!isCoordinator(session)) {
             throw new IllegalArgumentException("Unauthorized access");
         }
 
@@ -352,7 +358,7 @@ public class AssessmentUnitController {
     @GetMapping("/availableRooms")
     @ResponseBody
     public List<RoomUnit> getAvailableRooms(@RequestParam("startTime") String startTimeStr, @RequestParam("endTime") String endTimeStr, @RequestParam("computerRequired") boolean computerRequired, @RequestParam("numStudents") int numStudents, HttpSession session) {
-        if (verifyCoordinator(session).isEmpty()) {
+        if (!isCoordinator(session)) {
             throw new IllegalArgumentException("Unauthorized access");
         }
 

@@ -35,8 +35,16 @@ public class MapUnitController {
         return coordinatorUnitService.getCoordinatorById(coordinatorId);
     }
 
+    private boolean isCoordinator(HttpSession session) {
+        UserType userType = (UserType) session.getAttribute("userType");
+        return userType == UserType.COORDINATOR;
+    }
+
     @GetMapping("/coordinator/map")
     public String showAssessmentMap(Model model, HttpSession session) {
+        if (!isCoordinator(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
         Optional<CoordinatorUnit> coordinatorOpt = verifyCoordinator(session);
         if (coordinatorOpt.isPresent()) {
             CoordinatorUnit coordinator = coordinatorOpt.get();
