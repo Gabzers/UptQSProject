@@ -22,19 +22,19 @@
         </div>
     </header>
 
+    <!-- Warning Message -->
+    <div th:if="${warning != null}" class="warning-message">
+        <p th:text="${warning}"></p>
+        <form th:action="@{/master/confirm-remove-room/{id}(id=${roomId})}" method="POST">
+            <button type="submit">Yes, Remove Room</button>
+        </form>
+        <button onclick="window.location.href='/master'">Cancel</button>
+    </div>
+
     <!-- Coordinators List -->
     <section id="usersList">
         <h2>Coordinator List</h2>
         <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Course</th>
-                    <th>Course Duration</th>
-                    <th>Username</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
             <tbody>
                 <!-- Iterate over coordinators of the logged-in director and display them -->
                 <tr th:each="coordinator : ${loggedInDirector.coordinators}">

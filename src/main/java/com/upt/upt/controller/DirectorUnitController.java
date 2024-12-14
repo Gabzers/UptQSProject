@@ -200,45 +200,4 @@ public class DirectorUnitController {
         }
         return "redirect:/master?error=Director not found";
     }
-
-    @PostMapping("/master/remove-director/{id}")
-    public String removeDirector(@PathVariable("id") Long id, HttpSession session) {
-        if (!verifyMaster(session)) {
-            return "redirect:/login?error=Unauthorized access";
-        }
-        directorUnitService.deleteDirector(id);
-        return "redirect:/master";
-    }
-
-    @GetMapping("/master/director-edit/{id}")
-    public String editDirector(@PathVariable("id") Long id, Model model, HttpSession session) {
-        if (!verifyMaster(session)) {
-            return "redirect:/login?error=Unauthorized access";
-        }
-        Optional<DirectorUnit> director = directorUnitService.getDirectorById(id);
-        if (director.isPresent()) {
-            model.addAttribute("director", director.get());
-            return "director_editCoordinator";
-        } else {
-            return "redirect:/directors";
-        }
-    }
-
-    @PostMapping("/master/director-edit/{id}")
-    public String updateDirector(@PathVariable("id") Long id, @RequestParam Map<String, String> params, HttpSession session) {
-        if (!verifyMaster(session)) {
-            return "redirect:/login?error=Unauthorized access";
-        }
-        try {
-            if (userService.usernameExists(params.get("director-username"))) {
-                throw new IllegalArgumentException("Username already exists");
-            }
-            DirectorUnit director = directorUnitService.updateDirector(id, params);
-            directorUnitService.saveDirector(director);
-            return "redirect:/master";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "redirect:/director-editCoordinator/" + id + "?error=true";
-        }
-    }
 }

@@ -11,6 +11,7 @@ import com.upt.upt.service.UserService;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -79,7 +80,17 @@ public class MasterUnitController {
     }
 
     @PostMapping("/remove-master/{id}")
-    public String removeMaster(@PathVariable("id") Long id, HttpSession session) {
+    public String removeMaster(@PathVariable("id") Long id, Model model, HttpSession session) {
+        if (!isMaster(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
+        model.addAttribute("warning", "Are you sure you want to remove this master?");
+        model.addAttribute("masterId", id);
+        return "master_confirmRemoveMaster";
+    }
+
+    @PostMapping("/confirm-remove-master/{id}")
+    public String confirmRemoveMaster(@PathVariable("id") Long id, HttpSession session) {
         if (!isMaster(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
@@ -116,5 +127,71 @@ public class MasterUnitController {
             e.printStackTrace();
             return "redirect:/edit-master/" + id + "?error=true";
         }
+    }
+
+    @PostMapping("/create-room")
+    public String createRoom(@RequestParam Map<String, String> params, Model model, HttpSession session) {
+        if (!isMaster(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
+        try {
+            String roomNumber = params.get("room-number");
+            if (roomUnitService.roomNumberExists(roomNumber)) {
+                model.addAttribute("error", "Room number already exists.");
+                return "master_addRoom";
+            }
+            RoomUnit newRoom = roomUnitService.createRoom(params);
+            roomUnitService.saveRoom(newRoom);
+            return "redirect:/master";
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("error", "Incomplete information");
+            return "master_addRoom";
+        } catch (RuntimeException e) {
+            model.addAttribute("error", "Duplicate entry or integrity constraint violated");
+            return "master_addRoom";
+        }
+    }
+
+    @PostMapping("/edit-room")
+    public String editRoom(@RequestParam Map<String, String> params, Model model, HttpSession session) {
+        if (!isMaster(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
+        try {
+            String roomNumber = params.get("room-number");
+            Long roomId = Long.parseLong(params.get("room-id"));
+            if (roomUnitService.roomNumberExists(roomNumber, roomId)) {
+                model.addAttribute("error", "Room number already exists.");
+                return "master_editRoom";
+            }
+            RoomUnit updatedRoom = roomUnitService.updateRoom(params);
+            roomUnitService.saveRoom(updatedRoom);
+            return "redirect:/master";
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("error", "Incomplete information");
+            return "master_editRoom";
+        } catch (RuntimeException e) {
+            model.addAttribute("error", "Duplicate entry or integrity constraint violated");
+            return "master_editRoom";
+        }
+    }
+
+    @PostMapping("/remove-director/{id}")
+    public String removeDirector(@PathVariable("id") Long id, Model model, HttpSession session) {
+        if (!isMaster(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
+        model.addAttribute("warning", "Are you sure you want to remove this director?");
+        model.addAttribute("directorId", id);
+        return "master_confirmRemoveDirector";
+    }
+
+    @PostMapping("/confirm-remove-director/{id}")
+    public String confirmRemoveDirector(@PathVariable("id") Long id, HttpSession session) {
+        if (!isMaster(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
+        directorUnitService.deleteDirector(id);
+        return "redirect:/master";
     }
 }

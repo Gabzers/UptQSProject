@@ -51,9 +51,7 @@
                 <!-- Year of the UC -->
                 <label for="ucYear">Year:</label>
                 <select id="ucYear" name="ucYear" required>
-                    <option value="1" th:selected="${uc.year == 1}">1st Year</option>
-                    <option value="2" th:selected="${uc.year == 2}">2nd Year</option>
-                    <option value="3" th:selected="${uc.year == 3}">3rd Year</option>
+                    <option th:each="year : ${#numbers.sequence(1, coordinator.duration)}" th:value="${year}" th:text="${year + ' Year'}" th:selected="${uc.year == year}"></option>
                 </select>
                 <br><br>
 

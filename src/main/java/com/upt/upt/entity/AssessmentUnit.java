@@ -48,7 +48,7 @@ public class AssessmentUnit {
     @NotNull
     private LocalDateTime endTime; // End date and time of the assessment
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
         name = "assessment_room",
         joinColumns = @JoinColumn(name = "assessment_id"),

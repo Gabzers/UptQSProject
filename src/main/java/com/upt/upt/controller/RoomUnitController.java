@@ -7,6 +7,7 @@ import com.upt.upt.service.RoomUnitService;
 import com.upt.upt.service.AssessmentUnitService;
 import java.util.Map;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,66 +43,33 @@ public class RoomUnitController {
         return "master_index";
     }
 
-    @GetMapping("/create-room")
-    public String showCreateRoomForm(HttpSession session) {
-        if (!isMaster(session)) {
-            return "redirect:/login?error=Unauthorized access";
-        }
-        return "master_addRoom";
-    }
-
-    @PostMapping("/create-room")
-    public String createRoom(@RequestParam Map<String, String> params, Model model, HttpSession session) {
-        if (!isMaster(session)) {
-            return "redirect:/login?error=Unauthorized access";
-        }
-        try {
-            RoomUnit newRoom = roomUnitService.createRoom(params);
-            roomUnitService.saveRoom(newRoom);
-            return "redirect:/master";
-        } catch (IllegalArgumentException e) {
-            model.addAttribute("error", "Incomplete information");
-            return "master_addRoom";
-        } catch (RuntimeException e) {
-            model.addAttribute("error", "Duplicate entry or integrity constraint violated");
-            return "master_addRoom";
-        }
-    }
-
-    @GetMapping("/edit-room")
-    public String showEditRoomForm(@RequestParam("id") Long id, Model model, HttpSession session) {
+    @PostMapping("/remove-room/{id}")
+    public String removeRoom(@PathVariable("id") Long id, Model model, HttpSession session) {
         if (!isMaster(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
         RoomUnit room = roomUnitService.getRoomById(id);
-        model.addAttribute("room", room);
-        return "master_editRoom";
+        if (room != null) {
+            model.addAttribute("warning", "Are you sure you want to remove this room?");
+            model.addAttribute("roomId", id);
+            return "master_confirmRemoveRoom";
+        }
+        return "redirect:/master";
     }
 
-    @PostMapping("/edit-room")
-    public String editRoom(@RequestParam Map<String, String> params, Model model, HttpSession session) {
+    @PostMapping("/confirm-remove-room/{id}")
+    public String confirmRemoveRoom(@PathVariable("id") Long id, HttpSession session) {
         if (!isMaster(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
-        try {
-            RoomUnit updatedRoom = roomUnitService.updateRoom(params);
-            roomUnitService.saveRoom(updatedRoom);
-            return "redirect:/master";
-        } catch (IllegalArgumentException e) {
-            model.addAttribute("error", "Incomplete information");
-            return "master_editRoom";
-        } catch (RuntimeException e) {
-            model.addAttribute("error", "Duplicate entry or integrity constraint violated");
-            return "master_editRoom";
+        RoomUnit room = roomUnitService.getRoomById(id);
+        if (room != null) {
+            List<AssessmentUnit> assessments = assessmentUnitService.getAssessmentsByRoomId(id);
+            for (AssessmentUnit assessment : assessments) {
+                assessmentUnitService.deleteAssessment(assessment.getCurricularUnit().getId(), assessment.getId());
+            }
+            roomUnitService.deleteRoom(id);
         }
-    }
-
-    @PostMapping("/remove-room/{id}")
-    public String removeRoom(@PathVariable("id") Long id, HttpSession session) {
-        if (!isMaster(session)) {
-            return "redirect:/login?error=Unauthorized access";
-        }
-        roomUnitService.deleteRoomWithAssessments(id);
         return "redirect:/master";
     }
 

@@ -24,6 +24,9 @@
             <div th:if="${param.error}" class="error-message">
                 <p th:text="${param.error}"></p>
             </div>
+            <div th:if="${param.yearError}" class="error-message">
+                <p th:text="${param.yearError}"></p>
+            </div>
 
             <form action="/director/create-coordinator" method="POST">
                 <!-- Coordinator Name -->

@@ -92,6 +92,8 @@ public class AssessmentUnitService {
         Optional<AssessmentUnit> optionalAssessment = getAssessmentByUnitAndId(curricularUnitId, assessmentId);
         if (optionalAssessment.isPresent()) {
             AssessmentUnit assessment = optionalAssessment.get();
+            // Remove associations with rooms
+            assessment.getRooms().clear();
             assessmentRepository.delete(assessment);
         } else {
             throw new RuntimeException("Assessment not found");
@@ -239,5 +241,9 @@ public class AssessmentUnitService {
         } else {
             throw new RuntimeException("Assessment not found");
         }
+    }
+
+    public List<AssessmentUnit> getAssessmentsByRoomId(Long roomId) {
+        return assessmentRepository.findByRooms_Id(roomId);
     }
 }

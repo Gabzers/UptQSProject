@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.time.LocalTime;
 
 /**
  * Controller for handling requests related to AssessmentUnit entities.
@@ -113,6 +114,18 @@ public String saveEvaluation(@RequestParam Map<String, String> params, HttpSessi
 
     LocalDateTime startTime = LocalDateTime.parse(startTimeStr, formatter);
     LocalDateTime endTime = LocalDateTime.parse(endTimeStr, formatter);
+
+    // Validate time range
+    if (startTime.toLocalTime().isBefore(LocalTime.of(8, 0)) || endTime.toLocalTime().isAfter(LocalTime.of(23, 59))) {
+        model.addAttribute("error", "Assessment times must be between 08:00 and 23:59.");
+        return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=Assessment times must be between 08:00 and 23:59.";
+    }
+
+    // Validate start time is not after or equal to end time
+    if (!startTime.isBefore(endTime)) {
+        model.addAttribute("error", "Start time cannot be after or equal to end time.");
+        return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=Start time cannot be after or equal to end time.";
+    }
 
     Optional<CurricularUnit> curricularUnit = curricularUnitService.getCurricularUnitById(curricularUnitId);
     if (!curricularUnit.isPresent()) {
@@ -258,6 +271,18 @@ public String saveEvaluation(@RequestParam Map<String, String> params, HttpSessi
         LocalDateTime startTime = LocalDateTime.parse(startTimeStr, formatter);
         LocalDateTime endTime = LocalDateTime.parse(endTimeStr, formatter);
 
+        // Validate time range
+        if (startTime.toLocalTime().isBefore(LocalTime.of(8, 0)) || endTime.toLocalTime().isAfter(LocalTime.of(23, 59))) {
+            model.addAttribute("error", "Assessment times must be between 08:00 and 23:59.");
+            return "redirect:/coordinator/coordinator_editEvaluations/" + id + "?curricularUnitId=" + curricularUnitId + "&error=Assessment times must be between 08:00 and 23:59.";
+        }
+
+        // Validate start time is not after or equal to end time
+        if (!startTime.isBefore(endTime)) {
+            model.addAttribute("error", "Start time cannot be after or equal to end time.");
+            return "redirect:/coordinator/coordinator_editEvaluations/" + id + "?curricularUnitId=" + curricularUnitId + "&error=Start time cannot be after or equal to end time.";
+        }
+
         Optional<CurricularUnit> curricularUnit = curricularUnitService.getCurricularUnitById(curricularUnitId);
         if (!curricularUnit.isPresent()) {
             return "redirect:/coordinator";
@@ -325,6 +350,26 @@ public String saveEvaluation(@RequestParam Map<String, String> params, HttpSessi
 
         assessmentUnitService.updateAssessment(id, assessmentUnit, roomIds);
 
+        return "redirect:/coordinator/coordinator_evaluationsUC?id=" + curricularUnitId;
+    }
+
+    @PostMapping("/delete-assessment/{id}")
+    public String deleteAssessment(@PathVariable("id") Long id, @RequestParam("curricularUnitId") Long curricularUnitId, Model model, HttpSession session) {
+        if (!isCoordinator(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
+        model.addAttribute("warning", "Are you sure you want to remove this assessment?");
+        model.addAttribute("assessmentId", id);
+        model.addAttribute("curricularUnitId", curricularUnitId);
+        return "coordinator_confirmRemoveAssessment";
+    }
+
+    @PostMapping("/confirm-remove-assessment/{id}")
+    public String confirmRemoveAssessment(@PathVariable("id") Long id, @RequestParam("curricularUnitId") Long curricularUnitId, HttpSession session) {
+        if (!isCoordinator(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
+        assessmentUnitService.deleteAssessment(curricularUnitId, id);
         return "redirect:/coordinator/coordinator_evaluationsUC?id=" + curricularUnitId;
     }
 

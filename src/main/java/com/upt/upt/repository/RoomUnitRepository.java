@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Repository interface for accessing RoomUnit data.
@@ -23,4 +24,7 @@ public interface RoomUnitRepository extends JpaRepository<RoomUnit, Long> {
 
     // Find rooms by a list of IDs
     List<RoomUnit> findAllById(Iterable<Long> ids);
+
+    // Find room by room number
+    Optional<RoomUnit> findByRoomNumber(String roomNumber);
 }

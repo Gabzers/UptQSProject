@@ -126,6 +126,15 @@ public class RoomUnitService {
     }
 
     /**
+     * Delete a RoomUnit by ID.
+     *
+     * @param id the ID of the RoomUnit to delete
+     */
+    public void deleteRoom(Long id) {
+        roomUnitRepository.deleteById(id);
+    }
+
+    /**
      * Get all RoomUnits.
      *
      * @return a list of all RoomUnits
@@ -225,5 +234,13 @@ public class RoomUnitService {
         return selectedRooms;
     }
 
+    public boolean roomNumberExists(String roomNumber) {
+        return roomUnitRepository.findByRoomNumber(roomNumber).isPresent();
+    }
+
+    public boolean roomNumberExists(String roomNumber, Long roomId) {
+        Optional<RoomUnit> existingRoom = roomUnitRepository.findByRoomNumber(roomNumber);
+        return existingRoom.isPresent() && !existingRoom.get().getId().equals(roomId);
+    }
     
 }

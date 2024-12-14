@@ -44,9 +44,7 @@
                 <!-- Year of the UC -->
                 <label for="ucYear">Year:</label>
                 <select id="ucYear" name="ucYear" required>
-                    <option value="1">1st Year</option>
-                    <option value="2">2nd Year</option>
-                    <option value="3">3rd Year</option>
+                    <option th:each="year : ${#numbers.sequence(1, coordinator.duration)}" th:value="${year}" th:text="${year + ' Year'}"></option>
                 </select>
             
                 <!-- Semester of the UC -->

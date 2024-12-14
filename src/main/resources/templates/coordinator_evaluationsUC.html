@@ -58,7 +58,7 @@
                                     <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
                                     <button type="submit" class="edit">Edit</button>
                                 </form>
-                                <form th:action="@{/coordinator/coordinator_delete_evaluation/{id}(id=${evaluation.id})}" method="POST" style="display:inline;">
+                                <form th:action="@{/coordinator/delete-assessment/{id}(id=${evaluation.id})}" method="POST" style="display:inline;">
                                     <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
                                     <button type="submit" class="delete">Remove</button>
                                 </form>
@@ -117,7 +117,7 @@
                                     <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
                                     <button type="submit" class="edit">Edit</button>
                                 </form>
-                                <form th:action="@{/coordinator/coordinator_delete_evaluation/{id}(id=${evaluation.id})}" method="POST" style="display:inline;">
+                                <form th:action="@{/coordinator/delete-assessment/{id}(id=${evaluation.id})}" method="POST" style="display:inline;">
                                     <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
                                     <button type="submit" class="delete">Remove</button>
                                 </form>
@@ -170,7 +170,7 @@
                                     <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
                                     <button type="submit" class="edit">Edit</button>
                                 </form>
-                                <form th:action="@{/coordinator/coordinator_delete_evaluation/{id}(id=${evaluation.id})}" method="POST" style="display:inline;">
+                                <form th:action="@{/coordinator/delete-assessment/{id}(id=${evaluation.id})}" method="POST" style="display:inline;">
                                     <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
                                     <button type="submit" class="delete">Remove</button>
                                 </form>

@@ -75,6 +75,13 @@ public class CoordinatorUnitController {
         if (verifyDirector(session).isEmpty()) {
             return "redirect:/login?error=Unauthorized access";
         }
+        if (coordinator.getDuration() > 10) {
+            return "redirect:/director/create-coordinator?error=Course duration cannot exceed 10 years";
+        }
+        Long directorId = (Long) session.getAttribute("userId");
+        if (!coordinatorService.hasYearCreated(directorId)) {
+            return "redirect:/director/create-coordinator?yearError=No year created. Please create a year first.";
+        }
         try {
             if (userService.usernameExists(coordinator.getUsername())) {
                 throw new IllegalArgumentException("Username already exists");
@@ -111,6 +118,9 @@ public class CoordinatorUnitController {
         if (verifyDirector(session).isEmpty()) {
             return "redirect:/login?error=Unauthorized access";
         }
+        if (coordinator.getDuration() > 10) {
+            return "redirect:/director/edit-coordinator/" + id + "?error=Course duration cannot exceed 10 years";
+        }
         try {
             if (userService.usernameExists(coordinator.getUsername())) {
                 throw new IllegalArgumentException("Username already exists");
@@ -124,11 +134,28 @@ public class CoordinatorUnitController {
     }
 
     @PostMapping("/delete-coordinator/{id}")
-    public String deleteCoordinator(@PathVariable("id") Long id, HttpSession session) {
+    public String deleteCoordinator(@PathVariable("id") Long id, Model model, HttpSession session) {
         if (!isDirector(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
-        if (verifyDirector(session).isEmpty()) {
+        model.addAttribute("warning", "Are you sure you want to remove this coordinator?");
+        model.addAttribute("coordinatorId", id);
+        return "director_confirmRemoveCoordinator";
+    }
+
+    @PostMapping("/remove-coordinator/{id}")
+    public String removeCoordinator(@PathVariable("id") Long id, Model model, HttpSession session) {
+        if (!isDirector(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
+        model.addAttribute("warning", "Are you sure you want to remove this coordinator?");
+        model.addAttribute("coordinatorId", id);
+        return "director_confirmRemoveCoordinator";
+    }
+
+    @PostMapping("/confirm-remove-coordinator/{id}")
+    public String confirmRemoveCoordinator(@PathVariable("id") Long id, HttpSession session) {
+        if (!isDirector(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
         coordinatorService.deleteCoordinator(id);

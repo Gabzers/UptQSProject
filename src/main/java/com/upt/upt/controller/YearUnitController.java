@@ -120,11 +120,28 @@ public class YearUnitController {
     }
 
     @PostMapping("/delete-year/{id}")
-    public String deleteYear(@PathVariable("id") Long id, HttpSession session) {
+    public String deleteYear(@PathVariable("id") Long id, Model model, HttpSession session) {
         if (!isDirector(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
-        if (verifyDirector(session).isEmpty()) {
+        model.addAttribute("warning", "Are you sure you want to remove this year?");
+        model.addAttribute("yearId", id);
+        return "director_confirmRemoveYear";
+    }
+
+    @PostMapping("/remove-year/{id}")
+    public String removeYear(@PathVariable("id") Long id, Model model, HttpSession session) {
+        if (!isDirector(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
+        model.addAttribute("warning", "Are you sure you want to remove this year?");
+        model.addAttribute("yearId", id);
+        return "director_confirmRemoveYear";
+    }
+
+    @PostMapping("/confirm-remove-year/{id}")
+    public String confirmRemoveYear(@PathVariable("id") Long id, HttpSession session) {
+        if (!isDirector(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
         yearUnitService.deleteYearUnit(id);

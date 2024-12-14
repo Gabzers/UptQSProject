@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Remove</title>
+    <link rel="stylesheet" type="text/css" href="/css/geral_confirmRemove.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='/logout'">Logout</button>
+            <button onclick="window.location.href='/master'">Back</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <h2>Confirm Remove</h2>
+            <p th:text="${warning}"></p>
+            <form th:action="@{/master/confirm-remove-room/{id}(id=${roomId})}" method="POST" th:if="${roomId != null}">
+                <button type="submit">Yes, Remove Room</button>
+            </form>
+            <form th:action="@{/master/confirm-remove-director/{id}(id=${directorId})}" method="POST" th:if="${directorId != null}">
+                <button type="submit">Yes, Remove Director</button>
+            </form>
+            <form th:action="@{/master/confirm-remove-master/{id}(id=${masterId})}" method="POST" th:if="${masterId != null}">
+                <button type="submit">Yes, Remove Master</button>
+            </form>
+            <form th:action="@{/master}" method="GET">
+                <button type="submit">Cancel</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 University - Academic Administration System</p>
+    </footer>
+</body>
+
+</html>

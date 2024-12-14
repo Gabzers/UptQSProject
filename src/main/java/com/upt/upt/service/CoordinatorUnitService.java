@@ -120,4 +120,15 @@ public class CoordinatorUnitService {
             throw new IllegalArgumentException("Coordinator not found");
         }
     }
+
+    /**
+     * Checks if there is any year created for the director.
+     *
+     * @param directorId The ID of the director
+     * @return true if there is at least one year created, false otherwise
+     */
+    public boolean hasYearCreated(Long directorId) {
+        Optional<DirectorUnit> directorOpt = directorUnitService.getDirectorById(directorId);
+        return directorOpt.isPresent() && !directorOpt.get().getAcademicYears().isEmpty();
+    }
 }

@@ -91,21 +91,39 @@ public class CurricularUnitController {
 
     // Remover a UC
     @PostMapping("/remove-uc/{id}")
-    public String removeCurricularUnit(@PathVariable("id") Long id, HttpSession session) {
+    public String removeCurricularUnit(@PathVariable("id") Long id, Model model, HttpSession session) {
         if (!isCoordinator(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
-        curricularUnitService.deleteCurricularUnit(id); // Remove a UC do banco de dados
-        return "redirect:/coordinator"; // Redireciona para a lista de UCs
+        model.addAttribute("warning", "Are you sure you want to remove this UC?");
+        model.addAttribute("ucId", id);
+        return "coordinator_confirmRemoveUC";
+    }
+
+    @PostMapping("/confirm-remove-uc/{id}")
+    public String confirmRemoveCurricularUnit(@PathVariable("id") Long id, HttpSession session) {
+        if (!isCoordinator(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
+        curricularUnitService.deleteCurricularUnit(id);
+        return "redirect:/coordinator";
     }
 
     // Página de edição de UC
     @GetMapping("/coordinator_editUC")
-    public String editUC(@RequestParam("id") Long id, @RequestParam("semester") Integer semester, Model model, HttpSession session) {
+    public String editUCForm(@RequestParam("id") Long id, @RequestParam("semester") Integer semester, HttpSession session, Model model) {
         if (!isCoordinator(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
-        return curricularUnitService.prepareEditUCPage(id, semester, model);
+        Optional<CurricularUnit> uc = curricularUnitService.getCurricularUnitById(id);
+        Optional<CoordinatorUnit> coordinator = verifyCoordinator(session);
+        if (uc.isPresent() && coordinator.isPresent()) {
+            model.addAttribute("uc", uc.get());
+            model.addAttribute("coordinator", coordinator.get());
+            return "coordinator_editUC";
+        } else {
+            return "redirect:/coordinator";
+        }
     }
 
     // Atualizar uma UC
@@ -129,11 +147,19 @@ public class CurricularUnitController {
 
     // Página de criação de UC
     @GetMapping("/create-uc")
-    public String createUC(HttpSession session) {
+    public String createUC(HttpSession session, Model model) {
         if (!isCoordinator(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
-        return "coordinator_createUC"; // Redireciona para a página coordinator_createUC.html
+        Long coordinatorId = (Long) session.getAttribute("userId");
+        Optional<CoordinatorUnit> coordinator = coordinatorUnitService.getCoordinatorById(coordinatorId);
+        if (coordinator.isPresent()) {
+            model.addAttribute("coordinator", coordinator.get());
+            model.addAttribute("uc", new CurricularUnit());
+            return "coordinator_createUC";
+        } else {
+            return "redirect:/login?error=Unauthorized access";
+        }
     }
 
     @GetMapping("/get-semester-id")

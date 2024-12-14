@@ -89,10 +89,6 @@ FALTA:
 
 mostrar quais dias e horas estao livres para uma avaliação daquele estilo
 
-não permitir a criaçao de COORDINATOR sem YEAR criado
-
-(atenção aos requisitos em avaliaçao)
-
 -> corrigir editar avaliação(n funciona)
 
 - sempre que exequível, quando existirem datas de provas em dias 
@@ -100,12 +96,9 @@ seguidos de anos diferentes, devem respeitar as 24h para ser possível aos
 estudantes com UC em atraso se apresentarem aos dois momentos de 
 avaliação;
 
-- quando a COORDINATOR tem + de 3 anos ou - de anos de curso, adaptar a criaçao de UCS, para selecionar todos os anos possiveis
-
 - ao retirar room, apagar avaliaçoes q estao nessa room
 
-falta adaptar as avaliaçoes caso seja:
-o Teste final na época de exames
+-> ao editar duraçao de UC, caso tenha avaliaçoes(que vai afetar a alterar a duraçao) neste ultimo ano criado pelo director diga para eliminar as avaliaçoes primeiro.
 
 -> *** ajustar nomes, resource e assessment em todo o projeto
 
