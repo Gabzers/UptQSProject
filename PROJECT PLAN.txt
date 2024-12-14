@@ -83,20 +83,17 @@ sala tem -:
 
 
 css:
-ajustar view semesters director
+-> ajustar view semesters director
 
 FALTA:
-
-mostrar quais dias e horas estao livres para uma avaliação daquele estilo
-
--> corrigir editar avaliação(n funciona)
-
-- sempre que exequível, quando existirem datas de provas em dias 
+-> sempre que exequível, quando existirem datas de provas em dias 
 seguidos de anos diferentes, devem respeitar as 24h para ser possível aos 
 estudantes com UC em atraso se apresentarem aos dois momentos de 
 avaliação;
 
-- ao retirar room, apagar avaliaçoes q estao nessa room
+-> mostrar quais dias e horas estao livres para uma avaliação daquele estilo
+
+-> corrigir editar avaliação(n funciona)
 
 -> ao editar duraçao de UC, caso tenha avaliaçoes(que vai afetar a alterar a duraçao) neste ultimo ano criado pelo director diga para eliminar as avaliaçoes primeiro.
 
