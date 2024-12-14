@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * AssessmentUnit class represents an assessment entity to be mapped to the database.
@@ -46,9 +48,13 @@ public class AssessmentUnit {
     @NotNull
     private LocalDateTime endTime; // End date and time of the assessment
 
-    @ManyToOne
-    @JoinColumn(name = "assessment_room_id", nullable = false)
-    private RoomUnit room; // Room where the assessment will take place
+    @ManyToMany
+    @JoinTable(
+        name = "assessment_room",
+        joinColumns = @JoinColumn(name = "assessment_id"),
+        inverseJoinColumns = @JoinColumn(name = "room_id")
+    )
+    private List<RoomUnit> rooms = new ArrayList<>();
 
     @Column(name = "assessment_minimum_grade", nullable = false)
     @Min(0)
@@ -68,7 +74,7 @@ public class AssessmentUnit {
     }
 
     public AssessmentUnit(Long id, String type, Integer weight, String examPeriod, Boolean computerRequired,
-                          Boolean classTime, LocalDateTime startTime, LocalDateTime endTime, RoomUnit room, 
+                          Boolean classTime, LocalDateTime startTime, LocalDateTime endTime, List<RoomUnit> rooms, 
                           Double minimumGrade, CurricularUnit curricularUnit, MapUnit map) {
         this.id = id;
         this.type = type;
@@ -78,7 +84,7 @@ public class AssessmentUnit {
         this.classTime = classTime;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.room = room;
+        this.rooms = rooms;
         this.minimumGrade = minimumGrade;
         this.curricularUnit = curricularUnit;
         this.map = map;
@@ -149,12 +155,12 @@ public class AssessmentUnit {
         this.endTime = endTime;
     }
 
-    public RoomUnit getRoom() {
-        return room;
+    public List<RoomUnit> getRooms() {
+        return rooms;
     }
 
-    public void setRoom(RoomUnit room) {
-        this.room = room;
+    public void setRooms(List<RoomUnit> rooms) {
+        this.rooms = rooms;
     }
 
     public Double getMinimumGrade() {
@@ -205,7 +211,7 @@ public class AssessmentUnit {
                 ", classTime=" + classTime +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
-                ", room=" + room +
+                ", rooms=" + rooms +
                 ", minimumGrade=" + minimumGrade +
                 '}';
     }

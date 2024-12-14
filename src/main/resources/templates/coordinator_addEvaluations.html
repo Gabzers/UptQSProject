@@ -24,7 +24,7 @@
             <div th:if="${error != null}" class="error-message" th:text="${error}"></div>
 
             <!-- Form to add a new evaluation -->
-            <form action="/coordinator/coordinator_addEvaluation" method="POST" onsubmit="return validateForm()">
+            <form th:action="@{/coordinator/coordinator_addEvaluation}" method="POST" onsubmit="return validateForm()">
                 <!-- Curricular Unit ID -->
                 <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
                 <input type="hidden" name="ucEvaluationType" th:value="${uc.evaluationType}" />
@@ -85,9 +85,9 @@
                 <br><br>
 
                 <!-- Room -->
-                <label for="evaluation-room">Room:</label>
-                <select name="assessmentRoomId" id="evaluation-room" required>
-                    <option value="">Select Room</option>
+                <label for="evaluation-room">Rooms:</label>
+                <select name="roomIds" id="evaluation-room" multiple required>
+                    <option value="">Select Rooms</option>
                     <th:block th:each="room : ${rooms}">
                         <option th:value="${room.id}" th:text="${room.roomNumber + ' - ' + room.building}"></option>
                     </th:block>

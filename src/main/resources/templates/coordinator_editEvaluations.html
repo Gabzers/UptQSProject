@@ -83,8 +83,13 @@
                 <br><br>
 
                 <!-- Room -->
-                <label for="evaluation-room">Room:</label>
-                <input type="text" name="assessmentRoom" id="evaluation-room" th:value="${assessment.room}" required>
+                <label for="evaluation-room">Rooms:</label>
+                <select name="assessmentRoomIds" id="evaluation-room" multiple required>
+                    <option value="">Select Rooms</option>
+                    <th:block th:each="room : ${rooms}">
+                        <option th:value="${room.id}" th:text="${room.roomNumber + ' - ' + room.building}" th:selected="${assessment.rooms.contains(room)}"></option>
+                    </th:block>
+                </select>
                 <br><br>
 
                 <!-- Minimum Grade -->

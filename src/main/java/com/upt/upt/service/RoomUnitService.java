@@ -3,6 +3,7 @@ package com.upt.upt.service;
 import com.upt.upt.entity.RoomUnit;
 import com.upt.upt.entity.AssessmentUnit;
 import com.upt.upt.repository.RoomUnitRepository;
+import com.upt.upt.repository.AssessmentUnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,8 @@ import java.time.LocalDateTime;
 public class RoomUnitService {
 
     private final RoomUnitRepository roomUnitRepository;
+    @Autowired
+    private AssessmentUnitRepository assessmentUnitRepository;
 
     @Autowired
     public RoomUnitService(RoomUnitRepository roomUnitRepository) {
@@ -35,8 +38,29 @@ public class RoomUnitService {
      * @return true if the room is available, false otherwise
      */
     private boolean isRoomAvailable(Long roomId, LocalDateTime startTime, LocalDateTime endTime) {
-        // Implement the logic to check room availability
-        // This is a placeholder implementation
+        List<AssessmentUnit> assessments = assessmentUnitRepository.findByRooms_Id(roomId);
+        for (AssessmentUnit assessment : assessments) {
+            if (startTime.isBefore(assessment.getEndTime()) && endTime.isAfter(assessment.getStartTime())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Check if a list of rooms is available during the specified time.
+     *
+     * @param roomIds the IDs of the rooms
+     * @param startTime the start time of the availability
+     * @param endTime the end time of the availability
+     * @return true if all rooms are available, false otherwise
+     */
+    public boolean areRoomsAvailable(List<Long> roomIds, LocalDateTime startTime, LocalDateTime endTime) {
+        for (Long roomId : roomIds) {
+            if (!isRoomAvailable(roomId, startTime, endTime)) {
+                return false;
+            }
+        }
         return true;
     }
 
@@ -95,7 +119,7 @@ public class RoomUnitService {
         if (room != null) {
             List<AssessmentUnit> assessments = room.getAssessments();
             for (AssessmentUnit assessment : assessments) {
-                assessment.setRoom(null);
+                assessment.setRooms(null);
             }
             roomUnitRepository.delete(room);
         }
@@ -161,22 +185,48 @@ public class RoomUnitService {
      */
     public List<RoomUnit> getAvailableRooms(int numStudents, boolean computerRequired, LocalDateTime startTime, LocalDateTime endTime) {
         String requiredMaterialType = computerRequired ? "Computers" : "Desks";
-        
-        // Fetch all rooms that meet the criteria
-        List<RoomUnit> rooms = roomUnitRepository.findAll().stream()
-                .filter(room -> room.getSeatsCount() >= numStudents && (room.getMaterialType().equals(requiredMaterialType) || room.getMaterialType().equals("Amphitheater")))
+    
+        // Fetch and filter rooms based on criteria
+        List<RoomUnit> availableRooms = roomUnitRepository.findAll().stream()
+                .filter(room -> room.getSeatsCount() > 0) // Ignorar salas com capacidade zero
+                .filter(room -> computerRequired
+                        ? room.getMaterialType().equals("Computers") // Só salas com computadores se necessário
+                        : !room.getMaterialType().equals("Computers")) // Excluir salas com computadores caso não seja necessário
+                .filter(room -> room.getMaterialType().equals("Desks") || room.getMaterialType().equals("Amphitheater"))
+                .filter(room -> isRoomAvailable(room.getId(), startTime, endTime)) // Verificar disponibilidade da sala
                 .collect(Collectors.toList());
-
-        // Filter out rooms that are not available during the specified time
-        List<RoomUnit> availableRooms = rooms.stream()
-                .filter(room -> isRoomAvailable(room.getId(), startTime, endTime))
-                .collect(Collectors.toList());
-
-        // Find the room with the closest capacity to the number of students
-        RoomUnit bestFitRoom = availableRooms.stream()
-                .min((room1, room2) -> Integer.compare(Math.abs(room1.getSeatsCount() - numStudents), Math.abs(room2.getSeatsCount() - numStudents)))
-                .orElse(null);
-
-        return bestFitRoom != null ? List.of(bestFitRoom) : List.of();
+    
+        List<RoomUnit> selectedRooms = new ArrayList<>();
+        int remainingStudents = numStudents;
+    
+        // Continuar alocando salas até que todos os alunos sejam alocados
+        while (remainingStudents > 0 && !availableRooms.isEmpty()) {
+            final int students = remainingStudents; // Use a final variable within the lambda expression
+            // Ordenar as salas de acordo com a proximidade da capacidade ao número de alunos restantes
+            availableRooms.sort((r1, r2) -> {
+                int diff1 = Math.abs(r1.getSeatsCount() - students);
+                int diff2 = Math.abs(r2.getSeatsCount() - students);
+                return Integer.compare(diff1, diff2);
+            });
+    
+            RoomUnit bestRoom = availableRooms.get(0);
+            if (isRoomAvailable(bestRoom.getId(), startTime, endTime)) {
+                selectedRooms.add(bestRoom);
+                remainingStudents -= bestRoom.getSeatsCount();
+            }
+    
+            // Remover a sala alocada da lista de disponíveis
+            availableRooms.remove(bestRoom);
+        }
+    
+        // Verificar se todos os alunos foram alocados
+        if (remainingStudents > 0) {
+            throw new IllegalStateException("Not enough available rooms to accommodate all students.");
+        }
+    
+        // Retornar as salas alocadas
+        return selectedRooms;
     }
+
+    
 }

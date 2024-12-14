@@ -20,4 +20,7 @@ public interface RoomUnitRepository extends JpaRepository<RoomUnit, Long> {
 
     // Find rooms by material type
     List<RoomUnit> findByMaterialType(String materialType);
+
+    // Find rooms by a list of IDs
+    List<RoomUnit> findAllById(Iterable<Long> ids);
 }

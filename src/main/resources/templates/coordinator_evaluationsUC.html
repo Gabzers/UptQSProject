@@ -32,8 +32,7 @@
                             <th>Weight</th>
                             <th>Exam Period</th>
                             <th>Class Time</th>
-                            <th>Room</th>
-                            <th>Room Building</th>
+                            <th>Rooms</th>
                             <th>Start Date & Time</th>
                             <th>End Date & Time</th>
                             <th>Minimum Grade</th>
@@ -46,8 +45,11 @@
                             <td th:text="${evaluation.weight}">0</td>
                             <td th:text="${evaluation.examPeriod}">None</td>
                             <td th:text="${evaluation.classTime}">N/A</td>
-                            <td th:text="${evaluation.room.roomNumber}">Room</td>
-                            <td th:text="${evaluation.room.building}">Room Building</td>
+                            <td>
+                                <ul>
+                                    <li th:each="room : ${evaluation.rooms}" th:text="${room.roomNumber + ' - ' + room.building}"></li>
+                                </ul>
+                            </td>
                             <td th:text="${#temporals.format(evaluation.startTime, 'yyyy-MM-dd HH:mm')}">Start Date & Time</td>
                             <td th:text="${#temporals.format(evaluation.endTime, 'yyyy-MM-dd HH:mm')}">End Date & Time</td>
                             <td th:text="${evaluation.minimumGrade}">0.0</td>
@@ -89,8 +91,7 @@
                             <th>Weight</th>
                             <th>Exam Period</th>
                             <th>Class Time</th>
-                            <th>Room</th>
-                            <th>Room Building</th>
+                            <th>Rooms</th>
                             <th>Start Date & Time</th>
                             <th>End Date & Time</th>
                             <th>Minimum Grade</th>
@@ -103,8 +104,11 @@
                             <td th:text="${evaluation.weight}">0</td>
                             <td th:text="${evaluation.examPeriod}">None</td>
                             <td th:text="${evaluation.classTime}">N/A</td>
-                            <td th:text="${evaluation.room.roomNumber}">Room</td>
-                            <td th:text="${evaluation.room.building}">Room Building</td>
+                            <td>
+                                <ul>
+                                    <li th:each="room : ${evaluation.rooms}" th:text="${room.roomNumber + ' - ' + room.building}"></li>
+                                </ul>
+                            </td>
                             <td th:text="${#temporals.format(evaluation.startTime, 'yyyy-MM-dd HH:mm')}">Start Date & Time</td>
                             <td th:text="${#temporals.format(evaluation.endTime, 'yyyy-MM-dd HH:mm')}">End Date & Time</td>
                             <td th:text="${evaluation.minimumGrade}">0.0</td>
@@ -140,8 +144,7 @@
                             <th>Weight</th>
                             <th>Exam Period</th>
                             <th>Class Time</th>
-                            <th>Room</th>
-                            <th>Room Building</th>
+                            <th>Rooms</th>
                             <th>Start Date & Time</th>
                             <th>End Date & Time</th>
                             <th>Minimum Grade</th>
@@ -154,8 +157,11 @@
                             <td th:text="${evaluation.weight}">0</td>
                             <td th:text="${evaluation.examPeriod}">None</td>
                             <td th:text="${evaluation.classTime}">N/A</td>
-                            <td th:text="${evaluation.room.roomNumber}">Room</td>
-                            <td th:text="${evaluation.room.building}">Room Building</td>
+                            <td>
+                                <ul>
+                                    <li th:each="room : ${evaluation.rooms}" th:text="${room.roomNumber + ' - ' + room.building}"></li>
+                                </ul>
+                            </td>
                             <td th:text="${#temporals.format(evaluation.startTime, 'yyyy-MM-dd HH:mm')}">Start Date & Time</td>
                             <td th:text="${#temporals.format(evaluation.endTime, 'yyyy-MM-dd HH:mm')}">End Date & Time</td>
                             <td th:text="${evaluation.minimumGrade}">0.0</td>

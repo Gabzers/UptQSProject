@@ -96,13 +96,12 @@ function resetDateTime() {
 async function assignRoomAutomatically() {
     const startDateInput = document.getElementById('evaluation-date-start').value;
     const endDateInput = document.getElementById('evaluation-date-end').value;
-    const curricularUnitId = document.getElementById('curricular-unit-id').value;
     const computerRequired = document.getElementById('evaluation-computer-required').checked;
     const numStudents = document.getElementById('curricular-unit-students').value;
 
     if (startDateInput && endDateInput) {
         try {
-            const response = await fetch(`/coordinator/getAvailableRooms?startTime=${startDateInput}&endTime=${endDateInput}&curricularUnitId=${curricularUnitId}&computerRequired=${computerRequired}&numStudents=${numStudents}`);
+            const response = await fetch(`/coordinator/availableRooms?startTime=${startDateInput}&endTime=${endDateInput}&computerRequired=${computerRequired}&numStudents=${numStudents}`);
             if (response.ok) {
                 const rooms = await response.json();
                 const roomSelect = document.getElementById('evaluation-room');
@@ -113,7 +112,7 @@ async function assignRoomAutomatically() {
                     option.text = `${room.roomNumber} - ${room.building}`;
                     roomSelect.appendChild(option);
                 });
-                roomSelect.disabled = true;
+                roomSelect.disabled = false;
             } else {
                 console.error('Failed to fetch available rooms');
             }

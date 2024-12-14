@@ -3,12 +3,14 @@ package com.upt.upt.service;
 import com.upt.upt.entity.AssessmentUnit;
 import com.upt.upt.entity.CurricularUnit;
 import com.upt.upt.entity.MapUnit;
+import com.upt.upt.entity.RoomUnit;
 import com.upt.upt.entity.SemesterUnit;
 import com.upt.upt.entity.YearUnit;
 import com.upt.upt.repository.AssessmentUnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import com.upt.upt.repository.RoomUnitRepository;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -23,10 +25,12 @@ import java.util.stream.Collectors;
 public class AssessmentUnitService {
 
     private final AssessmentUnitRepository assessmentRepository;
+    private final RoomUnitRepository roomUnitRepository;
 
     @Autowired
-    public AssessmentUnitService(AssessmentUnitRepository assessmentRepository) {
+    public AssessmentUnitService(AssessmentUnitRepository assessmentRepository, RoomUnitRepository roomUnitRepository) {
         this.assessmentRepository = assessmentRepository;
+        this.roomUnitRepository = roomUnitRepository;
     }
 
     // Método para buscar avaliações pela unidade curricular
@@ -45,7 +49,9 @@ public class AssessmentUnitService {
     }
 
     // Salva uma avaliação
-    public AssessmentUnit saveAssessment(AssessmentUnit assessment) {
+    public AssessmentUnit saveAssessment(AssessmentUnit assessment, List<Long> roomIds) {
+        List<RoomUnit> rooms = roomUnitRepository.findAllById(roomIds);
+        assessment.setRooms(rooms);
         return assessmentRepository.save(assessment);
     }
 
@@ -99,7 +105,7 @@ public class AssessmentUnitService {
 
     // Método para verificar a disponibilidade da sala
     public boolean isRoomAvailable(Long roomId, LocalDateTime startTime, LocalDateTime endTime) {
-        List<AssessmentUnit> assessments = assessmentRepository.findByRoomId(roomId);
+        List<AssessmentUnit> assessments = assessmentRepository.findByRooms_Id(roomId);
         for (AssessmentUnit assessment : assessments) {
             if (startTime.isEqual(assessment.getStartTime()) || 
                 (startTime.isBefore(assessment.getEndTime()) && endTime.isAfter(assessment.getStartTime()))) {
@@ -107,6 +113,16 @@ public class AssessmentUnitService {
             }
         }
         return true; // Sala está disponível
+    }
+
+    // Método para verificar a disponibilidade das salas
+    public boolean areRoomsAvailable(List<Long> roomIds, LocalDateTime startTime, LocalDateTime endTime) {
+        for (Long roomId : roomIds) {
+            if (!isRoomAvailable(roomId, startTime, endTime)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     // Método para validar as datas de avaliação
@@ -205,5 +221,23 @@ public class AssessmentUnitService {
     // Método para buscar avaliações de diferentes anos, mas do mesmo semestre e coordenador
     public List<AssessmentUnit> getAssessmentsByDifferentYearsSameSemesterAndCoordinator(int semester, Long coordinatorId, int year) {
         return assessmentRepository.findByCurricularUnit_SemesterAndCurricularUnit_CoordinatorIdAndCurricularUnit_YearNot(semester, coordinatorId, year);
+    }
+
+    // Atualiza uma avaliação existente
+    public AssessmentUnit updateAssessment(Long id, AssessmentUnit updatedAssessment, List<Long> roomIds) {
+        Optional<AssessmentUnit> existingAssessment = assessmentRepository.findById(id);
+        if (existingAssessment.isPresent()) {
+            AssessmentUnit assessment = existingAssessment.get();
+            // Atualizar os campos necessários
+            assessment.setType(updatedAssessment.getType());
+            assessment.setWeight(updatedAssessment.getWeight());
+            // Atualizar as salas
+            List<RoomUnit> rooms = roomUnitRepository.findAllById(roomIds);
+            assessment.setRooms(rooms);
+            // Outros campos...
+            return assessmentRepository.save(assessment);
+        } else {
+            throw new RuntimeException("Assessment not found");
+        }
     }
 }

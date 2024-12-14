@@ -38,7 +38,7 @@ public class RoomUnit {
     @NotNull
     private String building; // Building information (e.g., floor number or different building)
 
-    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "rooms", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AssessmentUnit> assessments = new ArrayList<>(); // List of assessments in the room
 
     // Constructors

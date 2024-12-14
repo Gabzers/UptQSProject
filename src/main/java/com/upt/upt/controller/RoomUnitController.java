@@ -1,10 +1,12 @@
 package com.upt.upt.controller;
 
 import com.upt.upt.entity.RoomUnit;
+import com.upt.upt.entity.AssessmentUnit;
 import com.upt.upt.entity.UserType;
 import com.upt.upt.service.RoomUnitService;
 import com.upt.upt.service.AssessmentUnitService;
 import java.util.Map;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -101,5 +103,43 @@ public class RoomUnitController {
         }
         roomUnitService.deleteRoomWithAssessments(id);
         return "redirect:/master";
+    }
+
+    @PostMapping("/save-assessment")
+    public String saveAssessment(@RequestParam Map<String, String> params, @RequestParam List<Long> roomIds, Model model, HttpSession session) {
+        if (!isMaster(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
+        try {
+            AssessmentUnit assessment = new AssessmentUnit();
+            // Set other assessment properties from params
+            assessmentUnitService.saveAssessment(assessment, roomIds);
+            return "redirect:/master";
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("error", "Incomplete information");
+            return "master_addAssessment";
+        } catch (RuntimeException e) {
+            model.addAttribute("error", "Duplicate entry or integrity constraint violated");
+            return "master_addAssessment";
+        }
+    }
+
+    @PostMapping("/update-assessment")
+    public String updateAssessment(@RequestParam Long id, @RequestParam Map<String, String> params, @RequestParam List<Long> roomIds, Model model, HttpSession session) {
+        if (!isMaster(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
+        try {
+            AssessmentUnit updatedAssessment = new AssessmentUnit();
+            // Set other updatedAssessment properties from params
+            assessmentUnitService.updateAssessment(id, updatedAssessment, roomIds);
+            return "redirect:/master";
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("error", "Incomplete information");
+            return "master_editAssessment";
+        } catch (RuntimeException e) {
+            model.addAttribute("error", "Duplicate entry or integrity constraint violated");
+            return "master_editAssessment";
+        }
     }
 }
