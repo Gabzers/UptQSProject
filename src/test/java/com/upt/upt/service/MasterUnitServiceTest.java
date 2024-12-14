@@ -2,65 +2,153 @@ package com.upt.upt.service;
 
 import com.upt.upt.entity.MasterUnit;
 import com.upt.upt.repository.MasterUnitRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
-@SpringBootTest
-@Transactional
-class MasterUnitServiceTest {
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-    @Autowired
-    private MasterUnitService masterUnitService;
+public class MasterUnitServiceTest {
 
-    @Autowired
+    @Mock
     private MasterUnitRepository masterUnitRepository;
 
+    @Mock
+    private UserService userService;
+
+    @InjectMocks
+    private MasterUnitService masterUnitService;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
+
     @Test
-    void testSaveMaster() {
+    void getAllMasters_ShouldReturnListOfMasters() {
+        List<MasterUnit> mockMasters = Arrays.asList(new MasterUnit(), new MasterUnit());
+        when(masterUnitRepository.findAll()).thenReturn(mockMasters);
+
+        List<MasterUnit> result = masterUnitService.getAllMasters();
+
+        assertEquals(mockMasters, result);
+        verify(masterUnitRepository, times(1)).findAll();
+    }
+
+    @Test
+    void saveMaster_ShouldInvokeSaveOnRepository() {
         MasterUnit master = new MasterUnit();
-        master.setName("Test Master");
-        master.setUsername("testmaster");
-        master.setPassword("password123");
 
         masterUnitService.saveMaster(master);
 
-        Optional<MasterUnit> retrieved = masterUnitRepository.findByUsername("testmaster");
-        assertTrue(retrieved.isPresent());
-        assertEquals("Test Master", retrieved.get().getName());
+        verify(masterUnitRepository, times(1)).save(master);
     }
 
     @Test
-    void testGetMasterById() {
-        MasterUnit master = new MasterUnit(null, "Test Master", "testmaster", "password123");
-        masterUnitRepository.save(master);
+    void getMasterById_WhenMasterExists_ShouldReturnOptionalOfMaster() {
+        MasterUnit master = new MasterUnit();
+        when(masterUnitRepository.findById(1L)).thenReturn(Optional.of(master));
 
-        Optional<MasterUnit> retrieved = masterUnitService.getMasterById(master.getId());
-        assertTrue(retrieved.isPresent());
-        assertEquals("testmaster", retrieved.get().getUsername());
+        Optional<MasterUnit> result = masterUnitService.getMasterById(1L);
+
+        assertTrue(result.isPresent());
+        assertEquals(master, result.get());
+        verify(masterUnitRepository, times(1)).findById(1L);
     }
 
     @Test
-    void testUsernameExists() {
-        MasterUnit master = new MasterUnit(null, "Test Master", "uniqueusername", "password123");
-        masterUnitRepository.save(master);
+    void getMasterById_WhenMasterDoesNotExist_ShouldReturnEmptyOptional() {
+        when(masterUnitRepository.findById(1L)).thenReturn(Optional.empty());
 
-        assertTrue(masterUnitService.usernameExists("uniqueusername"));
-        assertFalse(masterUnitService.usernameExists("nonexistentuser"));
+        Optional<MasterUnit> result = masterUnitService.getMasterById(1L);
+
+        assertFalse(result.isPresent());
+        verify(masterUnitRepository, times(1)).findById(1L);
     }
 
     @Test
-    void testDeleteMaster() {
-        MasterUnit master = new MasterUnit(null, "ToDelete", "deleteusername", "password123");
-        masterUnitRepository.save(master);
+    void deleteMaster_ShouldInvokeDeleteOnRepository() {
+        masterUnitService.deleteMaster(1L);
 
-        masterUnitService.deleteMaster(master.getId());
+        verify(masterUnitRepository, times(1)).deleteById(1L);
+    }
 
-        Optional<MasterUnit> deletedMaster = masterUnitRepository.findById(master.getId());
-        assertTrue(deletedMaster.isEmpty());
+    @Test
+    void usernameExists_WhenUsernameExists_ShouldReturnTrue() {
+        when(masterUnitRepository.findByUsername("existingUsername")).thenReturn(Optional.of(new MasterUnit()));
+
+        boolean result = masterUnitService.usernameExists("existingUsername");
+
+        assertTrue(result);
+        verify(masterUnitRepository, times(1)).findByUsername("existingUsername");
+    }
+
+    @Test
+    void usernameExists_WhenUsernameDoesNotExist_ShouldReturnFalse() {
+        when(masterUnitRepository.findByUsername("nonexistentUsername")).thenReturn(Optional.empty());
+
+        boolean result = masterUnitService.usernameExists("nonexistentUsername");
+
+        assertFalse(result);
+        verify(masterUnitRepository, times(1)).findByUsername("nonexistentUsername");
+    }
+
+    @Test
+    void createMaster_WhenUsernameExists_ShouldThrowException() {
+        when(userService.usernameExists("existingUsername")).thenReturn(true);
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                masterUnitService.createMaster("name", "existingUsername", "password"));
+
+        assertEquals("Username already exists", exception.getMessage());
+        verify(userService, times(1)).usernameExists("existingUsername");
+        verifyNoInteractions(masterUnitRepository);
+    }
+
+    @Test
+    void createMaster_WhenUsernameDoesNotExist_ShouldReturnNewMaster() {
+        when(userService.usernameExists("newUsername")).thenReturn(false);
+
+        MasterUnit result = masterUnitService.createMaster("name", "newUsername", "password");
+
+        assertNotNull(result);
+        assertEquals("name", result.getName());
+        assertEquals("newUsername", result.getUsername());
+        assertEquals("password", result.getPassword());
+        verify(userService, times(1)).usernameExists("newUsername");
+    }
+
+    @Test
+    void updateMaster_WhenMasterExists_ShouldUpdateFields() {
+        MasterUnit existingMaster = new MasterUnit();
+        existingMaster.setName("oldName");
+        existingMaster.setUsername("oldUsername");
+
+        when(masterUnitRepository.findById(1L)).thenReturn(Optional.of(existingMaster));
+
+        MasterUnit result = masterUnitService.updateMaster(1L, "newName", "newUsername", "newPassword");
+
+        assertEquals("newName", result.getName());
+        assertEquals("newUsername", result.getUsername());
+        assertEquals("newPassword", result.getPassword());
+        verify(masterUnitRepository, times(1)).findById(1L);
+    }
+
+    @Test
+    void updateMaster_WhenMasterDoesNotExist_ShouldThrowException() {
+        when(masterUnitRepository.findById(1L)).thenReturn(Optional.empty());
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                masterUnitService.updateMaster(1L, "name", "username", "password"));
+
+        assertEquals("Invalid Master ID: 1", exception.getMessage());
+        verify(masterUnitRepository, times(1)).findById(1L);
     }
 }
