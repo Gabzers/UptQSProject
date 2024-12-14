@@ -1,72 +1,99 @@
 package com.upt.upt;
 
-import com.upt.upt.UptWebController;
-import com.upt.upt.service.DirectorUnitService;
 import com.upt.upt.service.UserService;
+import com.upt.upt.entity.UserType;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.ActiveProfiles;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.mock.web.MockHttpSession;  // Use MockHttpSession aqui
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import jakarta.servlet.http.HttpSession;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
+@SpringBootTest
+@AutoConfigureMockMvc
 public class UptWebControllerTest {
 
-    @LocalServerPort
-    private int port;
-
     @Autowired
-    private TestRestTemplate restTemplate;
+    private MockMvc mockMvc; // MockMvc é automaticamente injetado
 
-    @Autowired
-    private UserService userService;
+    @MockBean
+    private UserService userService; // Mock do UserService para simular o comportamento do serviço
 
-    @Autowired
-    private DirectorUnitService directorUnitService;
+    @InjectMocks
+    private UptWebController uptWebController; // Injetando o controlador a ser testado
 
-    @Test
-    public void testHomePage() {
-        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:" + port + "/", String.class);
-        assertThat(response.getStatusCode().is3xxRedirection()).isTrue();
-        assertThat(response.getHeaders().getLocation().getPath()).isEqualTo("/login");
+    private MockHttpSession session; // Usando MockHttpSession
+
+    @BeforeEach
+    public void setUp() {
+        // Inicializando mocks e preparando o ambiente antes de cada teste
+        session = new MockHttpSession(); // Usando MockHttpSession para simular a sessão
     }
 
     @Test
-    public void testLoginPage() {
-        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:" + port + "/login", String.class);
-        assertThat(response.getStatusCode().is2xxSuccessful()).isTrue();
-        assertThat(response.getBody()).contains("login");
+    public void testLoginPage() throws Exception {
+        // Testando o endpoint de login
+        mockMvc.perform(MockMvcRequestBuilders.get("/login"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("login")); // Verifica se a view correta é retornada
     }
 
     @Test
-    public void testLogout() {
-        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:" + port + "/logout", String.class);
-        assertThat(response.getStatusCode().is3xxRedirection()).isTrue();
-        assertThat(response.getHeaders().getLocation().getPath()).isEqualTo("/login");
+    public void testValidateLoginSuccess() throws Exception {
+        // Definindo o comportamento do mock do UserService
+        when(userService.validateUser("user", "password")).thenReturn(UserType.MASTER);
+        when(userService.getUserIdByUsername("user", UserType.MASTER)).thenReturn(1L);
+
+        // Testando o endpoint de validação de login
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/validate-login")
+                        .param("username", "user")
+                        .param("password", "password")
+                        .session(session)) // Usando MockHttpSession aqui
+                .andExpect(MockMvcResultMatchers.status().is3xxRedirection()) // Espera redirecionamento
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/master")) // Verifica o redirecionamento correto
+                .andReturn();
+
+        // Verifica se os atributos da sessão foram setados corretamente
+        verify(session, times(1)).setAttribute("userId", 1L);
+        verify(session, times(1)).setAttribute("userType", UserType.MASTER);
+        verify(session, times(1)).setAttribute("username", "user");
     }
 
     @Test
-    public void testValidateLoginSuccess() {
-        // Setup userService to return a valid user type and user ID
-        // This part assumes you have a way to set up the userService for testing purposes
+    public void testValidateLoginFailure() throws Exception {
+        // Definindo o comportamento do mock do UserService para falha
+        when(userService.validateUser(anyString(), anyString())).thenReturn(null);
 
-        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:" + port + "/validate-login?username=testuser&password=testpass", null, String.class);
-        assertThat(response.getStatusCode().is3xxRedirection()).isTrue();
-        assertThat(response.getHeaders().getLocation().getPath()).isEqualTo("/master");
+        // Testando o endpoint de validação de login com credenciais erradas
+        mockMvc.perform(MockMvcRequestBuilders.post("/validate-login")
+                        .param("username", "user")
+                        .param("password", "wrongpassword")
+                        .session(session)) // Usando MockHttpSession aqui
+                .andExpect(MockMvcResultMatchers.status().is3xxRedirection()) // Espera redirecionamento
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/login?error=Invalid credentials")); // Verifica o redirecionamento correto para erro
     }
 
     @Test
-    public void testValidateLoginFailure() {
-        // Setup userService to return null for invalid credentials
-        // This part assumes you have a way to set up the userService for testing purposes
+    public void testLogout() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/logout").session(session))
+                .andExpect(MockMvcResultMatchers.status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/login"));
 
-        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:" + port + "/validate-login?username=invaliduser&password=invalidpass", null, String.class);
-        assertThat(response.getStatusCode().is3xxRedirection()).isTrue();
-        assertThat(response.getHeaders().getLocation().getPath()).isEqualTo("/login?error=Invalid credentials");
+        verify(session, times(1)).invalidate();
     }
 }
