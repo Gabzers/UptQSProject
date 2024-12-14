@@ -217,3 +217,16 @@ footer p {
     background-color: #34495e;
     color: #ecf0f1;
 }
+
+/* Automatic Room Text */
+.automatic-room {
+    font-style: italic;
+    color: #555;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 12px; /* Make the text smaller */
+}

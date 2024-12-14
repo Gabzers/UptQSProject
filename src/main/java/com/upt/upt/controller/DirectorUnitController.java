@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Comparator;
 
 @Controller
 public class DirectorUnitController {
@@ -95,6 +96,7 @@ public class DirectorUnitController {
         if (yearUnit.isPresent()) {
             SemesterUnit semesterUnit = "1st".equals(semester) ? yearUnit.get().getFirstSemester() : yearUnit.get().getSecondSemester();
             List<AssessmentUnit> assessments = semesterUnit.getMapUnit().getAssessments();
+            assessments.sort(Comparator.comparing(AssessmentUnit::getStartTime));
             model.addAttribute("mapUnit", semesterUnit.getMapUnit());
             model.addAttribute("noNormalPeriod", directorUnitService.noAssessmentsForPeriod(assessments, "Teaching Period") && directorUnitService.noAssessmentsForPeriod(assessments, "Exam Period"));
             model.addAttribute("noResourcePeriod", directorUnitService.noAssessmentsForPeriod(assessments, "Resource Period"));

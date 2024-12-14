@@ -262,4 +262,24 @@ public class RoomUnitService {
             return roomUnitRepository.save(newOnlineRoom);
         }
     }
+
+    /**
+     * Get or create the "Usual Class Time Room".
+     *
+     * @return the "Usual Class Time Room" RoomUnit
+     */
+    public RoomUnit getOrCreateClassTimeRoom() {
+        Optional<RoomUnit> classTimeRoom = roomUnitRepository.findByRoomNumber("99998");
+        if (classTimeRoom.isPresent()) {
+            return classTimeRoom.get();
+        } else {
+            RoomUnit newClassTimeRoom = new RoomUnit();
+            newClassTimeRoom.setRoomNumber("99998");
+            newClassTimeRoom.setDesignation("Usual Class Time Room");
+            newClassTimeRoom.setMaterialType("Class Time");
+            newClassTimeRoom.setSeatsCount(0);
+            newClassTimeRoom.setBuilding("Class Time");
+            return roomUnitRepository.save(newClassTimeRoom);
+        }
+    }
 }

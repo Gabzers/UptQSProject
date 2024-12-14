@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const startDateInput = document.getElementById('evaluation-date-start');
     const endDateInput = document.getElementById('evaluation-date-end');
     const examPeriod = document.getElementById('evaluation-exam-period');
-    const roomSelect = document.getElementById('evaluation-room');
-    const computerRequiredCheckbox = document.getElementById('evaluation-computer-required');
 
     if (!examPeriod.value) {
         startDateInput.disabled = true;
@@ -24,13 +22,6 @@ document.addEventListener('DOMContentLoaded', function () {
     endDateInput.addEventListener('change', function () {
         assignRoomAutomatically();
     });
-
-    computerRequiredCheckbox.addEventListener('change', function () {
-        resetDateTime();
-        assignRoomAutomatically();
-    });
-
-    roomSelect.disabled = true;
 });
 
 function validateForm() {
@@ -88,11 +79,6 @@ async function highlightValidDates() {
     }
 }
 
-function resetDateTime() {
-    document.getElementById('evaluation-date-start').value = '';
-    document.getElementById('evaluation-date-end').value = '';
-}
-
 async function assignRoomAutomatically() {
     const startDateInput = document.getElementById('evaluation-date-start').value;
     const endDateInput = document.getElementById('evaluation-date-end').value;
@@ -104,29 +90,11 @@ async function assignRoomAutomatically() {
             const response = await fetch(`/coordinator/availableRooms?startTime=${startDateInput}&endTime=${endDateInput}&computerRequired=${computerRequired}&numStudents=${numStudents}`);
             if (response.ok) {
                 const rooms = await response.json();
-                const roomSelect = document.getElementById('evaluation-room');
-                roomSelect.innerHTML = ''; // Clear existing options
-                rooms.forEach(room => {
-                    const option = document.createElement('option');
-                    option.value = room.id;
-                    option.text = `${room.roomNumber} - ${room.building}`;
-                    roomSelect.appendChild(option);
-                });
-                roomSelect.disabled = false;
             } else {
                 console.error('Failed to fetch available rooms');
             }
         } catch (error) {
             console.error('Error fetching available rooms:', error);
         }
-    }
-}
-
-function toggleRoomSelection() {
-    const classTime = document.getElementById('evaluation-class-time').checked;
-    const roomSelect = document.getElementById('evaluation-room');
-    roomSelect.disabled = !classTime;
-    if (!classTime) {
-        assignRoomAutomatically();
     }
 }

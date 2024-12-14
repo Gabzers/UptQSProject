@@ -160,6 +160,8 @@ public String saveEvaluation(@RequestParam Map<String, String> params, HttpSessi
     String assessmentType = params.get("assessmentType");
     if ("Work Developed Throughout the Semester".equals(assessmentType) || "Work Submission".equals(assessmentType)) {
         selectedRooms = List.of(roomUnitService.getOrCreateOnlineRoom());
+    } else if (classTime) {
+        selectedRooms = List.of(roomUnitService.getOrCreateClassTimeRoom());
     } else {
         try {
             selectedRooms = roomUnitService.getAvailableRooms(uc.getStudentsNumber(), computerRequired, startTime, endTime);

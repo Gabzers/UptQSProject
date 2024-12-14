@@ -50,9 +50,11 @@ public class MapUnitController {
                 List<CurricularUnit> coordinatorUnits = coordinator.getCurricularUnits();
                 List<AssessmentUnit> firstSemesterAssessments = assessmentService.getAssessmentsBySemester(currentYear.getFirstSemester().getId()).stream()
                         .filter(assessment -> coordinatorUnits.contains(assessment.getCurricularUnit()))
+                        .sorted((a1, a2) -> a1.getStartTime().compareTo(a2.getStartTime()))
                         .collect(Collectors.toList());
                 List<AssessmentUnit> secondSemesterAssessments = assessmentService.getAssessmentsBySemester(currentYear.getSecondSemester().getId()).stream()
                         .filter(assessment -> coordinatorUnits.contains(assessment.getCurricularUnit()))
+                        .sorted((a1, a2) -> a1.getStartTime().compareTo(a2.getStartTime()))
                         .collect(Collectors.toList());
                 model.addAttribute("firstSemesterAssessments", firstSemesterAssessments);
                 model.addAttribute("secondSemesterAssessments", secondSemesterAssessments);

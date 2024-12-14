@@ -89,7 +89,6 @@ avaliação;
 -> mostrar quais dias e horas estao livres para uma avaliação daquele estilo
 
 -> corrigir editar avaliação(n funciona)
--> ao selecionar horario de aula, pensar em uma logica(escolher lista de salas e verificar disponibilidade)
 
 -> *** ajustar nomes, resource e assessment em todo o projeto
 
