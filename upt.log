@@ -11386,3 +11386,290 @@ com.upt.upt.controller.DirectorUnitController#confirmRemoveDirector(Long, HttpSe
 2024-12-14T06:15:14.087Z DEBUG 34548 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
 2024-12-14T06:15:14.101Z DEBUG 34548 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
 2024-12-14T06:15:14.107Z DEBUG 34548 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 400
+2024-12-14T15:06:07.568Z  INFO 4600 --- [upt] [main] com.upt.upt.UptWebApplication            : Starting UptWebApplication using Java 17.0.12 with PID 4600 (C:\Users\almei\IdeaProjects\UptQSProject\build\classes\java\main started by almei in C:\Users\almei\IdeaProjects\UptQSProject)
+2024-12-14T15:06:07.571Z DEBUG 4600 --- [upt] [main] com.upt.upt.UptWebApplication            : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-14T15:06:07.573Z  INFO 4600 --- [upt] [main] com.upt.upt.UptWebApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-12-14T15:06:09.305Z  INFO 4600 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-14T15:06:09.604Z  INFO 4600 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 278 ms. Found 9 JPA repository interfaces.
+2024-12-14T15:06:10.949Z  INFO 4600 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-14T15:06:10.971Z  INFO 4600 --- [upt] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-14T15:06:10.972Z  INFO 4600 --- [upt] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-14T15:06:11.122Z  INFO 4600 --- [upt] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-14T15:06:11.123Z  INFO 4600 --- [upt] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3417 ms
+2024-12-14T15:06:11.505Z  INFO 4600 --- [upt] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-14T15:06:11.724Z  INFO 4600 --- [upt] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-14T15:06:11.873Z  INFO 4600 --- [upt] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-14T15:06:12.777Z  INFO 4600 --- [upt] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-14T15:06:12.867Z  INFO 4600 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-14T15:06:13.985Z  INFO 4600 --- [upt] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74bbc273
+2024-12-14T15:06:14.003Z  INFO 4600 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-14T15:06:14.226Z  WARN 4600 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-14T15:06:14.228Z  WARN 4600 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-14T15:06:17.657Z  INFO 4600 --- [upt] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-14T15:06:18.443Z  INFO 4600 --- [upt] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-14T15:06:19.702Z  WARN 4600 --- [upt] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-14T15:06:20.026Z DEBUG 4600 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 66 mappings in 'requestMappingHandlerMapping'
+2024-12-14T15:06:20.177Z DEBUG 4600 --- [upt] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-14T15:06:20.257Z DEBUG 4600 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-14T15:06:20.354Z DEBUG 4600 --- [upt] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-14T15:06:20.860Z  INFO 4600 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-14T15:06:20.948Z  INFO 4600 --- [upt] [main] com.upt.upt.UptWebApplication            : Started UptWebApplication in 14.575 seconds (process running for 18.627)
+2024-12-14T15:06:33.787Z  INFO 4600 --- [upt] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-14T15:06:33.788Z  INFO 4600 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-14T15:06:33.789Z DEBUG 4600 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-12-14T15:06:33.789Z DEBUG 4600 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-12-14T15:06:33.790Z DEBUG 4600 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-12-14T15:06:33.790Z DEBUG 4600 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@1235732d
+2024-12-14T15:06:33.794Z DEBUG 4600 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@2279e7c7
+2024-12-14T15:06:33.794Z DEBUG 4600 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-12-14T15:06:33.794Z  INFO 4600 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2024-12-14T15:06:33.812Z DEBUG 4600 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-12-14T15:06:33.843Z DEBUG 4600 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-14T15:06:33.928Z DEBUG 4600 --- [upt] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+2024-12-14T15:06:34.806Z DEBUG 4600 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T15:06:35.049Z DEBUG 4600 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/css/login.css", parameters={}
+2024-12-14T15:06:35.055Z DEBUG 4600 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/js/login.js", parameters={}
+2024-12-14T15:06:35.066Z DEBUG 4600 --- [upt] [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T15:06:35.067Z DEBUG 4600 --- [upt] [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T15:06:35.093Z DEBUG 4600 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T15:06:35.095Z DEBUG 4600 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T15:06:35.292Z DEBUG 4600 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2024-12-14T15:06:35.300Z DEBUG 4600 --- [upt] [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T15:06:35.308Z DEBUG 4600 --- [upt] [http-nio-8080-exec-3] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-12-14T15:06:35.316Z DEBUG 4600 --- [upt] [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-12-14T15:06:35.316Z DEBUG 4600 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-12-14T15:06:35.341Z DEBUG 4600 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2024-12-14T15:06:35.356Z DEBUG 4600 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-12-14T15:06:35.422Z DEBUG 4600 --- [upt] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.5', given [image/avif, image/webp, image/png, image/svg+xml, image/*;q=0.8, */*;q=0.5] and supported [application/json, application/*+json]
+2024-12-14T15:06:35.432Z DEBUG 4600 --- [upt] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Sat Dec 14 15:06:35 WET 2024, status=404, error=Not Found, path=/favicon.ico}]
+2024-12-14T15:06:35.563Z DEBUG 4600 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2024-12-14T15:06:47.036Z DEBUG 4600 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-14T15:06:47.039Z DEBUG 4600 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-14T15:06:47.575Z DEBUG 4600 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T15:06:47.584Z DEBUG 4600 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T15:06:47.611Z DEBUG 4600 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/master", parameters={}
+2024-12-14T15:06:47.611Z DEBUG 4600 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MasterUnitController#listDirectorsMastersAndRooms(Model, HttpSession)
+2024-12-14T15:06:47.725Z DEBUG 4600 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+2024-12-14T15:06:48.038Z DEBUG 4600 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T15:06:48.146Z DEBUG 4600 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/css/master_index.css", parameters={}
+2024-12-14T15:06:48.156Z DEBUG 4600 --- [upt] [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T15:06:48.164Z DEBUG 4600 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T15:06:59.427Z  INFO 4600 --- [upt] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-14T15:06:59.431Z  INFO 4600 --- [upt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-14T15:06:59.443Z  INFO 4600 --- [upt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-14T15:38:25.267Z  INFO 5796 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : Starting MasterUnitServiceTest using Java 17.0.13 with PID 5796 (started by almei in C:\Users\almei\IdeaProjects\UptQSProject)
+2024-12-14T15:38:25.270Z DEBUG 5796 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-14T15:38:25.274Z  INFO 5796 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : No active profile set, falling back to 1 default profile: "default"
+2024-12-14T15:38:25.371Z DEBUG 5796 --- [upt] [Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@185f7840
+2024-12-14T15:38:27.392Z  INFO 5796 --- [upt] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-14T15:38:27.582Z  INFO 5796 --- [upt] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 171 ms. Found 9 JPA repository interfaces.
+2024-12-14T15:38:28.877Z  INFO 5796 --- [upt] [Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-14T15:38:29.071Z  INFO 5796 --- [upt] [Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-14T15:38:29.185Z  INFO 5796 --- [upt] [Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-14T15:38:30.218Z  INFO 5796 --- [upt] [Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-14T15:38:30.308Z  INFO 5796 --- [upt] [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-14T15:38:31.428Z  INFO 5796 --- [upt] [Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7402c49f
+2024-12-14T15:38:31.438Z  INFO 5796 --- [upt] [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-14T15:38:31.969Z  WARN 5796 --- [upt] [Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-14T15:38:31.976Z  WARN 5796 --- [upt] [Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-14T15:38:36.489Z  INFO 5796 --- [upt] [Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-14T15:38:36.833Z  INFO 5796 --- [upt] [Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-14T15:38:38.439Z  WARN 5796 --- [upt] [Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-14T15:38:38.767Z DEBUG 5796 --- [upt] [Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 66 mappings in 'requestMappingHandlerMapping'
+2024-12-14T15:38:39.061Z DEBUG 5796 --- [upt] [Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-14T15:38:39.154Z DEBUG 5796 --- [upt] [Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-14T15:38:39.264Z DEBUG 5796 --- [upt] [Test worker] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-14T15:38:39.585Z  INFO 5796 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : Started MasterUnitServiceTest in 15.103 seconds (process running for 18.399)
+2024-12-14T15:38:41.410Z DEBUG 5796 --- [upt] [SpringApplicationShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@185f7840, started on Sat Dec 14 15:38:25 WET 2024
+2024-12-14T15:38:41.439Z  INFO 5796 --- [upt] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-14T15:38:41.445Z  INFO 5796 --- [upt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-14T15:38:41.499Z  INFO 5796 --- [upt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-14T15:39:01.148Z  INFO 18104 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : Starting MasterUnitServiceTest using Java 17.0.13 with PID 18104 (started by almei in C:\Users\almei\IdeaProjects\UptQSProject)
+2024-12-14T15:39:01.150Z DEBUG 18104 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-14T15:39:01.154Z  INFO 18104 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : No active profile set, falling back to 1 default profile: "default"
+2024-12-14T15:39:01.251Z DEBUG 18104 --- [upt] [Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@185f7840
+2024-12-14T15:39:03.545Z  INFO 18104 --- [upt] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-14T15:39:03.923Z  INFO 18104 --- [upt] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 348 ms. Found 9 JPA repository interfaces.
+2024-12-14T15:39:05.539Z  INFO 18104 --- [upt] [Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-14T15:39:05.759Z  INFO 18104 --- [upt] [Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-14T15:39:05.898Z  INFO 18104 --- [upt] [Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-14T15:39:07.120Z  INFO 18104 --- [upt] [Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-14T15:39:07.244Z  INFO 18104 --- [upt] [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-14T15:39:07.995Z  INFO 18104 --- [upt] [Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2382b2f
+2024-12-14T15:39:08.001Z  INFO 18104 --- [upt] [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-14T15:39:08.159Z  WARN 18104 --- [upt] [Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-14T15:39:08.164Z  WARN 18104 --- [upt] [Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-14T15:39:11.693Z  INFO 18104 --- [upt] [Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-14T15:39:11.981Z  INFO 18104 --- [upt] [Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-14T15:39:13.551Z  WARN 18104 --- [upt] [Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-14T15:39:13.897Z DEBUG 18104 --- [upt] [Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 66 mappings in 'requestMappingHandlerMapping'
+2024-12-14T15:39:14.168Z DEBUG 18104 --- [upt] [Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-14T15:39:14.290Z DEBUG 18104 --- [upt] [Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-14T15:39:14.373Z DEBUG 18104 --- [upt] [Test worker] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-14T15:39:14.676Z  INFO 18104 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : Started MasterUnitServiceTest in 14.23 seconds (process running for 17.264)
+2024-12-14T15:39:16.849Z DEBUG 18104 --- [upt] [SpringApplicationShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@185f7840, started on Sat Dec 14 15:39:01 WET 2024
+2024-12-14T15:39:16.908Z  INFO 18104 --- [upt] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-14T15:39:16.913Z  INFO 18104 --- [upt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-14T15:39:17.219Z  INFO 18104 --- [upt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-14T15:39:36.890Z  INFO 18484 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : Starting MasterUnitServiceTest using Java 17.0.13 with PID 18484 (started by almei in C:\Users\almei\IdeaProjects\UptQSProject)
+2024-12-14T15:39:36.893Z DEBUG 18484 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-14T15:39:36.896Z  INFO 18484 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : No active profile set, falling back to 1 default profile: "default"
+2024-12-14T15:39:36.982Z DEBUG 18484 --- [upt] [Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@185f7840
+2024-12-14T15:39:38.914Z  INFO 18484 --- [upt] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-14T15:39:39.114Z  INFO 18484 --- [upt] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 179 ms. Found 9 JPA repository interfaces.
+2024-12-14T15:39:40.326Z  INFO 18484 --- [upt] [Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-14T15:39:40.501Z  INFO 18484 --- [upt] [Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-14T15:39:40.614Z  INFO 18484 --- [upt] [Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-14T15:39:41.487Z  INFO 18484 --- [upt] [Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-14T15:39:41.571Z  INFO 18484 --- [upt] [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-14T15:39:42.280Z  INFO 18484 --- [upt] [Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7402c49f
+2024-12-14T15:39:42.285Z  INFO 18484 --- [upt] [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-14T15:39:42.453Z  WARN 18484 --- [upt] [Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-14T15:39:42.457Z  WARN 18484 --- [upt] [Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-14T15:39:45.574Z  INFO 18484 --- [upt] [Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-14T15:39:45.823Z  INFO 18484 --- [upt] [Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-14T15:39:47.553Z  WARN 18484 --- [upt] [Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-14T15:39:47.868Z DEBUG 18484 --- [upt] [Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 66 mappings in 'requestMappingHandlerMapping'
+2024-12-14T15:39:48.152Z DEBUG 18484 --- [upt] [Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-14T15:39:48.264Z DEBUG 18484 --- [upt] [Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-14T15:39:48.446Z DEBUG 18484 --- [upt] [Test worker] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-14T15:39:49.058Z  INFO 18484 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : Started MasterUnitServiceTest in 12.839 seconds (process running for 15.89)
+2024-12-14T15:39:51.095Z DEBUG 18484 --- [upt] [SpringApplicationShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@185f7840, started on Sat Dec 14 15:39:36 WET 2024
+2024-12-14T15:39:51.104Z  INFO 18484 --- [upt] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-14T15:39:51.109Z  INFO 18484 --- [upt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-14T15:39:51.127Z  INFO 18484 --- [upt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-14T15:40:12.749Z  INFO 17004 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : Starting MasterUnitServiceTest using Java 17.0.13 with PID 17004 (started by almei in C:\Users\almei\IdeaProjects\UptQSProject)
+2024-12-14T15:40:12.752Z DEBUG 17004 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-14T15:40:12.755Z  INFO 17004 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : No active profile set, falling back to 1 default profile: "default"
+2024-12-14T15:40:12.828Z DEBUG 17004 --- [upt] [Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@185f7840
+2024-12-14T15:40:14.704Z  INFO 17004 --- [upt] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-14T15:40:14.905Z  INFO 17004 --- [upt] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 181 ms. Found 9 JPA repository interfaces.
+2024-12-14T15:40:16.123Z  INFO 17004 --- [upt] [Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-14T15:40:16.302Z  INFO 17004 --- [upt] [Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-14T15:40:16.406Z  INFO 17004 --- [upt] [Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-14T15:40:17.481Z  INFO 17004 --- [upt] [Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-14T15:40:17.574Z  INFO 17004 --- [upt] [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-14T15:40:18.338Z  INFO 17004 --- [upt] [Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1eb6037d
+2024-12-14T15:40:18.345Z  INFO 17004 --- [upt] [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-14T15:40:18.463Z  WARN 17004 --- [upt] [Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-14T15:40:18.466Z  WARN 17004 --- [upt] [Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-14T15:40:21.588Z  INFO 17004 --- [upt] [Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-14T15:40:21.826Z  INFO 17004 --- [upt] [Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-14T15:40:23.367Z  WARN 17004 --- [upt] [Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-14T15:40:23.677Z DEBUG 17004 --- [upt] [Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 66 mappings in 'requestMappingHandlerMapping'
+2024-12-14T15:40:24.145Z DEBUG 17004 --- [upt] [Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-14T15:40:24.227Z DEBUG 17004 --- [upt] [Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-14T15:40:24.310Z DEBUG 17004 --- [upt] [Test worker] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-14T15:40:24.630Z  INFO 17004 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : Started MasterUnitServiceTest in 12.6 seconds (process running for 15.473)
+2024-12-14T15:40:26.255Z DEBUG 17004 --- [upt] [SpringApplicationShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@185f7840, started on Sat Dec 14 15:40:12 WET 2024
+2024-12-14T15:40:26.270Z  INFO 17004 --- [upt] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-14T15:40:26.275Z  INFO 17004 --- [upt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-14T15:40:26.319Z  INFO 17004 --- [upt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-14T15:40:38.002Z  INFO 19264 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : Starting MasterUnitServiceTest using Java 17.0.13 with PID 19264 (started by almei in C:\Users\almei\IdeaProjects\UptQSProject)
+2024-12-14T15:40:38.006Z DEBUG 19264 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-14T15:40:38.008Z  INFO 19264 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : No active profile set, falling back to 1 default profile: "default"
+2024-12-14T15:40:38.094Z DEBUG 19264 --- [upt] [Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@185f7840
+2024-12-14T15:40:40.005Z  INFO 19264 --- [upt] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-14T15:40:40.217Z  INFO 19264 --- [upt] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 191 ms. Found 9 JPA repository interfaces.
+2024-12-14T15:40:41.545Z  INFO 19264 --- [upt] [Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-14T15:40:41.772Z  INFO 19264 --- [upt] [Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-14T15:40:41.895Z  INFO 19264 --- [upt] [Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-14T15:40:42.844Z  INFO 19264 --- [upt] [Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-14T15:40:42.931Z  INFO 19264 --- [upt] [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-14T15:40:43.627Z  INFO 19264 --- [upt] [Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7402c49f
+2024-12-14T15:40:43.633Z  INFO 19264 --- [upt] [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-14T15:40:43.734Z  WARN 19264 --- [upt] [Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-14T15:40:43.738Z  WARN 19264 --- [upt] [Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-14T15:40:46.882Z  INFO 19264 --- [upt] [Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-14T15:40:47.156Z  INFO 19264 --- [upt] [Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-14T15:40:48.757Z  WARN 19264 --- [upt] [Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-14T15:40:49.046Z DEBUG 19264 --- [upt] [Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 66 mappings in 'requestMappingHandlerMapping'
+2024-12-14T15:40:49.307Z DEBUG 19264 --- [upt] [Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-14T15:40:49.382Z DEBUG 19264 --- [upt] [Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-14T15:40:49.487Z DEBUG 19264 --- [upt] [Test worker] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-14T15:40:49.849Z  INFO 19264 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : Started MasterUnitServiceTest in 12.705 seconds (process running for 16.041)
+2024-12-14T15:40:51.402Z DEBUG 19264 --- [upt] [SpringApplicationShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@185f7840, started on Sat Dec 14 15:40:38 WET 2024
+2024-12-14T15:40:51.415Z  INFO 19264 --- [upt] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-14T15:40:51.422Z  INFO 19264 --- [upt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-14T15:40:51.456Z  INFO 19264 --- [upt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-14T15:41:16.752Z  INFO 3560 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : Starting MasterUnitServiceTest using Java 17.0.13 with PID 3560 (started by almei in C:\Users\almei\IdeaProjects\UptQSProject)
+2024-12-14T15:41:16.756Z DEBUG 3560 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-14T15:41:16.758Z  INFO 3560 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : No active profile set, falling back to 1 default profile: "default"
+2024-12-14T15:41:16.853Z DEBUG 3560 --- [upt] [Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@185f7840
+2024-12-14T15:41:18.936Z  INFO 3560 --- [upt] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-14T15:41:19.148Z  INFO 3560 --- [upt] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 192 ms. Found 9 JPA repository interfaces.
+2024-12-14T15:41:20.380Z  INFO 3560 --- [upt] [Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-14T15:41:20.549Z  INFO 3560 --- [upt] [Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-14T15:41:20.655Z  INFO 3560 --- [upt] [Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-14T15:41:21.532Z  INFO 3560 --- [upt] [Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-14T15:41:21.619Z  INFO 3560 --- [upt] [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-14T15:41:22.339Z  INFO 3560 --- [upt] [Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7402c49f
+2024-12-14T15:41:22.345Z  INFO 3560 --- [upt] [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-14T15:41:22.457Z  WARN 3560 --- [upt] [Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-14T15:41:22.471Z  WARN 3560 --- [upt] [Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-14T15:41:25.693Z  INFO 3560 --- [upt] [Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-14T15:41:26.060Z  INFO 3560 --- [upt] [Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-14T15:41:27.576Z  WARN 3560 --- [upt] [Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-14T15:41:27.907Z DEBUG 3560 --- [upt] [Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 66 mappings in 'requestMappingHandlerMapping'
+2024-12-14T15:41:28.197Z DEBUG 3560 --- [upt] [Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-14T15:41:28.284Z DEBUG 3560 --- [upt] [Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-14T15:41:28.368Z DEBUG 3560 --- [upt] [Test worker] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-14T15:41:28.751Z  INFO 3560 --- [upt] [Test worker] c.upt.upt.service.MasterUnitServiceTest  : Started MasterUnitServiceTest in 12.764 seconds (process running for 16.332)
+2024-12-14T15:41:30.291Z DEBUG 3560 --- [upt] [SpringApplicationShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@185f7840, started on Sat Dec 14 15:41:16 WET 2024
+2024-12-14T15:41:30.301Z  INFO 3560 --- [upt] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-14T15:41:30.305Z  INFO 3560 --- [upt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-14T15:41:30.337Z  INFO 3560 --- [upt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-14T15:42:54.228Z  INFO 6776 --- [upt] [Test worker] c.u.u.r.MasterUnitRepositoryTest         : Starting MasterUnitRepositoryTest using Java 17.0.13 with PID 6776 (started by almei in C:\Users\almei\IdeaProjects\UptQSProject)
+2024-12-14T15:42:54.232Z DEBUG 6776 --- [upt] [Test worker] c.u.u.r.MasterUnitRepositoryTest         : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-14T15:42:54.236Z  INFO 6776 --- [upt] [Test worker] c.u.u.r.MasterUnitRepositoryTest         : No active profile set, falling back to 1 default profile: "default"
+2024-12-14T15:42:54.331Z DEBUG 6776 --- [upt] [Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@522ba524
+2024-12-14T15:42:56.479Z  INFO 6776 --- [upt] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-14T15:42:56.676Z  INFO 6776 --- [upt] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 175 ms. Found 9 JPA repository interfaces.
+2024-12-14T15:42:57.897Z  INFO 6776 --- [upt] [Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-14T15:42:58.078Z  INFO 6776 --- [upt] [Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-14T15:42:58.186Z  INFO 6776 --- [upt] [Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-14T15:42:59.067Z  INFO 6776 --- [upt] [Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-14T15:42:59.162Z  INFO 6776 --- [upt] [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-14T15:42:59.860Z  INFO 6776 --- [upt] [Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@299eca90
+2024-12-14T15:42:59.865Z  INFO 6776 --- [upt] [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-14T15:42:59.969Z  WARN 6776 --- [upt] [Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-14T15:42:59.973Z  WARN 6776 --- [upt] [Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-14T15:43:03.612Z  INFO 6776 --- [upt] [Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-14T15:43:03.912Z  INFO 6776 --- [upt] [Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-14T15:43:05.595Z  WARN 6776 --- [upt] [Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-14T15:43:05.938Z DEBUG 6776 --- [upt] [Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 66 mappings in 'requestMappingHandlerMapping'
+2024-12-14T15:43:06.254Z DEBUG 6776 --- [upt] [Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-14T15:43:06.396Z DEBUG 6776 --- [upt] [Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-14T15:43:06.476Z DEBUG 6776 --- [upt] [Test worker] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-14T15:43:07.016Z  INFO 6776 --- [upt] [Test worker] c.u.u.r.MasterUnitRepositoryTest         : Started MasterUnitRepositoryTest in 13.493 seconds (process running for 17.114)
+2024-12-14T15:43:08.756Z DEBUG 6776 --- [upt] [SpringApplicationShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@522ba524, started on Sat Dec 14 15:42:54 WET 2024
+2024-12-14T15:43:08.767Z  INFO 6776 --- [upt] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-14T15:43:08.780Z  INFO 6776 --- [upt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-14T15:43:08.819Z  INFO 6776 --- [upt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-14T15:43:20.967Z  INFO 16288 --- [upt] [Test worker] c.u.u.r.MasterUnitRepositoryTest         : Starting MasterUnitRepositoryTest using Java 17.0.13 with PID 16288 (started by almei in C:\Users\almei\IdeaProjects\UptQSProject)
+2024-12-14T15:43:20.970Z DEBUG 16288 --- [upt] [Test worker] c.u.u.r.MasterUnitRepositoryTest         : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-14T15:43:20.973Z  INFO 16288 --- [upt] [Test worker] c.u.u.r.MasterUnitRepositoryTest         : No active profile set, falling back to 1 default profile: "default"
+2024-12-14T15:43:21.068Z DEBUG 16288 --- [upt] [Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@522ba524
+2024-12-14T15:43:23.067Z  INFO 16288 --- [upt] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-14T15:43:23.280Z  INFO 16288 --- [upt] [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 173 ms. Found 9 JPA repository interfaces.
+2024-12-14T15:43:24.824Z  INFO 16288 --- [upt] [Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-14T15:43:25.046Z  INFO 16288 --- [upt] [Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-14T15:43:25.172Z  INFO 16288 --- [upt] [Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-14T15:43:26.117Z  INFO 16288 --- [upt] [Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-14T15:43:26.207Z  INFO 16288 --- [upt] [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-14T15:43:26.951Z  INFO 16288 --- [upt] [Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@299eca90
+2024-12-14T15:43:26.957Z  INFO 16288 --- [upt] [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-14T15:43:27.085Z  WARN 16288 --- [upt] [Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-14T15:43:27.098Z  WARN 16288 --- [upt] [Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-14T15:43:30.238Z  INFO 16288 --- [upt] [Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-14T15:43:30.498Z  INFO 16288 --- [upt] [Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-14T15:43:32.154Z  WARN 16288 --- [upt] [Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-14T15:43:32.460Z DEBUG 16288 --- [upt] [Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 66 mappings in 'requestMappingHandlerMapping'
+2024-12-14T15:43:32.734Z DEBUG 16288 --- [upt] [Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-14T15:43:32.814Z DEBUG 16288 --- [upt] [Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-14T15:43:32.890Z DEBUG 16288 --- [upt] [Test worker] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-14T15:43:33.317Z  INFO 16288 --- [upt] [Test worker] c.u.u.r.MasterUnitRepositoryTest         : Started MasterUnitRepositoryTest in 13.077 seconds (process running for 16.129)
+2024-12-14T15:43:34.838Z DEBUG 16288 --- [upt] [SpringApplicationShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@522ba524, started on Sat Dec 14 15:43:21 WET 2024
+2024-12-14T15:43:34.848Z  INFO 16288 --- [upt] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-14T15:43:34.852Z  INFO 16288 --- [upt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-14T15:43:34.872Z  INFO 16288 --- [upt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
