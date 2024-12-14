@@ -12,7 +12,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     padding: 20px;
     flex-direction: column;
     animation: fadeIn 0.5s ease-in-out;
@@ -20,12 +20,14 @@ body {
 
 /* Header */
 header {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    position: fixed; /* Fix the header at the top */
+    top: 0;
+    right: 0;
+    left: 0;
     display: flex;
     justify-content: flex-end;
-    width: 100%;
+    padding: 10px 20px; /* Adjust padding for better spacing */
+    z-index: 10;
 }
 
 /* Standard Button Styling */
@@ -39,6 +41,7 @@ header button, button[type="submit"] {
     border: none;
     transition: background-color 0.3s ease, transform 0.3s ease;
     animation: fadeIn 0.5s ease-in-out;
+    margin-left: 10px; /* Spacing between buttons */
 }
 
 header button:hover, button[type="submit"]:hover {
@@ -53,10 +56,9 @@ main {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative; /* Position relative to place the buttons */
     padding: 20px 20px 40px; /* Padding adjusted for better spacing */
+    margin-top: 80px; /* Adjusted to give space for the fixed header */
     animation: slideIn 0.5s ease-in-out;
-    margin-top: 50px; /* Center the form vertically */
 }
 
 /* Form Section */
@@ -160,7 +162,9 @@ footer p {
 /* Error message styles */
 .error-message {
     color: red;
-    display: none;
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
 }
 
 /* Flatpickr valid date styles */

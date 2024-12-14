@@ -4,18 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Director Panel</title>
+    <title>Master Panel</title>
     <link rel="stylesheet" type="text/css" href="/css/master_index.css">
+    <link rel="icon" href="/images/upt-logo.png" type="image/png">
 </head>
 
 <body>
 
     <header>
-        <h1>Director Panel</h1>
+        <h1><img src="/images/upt-logo.png" alt="Logo" style="height: 30px; vertical-align: middle;"> Master Panel</h1>
         <div class="header-buttons">
             <a href="/master/create-master" class="button">Create New Master</a>
             <a href="/master/create-director" class="button">Create New Director</a>
-            <a href="/master/create-room" class="button">Create New Room</a>
+            <form th:action="@{/master/create-room}" method="POST" style="display:inline;">
+                <button type="submit">Create New Room</button>
+            </form>
             <a href="/logout" id="logoutBtn">Logout</a>
         </div>
     </header>
@@ -116,7 +119,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 University Master Panel</p>
+        <p><img src="/images/upt-logo.png" alt="Logo" style="height: 20px; vertical-align: middle; margin-right: 10px;">&copy; 2024 Universidade Portucalense Infante D. Henrique</p>
     </footer>
 
 </body>

@@ -43,6 +43,14 @@ public class RoomUnitController {
         return "master_index";
     }
 
+    @GetMapping("/create-room")
+    public String showCreateRoomForm(HttpSession session) {
+        if (!isMaster(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
+        return "master_addRoom";
+    }
+
     @PostMapping("/remove-room/{id}")
     public String removeRoom(@PathVariable("id") Long id, Model model, HttpSession session) {
         if (!isMaster(session)) {
