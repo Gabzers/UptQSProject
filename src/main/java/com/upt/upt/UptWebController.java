@@ -10,17 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 
 import jakarta.servlet.http.HttpSession;
-import com.upt.upt.entity.DirectorUnit;
-import com.upt.upt.service.DirectorUnitService;
 
 @Controller
 public class UptWebController {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private DirectorUnitService directorUnitService;
 
     @GetMapping("/")
     public String home() {

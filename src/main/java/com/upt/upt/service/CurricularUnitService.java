@@ -3,7 +3,6 @@ package com.upt.upt.service;
 import com.upt.upt.entity.*;
 import com.upt.upt.repository.CurricularUnitRepository;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;

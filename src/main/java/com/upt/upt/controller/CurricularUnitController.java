@@ -1,16 +1,12 @@
 package com.upt.upt.controller;
 
-import com.upt.upt.entity.AssessmentUnit;
 import com.upt.upt.entity.CoordinatorUnit;
 import com.upt.upt.entity.CurricularUnit;
 import com.upt.upt.entity.DirectorUnit;
-import com.upt.upt.entity.YearUnit;
-import com.upt.upt.entity.SemesterUnit;
 import com.upt.upt.entity.UserType;
-import com.upt.upt.service.AssessmentUnitService;
+import com.upt.upt.entity.YearUnit;
 import com.upt.upt.service.CurricularUnitService;
 import com.upt.upt.service.CoordinatorUnitService;
-import com.upt.upt.service.YearUnitService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -23,9 +19,6 @@ import java.util.Optional;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
-import java.util.Map;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import java.util.stream.Collectors;
 import java.util.Comparator;
 
@@ -33,18 +26,13 @@ import java.util.Comparator;
 @RequestMapping("/coordinator")
 public class CurricularUnitController {
 
-    private static final Logger logger = LoggerFactory.getLogger(CurricularUnitController.class);
     private final CurricularUnitService curricularUnitService;
     private final CoordinatorUnitService coordinatorUnitService;
-    private final YearUnitService yearUnitService;
-    private final AssessmentUnitService assessmentUnitService;
 
     @Autowired
-    public CurricularUnitController(CurricularUnitService curricularUnitService, CoordinatorUnitService coordinatorUnitService, YearUnitService yearUnitService, AssessmentUnitService assessmentUnitService) {
+    public CurricularUnitController(CurricularUnitService curricularUnitService, CoordinatorUnitService coordinatorUnitService) {
         this.curricularUnitService = curricularUnitService;
         this.coordinatorUnitService = coordinatorUnitService;
-        this.yearUnitService = yearUnitService;
-        this.assessmentUnitService = assessmentUnitService;
     }
 
     private Optional<CoordinatorUnit> verifyCoordinator(HttpSession session) {
@@ -71,22 +59,24 @@ public class CurricularUnitController {
             return "redirect:/login?error=Unauthorized access";
         }
         CoordinatorUnit coordinator = coordinatorOpt.get();
-        List<CurricularUnit> firstSemesterUnits = coordinator.getCurricularUnits().stream()
-                .filter(uc -> uc.getSemester() == 1)
-                .sorted(Comparator.comparing(CurricularUnit::getYear))
-                .collect(Collectors.toList());
-        List<CurricularUnit> secondSemesterUnits = coordinator.getCurricularUnits().stream()
-                .filter(uc -> uc.getSemester() == 2)
-                .sorted(Comparator.comparing(CurricularUnit::getYear))
-                .collect(Collectors.toList());
-        model.addAttribute("firstSemesterUnits", firstSemesterUnits);
-        model.addAttribute("secondSemesterUnits", secondSemesterUnits);
+        DirectorUnit director = coordinator.getDirectorUnit();
+        YearUnit currentYear = director.getCurrentYear();
+        if (currentYear != null) {
+            List<CurricularUnit> firstSemesterUnits = currentYear.getFirstSemester().getCurricularUnits().stream()
+                    .filter(uc -> uc.getCoordinator().equals(coordinator) && uc.getSemester() == 1)
+                    .sorted(Comparator.comparing(CurricularUnit::getYear))
+                    .collect(Collectors.toList());
+            List<CurricularUnit> secondSemesterUnits = currentYear.getSecondSemester().getCurricularUnits().stream()
+                    .filter(uc -> uc.getCoordinator().equals(coordinator) && uc.getSemester() == 2)
+                    .sorted(Comparator.comparing(CurricularUnit::getYear))
+                    .collect(Collectors.toList());
+            model.addAttribute("firstSemesterUnits", firstSemesterUnits);
+            model.addAttribute("secondSemesterUnits", secondSemesterUnits);
+        } else {
+            model.addAttribute("firstSemesterUnits", List.of());
+            model.addAttribute("secondSemesterUnits", List.of());
+        }
         return "coordinator_index"; // Retorna o nome do arquivo HTML "coordinator_index.html"
-    }
-
-    private boolean isUCInMostRecentYear(CurricularUnit uc, YearUnit mostRecentYear) {
-        return mostRecentYear.getFirstSemester().getCurricularUnits().contains(uc) ||
-               mostRecentYear.getSecondSemester().getCurricularUnits().contains(uc);
     }
 
     // Remover a UC

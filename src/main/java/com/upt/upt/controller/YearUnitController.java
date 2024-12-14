@@ -80,7 +80,7 @@ public class YearUnitController {
             return "redirect:/login?error=Unauthorized access";
         }
         Long directorId = directorOpt.get().getId();
-        if (!yearUnitService.validateYearDates(params, model, directorId)) {
+        if (!yearUnitService.validateNewYearDates(params, model, directorId)) {
             return "director_newYear";
         }
         yearUnitService.saveNewYear(yearUnit, params, session);

@@ -13,7 +13,6 @@ import com.upt.upt.service.AssessmentUnitService;
 import com.upt.upt.service.CurricularUnitService;
 import com.upt.upt.service.CoordinatorUnitService;
 import com.upt.upt.service.RoomUnitService;
-import com.upt.upt.service.YearUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +22,6 @@ import jakarta.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -45,9 +43,6 @@ public class AssessmentUnitController {
 
     @Autowired
     private CoordinatorUnitService coordinatorUnitService;
-
-    @Autowired
-    private YearUnitService yearUnitService;
 
     @Autowired
     private RoomUnitService roomUnitService;

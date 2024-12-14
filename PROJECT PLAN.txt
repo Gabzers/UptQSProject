@@ -1,4 +1,4 @@
-master tem: + (extends utilizador)
+master tem:
 	id
 	nome
 	username (login)
@@ -6,7 +6,7 @@ master tem: + (extends utilizador)
 	lista de admins (não precisa de ser atributo, quero que todos os masters vejam todas as listas)
 	lista de salas (não precisa de ser atributo, quero que todos os masters vejam todas as listas)
 
-diretor(admin) tem: + (extends utilizador)
+diretor(admin) tem:
 	id
 	nome
 	username (login)
@@ -16,7 +16,7 @@ diretor(admin) tem: + (extends utilizador)
 	lista de anos
 	
 
-coordenador(user) tem: + (extends utilizador)
+coordenador(user) tem:
 	id
 	nome
 	username (login)
@@ -64,8 +64,8 @@ avaliações tem:
 	exame será feito no tempo de aula? (true false)
 	data e hr do começo da avaliaçao
 	data e hr do fim da avaliaçao
-	sala onde será feita a avaliaçao
 	nota minima
+	lista de salas para avaliaçao
 	
 mapa tem:
 	id
@@ -81,22 +81,15 @@ sala tem -:
 	lista de avaliações
 	
 
-
-css:
--> ajustar view semesters director
-
 FALTA:
 -> sempre que exequível, quando existirem datas de provas em dias 
 seguidos de anos diferentes, devem respeitar as 24h para ser possível aos 
 estudantes com UC em atraso se apresentarem aos dois momentos de 
 avaliação;
-
 -> mostrar quais dias e horas estao livres para uma avaliação daquele estilo
 
 -> corrigir editar avaliação(n funciona)
 -> ao selecionar horario de aula, pensar em uma logica(escolher lista de salas e verificar disponibilidade)
-
--> ao editar duraçao de UC, caso tenha avaliaçoes(que vai afetar a alterar a duraçao) neste ultimo ano criado pelo director diga para eliminar as avaliaçoes primeiro.
 
 -> *** ajustar nomes, resource e assessment em todo o projeto
 

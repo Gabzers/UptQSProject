@@ -85,6 +85,15 @@ button:nth-child(2):hover {
     background-color: #0056b3;
 }
 
+/* Remove Button Specific Styling */
+.remove-button {
+    background-color: #dc3545;
+}
+
+.remove-button:hover {
+    background-color: #c82333;
+}
+
 /* Titles */
 h2 {
     color: #333;

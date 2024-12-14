@@ -205,14 +205,6 @@ public class YearUnitService {
             }
         }
 
-        // New validation logic to check if assessments are within the new date ranges
-        for (YearUnit year : directorYears) {
-            if (!assessmentsWithinDateRanges(year, params)) {
-                model.addAttribute("error", "There are assessments that would fall outside the new date ranges. Please remove these assessments first.");
-                return false;
-            }
-        }
-
         return true;
     }
 
@@ -227,73 +219,41 @@ public class YearUnitService {
         LocalDate yearSecondSemesterStartDate = LocalDate.parse(year.getSecondSemester().getStartDate());
         LocalDate yearSecondSemesterEndDate = LocalDate.parse(year.getSecondSemester().getEndDate());
 
-        return (firstSemesterStartDate.isBefore(yearSecondSemesterEndDate) && secondSemesterEndDate.isAfter(yearFirstSemesterStartDate)) ||
+        return (firstSemesterStartDate.isBefore(yearSecondSemesterEndDate) && firstSemesterEndDate.isAfter(yearFirstSemesterStartDate)) ||
                (secondSemesterStartDate.isBefore(yearSecondSemesterEndDate) && secondSemesterEndDate.isAfter(yearFirstSemesterStartDate));
     }
 
-    private boolean assessmentsWithinDateRanges(YearUnit year, Map<String, String> params) {
+    public boolean validateNewYearDates(Map<String, String> params, Model model, Long directorId) {
         LocalDate firstSemesterStartDate = LocalDate.parse(params.get("firstSemester.startDate"));
         LocalDate firstSemesterEndDate = LocalDate.parse(params.get("firstSemester.endDate"));
-        LocalDate firstSemesterExamStartDate = LocalDate.parse(params.get("firstSemester.examPeriodStart"));
-        LocalDate firstSemesterExamEndDate = LocalDate.parse(params.get("firstSemester.examPeriodEnd"));
-        LocalDate firstSemesterResitEndDate = LocalDate.parse(params.get("firstSemester.resitPeriodEnd"));
-
         LocalDate secondSemesterStartDate = LocalDate.parse(params.get("secondSemester.startDate"));
         LocalDate secondSemesterEndDate = LocalDate.parse(params.get("secondSemester.endDate"));
-        LocalDate secondSemesterExamStartDate = LocalDate.parse(params.get("secondSemester.examPeriodStart"));
-        LocalDate secondSemesterExamEndDate = LocalDate.parse(params.get("secondSemester.examPeriodEnd"));
-        LocalDate secondSemesterResitEndDate = LocalDate.parse(params.get("secondSemester.resitPeriodEnd"));
-
         LocalDate specialExamStartDate = LocalDate.parse(params.get("specialExamStart"));
         LocalDate specialExamEndDate = LocalDate.parse(params.get("specialExamEnd"));
 
-        return assessmentsWithinDateRange(year.getFirstSemester(), firstSemesterStartDate, firstSemesterEndDate, firstSemesterExamStartDate, firstSemesterExamEndDate, firstSemesterResitEndDate) &&
-               assessmentsWithinDateRange(year.getSecondSemester(), secondSemesterStartDate, secondSemesterEndDate, secondSemesterExamStartDate, secondSemesterExamEndDate, secondSemesterResitEndDate) &&
-               assessmentsWithinSpecialExamRange(year, specialExamStartDate, specialExamEndDate);
-    }
+        if (firstSemesterStartDate.isAfter(firstSemesterEndDate)) {
+            model.addAttribute("error", "First semester start date cannot be after end date.");
+            return false;
+        }
+        if (secondSemesterStartDate.isAfter(secondSemesterEndDate)) {
+            model.addAttribute("error", "Second semester start date cannot be after end date.");
+            return false;
+        }
+        if (specialExamStartDate.isAfter(specialExamEndDate)) {
+            model.addAttribute("error", "Special exam start date cannot be after end date.");
+            return false;
+        }
 
-    private boolean assessmentsWithinDateRange(SemesterUnit semester, LocalDate semesterStartDate, LocalDate semesterEndDate, LocalDate examStartDate, LocalDate examEndDate, LocalDate resitEndDate) {
-        for (AssessmentUnit assessment : semester.getMapUnit().getAssessments()) {
-            LocalDate assessmentStartDate = assessment.getStartTime().toLocalDate();
-            LocalDate assessmentEndDate = assessment.getEndTime().toLocalDate();
-            String examPeriod = assessment.getExamPeriod();
-
-            if (examPeriod.equals("Teaching Period")) {
-                if (assessmentStartDate.isBefore(semesterStartDate) || assessmentEndDate.isAfter(semesterEndDate)) {
-                    return false;
-                }
-            } else if (examPeriod.equals("Exam Period")) {
-                if (assessmentStartDate.isBefore(examStartDate) || assessmentEndDate.isAfter(examEndDate)) {
-                    return false;
-                }
-            } else if (examPeriod.equals("Resource Period")) {
-                if (assessmentStartDate.isBefore(semesterStartDate) || assessmentEndDate.isAfter(resitEndDate)) {
-                    return false;
-                }
+        Optional<YearUnit> mostRecentYearOpt = getMostRecentYearUnitByDirector(directorId);
+        if (mostRecentYearOpt.isPresent()) {
+            YearUnit mostRecentYear = mostRecentYearOpt.get();
+            LocalDate mostRecentYearEndDate = LocalDate.parse(mostRecentYear.getSecondSemester().getEndDate());
+            if (firstSemesterStartDate.isBefore(mostRecentYearEndDate)) {
+                model.addAttribute("error", "New year cannot start before the end of the most recent year.");
+                return false;
             }
         }
-        return true;
-    }
 
-    private boolean assessmentsWithinSpecialExamRange(YearUnit year, LocalDate specialExamStartDate, LocalDate specialExamEndDate) {
-        for (AssessmentUnit assessment : year.getFirstSemester().getMapUnit().getAssessments()) {
-            if (assessment.getExamPeriod().equals("Special Period")) {
-                LocalDate assessmentStartDate = assessment.getStartTime().toLocalDate();
-                LocalDate assessmentEndDate = assessment.getEndTime().toLocalDate();
-                if (assessmentStartDate.isBefore(specialExamStartDate) || assessmentEndDate.isAfter(specialExamEndDate)) {
-                    return false;
-                }
-            }
-        }
-        for (AssessmentUnit assessment : year.getSecondSemester().getMapUnit().getAssessments()) {
-            if (assessment.getExamPeriod().equals("Special Period")) {
-                LocalDate assessmentStartDate = assessment.getStartTime().toLocalDate();
-                LocalDate assessmentEndDate = assessment.getEndTime().toLocalDate();
-                if (assessmentStartDate.isBefore(specialExamStartDate) || assessmentEndDate.isAfter(specialExamEndDate)) {
-                    return false;
-                }
-            }
-        }
         return true;
     }
 }

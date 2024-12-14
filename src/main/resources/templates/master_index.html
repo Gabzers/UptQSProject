@@ -17,7 +17,7 @@
             <a href="/master/create-master" class="button">Create New Master</a>
             <a href="/master/create-director" class="button">Create New Director</a>
             <form th:action="@{/master/create-room}" method="POST" style="display:inline;">
-                <button type="submit">Create New Room</button>
+                <button type="submit" class="button">Create New Room</button>
             </form>
             <a href="/logout" id="logoutBtn">Logout</a>
         </div>
@@ -41,10 +41,10 @@
                         <td th:text="${master.name}">Master Name</td>
                         <td th:text="${master.username}">Username</td> <!-- Display username -->
                         <td>
-                            <button th:onclick="'window.location.href=\'/master/edit-master?id=' + ${master.id} + '\''">Edit</button>
+                            <button th:onclick="'window.location.href=\'/master/edit-master?id=' + ${master.id} + '\''" class="button">Edit</button>
                             
                             <form th:action="@{/master/remove-master/{id}(id=${master.id})}" method="POST" style="display:inline;">
-                                <button type="submit">Remove</button>
+                                <button type="submit" class="remove-button">Remove</button>
                             </form>
                         </td>
                     </tr>
@@ -71,10 +71,10 @@
                         <td th:text="${director.department}">Department</td>
                         <td th:text="${director.username}">Username</td>
                         <td>
-                            <button th:onclick="'window.location.href=\'/master/edit-director?id=' + ${director.id} + '\''">Edit</button>
+                            <button th:onclick="'window.location.href=\'/master/edit-director?id=' + ${director.id} + '\''" class="button">Edit</button>
                             
                             <form th:action="@{/master/remove-director/{id}(id=${director.id})}" method="POST" style="display:inline;">
-                                <button type="submit">Remove</button>
+                                <button type="submit" class="remove-button">Remove</button>
                             </form>
                         </td>
                     </tr>
@@ -106,10 +106,10 @@
                         <td th:text="${room.seatsCount}">Number of Seats</td>
                         <td th:text="${room.building}">Building</td>
                         <td>
-                            <button th:onclick="'window.location.href=\'/master/edit-room?id=' + ${room.id} + '\''">Edit</button>
+                            <button th:onclick="'window.location.href=\'/master/edit-room?id=' + ${room.id} + '\''" class="button">Edit</button>
                             
                             <form th:action="@{/master/remove-room/{id}(id=${room.id})}" method="POST" style="display:inline;">
-                                <button type="submit">Remove</button>
+                                <button type="submit" class="remove-button">Remove</button>
                             </form>
                         </td>
                     </tr>
