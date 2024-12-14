@@ -94,3 +94,9 @@ avaliação;
 -> *** ajustar nomes, resource e assessment em todo o projeto
 
 -> segurança em passwords, encriptar
+
+
+__________________________________________________________________________
+NOTAS GABZ:
+- corrigir UptWebController depois
+- implementar UptWebConfigTest (talvez, mas acho que não é necessário)
