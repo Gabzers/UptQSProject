@@ -6375,3 +6375,680 @@ java.lang.UnsupportedOperationException: null
 2024-12-14T04:20:06.175Z DEBUG 9176 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
 2024-12-14T04:20:06.185Z DEBUG 9176 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
 2024-12-14T04:20:06.192Z DEBUG 9176 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:21:27.748Z DEBUG 9176 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:21:27.752Z DEBUG 9176 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:21:27.761Z DEBUG 9176 --- [upt] [http-nio-8080-exec-7] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:21:27.784Z DEBUG 9176 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:21:32.894Z DEBUG 9176 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=7", parameters={masked}
+2024-12-14T04:21:32.894Z DEBUG 9176 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:21:32.911Z DEBUG 9176 --- [upt] [http-nio-8080-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:21:32.917Z DEBUG 9176 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:21:41.274Z DEBUG 9176 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_delete_evaluation/9", parameters={masked}
+2024-12-14T04:21:41.275Z DEBUG 9176 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#deleteEvaluation(Long, Long, HttpSession)
+2024-12-14T04:21:41.324Z DEBUG 9176 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:21:41.325Z DEBUG 9176 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:21:41.334Z DEBUG 9176 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=7", parameters={masked}
+2024-12-14T04:21:41.336Z DEBUG 9176 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:21:41.345Z DEBUG 9176 --- [upt] [http-nio-8080-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:21:41.347Z DEBUG 9176 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:21:42.480Z DEBUG 9176 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:21:42.483Z DEBUG 9176 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:21:42.493Z DEBUG 9176 --- [upt] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:21:42.511Z DEBUG 9176 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:21:46.155Z DEBUG 9176 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_editUC?id=8&semester=1", parameters={masked}
+2024-12-14T04:21:46.157Z DEBUG 9176 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#editUC(Long, Integer, Model, HttpSession)
+2024-12-14T04:21:46.163Z DEBUG 9176 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:21:46.167Z DEBUG 9176 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:21:48.937Z DEBUG 9176 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_editUC/8", parameters={masked}
+2024-12-14T04:21:48.938Z DEBUG 9176 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#updateCurricularUnit(Long, String, Integer, String, Boolean, Integer, Integer, Integer, HttpSession, Model)
+2024-12-14T04:21:48.963Z DEBUG 9176 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:21:48.966Z DEBUG 9176 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:21:48.976Z DEBUG 9176 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:21:48.976Z DEBUG 9176 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:21:48.986Z DEBUG 9176 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:21:49.004Z DEBUG 9176 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:21:50.472Z DEBUG 9176 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=8", parameters={masked}
+2024-12-14T04:21:50.474Z DEBUG 9176 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:21:50.483Z DEBUG 9176 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:21:50.485Z DEBUG 9176 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:21:52.272Z DEBUG 9176 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_create_evaluation?curricularUnitId=8", parameters={masked}
+2024-12-14T04:21:52.274Z DEBUG 9176 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#createEvaluationPage(Long, Model, String, HttpSession)
+2024-12-14T04:21:52.286Z DEBUG 9176 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:21:52.294Z DEBUG 9176 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:22:03.474Z DEBUG 9176 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_addEvaluation", parameters={masked}
+2024-12-14T04:22:03.474Z DEBUG 9176 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#saveEvaluation(Map, HttpSession, Model)
+2024-12-14T04:22:03.697Z DEBUG 9176 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:22:03.700Z DEBUG 9176 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:22:03.710Z DEBUG 9176 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=8", parameters={masked}
+2024-12-14T04:22:03.711Z DEBUG 9176 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:22:03.728Z DEBUG 9176 --- [upt] [http-nio-8080-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:22:03.739Z DEBUG 9176 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:22:17.518Z DEBUG 9176 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_delete_evaluation/14", parameters={masked}
+2024-12-14T04:22:17.521Z DEBUG 9176 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#deleteEvaluation(Long, Long, HttpSession)
+2024-12-14T04:22:17.535Z DEBUG 9176 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:22:17.536Z DEBUG 9176 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:22:17.543Z DEBUG 9176 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=8", parameters={masked}
+2024-12-14T04:22:17.544Z DEBUG 9176 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:22:17.551Z DEBUG 9176 --- [upt] [http-nio-8080-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:22:17.553Z DEBUG 9176 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:22:19.007Z DEBUG 9176 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:22:19.008Z DEBUG 9176 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:22:19.015Z DEBUG 9176 --- [upt] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:22:19.027Z DEBUG 9176 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:22:21.771Z DEBUG 9176 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_editUC?id=8&semester=1", parameters={masked}
+2024-12-14T04:22:21.772Z DEBUG 9176 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#editUC(Long, Integer, Model, HttpSession)
+2024-12-14T04:22:21.778Z DEBUG 9176 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:22:21.782Z DEBUG 9176 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:22:24.408Z DEBUG 9176 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_editUC/8", parameters={masked}
+2024-12-14T04:22:24.409Z DEBUG 9176 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#updateCurricularUnit(Long, String, Integer, String, Boolean, Integer, Integer, Integer, HttpSession, Model)
+2024-12-14T04:22:24.425Z DEBUG 9176 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:22:24.426Z DEBUG 9176 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:22:24.439Z DEBUG 9176 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:22:24.439Z DEBUG 9176 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:22:24.447Z DEBUG 9176 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:22:24.462Z DEBUG 9176 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:22:26.216Z DEBUG 9176 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=8", parameters={masked}
+2024-12-14T04:22:26.217Z DEBUG 9176 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:22:26.226Z DEBUG 9176 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:22:26.229Z DEBUG 9176 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:22:27.383Z DEBUG 9176 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_create_evaluation?curricularUnitId=8", parameters={masked}
+2024-12-14T04:22:27.384Z DEBUG 9176 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#createEvaluationPage(Long, Model, String, HttpSession)
+2024-12-14T04:22:27.397Z DEBUG 9176 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:22:27.404Z DEBUG 9176 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:22:32.669Z DEBUG 9176 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_addEvaluation", parameters={masked}
+2024-12-14T04:22:32.671Z DEBUG 9176 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#saveEvaluation(Map, HttpSession, Model)
+2024-12-14T04:22:32.895Z DEBUG 9176 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:22:32.896Z DEBUG 9176 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:22:32.901Z DEBUG 9176 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=8", parameters={masked}
+2024-12-14T04:22:32.903Z DEBUG 9176 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:22:32.916Z DEBUG 9176 --- [upt] [http-nio-8080-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:22:32.920Z DEBUG 9176 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:23:07.255Z DEBUG 9176 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:23:07.256Z DEBUG 9176 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:23:07.262Z DEBUG 9176 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:23:07.271Z DEBUG 9176 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:23:11.090Z DEBUG 9176 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=8", parameters={masked}
+2024-12-14T04:23:11.091Z DEBUG 9176 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:23:11.106Z DEBUG 9176 --- [upt] [http-nio-8080-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:23:11.112Z DEBUG 9176 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:29:08.292Z  INFO 30836 --- [upt] [main] com.upt.upt.UptWebApplication            : Starting UptWebApplication using Java 21.0.5 with PID 30836 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\build\classes\java\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-14T04:29:08.296Z DEBUG 30836 --- [upt] [main] com.upt.upt.UptWebApplication            : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-14T04:29:08.298Z  INFO 30836 --- [upt] [main] com.upt.upt.UptWebApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-12-14T04:29:09.410Z  INFO 30836 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-14T04:29:09.579Z  INFO 30836 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 157 ms. Found 9 JPA repository interfaces.
+2024-12-14T04:29:10.700Z  INFO 30836 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-14T04:29:10.736Z  INFO 30836 --- [upt] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-14T04:29:10.737Z  INFO 30836 --- [upt] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-14T04:29:10.866Z  INFO 30836 --- [upt] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-14T04:29:10.867Z  INFO 30836 --- [upt] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2473 ms
+2024-12-14T04:29:11.268Z  INFO 30836 --- [upt] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-14T04:29:11.423Z  INFO 30836 --- [upt] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-14T04:29:11.503Z  INFO 30836 --- [upt] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-14T04:29:11.952Z  INFO 30836 --- [upt] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-14T04:29:12.006Z  INFO 30836 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-14T04:29:12.459Z  INFO 30836 --- [upt] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74764622
+2024-12-14T04:29:12.462Z  INFO 30836 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-14T04:29:12.526Z  WARN 30836 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-14T04:29:12.528Z  WARN 30836 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-14T04:29:14.220Z  INFO 30836 --- [upt] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-14T04:29:14.398Z  INFO 30836 --- [upt] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-14T04:29:15.181Z  WARN 30836 --- [upt] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-14T04:29:15.446Z DEBUG 30836 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 60 mappings in 'requestMappingHandlerMapping'
+2024-12-14T04:29:15.576Z DEBUG 30836 --- [upt] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-14T04:29:15.626Z DEBUG 30836 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-14T04:29:15.705Z DEBUG 30836 --- [upt] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-14T04:29:15.944Z  INFO 30836 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-14T04:29:15.983Z  INFO 30836 --- [upt] [main] com.upt.upt.UptWebApplication            : Started UptWebApplication in 8.316 seconds (process running for 9.396)
+2024-12-14T04:29:16.360Z  INFO 30836 --- [upt] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-14T04:29:16.361Z  INFO 30836 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-14T04:29:16.362Z DEBUG 30836 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-12-14T04:29:16.363Z DEBUG 30836 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-12-14T04:29:16.363Z DEBUG 30836 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-12-14T04:29:16.365Z DEBUG 30836 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@2a728076
+2024-12-14T04:29:16.367Z DEBUG 30836 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@7b45f7ef
+2024-12-14T04:29:16.402Z DEBUG 30836 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-12-14T04:29:16.405Z  INFO 30836 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 44 ms
+2024-12-14T04:29:16.419Z DEBUG 30836 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=8", parameters={masked}
+2024-12-14T04:29:16.457Z DEBUG 30836 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:29:16.529Z DEBUG 30836 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:29:16.531Z DEBUG 30836 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:29:16.539Z DEBUG 30836 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/login?error=Unauthorized%20access", parameters={masked}
+2024-12-14T04:29:16.540Z DEBUG 30836 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-14T04:29:16.562Z DEBUG 30836 --- [upt] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:29:16.896Z DEBUG 30836 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:29:16.920Z DEBUG 30836 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/js/login.js", parameters={}
+2024-12-14T04:29:16.921Z DEBUG 30836 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/css/login.css", parameters={}
+2024-12-14T04:29:16.940Z DEBUG 30836 --- [upt] [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:29:16.940Z DEBUG 30836 --- [upt] [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:29:16.955Z DEBUG 30836 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:29:16.955Z DEBUG 30836 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:29:22.698Z DEBUG 30836 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-14T04:29:22.699Z DEBUG 30836 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-14T04:29:22.945Z DEBUG 30836 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:29:22.947Z DEBUG 30836 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:29:22.953Z DEBUG 30836 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:29:22.955Z DEBUG 30836 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:29:23.003Z DEBUG 30836 --- [upt] [http-nio-8080-exec-3] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:29:23.069Z DEBUG 30836 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:29:23.125Z DEBUG 30836 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_index.css?v=0", parameters={masked}
+2024-12-14T04:29:23.129Z DEBUG 30836 --- [upt] [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:29:23.133Z DEBUG 30836 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:29:24.614Z DEBUG 30836 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/map", parameters={}
+2024-12-14T04:29:24.615Z DEBUG 30836 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.MapUnitController#showAssessmentMap(Model, HttpSession)
+2024-12-14T04:29:24.651Z DEBUG 30836 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:29:24.712Z DEBUG 30836 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:29:24.746Z DEBUG 30836 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_map.css?v=0", parameters={masked}
+2024-12-14T04:29:24.749Z DEBUG 30836 --- [upt] [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:29:24.755Z DEBUG 30836 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:29:28.466Z DEBUG 30836 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/logout", parameters={}
+2024-12-14T04:29:28.467Z DEBUG 30836 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#logout(HttpSession)
+2024-12-14T04:29:28.470Z DEBUG 30836 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:29:28.471Z DEBUG 30836 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:29:28.480Z DEBUG 30836 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-12-14T04:29:28.483Z DEBUG 30836 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-14T04:29:28.487Z DEBUG 30836 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:29:28.504Z DEBUG 30836 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:29:28.538Z DEBUG 30836 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/css/login.css", parameters={}
+2024-12-14T04:29:28.540Z DEBUG 30836 --- [upt] [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:29:28.548Z DEBUG 30836 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/js/login.js", parameters={}
+2024-12-14T04:29:28.553Z DEBUG 30836 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:29:28.555Z DEBUG 30836 --- [upt] [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:29:28.558Z DEBUG 30836 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:29:31.391Z DEBUG 30836 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-14T04:29:31.392Z DEBUG 30836 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-14T04:29:31.407Z DEBUG 30836 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:29:31.408Z DEBUG 30836 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:29:31.414Z DEBUG 30836 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/director", parameters={}
+2024-12-14T04:29:31.417Z DEBUG 30836 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#listDirectors(HttpSession, Model)
+2024-12-14T04:29:31.436Z DEBUG 30836 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:29:31.464Z DEBUG 30836 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:29:31.504Z DEBUG 30836 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/css/director_index.css", parameters={}
+2024-12-14T04:29:31.505Z DEBUG 30836 --- [upt] [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:29:31.509Z DEBUG 30836 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:29:32.993Z DEBUG 30836 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/director/viewSemester/1", parameters={}
+2024-12-14T04:29:32.996Z DEBUG 30836 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#viewSemesters(Long, Model, HttpSession)
+2024-12-14T04:29:33.005Z DEBUG 30836 --- [upt] [http-nio-8080-exec-3] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:29:33.016Z DEBUG 30836 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:29:33.059Z DEBUG 30836 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/css/director_viewSemester.css", parameters={}
+2024-12-14T04:29:33.060Z DEBUG 30836 --- [upt] [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:29:33.063Z DEBUG 30836 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:29:35.687Z DEBUG 30836 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/director/map/1st/1", parameters={}
+2024-12-14T04:29:35.689Z DEBUG 30836 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.DirectorUnitController#viewSemesterMap(String, Long, Model, HttpSession)
+2024-12-14T04:29:35.717Z DEBUG 30836 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:29:35.746Z DEBUG 30836 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:29:35.810Z DEBUG 30836 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_map.css", parameters={}
+2024-12-14T04:29:35.816Z DEBUG 30836 --- [upt] [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:29:35.824Z DEBUG 30836 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:29:40.830Z DEBUG 30836 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/logout", parameters={}
+2024-12-14T04:29:40.832Z DEBUG 30836 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#logout(HttpSession)
+2024-12-14T04:29:40.834Z DEBUG 30836 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:29:40.835Z DEBUG 30836 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:29:40.839Z DEBUG 30836 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-12-14T04:29:40.840Z DEBUG 30836 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-14T04:29:40.841Z DEBUG 30836 --- [upt] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:29:40.843Z DEBUG 30836 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:29:40.885Z DEBUG 30836 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/css/login.css", parameters={}
+2024-12-14T04:29:40.888Z DEBUG 30836 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/js/login.js", parameters={}
+2024-12-14T04:29:40.889Z DEBUG 30836 --- [upt] [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:29:40.890Z DEBUG 30836 --- [upt] [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:29:40.901Z DEBUG 30836 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:29:40.902Z DEBUG 30836 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:29:43.310Z DEBUG 30836 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-14T04:29:43.320Z DEBUG 30836 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-14T04:29:43.345Z DEBUG 30836 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:29:43.347Z DEBUG 30836 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:29:43.356Z DEBUG 30836 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:29:43.357Z DEBUG 30836 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:29:43.374Z DEBUG 30836 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:29:43.394Z DEBUG 30836 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:29:43.430Z DEBUG 30836 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_index.css?v=0", parameters={masked}
+2024-12-14T04:29:43.431Z DEBUG 30836 --- [upt] [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:29:43.434Z DEBUG 30836 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:31:21.207Z  INFO 34124 --- [upt] [main] com.upt.upt.UptWebApplication            : Starting UptWebApplication using Java 21.0.5 with PID 34124 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\build\classes\java\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-14T04:31:21.289Z DEBUG 34124 --- [upt] [main] com.upt.upt.UptWebApplication            : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-14T04:31:21.299Z  INFO 34124 --- [upt] [main] com.upt.upt.UptWebApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-12-14T04:31:23.384Z  INFO 34124 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-14T04:31:23.640Z  INFO 34124 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 234 ms. Found 9 JPA repository interfaces.
+2024-12-14T04:31:25.318Z  INFO 34124 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-14T04:31:25.338Z  INFO 34124 --- [upt] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-14T04:31:25.339Z  INFO 34124 --- [upt] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-14T04:31:25.508Z  INFO 34124 --- [upt] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-14T04:31:25.511Z  INFO 34124 --- [upt] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4034 ms
+2024-12-14T04:31:26.599Z  INFO 34124 --- [upt] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-14T04:31:26.820Z  INFO 34124 --- [upt] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-14T04:31:26.886Z  INFO 34124 --- [upt] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-14T04:31:27.771Z  INFO 34124 --- [upt] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-14T04:31:27.837Z  INFO 34124 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-14T04:31:28.329Z  INFO 34124 --- [upt] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@10b87ff6
+2024-12-14T04:31:28.332Z  INFO 34124 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-14T04:31:28.401Z  WARN 34124 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-14T04:31:28.403Z  WARN 34124 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-14T04:31:30.413Z  INFO 34124 --- [upt] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-14T04:31:30.598Z  INFO 34124 --- [upt] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-14T04:31:32.751Z  WARN 34124 --- [upt] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-14T04:31:33.249Z DEBUG 34124 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 60 mappings in 'requestMappingHandlerMapping'
+2024-12-14T04:31:33.442Z DEBUG 34124 --- [upt] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-14T04:31:33.518Z DEBUG 34124 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-14T04:31:33.580Z DEBUG 34124 --- [upt] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-14T04:31:33.756Z  INFO 34124 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-14T04:31:33.765Z  INFO 34124 --- [upt] [main] com.upt.upt.UptWebApplication            : Started UptWebApplication in 13.852 seconds (process running for 14.657)
+2024-12-14T04:32:45.563Z  INFO 33300 --- [upt] [main] com.upt.upt.UptWebApplication            : Starting UptWebApplication using Java 21.0.5 with PID 33300 (D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject\build\classes\java\main started by gabri in D:\Documentos\Faculdade\3º Ano GAB\QualidadeSoftware\Projeto POTENTE\UptQSProject)
+2024-12-14T04:32:45.568Z DEBUG 33300 --- [upt] [main] com.upt.upt.UptWebApplication            : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-14T04:32:45.569Z  INFO 33300 --- [upt] [main] com.upt.upt.UptWebApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-12-14T04:32:46.855Z  INFO 33300 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-14T04:32:47.015Z  INFO 33300 --- [upt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 135 ms. Found 9 JPA repository interfaces.
+2024-12-14T04:32:47.993Z  INFO 33300 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-14T04:32:48.020Z  INFO 33300 --- [upt] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-14T04:32:48.021Z  INFO 33300 --- [upt] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-14T04:32:48.122Z  INFO 33300 --- [upt] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-14T04:32:48.123Z  INFO 33300 --- [upt] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2464 ms
+2024-12-14T04:32:48.339Z  INFO 33300 --- [upt] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-14T04:32:48.440Z  INFO 33300 --- [upt] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-14T04:32:48.503Z  INFO 33300 --- [upt] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-14T04:32:48.927Z  INFO 33300 --- [upt] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-14T04:32:48.978Z  INFO 33300 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-14T04:32:49.421Z  INFO 33300 --- [upt] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@33187485
+2024-12-14T04:32:49.424Z  INFO 33300 --- [upt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-14T04:32:49.495Z  WARN 33300 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-14T04:32:49.497Z  WARN 33300 --- [upt] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-14T04:32:51.462Z  INFO 33300 --- [upt] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-14T04:32:51.641Z  INFO 33300 --- [upt] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-14T04:32:52.552Z  WARN 33300 --- [upt] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-14T04:32:52.792Z DEBUG 33300 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 60 mappings in 'requestMappingHandlerMapping'
+2024-12-14T04:32:52.967Z DEBUG 33300 --- [upt] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-14T04:32:53.037Z DEBUG 33300 --- [upt] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-14T04:32:53.120Z DEBUG 33300 --- [upt] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-14T04:32:53.360Z  INFO 33300 --- [upt] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-14T04:32:53.371Z  INFO 33300 --- [upt] [main] com.upt.upt.UptWebApplication            : Started UptWebApplication in 8.581 seconds (process running for 9.291)
+2024-12-14T04:33:25.398Z  INFO 33300 --- [upt] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-14T04:33:25.399Z  INFO 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-14T04:33:25.399Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-12-14T04:33:25.400Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-12-14T04:33:25.401Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-12-14T04:33:25.402Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@13e6ab86
+2024-12-14T04:33:25.404Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@3b3dc752
+2024-12-14T04:33:25.404Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-12-14T04:33:25.405Z  INFO 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2024-12-14T04:33:25.420Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:33:25.447Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:33:25.591Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:33:25.597Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:33:25.612Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/login?error=Unauthorized%20access", parameters={masked}
+2024-12-14T04:33:25.616Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-14T04:33:25.663Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:33:26.065Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:33:26.093Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/css/login.css", parameters={}
+2024-12-14T04:33:26.094Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/js/login.js", parameters={}
+2024-12-14T04:33:26.116Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:33:26.116Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:33:26.142Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:33:26.144Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:33:28.655Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-14T04:33:28.656Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-14T04:33:28.922Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:33:28.923Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:33:28.928Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:33:28.929Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:33:28.974Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:33:29.072Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:33:29.158Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_index.css?v=0", parameters={masked}
+2024-12-14T04:33:29.167Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:33:29.174Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:33:33.353Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=8", parameters={masked}
+2024-12-14T04:33:33.355Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:33:33.381Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:33:33.429Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:33:33.463Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_evaluationsUC.css", parameters={}
+2024-12-14T04:33:33.467Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:33:33.476Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:33:35.269Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:33:35.270Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:33:35.279Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:33:35.299Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:33:36.649Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=7", parameters={masked}
+2024-12-14T04:33:36.651Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:33:36.663Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:33:36.670Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:34:26.576Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_create_evaluation?curricularUnitId=7", parameters={masked}
+2024-12-14T04:34:26.578Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#createEvaluationPage(Long, Model, String, HttpSession)
+2024-12-14T04:34:26.618Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:34:26.667Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:34:26.716Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_addEvaluations.css", parameters={}
+2024-12-14T04:34:26.718Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/js/coordinator_addEvaluations.js", parameters={}
+2024-12-14T04:34:26.727Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:34:26.728Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:34:26.738Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:34:26.751Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:34:38.957Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_addEvaluation", parameters={masked}
+2024-12-14T04:34:38.958Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#saveEvaluation(Map, HttpSession, Model)
+2024-12-14T04:34:39.369Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:34:39.370Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:34:39.377Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=7", parameters={masked}
+2024-12-14T04:34:39.378Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:34:39.399Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:34:39.407Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:34:39.439Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_evaluationsUC.css", parameters={}
+2024-12-14T04:34:39.440Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:34:39.442Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:34:42.370Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:34:42.371Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:34:42.380Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:34:42.401Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:34:42.436Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_index.css?v=0", parameters={masked}
+2024-12-14T04:34:42.440Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:34:42.442Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:35:01.284Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=7", parameters={masked}
+2024-12-14T04:35:01.286Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:35:01.299Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:35:01.309Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:35:01.399Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_evaluationsUC.css", parameters={}
+2024-12-14T04:35:01.402Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:35:01.406Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:36:58.715Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_create_evaluation?curricularUnitId=7", parameters={masked}
+2024-12-14T04:36:58.716Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#createEvaluationPage(Long, Model, String, HttpSession)
+2024-12-14T04:36:58.739Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:36:58.749Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:36:58.792Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_addEvaluations.css", parameters={}
+2024-12-14T04:36:58.793Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:36:58.798Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/js/coordinator_addEvaluations.js", parameters={}
+2024-12-14T04:36:58.802Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:36:58.801Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:36:58.806Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:37:09.347Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_addEvaluation", parameters={masked}
+2024-12-14T04:37:09.348Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#saveEvaluation(Map, HttpSession, Model)
+2024-12-14T04:37:09.633Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:37:09.633Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:37:09.641Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=7", parameters={masked}
+2024-12-14T04:37:09.642Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:37:09.662Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:37:09.674Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:37:09.714Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_evaluationsUC.css", parameters={}
+2024-12-14T04:37:09.716Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:37:09.718Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:37:12.157Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_create_evaluation?curricularUnitId=7", parameters={masked}
+2024-12-14T04:37:12.158Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#createEvaluationPage(Long, Model, String, HttpSession)
+2024-12-14T04:37:12.179Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:37:12.190Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:37:22.347Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_addEvaluation", parameters={masked}
+2024-12-14T04:37:22.348Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#saveEvaluation(Map, HttpSession, Model)
+2024-12-14T04:37:22.612Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:37:22.616Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:37:22.633Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_create_evaluation?curricularUnitId=7&error=Only%20one%20%27Work%20Presentation%27%20or%20%27Group%20Work%20Presentation%27%20can%20be%20scheduled%20within%20the%20same%2024-hour%20period.", parameters={masked}
+2024-12-14T04:37:22.646Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#createEvaluationPage(Long, Model, String, HttpSession)
+2024-12-14T04:37:22.681Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:37:22.701Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:37:29.445Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=7", parameters={masked}
+2024-12-14T04:37:29.446Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:37:29.455Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:37:29.463Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:37:34.706Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_create_evaluation?curricularUnitId=7", parameters={masked}
+2024-12-14T04:37:34.708Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#createEvaluationPage(Long, Model, String, HttpSession)
+2024-12-14T04:37:34.723Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:37:34.729Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:37:34.766Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_addEvaluations.css", parameters={}
+2024-12-14T04:37:34.770Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:37:34.780Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:37:34.766Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/js/coordinator_addEvaluations.js", parameters={}
+2024-12-14T04:37:34.783Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:37:34.786Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:37:43.604Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_addEvaluation", parameters={masked}
+2024-12-14T04:37:43.605Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#saveEvaluation(Map, HttpSession, Model)
+2024-12-14T04:37:43.631Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:37:43.631Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:37:43.641Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_create_evaluation?curricularUnitId=7&error=Not%20enough%20available%20rooms%20to%20accommodate%20all%20students.", parameters={masked}
+2024-12-14T04:37:43.644Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#createEvaluationPage(Long, Model, String, HttpSession)
+2024-12-14T04:37:43.663Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:37:43.675Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:38:08.371Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=7", parameters={masked}
+2024-12-14T04:38:08.373Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:38:08.386Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:38:08.396Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:38:08.425Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_evaluationsUC.css", parameters={}
+2024-12-14T04:38:08.433Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:38:08.435Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:38:11.716Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:38:11.717Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:38:11.726Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:38:11.742Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:38:11.777Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_index.css?v=0", parameters={masked}
+2024-12-14T04:38:11.790Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:38:11.796Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:38:19.996Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_editUC?id=1&semester=1", parameters={masked}
+2024-12-14T04:38:19.998Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#editUC(Long, Integer, Model, HttpSession)
+2024-12-14T04:38:20.006Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:38:20.016Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:38:20.052Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_editUC.css", parameters={}
+2024-12-14T04:38:20.055Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:38:20.059Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:38:23.177Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_editUC/1", parameters={masked}
+2024-12-14T04:38:23.179Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#updateCurricularUnit(Long, String, Integer, String, Boolean, Integer, Integer, Integer, HttpSession, Model)
+2024-12-14T04:38:23.217Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:38:23.220Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:38:23.229Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:38:23.229Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:38:23.241Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:38:23.259Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:38:43.700Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=1", parameters={masked}
+2024-12-14T04:38:43.701Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:38:43.711Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:38:43.713Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:38:44.774Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_create_evaluation?curricularUnitId=1", parameters={masked}
+2024-12-14T04:38:44.777Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#createEvaluationPage(Long, Model, String, HttpSession)
+2024-12-14T04:38:44.792Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:38:44.800Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:38:44.845Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_addEvaluations.css", parameters={}
+2024-12-14T04:38:44.845Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/js/coordinator_addEvaluations.js", parameters={}
+2024-12-14T04:38:44.847Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:38:44.861Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:38:44.886Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:38:44.908Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:38:53.100Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_addEvaluation", parameters={masked}
+2024-12-14T04:38:53.101Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#saveEvaluation(Map, HttpSession, Model)
+2024-12-14T04:38:53.121Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:38:53.122Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:38:53.130Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_create_evaluation?curricularUnitId=1&error=Not%20enough%20available%20rooms%20to%20accommodate%20all%20students.", parameters={masked}
+2024-12-14T04:38:53.130Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#createEvaluationPage(Long, Model, String, HttpSession)
+2024-12-14T04:38:53.150Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:38:53.157Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:38:55.831Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=1", parameters={masked}
+2024-12-14T04:38:55.832Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:38:55.842Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:38:55.845Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:38:55.881Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_evaluationsUC.css", parameters={}
+2024-12-14T04:38:55.883Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:38:55.886Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:38:57.759Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:38:57.760Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:38:57.767Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:38:57.780Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:38:57.828Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_index.css?v=0", parameters={masked}
+2024-12-14T04:38:57.831Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:38:57.833Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:38:59.361Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_editUC?id=1&semester=1", parameters={masked}
+2024-12-14T04:38:59.363Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#editUC(Long, Integer, Model, HttpSession)
+2024-12-14T04:38:59.369Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:38:59.373Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:39:02.058Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_editUC/1", parameters={masked}
+2024-12-14T04:39:02.062Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#updateCurricularUnit(Long, String, Integer, String, Boolean, Integer, Integer, Integer, HttpSession, Model)
+2024-12-14T04:39:02.081Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:39:02.083Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:39:02.090Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:39:02.097Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:39:02.104Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:39:02.121Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:39:06.217Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=1", parameters={masked}
+2024-12-14T04:39:06.218Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:39:06.226Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:39:06.228Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:39:07.627Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_create_evaluation?curricularUnitId=1", parameters={masked}
+2024-12-14T04:39:07.628Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#createEvaluationPage(Long, Model, String, HttpSession)
+2024-12-14T04:39:07.647Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:39:07.659Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:39:20.502Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_addEvaluation", parameters={masked}
+2024-12-14T04:39:20.503Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#saveEvaluation(Map, HttpSession, Model)
+2024-12-14T04:39:20.519Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:39:20.520Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:39:20.526Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_create_evaluation?curricularUnitId=1&error=Not%20enough%20available%20rooms%20to%20accommodate%20all%20students.", parameters={masked}
+2024-12-14T04:39:20.528Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#createEvaluationPage(Long, Model, String, HttpSession)
+2024-12-14T04:39:20.542Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:39:20.547Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:39:44.033Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=1", parameters={masked}
+2024-12-14T04:39:44.034Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:39:44.043Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:39:44.045Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:39:44.067Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_evaluationsUC.css", parameters={}
+2024-12-14T04:39:44.069Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:39:44.079Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:39:45.939Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:39:45.942Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:39:45.950Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:39:45.971Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:39:46.014Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_index.css?v=0", parameters={masked}
+2024-12-14T04:39:46.016Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:39:46.018Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:39:47.934Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_editUC?id=1&semester=1", parameters={masked}
+2024-12-14T04:39:47.935Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#editUC(Long, Integer, Model, HttpSession)
+2024-12-14T04:39:47.943Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:39:47.947Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:39:47.984Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_editUC.css", parameters={}
+2024-12-14T04:39:47.984Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:39:47.988Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:40:06.955Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_editUC/1", parameters={masked}
+2024-12-14T04:40:06.958Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#updateCurricularUnit(Long, String, Integer, String, Boolean, Integer, Integer, Integer, HttpSession, Model)
+2024-12-14T04:40:06.986Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:40:06.987Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:40:07.002Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:40:07.003Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:40:07.012Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:40:07.034Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:40:08.937Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=1", parameters={masked}
+2024-12-14T04:40:08.938Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:40:08.946Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:40:08.949Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:40:10.033Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_create_evaluation?curricularUnitId=1", parameters={masked}
+2024-12-14T04:40:10.034Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#createEvaluationPage(Long, Model, String, HttpSession)
+2024-12-14T04:40:10.052Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:40:10.057Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:40:10.093Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_addEvaluations.css", parameters={}
+2024-12-14T04:40:10.096Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:40:10.099Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:40:10.099Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/js/coordinator_addEvaluations.js", parameters={}
+2024-12-14T04:40:10.101Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:40:10.114Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:40:17.685Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_addEvaluation", parameters={masked}
+2024-12-14T04:40:17.686Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#saveEvaluation(Map, HttpSession, Model)
+2024-12-14T04:40:18.001Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:40:18.002Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:40:18.007Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=1", parameters={masked}
+2024-12-14T04:40:18.007Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:40:18.016Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:40:18.024Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:40:21.950Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_delete_evaluation/18", parameters={masked}
+2024-12-14T04:40:21.952Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#deleteEvaluation(Long, Long, HttpSession)
+2024-12-14T04:40:21.981Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:40:21.982Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:40:21.994Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=1", parameters={masked}
+2024-12-14T04:40:21.995Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:40:22.006Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:40:22.009Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:40:23.188Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:40:23.191Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:40:23.198Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:40:23.211Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:40:26.154Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=8", parameters={masked}
+2024-12-14T04:40:26.155Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:40:26.163Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:40:26.166Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:40:27.362Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_create_evaluation?curricularUnitId=8", parameters={masked}
+2024-12-14T04:40:27.364Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#createEvaluationPage(Long, Model, String, HttpSession)
+2024-12-14T04:40:27.375Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:40:27.381Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:40:47.327Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_addEvaluation", parameters={masked}
+2024-12-14T04:40:47.328Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#saveEvaluation(Map, HttpSession, Model)
+2024-12-14T04:40:47.340Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:40:47.341Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:40:47.349Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_create_evaluation?curricularUnitId=8&error=For%20Mixed%20evaluation%20type,%20at%20least%20one%20evaluation%20must%20be%20of%20type%20%27Exam%20Period%27.", parameters={masked}
+2024-12-14T04:40:47.351Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#createEvaluationPage(Long, Model, String, HttpSession)
+2024-12-14T04:40:47.366Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:40:47.373Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:40:50.038Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/logout", parameters={}
+2024-12-14T04:40:50.041Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#logout(HttpSession)
+2024-12-14T04:40:50.044Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:40:50.045Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:40:50.054Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-12-14T04:40:50.056Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-14T04:40:50.066Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:40:50.070Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:40:50.103Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/css/login.css", parameters={}
+2024-12-14T04:40:50.103Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/js/login.js", parameters={}
+2024-12-14T04:40:50.104Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:40:50.105Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:40:50.108Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:40:50.108Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:40:52.464Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-14T04:40:52.465Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-14T04:40:52.479Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:40:52.481Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:40:52.487Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:40:52.488Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:40:52.495Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:40:52.500Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:40:52.528Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_index.css?v=0", parameters={masked}
+2024-12-14T04:40:52.530Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:40:52.537Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:40:57.892Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/logout", parameters={}
+2024-12-14T04:40:57.893Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#logout(HttpSession)
+2024-12-14T04:40:57.896Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:40:57.900Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:40:57.909Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2024-12-14T04:40:57.910Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#login(String, Model)
+2024-12-14T04:40:57.912Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:40:57.915Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:40:59.943Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/validate-login", parameters={masked}
+2024-12-14T04:40:59.944Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.UptWebController#validateLogin(String, String, HttpSession)
+2024-12-14T04:40:59.958Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:40:59.959Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:40:59.968Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:40:59.970Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:40:59.984Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:40:59.988Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:41:01.928Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_editUC?id=10&semester=1", parameters={masked}
+2024-12-14T04:41:01.930Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#editUC(Long, Integer, Model, HttpSession)
+2024-12-14T04:41:01.934Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:41:01.937Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:41:01.977Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_editUC.css", parameters={}
+2024-12-14T04:41:01.978Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:41:01.980Z DEBUG 33300 --- [upt] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:41:06.126Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_editUC/10", parameters={masked}
+2024-12-14T04:41:06.127Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#updateCurricularUnit(Long, String, Integer, String, Boolean, Integer, Integer, Integer, HttpSession, Model)
+2024-12-14T04:41:06.144Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:41:06.144Z DEBUG 33300 --- [upt] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:41:06.152Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/coordinator", parameters={}
+2024-12-14T04:41:06.152Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#showCourseList(Model, HttpSession)
+2024-12-14T04:41:06.160Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:41:06.164Z DEBUG 33300 --- [upt] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:41:07.494Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_evaluationsUC?id=10", parameters={masked}
+2024-12-14T04:41:07.496Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.CurricularUnitController#evaluationsUCCurricular(Long, Model, HttpSession)
+2024-12-14T04:41:07.504Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:41:07.505Z DEBUG 33300 --- [upt] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:41:07.541Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_evaluationsUC.css", parameters={}
+2024-12-14T04:41:07.543Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:41:07.543Z DEBUG 33300 --- [upt] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:41:08.847Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_create_evaluation?curricularUnitId=10", parameters={masked}
+2024-12-14T04:41:08.849Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#createEvaluationPage(Long, Model, String, HttpSession)
+2024-12-14T04:41:08.860Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:41:08.865Z DEBUG 33300 --- [upt] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-14T04:41:08.916Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/css/coordinator_addEvaluations.css", parameters={}
+2024-12-14T04:41:08.918Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/js/coordinator_addEvaluations.js", parameters={}
+2024-12-14T04:41:08.919Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:41:08.920Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-12-14T04:41:08.922Z DEBUG 33300 --- [upt] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:41:08.923Z DEBUG 33300 --- [upt] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-12-14T04:41:16.816Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : POST "/coordinator/coordinator_addEvaluation", parameters={masked}
+2024-12-14T04:41:16.818Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#saveEvaluation(Map, HttpSession, Model)
+2024-12-14T04:41:16.834Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2024-12-14T04:41:16.834Z DEBUG 33300 --- [upt] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2024-12-14T04:41:16.916Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/coordinator/coordinator_create_evaluation?curricularUnitId=10&error=Not%20enough%20available%20rooms%20to%20accommodate%20all%20students.", parameters={masked}
+2024-12-14T04:41:16.921Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.upt.upt.controller.AssessmentUnitController#createEvaluationPage(Long, Model, String, HttpSession)
+2024-12-14T04:41:16.935Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2024-12-14T04:41:16.939Z DEBUG 33300 --- [upt] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK

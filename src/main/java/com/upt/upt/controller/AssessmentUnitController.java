@@ -156,6 +156,39 @@ public String saveEvaluation(@RequestParam Map<String, String> params, HttpSessi
         return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=" + e.getMessage();
     }
 
+    // Validate no overlap with other assessments in the same year/semester within the same coordinator, except for "Work Presentation" and "Group Work Presentation"
+    List<AssessmentUnit> assessmentsInSameYearSemester = assessmentUnitService.getAssessmentsByYearAndSemesterAndCoordinator(uc.getYear(), uc.getSemester(), coordinatorId);
+    for (AssessmentUnit assessment : assessmentsInSameYearSemester) {
+        if (!assessment.getType().equals("Work Presentation") && !assessment.getType().equals("Group Work Presentation") &&
+            !params.get("assessmentType").equals("Work Presentation") && !params.get("assessmentType").equals("Group Work Presentation") &&
+            assessment.getStartTime().isBefore(endTime.plusHours(24)) && assessment.getEndTime().isAfter(startTime.minusHours(24))) {
+            model.addAttribute("error", "There must be at least 24 hours between assessments in the same year/semester.");
+            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=There must be at least 24 hours between assessments in the same year/semester.";
+        }
+        if ((assessment.getType().equals("Work Presentation") || assessment.getType().equals("Group Work Presentation")) &&
+            (params.get("assessmentType").equals("Work Presentation") || params.get("assessmentType").equals("Group Work Presentation")) &&
+            assessment.getStartTime().isBefore(endTime.plusHours(24)) && assessment.getEndTime().isAfter(startTime.minusHours(24))) {
+            model.addAttribute("error", "Only one 'Work Presentation' or 'Group Work Presentation' can be scheduled within the same 24-hour period.");
+            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=Only one 'Work Presentation' or 'Group Work Presentation' can be scheduled within the same 24-hour period.";
+        }
+        if ((assessment.getType().equals("Work Presentation") || assessment.getType().equals("Group Work Presentation") ||
+            params.get("assessmentType").equals("Work Presentation") || params.get("assessmentType").equals("Group Work Presentation")) &&
+            (assessment.getStartTime().isEqual(startTime) || assessment.getEndTime().isEqual(endTime) ||
+            (startTime.isBefore(assessment.getEndTime()) && endTime.isAfter(assessment.getStartTime())))) {
+            model.addAttribute("error", "No other assessments can be scheduled at the same time as a 'Work Presentation' or 'Group Work Presentation'.");
+            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=No other assessments can be scheduled at the same time as a 'Work Presentation' or 'Group Work Presentation'.";
+        }
+    }
+
+    // Validate no overlap with other assessments of different years but same UC within the same coordinator
+    List<AssessmentUnit> assessmentsInDifferentYearsSameUC = assessmentUnitService.getAssessmentsByDifferentYearsSameSemesterAndCoordinator(uc.getSemester(), coordinatorId, uc.getYear());
+    for (AssessmentUnit assessment : assessmentsInDifferentYearsSameUC) {
+        if (assessment.getStartTime().isBefore(endTime.plusHours(24)) && assessment.getEndTime().isAfter(startTime.minusHours(24))) {
+            model.addAttribute("error", "Avoid scheduling assessments of different years but same UC on overlapping dates.");
+            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=Avoid scheduling assessments of different years but same UC on overlapping dates.";
+        }
+    }
+
     AssessmentUnit assessmentUnit = new AssessmentUnit();
     assessmentUnit.setType(params.get("assessmentType"));
     assessmentUnit.setWeight(Integer.parseInt(params.get("assessmentWeight")));

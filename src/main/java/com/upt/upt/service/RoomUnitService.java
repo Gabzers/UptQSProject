@@ -184,21 +184,18 @@ public class RoomUnitService {
      * @return a list of available rooms
      */
     public List<RoomUnit> getAvailableRooms(int numStudents, boolean computerRequired, LocalDateTime startTime, LocalDateTime endTime) {
-        String requiredMaterialType = computerRequired ? "Computers" : "Desks";
-    
         // Fetch and filter rooms based on criteria
         List<RoomUnit> availableRooms = roomUnitRepository.findAll().stream()
                 .filter(room -> room.getSeatsCount() > 0) // Ignorar salas com capacidade zero
                 .filter(room -> computerRequired
                         ? room.getMaterialType().equals("Computers") // Só salas com computadores se necessário
                         : !room.getMaterialType().equals("Computers")) // Excluir salas com computadores caso não seja necessário
-                .filter(room -> room.getMaterialType().equals("Desks") || room.getMaterialType().equals("Amphitheater"))
                 .filter(room -> isRoomAvailable(room.getId(), startTime, endTime)) // Verificar disponibilidade da sala
                 .collect(Collectors.toList());
-    
+
         List<RoomUnit> selectedRooms = new ArrayList<>();
         int remainingStudents = numStudents;
-    
+
         // Continuar alocando salas até que todos os alunos sejam alocados
         while (remainingStudents > 0 && !availableRooms.isEmpty()) {
             final int students = remainingStudents; // Use a final variable within the lambda expression
@@ -208,22 +205,22 @@ public class RoomUnitService {
                 int diff2 = Math.abs(r2.getSeatsCount() - students);
                 return Integer.compare(diff1, diff2);
             });
-    
+
             RoomUnit bestRoom = availableRooms.get(0);
             if (isRoomAvailable(bestRoom.getId(), startTime, endTime)) {
                 selectedRooms.add(bestRoom);
                 remainingStudents -= bestRoom.getSeatsCount();
             }
-    
+
             // Remover a sala alocada da lista de disponíveis
             availableRooms.remove(bestRoom);
         }
-    
+
         // Verificar se todos os alunos foram alocados
         if (remainingStudents > 0) {
             throw new IllegalStateException("Not enough available rooms to accommodate all students.");
         }
-    
+
         // Retornar as salas alocadas
         return selectedRooms;
     }

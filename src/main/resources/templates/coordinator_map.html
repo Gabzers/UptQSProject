@@ -31,8 +31,7 @@
                             <th>Class Time</th>
                             <th>Start Time</th>
                             <th>End Time</th>
-                            <th>Room</th>
-                            <th>Room Building</th>
+                            <th>Rooms</th>
                             <th>Minimum Grade</th>
                         </tr>
                     </thead>
@@ -46,8 +45,11 @@
                             <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
                             <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
                             <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
-                            <td th:text="${assessment.room.roomNumber}">Room</td>
-                            <td th:text="${assessment.room.building}">Room Building</td>
+                            <td>
+                                <ul>
+                                    <li th:each="room : ${assessment.rooms}" th:text="${room.roomNumber + ' - ' + room.building}">Room</li>
+                                </ul>
+                            </td>
                             <td th:text="${assessment.minimumGrade}">0.0</td>
                         </tr>
                         <tr th:if="${noNormalPeriodFirstSemester}">
@@ -67,8 +69,7 @@
                             <th>Class Time</th>
                             <th>Start Time</th>
                             <th>End Time</th>
-                            <th>Room</th>
-                            <th>Room Building</th>
+                            <th>Rooms</th>
                             <th>Minimum Grade</th>
                         </tr>
                     </thead>
@@ -82,8 +83,11 @@
                             <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
                             <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
                             <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
-                            <td th:text="${assessment.room.roomNumber}">Room</td>
-                            <td th:text="${assessment.room.building}">Room Building</td>
+                            <td>
+                                <ul>
+                                    <li th:each="room : ${assessment.rooms}" th:text="${room.roomNumber + ' - ' + room.building}">Room</li>
+                                </ul>
+                            </td>
                             <td th:text="${assessment.minimumGrade}">0.0</td>
                         </tr>
                         <tr th:if="${noResourcePeriodFirstSemester}">
@@ -103,8 +107,7 @@
                             <th>Class Time</th>
                             <th>Start Time</th>
                             <th>End Time</th>
-                            <th>Room</th>
-                            <th>Room Building</th>
+                            <th>Rooms</th>
                             <th>Minimum Grade</th>
                         </tr>
                     </thead>
@@ -118,8 +121,11 @@
                             <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
                             <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
                             <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
-                            <td th:text="${assessment.room.roomNumber}">Room</td>
-                            <td th:text="${assessment.room.building}">Room Building</td>
+                            <td>
+                                <ul>
+                                    <li th:each="room : ${assessment.rooms}" th:text="${room.roomNumber + ' - ' + room.building}">Room</li>
+                                </ul>
+                            </td>
                             <td th:text="${assessment.minimumGrade}">0.0</td>
                         </tr>
                         <tr th:if="${noSpecialPeriodFirstSemester}">
@@ -148,8 +154,7 @@
                             <th>Class Time</th>
                             <th>Start Time</th>
                             <th>End Time</th>
-                            <th>Room</th>
-                            <th>Room Building</th>
+                            <th>Rooms</th>
                             <th>Minimum Grade</th>
                         </tr>
                     </thead>
@@ -163,8 +168,11 @@
                             <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
                             <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
                             <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
-                            <td th:text="${assessment.room.roomNumber}">Room</td>
-                            <td th:text="${assessment.room.building}">Room Building</td>
+                            <td>
+                                <ul>
+                                    <li th:each="room : ${assessment.rooms}" th:text="${room.roomNumber + ' - ' + room.building}">Room</li>
+                                </ul>
+                            </td>
                             <td th:text="${assessment.minimumGrade}">0.0</td>
                         </tr>
                         <tr th:if="${noNormalPeriodSecondSemester}">
@@ -184,8 +192,7 @@
                             <th>Class Time</th>
                             <th>Start Time</th>
                             <th>End Time</th>
-                            <th>Room</th>
-                            <th>Room Building</th>
+                            <th>Rooms</th>
                             <th>Minimum Grade</th>
                         </tr>
                     </thead>
@@ -199,8 +206,11 @@
                             <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
                             <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
                             <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
-                            <td th:text="${assessment.room.roomNumber}">Room</td>
-                            <td th:text="${assessment.room.building}">Room Building</td>
+                            <td>
+                                <ul>
+                                    <li th:each="room : ${assessment.rooms}" th:text="${room.roomNumber + ' - ' + room.building}">Room</li>
+                                </ul>
+                            </td>
                             <td th:text="${assessment.minimumGrade}">0.0</td>
                         </tr>
                         <tr th:if="${noResourcePeriodSecondSemester}">
@@ -220,8 +230,7 @@
                             <th>Class Time</th>
                             <th>Start Time</th>
                             <th>End Time</th>
-                            <th>Room</th>
-                            <th>Room Building</th>
+                            <th>Rooms</th>
                             <th>Minimum Grade</th>
                         </tr>
                     </thead>
@@ -235,8 +244,11 @@
                             <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
                             <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
                             <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
-                            <td th:text="${assessment.room.roomNumber}">Room</td>
-                            <td th:text="${assessment.room.building}">Room Building</td>
+                            <td>
+                                <ul>
+                                    <li th:each="room : ${assessment.rooms}" th:text="${room.roomNumber + ' - ' + room.building}">Room</li>
+                                </ul>
+                            </td>
                             <td th:text="${assessment.minimumGrade}">0.0</td>
                         </tr>
                         <tr th:if="${noSpecialPeriodSecondSemester}">
