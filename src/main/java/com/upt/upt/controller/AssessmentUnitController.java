@@ -157,11 +157,16 @@ public String saveEvaluation(@RequestParam Map<String, String> params, HttpSessi
     }
 
     List<RoomUnit> selectedRooms;
-    try {
-        selectedRooms = roomUnitService.getAvailableRooms(uc.getStudentsNumber(), computerRequired, startTime, endTime);
-    } catch (IllegalStateException e) {
-        model.addAttribute("error", e.getMessage());
-        return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=" + e.getMessage();
+    String assessmentType = params.get("assessmentType");
+    if ("Work Developed Throughout the Semester".equals(assessmentType) || "Work Submission".equals(assessmentType)) {
+        selectedRooms = List.of(roomUnitService.getOrCreateOnlineRoom());
+    } else {
+        try {
+            selectedRooms = roomUnitService.getAvailableRooms(uc.getStudentsNumber(), computerRequired, startTime, endTime);
+        } catch (IllegalStateException e) {
+            model.addAttribute("error", e.getMessage());
+            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=" + e.getMessage();
+        }
     }
 
     // Validate no overlap with other assessments in the same year/semester within the same coordinator, except for "Work Presentation" and "Group Work Presentation"

@@ -243,4 +243,23 @@ public class RoomUnitService {
         return existingRoom.isPresent() && !existingRoom.get().getId().equals(roomId);
     }
     
+    /**
+     * Get or create the "Via Online" room.
+     *
+     * @return the "Via Online" RoomUnit
+     */
+    public RoomUnit getOrCreateOnlineRoom() {
+        Optional<RoomUnit> onlineRoom = roomUnitRepository.findByRoomNumber("99999");
+        if (onlineRoom.isPresent()) {
+            return onlineRoom.get();
+        } else {
+            RoomUnit newOnlineRoom = new RoomUnit();
+            newOnlineRoom.setRoomNumber("99999");
+            newOnlineRoom.setDesignation("Online Submission");
+            newOnlineRoom.setMaterialType("Moodle");
+            newOnlineRoom.setSeatsCount(0);
+            newOnlineRoom.setBuilding("Virtual");
+            return roomUnitRepository.save(newOnlineRoom);
+        }
+    }
 }
