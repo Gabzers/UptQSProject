@@ -96,9 +96,9 @@ public class DirectorUnitService {
      * @return the most recent year as a YearUnit
      */
     public YearUnit getMostRecentYear(DirectorUnit director) {
-        return director.getPastYears().stream()
-            .max(Comparator.comparing(y -> LocalDate.parse(y.getFirstSemester().getStartDate())))
-            .orElse(null);
+        return director.getAcademicYears().stream()
+                .max(Comparator.comparing(y -> LocalDate.parse(y.getSpecialExamStart())))
+                .orElse(null);
     }
 
     public boolean noAssessmentsForPeriod(List<AssessmentUnit> assessments, String period) {
