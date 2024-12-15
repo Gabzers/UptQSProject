@@ -1,11 +1,9 @@
-/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body of the page */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -18,19 +16,17 @@ body {
     animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Header */
 header {
-    position: fixed; /* Fix the header at the top */
+    position: fixed;
     top: 0;
     right: 0;
     left: 0;
     display: flex;
     justify-content: flex-end;
-    padding: 10px 20px; /* Adjust padding for better spacing */
+    padding: 10px 20px;
     z-index: 10;
 }
 
-/* Standard Button Styling */
 header button, button[type="submit"] {
     background-color: #007bff;
     color: white;
@@ -41,7 +37,7 @@ header button, button[type="submit"] {
     border: none;
     transition: background-color 0.3s ease, transform 0.3s ease;
     animation: fadeIn 0.5s ease-in-out;
-    margin-left: 10px; /* Spacing between buttons */
+    margin-left: 10px;
 }
 
 header button:hover, button[type="submit"]:hover {
@@ -49,41 +45,38 @@ header button:hover, button[type="submit"]:hover {
     transform: scale(1.05);
 }
 
-/* Main container */
 main {
     width: 100%;
-    max-width: 400px; /* Limit the width of the form */
+    max-width: 400px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px 20px 40px; /* Padding adjusted for better spacing */
-    margin-top: 80px; /* Adjusted to give space for the fixed header */
+    padding: 20px 20px 40px;
+    margin-top: 80px;
     animation: slideIn 0.5s ease-in-out;
 }
 
-/* Form Section */
 .section {
     display: flex;
     flex-direction: column;
-    align-items: stretch; /* Ensure inputs stretch to the full width */
+    align-items: stretch;
 }
 
-/* Form Labels and Inputs */
 label {
     font-size: 14px;
     color: #333;
-    margin-top: 5px; /* Reduced margin */
+    margin-top: 5px;
     display: block;
 }
 
 input, select {
-    width: 100%; /* Ensure the input fields take the full width */
+    width: 100%;
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 14px;
-    margin-bottom: 10px; /* Reduced margin */
+    margin-bottom: 10px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -93,7 +86,6 @@ input:focus, select:focus {
     outline: none;
 }
 
-/* Custom styles for select elements */
 select {
     appearance: none;
     background-color: #fff;
@@ -103,7 +95,6 @@ select {
     background-size: 8px 10px;
 }
 
-/* Custom styles for checkboxes */
 input[type="checkbox"] {
     width: auto;
     margin-right: 10px;
@@ -112,16 +103,14 @@ input[type="checkbox"] {
 .checkbox-container {
     display: flex;
     align-items: center;
-    margin-bottom: 10px; /* Reduced margin */
+    margin-bottom: 10px;
 }
 
-/* Submit Button */
 button[type="submit"] {
     width: 100%;
     margin-top: 10px;
 }
 
-/* Footer */
 footer {
     margin-top: 20px;
     text-align: center;
@@ -133,7 +122,6 @@ footer p {
     margin: 0;
 }
 
-/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -154,12 +142,6 @@ footer p {
     }
 }
 
-/* Valid date styles */
-.valid-date {
-    background-color: #d4edda;
-}
-
-/* Error message styles */
 .error-message {
     color: red;
     display: block;
@@ -167,58 +149,6 @@ footer p {
     font-size: 14px;
 }
 
-/* Flatpickr valid date styles */
-.flatpickr-day.valid-date {
-    background-color: #d4edda !important;
-    color: #000 !important;
-}
-
-/* Flatpickr styles */
-.flatpickr-calendar {
-    background-color: #2c3e50;
-    color: #ecf0f1;
-}
-
-.flatpickr-day {
-    color: #ecf0f1;
-}
-
-.flatpickr-day:hover {
-    background-color: #34495e;
-}
-
-.flatpickr-day.today {
-    background-color: #1abc9c;
-    color: #fff;
-}
-
-.flatpickr-day.selected {
-    background-color: #3498db;
-    color: #fff;
-}
-
-.flatpickr-day.disabled {
-    color: #7f8c8d;
-}
-
-.flatpickr-month {
-    background-color: #34495e;
-}
-
-.flatpickr-weekdays {
-    background-color: #34495e;
-}
-
-.flatpickr-weekday {
-    color: #ecf0f1;
-}
-
-.flatpickr-time {
-    background-color: #34495e;
-    color: #ecf0f1;
-}
-
-/* Automatic Room Text */
 .automatic-room {
     font-style: italic;
     color: #555;
@@ -228,5 +158,5 @@ footer p {
     border: 1px solid #ddd;
     border-radius: 5px;
     background-color: #f9f9f9;
-    font-size: 12px; /* Make the text smaller */
+    font-size: 12px;
 }

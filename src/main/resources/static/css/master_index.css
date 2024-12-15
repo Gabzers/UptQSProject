@@ -1,11 +1,9 @@
-/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body of the page */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -18,15 +16,13 @@ body {
     gap: 20px;
 }
 
-/* Header */
 header {
     display: flex;
-    justify-content: space-between; /* Positions title and buttons on opposite sides */
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
 
-/* Header Buttons */
 .header-buttons {
     display: flex;
     gap: 10px;
@@ -35,13 +31,12 @@ header {
 h1 {
     font-size: 24px;
     color: #333;
-    text-align: left; /* Align title to the left */
+    text-align: left;
     flex-grow: 1;
 }
 
-/* Standard Button Styling */
 .button, #logoutBtn, button {
-    background-color: #007bff; /* Blue */
+    background-color: #007bff;
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
@@ -54,36 +49,32 @@ h1 {
 }
 
 .button:hover, #logoutBtn:hover, button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
     transform: scale(1.05);
 }
 
-/* Logout Button Specific Styling */
 #logoutBtn {
-    background-color: #dc3545; /* Red */
+    background-color: #dc3545;
 }
 
 #logoutBtn:hover {
-    background-color: #c82333; /* Darker red */
+    background-color: #c82333;
 }
 
-/* Remove Button Specific Styling */
 .remove-button {
-    background-color: #dc3545; /* Red */
+    background-color: #dc3545;
 }
 
 .remove-button:hover {
-    background-color: #c82333; /* Darker red */
+    background-color: #c82333;
 }
 
-/* Titles */
 h2 {
     color: #333;
     margin-bottom: 10px;
     animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Main container */
 main {
     flex-grow: 1;
     display: flex;
@@ -92,7 +83,6 @@ main {
     animation: slideIn 0.5s ease-in-out;
 }
 
-/* Sections inside the main */
 section {
     margin-bottom: 30px;
     background-color: #fff;
@@ -108,7 +98,6 @@ section:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Table styling */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -138,9 +127,8 @@ tbody tr:nth-child(even) {
     background-color: #fafafa;
 }
 
-/* Styling for Edit and Remove buttons */
 button {
-    background-color: #007bff; /* Blue */
+    background-color: #007bff;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -153,29 +141,26 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
     transform: scale(1.05);
 }
 
-/* Edit button specific styling */
 button:nth-child(1) {
-    background-color: #007bff; /* Blue */
+    background-color: #007bff;
 }
 
 button:nth-child(1):hover {
-    background-color: #0056b3; /* Darker blue */
+    background-color: #0056b3;
 }
 
-/* Remove button specific styling */
 button:nth-child(2) {
-    background-color: #007bff; /* Blue */
+    background-color: #007bff;
 }
 
 button:nth-child(2):hover {
-    background-color: #0056b3; /* Darker blue */
+    background-color: #0056b3;
 }
 
-/* Footer */
 footer {
     text-align: center;
     font-size: 14px;
@@ -185,7 +170,6 @@ footer {
     animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
