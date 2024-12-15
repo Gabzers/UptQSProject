@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +18,10 @@
 
     <main>
         <section class="section" th:each="year : ${#lists.sort(years)}">
-            <h2 th:text="'Assessments for Year ' + ${year}">Assessments for Year</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 th:text="'Assessments for Year ' + ${year}">Assessments for Year</h2>
+                <button class="pdf-button" th:onclick="|window.location.href='/coordinator/map/pdf?year=' + [[${year}]] + '&semester=' + [[${semester}]]|">Download PDF</button>
+            </div>
             <div th:if="${semester == 1 ? firstSemesterAssessments.size() > 0 : secondSemesterAssessments.size() > 0}">
                 <h3>Normal Period</h3>
                 <table>
@@ -144,6 +147,6 @@
     <footer>
         <p><img src="/images/upt-logo.png" alt="Logo" style="height: 20px; vertical-align: middle; margin-right: 10px;">&copy; 2024 Universidade Portucalense Infante D. Henrique</p>
     </footer>
-
+    
 </body>
 </html>

@@ -32,7 +32,7 @@ dependencies {
     testImplementation 'com.h2database:h2'
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation 'org.mockito:mockito-core:5.14.2'
-
+    implementation 'com.itextpdf:itextpdf:5.5.13.2'
 }
 
 tasks.named('test') {

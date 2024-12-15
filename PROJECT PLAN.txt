@@ -82,8 +82,7 @@ sala tem -:
 	
 
 FALTA:
--> ordenar avaliaçoes em EVALUATIONSUC
--> mapUC colocar year
+-> director map ajustar ?
 
 -> corrigir editar avaliação(n funciona)
 

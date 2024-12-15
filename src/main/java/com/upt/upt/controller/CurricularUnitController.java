@@ -1,6 +1,5 @@
 package com.upt.upt.controller;
 
-import com.upt.upt.entity.AssessmentUnit;
 import com.upt.upt.entity.CoordinatorUnit;
 import com.upt.upt.entity.CurricularUnit;
 import com.upt.upt.entity.DirectorUnit;
@@ -185,13 +184,7 @@ public class CurricularUnitController {
         if (!isCoordinator(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
-        String viewName = curricularUnitService.prepareEvaluationsUCPage(id, model);
-        List<AssessmentUnit> evaluations = (List<AssessmentUnit>) model.getAttribute("evaluations");
-        if (evaluations != null) {
-            evaluations.sort(Comparator.comparing(AssessmentUnit::getStartTime));
-        }
-        model.addAttribute("evaluations", evaluations);
-        return viewName;
+        return curricularUnitService.prepareEvaluationsUCPage(id, model);
     }
 
 }

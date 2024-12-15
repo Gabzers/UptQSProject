@@ -3,6 +3,10 @@ package com.upt.upt.controller;
 import com.upt.upt.entity.*;
 import com.upt.upt.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +16,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.upt.upt.service.CoordinatorUnitService;
-
 @Controller
 public class MapUnitController {
 
@@ -22,6 +24,9 @@ public class MapUnitController {
 
     @Autowired
     private AssessmentUnitService assessmentService;
+
+    @Autowired
+    private PdfService pdfService;
 
     private Optional<CoordinatorUnit> verifyCoordinator(HttpSession session) {
         Long coordinatorId = (Long) session.getAttribute("userId");
@@ -48,12 +53,14 @@ public class MapUnitController {
             YearUnit currentYear = director.getCurrentYear();
             if (currentYear != null) {
                 List<CurricularUnit> coordinatorUnits = coordinator.getCurricularUnits();
-                List<AssessmentUnit> firstSemesterAssessments = assessmentService.getAssessmentsBySemester(currentYear.getFirstSemester().getId()).stream()
-                        .filter(assessment -> coordinatorUnits.contains(assessment.getCurricularUnit()))
+                List<AssessmentUnit> firstSemesterAssessments = currentYear.getFirstSemester().getCurricularUnits().stream()
+                        .filter(uc -> coordinatorUnits.contains(uc))
+                        .flatMap(uc -> uc.getAssessments().stream())
                         .sorted((a1, a2) -> a1.getStartTime().compareTo(a2.getStartTime()))
                         .collect(Collectors.toList());
-                List<AssessmentUnit> secondSemesterAssessments = assessmentService.getAssessmentsBySemester(currentYear.getSecondSemester().getId()).stream()
-                        .filter(assessment -> coordinatorUnits.contains(assessment.getCurricularUnit()))
+                List<AssessmentUnit> secondSemesterAssessments = currentYear.getSecondSemester().getCurricularUnits().stream()
+                        .filter(uc -> coordinatorUnits.contains(uc))
+                        .flatMap(uc -> uc.getAssessments().stream())
                         .sorted((a1, a2) -> a1.getStartTime().compareTo(a2.getStartTime()))
                         .collect(Collectors.toList());
                 model.addAttribute("firstSemesterAssessments", firstSemesterAssessments);
@@ -74,5 +81,35 @@ public class MapUnitController {
             return "redirect:/login?error=Coordinator not found";
         }
         return "coordinator_map";
+    }
+
+    @GetMapping("/coordinator/map/pdf")
+    public ResponseEntity<byte[]> generatePdf(@RequestParam("year") Integer year, @RequestParam("semester") Integer semester, HttpSession session) {
+        if (!isCoordinator(session)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+        Optional<CoordinatorUnit> coordinatorOpt = verifyCoordinator(session);
+        if (coordinatorOpt.isPresent()) {
+            CoordinatorUnit coordinator = coordinatorOpt.get();
+            YearUnit currentYear = coordinator.getDirectorUnit().getCurrentYear();
+            List<AssessmentUnit> assessments = (semester == 1 ? currentYear.getFirstSemester().getCurricularUnits() : currentYear.getSecondSemester().getCurricularUnits()).stream()
+                    .filter(uc -> uc.getYear().equals(year) && coordinator.getCurricularUnits().contains(uc))
+                    .flatMap(uc -> uc.getAssessments().stream())
+                    .sorted((a1, a2) -> a1.getStartTime().compareTo(a2.getStartTime()))
+                    .collect(Collectors.toList());
+            if (assessments.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+            }
+            String ucName = assessments.get(0).getCurricularUnit().getNameUC();
+            byte[] pdfContent = pdfService.generatePdfForYearAndSemester(coordinator, year, semester);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_PDF);
+            String semesterText = semester == 1 ? "1st" : "2nd";
+            String startDate = currentYear.getFirstSemester().getStartDate();
+            headers.setContentDispositionFormData("attachment", "UPT_" + coordinator.getCourse() + "_" + startDate + "_" + year + "_" + semesterText + ".pdf");
+            return new ResponseEntity<>(pdfContent, headers, HttpStatus.OK);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
     }
 }
