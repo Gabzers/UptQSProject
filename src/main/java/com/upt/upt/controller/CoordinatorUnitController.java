@@ -18,6 +18,8 @@ import java.util.Optional;
 
 /**
  * Controller class for managing CoordinatorUnit entities.
+ * 
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 @Controller
 @RequestMapping("/director")

@@ -19,6 +19,12 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+/**
+ * Test class for CoordinatorUnitController.
+ * Provides unit tests for the controller's endpoints.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 class CoordinatorUnitControllerTest {
 
     @InjectMocks
@@ -39,41 +45,46 @@ class CoordinatorUnitControllerTest {
     @Mock
     private Model model;
 
+    /**
+     * Sets up the test environment before each test.
+     */
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
     }
 
+    /**
+     * Tests creating a coordinator form with authorized director access.
+     */
     @Test
     void testCreateCoordinatorForm_AuthorizedDirector() {
-        // Mocking session attributes
         when(session.getAttribute("userType")).thenReturn(UserType.DIRECTOR);
         when(session.getAttribute("userId")).thenReturn(1L);
         when(directorUnitService.getDirectorById(1L)).thenReturn(Optional.of(new DirectorUnit()));
 
-        // Calling the method
         String viewName = controller.createCoordinatorForm(session, model);
 
-        // Verifying interactions and assertions
         verify(model, times(1)).addAttribute(eq("coordinator"), any(CoordinatorUnit.class));
         assertEquals("director_addCoordinator", viewName);
     }
 
+    /**
+     * Tests creating a coordinator form with unauthorized access.
+     */
     @Test
     void testCreateCoordinatorForm_UnauthorizedAccess() {
-        // Mocking session attributes
         when(session.getAttribute("userType")).thenReturn(UserType.COORDINATOR);
 
-        // Calling the method
         String viewName = controller.createCoordinatorForm(session, model);
 
-        // Assertions
         assertEquals("redirect:/login?error=Unauthorized access", viewName);
     }
 
+    /**
+     * Tests saving a coordinator with a successful request.
+     */
     @Test
     void testSaveCoordinator_Success() {
-        // Mocking session attributes
         when(session.getAttribute("userType")).thenReturn(UserType.DIRECTOR);
         when(session.getAttribute("userId")).thenReturn(1L);
         when(directorUnitService.getDirectorById(1L)).thenReturn(Optional.of(new DirectorUnit()));
@@ -84,31 +95,31 @@ class CoordinatorUnitControllerTest {
         coordinator.setDuration(5);
         coordinator.setUsername("username");
 
-        // Calling the method
         String viewName = controller.saveCoordinator(coordinator, session);
 
-        // Verifying interactions and assertions
         verify(coordinatorService, times(1)).saveCoordinatorWithDirector(eq(coordinator), eq(session));
         assertEquals("redirect:/director", viewName);
     }
 
+    /**
+     * Tests saving a coordinator with unauthorized access.
+     */
     @Test
     void testSaveCoordinator_UnauthorizedAccess() {
-        // Mocking session attributes
         when(session.getAttribute("userType")).thenReturn(UserType.COORDINATOR);
 
         CoordinatorUnit coordinator = new CoordinatorUnit();
 
-        // Calling the method
         String viewName = controller.saveCoordinator(coordinator, session);
 
-        // Assertions
         assertEquals("redirect:/login?error=Unauthorized access", viewName);
     }
 
+    /**
+     * Tests saving a coordinator when the duration exceeds the limit.
+     */
     @Test
     void testSaveCoordinator_DurationExceedsLimit() {
-        // Mocking session attributes
         when(session.getAttribute("userType")).thenReturn(UserType.DIRECTOR);
         when(session.getAttribute("userId")).thenReturn(1L);
         when(directorUnitService.getDirectorById(1L)).thenReturn(Optional.of(new DirectorUnit()));
@@ -116,16 +127,16 @@ class CoordinatorUnitControllerTest {
         CoordinatorUnit coordinator = new CoordinatorUnit();
         coordinator.setDuration(15);
 
-        // Calling the method
         String viewName = controller.saveCoordinator(coordinator, session);
 
-        // Assertions
         assertEquals("redirect:/director/create-coordinator?error=Course duration cannot exceed 10 years", viewName);
     }
 
+    /**
+     * Tests saving a coordinator when the username already exists.
+     */
     @Test
     void testSaveCoordinator_UsernameAlreadyExists() {
-        // Mocking session attributes
         when(session.getAttribute("userType")).thenReturn(UserType.DIRECTOR);
         when(session.getAttribute("userId")).thenReturn(1L);
         when(directorUnitService.getDirectorById(1L)).thenReturn(Optional.of(new DirectorUnit()));
@@ -136,10 +147,8 @@ class CoordinatorUnitControllerTest {
         coordinator.setDuration(5);
         coordinator.setUsername("username");
 
-        // Calling the method
         String viewName = controller.saveCoordinator(coordinator, session);
 
-        // Assertions
         assertEquals("redirect:/director/create-coordinator?error=Username already exists", viewName);
     }
 }

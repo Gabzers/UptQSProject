@@ -5,7 +5,6 @@ import com.upt.upt.entity.UserType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,12 +15,16 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+/**
+ * Test class for UptWebController.
+ * 
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 @SpringBootTest
 @AutoConfigureMockMvc
 public class UptWebControllerTest {
@@ -40,7 +43,6 @@ public class UptWebControllerTest {
     /**
      * Sets up the test environment before each test.
      * Initializes mocks and prepares the session.
-     * 
      */
     @BeforeEach
     public void setUp() {
@@ -51,7 +53,6 @@ public class UptWebControllerTest {
      * Tests the login page endpoint.
      * 
      * @throws Exception if an error occurs during the request
-     * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
      */
     @Test
     public void testLoginPage() throws Exception {
@@ -64,7 +65,6 @@ public class UptWebControllerTest {
      * Tests the login validation endpoint for a successful login.
      * 
      * @throws Exception if an error occurs during the request
-     * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
      */
     @Test
     public void testValidateLoginSuccess() throws Exception {
@@ -88,7 +88,6 @@ public class UptWebControllerTest {
      * Tests the login validation endpoint for a failed login.
      * 
      * @throws Exception if an error occurs during the request
-     * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
      */
     @Test
     public void testValidateLoginFailure() throws Exception {
@@ -106,7 +105,6 @@ public class UptWebControllerTest {
      * Tests the logout endpoint.
      * 
      * @throws Exception if an error occurs during the request
-     * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
      */
     @Test
     public void testLogout() throws Exception {

@@ -18,8 +18,16 @@ import jakarta.servlet.http.HttpSession;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.eq;
 
+/**
+ * Unit tests for MasterUnitController.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 public class MasterUnitControllerTest {
 
     @Mock
@@ -48,6 +56,9 @@ public class MasterUnitControllerTest {
         MockitoAnnotations.openMocks(this);
     }
 
+    /**
+     * Test method for listDirectorsMastersAndRooms when user is not a master.
+     */
     @Test
     void listDirectorsMastersAndRooms_WhenUserIsNotMaster_ShouldRedirectToLogin() {
         when(session.getAttribute("userType")).thenReturn(UserType.DIRECTOR);
@@ -57,6 +68,9 @@ public class MasterUnitControllerTest {
         assertEquals("redirect:/login?error=Unauthorized access", result);
     }
 
+    /**
+     * Test method for listDirectorsMastersAndRooms when user is a master.
+     */
     @Test
     void listDirectorsMastersAndRooms_WhenUserIsMaster_ShouldReturnMasterIndex() {
         when(session.getAttribute("userType")).thenReturn(UserType.MASTER);
@@ -69,6 +83,9 @@ public class MasterUnitControllerTest {
         assertEquals("master_index", result);
     }
 
+    /**
+     * Test method for createMaster when user is not a master.
+     */
     @Test
     void createMaster_WhenUserIsNotMaster_ShouldRedirectToLogin() {
         when(session.getAttribute("userType")).thenReturn(UserType.DIRECTOR);
@@ -78,6 +95,9 @@ public class MasterUnitControllerTest {
         assertEquals("redirect:/login?error=Unauthorized access", result);
     }
 
+    /**
+     * Test method for createMaster when username already exists.
+     */
     @Test
     void createMaster_WhenUsernameExists_ShouldReturnError() {
         when(session.getAttribute("userType")).thenReturn(UserType.MASTER);
@@ -88,6 +108,9 @@ public class MasterUnitControllerTest {
         assertEquals("redirect:/master/create-master?error=Username already exists", result);
     }
 
+    /**
+     * Test method for createMaster when successful.
+     */
     @Test
     void createMaster_WhenSuccessful_ShouldRedirectToMaster() {
         when(session.getAttribute("userType")).thenReturn(UserType.MASTER);
@@ -101,6 +124,9 @@ public class MasterUnitControllerTest {
         assertEquals("redirect:/master", result);
     }
 
+    /**
+     * Test method for confirmRemoveMaster when user is not a master.
+     */
     @Test
     void confirmRemoveMaster_WhenUserIsNotMaster_ShouldRedirectToLogin() {
         when(session.getAttribute("userType")).thenReturn(UserType.DIRECTOR);
@@ -110,6 +136,9 @@ public class MasterUnitControllerTest {
         assertEquals("redirect:/login?error=Unauthorized access", result);
     }
 
+    /**
+     * Test method for confirmRemoveMaster when successful.
+     */
     @Test
     void confirmRemoveMaster_WhenSuccessful_ShouldRedirectToMaster() {
         when(session.getAttribute("userType")).thenReturn(UserType.MASTER);
@@ -120,6 +149,9 @@ public class MasterUnitControllerTest {
         assertEquals("redirect:/master", result);
     }
 
+    /**
+     * Test method for showEditMasterForm when master not found.
+     */
     @Test
     void showEditMasterForm_WhenMasterNotFound_ShouldRedirectWithError() {
         when(session.getAttribute("userType")).thenReturn(UserType.MASTER);
@@ -130,6 +162,9 @@ public class MasterUnitControllerTest {
         assertEquals("redirect:/master?error=Master not found", result);
     }
 
+    /**
+     * Test method for showEditMasterForm when master found.
+     */
     @Test
     void showEditMasterForm_WhenMasterFound_ShouldReturnEditPage() {
         when(session.getAttribute("userType")).thenReturn(UserType.MASTER);

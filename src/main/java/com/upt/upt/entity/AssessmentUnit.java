@@ -22,7 +22,7 @@ import java.util.Objects;
 /**
  * AssessmentUnit class represents an assessment entity to be mapped to the database.
  * 
- * grupo 5 - 47719, 47713, 46697, 47752, 47004
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 @Entity
 @Table(name = "assessment_unit")
@@ -86,7 +86,7 @@ public class AssessmentUnit {
     /**
      * Default constructor.
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public AssessmentUnit() {
     }
@@ -107,7 +107,7 @@ public class AssessmentUnit {
      * @param curricularUnit the curricular unit to which the assessment belongs
      * @param map the map to which this assessment belongs
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public AssessmentUnit(Long id, String type, Integer weight, String examPeriod, Boolean computerRequired,
                           Boolean classTime, LocalDateTime startTime, LocalDateTime endTime, List<RoomUnit> rooms, 
@@ -131,7 +131,7 @@ public class AssessmentUnit {
      * 
      * @return the assessment ID
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public Long getId() {
         return id;
@@ -142,7 +142,7 @@ public class AssessmentUnit {
      * 
      * @param id the assessment ID
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public void setId(Long id) {
         this.id = id;
@@ -153,7 +153,7 @@ public class AssessmentUnit {
      * 
      * @return the type of assessment
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public String getType() {
         return type;
@@ -164,7 +164,7 @@ public class AssessmentUnit {
      * 
      * @param type the type of assessment
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public void setType(String type) {
         this.type = type;
@@ -175,7 +175,7 @@ public class AssessmentUnit {
      * 
      * @return the weight of the assessment
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public Integer getWeight() {
         return weight;
@@ -186,7 +186,7 @@ public class AssessmentUnit {
      * 
      * @param weight the weight of the assessment
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public void setWeight(Integer weight) {
         this.weight = weight;
@@ -197,7 +197,7 @@ public class AssessmentUnit {
      * 
      * @return the exam period for the assessment
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public String getExamPeriod() {
         return examPeriod;
@@ -208,7 +208,7 @@ public class AssessmentUnit {
      * 
      * @param examPeriod the exam period for the assessment
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public void setExamPeriod(String examPeriod) {
         this.examPeriod = examPeriod;
@@ -219,7 +219,7 @@ public class AssessmentUnit {
      * 
      * @return true if a computer is required, false otherwise
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public Boolean getComputerRequired() {
         return computerRequired;
@@ -230,7 +230,7 @@ public class AssessmentUnit {
      * 
      * @param computerRequired true if a computer is required, false otherwise
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public void setComputerRequired(Boolean computerRequired) {
         this.computerRequired = computerRequired;
@@ -241,7 +241,7 @@ public class AssessmentUnit {
      * 
      * @return true if the exam will be held during class time, false otherwise
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public Boolean getClassTime() {
         return classTime;
@@ -252,7 +252,7 @@ public class AssessmentUnit {
      * 
      * @param classTime true if the exam will be held during class time, false otherwise
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public void setClassTime(Boolean classTime) {
         this.classTime = classTime;
@@ -263,7 +263,7 @@ public class AssessmentUnit {
      * 
      * @return the start date and time of the assessment
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public LocalDateTime getStartTime() {
         return startTime;
@@ -274,7 +274,7 @@ public class AssessmentUnit {
      * 
      * @param startTime the start date and time of the assessment
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
@@ -285,7 +285,7 @@ public class AssessmentUnit {
      * 
      * @return the end date and time of the assessment
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public LocalDateTime getEndTime() {
         return endTime;
@@ -296,7 +296,7 @@ public class AssessmentUnit {
      * 
      * @param endTime the end date and time of the assessment
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
@@ -307,7 +307,7 @@ public class AssessmentUnit {
      * 
      * @return the list of rooms for the assessment
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public List<RoomUnit> getRooms() {
         return rooms;
@@ -318,7 +318,7 @@ public class AssessmentUnit {
      * 
      * @param rooms the list of rooms for the assessment
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public void setRooms(List<RoomUnit> rooms) {
         this.rooms = rooms;
@@ -329,7 +329,7 @@ public class AssessmentUnit {
      * 
      * @return the minimum grade required for the assessment
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public Double getMinimumGrade() {
         return minimumGrade;
@@ -340,7 +340,7 @@ public class AssessmentUnit {
      * 
      * @param minimumGrade the minimum grade required for the assessment
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public void setMinimumGrade(Double minimumGrade) {
         this.minimumGrade = minimumGrade;
@@ -351,7 +351,7 @@ public class AssessmentUnit {
      * 
      * @return the curricular unit to which the assessment belongs
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public CurricularUnit getCurricularUnit() {
         return curricularUnit;
@@ -362,7 +362,7 @@ public class AssessmentUnit {
      * 
      * @param curricularUnit the curricular unit to which the assessment belongs
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public void setCurricularUnit(CurricularUnit curricularUnit) {
         this.curricularUnit = curricularUnit;
@@ -373,7 +373,7 @@ public class AssessmentUnit {
      * 
      * @return the map to which this assessment belongs
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public MapUnit getMap() {
         return map;
@@ -384,7 +384,7 @@ public class AssessmentUnit {
      * 
      * @param map the map to which this assessment belongs
      * 
-     * grupo 5 - 47719, 47713, 46697, 47752, 47004
+     * 
      */
     public void setMap(MapUnit map) {
         this.map = map;

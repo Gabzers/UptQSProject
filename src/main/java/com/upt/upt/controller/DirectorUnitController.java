@@ -30,6 +30,8 @@ import java.util.stream.Collectors;
 
 /**
  * Controller class for managing DirectorUnit entities.
+ * 
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 @Controller
 public class DirectorUnitController {

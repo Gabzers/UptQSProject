@@ -18,6 +18,11 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
+/**
+ * Test class for AssessmentUnitService.
+ * 
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 public class AssessmentUnitServiceTest {
 
     @Mock
@@ -31,6 +36,9 @@ public class AssessmentUnitServiceTest {
 
     private AssessmentUnit assessmentUnit;
 
+    /**
+     * Set up test data.
+     */
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -40,6 +48,9 @@ public class AssessmentUnitServiceTest {
         assessmentUnit.setWeight(50);
     }
 
+    /**
+     * Test getAssessmentsByCurricularUnit method.
+     */
     @Test
     public void testGetAssessmentsByCurricularUnit() {
         when(assessmentUnitRepository.findByCurricularUnitId(1L)).thenReturn(List.of(assessmentUnit));
@@ -51,6 +62,9 @@ public class AssessmentUnitServiceTest {
         verify(assessmentUnitRepository, times(1)).findByCurricularUnitId(1L);
     }
 
+    /**
+     * Test getAssessmentByUnitAndId method.
+     */
     @Test
     public void testGetAssessmentByUnitAndId() {
         when(assessmentUnitRepository.findByCurricularUnitIdAndId(1L, 1L)).thenReturn(Optional.of(assessmentUnit));
@@ -62,6 +76,9 @@ public class AssessmentUnitServiceTest {
         verify(assessmentUnitRepository, times(1)).findByCurricularUnitIdAndId(1L, 1L);
     }
 
+    /**
+     * Test saveAssessment method.
+     */
     @Test
     public void testSaveAssessment() {
         RoomUnit room = new RoomUnit();
@@ -77,6 +94,9 @@ public class AssessmentUnitServiceTest {
         verify(assessmentUnitRepository, times(1)).save(assessmentUnit);
     }
 
+    /**
+     * Test updateAssessment method.
+     */
     @Test
     public void testUpdateAssessment() {
         AssessmentUnit updatedAssessment = new AssessmentUnit();
@@ -95,6 +115,9 @@ public class AssessmentUnitServiceTest {
         verify(assessmentUnitRepository, times(1)).save(assessmentUnit);
     }
 
+    /**
+     * Test deleteAssessment method.
+     */
     @Test
     public void testDeleteAssessment() {
         when(assessmentUnitRepository.findByCurricularUnitIdAndId(1L, 1L)).thenReturn(Optional.of(assessmentUnit));
@@ -104,6 +127,9 @@ public class AssessmentUnitServiceTest {
         verify(assessmentUnitRepository, times(1)).delete(assessmentUnit);
     }
 
+    /**
+     * Test isRoomAvailable method.
+     */
     @Test
     public void testIsRoomAvailable() {
         LocalDateTime startTime = LocalDateTime.of(2024, 12, 15, 10, 0);
@@ -117,6 +143,9 @@ public class AssessmentUnitServiceTest {
         verify(assessmentUnitRepository, times(1)).findByRooms_Id(1L);
     }
 
+    /**
+     * Test areRoomsAvailable method.
+     */
     @Test
     public void testAreRoomsAvailable() {
         LocalDateTime startTime = LocalDateTime.of(2024, 12, 15, 10, 0);

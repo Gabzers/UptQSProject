@@ -17,8 +17,7 @@ import java.util.Objects;
 /**
  * MapUnit class represents a map of assessments for a given semester.
  * 
- * @author 
- * grupo 5 - 47719, 47713, 46697, 47752, 47004
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 @Entity
 @Table(name = "map_unit")

@@ -20,8 +20,7 @@ import java.util.stream.Collectors;
 /**
  * CurricularUnit class represents a curricular unit entity to be mapped to the database.
  * 
- * @autor 
- * grupo 5 - 47719, 47713, 46697, 47752, 47004
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 @Entity
 @Table(name = "curricular_unit")

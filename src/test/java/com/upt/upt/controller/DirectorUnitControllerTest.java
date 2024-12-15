@@ -1,7 +1,13 @@
 package com.upt.upt.controller;
 
-import com.upt.upt.entity.*;
-import com.upt.upt.service.*;
+import com.upt.upt.entity.DirectorUnit;
+import com.upt.upt.entity.UserType;
+import com.upt.upt.entity.YearUnit;
+import com.upt.upt.service.CoordinatorUnitService;
+import com.upt.upt.service.DirectorUnitService;
+import com.upt.upt.service.PdfService;
+import com.upt.upt.service.UserService;
+import com.upt.upt.service.YearUnitService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -11,13 +17,20 @@ import org.springframework.ui.Model;
 
 import jakarta.servlet.http.HttpSession;
 
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
+/**
+ * Test class for DirectorUnitController.
+ * Provides unit tests for the controller's endpoints.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 class DirectorUnitControllerTest {
 
     @InjectMocks
@@ -44,11 +57,17 @@ class DirectorUnitControllerTest {
     @Mock
     private Model model;
 
+    /**
+     * Sets up the test environment before each test.
+     */
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
     }
 
+    /**
+     * Tests listing directors with a valid session.
+     */
     @Test
     void testListDirectors_ValidSession() {
         when(session.getAttribute("userType")).thenReturn(UserType.DIRECTOR);
@@ -62,6 +81,9 @@ class DirectorUnitControllerTest {
         verify(model).addAttribute("loggedInDirector", director);
     }
 
+    /**
+     * Tests listing directors with an invalid session.
+     */
     @Test
     void testListDirectors_InvalidSession() {
         when(session.getAttribute("userType")).thenReturn(null);
@@ -71,6 +93,9 @@ class DirectorUnitControllerTest {
         assertEquals("redirect:/login?error=Unauthorized access", viewName);
     }
 
+    /**
+     * Tests viewing semesters with a valid year.
+     */
     @Test
     void testViewSemesters_ValidYear() {
         when(session.getAttribute("userType")).thenReturn(UserType.DIRECTOR);
@@ -83,6 +108,9 @@ class DirectorUnitControllerTest {
         verify(model).addAttribute("yearUnit", yearUnit);
     }
 
+    /**
+     * Tests viewing semesters with an invalid year.
+     */
     @Test
     void testViewSemesters_InvalidYear() {
         when(session.getAttribute("userType")).thenReturn(UserType.DIRECTOR);
@@ -93,6 +121,9 @@ class DirectorUnitControllerTest {
         assertEquals("redirect:/director?error=Year not found", viewName);
     }
 
+    /**
+     * Tests generating PDF with a valid request.
+     */
     @Test
     void testGeneratePdf_ValidRequest() {
         when(session.getAttribute("userType")).thenReturn(UserType.DIRECTOR);
@@ -112,6 +143,9 @@ class DirectorUnitControllerTest {
         assertArrayEquals(pdfContent, response.getBody());
     }
 
+    /**
+     * Tests generating PDF with unauthorized access.
+     */
     @Test
     void testGeneratePdf_UnauthorizedAccess() {
         when(session.getAttribute("userType")).thenReturn(null);

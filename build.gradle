@@ -18,26 +18,38 @@ repositories {
 }
 
 dependencies {
-    implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
-    implementation 'org.hibernate.validator:hibernate-validator:8.0.1.Final'
+    // Spring Boot dependencies
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-logging'
+
+    // Logging dependencies
     implementation 'org.slf4j:slf4j-api'
     implementation 'ch.qos.logback:logback-classic'
+
+    // Database dependencies
     runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // Validation dependencies
+    implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
+    implementation 'org.hibernate.validator:hibernate-validator:8.0.1.Final'
+
+    // PDF generation dependency
+    implementation 'com.itextpdf:itextpdf:5.5.13.2'
+
+    // Testing dependencies
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     testImplementation 'com.h2database:h2'
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation 'org.mockito:mockito-core:5.14.2'
-    implementation 'com.itextpdf:itextpdf:5.5.13.2'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
 tasks.withType(JavaCompile) {
     options.compilerArgs << "-parameters"
 }

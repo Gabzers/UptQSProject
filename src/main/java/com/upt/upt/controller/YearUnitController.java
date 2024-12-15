@@ -18,6 +18,8 @@ import jakarta.servlet.http.HttpSession;
 
 /**
  * Controller for handling requests related to YearUnit entities.
+ * 
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 @Controller
 @RequestMapping("/director")

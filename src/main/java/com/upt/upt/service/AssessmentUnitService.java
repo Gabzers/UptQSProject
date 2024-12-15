@@ -23,6 +23,8 @@ import java.util.stream.Collectors;
 
 /**
  * Service class for managing AssessmentUnit entities.
+ * 
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 @Service
 public class AssessmentUnitService {

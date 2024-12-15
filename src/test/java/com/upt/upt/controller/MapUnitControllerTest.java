@@ -1,7 +1,15 @@
 package com.upt.upt.controller;
 
-import com.upt.upt.entity.*;
-import com.upt.upt.service.*;
+import com.upt.upt.entity.AssessmentUnit;
+import com.upt.upt.entity.CoordinatorUnit;
+import com.upt.upt.entity.CurricularUnit;
+import com.upt.upt.entity.DirectorUnit;
+import com.upt.upt.entity.SemesterUnit;
+import com.upt.upt.entity.UserType;
+import com.upt.upt.entity.YearUnit;
+import com.upt.upt.service.AssessmentUnitService;
+import com.upt.upt.service.CoordinatorUnitService;
+import com.upt.upt.service.PdfService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -21,8 +29,16 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/**
+ * Test class for MapUnitController.
+ * Provides unit tests for the controller's endpoints.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 public class MapUnitControllerTest {
 
     @Mock
@@ -41,6 +57,9 @@ public class MapUnitControllerTest {
 
     private MockHttpSession session;
 
+    /**
+     * Sets up the test environment before each test.
+     */
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -48,6 +67,9 @@ public class MapUnitControllerTest {
         session = new MockHttpSession();
     }
 
+    /**
+     * Tests unauthorized access to the assessment map.
+     */
     @Test
     public void testShowAssessmentMapUnauthorized() throws Exception {
         mockMvc.perform(get("/coordinator/map")
@@ -57,6 +79,9 @@ public class MapUnitControllerTest {
                 .andExpect(redirectedUrl("/login?error=Unauthorized access"));
     }
 
+    /**
+     * Tests access to the assessment map when the coordinator is not found.
+     */
     @Test
     public void testShowAssessmentMapCoordinatorNotFound() throws Exception {
         session.setAttribute("userType", UserType.COORDINATOR);
@@ -69,12 +94,14 @@ public class MapUnitControllerTest {
                 .andExpect(redirectedUrl("/login?error=Coordinator not found"));
     }
 
+    /**
+     * Tests access to the assessment map when the current year is not found.
+     */
     @Test
     public void testShowAssessmentMapCurrentYearNotFound() throws Exception {
         session.setAttribute("userType", UserType.COORDINATOR);
         session.setAttribute("userId", 1L);
 
-        // Create a DirectorUnit with an empty list of academic years
         DirectorUnit directorUnit = new DirectorUnit();
         directorUnit.setAcademicYears(new ArrayList<>());
 
@@ -90,6 +117,9 @@ public class MapUnitControllerTest {
                 .andExpect(redirectedUrl("/login?error=Current year not found"));
     }
 
+    /**
+     * Tests unauthorized access to generate PDF.
+     */
     @Test
     public void testGeneratePdfUnauthorized() throws Exception {
         mockMvc.perform(get("/coordinator/map/pdf")
@@ -99,6 +129,9 @@ public class MapUnitControllerTest {
                 .andExpect(status().isUnauthorized());
     }
 
+    /**
+     * Tests generating PDF when the coordinator is not found.
+     */
     @Test
     public void testGeneratePdfCoordinatorNotFound() throws Exception {
         session.setAttribute("userType", UserType.COORDINATOR);
@@ -111,12 +144,14 @@ public class MapUnitControllerTest {
                 .andExpect(status().isUnauthorized());
     }
 
+    /**
+     * Tests generating PDF when there is no content.
+     */
     @Test
     public void testGeneratePdfNoContent() throws Exception {
         session.setAttribute("userType", UserType.COORDINATOR);
         session.setAttribute("userId", 1L);
 
-        // Create a DirectorUnit with a current year
         DirectorUnit directorUnit = new DirectorUnit();
         YearUnit currentYear = new YearUnit();
         directorUnit.addAcademicYear(currentYear);
@@ -138,12 +173,14 @@ public class MapUnitControllerTest {
                 .andExpect(status().isNoContent());
     }
 
+    /**
+     * Tests generating PDF with valid data.
+     */
     @Test
     public void testGeneratePdf() throws Exception {
         session.setAttribute("userType", UserType.COORDINATOR);
         session.setAttribute("userId", 1L);
 
-        // Create a DirectorUnit with a current year
         DirectorUnit directorUnit = new DirectorUnit();
         YearUnit currentYear = new YearUnit();
         directorUnit.addAcademicYear(currentYear);

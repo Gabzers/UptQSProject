@@ -18,8 +18,7 @@ import java.util.stream.Collectors;
  * DirectorUnit class represents a director of a department.
  * A DirectorUnit is responsible for managing coordinators and academic years of the department.
  * 
- * @autor 
- * grupo 5 - 47719, 47713, 46697, 47752, 47004
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 @Entity
 public class DirectorUnit {

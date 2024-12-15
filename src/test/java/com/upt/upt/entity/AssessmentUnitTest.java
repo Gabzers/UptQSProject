@@ -10,6 +10,8 @@ import java.util.List;
 
 /**
  * Unit tests for the AssessmentUnit class.
+ * 
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 public class AssessmentUnitTest {
 
@@ -18,6 +20,9 @@ public class AssessmentUnitTest {
     private MapUnit mapUnit;
     private List<RoomUnit> rooms;
 
+    /**
+     * Set up test data.
+     */
     @BeforeEach
     void setUp() {
         curricularUnit = new CurricularUnit(); // Mock object or simple instantiation if the class is straightforward
@@ -42,6 +47,9 @@ public class AssessmentUnitTest {
         );
     }
 
+    /**
+     * Test constructor and getters.
+     */
     @Test
     void testAssessmentUnitConstructorAndGetters() {
         assertEquals(1L, assessmentUnit.getId());
@@ -58,6 +66,9 @@ public class AssessmentUnitTest {
         assertEquals(mapUnit, assessmentUnit.getMap());
     }
 
+    /**
+     * Test setters.
+     */
     @Test
     void testSetters() {
         assessmentUnit.setType("Presentation");
@@ -79,6 +90,9 @@ public class AssessmentUnitTest {
         assertEquals(12.0, assessmentUnit.getMinimumGrade());
     }
 
+    /**
+     * Test equals and hashCode methods.
+     */
     @Test
     void testEqualsAndHashCode() {
         AssessmentUnit anotherAssessmentUnit = new AssessmentUnit(1L, "Test", 30, "Teaching Period", true, false,
@@ -91,6 +105,9 @@ public class AssessmentUnitTest {
         assertNotEquals(assessmentUnit, anotherAssessmentUnit);
     }
 
+    /**
+     * Test toString method.
+     */
     @Test
     void testToString() {
         String expected = "AssessmentUnit{" +

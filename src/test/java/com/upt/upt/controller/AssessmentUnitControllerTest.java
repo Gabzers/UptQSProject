@@ -1,7 +1,15 @@
 package com.upt.upt.controller;
 
-import com.upt.upt.entity.*;
-import com.upt.upt.service.*;
+import com.upt.upt.entity.CurricularUnit;
+import com.upt.upt.entity.DirectorUnit;
+import com.upt.upt.entity.RoomUnit;
+import com.upt.upt.entity.UserType;
+import com.upt.upt.entity.YearUnit;
+import com.upt.upt.entity.CoordinatorUnit;
+import com.upt.upt.service.AssessmentUnitService;
+import com.upt.upt.service.CurricularUnitService;
+import com.upt.upt.service.CoordinatorUnitService;
+import com.upt.upt.service.RoomUnitService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -9,7 +17,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpSession;
 import java.time.LocalDateTime;
@@ -23,6 +30,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * Test class for AssessmentUnitController.
+ * Provides unit tests for the controller's endpoints.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 @ExtendWith(MockitoExtension.class)
 public class AssessmentUnitControllerTest {
 
@@ -52,9 +65,11 @@ public class AssessmentUnitControllerTest {
     private DirectorUnit mockDirector;
     private YearUnit mockYear;
 
+    /**
+     * Sets up the test environment before each test.
+     */
     @BeforeEach
     public void setUp() {
-        // Setup mock objects
         mockYear = new YearUnit();
         mockYear.setId(1L);
         mockYear.setSpecialExamStart("2024-06-01");
@@ -73,54 +88,56 @@ public class AssessmentUnitControllerTest {
         mockCurricularUnit.setStudentsNumber(50);
     }
 
+    /**
+     * Tests unauthorized access to the create evaluation page.
+     */
     @Test
     public void testCreateEvaluationPage_Unauthorized() {
-        // Arrange
         when(session.getAttribute("userType")).thenReturn(UserType.STUDENT);
 
-        // Act
         String result = controller.createEvaluationPage(1L, model, null, session);
 
-        // Assert
         assertEquals("redirect:/login?error=Unauthorized access", result);
     }
 
+    /**
+     * Tests accessing the create evaluation page with a valid curricular unit.
+     */
     @Test
     public void testCreateEvaluationPage_ValidCurricularUnit() {
-        // Arrange
         when(session.getAttribute("userType")).thenReturn(UserType.COORDINATOR);
         when(curricularUnitService.getCurricularUnitById(1L)).thenReturn(Optional.of(mockCurricularUnit));
         when(roomUnitService.getAllRooms()).thenReturn(List.of());
 
-        // Act
         String result = controller.createEvaluationPage(1L, model, null, session);
 
-        // Assert
         assertEquals("coordinator_addEvaluations", result);
         verify(model).addAttribute("uc", mockCurricularUnit);
         verify(model).addAttribute("rooms", List.of());
     }
 
+    /**
+     * Tests saving an evaluation with invalid parameters.
+     */
     @Test
     public void testSaveEvaluation_InvalidParameters() {
-        // Arrange
         Map<String, String> params = new HashMap<>();
         params.put("curricularUnitId", "1");
         params.put("assessmentExamPeriod", "");
 
         when(session.getAttribute("userType")).thenReturn(UserType.COORDINATOR);
 
-        // Act
         String result = controller.saveEvaluation(params, session, model);
 
-        // Assert
         assertTrue(result.contains("redirect:/coordinator/coordinator_create_evaluation"));
         verify(model).addAttribute("error", "Exam Period is required.");
     }
 
+    /**
+     * Tests saving an evaluation with valid parameters.
+     */
     @Test
     public void testSaveEvaluation_ValidParameters() {
-        // Arrange
         Map<String, String> params = createValidAssessmentParams();
 
         when(session.getAttribute("userType")).thenReturn(UserType.COORDINATOR);
@@ -131,17 +148,17 @@ public class AssessmentUnitControllerTest {
         when(assessmentUnitService.calculatePeriodTotalWeight(any(), anyString(), anyInt())).thenReturn(50);
         when(assessmentUnitService.validateAssessmentDates(any(), any(), any(), any(), any(), any(), anyLong())).thenReturn(true);
 
-        // Act
         String result = controller.saveEvaluation(params, session, model);
 
-        // Assert
         assertEquals("redirect:/coordinator/coordinator_evaluationsUC?id=1", result);
         verify(assessmentUnitService).saveAssessment(any(), anyList());
     }
 
+    /**
+     * Tests getting valid date ranges for assessments.
+     */
     @Test
     public void testGetValidDateRanges() {
-        // Arrange
         when(session.getAttribute("userType")).thenReturn(UserType.COORDINATOR);
         when(coordinatorUnitService.getCoordinatorById(anyLong())).thenReturn(Optional.of(mockCoordinator));
         when(curricularUnitService.getCurricularUnitById(anyLong())).thenReturn(Optional.of(mockCurricularUnit));
@@ -151,16 +168,16 @@ public class AssessmentUnitControllerTest {
         mockRanges.put("end", "2024-01-31");
         when(assessmentUnitService.getValidDateRanges(anyString(), any(), any())).thenReturn(mockRanges);
 
-        // Act
         Map<String, String> result = controller.getValidDateRanges("Normal", 1L, session);
 
-        // Assert
         assertNotNull(result);
         assertEquals("2024-01-01", result.get("start"));
         assertEquals("2024-01-31", result.get("end"));
     }
 
-    // Helper method to create valid assessment parameters
+    /**
+     * Helper method to create valid assessment parameters.
+     */
     private Map<String, String> createValidAssessmentParams() {
         Map<String, String> params = new HashMap<>();
         params.put("curricularUnitId", "1");

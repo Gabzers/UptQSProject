@@ -29,6 +29,8 @@ import java.time.LocalTime;
 
 /**
  * Controller for handling requests related to AssessmentUnit entities.
+ * 
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 @Controller
 @RequestMapping("/coordinator")

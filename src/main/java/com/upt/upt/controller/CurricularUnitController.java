@@ -24,6 +24,8 @@ import java.util.Comparator;
 
 /**
  * Controller class for managing CurricularUnit entities.
+ * 
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 @Controller
 @RequestMapping("/coordinator")

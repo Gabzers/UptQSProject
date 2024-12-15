@@ -18,8 +18,7 @@ import java.util.Objects;
 /**
  * CoordinatorUnit class represents a coordinator entity with details about their course, duration, and curricular units.
  * 
- * @author 
- * grupo 5 - 47719, 47713, 46697, 47752, 47004
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 @Entity
 public class CoordinatorUnit {

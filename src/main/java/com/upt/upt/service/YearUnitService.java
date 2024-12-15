@@ -16,6 +16,11 @@ import java.util.Optional;
 import jakarta.servlet.http.HttpSession;
 import java.util.Map;
 
+/**
+ * Service class for managing YearUnit entities.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 @Service
 public class YearUnitService {
 

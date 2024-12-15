@@ -1,3 +1,10 @@
+/**
+ * @file Manages the coordinator's evaluation addition functionality.
+ * @version 1.0
+ * @since 2023-10-10
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
+
 document.addEventListener('DOMContentLoaded', function () {
     const startDateInput = document.getElementById('evaluation-date-start');
     const endDateInput = document.getElementById('evaluation-date-end');
@@ -24,6 +31,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+/**
+ * Validates the form inputs.
+ * @returns {boolean} True if the form is valid, otherwise false.
+ */
 function validateForm() {
     const examPeriod = document.getElementById('evaluation-exam-period').value;
     const startDate = document.getElementById('evaluation-date-start').value;
@@ -42,6 +53,9 @@ function validateForm() {
     return true;
 }
 
+/**
+ * Highlights valid dates for the evaluation period.
+ */
 async function highlightValidDates() {
     const examPeriod = document.getElementById('evaluation-exam-period').value;
     const startDateInput = document.getElementById('evaluation-date-start');
@@ -79,6 +93,9 @@ async function highlightValidDates() {
     }
 }
 
+/**
+ * Assigns a room automatically based on the selected dates and requirements.
+ */
 async function assignRoomAutomatically() {
     const startDateInput = document.getElementById('evaluation-date-start').value;
     const endDateInput = document.getElementById('evaluation-date-end').value;
