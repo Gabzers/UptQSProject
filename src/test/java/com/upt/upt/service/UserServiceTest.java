@@ -1,7 +1,12 @@
 package com.upt.upt.service;
 
-import com.upt.upt.entity.*;
-import com.upt.upt.repository.*;
+import com.upt.upt.entity.CoordinatorUnit;
+import com.upt.upt.entity.DirectorUnit;
+import com.upt.upt.entity.MasterUnit;
+import com.upt.upt.entity.UserType;
+import com.upt.upt.repository.CoordinatorUnitRepository;
+import com.upt.upt.repository.DirectorUnitRepository;
+import com.upt.upt.repository.MasterUnitRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -13,6 +18,12 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+
+/**
+ * Test class for UserServiceTest.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 public class UserServiceTest {
 
     @Mock
@@ -27,45 +38,59 @@ public class UserServiceTest {
     @InjectMocks
     private UserService userService;
 
+    /**
+     * Sets up the test environment before each test.
+     * Initializes mocks.
+     * 
+     * 
+     */
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
     }
 
+    /**
+     * Tests the validation of a master user.
+     * 
+     * 
+     */
     @Test
     void testValidateUser_Master() {
-        // Arrange
         String username = "masteruser";
         String password = "password";
         MasterUnit master = new MasterUnit();
         when(masterUnitRepository.findByUsernameAndPassword(username, password)).thenReturn(master);
 
-        // Act
         UserType result = userService.validateUser(username, password);
 
-        // Assert
         assertEquals(UserType.MASTER, result);
     }
 
+    /**
+     * Tests the validation of a director user.
+     * 
+     * 
+     */
     @Test
     void testValidateUser_Director() {
-        // Arrange
         String username = "directoruser";
         String password = "password";
         DirectorUnit director = new DirectorUnit();
         when(masterUnitRepository.findByUsernameAndPassword(username, password)).thenReturn(null);
         when(directorUnitRepository.findByUsernameAndPassword(username, password)).thenReturn(director);
 
-        // Act
         UserType result = userService.validateUser(username, password);
 
-        // Assert
         assertEquals(UserType.DIRECTOR, result);
     }
 
+    /**
+     * Tests the validation of a coordinator user.
+     * 
+     * 
+     */
     @Test
     void testValidateUser_Coordinator() {
-        // Arrange
         String username = "coordinatoruser";
         String password = "password";
         CoordinatorUnit coordinator = new CoordinatorUnit();
@@ -73,82 +98,90 @@ public class UserServiceTest {
         when(directorUnitRepository.findByUsernameAndPassword(username, password)).thenReturn(null);
         when(coordinatorUnitRepository.findByUsernameAndPassword(username, password)).thenReturn(coordinator);
 
-        // Act
         UserType result = userService.validateUser(username, password);
 
-        // Assert
         assertEquals(UserType.COORDINATOR, result);
     }
 
+    /**
+     * Tests the validation of a user that is not found.
+     * 
+     * 
+     */
     @Test
     void testValidateUser_NotFound() {
-        // Arrange
         String username = "unknownuser";
         String password = "password";
         when(masterUnitRepository.findByUsernameAndPassword(username, password)).thenReturn(null);
         when(directorUnitRepository.findByUsernameAndPassword(username, password)).thenReturn(null);
         when(coordinatorUnitRepository.findByUsernameAndPassword(username, password)).thenReturn(null);
 
-        // Act
         UserType result = userService.validateUser(username, password);
 
-        // Assert
         assertNull(result);
     }
 
+    /**
+     * Tests the retrieval of a user ID by username for a master user.
+     * 
+     * 
+     */
     @Test
     void testGetUserIdByUsername_Master() {
-        // Arrange
         String username = "masteruser";
         MasterUnit master = new MasterUnit();
         master.setId(1L);
         when(masterUnitRepository.findByUsername(username)).thenReturn(Optional.of(master));
 
-        // Act
         Long result = userService.getUserIdByUsername(username, UserType.MASTER);
 
-        // Assert
         assertEquals(1L, result);
     }
 
+    /**
+     * Tests the retrieval of a user ID by username when the user is not found.
+     * 
+     * 
+     */
     @Test
     void testGetUserIdByUsername_NotFound() {
-        // Arrange
         String username = "unknownuser";
         when(masterUnitRepository.findByUsername(username)).thenReturn(Optional.empty());
 
-        // Act
         Long result = userService.getUserIdByUsername(username, UserType.MASTER);
 
-        // Assert
         assertNull(result);
     }
 
+    /**
+     * Tests if a username exists in the system.
+     * 
+     * 
+     */
     @Test
     void testUsernameExists_True() {
-        // Arrange
         String username = "existinguser";
         when(masterUnitRepository.findByUsername(username)).thenReturn(Optional.of(new MasterUnit()));
 
-        // Act
         boolean result = userService.usernameExists(username);
 
-        // Assert
         assertTrue(result);
     }
 
+    /**
+     * Tests if a username does not exist in the system.
+     * 
+     * 
+     */
     @Test
     void testUsernameExists_False() {
-        // Arrange
         String username = "nonexistentuser";
         when(masterUnitRepository.findByUsername(username)).thenReturn(Optional.empty());
         when(directorUnitRepository.findByUsername(username)).thenReturn(Optional.empty());
         when(coordinatorUnitRepository.findByUsername(username)).thenReturn(Optional.empty());
 
-        // Act
         boolean result = userService.usernameExists(username);
 
-        // Assert
         assertFalse(result);
     }
 }

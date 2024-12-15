@@ -8,15 +8,26 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Test class for RoomUnit.
+ * 
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 public class RoomUnitTest {
 
     private RoomUnit room;
 
+    /**
+     * Set up test data.
+     */
     @BeforeEach
     void setUp() {
         room = new RoomUnit(1L, "101", "Classroom", "Desks", 30, "Building A");
     }
 
+    /**
+     * Test getters.
+     */
     @Test
     void testGetters() {
         assertEquals(1L, room.getId());
@@ -27,6 +38,9 @@ public class RoomUnitTest {
         assertEquals("Building A", room.getBuilding());
     }
 
+    /**
+     * Test setters.
+     */
     @Test
     void testSetters() {
         room.setId(2L);
@@ -44,6 +58,9 @@ public class RoomUnitTest {
         assertEquals("Building B", room.getBuilding());
     }
 
+    /**
+     * Test addAssessment method.
+     */
     @Test
     void testAddAssessment() {
         AssessmentUnit assessment = new AssessmentUnit();
@@ -56,6 +73,9 @@ public class RoomUnitTest {
         assertEquals(assessment, room.getAssessments().get(0));
     }
 
+    /**
+     * Test equals and hashCode methods.
+     */
     @Test
     void testEqualsAndHashCode() {
         RoomUnit anotherRoom = new RoomUnit(1L, "102", "Laboratory", "Desks", 20, "Building B");
@@ -66,6 +86,9 @@ public class RoomUnitTest {
         assertNotEquals(room, anotherRoom);
     }
 
+    /**
+     * Test toString method.
+     */
     @Test
     void testToString() {
         String expected = "RoomUnit{id=1, roomNumber='101', designation='Classroom', materialType='Desks', seatsCount=30, building='Building A'}";

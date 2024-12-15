@@ -15,6 +15,8 @@ import static org.mockito.Mockito.*;
 
 /**
  * Test class for SemesterUnitService.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 class SemesterUnitServiceTest {
 
@@ -26,11 +28,16 @@ class SemesterUnitServiceTest {
 
     private SemesterUnit semesterUnit;
 
+    /**
+     * Sets up the test environment before each test.
+     * Initializes mocks and creates a test instance of SemesterUnit.
+     * 
+     * 
+     */
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
 
-        // Instância de teste para SemesterUnit
         semesterUnit = new SemesterUnit();
         semesterUnit.setId(1L);
         semesterUnit.setStartDate("2024-01-01");
@@ -41,42 +48,49 @@ class SemesterUnitServiceTest {
         semesterUnit.setResitPeriodEnd("2024-07-15");
     }
 
+    /**
+     * Tests the saving of a semester unit.
+     * 
+     * 
+     */
     @Test
     void testSaveSemesterUnit() {
-        // Configuração do mock para o método save
         when(semesterUnitRepository.save(semesterUnit)).thenReturn(semesterUnit);
 
-        // Testando o método saveSemesterUnit
         SemesterUnit savedSemesterUnit = semesterUnitService.saveSemesterUnit(semesterUnit);
 
         assertNotNull(savedSemesterUnit);
         assertEquals(semesterUnit.getId(), savedSemesterUnit.getId());
 
-        // Verifica se o método save foi chamado no repositório
         verify(semesterUnitRepository, times(1)).save(semesterUnit);
     }
 
+    /**
+     * Tests the retrieval of a semester unit by its ID.
+     * 
+     * 
+     */
     @Test
     void testGetSemesterUnitById() {
-        // Configuração do mock para o método findById
         when(semesterUnitRepository.findById(1L)).thenReturn(Optional.of(semesterUnit));
 
-        // Testando o método getSemesterUnitById
         Optional<SemesterUnit> foundSemesterUnit = semesterUnitService.getSemesterUnitById(1L);
 
         assertTrue(foundSemesterUnit.isPresent());
         assertEquals(semesterUnit.getId(), foundSemesterUnit.get().getId());
 
-        // Verifica se o método findById foi chamado no repositório
         verify(semesterUnitRepository, times(1)).findById(1L);
     }
 
+    /**
+     * Tests the deletion of a semester unit by its ID.
+     * 
+     * 
+     */
     @Test
     void testDeleteSemesterUnit() {
-        // Testando o método deleteSemesterUnit
         semesterUnitService.deleteSemesterUnit(1L);
 
-        // Verifica se o método deleteById foi chamado no repositório
         verify(semesterUnitRepository, times(1)).deleteById(1L);
     }
 }

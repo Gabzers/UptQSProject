@@ -1,6 +1,10 @@
 package com.upt.upt.service;
 
-import com.upt.upt.entity.*;
+import com.upt.upt.entity.CurricularUnit;
+import com.upt.upt.entity.CoordinatorUnit;
+import com.upt.upt.entity.DirectorUnit;
+import com.upt.upt.entity.YearUnit;
+import com.upt.upt.entity.SemesterUnit;
 import com.upt.upt.repository.CurricularUnitRepository;
 import jakarta.servlet.http.HttpSession;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,6 +21,11 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * Test class for CurricularUnitService.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 class CurricularUnitServiceTest {
 
     @Mock
@@ -42,6 +51,9 @@ class CurricularUnitServiceTest {
 
     private CurricularUnit curricularUnit;
 
+    /**
+     * Sets up the test environment.
+     */
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -57,6 +69,9 @@ class CurricularUnitServiceTest {
         curricularUnit.setSemester(1);
     }
 
+    /**
+     * Tests the saveCurricularUnit method.
+     */
     @Test
     void testSaveCurricularUnit() {
         when(curricularUnitRepository.save(curricularUnit)).thenReturn(curricularUnit);
@@ -68,6 +83,9 @@ class CurricularUnitServiceTest {
         verify(curricularUnitRepository, times(1)).save(curricularUnit);
     }
 
+    /**
+     * Tests the getAllCurricularUnits method.
+     */
     @Test
     void testGetAllCurricularUnits() {
         when(curricularUnitRepository.findAll()).thenReturn(List.of(curricularUnit));
@@ -80,6 +98,9 @@ class CurricularUnitServiceTest {
         verify(curricularUnitRepository, times(1)).findAll();
     }
 
+    /**
+     * Tests the getCurricularUnitById method.
+     */
     @Test
     void testGetCurricularUnitById() {
         when(curricularUnitRepository.findById(1L)).thenReturn(Optional.of(curricularUnit));
@@ -91,6 +112,9 @@ class CurricularUnitServiceTest {
         verify(curricularUnitRepository, times(1)).findById(1L);
     }
 
+    /**
+     * Tests the updateCurricularUnit method.
+     */
     @Test
     void testUpdateCurricularUnit() {
         CurricularUnit updatedUnit = new CurricularUnit();
@@ -108,6 +132,9 @@ class CurricularUnitServiceTest {
         verify(curricularUnitRepository, times(1)).save(curricularUnit);
     }
 
+    /**
+     * Tests the deleteCurricularUnit method.
+     */
     @Test
     void testDeleteCurricularUnit() {
         doNothing().when(curricularUnitRepository).deleteById(1L);
@@ -117,6 +144,9 @@ class CurricularUnitServiceTest {
         verify(curricularUnitRepository, times(1)).deleteById(1L);
     }
 
+    /**
+     * Tests the validateEvaluationsCount method.
+     */
     @Test
     void testValidateEvaluationsCount() {
         when(model.addAttribute(anyString(), any())).thenReturn(model);
@@ -131,6 +161,9 @@ class CurricularUnitServiceTest {
         assertTrue(result);
     }
 
+    /**
+     * Tests the createCurricularUnit method.
+     */
     @Test
     void testCreateCurricularUnit() {
         when(session.getAttribute("userId")).thenReturn(1L);

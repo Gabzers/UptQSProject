@@ -1,6 +1,7 @@
 package com.upt.upt.repository;
 
-import com.upt.upt.entity.*;
+import com.upt.upt.entity.AssessmentUnit;
+import com.upt.upt.entity.CurricularUnit;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -10,12 +11,20 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * Test class for CurricularUnitRepository.
+ * 
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 @DataJpaTest
 public class CurricularUnitRepositoryTest {
 
     @Autowired
     private CurricularUnitRepository curricularUnitRepository;
 
+    /**
+     * Test save and find CurricularUnit method.
+     */
     @Test
     public void testSaveAndFindCurricularUnit() {
         // Arrange
@@ -38,6 +47,9 @@ public class CurricularUnitRepositoryTest {
         assertThat(foundUnit.get().getStudentsNumber()).isEqualTo(50);
     }
 
+    /**
+     * Test update CurricularUnit method.
+     */
     @Test
     public void testUpdateCurricularUnit() {
         // Arrange
@@ -59,6 +71,9 @@ public class CurricularUnitRepositoryTest {
         assertThat(updatedUnit.getNameUC()).isEqualTo("Advanced Chemistry");
     }
 
+    /**
+     * Test delete CurricularUnit method.
+     */
     @Test
     public void testDeleteCurricularUnit() {
         // Arrange
@@ -80,6 +95,9 @@ public class CurricularUnitRepositoryTest {
         assertThat(foundUnit).isNotPresent();
     }
 
+    /**
+     * Test total weight validation method.
+     */
     @Test
     public void testTotalWeightValidation() {
         // Arrange
@@ -111,6 +129,9 @@ public class CurricularUnitRepositoryTest {
         assertThat(savedUnit.isTotalWeightInvalid()).isFalse();
     }
 
+    /**
+     * Test missing exam period validation method.
+     */
     @Test
     public void testMissingExamPeriodValidation() {
         // Arrange

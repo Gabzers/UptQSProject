@@ -7,8 +7,16 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Test class for CoordinatorUnit.
+ * 
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 class CoordinatorUnitTest {
 
+    /**
+     * Test constructor and getters.
+     */
     @Test
     void testConstructorAndGetters() {
         DirectorUnit directorUnit = new DirectorUnit();
@@ -28,6 +36,9 @@ class CoordinatorUnitTest {
         assertEquals(curricularUnits, coordinator.getCurricularUnits());
     }
 
+    /**
+     * Test setters.
+     */
     @Test
     void testSetters() {
         CoordinatorUnit coordinator = new CoordinatorUnit();
@@ -53,6 +64,9 @@ class CoordinatorUnitTest {
         assertEquals(curricularUnits, coordinator.getCurricularUnits());
     }
 
+    /**
+     * Test addCurricularUnit method.
+     */
     @Test
     void testAddCurricularUnit() {
         CoordinatorUnit coordinator = new CoordinatorUnit();
@@ -65,6 +79,9 @@ class CoordinatorUnitTest {
         assertEquals(coordinator, curricularUnit.getCoordinator());
     }
 
+    /**
+     * Test equals and hashCode methods.
+     */
     @Test
     void testEqualsAndHashCode() {
         CoordinatorUnit coordinator1 = new CoordinatorUnit();
@@ -82,6 +99,9 @@ class CoordinatorUnitTest {
         assertNotEquals(coordinator1.hashCode(), coordinator3.hashCode());
     }
 
+    /**
+     * Test toString method.
+     */
     @Test
     void testToString() {
         CoordinatorUnit coordinator = new CoordinatorUnit();

@@ -13,6 +13,11 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * Test class for MasterUnitRepository.
+ * 
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 @DataJpaTest
 @ExtendWith(MockitoExtension.class)
 class MasterUnitRepositoryTest {
@@ -20,6 +25,9 @@ class MasterUnitRepositoryTest {
     @Mock
     private MasterUnitRepository masterUnitRepository;
 
+    /**
+     * Test findByUsernameAndPassword method when credentials match.
+     */
     @Test
     void findByUsernameAndPassword_ShouldReturnMasterUnit_WhenCredentialsMatch() {
         MasterUnit mockMaster = new MasterUnit(1L, "Test Master", "testuser", "password123");
@@ -32,6 +40,9 @@ class MasterUnitRepositoryTest {
         verify(masterUnitRepository, times(1)).findByUsernameAndPassword("testuser", "password123");
     }
 
+    /**
+     * Test findByUsernameAndPassword method when credentials do not match.
+     */
     @Test
     void findByUsernameAndPassword_ShouldReturnNull_WhenCredentialsDoNotMatch() {
         when(masterUnitRepository.findByUsernameAndPassword("wronguser", "wrongpass")).thenReturn(null);
@@ -42,6 +53,9 @@ class MasterUnitRepositoryTest {
         verify(masterUnitRepository, times(1)).findByUsernameAndPassword("wronguser", "wrongpass");
     }
 
+    /**
+     * Test findByUsername method when username exists.
+     */
     @Test
     void findByUsername_ShouldReturnOptionalOfMaster_WhenUsernameExists() {
         MasterUnit mockMaster = new MasterUnit(1L, "Test Master", "testuser", "password123");
@@ -54,6 +68,9 @@ class MasterUnitRepositoryTest {
         verify(masterUnitRepository, times(1)).findByUsername("testuser");
     }
 
+    /**
+     * Test findByUsername method when username does not exist.
+     */
     @Test
     void findByUsername_ShouldReturnEmptyOptional_WhenUsernameDoesNotExist() {
         when(masterUnitRepository.findByUsername("nonexistentuser")).thenReturn(Optional.empty());

@@ -10,13 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.mock.web.MockHttpSession;  // Use MockHttpSession aqui
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
-import jakarta.servlet.http.HttpSession;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -29,65 +27,87 @@ import static org.mockito.Mockito.verify;
 public class UptWebControllerTest {
 
     @Autowired
-    private MockMvc mockMvc; // MockMvc é automaticamente injetado
+    private MockMvc mockMvc;
 
     @MockBean
-    private UserService userService; // Mock do UserService para simular o comportamento do serviço
+    private UserService userService;
 
     @InjectMocks
-    private UptWebController uptWebController; // Injetando o controlador a ser testado
+    private UptWebController uptWebController;
 
-    private MockHttpSession session; // Usando MockHttpSession
+    private MockHttpSession session;
 
+    /**
+     * Sets up the test environment before each test.
+     * Initializes mocks and prepares the session.
+     * 
+     */
     @BeforeEach
     public void setUp() {
-        // Inicializando mocks e preparando o ambiente antes de cada teste
-        session = new MockHttpSession(); // Usando MockHttpSession para simular a sessão
+        session = new MockHttpSession();
     }
 
+    /**
+     * Tests the login page endpoint.
+     * 
+     * @throws Exception if an error occurs during the request
+     * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
+     */
     @Test
     public void testLoginPage() throws Exception {
-        // Testando o endpoint de login
         mockMvc.perform(MockMvcRequestBuilders.get("/login"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.view().name("login")); // Verifica se a view correta é retornada
+                .andExpect(MockMvcResultMatchers.view().name("login"));
     }
 
+    /**
+     * Tests the login validation endpoint for a successful login.
+     * 
+     * @throws Exception if an error occurs during the request
+     * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
+     */
     @Test
     public void testValidateLoginSuccess() throws Exception {
-        // Definindo o comportamento do mock do UserService
         when(userService.validateUser("user", "password")).thenReturn(UserType.MASTER);
         when(userService.getUserIdByUsername("user", UserType.MASTER)).thenReturn(1L);
 
-        // Testando o endpoint de validação de login
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/validate-login")
                         .param("username", "user")
                         .param("password", "password")
-                        .session(session)) // Usando MockHttpSession aqui
-                .andExpect(MockMvcResultMatchers.status().is3xxRedirection()) // Espera redirecionamento
-                .andExpect(MockMvcResultMatchers.redirectedUrl("/master")) // Verifica o redirecionamento correto
+                        .session(session))
+                .andExpect(MockMvcResultMatchers.status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/master"))
                 .andReturn();
 
-        // Verifica se os atributos da sessão foram setados corretamente
         verify(session, times(1)).setAttribute("userId", 1L);
         verify(session, times(1)).setAttribute("userType", UserType.MASTER);
         verify(session, times(1)).setAttribute("username", "user");
     }
 
+    /**
+     * Tests the login validation endpoint for a failed login.
+     * 
+     * @throws Exception if an error occurs during the request
+     * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
+     */
     @Test
     public void testValidateLoginFailure() throws Exception {
-        // Definindo o comportamento do mock do UserService para falha
         when(userService.validateUser(anyString(), anyString())).thenReturn(null);
 
-        // Testando o endpoint de validação de login com credenciais erradas
         mockMvc.perform(MockMvcRequestBuilders.post("/validate-login")
                         .param("username", "user")
                         .param("password", "wrongpassword")
-                        .session(session)) // Usando MockHttpSession aqui
-                .andExpect(MockMvcResultMatchers.status().is3xxRedirection()) // Espera redirecionamento
-                .andExpect(MockMvcResultMatchers.redirectedUrl("/login?error=Invalid credentials")); // Verifica o redirecionamento correto para erro
+                        .session(session))
+                .andExpect(MockMvcResultMatchers.status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/login?error=Invalid credentials"));
     }
 
+    /**
+     * Tests the logout endpoint.
+     * 
+     * @throws Exception if an error occurs during the request
+     * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
+     */
     @Test
     public void testLogout() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/logout").session(session))

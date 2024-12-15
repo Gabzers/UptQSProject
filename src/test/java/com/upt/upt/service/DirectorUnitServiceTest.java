@@ -1,7 +1,6 @@
 package com.upt.upt.service;
 
 import com.upt.upt.entity.DirectorUnit;
-import com.upt.upt.entity.YearUnit;
 import com.upt.upt.repository.DirectorUnitRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,13 +8,17 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 /**
  * Test class for DirectorUnitService.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 class DirectorUnitServiceTest {
 
@@ -30,11 +33,16 @@ class DirectorUnitServiceTest {
 
     private DirectorUnit mockDirectorUnit;
 
+    /**
+     * Sets up the test environment before each test.
+     * Initializes mocks and creates a test instance of DirectorUnit.
+     * 
+     * 
+     */
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
 
-        // Mock DirectorUnit object
         mockDirectorUnit = new DirectorUnit();
         mockDirectorUnit.setId(1L);
         mockDirectorUnit.setUsername("test_user");
@@ -42,57 +50,66 @@ class DirectorUnitServiceTest {
         mockDirectorUnit.setName("Test Name");
         mockDirectorUnit.setDepartment("Test Department");
 
-        // Injetar o mock manualmente, caso necessário
         directorUnitService = new DirectorUnitService(directorUnitRepository);
         directorUnitService.userService = userService;
     }
 
+    /**
+     * Tests the saving of a director unit.
+     * 
+     * 
+     */
     @Test
     void testSaveDirector() {
-        // Arrange
         when(directorUnitRepository.save(mockDirectorUnit)).thenReturn(mockDirectorUnit);
 
-        // Act
         DirectorUnit result = directorUnitService.saveDirector(mockDirectorUnit);
 
-        // Assert
         assertNotNull(result);
         assertEquals("test_user", result.getUsername());
         verify(directorUnitRepository, times(1)).save(mockDirectorUnit);
     }
 
+    /**
+     * Tests the retrieval of all director units.
+     * 
+     * 
+     */
     @Test
     void testGetAllDirectors() {
-        // Arrange
         List<DirectorUnit> mockDirectorList = List.of(mockDirectorUnit);
         when(directorUnitRepository.findAll()).thenReturn(mockDirectorList);
 
-        // Act
         List<DirectorUnit> result = directorUnitService.getAllDirectors();
 
-        // Assert
         assertNotNull(result);
         assertEquals(1, result.size());
         verify(directorUnitRepository, times(1)).findAll();
     }
 
+    /**
+     * Tests the retrieval of a director unit by its ID.
+     * 
+     * 
+     */
     @Test
     void testGetDirectorById() {
-        // Arrange
         when(directorUnitRepository.findById(1L)).thenReturn(Optional.of(mockDirectorUnit));
 
-        // Act
         Optional<DirectorUnit> result = directorUnitService.getDirectorById(1L);
 
-        // Assert
         assertTrue(result.isPresent());
         assertEquals("test_user", result.get().getUsername());
         verify(directorUnitRepository, times(1)).findById(1L);
     }
 
+    /**
+     * Tests the update of a director unit.
+     * 
+     * 
+     */
     @Test
     void testUpdateDirector() {
-        // Arrange
         Map<String, String> params = Map.of(
                 "director-name", "Updated Name",
                 "director-department", "Updated Department",
@@ -102,10 +119,8 @@ class DirectorUnitServiceTest {
 
         when(directorUnitRepository.findById(1L)).thenReturn(Optional.of(mockDirectorUnit));
 
-        // Act
         DirectorUnit result = directorUnitService.updateDirector(1L, params);
 
-        // Assert
         assertNotNull(result);
         assertEquals("Updated Name", result.getName());
         assertEquals("Updated Department", result.getDepartment());
@@ -114,31 +129,40 @@ class DirectorUnitServiceTest {
         verify(directorUnitRepository, times(1)).findById(1L);
     }
 
+    /**
+     * Tests the deletion of a director unit by its ID.
+     * 
+     * 
+     */
     @Test
     void testDeleteDirector() {
-        // Act
         directorUnitService.deleteDirector(1L);
 
-        // Assert
         verify(directorUnitRepository, times(1)).deleteById(1L);
     }
 
+    /**
+     * Tests if a username exists in the repository.
+     * 
+     * 
+     */
     @Test
     void testUsernameExists() {
-        // Arrange
         when(directorUnitRepository.findByUsername("test_user")).thenReturn(Optional.of(mockDirectorUnit));
 
-        // Act
         boolean result = directorUnitService.usernameExists("test_user");
 
-        // Assert
         assertTrue(result);
         verify(directorUnitRepository, times(1)).findByUsername("test_user");
     }
 
+    /**
+     * Tests the creation of a new director unit.
+     * 
+     * 
+     */
     @Test
     void testCreateDirector() {
-        // Arrange
         Map<String, String> params = Map.of(
                 "director-name", "New Name",
                 "director-department", "New Department",
@@ -148,10 +172,8 @@ class DirectorUnitServiceTest {
 
         when(userService.usernameExists("new_user")).thenReturn(false);
 
-        // Act
         DirectorUnit result = directorUnitService.createDirector(params);
 
-        // Assert
         assertNotNull(result);
         assertEquals("New Name", result.getName());
         assertEquals("New Department", result.getDepartment());
@@ -160,9 +182,13 @@ class DirectorUnitServiceTest {
         verify(userService, times(1)).usernameExists("new_user");
     }
 
+    /**
+     * Tests the creation of a new director unit when the username already exists.
+     * 
+     * 
+     */
     @Test
     void testCreateDirector_ThrowsExceptionWhenUsernameExists() {
-        // Arrange
         Map<String, String> params = Map.of(
                 "director-name", "New Name",
                 "director-department", "New Department",
@@ -172,7 +198,6 @@ class DirectorUnitServiceTest {
 
         when(userService.usernameExists("existing_user")).thenReturn(true);
 
-        // Act & Assert
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
                 directorUnitService.createDirector(params)
         );

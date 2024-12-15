@@ -10,11 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.time.LocalDate;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * Test class for YearUnitRepository.
+ * 
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 class YearUnitRepositoryTest {
@@ -22,6 +26,9 @@ class YearUnitRepositoryTest {
     @Autowired
     private YearUnitRepository yearUnitRepository;
 
+    /**
+     * Test findTopByOrderByFirstSemesterStartDateDesc method.
+     */
     @Test
     @DisplayName("Test findTopByOrderByFirstSemesterStartDateDesc")
     void testFindTopByOrderByFirstSemesterStartDateDesc() {
@@ -52,6 +59,9 @@ class YearUnitRepositoryTest {
         assertThat(result.get().getFirstSemester().getStartDate()).isEqualTo("2024-09-01");
     }
 
+    /**
+     * Test findTopByOrderByIdDesc method.
+     */
     @Test
     @DisplayName("Test findTopByOrderByIdDesc")
     void testFindTopByOrderByIdDesc() {
@@ -74,6 +84,9 @@ class YearUnitRepositoryTest {
         assertThat(result.get().getId()).isEqualTo(yearUnit2.getId());
     }
 
+    /**
+     * Test findTopByDirectorUnitIdOrderByIdDesc method.
+     */
     @Test
     @DisplayName("Test findTopByDirectorUnitIdOrderByIdDesc")
     void testFindTopByDirectorUnitIdOrderByIdDesc() {
@@ -107,6 +120,9 @@ class YearUnitRepositoryTest {
         assertThat(result.get().getId()).isEqualTo(yearUnit2.getId());
     }
 
+    /**
+     * Test findByDirectorUnitId method.
+     */
     @Test
     @DisplayName("Test findByDirectorUnitId")
     void testFindByDirectorUnitId() {

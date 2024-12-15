@@ -7,6 +7,11 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * Test class for YearUnit.
+ * 
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 public class YearUnitTest {
 
     private YearUnit yearUnit;
@@ -14,6 +19,9 @@ public class YearUnitTest {
     private SemesterUnit secondSemester;
     private DirectorUnit directorUnit;
 
+    /**
+     * Set up test data.
+     */
     @BeforeEach
     void setUp() {
         // Create mock dependencies
@@ -28,6 +36,9 @@ public class YearUnitTest {
         yearUnit.setSecondSemester(secondSemester);
     }
 
+    /**
+     * Test constructor and getters.
+     */
     @Test
     void testConstructorAndGetters() {
         // Arrange
@@ -54,6 +65,9 @@ public class YearUnitTest {
         assertEquals(directorUnit, fullYearUnit.getDirectorUnit());
     }
 
+    /**
+     * Test setters.
+     */
     @Test
     void testSetters() {
         // Arrange
@@ -81,6 +95,9 @@ public class YearUnitTest {
         assertEquals(newDirectorUnit, yearUnit.getDirectorUnit());
     }
 
+    /**
+     * Test isCurrentYear method within first semester.
+     */
     @Test
     void testIsCurrentYear_WithinFirstSemester() {
         // Arrange
@@ -99,6 +116,9 @@ public class YearUnitTest {
         assertTrue(isCurrentYear);
     }
 
+    /**
+     * Test isCurrentYear method before first semester.
+     */
     @Test
     void testIsCurrentYear_BeforeFirstSemester() {
         // Arrange
@@ -115,6 +135,9 @@ public class YearUnitTest {
         assertFalse(isCurrentYear);
     }
 
+    /**
+     * Test isCurrentYear method after second semester.
+     */
     @Test
     void testIsCurrentYear_AfterSecondSemester() {
         // Arrange
@@ -131,6 +154,9 @@ public class YearUnitTest {
         assertFalse(isCurrentYear);
     }
 
+    /**
+     * Test equals method.
+     */
     @Test
     void testEquals() {
         // Arrange
@@ -150,6 +176,9 @@ public class YearUnitTest {
         assertEquals(yearUnit1, yearUnit1);
     }
 
+    /**
+     * Test hashCode method.
+     */
     @Test
     void testHashCode() {
         // Arrange
@@ -163,6 +192,9 @@ public class YearUnitTest {
         assertEquals(yearUnit1.hashCode(), yearUnit2.hashCode());
     }
 
+    /**
+     * Test toString method.
+     */
     @Test
     void testToString() {
         // Arrange

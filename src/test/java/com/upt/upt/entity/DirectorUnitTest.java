@@ -4,20 +4,30 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Test class for DirectorUnit.
+ * 
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 class DirectorUnitTest {
 
     private DirectorUnit director;
 
+    /**
+     * Set up test data.
+     */
     @BeforeEach
     void setUp() {
         director = new DirectorUnit();
     }
 
+    /**
+     * Test addCoordinator method.
+     */
     @Test
     void testAddCoordinator() {
         CoordinatorUnit coordinator = new CoordinatorUnit();
@@ -31,6 +41,9 @@ class DirectorUnitTest {
         assertEquals(director, coordinator.getDirectorUnit());
     }
 
+    /**
+     * Test addAcademicYear method.
+     */
     @Test
     void testAddAcademicYear() {
         SemesterUnit firstSemester = new SemesterUnit();
@@ -57,6 +70,9 @@ class DirectorUnitTest {
         assertEquals(director, year1.getDirectorUnit());
     }
 
+    /**
+     * Test getCurrentYear method.
+     */
     @Test
     void testGetCurrentYear() {
         YearUnit year1 = new YearUnit();
@@ -71,6 +87,9 @@ class DirectorUnitTest {
         assertEquals(year2, director.getCurrentYear());
     }
 
+    /**
+     * Test getPastYears method.
+     */
     @Test
     void testGetPastYears() {
         YearUnit year1 = new YearUnit();
@@ -88,6 +107,9 @@ class DirectorUnitTest {
         assertEquals(year1, pastYears.get(0));
     }
 
+    /**
+     * Test isCurrentYear method.
+     */
     @Test
     void testIsCurrentYear() {
         SemesterUnit firstSemester = new SemesterUnit();
@@ -108,6 +130,9 @@ class DirectorUnitTest {
         assertTrue(year.isCurrentYear());
     }
 
+    /**
+     * Test equals and hashCode methods.
+     */
     @Test
     void testEqualsAndHashCode() {
         DirectorUnit director1 = new DirectorUnit();
@@ -125,6 +150,9 @@ class DirectorUnitTest {
         assertNotEquals(director1.hashCode(), director3.hashCode());
     }
 
+    /**
+     * Test toString method.
+     */
     @Test
     void testToString() {
         director.setId(1L);

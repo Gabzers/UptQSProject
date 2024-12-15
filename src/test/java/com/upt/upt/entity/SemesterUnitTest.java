@@ -8,10 +8,18 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Test class for SemesterUnit.
+ * 
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 class SemesterUnitTest {
 
     private SemesterUnit semesterUnit;
 
+    /**
+     * Set up test data.
+     */
     @BeforeEach
     void setUp() {
         semesterUnit = new SemesterUnit(
@@ -25,6 +33,9 @@ class SemesterUnitTest {
         );
     }
 
+    /**
+     * Test getters and setters.
+     */
     @Test
     void testGettersAndSetters() {
         semesterUnit.setStartDate("2024-01-01");
@@ -34,6 +45,9 @@ class SemesterUnitTest {
         assertEquals("2024-06-30", semesterUnit.getEndDate());
     }
 
+    /**
+     * Test addCurricularUnit method.
+     */
     @Test
     void testAddCurricularUnit() {
         CurricularUnit curricularUnit = new CurricularUnit();
@@ -47,6 +61,9 @@ class SemesterUnitTest {
         assertEquals(semesterUnit, curricularUnit.getSemesterUnit());
     }
 
+    /**
+     * Test removeCurricularUnit method.
+     */
     @Test
     void testRemoveCurricularUnit() {
         CurricularUnit curricularUnit = new CurricularUnit();
@@ -62,11 +79,17 @@ class SemesterUnitTest {
         assertNull(curricularUnit.getSemesterUnit());
     }
 
+    /**
+     * Test getYear method.
+     */
     @Test
     void testGetYear() {
         assertEquals(2024, semesterUnit.getYear());
     }
 
+    /**
+     * Test equals and hashCode methods.
+     */
     @Test
     void testEqualsAndHashCode() {
         SemesterUnit otherSemester = new SemesterUnit(
@@ -86,6 +109,9 @@ class SemesterUnitTest {
         assertNotEquals(semesterUnit, otherSemester);
     }
 
+    /**
+     * Test toString method.
+     */
     @Test
     void testToString() {
         String expected = "SemesterUnit{id=1, startDate='2024-02-01', endDate='2024-07-01', examPeriodStart='2024-06-01', " +

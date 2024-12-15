@@ -8,10 +8,18 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * Test class for CurricularUnit.
+ * 
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 class CurricularUnitTest {
 
     private CurricularUnit curricularUnit;
 
+    /**
+     * Set up test data.
+     */
     @BeforeEach
     void setUp() {
         curricularUnit = new CurricularUnit();
@@ -25,6 +33,9 @@ class CurricularUnitTest {
         curricularUnit.setSemester(1);
     }
 
+    /**
+     * Test hasExamPeriodEvaluation method.
+     */
     @Test
     void testHasExamPeriodEvaluation() {
         AssessmentUnit assessment = mock(AssessmentUnit.class);
@@ -34,6 +45,9 @@ class CurricularUnitTest {
         assertTrue(curricularUnit.hasExamPeriodEvaluation());
     }
 
+    /**
+     * Test isMixedAndMissingExamPeriod method.
+     */
     @Test
     void testIsMixedAndMissingExamPeriod() {
         AssessmentUnit assessment = mock(AssessmentUnit.class);
@@ -43,6 +57,9 @@ class CurricularUnitTest {
         assertTrue(curricularUnit.isMixedAndMissingExamPeriod());
     }
 
+    /**
+     * Test isEvaluationsCountMismatch method.
+     */
     @Test
     void testIsEvaluationsCountMismatch() {
         AssessmentUnit assessment1 = mock(AssessmentUnit.class);
@@ -55,6 +72,9 @@ class CurricularUnitTest {
         assertFalse(curricularUnit.isEvaluationsCountMismatch());
     }
 
+    /**
+     * Test isTotalWeightInvalid method.
+     */
     @Test
     void testIsTotalWeightInvalid() {
         AssessmentUnit assessment1 = mock(AssessmentUnit.class);
@@ -72,6 +92,9 @@ class CurricularUnitTest {
         assertTrue(curricularUnit.isTotalWeightInvalid());
     }
 
+    /**
+     * Test isTotalWeightLessThan100 method.
+     */
     @Test
     void testIsTotalWeightLessThan100() {
         AssessmentUnit assessment1 = mock(AssessmentUnit.class);
@@ -87,6 +110,9 @@ class CurricularUnitTest {
         assertFalse(curricularUnit.isTotalWeightLessThan100());
     }
 
+    /**
+     * Test getNormalPeriodAssessments method.
+     */
     @Test
     void testGetNormalPeriodAssessments() {
         AssessmentUnit teachingAssessment = mock(AssessmentUnit.class);
@@ -106,6 +132,9 @@ class CurricularUnitTest {
         assertTrue(normalAssessments.contains(examAssessment));
     }
 
+    /**
+     * Test hasAssessments method.
+     */
     @Test
     void testHasAssessments() {
         assertFalse(curricularUnit.hasAssessments());

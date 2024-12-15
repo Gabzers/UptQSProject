@@ -18,6 +18,11 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * Test class for CoordinatorUnitService.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 class CoordinatorUnitServiceTest {
 
     @Mock
@@ -27,7 +32,7 @@ class CoordinatorUnitServiceTest {
     private DirectorUnitService directorUnitService;
 
     @Mock
-    private UserService userService; // Ensure this is mocked
+    private UserService userService;
 
     @Mock
     private HttpSession session;
@@ -35,11 +40,17 @@ class CoordinatorUnitServiceTest {
     @InjectMocks
     private CoordinatorUnitService coordinatorService;
 
+    /**
+     * Sets up the test environment.
+     */
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
     }
 
+    /**
+     * Tests the getAllCoordinators method.
+     */
     @Test
     void testGetAllCoordinators() {
         List<CoordinatorUnit> coordinators = new ArrayList<>();
@@ -51,6 +62,9 @@ class CoordinatorUnitServiceTest {
         verify(coordinatorRepository, times(1)).findAll();
     }
 
+    /**
+     * Tests the getCoordinatorById method.
+     */
     @Test
     void testGetCoordinatorById() {
         CoordinatorUnit coordinator = new CoordinatorUnit();
@@ -63,6 +77,9 @@ class CoordinatorUnitServiceTest {
         verify(coordinatorRepository, times(1)).findById(1L);
     }
 
+    /**
+     * Tests the saveCoordinator method.
+     */
     @Test
     void testSaveCoordinator() {
         CoordinatorUnit coordinator = new CoordinatorUnit();
@@ -73,6 +90,9 @@ class CoordinatorUnitServiceTest {
         verify(coordinatorRepository, times(1)).save(coordinator);
     }
 
+    /**
+     * Tests the deleteCoordinator method.
+     */
     @Test
     void testDeleteCoordinator() {
         doNothing().when(coordinatorRepository).deleteById(1L);
@@ -81,6 +101,9 @@ class CoordinatorUnitServiceTest {
         verify(coordinatorRepository, times(1)).deleteById(1L);
     }
 
+    /**
+     * Tests the usernameExists method.
+     */
     @Test
     void testUsernameExists() {
         when(coordinatorRepository.findByUsername("existingUser")).thenReturn(Optional.of(new CoordinatorUnit()));
@@ -91,6 +114,9 @@ class CoordinatorUnitServiceTest {
         verify(coordinatorRepository, times(2)).findByUsername(anyString());
     }
 
+    /**
+     * Tests the saveCoordinatorWithDirector method.
+     */
     @Test
     void testSaveCoordinatorWithDirector() {
         CoordinatorUnit coordinator = new CoordinatorUnit();
@@ -108,6 +134,9 @@ class CoordinatorUnitServiceTest {
         verify(userService, times(1)).usernameExists("newUser");
     }
 
+    /**
+     * Tests the saveCoordinatorWithDirector method when the username already exists.
+     */
     @Test
     void testSaveCoordinatorWithDirectorThrowsWhenUsernameExists() {
         CoordinatorUnit coordinator = new CoordinatorUnit();
@@ -123,6 +152,9 @@ class CoordinatorUnitServiceTest {
         verify(coordinatorRepository, never()).save(any(CoordinatorUnit.class));
     }
 
+    /**
+     * Tests the updateCoordinator method.
+     */
     @Test
     void testUpdateCoordinator() {
         CoordinatorUnit existingCoordinator = new CoordinatorUnit();
@@ -140,6 +172,9 @@ class CoordinatorUnitServiceTest {
         assertEquals("New Name", existingCoordinator.getName());
     }
 
+    /**
+     * Tests the hasYearCreated method.
+     */
     @Test
     void testHasYearCreated() {
         DirectorUnit director = new DirectorUnit();
@@ -147,10 +182,10 @@ class CoordinatorUnitServiceTest {
 
         when(directorUnitService.getDirectorById(1L)).thenReturn(Optional.of(director));
 
-        // Inicialmente, não há anos acadêmicos
+        // Initially, there are no academic years
         assertFalse(coordinatorService.hasYearCreated(1L));
 
-        // Adicionar um YearUnit válido
+        // Add a valid YearUnit
         YearUnit yearUnit = new YearUnit();
         yearUnit.setId(1L);
         yearUnit.setSpecialExamStart("2024-01-01");
@@ -158,9 +193,7 @@ class CoordinatorUnitServiceTest {
 
         director.getAcademicYears().add(yearUnit);
 
-        // Agora, deve retornar true
+        // Now, it should return true
         assertTrue(coordinatorService.hasYearCreated(1L));
     }
-
-
 }

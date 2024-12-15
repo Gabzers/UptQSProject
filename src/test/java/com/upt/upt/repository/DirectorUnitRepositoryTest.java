@@ -14,6 +14,8 @@ import static org.mockito.Mockito.*;
 
 /**
  * Test class for DirectorUnitRepository.
+ * 
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 class DirectorUnitRepositoryTest {
 
@@ -22,6 +24,9 @@ class DirectorUnitRepositoryTest {
 
     private DirectorUnit mockDirectorUnit;
 
+    /**
+     * Set up test data.
+     */
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -33,6 +38,9 @@ class DirectorUnitRepositoryTest {
         mockDirectorUnit.setPassword("password123");
     }
 
+    /**
+     * Test findByUsernameAndPassword method.
+     */
     @Test
     void testFindByUsernameAndPassword() {
         // Arrange
@@ -49,6 +57,9 @@ class DirectorUnitRepositoryTest {
         verify(directorUnitRepository, times(1)).findByUsernameAndPassword("test_user", "password123");
     }
 
+    /**
+     * Test findByUsername method.
+     */
     @Test
     void testFindByUsername() {
         // Arrange
@@ -64,6 +75,9 @@ class DirectorUnitRepositoryTest {
         verify(directorUnitRepository, times(1)).findByUsername("test_user");
     }
 
+    /**
+     * Test findByUsername method when username is not found.
+     */
     @Test
     void testFindByUsername_NotFound() {
         // Arrange

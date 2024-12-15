@@ -19,6 +19,12 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+
+/**
+ * Test class for RoomUnitServiceTest.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 @ExtendWith(MockitoExtension.class)
 public class RoomUnitServiceTest {
 
@@ -37,6 +43,12 @@ public class RoomUnitServiceTest {
     private RoomUnit roomUnit;
     private AssessmentUnit assessmentUnit;
 
+    /**
+     * Sets up the test environment before each test.
+     * Initializes mocks and creates test instances of RoomUnit and AssessmentUnit.
+     * 
+     * 
+     */
     @BeforeEach
     void setUp() {
         roomUnit = new RoomUnit();
@@ -53,6 +65,11 @@ public class RoomUnitServiceTest {
         assessmentUnit.setEndTime(LocalDateTime.of(2024, 12, 15, 12, 0));
     }
 
+    /**
+     * Tests if a room is available for a given time period when it is available.
+     * 
+     * 
+     */
     @Test
     void testIsRoomAvailable_whenRoomIsAvailable() {
         when(assessmentUnitRepository.findByRooms_Id(1L)).thenReturn(Collections.singletonList(assessmentUnit));
@@ -62,6 +79,11 @@ public class RoomUnitServiceTest {
         assertTrue(isAvailable);
     }
 
+    /**
+     * Tests if a room is available for a given time period when it is not available.
+     * 
+     * 
+     */
     @Test
     void testIsRoomAvailable_whenRoomIsNotAvailable() {
         when(assessmentUnitRepository.findByRooms_Id(1L)).thenReturn(Collections.singletonList(assessmentUnit));
@@ -71,6 +93,11 @@ public class RoomUnitServiceTest {
         assertFalse(isAvailable);
     }
 
+    /**
+     * Tests if all rooms are available for a given time period when they are available.
+     * 
+     * 
+     */
     @Test
     void testAreRoomsAvailable_whenAllRoomsAreAvailable() {
         List<Long> roomIds = Arrays.asList(1L, 2L);
@@ -83,6 +110,11 @@ public class RoomUnitServiceTest {
         assertTrue(areAvailable);
     }
 
+    /**
+     * Tests if all rooms are available for a given time period when one room is not available.
+     * 
+     * 
+     */
     @Test
     void testAreRoomsAvailable_whenOneRoomIsNotAvailable() {
         List<Long> roomIds = Arrays.asList(1L, 2L);
@@ -95,6 +127,11 @@ public class RoomUnitServiceTest {
         assertFalse(areAvailable);
     }
 
+    /**
+     * Tests the saving of a room unit.
+     * 
+     * 
+     */
     @Test
     void testSaveRoom() {
         when(roomUnitRepository.save(any(RoomUnit.class))).thenReturn(roomUnit);
@@ -105,6 +142,11 @@ public class RoomUnitServiceTest {
         assertEquals(roomUnit.getRoomNumber(), savedRoom.getRoomNumber());
     }
 
+    /**
+     * Tests the creation of a room unit.
+     * 
+     * 
+     */
     @Test
     void testCreateRoom() {
         Map<String, String> params = new HashMap<>();
@@ -123,6 +165,11 @@ public class RoomUnitServiceTest {
         assertEquals("Main Building", newRoom.getBuilding());
     }
 
+    /**
+     * Tests the update of a room unit.
+     * 
+     * 
+     */
     @Test
     void testUpdateRoom() {
         when(roomUnitRepository.findById(1L)).thenReturn(Optional.of(roomUnit));
@@ -144,6 +191,11 @@ public class RoomUnitServiceTest {
         assertEquals("New Building", updatedRoom.getBuilding());
     }
 
+    /**
+     * Tests the deletion of a room unit.
+     * 
+     * 
+     */
     @Test
     void testDeleteRoom() {
         roomUnitService.deleteRoom(1L);
@@ -151,6 +203,11 @@ public class RoomUnitServiceTest {
         verify(roomUnitRepository, times(1)).deleteById(1L);
     }
 
+    /**
+     * Tests the retrieval of all room units.
+     * 
+     * 
+     */
     @Test
     void testGetAllRooms() {
         when(roomUnitRepository.findAll()).thenReturn(Collections.singletonList(roomUnit));
@@ -161,6 +218,11 @@ public class RoomUnitServiceTest {
         assertEquals(roomUnit.getRoomNumber(), rooms.get(0).getRoomNumber());
     }
 
+    /**
+     * Tests the retrieval of a room unit by its ID.
+     * 
+     * 
+     */
     @Test
     void testGetRoomById() {
         when(roomUnitRepository.findById(1L)).thenReturn(Optional.of(roomUnit));
@@ -171,6 +233,11 @@ public class RoomUnitServiceTest {
         assertEquals(roomUnit.getRoomNumber(), foundRoom.getRoomNumber());
     }
 
+    /**
+     * Tests the retrieval of room units by their designation.
+     * 
+     * 
+     */
     @Test
     void testGetRoomsByDesignation() {
         when(roomUnitRepository.findByDesignation("Room 101")).thenReturn(Collections.singletonList(roomUnit));
@@ -181,6 +248,11 @@ public class RoomUnitServiceTest {
         assertEquals(roomUnit.getRoomNumber(), rooms.get(0).getRoomNumber());
     }
 
+    /**
+     * Tests the retrieval of room units by their building.
+     * 
+     * 
+     */
     @Test
     void testGetRoomsByBuilding() {
         when(roomUnitRepository.findByBuilding("Main Building")).thenReturn(Collections.singletonList(roomUnit));
@@ -191,6 +263,11 @@ public class RoomUnitServiceTest {
         assertEquals(roomUnit.getRoomNumber(), rooms.get(0).getRoomNumber());
     }
 
+    /**
+     * Tests the retrieval of room units by their material type.
+     * 
+     * 
+     */
     @Test
     void testGetRoomsByMaterialType() {
         when(roomUnitRepository.findByMaterialType("Chairs")).thenReturn(Collections.singletonList(roomUnit));

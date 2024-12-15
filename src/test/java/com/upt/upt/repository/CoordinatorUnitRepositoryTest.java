@@ -10,41 +10,52 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test class for CoordinatorUnitRepository.
+ * 
+ * @autor Grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 @DataJpaTest
 class CoordinatorUnitRepositoryTest {
 
     @Autowired
     private CoordinatorUnitRepository repository;
 
+    /**
+     * Test findByUsernameAndPassword method.
+     */
     @Test
     void testFindByUsernameAndPassword() {
-        // Preparação: salvar uma entidade no banco de dados
+        // Arrange
         CoordinatorUnit coordinator = new CoordinatorUnit();
         coordinator.setName("John Doe");
         coordinator.setUsername("jdoe");
         coordinator.setPassword("password123");
         repository.save(coordinator);
 
-        // Execução: buscar a entidade pelo username e password
+        // Act
         CoordinatorUnit result = repository.findByUsernameAndPassword("jdoe", "password123");
 
-        // Verificação
+        // Assert
         assertEquals("John Doe", result.getName());
         assertEquals("jdoe", result.getUsername());
     }
 
+    /**
+     * Test findByUsername method.
+     */
     @Test
     void testFindByUsername() {
-        // Preparação: salvar uma entidade no banco de dados
+        // Arrange
         CoordinatorUnit coordinator = new CoordinatorUnit();
         coordinator.setName("Jane Doe");
         coordinator.setUsername("janedoe");
         repository.save(coordinator);
 
-        // Execução: buscar a entidade pelo username
+        // Act
         Optional<CoordinatorUnit> result = repository.findByUsername("janedoe");
 
-        // Verificação
+        // Assert
         assertTrue(result.isPresent());
         assertEquals("Jane Doe", result.get().getName());
         assertEquals("janedoe", result.get().getUsername());

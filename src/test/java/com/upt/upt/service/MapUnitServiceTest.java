@@ -16,6 +16,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
+
+/**
+ * Test class for MapUnitServiceTest.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 public class MapUnitServiceTest {
 
     @Mock
@@ -26,6 +32,12 @@ public class MapUnitServiceTest {
 
     private MapUnit mapUnit;
 
+    /**
+     * Sets up the test environment before each test.
+     * Initializes mocks and creates a test instance of MapUnit.
+     * 
+     * 
+     */
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -33,6 +45,11 @@ public class MapUnitServiceTest {
         mapUnit.setId(1L);
     }
 
+    /**
+     * Tests the retrieval of all map units.
+     * 
+     * 
+     */
     @Test
     public void testGetAllMapUnits() {
         when(mapUnitRepository.findAll()).thenReturn(Arrays.asList(mapUnit));
@@ -44,6 +61,11 @@ public class MapUnitServiceTest {
         verify(mapUnitRepository, times(1)).findAll();
     }
 
+    /**
+     * Tests the retrieval of a map unit by its ID.
+     * 
+     * 
+     */
     @Test
     public void testGetMapUnitById() {
         when(mapUnitRepository.findById(1L)).thenReturn(Optional.of(mapUnit));
@@ -55,6 +77,11 @@ public class MapUnitServiceTest {
         verify(mapUnitRepository, times(1)).findById(1L);
     }
 
+    /**
+     * Tests the saving of a map unit.
+     * 
+     * 
+     */
     @Test
     public void testSaveMapUnit() {
         when(mapUnitRepository.save(any(MapUnit.class))).thenReturn(mapUnit);
@@ -66,6 +93,11 @@ public class MapUnitServiceTest {
         verify(mapUnitRepository, times(1)).save(mapUnit);
     }
 
+    /**
+     * Tests the update of a map unit.
+     * 
+     * 
+     */
     @Test
     public void testUpdateMapUnit() {
         when(mapUnitRepository.existsById(1L)).thenReturn(true);
@@ -79,6 +111,11 @@ public class MapUnitServiceTest {
         verify(mapUnitRepository, times(1)).save(mapUnit);
     }
 
+    /**
+     * Tests the update of a map unit when it is not found.
+     * 
+     * 
+     */
     @Test
     public void testUpdateMapUnitNotFound() {
         when(mapUnitRepository.existsById(1L)).thenReturn(false);
@@ -90,6 +127,11 @@ public class MapUnitServiceTest {
         verify(mapUnitRepository, times(0)).save(mapUnit);
     }
 
+    /**
+     * Tests the deletion of a map unit by its ID.
+     * 
+     * 
+     */
     @Test
     public void testDeleteMapUnit() {
         doNothing().when(mapUnitRepository).deleteById(1L);

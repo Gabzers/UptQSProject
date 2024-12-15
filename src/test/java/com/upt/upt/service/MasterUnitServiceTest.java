@@ -15,6 +15,12 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+
+/**
+ * Test class for MasterUnitServiceTest.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 public class MasterUnitServiceTest {
 
     @Mock
@@ -26,11 +32,22 @@ public class MasterUnitServiceTest {
     @InjectMocks
     private MasterUnitService masterUnitService;
 
+    /**
+     * Sets up the test environment before each test.
+     * Initializes mocks.
+     * 
+     * 
+     */
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
     }
 
+    /**
+     * Tests the retrieval of all master units.
+     * 
+     * 
+     */
     @Test
     void getAllMasters_ShouldReturnListOfMasters() {
         List<MasterUnit> mockMasters = Arrays.asList(new MasterUnit(), new MasterUnit());
@@ -42,6 +59,11 @@ public class MasterUnitServiceTest {
         verify(masterUnitRepository, times(1)).findAll();
     }
 
+    /**
+     * Tests the saving of a master unit.
+     * 
+     * 
+     */
     @Test
     void saveMaster_ShouldInvokeSaveOnRepository() {
         MasterUnit master = new MasterUnit();
@@ -51,6 +73,11 @@ public class MasterUnitServiceTest {
         verify(masterUnitRepository, times(1)).save(master);
     }
 
+    /**
+     * Tests the retrieval of a master unit by its ID when it exists.
+     * 
+     * 
+     */
     @Test
     void getMasterById_WhenMasterExists_ShouldReturnOptionalOfMaster() {
         MasterUnit master = new MasterUnit();
@@ -63,6 +90,11 @@ public class MasterUnitServiceTest {
         verify(masterUnitRepository, times(1)).findById(1L);
     }
 
+    /**
+     * Tests the retrieval of a master unit by its ID when it does not exist.
+     * 
+     * 
+     */
     @Test
     void getMasterById_WhenMasterDoesNotExist_ShouldReturnEmptyOptional() {
         when(masterUnitRepository.findById(1L)).thenReturn(Optional.empty());
@@ -73,6 +105,11 @@ public class MasterUnitServiceTest {
         verify(masterUnitRepository, times(1)).findById(1L);
     }
 
+    /**
+     * Tests the deletion of a master unit by its ID.
+     * 
+     * 
+     */
     @Test
     void deleteMaster_ShouldInvokeDeleteOnRepository() {
         masterUnitService.deleteMaster(1L);
@@ -80,6 +117,11 @@ public class MasterUnitServiceTest {
         verify(masterUnitRepository, times(1)).deleteById(1L);
     }
 
+    /**
+     * Tests if a username exists in the system.
+     * 
+     * 
+     */
     @Test
     void usernameExists_WhenUsernameExists_ShouldReturnTrue() {
         when(masterUnitRepository.findByUsername("existingUsername")).thenReturn(Optional.of(new MasterUnit()));
@@ -90,6 +132,11 @@ public class MasterUnitServiceTest {
         verify(masterUnitRepository, times(1)).findByUsername("existingUsername");
     }
 
+    /**
+     * Tests if a username does not exist in the system.
+     * 
+     * 
+     */
     @Test
     void usernameExists_WhenUsernameDoesNotExist_ShouldReturnFalse() {
         when(masterUnitRepository.findByUsername("nonexistentUsername")).thenReturn(Optional.empty());
@@ -100,6 +147,11 @@ public class MasterUnitServiceTest {
         verify(masterUnitRepository, times(1)).findByUsername("nonexistentUsername");
     }
 
+    /**
+     * Tests the creation of a master unit when the username already exists.
+     * 
+     * 
+     */
     @Test
     void createMaster_WhenUsernameExists_ShouldThrowException() {
         when(userService.usernameExists("existingUsername")).thenReturn(true);
@@ -112,6 +164,11 @@ public class MasterUnitServiceTest {
         verifyNoInteractions(masterUnitRepository);
     }
 
+    /**
+     * Tests the creation of a master unit when the username does not exist.
+     * 
+     * 
+     */
     @Test
     void createMaster_WhenUsernameDoesNotExist_ShouldReturnNewMaster() {
         when(userService.usernameExists("newUsername")).thenReturn(false);
@@ -125,6 +182,11 @@ public class MasterUnitServiceTest {
         verify(userService, times(1)).usernameExists("newUsername");
     }
 
+    /**
+     * Tests the update of a master unit when it exists.
+     * 
+     * 
+     */
     @Test
     void updateMaster_WhenMasterExists_ShouldUpdateFields() {
         MasterUnit existingMaster = new MasterUnit();
@@ -141,6 +203,11 @@ public class MasterUnitServiceTest {
         verify(masterUnitRepository, times(1)).findById(1L);
     }
 
+    /**
+     * Tests the update of a master unit when it does not exist.
+     * 
+     * 
+     */
     @Test
     void updateMaster_WhenMasterDoesNotExist_ShouldThrowException() {
         when(masterUnitRepository.findById(1L)).thenReturn(Optional.empty());
