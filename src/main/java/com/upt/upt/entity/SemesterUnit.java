@@ -2,6 +2,7 @@ package com.upt.upt.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
@@ -154,6 +155,10 @@ public class SemesterUnit {
     public void removeCurricularUnit(CurricularUnit curricularUnit) {
         this.curricularUnits.remove(curricularUnit);
         curricularUnit.setSemesterUnit(null);
+    }
+
+    public Integer getYear() {
+        return LocalDate.parse(startDate).getYear();
     }
 
     @Override

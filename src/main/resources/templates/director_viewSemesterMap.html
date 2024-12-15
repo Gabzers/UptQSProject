@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -11,28 +11,28 @@
 
 <body>
     <header>
-        <h1>Semester Map</h1>
-        <div class="button-container">
-            <button onclick="location.href='/logout'">Logout</button>
-            <button onclick="window.location.href=document.referrer">Back</button>
+        <div class="logo-title-container" style="display: flex; align-items: center;">
+            <img src="/images/upt-logo.png" alt="Logo" style="height: 40px; margin-right: 10px;">
+            <h1 th:text="'Assessment Course Map - ' + (${semester.equals(1) ? '1st Semester' : '2nd Semester'})">Assessment Course Map</h1>
         </div>
+        <nav class="header-buttons">
+            <button th:onclick="'window.location.href=\'/director/viewSemester/' + ${yearId} + '\''">Back</button>
+            <button id="logoutBtn" onclick="window.location.href='/logout'">Logout</button>
+        </nav>
     </header>
 
     <main>
-        <section class="section">
-            <h2>Semester Assessments</h2>
-            <div th:if="${mapUnit != null && mapUnit.assessments.size() > 0}">
+        <section class="section" th:each="year : ${years}">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 th:text="'Assessments for Year ' + ${year}">Assessments for Year</h2>
+                <button class="pdf-button" th:data-year="${year}" th:data-semester="${semester}" onclick="downloadPdf(this)">Download PDF</button>
+            </div>
+            <div th:if="${assessmentsByYear.get(year).size() > 0}">
                 <h3>Normal Period</h3>
                 <table>
                     <thead>
                         <tr>
                             <th>UC Name</th>
-                            <th>Students Number</th>
-                            <th>Evaluation Type</th>
-                            <th>Attendance</th>
-                            <th>Evaluations Count</th>
-                            <th>Year</th>
-                            <th>Semester</th>
                             <th>Assessment Type</th>
                             <th>Weight</th>
                             <th>Exam Period</th>
@@ -45,14 +45,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="assessment : ${mapUnit.assessments}" th:if="${assessment.examPeriod == 'Teaching Period' || assessment.examPeriod == 'Exam Period'}">
-                            <td th:text="${assessment.curricularUnit.nameUC}">UC Name</td>
-                            <td th:text="${assessment.curricularUnit.studentsNumber}">Students Number</td>
-                            <td th:text="${assessment.curricularUnit.evaluationType}">Evaluation Type</td>
-                            <td th:text="${assessment.curricularUnit.attendance ? 'Yes' : 'No'}">Attendance</td>
-                            <td th:text="${assessment.curricularUnit.evaluationsCount}">Evaluations Count</td>
-                            <td th:text="${assessment.curricularUnit.year}">Year</td>
-                            <td th:text="${assessment.curricularUnit.semester}">Semester</td>
+                        <tr th:each="assessment : ${assessmentsByYear.get(year)}" th:if="${assessment.examPeriod == 'Teaching Period' || assessment.examPeriod == 'Exam Period'}">
+                            <td th:text="${assessment.curricularUnit != null ? assessment.curricularUnit.nameUC : 'N/A'}">UC Name</td>
                             <td th:text="${assessment.type}">Assessment Type</td>
                             <td th:text="${assessment.weight}">0</td>
                             <td th:text="${assessment.examPeriod}">Exam Period</td>
@@ -68,7 +62,7 @@
                             <td th:text="${assessment.minimumGrade}">0.0</td>
                         </tr>
                         <tr th:if="${noNormalPeriod}">
-                            <td colspan="16" class="no-assessments">No assessments listed for Normal Period.</td>
+                            <td colspan="10" class="no-assessments">No assessments listed for Normal Period.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -77,12 +71,6 @@
                     <thead>
                         <tr>
                             <th>UC Name</th>
-                            <th>Students Number</th>
-                            <th>Evaluation Type</th>
-                            <th>Attendance</th>
-                            <th>Evaluations Count</th>
-                            <th>Year</th>
-                            <th>Semester</th>
                             <th>Assessment Type</th>
                             <th>Weight</th>
                             <th>Exam Period</th>
@@ -95,14 +83,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="assessment : ${mapUnit.assessments}" th:if="${assessment.examPeriod == 'Resource Period'}">
-                            <td th:text="${assessment.curricularUnit.nameUC}">UC Name</td>
-                            <td th:text="${assessment.curricularUnit.studentsNumber}">Students Number</td>
-                            <td th:text="${assessment.curricularUnit.evaluationType}">Evaluation Type</td>
-                            <td th:text="${assessment.curricularUnit.attendance ? 'Yes' : 'No'}">Attendance</td>
-                            <td th:text="${assessment.curricularUnit.evaluationsCount}">Evaluations Count</td>
-                            <td th:text="${assessment.curricularUnit.year}">Year</td>
-                            <td th:text="${assessment.curricularUnit.semester}">Semester</td>
+                        <tr th:each="assessment : ${assessmentsByYear.get(year)}" th:if="${assessment.examPeriod == 'Resource Period'}">
+                            <td th:text="${assessment.curricularUnit != null ? assessment.curricularUnit.nameUC : 'N/A'}">UC Name</td>
                             <td th:text="${assessment.type}">Assessment Type</td>
                             <td th:text="${assessment.weight}">0</td>
                             <td th:text="${assessment.examPeriod}">Exam Period</td>
@@ -118,7 +100,7 @@
                             <td th:text="${assessment.minimumGrade}">0.0</td>
                         </tr>
                         <tr th:if="${noResourcePeriod}">
-                            <td colspan="16" class="no-assessments">No assessments listed for Resource Period.</td>
+                            <td colspan="10" class="no-assessments">No assessments listed for Resource Period.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -127,12 +109,6 @@
                     <thead>
                         <tr>
                             <th>UC Name</th>
-                            <th>Students Number</th>
-                            <th>Evaluation Type</th>
-                            <th>Attendance</th>
-                            <th>Evaluations Count</th>
-                            <th>Year</th>
-                            <th>Semester</th>
                             <th>Assessment Type</th>
                             <th>Weight</th>
                             <th>Exam Period</th>
@@ -145,14 +121,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="assessment : ${mapUnit.assessments}" th:if="${assessment.examPeriod == 'Special Period'}">
-                            <td th:text="${assessment.curricularUnit.nameUC}">UC Name</td>
-                            <td th:text="${assessment.curricularUnit.studentsNumber}">Students Number</td>
-                            <td th:text="${assessment.curricularUnit.evaluationType}">Evaluation Type</td>
-                            <td th:text="${assessment.curricularUnit.attendance ? 'Yes' : 'No'}">Attendance</td>
-                            <td th:text="${assessment.curricularUnit.evaluationsCount}">Evaluations Count</td>
-                            <td th:text="${assessment.curricularUnit.year}">Year</td>
-                            <td th:text="${assessment.curricularUnit.semester}">Semester</td>
+                        <tr th:each="assessment : ${assessmentsByYear.get(year)}" th:if="${assessment.examPeriod == 'Special Period'}">
+                            <td th:text="${assessment.curricularUnit != null ? assessment.curricularUnit.nameUC : 'N/A'}">UC Name</td>
                             <td th:text="${assessment.type}">Assessment Type</td>
                             <td th:text="${assessment.weight}">0</td>
                             <td th:text="${assessment.examPeriod}">Exam Period</td>
@@ -168,13 +138,13 @@
                             <td th:text="${assessment.minimumGrade}">0.0</td>
                         </tr>
                         <tr th:if="${noSpecialPeriod}">
-                            <td colspan="16" class="no-assessments">No assessments listed for Special Period.</td>
+                            <td colspan="10" class="no-assessments">No assessments listed for Special Period.</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <p th:if="${mapUnit == null || mapUnit.assessments.size() == 0}">
-                No assessments found.
+            <p th:if="${assessmentsByYear.get(year).size() == 0}">
+                No assessments found for the selected year.
             </p>
         </section>
     </main>
@@ -182,6 +152,14 @@
     <footer>
         <p><img src="/images/upt-logo.png" alt="Logo" style="height: 20px; vertical-align: middle; margin-right: 10px;">&copy; 2024 Universidade Portucalense Infante D. Henrique</p>
     </footer>
+
+    <script>
+        function downloadPdf(button) {
+            const year = button.getAttribute('data-year');
+            const semester = button.getAttribute('data-semester');
+            window.location.href = `/director/map/pdf?year=${year}&semester=${semester === '1' ? 1 : 2}`;
+        }
+    </script>
 </body>
 
 </html>

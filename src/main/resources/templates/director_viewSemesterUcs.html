@@ -4,22 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Semester UCs - Academic Administration</title>
-    <link rel="stylesheet" type="text/css" href="/css/coordinator_map.css">
+    <link rel="stylesheet" type="text/css" href="/css/director_viewSemesterUcs.css">
     <link rel="icon" href="/images/upt-logo.png" type="image/png">
 </head>
 <body>
     <header>
-        <h1>Semester UCs</h1>
-        <div class="button-container">
+        <div class="logo-title-container" style="display: flex; align-items: center;">
+            <img src="/images/upt-logo.png" alt="Logo" style="height: 40px; margin-right: 10px;">
+            <h1>Semester UCs</h1>
+        </div>
+        <div class="header-buttons">
+            <button th:onclick="'window.location.href=\'/director/viewSemester/' + ${yearId} + '\''">Back</button>
             <button onclick="location.href='/logout'">Logout</button>
-            <button onclick="window.location.href=document.referrer">Back</button>
         </div>
     </header>
 
     <main>
         <section>
-            <h2>UCs for Semester</h2>
-            <div id="uc-container">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 th:text="'UCs for ' + (${semesterUnit.startDate.contains('01') ? '1st' : '2nd'}) + ' Semester ' + ${semesterUnit.startDate}">UCs for Semester</h2>
+                <button onclick="downloadUcsPdf()">Download UCs PDF</button>
+            </div>
+            <div id="uc-container" style="margin-top: 20px;">
                 <!-- Check if semesterUnit is not null and has UCs -->
                 <div th:if="${semesterUnit != null && semesterUnit.curricularUnits.size() > 0}">
                     <table>
@@ -58,7 +64,14 @@
     </main>
 
     <footer>
-        <p><img src="/images/upt-logo.png" alt="Logo" style="height: 20px; vertical-align: middle; margin-right: 10px;">&copy; 2024 Universidade Portucalense Infante D. Henrique</p>
+        <p><img src="/images/upt-logo.png" alt="Logo" style="height: 20px;">&copy; 2024 Universidade Portucalense Infante D. Henrique</p>
     </footer>
+
+    <script th:inline="javascript">
+        function downloadUcsPdf() {
+            const semesterId = /*[[${semesterUnit.id}]]*/ '[[${semesterUnit.id}]]';
+            window.location.href = `/director/ucs/pdf?semesterId=${semesterId}`;
+        }
+    </script>
 </body>
 </html>

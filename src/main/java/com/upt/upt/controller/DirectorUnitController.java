@@ -13,6 +13,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Comparator;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import java.util.stream.Collectors;
 
 @Controller
 public class DirectorUnitController {
@@ -28,6 +33,9 @@ public class DirectorUnitController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private PdfService pdfService;
 
     private Optional<DirectorUnit> verifyDirector(HttpSession session) {
         Long directorId = (Long) session.getAttribute("userId");
@@ -97,10 +105,16 @@ public class DirectorUnitController {
             SemesterUnit semesterUnit = "1st".equals(semester) ? yearUnit.get().getFirstSemester() : yearUnit.get().getSecondSemester();
             List<AssessmentUnit> assessments = semesterUnit.getMapUnit().getAssessments();
             assessments.sort(Comparator.comparing(AssessmentUnit::getStartTime));
+            Map<Integer, List<AssessmentUnit>> assessmentsByYear = assessments.stream()
+                    .collect(Collectors.groupingBy(assessment -> assessment.getCurricularUnit().getYear()));
             model.addAttribute("mapUnit", semesterUnit.getMapUnit());
+            model.addAttribute("assessmentsByYear", assessmentsByYear);
             model.addAttribute("noNormalPeriod", directorUnitService.noAssessmentsForPeriod(assessments, "Teaching Period") && directorUnitService.noAssessmentsForPeriod(assessments, "Exam Period"));
             model.addAttribute("noResourcePeriod", directorUnitService.noAssessmentsForPeriod(assessments, "Resource Period"));
             model.addAttribute("noSpecialPeriod", directorUnitService.noAssessmentsForPeriod(assessments, "Special Period"));
+            model.addAttribute("years", assessmentsByYear.keySet());
+            model.addAttribute("semester", semester);
+            model.addAttribute("yearId", yearId);
             return "director_viewSemesterMap";
         }
         return "redirect:/director?error=Year not found";
@@ -201,5 +215,63 @@ public class DirectorUnitController {
             return "master_editDirector";
         }
         return "redirect:/master?error=Director not found";
+    }
+
+    @GetMapping("/director/map/pdf")
+    public ResponseEntity<byte[]> generatePdf(@RequestParam("year") Integer year, @RequestParam("semester") Integer semester, HttpSession session) {
+        if (!isDirector(session)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+        Optional<DirectorUnit> directorOpt = verifyDirector(session);
+        if (directorOpt.isPresent()) {
+            DirectorUnit director = directorOpt.get();
+            YearUnit currentYear = director.getCurrentYear();
+            List<AssessmentUnit> assessments = (semester == 1 ? currentYear.getFirstSemester().getCurricularUnits() : currentYear.getSecondSemester().getCurricularUnits()).stream()
+                    .filter(uc -> uc.getYear().equals(year))
+                    .flatMap(uc -> uc.getAssessments().stream())
+                    .sorted((a1, a2) -> a1.getStartTime().compareTo(a2.getStartTime()))
+                    .collect(Collectors.toList());
+            if (assessments.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+            }
+            String ucName = assessments.get(0).getCurricularUnit().getNameUC();
+            byte[] pdfContent = pdfService.generatePdfForYearAndSemester(director, year, semester);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_PDF);
+            String semesterText = semester == 1 ? "1st" : "2nd";
+            String startDate = currentYear.getFirstSemester().getStartDate();
+            headers.setContentDispositionFormData("attachment", "UPT_" + director.getDepartment() + "_" + startDate + "_" + year + "_" + semesterText + ".pdf");
+            return new ResponseEntity<>(pdfContent, headers, HttpStatus.OK);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+    }
+
+    @GetMapping("/director/ucs/pdf")
+    public ResponseEntity<byte[]> generateUcsPdf(@RequestParam("semesterId") Long semesterId, HttpSession session) {
+        if (!isDirector(session)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+        Optional<DirectorUnit> directorOpt = verifyDirector(session);
+        if (directorOpt.isPresent()) {
+            DirectorUnit director = directorOpt.get();
+            Optional<SemesterUnit> semesterUnitOpt = yearUnitService.getSemesterUnitById(semesterId);
+            if (semesterUnitOpt.isPresent()) {
+                SemesterUnit semesterUnit = semesterUnitOpt.get();
+                if (semesterUnit.getCurricularUnits().isEmpty()) {
+                    return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+                }
+                byte[] pdfContent = pdfService.generatePdfForUcs(semesterUnit, director.getDepartment());
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_PDF);
+                String semesterText = semesterUnit.getStartDate().contains("01") ? "1st" : "2nd";
+                headers.setContentDispositionFormData("attachment", "UPT_" + director.getDepartment() + "_UCs_" + semesterText + "_Semester_" + semesterUnit.getStartDate() + ".pdf");
+                return new ResponseEntity<>(pdfContent, headers, HttpStatus.OK);
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            }
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
     }
 }

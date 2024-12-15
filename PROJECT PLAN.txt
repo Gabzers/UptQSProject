@@ -82,9 +82,7 @@ sala tem -:
 	
 
 FALTA:
--> director map ajustar ?
-
--> corrigir editar avaliação(n funciona)
+-> corrigir editar avaliação(n funciona) so alterar as rooms, caso se altere alguma data, ou clicar no botao ou pc ou class time
 
 -> ao editar uc nao permitir alterar semester nem year caso haja avaliaçoes presentes
 
@@ -95,6 +93,6 @@ FALTA:
 
 __________________________________________________________________________
 NOTAS GABZ:
-- corrigir UptWebController depois
+- corrigir UptWebController depois (gabzers-> ta com stresses no controller?)
 - implementar UptWebConfigTest (talvez, mas acho que não é necessário)
 - fazer amanha o MAP
