@@ -285,8 +285,8 @@ public class AssessmentUnitController {
                         }
                     }
                     if (!conflictOnNextDay) {
-                        model.addAttribute("error", "It is preferable to create the assessment on " + nextAvailableStartTime.toLocalDate() + " from " + nextAvailableStartTime.toLocalTime() + " to " + nextAvailableEndTime.toLocalTime() + " to avoid overlap with other assessments of different years but same UC.");
-                        return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=It is preferable to create the assessment on " + nextAvailableStartTime.toLocalDate() + " from " + nextAvailableStartTime.toLocalTime() + " to " + nextAvailableEndTime.toLocalTime() + " to avoid overlap with other assessments of different years but same UC.";
+                        model.addAttribute("error", "It is preferable to create the assessment on " + nextAvailableStartTime.toLocalDate() + " from " + nextAvailableStartTime.toLocalTime() + " to " + nextAvailableEndTime.toLocalTime() + " to avoid overlap with other assessments of different years but same course.");
+                        return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=It is preferable to create the assessment on " + nextAvailableStartTime.toLocalDate() + " from " + nextAvailableStartTime.toLocalTime() + " to " + nextAvailableEndTime.toLocalTime() + " to avoid overlap with other assessments of different years but same course.";
                     }
                 }
             }
@@ -530,8 +530,8 @@ public class AssessmentUnitController {
                         }
                     }
                     if (!conflictOnNextDay) {
-                        model.addAttribute("error", "It is preferable to create the assessment on " + nextAvailableStartTime.toLocalDate() + " from " + nextAvailableStartTime.toLocalTime() + " to " + nextAvailableEndTime.toLocalTime() + " to avoid overlap with other assessments of different years but same UC.");
-                        return "redirect:/coordinator/coordinator_editEvaluations/" + id + "?curricularUnitId=" + curricularUnitId + "&error=It is preferable to create the assessment on " + nextAvailableStartTime.toLocalDate() + " from " + nextAvailableStartTime.toLocalTime() + " to " + nextAvailableEndTime.toLocalTime() + " to avoid overlap with other assessments of different years but same UC.";
+                        model.addAttribute("error", "It is preferable to create the assessment on " + nextAvailableStartTime.toLocalDate() + " from " + nextAvailableStartTime.toLocalTime() + " to " + nextAvailableEndTime.toLocalTime() + " to avoid overlap with other assessments of different years but same course.");
+                        return "redirect:/coordinator/coordinator_editEvaluations/" + id + "?curricularUnitId=" + curricularUnitId + "&error=It is preferable to create the assessment on " + nextAvailableStartTime.toLocalDate() + " from " + nextAvailableStartTime.toLocalTime() + " to " + nextAvailableEndTime.toLocalTime() + " to avoid overlap with other assessments of different years but same course.";
                     }
                 }
             }

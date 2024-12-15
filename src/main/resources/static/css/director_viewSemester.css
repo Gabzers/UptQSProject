@@ -1,11 +1,9 @@
-/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body of the page */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -17,7 +15,6 @@ body {
     animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Header */
 header {
     width: 100%;
     display: flex;
@@ -58,7 +55,6 @@ header button:hover {
     transform: scale(1.05);
 }
 
-/* Main container */
 main {
     width: 100%;
     max-width: 800px;
@@ -70,7 +66,6 @@ main {
     animation: slideIn 0.5s ease-in-out;
 }
 
-/* Section */
 section {
     margin-bottom: 20px;
 }
@@ -94,7 +89,6 @@ section p {
     margin-top: 10px;
 }
 
-/* General Button Style */
 button {
     background-color: #007bff;
     color: white;
@@ -112,7 +106,6 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* Footer */
 footer {
     margin-top: 30px;
     text-align: center;
@@ -127,7 +120,6 @@ footer p {
     margin: 0;
 }
 
-/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;

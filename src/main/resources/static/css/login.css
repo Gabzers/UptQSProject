@@ -35,7 +35,7 @@ body {
 
 .form-group {
     margin-bottom: 20px;
-    text-align: left; /* Ajusta os labels à esquerda */
+    text-align: left;
 }
 
 label {
@@ -76,7 +76,6 @@ input:focus {
     transform: scale(1.05);
 }
 
-/* Footer */
 footer {
     margin-top: 20px;
     text-align: center;
@@ -88,7 +87,6 @@ footer p {
     margin: 0;
 }
 
-/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;

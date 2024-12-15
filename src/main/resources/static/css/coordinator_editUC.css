@@ -1,11 +1,9 @@
-/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body of the page */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -18,15 +16,14 @@ body {
     animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Header */
 header {
     width: 100%;
     display: flex;
-    justify-content: flex-end; /* Ajuste para alinhar os botões à direita */
+    justify-content: flex-end;
     align-items: center;
-    padding: 10px 20px; /* Ajuste o padding para melhor espaçamento */
-    position: fixed; /* Ajuste para fixar o header ao topo */
-    top: 0; /* Ajuste para encostar o header ao topo */
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
     z-index: 10;
 }
 
@@ -40,7 +37,7 @@ header button {
     border: none;
     transition: background-color 0.3s ease, transform 0.3s ease;
     animation: fadeIn 0.5s ease-in-out;
-    margin-left: 10px; /* Espaçamento entre os botões */
+    margin-left: 10px;
 }
 
 header button:hover {
@@ -48,38 +45,34 @@ header button:hover {
     transform: scale(1.05);
 }
 
-/* Main container (the box) */
 main {
     width: 100%;
-    max-width: 400px; /* Limit the width of the form */
+    max-width: 400px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px 20px 40px; /* Padding adjusted for better spacing */
-    margin-top: 100px; /* Ajustado para dar espaço ao header fixo */
+    padding: 20px 20px 40px;
+    margin-top: 100px;
     animation: slideIn 0.5s ease-in-out;
 }
 
-/* Form Section */
 section {
     margin-bottom: 20px;
 }
 
-/* Headings */
 section h2 {
     font-size: 18px;
-    margin-bottom: 10px; /* Espaço extra abaixo do h2 */
+    margin-bottom: 10px;
     color: #333;
 }
 
 section h3 {
     font-size: 16px;
-    margin-top: 15px; /* Espaço extra acima do h3 */
-    margin-bottom: 10px; /* Espaço extra abaixo do h3 */
+    margin-top: 15px;
+    margin-bottom: 10px;
     color: #555;
 }
 
-/* Form Labels */
 label {
     font-size: 14px;
     color: #333;
@@ -87,7 +80,6 @@ label {
     margin-top: 15px;
 }
 
-/* Form Inputs */
 input, select {
     width: 100%;
     padding: 10px;
@@ -97,7 +89,6 @@ input, select {
     font-size: 14px;
 }
 
-/* Submit Button */
 button[type="submit"] {
     background-color: #007bff;
     color: white;
@@ -117,14 +108,12 @@ button[type="submit"]:hover {
     transform: scale(1.05);
 }
 
-/* Warning Message */
 .warning-message {
     color: #d9534f;
     font-size: 14px;
     margin-top: 5px;
 }
 
-/* Error Message */
 .error-message {
     color: #d9534f;
     font-size: 14px;
@@ -132,7 +121,6 @@ button[type="submit"]:hover {
     text-align: center;
 }
 
-/* Footer */
 footer {
     margin-top: 30px;
     text-align: center;
@@ -147,7 +135,6 @@ footer p {
     margin: 0;
 }
 
-/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;

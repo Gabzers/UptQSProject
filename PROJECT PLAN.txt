@@ -82,9 +82,7 @@ sala tem -:
 	
 
 FALTA:
--> corrigir feedback de UC(para curso) em assessments
-
--> lista de EVALUATIONS colocar em % o weight, tal como todos os mapas
+-> corrigir feedback de UC(para curso) em assessments o weight, tal como todos os mapas
 
 -> *** ajustar nomes, resource e assessment em todo o projeto
 

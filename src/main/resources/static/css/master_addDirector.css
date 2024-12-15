@@ -1,11 +1,9 @@
-/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body of the page */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -18,7 +16,6 @@ body {
     animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Header */
 header {
     position: absolute;
     top: 20px;
@@ -28,7 +25,6 @@ header {
     width: 100%;
 }
 
-/* Standard Button Styling */
 header button, button[type="submit"] {
     background-color: #007bff;
     color: white;
@@ -46,26 +42,23 @@ header button:hover, button[type="submit"]:hover {
     transform: scale(1.05);
 }
 
-/* Main container */
 main {
     width: 100%;
-    max-width: 400px; /* Limit the width of the form */
+    max-width: 400px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative; /* Position relative to place the buttons */
-    padding: 20px 20px 40px; /* Padding adjusted for better spacing */
+    position: relative;
+    padding: 20px 20px 40px;
     animation: slideIn 0.5s ease-in-out;
 }
 
-/* Form Section */
 .section {
     display: flex;
     flex-direction: column;
-    align-items: stretch; /* Ensure inputs stretch to the full width */
+    align-items: stretch;
 }
 
-/* Form Labels and Inputs */
 label {
     font-size: 14px;
     color: #333;
@@ -74,7 +67,7 @@ label {
 }
 
 input {
-    width: 100%; /* Ensure the input fields take the full width */
+    width: 100%;
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ddd;
@@ -83,13 +76,11 @@ input {
     margin-bottom: 15px;
 }
 
-/* Submit Button */
 button[type="submit"] {
-    width: 100%; /* Ensure the button takes the full width */
+    width: 100%;
     margin-top: 10px;
 }
 
-/* Footer */
 footer {
     margin-top: 20px;
     text-align: center;
@@ -101,7 +92,6 @@ footer p {
     margin: 0;
 }
 
-/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;

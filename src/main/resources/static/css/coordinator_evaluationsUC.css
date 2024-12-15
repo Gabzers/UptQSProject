@@ -1,32 +1,28 @@
-/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body of the page */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Adjust so that the content starts at the top */
+    justify-content: flex-start;
     height: 100vh;
     padding: 20px;
     gap: 20px;
     animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Header */
 header {
     display: flex;
-    justify-content: space-between; /* Positions title and buttons on opposite sides */
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
 
-/* Header Buttons */
 .header-buttons {
     display: flex;
     gap: 10px;
@@ -42,7 +38,6 @@ nav {
     gap: 10px;
 }
 
-/* Standard Button Styling */
 button, button.edit, button.delete {
     background-color: #007bff;
     color: white;
@@ -54,7 +49,7 @@ button, button.edit, button.delete {
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
     animation: fadeIn 0.5s ease-in-out;
-    text-transform: none; /* Remove caps lock */
+    text-transform: none;
 }
 
 button:hover, button.edit:hover {
@@ -71,16 +66,14 @@ button.delete:hover {
     transform: scale(1.05);
 }
 
-/* Main Section */
 main {
     width: 100%;
     animation: slideIn 0.5s ease-in-out;
     display: flex;
     flex-direction: column;
-    align-items: stretch; /* Ensure items stretch to fill the container */
+    align-items: stretch;
 }
 
-/* UC list section */
 section {
     background-color: #fff;
     padding: 20px;
@@ -88,8 +81,8 @@ section {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: slideIn 0.5s ease-in-out;
-    margin-bottom: 10px; /* Adjusted margin to move the table up */
-    width: 100%; /* Ensure section takes full width */
+    margin-bottom: 10px;
+    width: 100%;
 }
 
 section:hover {
@@ -97,11 +90,10 @@ section:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Tables */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 0; /* Remove margin to move the table up */
+    margin-top: 0;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -128,7 +120,6 @@ tbody tr:nth-child(even) {
     background-color: #fafafa;
 }
 
-/* Footer */
 footer {
     text-align: center;
     font-size: 14px;
@@ -138,7 +129,6 @@ footer {
     animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Edit/Delete Buttons */
 button.edit, button.delete {
     background-color: #007bff;
     font-size: 16px;
@@ -146,7 +136,7 @@ button.edit, button.delete {
     font-family: Arial, sans-serif;
     border-radius: 5px;
     cursor: pointer;
-    text-transform: none; /* Remove caps lock */
+    text-transform: none;
 }
 
 button.edit:hover {
@@ -165,14 +155,12 @@ button.edit, button.delete {
     margin-left: 10px;
 }
 
-/* Titles */
 h2 {
     color: #333;
     margin-bottom: 10px;
     animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;

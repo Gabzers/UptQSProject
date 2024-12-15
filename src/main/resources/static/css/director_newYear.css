@@ -1,11 +1,9 @@
-/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body of the page */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -18,15 +16,14 @@ body {
     animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Header */
 header {
     width: 100%;
     display: flex;
-    justify-content: space-between; /* Ajuste para espaçar o h1 e os botões */
+    justify-content: space-between;
     align-items: center;
-    padding: 10px 20px; /* Ajuste o padding para melhor espaçamento */
+    padding: 10px 20px;
     position: absolute;
-    top: 0; /* Ajuste para encostar o header ao topo */
+    top: 0;
     right: 10px;
     left: 0;
     z-index: 10;
@@ -36,9 +33,9 @@ header {
 header h1 {
     font-size: 24px;
     color: #333;
-    margin-bottom: 20px; /* Adicionado para espaçar o h1 dos elementos abaixo */
-    margin-left: 10px; /* Ajuste para encostar o h1 mais à esquerda */
-    margin-top: 10px; /* Adicionado para descer o h1 */
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-top: 10px;
 }
 
 h1 {
@@ -62,38 +59,34 @@ header button:hover, button[type="submit"]:hover {
     transform: scale(1.05);
 }
 
-/* Main container (the box) */
 main {
     width: 100%;
-    max-width: 400px; /* Limit the width of the form */
+    max-width: 400px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px 20px 40px; /* Padding adjusted for better spacing */
+    padding: 20px 20px 40px;
     margin-top: 120px;
     animation: slideIn 0.5s ease-in-out;
 }
 
-/* Form Section */
 section {
     margin-bottom: 20px;
 }
 
-/* Headings */
 section h2 {
     font-size: 18px;
-    margin-bottom: 10px; /* Espaço extra abaixo do h2 */
+    margin-bottom: 10px;
     color: #333;
 }
 
 section h3 {
     font-size: 16px;
-    margin-top: 15px; /* Espaço extra acima do h3 */
-    margin-bottom: 10px; /* Espaço extra abaixo do h3 */
+    margin-top: 15px;
+    margin-bottom: 10px;
     color: #555;
 }
 
-/* Form Labels */
 label {
     font-size: 14px;
     color: #333;
@@ -101,7 +94,6 @@ label {
     margin-top: 15px;
 }
 
-/* Form Inputs */
 input {
     width: 100%;
     padding: 10px;
@@ -111,7 +103,6 @@ input {
     font-size: 14px;
 }
 
-/* Submit Button */
 button[type="submit"] {
     background-color: #007bff;
     color: white;
@@ -126,7 +117,11 @@ button[type="submit"] {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Footer */
+button[type="submit"]:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
 footer {
     margin-top: 30px;
     text-align: center;
@@ -141,7 +136,6 @@ footer p {
     margin: 0;
 }
 
-/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;

@@ -1,11 +1,9 @@
-/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body of the page */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -18,7 +16,6 @@ body {
     animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Header */
 header {
     position: absolute;
     top: 20px;
@@ -40,7 +37,7 @@ header nav button, button[type="submit"] {
     margin-left: 10px;
     transition: background-color 0.3s ease, transform 0.3s ease;
     animation: fadeIn 0.5s ease-in-out;
-    text-transform: none; /* Remove caps lock */
+    text-transform: none;
 }
 
 header nav button:hover, button[type="submit"]:hover {
@@ -48,10 +45,9 @@ header nav button:hover, button[type="submit"]:hover {
     transform: scale(1.05);
 }
 
-/* Main container */
 main {
     width: 100%;
-    max-width: 400px; /* Set a max width similar to previous example */
+    max-width: 400px;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -61,14 +57,12 @@ main {
     animation: slideIn 0.5s ease-in-out;
 }
 
-/* Form Section */
 .section {
     display: flex;
     flex-direction: column;
-    align-items: stretch; /* Ensures form elements stretch to fill the container */
+    align-items: stretch;
 }
 
-/* Form Labels */
 label {
     font-size: 14px;
     color: #333;
@@ -76,10 +70,9 @@ label {
     display: block;
 }
 
-/* Input Fields */
 input,
 select {
-    width: 100%; /* Ensure inputs and selects take full width */
+    width: 100%;
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ddd;
@@ -89,14 +82,12 @@ select {
     transition: border-color 0.3s ease;
 }
 
-/* Focus effect for inputs */
 input:focus,
 select:focus {
     border-color: #007bff;
     outline: none;
 }
 
-/* Submit Button */
 button[type="submit"] {
     background-color: #007bff;
     color: white;
@@ -110,10 +101,9 @@ button[type="submit"] {
     margin-top: 10px;
     transition: background-color 0.3s ease, transform 0.3s ease;
     animation: fadeIn 0.5s ease-in-out;
-    text-transform: none; /* Remove caps lock */
+    text-transform: none;
 }
 
-/* Ensure all buttons have animations */
 nav button, button[type="submit"] {
     transition: background-color 0.3s ease, transform 0.3s ease;
     animation: fadeIn 0.5s ease-in-out;
@@ -123,7 +113,6 @@ nav button:hover, button[type="submit"]:hover {
     transform: scale(1.05);
 }
 
-/* Footer */
 footer {
     margin-top: 20px;
     text-align: center;
@@ -135,7 +124,6 @@ footer p {
     margin: 0;
 }
 
-/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
