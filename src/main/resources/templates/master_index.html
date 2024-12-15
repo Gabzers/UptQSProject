@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Master Panel</title>
-    <link rel="stylesheet" type="text/css" href="/css/master_index.css">
+    <link rel="stylesheet" type="text/css" href="/css/master_index.css?v=0">
     <link rel="icon" href="/images/upt-logo.png" type="image/png">
 </head>
 
@@ -44,7 +44,7 @@
                             <button th:onclick="'window.location.href=\'/master/edit-master?id=' + ${master.id} + '\''" class="button">Edit</button>
                             
                             <form th:action="@{/master/remove-master/{id}(id=${master.id})}" method="POST" style="display:inline;">
-                                <button type="submit" class="remove-button">Remove</button>
+                                <button type="submit" class="button remove-button">Remove</button>
                             </form>
                         </td>
                     </tr>
@@ -74,7 +74,7 @@
                             <button th:onclick="'window.location.href=\'/master/edit-director?id=' + ${director.id} + '\''" class="button">Edit</button>
                             
                             <form th:action="@{/master/remove-director/{id}(id=${director.id})}" method="POST" style="display:inline;">
-                                <button type="submit" class="remove-button">Remove</button>
+                                <button type="submit" class="button remove-button">Remove</button>
                             </form>
                         </td>
                     </tr>
@@ -109,7 +109,7 @@
                             <button th:onclick="'window.location.href=\'/master/edit-room?id=' + ${room.id} + '\''" class="button">Edit</button>
                             
                             <form th:action="@{/master/remove-room/{id}(id=${room.id})}" method="POST" style="display:inline;">
-                                <button type="submit" class="remove-button">Remove</button>
+                                <button type="submit" class="button remove-button">Remove</button>
                             </form>
                         </td>
                     </tr>

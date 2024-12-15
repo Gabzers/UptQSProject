@@ -86,8 +86,6 @@ FALTA:
 
 -> ajeitar css <- masterindex
 
--> editar UC n funfa COM ASSESSMENTS
-
 -> quando não ha lugares DISPONIVEIS na soma de salas, dizer q NÃO existe capacidade para esse numero de alunos.
 
 -> editar avaliaçao sem feedack visual

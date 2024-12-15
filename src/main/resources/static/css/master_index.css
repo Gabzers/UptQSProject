@@ -41,7 +41,7 @@ h1 {
 
 /* Standard Button Styling */
 .button, #logoutBtn, button {
-    background-color: #007bff;
+    background-color: #007bff; /* Blue */
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
@@ -54,44 +54,26 @@ h1 {
 }
 
 .button:hover, #logoutBtn:hover, button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Darker blue on hover */
     transform: scale(1.05);
 }
 
 /* Logout Button Specific Styling */
 #logoutBtn {
-    background-color: #dc3545;
+    background-color: #dc3545; /* Red */
 }
 
 #logoutBtn:hover {
-    background-color: #c82333;
-}
-
-/* Edit Button Specific Styling */
-button:nth-child(1) {
-    background-color: #28a745;
-}
-
-button:nth-child(1):hover {
-    background-color: #218838;
-}
-
-/* Remove Button Specific Styling */
-button:nth-child(2) {
-    background-color: #007bff;
-}
-
-button:nth-child(2):hover {
-    background-color: #0056b3;
+    background-color: #c82333; /* Darker red */
 }
 
 /* Remove Button Specific Styling */
 .remove-button {
-    background-color: #dc3545;
+    background-color: #dc3545; /* Red */
 }
 
 .remove-button:hover {
-    background-color: #c82333;
+    background-color: #c82333; /* Darker red */
 }
 
 /* Titles */
@@ -161,12 +143,13 @@ button {
     background-color: #007bff; /* Blue */
     color: white;
     border: none;
-    padding: 8px 16px;
+    padding: 10px 20px;
     margin: 0 5px;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 button:hover {
@@ -176,11 +159,11 @@ button:hover {
 
 /* Edit button specific styling */
 button:nth-child(1) {
-    background-color: #28a745; /* Green */
+    background-color: #007bff; /* Blue */
 }
 
 button:nth-child(1):hover {
-    background-color: #218838; /* Darker green */
+    background-color: #0056b3; /* Darker blue */
 }
 
 /* Remove button specific styling */
