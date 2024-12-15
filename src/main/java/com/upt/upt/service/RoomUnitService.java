@@ -225,12 +225,7 @@ public class RoomUnitService {
             availableRooms.remove(bestRoom);
         }
 
-        // Verificar se todos os alunos foram alocados
-        if (remainingStudents > 0) {
-            throw new IllegalStateException("Not enough available rooms to accommodate all students.");
-        }
-
-        // Retornar as salas alocadas
+        // Retornar as salas alocadas, mesmo que não sejam suficientes
         return selectedRooms;
     }
 
@@ -281,5 +276,30 @@ public class RoomUnitService {
             newClassTimeRoom.setBuilding("Class Time");
             return roomUnitRepository.save(newClassTimeRoom);
         }
+    }
+
+    /**
+     * Find available rooms within the same day if the initially requested time slot is not available.
+     *
+     * @param numStudents the number of students
+     * @param computerRequired whether a computer is required
+     * @param startTime the start time of the availability
+     * @param endTime the end time of the availability
+     * @return a list of available rooms within the same day and the new time slot if found
+     */
+    public Optional<Map.Entry<LocalDateTime, LocalDateTime>> findAvailableRoomsWithinSameDay(int numStudents, boolean computerRequired, LocalDateTime startTime, LocalDateTime endTime) {
+        LocalDateTime currentStartTime = startTime.withHour(8).withMinute(0);
+        LocalDateTime currentEndTime = currentStartTime.plusMinutes(java.time.Duration.between(startTime, endTime).toMinutes());
+
+        while (currentEndTime.isBefore(startTime.withHour(23).withMinute(59))) {
+            List<RoomUnit> availableRooms = getAvailableRooms(numStudents, computerRequired, currentStartTime, currentEndTime);
+            if (!availableRooms.isEmpty() && availableRooms.stream().mapToInt(RoomUnit::getSeatsCount).sum() >= numStudents) {
+                return Optional.of(Map.entry(currentStartTime, currentEndTime));
+            }
+            currentStartTime = currentStartTime.plusMinutes(30);
+            currentEndTime = currentStartTime.plusMinutes(java.time.Duration.between(startTime, endTime).toMinutes());
+        }
+
+        return Optional.empty();
     }
 }

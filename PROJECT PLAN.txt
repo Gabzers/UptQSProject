@@ -82,9 +82,8 @@ sala tem -:
 	
 
 FALTA:
--> mostrar quais dias e horas estao livres para uma avaliação daquele estilo / quando n houver salas disponiveis, ver no dia outra hora possivel para aquele interalo de tempo
-
 -> ordenar avaliaçoes em EVALUATIONSUC
+-> mapUC colocar year
 
 -> corrigir editar avaliação(n funciona)
 

@@ -181,13 +181,18 @@ public class AssessmentUnitController {
         } else if (classTime) {
             selectedRooms = List.of(roomUnitService.getOrCreateClassTimeRoom());
         } else {
-            try {
-                selectedRooms = roomUnitService.getAvailableRooms(uc.getStudentsNumber(), computerRequired, startTime,
-                        endTime);
-            } catch (IllegalStateException e) {
-                model.addAttribute("error", e.getMessage());
-                return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId
-                        + "&error=" + e.getMessage();
+            selectedRooms = roomUnitService.getAvailableRooms(uc.getStudentsNumber(), computerRequired, startTime, endTime);
+
+            if (selectedRooms.isEmpty() || selectedRooms.stream().mapToInt(RoomUnit::getSeatsCount).sum() < uc.getStudentsNumber()) {
+                Optional<Map.Entry<LocalDateTime, LocalDateTime>> alternativeTimeSlot = roomUnitService.findAvailableRoomsWithinSameDay(uc.getStudentsNumber(), computerRequired, startTime, endTime);
+                if (alternativeTimeSlot.isPresent()) {
+                    LocalDateTime newStartTime = alternativeTimeSlot.get().getKey();
+                    LocalDateTime newEndTime = alternativeTimeSlot.get().getValue();
+                    model.addAttribute("error", "No available rooms found for the specified time. However, rooms are available from " + newStartTime.toLocalTime() + " to " + newEndTime.toLocalTime() + " on the same day.");
+                } else {
+                    model.addAttribute("error", "No available rooms found for the specified time and day.");
+                }
+                return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=" + model.getAttribute("error");
             }
         }
 
