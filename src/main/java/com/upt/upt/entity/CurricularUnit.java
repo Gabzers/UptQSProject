@@ -177,6 +177,8 @@ public class CurricularUnit {
         return this.evaluationsCount != this.assessments.size();
     }
 
+    //CASO HAJA ALGUM PROBLEMA, O PROBLEMA PODE SER DAQUI DESTE ISTOTALWEIGHTINVALID (é reverter isto)
+
     public boolean isTotalWeightInvalid() {
         int normalPeriodTotalWeight = assessments.stream()
                 .filter(e -> "Teaching Period".equals(e.getExamPeriod()) || "Exam Period".equals(e.getExamPeriod()))
@@ -193,8 +195,13 @@ public class CurricularUnit {
                 .mapToInt(AssessmentUnit::getWeight)
                 .sum();
 
-        return normalPeriodTotalWeight != 100 || resourcePeriodTotalWeight != 100 || specialPeriodTotalWeight != 100;
+        boolean normalPeriodInvalid = normalPeriodTotalWeight > 0 && normalPeriodTotalWeight != 100;
+        boolean resourcePeriodInvalid = resourcePeriodTotalWeight > 0 && resourcePeriodTotalWeight != 100;
+        boolean specialPeriodInvalid = specialPeriodTotalWeight > 0 && specialPeriodTotalWeight != 100;
+
+        return normalPeriodInvalid || resourcePeriodInvalid || specialPeriodInvalid;
     }
+
 
     public boolean isTotalWeightLessThan100() {
         return this.assessments.stream().mapToInt(AssessmentUnit::getWeight).sum() < 100;

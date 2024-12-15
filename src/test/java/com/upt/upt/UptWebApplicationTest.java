@@ -3,13 +3,15 @@ package com.upt.upt;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-public class UptWebApplicationTest {
+class UptWebApplicationTests {
 
     @Test
-    public void contextLoads() {
-        assertTrue(true);
+    void contextLoads() {
+        UptWebApplication application = new UptWebApplication();
+        assertThat(application).isNotNull();
     }
+
 }
