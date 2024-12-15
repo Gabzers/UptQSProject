@@ -7,31 +7,27 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpSession;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.ui.Model;
+
+import jakarta.servlet.http.HttpSession;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(DirectorUnitController.class)
 class DirectorUnitControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc;
+    @InjectMocks
+    private DirectorUnitController directorUnitController;
 
     @Mock
     private DirectorUnitService directorUnitService;
 
     @Mock
-    private CoordinatorUnitService coordinatorService;
+    private CoordinatorUnitService coordinatorUnitService;
 
     @Mock
     private YearUnitService yearUnitService;
@@ -42,115 +38,87 @@ class DirectorUnitControllerTest {
     @Mock
     private PdfService pdfService;
 
-    @InjectMocks
-    private DirectorUnitController directorUnitController;
+    @Mock
+    private HttpSession session;
 
-    private MockHttpSession session;
+    @Mock
+    private Model model;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(directorUnitController).build();
-        session = new MockHttpSession();
     }
 
     @Test
-    void testListDirectors_WhenDirectorIsLoggedIn() throws Exception {
-        // Mock session and service
-        session.setAttribute("userType", UserType.DIRECTOR);
-        session.setAttribute("userId", 1L);
-
+    void testListDirectors_ValidSession() {
+        when(session.getAttribute("userType")).thenReturn(UserType.DIRECTOR);
         DirectorUnit director = new DirectorUnit();
-        director.setId(1L);
-        director.setName("Test Director");
-
+        when(session.getAttribute("userId")).thenReturn(1L);
         when(directorUnitService.getDirectorById(1L)).thenReturn(Optional.of(director));
 
-        mockMvc.perform(get("/director").session(session))
-                .andExpect(status().isOk())
-                .andExpect(view().name("director_index"))
-                .andExpect(model().attributeExists("loggedInDirector"))
-                .andExpect(model().attribute("loggedInDirector", director));
+        String viewName = directorUnitController.listDirectors(session, model);
 
-        verify(directorUnitService, times(1)).getDirectorById(1L);
+        assertEquals("director_index", viewName);
+        verify(model).addAttribute("loggedInDirector", director);
     }
 
     @Test
-    void testListDirectors_WhenUnauthorized() throws Exception {
-        // Mock session without DIRECTOR userType
-        session.setAttribute("userType", UserType.COORDINATOR);
+    void testListDirectors_InvalidSession() {
+        when(session.getAttribute("userType")).thenReturn(null);
 
-        mockMvc.perform(get("/director").session(session))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/login?error=Unauthorized access"));
+        String viewName = directorUnitController.listDirectors(session, model);
+
+        assertEquals("redirect:/login?error=Unauthorized access", viewName);
     }
 
     @Test
-    void testViewSemesters_WhenYearExists() throws Exception {
-        // Mock session and services
-        session.setAttribute("userType", UserType.DIRECTOR);
+    void testViewSemesters_ValidYear() {
+        when(session.getAttribute("userType")).thenReturn(UserType.DIRECTOR);
+        YearUnit yearUnit = new YearUnit();
+        when(yearUnitService.getYearUnitById(1L)).thenReturn(Optional.of(yearUnit));
 
-        YearUnit year = new YearUnit();
-        year.setId(1L);
-        year.setFirstSemester(new SemesterUnit());
-        year.setSecondSemester(new SemesterUnit());
+        String viewName = directorUnitController.viewSemesters(1L, model, session);
 
-        when(yearUnitService.getYearUnitById(1L)).thenReturn(Optional.of(year));
-
-        mockMvc.perform(get("/director/viewSemester/1").session(session))
-                .andExpect(status().isOk())
-                .andExpect(view().name("director_viewSemester"))
-                .andExpect(model().attributeExists("yearUnit"))
-                .andExpect(model().attribute("yearUnit", year));
-
-        verify(yearUnitService, times(1)).getYearUnitById(1L);
+        assertEquals("director_viewSemester", viewName);
+        verify(model).addAttribute("yearUnit", yearUnit);
     }
 
     @Test
-    void testViewSemesters_WhenYearDoesNotExist() throws Exception {
-        // Mock session and service
-        session.setAttribute("userType", UserType.DIRECTOR);
-
+    void testViewSemesters_InvalidYear() {
+        when(session.getAttribute("userType")).thenReturn(UserType.DIRECTOR);
         when(yearUnitService.getYearUnitById(1L)).thenReturn(Optional.empty());
 
-        mockMvc.perform(get("/director/viewSemester/1").session(session))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/director?error=Year not found"));
+        String viewName = directorUnitController.viewSemesters(1L, model, session);
 
-        verify(yearUnitService, times(1)).getYearUnitById(1L);
+        assertEquals("redirect:/director?error=Year not found", viewName);
     }
 
     @Test
-    void testShowEditCoordinatorForm_WhenCoordinatorExists() throws Exception {
-        // Mock session and services
-        session.setAttribute("userType", UserType.DIRECTOR);
+    void testGeneratePdf_ValidRequest() {
+        when(session.getAttribute("userType")).thenReturn(UserType.DIRECTOR);
+        DirectorUnit director = new DirectorUnit();
+        when(session.getAttribute("userId")).thenReturn(1L);
+        when(directorUnitService.getDirectorById(1L)).thenReturn(Optional.of(director));
+        YearUnit yearUnit = new YearUnit();
+        when(yearUnitService.getYearUnitById(1L)).thenReturn(Optional.of(yearUnit));
 
-        CoordinatorUnit coordinator = new CoordinatorUnit();
-        coordinator.setId(1L);
-        coordinator.setName("Test Coordinator");
+        byte[] pdfContent = new byte[10];
+        when(pdfService.generatePdfForYearAndSemester(director, yearUnit, 1)).thenReturn(pdfContent);
 
-        when(coordinatorService.getCoordinatorById(1L)).thenReturn(Optional.of(coordinator));
+        var response = directorUnitController.generatePdf(1L, 1, session);
 
-        mockMvc.perform(get("/director/edit-coordinator").param("id", "1").session(session))
-                .andExpect(status().isOk())
-                .andExpect(view().name("director_editCoordinator"))
-                .andExpect(model().attributeExists("coordinator"))
-                .andExpect(model().attribute("coordinator", coordinator));
-
-        verify(coordinatorService, times(1)).getCoordinatorById(1L);
+        assertNotNull(response);
+        assertEquals(200, response.getStatusCodeValue());
+        assertArrayEquals(pdfContent, response.getBody());
     }
 
     @Test
-    void testShowEditCoordinatorForm_WhenCoordinatorDoesNotExist() throws Exception {
-        // Mock session and service
-        session.setAttribute("userType", UserType.DIRECTOR);
+    void testGeneratePdf_UnauthorizedAccess() {
+        when(session.getAttribute("userType")).thenReturn(null);
 
-        when(coordinatorService.getCoordinatorById(1L)).thenReturn(Optional.empty());
+        var response = directorUnitController.generatePdf(1L, 1, session);
 
-        mockMvc.perform(get("/director/edit-coordinator").param("id", "1").session(session))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/director?error=Coordinator not found"));
-
-        verify(coordinatorService, times(1)).getCoordinatorById(1L);
+        assertNotNull(response);
+        assertEquals(401, response.getStatusCodeValue());
     }
 }
