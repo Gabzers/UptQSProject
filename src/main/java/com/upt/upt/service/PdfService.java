@@ -113,7 +113,7 @@ public class PdfService {
         return out.toByteArray();
     }
 
-    public byte[] generatePdfForUcs(SemesterUnit semesterUnit, String department) {
+    public byte[] generatePdfForUcs(SemesterUnit semesterUnit, String department, String semester) {
         Document document = new Document(PageSize.A4.rotate());
         ByteArrayOutputStream out = new ByteArrayOutputStream();
 
@@ -139,8 +139,7 @@ public class PdfService {
             Font tableHeaderFont = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
             Font tableBodyFont = new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL);
 
-            String semesterText = semesterUnit.getStartDate().contains("01") ? "1st" : "2nd";
-            Paragraph title = new Paragraph(department + " - UCs for " + semesterText + " Semester " + semesterUnit.getStartDate(), titleFont);
+            Paragraph title = new Paragraph(department + " - UCs for " + semester + " Semester " + semesterUnit.getStartDate(), titleFont);
             title.setAlignment(Element.ALIGN_CENTER);
             document.add(title);
             document.add(new Paragraph(" ")); // Add a blank line

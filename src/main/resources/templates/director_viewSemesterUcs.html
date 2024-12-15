@@ -22,7 +22,7 @@
     <main>
         <section>
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h2 th:text="'UCs for ' + (${semesterUnit.startDate.contains('01') ? '1st' : '2nd'}) + ' Semester ' + ${semesterUnit.startDate}">UCs for Semester</h2>
+                <h2 th:text="'UCs for ' + (${semester} == '1st' ? '1st Semester' : '2nd Semester') + ' ' + ${semesterUnit.startDate}">UCs for Semester</h2>
                 <button onclick="downloadUcsPdf()">Download UCs PDF</button>
             </div>
             <div id="uc-container" style="margin-top: 20px;">
@@ -70,7 +70,8 @@
     <script th:inline="javascript">
         function downloadUcsPdf() {
             const semesterId = /*[[${semesterUnit.id}]]*/ '[[${semesterUnit.id}]]';
-            window.location.href = `/director/ucs/pdf?semesterId=${semesterId}`;
+            const semester = /*[[${semester}]]*/ '[[${semester}]]';
+            window.location.href = `/director/ucs/pdf?semesterId=${semesterId}&semester=${semester}`;
         }
     </script>
 </body>

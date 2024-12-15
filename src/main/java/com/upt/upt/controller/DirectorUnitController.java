@@ -248,7 +248,7 @@ public class DirectorUnitController {
     }
 
     @GetMapping("/director/ucs/pdf")
-    public ResponseEntity<byte[]> generateUcsPdf(@RequestParam("semesterId") Long semesterId, HttpSession session) {
+    public ResponseEntity<byte[]> generateUcsPdf(@RequestParam("semesterId") Long semesterId, @RequestParam("semester") String semester, HttpSession session) {
         if (!isDirector(session)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
@@ -261,11 +261,10 @@ public class DirectorUnitController {
                 if (semesterUnit.getCurricularUnits().isEmpty()) {
                     return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
                 }
-                byte[] pdfContent = pdfService.generatePdfForUcs(semesterUnit, director.getDepartment());
+                byte[] pdfContent = pdfService.generatePdfForUcs(semesterUnit, director.getDepartment(), semester);
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_PDF);
-                String semesterText = semesterUnit.getStartDate().contains("01") ? "1st" : "2nd";
-                headers.setContentDispositionFormData("attachment", "UPT_" + director.getDepartment() + "_UCs_" + semesterText + "_Semester_" + semesterUnit.getStartDate() + ".pdf");
+                headers.setContentDispositionFormData("attachment", "UPT_" + director.getDepartment() + "_UCs_" + semester + "_Semester_" + semesterUnit.getStartDate() + ".pdf");
                 return new ResponseEntity<>(pdfContent, headers, HttpStatus.OK);
             } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
