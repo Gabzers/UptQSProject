@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface MapUnitRepository extends JpaRepository<MapUnit, Long> {
-    // Aqui você pode adicionar consultas personalizadas se necessário
+
 }
