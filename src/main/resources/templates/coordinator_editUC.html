@@ -53,7 +53,7 @@
                 <!-- Year of the UC -->
                 <label for="ucYear">Year:</label>
                 <select id="ucYear" name="ucYear" required th:disabled="${uc.assessments.size() > 0}">
-                    <option th:each="year : ${#numbers.sequence(1, coordinator.duration)}" th:value="${year}" th:text="${year + ' Year'}" th:selected="${uc.year == year}"></option>
+                    <option th:each="year : ${#numbers.sequence(1, coordinator?.duration ?: 1)}" th:value="${year}" th:text="${year + ' Year'}" th:selected="${uc.year == year}"></option>
                 </select>
                 <br><br>
 

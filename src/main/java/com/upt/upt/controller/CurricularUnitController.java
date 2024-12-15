@@ -142,6 +142,14 @@ public class CurricularUnitController {
                 semester = uc.getSemester();
                 model.addAttribute("error", "Year and Semester cannot be changed because there are existing assessments.");
             } else {
+                // Validate evaluationsCount
+                if (evaluationsCount < uc.getAssessments().size()) {
+                    model.addAttribute("error", "Evaluations count cannot be less than the number of existing assessments.");
+                    model.addAttribute("uc", uc);
+                    model.addAttribute("coordinator", verifyCoordinator(session).get());
+                    model.addAttribute("year", year);
+                    return "coordinator_editUC";
+                }
                 // Atualize o semestre da UC, mantendo o ano atual
                 uc.setSemester(semester);
                 curricularUnitService.updateCurricularUnitSemester(uc, semester, session); // Atualize o semester_id
