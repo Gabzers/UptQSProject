@@ -209,29 +209,33 @@ public class AssessmentUnitService {
         LocalDate semesterStart, semesterEnd;
         switch (assessmentExamPeriod) {
             case "Teaching Period":
+            case "Exam Period":
                 semesterStart = LocalDate.parse(semesterUnit.getStartDate());
                 semesterEnd = LocalDate.parse(semesterUnit.getEndDate());
-                break;
-            case "Exam Period":
-                semesterStart = LocalDate.parse(semesterUnit.getExamPeriodStart());
-                semesterEnd = LocalDate.parse(semesterUnit.getExamPeriodEnd());
+                if (startTime.toLocalDate().isBefore(semesterStart) || endTime.toLocalDate().isAfter(semesterEnd)) {
+                    model.addAttribute("error", "Assessment dates must be within the semester dates.");
+                    return false;
+                }
                 break;
             case "Resource Period":
                 semesterStart = LocalDate.parse(semesterUnit.getResitPeriodStart());
                 semesterEnd = LocalDate.parse(semesterUnit.getResitPeriodEnd());
+                if (startTime.toLocalDate().isBefore(semesterStart) || endTime.toLocalDate().isAfter(semesterEnd)) {
+                    model.addAttribute("error", "Assessment dates must be within the resit period dates.");
+                    return false;
+                }
                 break;
             case "Special Period":
                 semesterStart = LocalDate.parse(currentYear.getSpecialExamStart());
                 semesterEnd = LocalDate.parse(currentYear.getSpecialExamEnd());
+                if (startTime.toLocalDate().isBefore(semesterStart) || endTime.toLocalDate().isAfter(semesterEnd)) {
+                    model.addAttribute("error", "Assessment dates must be within the special period dates.");
+                    return false;
+                }
                 break;
             default:
                 model.addAttribute("error", "Invalid exam period.");
                 return false;
-        }
-
-        if (startTime.toLocalDate().isBefore(semesterStart) || endTime.toLocalDate().isAfter(semesterEnd)) {
-            model.addAttribute("error", "Assessment dates must be within the valid period: " + semesterStart + " to " + semesterEnd + ".");
-            return false;
         }
         return true;
     }

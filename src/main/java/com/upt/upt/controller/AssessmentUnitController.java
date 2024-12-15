@@ -178,7 +178,8 @@ public class AssessmentUnitController {
 
         if (!assessmentUnitService.validateAssessmentDates(assessmentExamPeriod, startTime, endTime, semesterUnit,
                 currentYear, model, curricularUnitId)) {
-            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=" + model.getAttribute("error");
+            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId
+                    + "&error=Assessment dates must be within the valid period.";
         }
 
         int periodTotalWeight = assessmentUnitService.calculatePeriodTotalWeight(uc, assessmentExamPeriod,
@@ -432,19 +433,6 @@ public class AssessmentUnitController {
             model.addAttribute("assessment", assessmentUnit);
             model.addAttribute("error", "The total weight of evaluations for this period must not exceed 100%.");
             return "redirect:/coordinator/coordinator_editEvaluations/" + id + "?curricularUnitId=" + curricularUnitId + "&error=The total weight of evaluations for this period must not exceed 100%.";
-        }
-
-        Long coordinatorId = (Long) session.getAttribute("userId");
-        CoordinatorUnit coordinator = coordinatorUnitService.getCoordinatorById(coordinatorId)
-                .orElseThrow(() -> new IllegalArgumentException("Coordinator not found"));
-        DirectorUnit director = coordinator.getDirectorUnit();
-        YearUnit currentYear = director.getCurrentYear();
-        SemesterUnit semesterUnit = uc.getSemester() == 1 ? currentYear.getFirstSemester()
-                : currentYear.getSecondSemester();
-
-        if (!assessmentUnitService.validateAssessmentDates(assessmentExamPeriod, startTime, endTime, semesterUnit,
-                currentYear, model, curricularUnitId)) {
-            return "redirect:/coordinator/coordinator_editEvaluations/" + id + "?curricularUnitId=" + curricularUnitId + "&error=" + model.getAttribute("error");
         }
 
         boolean updateRooms = !startTime.isEqual(assessmentUnit.getStartTime()) || !endTime.isEqual(assessmentUnit.getEndTime())
