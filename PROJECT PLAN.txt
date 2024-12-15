@@ -82,13 +82,17 @@ sala tem -:
 	
 
 FALTA:
+-> segurança em passwords, encriptar
+
+-> ajeitar css <- masterindex
+
+-> editar UC n funfa COM ASSESSMENTS
+
+-> quando não ha lugares DISPONIVEIS na soma de salas, dizer q NÃO existe capacidade para esse numero de alunos.
+
 -> editar avaliaçao sem feedack visual
 
-tentar apresentar as salas possiveis para se colocar 
-
 -> *** ajustar nomes, resource e assessment em todo o projeto
-
--> segurança em passwords, encriptar
 
 
 __________________________________________________________________________

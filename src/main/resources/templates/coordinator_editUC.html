@@ -23,6 +23,7 @@
 
             <!-- Form to update the UC details -->
             <form th:action="@{/coordinator/coordinator_editUC/{id}(id=${uc.id})}" method="POST">
+                <input type="hidden" name="ucYear" th:value="${year}">
                 <!-- Name of the UC -->
                 <label for="ucName">Name of UC:</label>
                 <input type="text" id="ucName" name="ucName" th:value="${uc.nameUC}" required>
@@ -62,6 +63,7 @@
                     <option value="1" th:selected="${uc.semester == 1}">1st Semester</option>
                     <option value="2" th:selected="${uc.semester == 2}">2nd Semester</option>
                 </select>
+                <input type="hidden" name="ucSemester" th:value="${uc.semester}">
                 <p th:if="${uc.assessments.size() > 0}" class="warning-message">Year and Semester cannot be changed because there are existing assessments.</p>
                 <br><br>
 

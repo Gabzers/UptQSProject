@@ -80,7 +80,10 @@ public class CurricularUnitService {
             curricularUnit.setEvaluationsCount(updatedCurricularUnit.getEvaluationsCount());
             curricularUnit.setYear(updatedCurricularUnit.getYear());
             curricularUnit.setSemester(updatedCurricularUnit.getSemester());
-            // curricularUnit.setAssessments(updatedCurricularUnit.getAssessments());
+            // Ensure assessments are not null before setting them
+            if (updatedCurricularUnit.getAssessments() != null) {
+                curricularUnit.setAssessments(updatedCurricularUnit.getAssessments());
+            }
             return curricularUnitRepository.save(curricularUnit);
         } else {
             throw new RuntimeException("Curricular unit not found");

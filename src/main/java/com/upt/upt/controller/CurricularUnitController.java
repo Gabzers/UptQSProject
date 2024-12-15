@@ -102,7 +102,7 @@ public class CurricularUnitController {
 
     // Página de edição de UC
     @GetMapping("/coordinator_editUC")
-    public String editUCForm(@RequestParam("id") Long id, @RequestParam("semester") Integer semester, HttpSession session, Model model) {
+    public String editUCForm(@RequestParam("id") Long id, @RequestParam("semester") Integer semester, @RequestParam(value = "ucYear", required = false) Integer year, HttpSession session, Model model) {
         if (!isCoordinator(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
@@ -111,6 +111,7 @@ public class CurricularUnitController {
         if (uc.isPresent() && coordinator.isPresent()) {
             model.addAttribute("uc", uc.get());
             model.addAttribute("coordinator", coordinator.get());
+            model.addAttribute("year", year);
             return "coordinator_editUC";
         } else {
             return "redirect:/coordinator";
@@ -124,9 +125,9 @@ public class CurricularUnitController {
             @RequestParam("ucName") String nameUC,
             @RequestParam("ucNumStudents") Integer studentsNumber,
             @RequestParam("ucEvaluationType") String evaluationType,
-            @RequestParam(value = "ucAttendance", defaultValue = "false") Boolean attendance, // Novo campo
+            @RequestParam(value = "ucAttendance", required = false, defaultValue = "false") Boolean attendance,
             @RequestParam("ucEvaluationsCount") Integer evaluationsCount,
-            @RequestParam("ucYear") Integer year,
+            @RequestParam(value = "ucYear", required = false) Integer year,
             @RequestParam("ucSemester") Integer semester,
             HttpSession session,
             Model model) {
