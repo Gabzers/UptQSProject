@@ -39,7 +39,7 @@ public class RoomUnitService {
      * @param endTime the end time of the availability
      * @return true if the room is available, false otherwise
      */
-    private boolean isRoomAvailable(Long roomId, LocalDateTime startTime, LocalDateTime endTime) {
+    boolean isRoomAvailable(Long roomId, LocalDateTime startTime, LocalDateTime endTime) {
         List<AssessmentUnit> assessments = assessmentUnitRepository.findByRooms_Id(roomId);
         for (AssessmentUnit assessment : assessments) {
             if (startTime.isBefore(assessment.getEndTime()) && endTime.isAfter(assessment.getStartTime())) {

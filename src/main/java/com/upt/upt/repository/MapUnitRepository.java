@@ -12,4 +12,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface MapUnitRepository extends JpaRepository<MapUnit, Long> {
+<<<<<<< HEAD
+=======
+
+>>>>>>> d5a4521209e8ebbe6932886a6ce82e229d15bbbd
 }

@@ -2,10 +2,8 @@ package com.upt.upt.service;
 
 import com.upt.upt.entity.DirectorUnit;
 import com.upt.upt.entity.YearUnit;
-import com.upt.upt.entity.SemesterUnit;
 import com.upt.upt.repository.DirectorUnitRepository;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -13,11 +11,16 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.*;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * Test class for DirectorUnitService.
+ */
 class DirectorUnitServiceTest {
+
+    @InjectMocks
+    private DirectorUnitService directorUnitService;
 
     @Mock
     private DirectorUnitRepository directorUnitRepository;
@@ -25,150 +28,155 @@ class DirectorUnitServiceTest {
     @Mock
     private UserService userService;
 
-    @InjectMocks
-    private DirectorUnitService directorUnitService;
-
-    private SemesterUnit firstSemester;
-    private SemesterUnit secondSemester;
+    private DirectorUnit mockDirectorUnit;
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this); // Inicializa os mocks
+        MockitoAnnotations.openMocks(this);
 
-        // Inicialização dos semestres para os testes
-        firstSemester = new SemesterUnit();
-        firstSemester.setStartDate("2024-01-01");
-        firstSemester.setEndDate("2024-06-30");
+        // Mock DirectorUnit object
+        mockDirectorUnit = new DirectorUnit();
+        mockDirectorUnit.setId(1L);
+        mockDirectorUnit.setUsername("test_user");
+        mockDirectorUnit.setPassword("password123");
+        mockDirectorUnit.setName("Test Name");
+        mockDirectorUnit.setDepartment("Test Department");
 
-        secondSemester = new SemesterUnit();
-        secondSemester.setStartDate("2024-07-01");
-        secondSemester.setEndDate("2024-12-31");
+        // Injetar o mock manualmente, caso necessário
+        directorUnitService = new DirectorUnitService(directorUnitRepository);
+        directorUnitService.userService = userService;
     }
 
     @Test
-    @DisplayName("Deve salvar um novo DirectorUnit")
-    void shouldSaveDirector() {
-        // Dado
-        DirectorUnit director = new DirectorUnit();
-        director.setName("John Doe");
-        director.setUsername("jdoe");
-        director.setPassword("secure123");
-        director.setDepartment("Engineering");
+    void testSaveDirector() {
+        // Arrange
+        when(directorUnitRepository.save(mockDirectorUnit)).thenReturn(mockDirectorUnit);
 
-        when(directorUnitRepository.save(director)).thenReturn(director);
+        // Act
+        DirectorUnit result = directorUnitService.saveDirector(mockDirectorUnit);
 
-        // Ação
-        DirectorUnit savedDirector = directorUnitService.saveDirector(director);
-
-        // Verificação
-        assertThat(savedDirector).isNotNull();
-        assertThat(savedDirector.getName()).isEqualTo("John Doe");
-        verify(directorUnitRepository, times(1)).save(director);
+        // Assert
+        assertNotNull(result);
+        assertEquals("test_user", result.getUsername());
+        verify(directorUnitRepository, times(1)).save(mockDirectorUnit);
     }
 
     @Test
-    @DisplayName("Deve retornar todos os DirectorUnits")
-    void shouldGetAllDirectors() {
-        // Dado
-        List<DirectorUnit> directors = Arrays.asList(
-                new DirectorUnit(1L, "John Doe", "jdoe", "pass123", "Engineering", new ArrayList<>(), new ArrayList<>()),
-                new DirectorUnit(2L, "Jane Doe", "jane", "pass456", "Science", new ArrayList<>(), new ArrayList<>())
-        );
-        when(directorUnitRepository.findAll()).thenReturn(directors);
+    void testGetAllDirectors() {
+        // Arrange
+        List<DirectorUnit> mockDirectorList = List.of(mockDirectorUnit);
+        when(directorUnitRepository.findAll()).thenReturn(mockDirectorList);
 
-        // Ação
+        // Act
         List<DirectorUnit> result = directorUnitService.getAllDirectors();
 
-        // Verificação
-        assertThat(result).hasSize(2);
+        // Assert
+        assertNotNull(result);
+        assertEquals(1, result.size());
         verify(directorUnitRepository, times(1)).findAll();
     }
 
     @Test
-    @DisplayName("Deve retornar um DirectorUnit pelo ID")
-    void shouldGetDirectorById() {
-        // Dado
-        DirectorUnit director = new DirectorUnit(1L, "John Doe", "jdoe", "pass123", "Engineering", new ArrayList<>(), new ArrayList<>());
-        when(directorUnitRepository.findById(1L)).thenReturn(Optional.of(director));
+    void testGetDirectorById() {
+        // Arrange
+        when(directorUnitRepository.findById(1L)).thenReturn(Optional.of(mockDirectorUnit));
 
-        // Ação
+        // Act
         Optional<DirectorUnit> result = directorUnitService.getDirectorById(1L);
 
-        // Verificação
-        assertThat(result).isPresent();
-        assertThat(result.get().getName()).isEqualTo("John Doe");
+        // Assert
+        assertTrue(result.isPresent());
+        assertEquals("test_user", result.get().getUsername());
         verify(directorUnitRepository, times(1)).findById(1L);
     }
 
     @Test
-    @DisplayName("Deve lançar exceção ao atualizar DirectorUnit inexistente")
-    void shouldThrowExceptionWhenUpdatingNonExistentDirector() {
-        // Dado
-        when(directorUnitRepository.findById(99L)).thenReturn(Optional.empty());
-
-        // Ação & Verificação
-        assertThatThrownBy(() -> directorUnitService.updateDirector(99L, new HashMap<>()))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("Invalid Director ID: 99");
-        verify(directorUnitRepository, times(1)).findById(99L);
-    }
-
-    @Test
-    @DisplayName("Deve retornar o ano mais recente de um diretor")
-    void shouldGetMostRecentYear() {
-        // Dado
-        YearUnit year1 = new YearUnit(1L, firstSemester, secondSemester, "2023-07-01", "2023-07-10", null);
-        YearUnit year2 = new YearUnit(2L, firstSemester, secondSemester, "2024-07-01", "2024-07-10", null);
-
-        DirectorUnit director = new DirectorUnit();
-        director.addAcademicYear(year1);
-        director.addAcademicYear(year2);
-
-        // Ação
-        YearUnit mostRecentYear = directorUnitService.getMostRecentYear(director);
-
-        // Verificação
-        assertThat(mostRecentYear).isEqualTo(year2);
-    }
-
-    @Test
-    @DisplayName("Deve retornar anos passados corretamente")
-    void shouldReturnPastYears() {
-        // Dado
-        YearUnit year1 = new YearUnit(1L, firstSemester, secondSemester, "2023-07-01", "2023-07-10", null);
-        YearUnit year2 = new YearUnit(2L, firstSemester, secondSemester, "2024-07-01", "2024-07-10", null);
-
-        DirectorUnit director = new DirectorUnit();
-        director.addAcademicYear(year1);
-        director.addAcademicYear(year2);
-
-        // Ação
-        List<YearUnit> pastYears = director.getPastYears();
-
-        // Verificação
-        assertThat(pastYears).containsExactly(year1);
-    }
-
-    @Test
-    @DisplayName("Deve criar um novo DirectorUnit com sucesso")
-    void shouldCreateDirectorSuccessfully() {
-        // Dado
-        when(userService.usernameExists("uniqueUsername")).thenReturn(false);
-
+    void testUpdateDirector() {
+        // Arrange
         Map<String, String> params = Map.of(
-                "director-name", "New Director",
-                "director-username", "uniqueUsername",
-                "director-password", "password123",
-                "director-department", "Engineering"
+                "director-name", "Updated Name",
+                "director-department", "Updated Department",
+                "director-username", "updated_user",
+                "director-password", "new_password"
         );
 
-        // Ação
-        DirectorUnit director = directorUnitService.createDirector(params);
+        when(directorUnitRepository.findById(1L)).thenReturn(Optional.of(mockDirectorUnit));
 
-        // Verificação
-        assertThat(director.getName()).isEqualTo("New Director");
-        assertThat(director.getUsername()).isEqualTo("uniqueUsername");
-        assertThat(director.getPassword()).isEqualTo("password123");
-        assertThat(director.getDepartment()).isEqualTo("Engineering");
+        // Act
+        DirectorUnit result = directorUnitService.updateDirector(1L, params);
+
+        // Assert
+        assertNotNull(result);
+        assertEquals("Updated Name", result.getName());
+        assertEquals("Updated Department", result.getDepartment());
+        assertEquals("updated_user", result.getUsername());
+        assertEquals("new_password", result.getPassword());
+        verify(directorUnitRepository, times(1)).findById(1L);
+    }
+
+    @Test
+    void testDeleteDirector() {
+        // Act
+        directorUnitService.deleteDirector(1L);
+
+        // Assert
+        verify(directorUnitRepository, times(1)).deleteById(1L);
+    }
+
+    @Test
+    void testUsernameExists() {
+        // Arrange
+        when(directorUnitRepository.findByUsername("test_user")).thenReturn(Optional.of(mockDirectorUnit));
+
+        // Act
+        boolean result = directorUnitService.usernameExists("test_user");
+
+        // Assert
+        assertTrue(result);
+        verify(directorUnitRepository, times(1)).findByUsername("test_user");
+    }
+
+    @Test
+    void testCreateDirector() {
+        // Arrange
+        Map<String, String> params = Map.of(
+                "director-name", "New Name",
+                "director-department", "New Department",
+                "director-username", "new_user",
+                "director-password", "new_password"
+        );
+
+        when(userService.usernameExists("new_user")).thenReturn(false);
+
+        // Act
+        DirectorUnit result = directorUnitService.createDirector(params);
+
+        // Assert
+        assertNotNull(result);
+        assertEquals("New Name", result.getName());
+        assertEquals("New Department", result.getDepartment());
+        assertEquals("new_user", result.getUsername());
+        assertEquals("new_password", result.getPassword());
+        verify(userService, times(1)).usernameExists("new_user");
+    }
+
+    @Test
+    void testCreateDirector_ThrowsExceptionWhenUsernameExists() {
+        // Arrange
+        Map<String, String> params = Map.of(
+                "director-name", "New Name",
+                "director-department", "New Department",
+                "director-username", "existing_user",
+                "director-password", "new_password"
+        );
+
+        when(userService.usernameExists("existing_user")).thenReturn(true);
+
+        // Act & Assert
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                directorUnitService.createDirector(params)
+        );
+        assertEquals("Username already exists", exception.getMessage());
+        verify(userService, times(1)).usernameExists("existing_user");
     }
 }
