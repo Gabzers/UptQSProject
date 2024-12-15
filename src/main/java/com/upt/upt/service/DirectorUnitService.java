@@ -23,7 +23,7 @@ public class DirectorUnitService {
     private final DirectorUnitRepository directorUnitRepository;
 
     @Autowired
-    private UserService userService;
+    UserService userService;
 
     @Autowired
     public DirectorUnitService(DirectorUnitRepository directorUnitRepository) {

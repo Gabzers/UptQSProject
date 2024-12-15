@@ -2,7 +2,6 @@ package com.upt.upt.repository;
 
 import com.upt.upt.entity.DirectorUnit;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -10,42 +9,72 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * Test class for DirectorUnitRepository.
+ */
 class DirectorUnitRepositoryTest {
 
     @Mock
     private DirectorUnitRepository directorUnitRepository;
 
+    private DirectorUnit mockDirectorUnit;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
+
+        // Mock DirectorUnit object
+        mockDirectorUnit = new DirectorUnit();
+        mockDirectorUnit.setId(1L);
+        mockDirectorUnit.setUsername("test_user");
+        mockDirectorUnit.setPassword("password123");
     }
 
     @Test
-    void shouldFindByUsernameAndPassword() {
-        // Dado
-        DirectorUnit mockDirector = new DirectorUnit();
-        mockDirector.setUsername("testuser");
-        mockDirector.setPassword("testpassword");
+    void testFindByUsernameAndPassword() {
+        // Arrange
+        when(directorUnitRepository.findByUsernameAndPassword("test_user", "password123"))
+                .thenReturn(mockDirectorUnit);
 
-        when(directorUnitRepository.findByUsernameAndPassword("testuser", "testpassword"))
-                .thenReturn(mockDirector);
-        DirectorUnit result = directorUnitRepository.findByUsernameAndPassword("testuser", "testpassword");
-        assertThat(result).isNotNull();
-        assertThat(result.getUsername()).isEqualTo("testuser");
-        verify(directorUnitRepository, times(1)).findByUsernameAndPassword("testuser", "testpassword");
+        // Act
+        DirectorUnit result = directorUnitRepository.findByUsernameAndPassword("test_user", "password123");
+
+        // Assert
+        assertNotNull(result);
+        assertEquals("test_user", result.getUsername());
+        assertEquals("password123", result.getPassword());
+        verify(directorUnitRepository, times(1)).findByUsernameAndPassword("test_user", "password123");
     }
 
     @Test
-    void shouldReturnEmptyForInvalidUsername() {
-        // Dado
-        when(directorUnitRepository.findByUsername("nonexistent"))
+    void testFindByUsername() {
+        // Arrange
+        when(directorUnitRepository.findByUsername("test_user"))
+                .thenReturn(Optional.of(mockDirectorUnit));
+
+        // Act
+        Optional<DirectorUnit> result = directorUnitRepository.findByUsername("test_user");
+
+        // Assert
+        assertTrue(result.isPresent());
+        assertEquals("test_user", result.get().getUsername());
+        verify(directorUnitRepository, times(1)).findByUsername("test_user");
+    }
+
+    @Test
+    void testFindByUsername_NotFound() {
+        // Arrange
+        when(directorUnitRepository.findByUsername("unknown_user"))
                 .thenReturn(Optional.empty());
 
-        Optional<DirectorUnit> result = directorUnitRepository.findByUsername("nonexistent");
-        assertThat(result).isEmpty();
-        verify(directorUnitRepository, times(1)).findByUsername("nonexistent");
+        // Act
+        Optional<DirectorUnit> result = directorUnitRepository.findByUsername("unknown_user");
+
+        // Assert
+        assertFalse(result.isPresent());
+        verify(directorUnitRepository, times(1)).findByUsername("unknown_user");
     }
 }

@@ -1,58 +1,67 @@
 package com.upt.upt.entity;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class DirectorUnitTest {
 
-    @Test
-    void testGettersAndSetters() {
-        DirectorUnit director = new DirectorUnit();
+    private DirectorUnit director;
 
-        director.setId(1L);
-        director.setName("Test Director");
-        director.setUsername("testuser");
-        director.setPassword("password123");
-        director.setDepartment("Computer Science");
-
-        assertEquals(1L, director.getId());
-        assertEquals("Test Director", director.getName());
-        assertEquals("testuser", director.getUsername());
-        assertEquals("password123", director.getPassword());
-        assertEquals("Computer Science", director.getDepartment());
+    @BeforeEach
+    void setUp() {
+        director = new DirectorUnit();
     }
 
     @Test
     void testAddCoordinator() {
-        DirectorUnit director = new DirectorUnit();
         CoordinatorUnit coordinator = new CoordinatorUnit();
+        coordinator.setId(1L);
+        coordinator.setName("Test Coordinator");
 
         director.addCoordinator(coordinator);
 
-        assertTrue(director.getCoordinators().contains(coordinator));
+        assertEquals(1, director.getCoordinators().size());
+        assertEquals(coordinator, director.getCoordinators().get(0));
         assertEquals(director, coordinator.getDirectorUnit());
     }
 
     @Test
     void testAddAcademicYear() {
-        DirectorUnit director = new DirectorUnit();
-        YearUnit year = new YearUnit();
+        SemesterUnit firstSemester = new SemesterUnit();
+        firstSemester.setId(1L);
+        firstSemester.setStartDate("2023-01-01");
+        firstSemester.setEndDate("2023-06-30");
 
-        director.addAcademicYear(year);
+        SemesterUnit secondSemester = new SemesterUnit();
+        secondSemester.setId(2L);
+        secondSemester.setStartDate("2023-07-01");
+        secondSemester.setEndDate("2023-12-31");
 
-        assertTrue(director.getAcademicYears().contains(year));
-        assertEquals(director, year.getDirectorUnit());
+        YearUnit year1 = new YearUnit();
+        year1.setId(1L);
+        year1.setFirstSemester(firstSemester);
+        year1.setSecondSemester(secondSemester);
+        year1.setSpecialExamStart("2023-11-01");
+        year1.setSpecialExamEnd("2023-11-15");
+
+        director.addAcademicYear(year1);
+
+        assertEquals(1, director.getAcademicYears().size());
+        assertEquals(year1, director.getAcademicYears().get(0));
+        assertEquals(director, year1.getDirectorUnit());
     }
 
     @Test
     void testGetCurrentYear() {
-        DirectorUnit director = new DirectorUnit();
         YearUnit year1 = new YearUnit();
         year1.setId(1L);
+
         YearUnit year2 = new YearUnit();
         year2.setId(2L);
 
@@ -64,9 +73,9 @@ class DirectorUnitTest {
 
     @Test
     void testGetPastYears() {
-        DirectorUnit director = new DirectorUnit();
         YearUnit year1 = new YearUnit();
         year1.setId(1L);
+
         YearUnit year2 = new YearUnit();
         year2.setId(2L);
 
@@ -80,54 +89,51 @@ class DirectorUnitTest {
     }
 
     @Test
-    void testEquals_SameObject_ShouldReturnTrue() {
-        DirectorUnit director = new DirectorUnit(1L, "Test Director", "testuser", "password123", "Computer Science", new ArrayList<>(), new ArrayList<>());
+    void testIsCurrentYear() {
+        SemesterUnit firstSemester = new SemesterUnit();
+        firstSemester.setId(1L);
+        firstSemester.setStartDate(LocalDate.now().minusMonths(1).toString());
+        firstSemester.setEndDate(LocalDate.now().plusMonths(1).toString());
 
-        assertTrue(director.equals(director));
+        SemesterUnit secondSemester = new SemesterUnit();
+        secondSemester.setId(2L);
+        secondSemester.setStartDate(LocalDate.now().plusMonths(2).toString());
+        secondSemester.setEndDate(LocalDate.now().plusMonths(6).toString());
+
+        YearUnit year = new YearUnit();
+        year.setId(1L);
+        year.setFirstSemester(firstSemester);
+        year.setSecondSemester(secondSemester);
+
+        assertTrue(year.isCurrentYear());
     }
 
     @Test
-    void testEquals_DifferentObjectSameId_ShouldReturnTrue() {
-        DirectorUnit director1 = new DirectorUnit(1L, "Director One", "user1", "password1", "Math", new ArrayList<>(), new ArrayList<>());
-        DirectorUnit director2 = new DirectorUnit(1L, "Director Two", "user2", "password2", "Physics", new ArrayList<>(), new ArrayList<>());
+    void testEqualsAndHashCode() {
+        DirectorUnit director1 = new DirectorUnit();
+        director1.setId(1L);
 
-        assertTrue(director1.equals(director2));
-    }
+        DirectorUnit director2 = new DirectorUnit();
+        director2.setId(1L);
 
-    @Test
-    void testEquals_DifferentId_ShouldReturnFalse() {
-        DirectorUnit director1 = new DirectorUnit(1L, "Director One", "user1", "password1", "Math", new ArrayList<>(), new ArrayList<>());
-        DirectorUnit director2 = new DirectorUnit(2L, "Director Two", "user2", "password2", "Physics", new ArrayList<>(), new ArrayList<>());
+        DirectorUnit director3 = new DirectorUnit();
+        director3.setId(2L);
 
-        assertFalse(director1.equals(director2));
-    }
-
-    @Test
-    void testHashCode_SameId_ShouldBeEqual() {
-        DirectorUnit director1 = new DirectorUnit(1L, "Director One", "user1", "password1", "Math", new ArrayList<>(), new ArrayList<>());
-        DirectorUnit director2 = new DirectorUnit(1L, "Director Two", "user2", "password2", "Physics", new ArrayList<>(), new ArrayList<>());
-
+        assertEquals(director1, director2);
+        assertNotEquals(director1, director3);
         assertEquals(director1.hashCode(), director2.hashCode());
+        assertNotEquals(director1.hashCode(), director3.hashCode());
     }
 
     @Test
-    void testHashCode_DifferentId_ShouldNotBeEqual() {
-        DirectorUnit director1 = new DirectorUnit(1L, "Director One", "user1", "password1", "Math", new ArrayList<>(), new ArrayList<>());
-        DirectorUnit director2 = new DirectorUnit(2L, "Director Two", "user2", "password2", "Physics", new ArrayList<>(), new ArrayList<>());
+    void testToString() {
+        director.setId(1L);
+        director.setName("Director Name");
+        director.setUsername("director123");
+        director.setPassword("password123");
+        director.setDepartment("IT");
 
-        assertNotEquals(director1.hashCode(), director2.hashCode());
-    }
-
-    @Test
-    void testToString_ShouldContainAllFields() {
-        DirectorUnit director = new DirectorUnit(1L, "Test Director", "testuser", "password123", "Computer Science", new ArrayList<>(), new ArrayList<>());
-
-        String toString = director.toString();
-
-        assertTrue(toString.contains("id=1"));
-        assertTrue(toString.contains("name='Test Director'"));
-        assertTrue(toString.contains("username='testuser'"));
-        assertTrue(toString.contains("password='password123'"));
-        assertTrue(toString.contains("department='Computer Science'"));
+        String expected = "DirectorUnit{id=1, name='Director Name', username='director123', password='password123', department='IT'}";
+        assertEquals(expected, director.toString());
     }
 }
