@@ -1,7 +1,11 @@
 package com.upt.upt.controller;
 
-import com.upt.upt.entity.*;
-import com.upt.upt.service.*;
+import com.upt.upt.entity.DirectorUnit;
+import com.upt.upt.entity.SemesterUnit;
+import com.upt.upt.entity.UserType;
+import com.upt.upt.entity.YearUnit;
+import com.upt.upt.service.DirectorUnitService;
+import com.upt.upt.service.YearUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +16,9 @@ import java.util.Map;
 import java.util.Optional;
 import jakarta.servlet.http.HttpSession;
 
+/**
+ * Controller for handling requests related to YearUnit entities.
+ */
 @Controller
 @RequestMapping("/director")
 public class YearUnitController {
@@ -35,6 +42,13 @@ public class YearUnitController {
         return userType == UserType.DIRECTOR;
     }
 
+    /**
+     * Handles the request to get the director's years.
+     * 
+     * @param session the HTTP session
+     * @param model the model to add attributes to
+     * @return the view name
+     */
     @GetMapping("/years")
     public String getDirectorYears(HttpSession session, Model model) {
         if (!isDirector(session)) {
@@ -59,6 +73,13 @@ public class YearUnitController {
         return "director_index";
     }
 
+    /**
+     * Shows the form to create a new year.
+     * 
+     * @param session the HTTP session
+     * @param model the model to add attributes to
+     * @return the view name
+     */
     @GetMapping("/create-year")
     public String newYearForm(HttpSession session, Model model) {
         if (!isDirector(session)) {
@@ -70,6 +91,15 @@ public class YearUnitController {
         return "director_newYear";
     }
 
+    /**
+     * Saves a new year.
+     * 
+     * @param yearUnit the year unit to save
+     * @param params the request parameters
+     * @param session the HTTP session
+     * @param model the model to add attributes to
+     * @return the view name
+     */
     @PostMapping("/save-year")
     public String saveNewYear(@ModelAttribute YearUnit yearUnit, @RequestParam Map<String, String> params, HttpSession session, Model model) {
         if (!isDirector(session)) {
@@ -87,6 +117,14 @@ public class YearUnitController {
         return "redirect:/director";
     }
 
+    /**
+     * Shows the form to edit an existing year.
+     * 
+     * @param id the ID of the year to edit
+     * @param session the HTTP session
+     * @param model the model to add attributes to
+     * @return the view name
+     */
     @GetMapping("/edit-year")
     public String editYearForm(@RequestParam("id") Long id, HttpSession session, Model model) {
         if (!isDirector(session)) {
@@ -102,6 +140,16 @@ public class YearUnitController {
         return "redirect:/director?error=Year not found";
     }
 
+    /**
+     * Updates an existing year.
+     * 
+     * @param id the ID of the year to update
+     * @param yearUnit the updated year unit
+     * @param params the request parameters
+     * @param session the HTTP session
+     * @param model the model to add attributes to
+     * @return the view name
+     */
     @PostMapping("/update-year/{id}")
     public String updateYear(@PathVariable("id") Long id, @ModelAttribute YearUnit yearUnit, @RequestParam Map<String, String> params, HttpSession session, Model model) {
         if (!isDirector(session)) {
@@ -119,6 +167,14 @@ public class YearUnitController {
         return "redirect:/director";
     }
 
+    /**
+     * Shows the confirmation page to delete a year.
+     * 
+     * @param id the ID of the year to delete
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/delete-year/{id}")
     public String deleteYear(@PathVariable("id") Long id, Model model, HttpSession session) {
         if (!isDirector(session)) {
@@ -129,16 +185,13 @@ public class YearUnitController {
         return "director_confirmRemoveYear";
     }
 
-    @PostMapping("/remove-year/{id}")
-    public String removeYear(@PathVariable("id") Long id, Model model, HttpSession session) {
-        if (!isDirector(session)) {
-            return "redirect:/login?error=Unauthorized access";
-        }
-        model.addAttribute("warning", "Are you sure you want to remove this year?");
-        model.addAttribute("yearId", id);
-        return "director_confirmRemoveYear";
-    }
-
+    /**
+     * Confirms the removal of a year.
+     * 
+     * @param id the ID of the year to remove
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/confirm-remove-year/{id}")
     public String confirmRemoveYear(@PathVariable("id") Long id, HttpSession session) {
         if (!isDirector(session)) {
@@ -148,6 +201,13 @@ public class YearUnitController {
         return "redirect:/director";
     }
 
+    /**
+     * Gets the current year.
+     * 
+     * @param session the HTTP session
+     * @param model the model to add attributes to
+     * @return the view name
+     */
     @GetMapping("/current-year")
     public String getCurrentYear(HttpSession session, Model model) {
         if (!isDirector(session)) {

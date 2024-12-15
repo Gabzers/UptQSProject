@@ -1,7 +1,14 @@
 package com.upt.upt.controller;
 
-import com.upt.upt.entity.*;
-import com.upt.upt.service.*;
+import com.upt.upt.entity.AssessmentUnit;
+import com.upt.upt.entity.CoordinatorUnit;
+import com.upt.upt.entity.CurricularUnit;
+import com.upt.upt.entity.DirectorUnit;
+import com.upt.upt.entity.UserType;
+import com.upt.upt.entity.YearUnit;
+import com.upt.upt.service.AssessmentUnitService;
+import com.upt.upt.service.CoordinatorUnitService;
+import com.upt.upt.service.PdfService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,6 +23,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Controller for handling requests related to MapUnit entities.
+ */
 @Controller
 public class MapUnitController {
 
@@ -41,6 +51,14 @@ public class MapUnitController {
         return userType == UserType.COORDINATOR;
     }
 
+    /**
+     * Shows the assessment map for the specified semester.
+     * 
+     * @param semester the semester number
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @GetMapping("/coordinator/map")
     public String showAssessmentMap(@RequestParam("semester") Integer semester, Model model, HttpSession session) {
         if (!isCoordinator(session)) {
@@ -83,6 +101,14 @@ public class MapUnitController {
         return "coordinator_map";
     }
 
+    /**
+     * Generates a PDF for the specified year and semester.
+     * 
+     * @param year the year number
+     * @param semester the semester number
+     * @param session the HTTP session
+     * @return the PDF response entity
+     */
     @GetMapping("/coordinator/map/pdf")
     public ResponseEntity<byte[]> generatePdf(@RequestParam("year") Integer year, @RequestParam("semester") Integer semester, HttpSession session) {
         if (!isCoordinator(session)) {

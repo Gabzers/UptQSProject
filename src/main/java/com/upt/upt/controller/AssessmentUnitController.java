@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -60,6 +59,15 @@ public class AssessmentUnitController {
         return userType == UserType.COORDINATOR;
     }
 
+    /**
+     * Shows the page to create a new evaluation.
+     * 
+     * @param curricularUnitId the ID of the curricular unit
+     * @param model the model to add attributes to
+     * @param error the error message, if any
+     * @param session the HTTP session
+     * @return the view name
+     */
     @GetMapping("/coordinator_create_evaluation")
     public String createEvaluationPage(@RequestParam("curricularUnitId") Long curricularUnitId, Model model,
             @RequestParam(value = "error", required = false) String error, HttpSession session) {
@@ -84,6 +92,14 @@ public class AssessmentUnitController {
         }
     }
 
+    /**
+     * Saves a new evaluation.
+     * 
+     * @param params the request parameters
+     * @param session the HTTP session
+     * @param model the model to add attributes to
+     * @return the view name
+     */
     @PostMapping("/coordinator_addEvaluation")
     public String saveEvaluation(@RequestParam Map<String, String> params, HttpSession session, Model model) {
         if (!isCoordinator(session)) {
@@ -162,8 +178,7 @@ public class AssessmentUnitController {
 
         if (!assessmentUnitService.validateAssessmentDates(assessmentExamPeriod, startTime, endTime, semesterUnit,
                 currentYear, model, curricularUnitId)) {
-            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId
-                    + "&error=Assessment dates must be within the valid period.";
+            return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=" + model.getAttribute("error");
         }
 
         int periodTotalWeight = assessmentUnitService.calculatePeriodTotalWeight(uc, assessmentExamPeriod,
@@ -307,6 +322,15 @@ public class AssessmentUnitController {
         return "redirect:/coordinator/coordinator_evaluationsUC?id=" + curricularUnitId;
     }
 
+    /**
+     * Shows the page to edit an existing evaluation.
+     * 
+     * @param assessmentId the ID of the assessment
+     * @param curricularUnitId the ID of the curricular unit
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @GetMapping("/coordinator_editEvaluations/{assessmentId}")
     public String editEvaluation(@PathVariable("assessmentId") Long assessmentId,
             @RequestParam("curricularUnitId") Long curricularUnitId, Model model, HttpSession session) {
@@ -329,6 +353,15 @@ public class AssessmentUnitController {
         return "redirect:/coordinator";
     }
 
+    /**
+     * Updates an existing evaluation.
+     * 
+     * @param id the ID of the assessment
+     * @param params the request parameters
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/coordinator_editEvaluations/{id}")
     public String updateEvaluation(@PathVariable("id") Long id, @RequestParam Map<String, String> params,
             Model model, HttpSession session) {
@@ -399,6 +432,19 @@ public class AssessmentUnitController {
             model.addAttribute("assessment", assessmentUnit);
             model.addAttribute("error", "The total weight of evaluations for this period must not exceed 100%.");
             return "redirect:/coordinator/coordinator_editEvaluations/" + id + "?curricularUnitId=" + curricularUnitId + "&error=The total weight of evaluations for this period must not exceed 100%.";
+        }
+
+        Long coordinatorId = (Long) session.getAttribute("userId");
+        CoordinatorUnit coordinator = coordinatorUnitService.getCoordinatorById(coordinatorId)
+                .orElseThrow(() -> new IllegalArgumentException("Coordinator not found"));
+        DirectorUnit director = coordinator.getDirectorUnit();
+        YearUnit currentYear = director.getCurrentYear();
+        SemesterUnit semesterUnit = uc.getSemester() == 1 ? currentYear.getFirstSemester()
+                : currentYear.getSecondSemester();
+
+        if (!assessmentUnitService.validateAssessmentDates(assessmentExamPeriod, startTime, endTime, semesterUnit,
+                currentYear, model, curricularUnitId)) {
+            return "redirect:/coordinator/coordinator_editEvaluations/" + id + "?curricularUnitId=" + curricularUnitId + "&error=" + model.getAttribute("error");
         }
 
         boolean updateRooms = !startTime.isEqual(assessmentUnit.getStartTime()) || !endTime.isEqual(assessmentUnit.getEndTime())
@@ -532,6 +578,15 @@ public class AssessmentUnitController {
         return "redirect:/coordinator/coordinator_evaluationsUC?id=" + curricularUnitId;
     }
 
+    /**
+     * Shows the confirmation page to delete an assessment.
+     * 
+     * @param id the ID of the assessment
+     * @param curricularUnitId the ID of the curricular unit
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/delete-assessment/{id}")
     public String deleteAssessment(@PathVariable("id") Long id, @RequestParam("curricularUnitId") Long curricularUnitId,
             Model model, HttpSession session) {
@@ -544,6 +599,14 @@ public class AssessmentUnitController {
         return "coordinator_confirmRemoveAssessment";
     }
 
+    /**
+     * Confirms the removal of an assessment.
+     * 
+     * @param id the ID of the assessment
+     * @param curricularUnitId the ID of the curricular unit
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/confirm-remove-assessment/{id}")
     public String confirmRemoveAssessment(@PathVariable("id") Long id,
             @RequestParam("curricularUnitId") Long curricularUnitId, HttpSession session) {
@@ -554,6 +617,14 @@ public class AssessmentUnitController {
         return "redirect:/coordinator/coordinator_evaluationsUC?id=" + curricularUnitId;
     }
 
+    /**
+     * Deletes an evaluation.
+     * 
+     * @param id the ID of the assessment
+     * @param curricularUnitId the ID of the curricular unit
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/coordinator_delete_evaluation/{id}")
     public String deleteEvaluation(@PathVariable("id") Long id, @RequestParam("curricularUnitId") Long curricularUnitId,
             HttpSession session) {
@@ -564,6 +635,14 @@ public class AssessmentUnitController {
         return "redirect:/coordinator/coordinator_evaluationsUC?id=" + curricularUnitId;
     }
 
+    /**
+     * Gets the valid date ranges for an exam period.
+     * 
+     * @param examPeriod the exam period
+     * @param curricularUnitId the ID of the curricular unit
+     * @param session the HTTP session
+     * @return the valid date ranges
+     */
     @GetMapping("/getValidDateRanges")
     @ResponseBody
     public Map<String, String> getValidDateRanges(@RequestParam("examPeriod") String examPeriod,
@@ -583,6 +662,16 @@ public class AssessmentUnitController {
         return assessmentUnitService.getValidDateRanges(examPeriod, curricularUnit, currentYear);
     }
 
+    /**
+     * Gets the available rooms for a given time range and requirements.
+     * 
+     * @param startTimeStr the start time
+     * @param endTimeStr the end time
+     * @param computerRequired whether a computer is required
+     * @param numStudents the number of students
+     * @param session the HTTP session
+     * @return the available rooms
+     */
     @GetMapping("/availableRooms")
     @ResponseBody
     public List<RoomUnit> getAvailableRooms(@RequestParam("startTime") String startTimeStr,

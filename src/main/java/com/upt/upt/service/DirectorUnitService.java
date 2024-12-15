@@ -16,6 +16,8 @@ import java.util.Comparator;
 /**
  * Service class for managing DirectorUnit entities.
  * Provides basic CRUD operations for DirectorUnit.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 @Service
 public class DirectorUnitService {
@@ -86,7 +88,7 @@ public class DirectorUnitService {
      * @param id the ID of the director to delete
      */
     public void deleteDirector(Long id) {
-        directorUnitRepository.deleteById(id); // Remove o diretor pelo ID
+        directorUnitRepository.deleteById(id);
     }
 
     /**

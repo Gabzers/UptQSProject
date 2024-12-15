@@ -1,7 +1,16 @@
 package com.upt.upt.controller;
 
-import com.upt.upt.entity.*;
-import com.upt.upt.service.*;
+import com.upt.upt.entity.AssessmentUnit;
+import com.upt.upt.entity.CoordinatorUnit;
+import com.upt.upt.entity.DirectorUnit;
+import com.upt.upt.entity.SemesterUnit;
+import com.upt.upt.entity.UserType;
+import com.upt.upt.entity.YearUnit;
+import com.upt.upt.service.CoordinatorUnitService;
+import com.upt.upt.service.DirectorUnitService;
+import com.upt.upt.service.PdfService;
+import com.upt.upt.service.UserService;
+import com.upt.upt.service.YearUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +28,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import java.util.stream.Collectors;
 
+/**
+ * Controller class for managing DirectorUnit entities.
+ */
 @Controller
 public class DirectorUnitController {
 
@@ -55,6 +67,13 @@ public class DirectorUnitController {
         return userType == UserType.DIRECTOR;
     }
 
+    /**
+     * Lists all directors.
+     * 
+     * @param session the HTTP session
+     * @param model the model to add attributes to
+     * @return the view name
+     */
     @GetMapping("/director")
     public String listDirectors(HttpSession session, Model model) {
         if (!isDirector(session)) {
@@ -80,6 +99,14 @@ public class DirectorUnitController {
         return "director_index";
     }
 
+    /**
+     * Views the semesters for a specific year.
+     * 
+     * @param id the ID of the year
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @GetMapping("/director/viewSemester/{id}")
     public String viewSemesters(@PathVariable("id") Long id, Model model, HttpSession session) {
         if (!isDirector(session)) {
@@ -95,6 +122,15 @@ public class DirectorUnitController {
         return "redirect:/director?error=Year not found";
     }
 
+    /**
+     * Views the assessment map for a specific semester and year.
+     * 
+     * @param semester the semester
+     * @param yearId the ID of the year
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @GetMapping("/director/map/{semester}/{yearId}")
     public String viewSemesterMap(@PathVariable("semester") String semester, @PathVariable("yearId") Long yearId, Model model, HttpSession session) {
         if (!isDirector(session)) {
@@ -120,6 +156,15 @@ public class DirectorUnitController {
         return "redirect:/director?error=Year not found";
     }
 
+    /**
+     * Views the curricular units for a specific semester and year.
+     * 
+     * @param semester the semester
+     * @param yearId the ID of the year
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @GetMapping("/director/ucs/{semester}/{yearId}")
     public String viewSemesterUcs(@PathVariable("semester") String semester, @PathVariable("yearId") Long yearId, Model model, HttpSession session) {
         if (!isDirector(session)) {
@@ -134,6 +179,14 @@ public class DirectorUnitController {
         return "redirect:/director?error=Year not found";
     }
 
+    /**
+     * Shows the form to edit a coordinator.
+     * 
+     * @param id the ID of the coordinator
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @GetMapping("/director/edit-coordinator")
     public String showEditCoordinatorForm(@RequestParam("id") Long id, Model model, HttpSession session) {
         if (!isDirector(session)) {
@@ -151,6 +204,14 @@ public class DirectorUnitController {
         return "redirect:/login?error=Session expired";
     }
 
+    /**
+     * Updates a coordinator.
+     * 
+     * @param id the ID of the coordinator
+     * @param params the request parameters
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/director/update-coordinator/{id}")
     public String updateCoordinator(@PathVariable("id") Long id, @RequestParam Map<String, String> params, HttpSession session) {
         if (!isDirector(session)) {
@@ -177,6 +238,12 @@ public class DirectorUnitController {
         return "redirect:/login?error=Session expired";
     }
 
+    /**
+     * Shows the form to create a new director.
+     * 
+     * @param session the HTTP session
+     * @return the view name
+     */
     @GetMapping("/master/create-director")
     public String showCreateDirectorForm(HttpSession session) {
         if (!verifyMaster(session)) {
@@ -185,6 +252,13 @@ public class DirectorUnitController {
         return "master_addDirector";
     }
 
+    /**
+     * Creates a new director.
+     * 
+     * @param params the request parameters
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/master/create-director")
     public String createDirector(@RequestParam Map<String, String> params, HttpSession session) {
         if (!verifyMaster(session)) {
@@ -204,6 +278,14 @@ public class DirectorUnitController {
         }
     }
 
+    /**
+     * Shows the form to edit an existing director.
+     * 
+     * @param id the ID of the director
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @GetMapping("/master/edit-director")
     public String showEditDirectorForm(@RequestParam("id") Long id, Model model, HttpSession session) {
         if (!verifyMaster(session)) {
@@ -217,6 +299,14 @@ public class DirectorUnitController {
         return "redirect:/master?error=Director not found";
     }
 
+    /**
+     * Generates a PDF for the specified year and semester.
+     * 
+     * @param year the year number
+     * @param semester the semester number
+     * @param session the HTTP session
+     * @return the PDF response entity
+     */
     @GetMapping("/director/map/pdf")
     public ResponseEntity<byte[]> generatePdf(@RequestParam("year") Integer year, @RequestParam("semester") Integer semester, HttpSession session) {
         if (!isDirector(session)) {
@@ -247,6 +337,14 @@ public class DirectorUnitController {
         }
     }
 
+    /**
+     * Generates a PDF for the curricular units of a specific semester.
+     * 
+     * @param semesterId the ID of the semester
+     * @param semester the semester
+     * @param session the HTTP session
+     * @return the PDF response entity
+     */
     @GetMapping("/director/ucs/pdf")
     public ResponseEntity<byte[]> generateUcsPdf(@RequestParam("semesterId") Long semesterId, @RequestParam("semester") String semester, HttpSession session) {
         if (!isDirector(session)) {

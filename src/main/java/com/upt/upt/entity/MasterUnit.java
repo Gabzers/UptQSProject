@@ -1,11 +1,17 @@
 package com.upt.upt.entity;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
 
 /**
  * MasterUnit class represents a master user with additional attributes.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 @Entity
 public class MasterUnit {
@@ -13,7 +19,7 @@ public class MasterUnit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "master_id")
-    private Long id; // Master ID
+    private Long id;
 
     @Column(name = "master_name", nullable = false)
     @NotNull
@@ -27,9 +33,17 @@ public class MasterUnit {
     @NotNull
     private String password;
 
-    // Construtores
+    // Constructors
     public MasterUnit() {}
 
+    /**
+     * Constructs a new MasterUnit with the specified details.
+     * 
+     * @param id the ID of the master
+     * @param name the name of the master
+     * @param username the username of the master
+     * @param password the password of the master
+     */
     public MasterUnit(Long id, String name, String username, String password) {
         this.id = id;
         this.name = name;
@@ -37,35 +51,74 @@ public class MasterUnit {
         this.password = password;
     }
 
-    // Getters e Setters
+    /**
+     * Gets the master ID.
+     * 
+     * @return the master ID
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Sets the master ID.
+     * 
+     * @param id the master ID
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * Gets the name of the master.
+     * 
+     * @return the name of the master
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets the name of the master.
+     * 
+     * @param name the name of the master
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Gets the username of the master.
+     * 
+     * @return the username of the master
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Sets the username of the master.
+     * 
+     * @param username the username of the master
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     * Gets the password of the master.
+     * 
+     * @return the password of the master
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Sets the password of the master.
+     * 
+     * @param password the password of the master
+     */
     public void setPassword(String password) {
         this.password = password;
     }

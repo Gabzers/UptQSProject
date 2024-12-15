@@ -28,9 +28,9 @@ public class CoordinatorUnitController {
 
     @Autowired
     private DirectorUnitService directorUnitService;
+
     @Autowired
     private UserService userService;
-
 
     private Optional<DirectorUnit> verifyDirector(HttpSession session) {
         Long directorId = (Long) session.getAttribute("userId");
@@ -45,6 +45,13 @@ public class CoordinatorUnitController {
         return userType == UserType.DIRECTOR;
     }
 
+    /**
+     * Shows the form to create a new coordinator.
+     * 
+     * @param session the HTTP session
+     * @param model the model to add attributes to
+     * @return the view name
+     */
     @GetMapping("/create-coordinator")
     public String createCoordinatorForm(HttpSession session, Model model) {
         if (!isDirector(session)) {
@@ -57,6 +64,13 @@ public class CoordinatorUnitController {
         return "director_addCoordinator"; // Name of the view template for the form
     }
 
+    /**
+     * Saves a new coordinator.
+     * 
+     * @param coordinator the coordinator to save
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/create-coordinator")
     public String saveCoordinator(@ModelAttribute CoordinatorUnit coordinator, HttpSession session) {
         if (!isDirector(session)) {
@@ -83,6 +97,14 @@ public class CoordinatorUnitController {
         }
     }
 
+    /**
+     * Shows the form to edit an existing coordinator.
+     * 
+     * @param id the ID of the coordinator to edit
+     * @param session the HTTP session
+     * @param model the model to add attributes to
+     * @return the view name
+     */
     @GetMapping("/edit-coordinator/{id}")
     public String editCoordinatorForm(@PathVariable("id") Long id, HttpSession session, Model model) {
         if (!isDirector(session)) {
@@ -100,6 +122,14 @@ public class CoordinatorUnitController {
         }
     }
 
+    /**
+     * Updates an existing coordinator.
+     * 
+     * @param id the ID of the coordinator to update
+     * @param coordinator the updated coordinator
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/edit-coordinator/{id}")
     public String updateCoordinator(@PathVariable("id") Long id, @ModelAttribute CoordinatorUnit coordinator, HttpSession session) {
         if (!isDirector(session)) {
@@ -123,6 +153,14 @@ public class CoordinatorUnitController {
         }
     }
 
+    /**
+     * Shows the confirmation page to delete a coordinator.
+     * 
+     * @param id the ID of the coordinator to delete
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/delete-coordinator/{id}")
     public String deleteCoordinator(@PathVariable("id") Long id, Model model, HttpSession session) {
         if (!isDirector(session)) {
@@ -133,6 +171,14 @@ public class CoordinatorUnitController {
         return "director_confirmRemoveCoordinator";
     }
 
+    /**
+     * Shows the confirmation page to remove a coordinator.
+     * 
+     * @param id the ID of the coordinator to remove
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/remove-coordinator/{id}")
     public String removeCoordinator(@PathVariable("id") Long id, Model model, HttpSession session) {
         if (!isDirector(session)) {
@@ -143,6 +189,13 @@ public class CoordinatorUnitController {
         return "director_confirmRemoveCoordinator";
     }
 
+    /**
+     * Confirms the removal of a coordinator.
+     * 
+     * @param id the ID of the coordinator to remove
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/confirm-remove-coordinator/{id}")
     public String confirmRemoveCoordinator(@PathVariable("id") Long id, HttpSession session) {
         if (!isDirector(session)) {

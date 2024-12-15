@@ -46,7 +46,7 @@
                         <tr th:each="assessment : ${semester == 1 ? firstSemesterAssessments : secondSemesterAssessments}" th:if="${assessment.curricularUnit.year == year && (assessment.examPeriod == 'Teaching Period' || assessment.examPeriod == 'Exam Period')}">
                             <td th:text="${assessment.curricularUnit != null ? assessment.curricularUnit.nameUC : 'N/A'}">UC Name</td>
                             <td th:text="${assessment.type}">Assessment Type</td>
-                            <td th:text="${assessment.weight}">0</td>
+                            <td th:text="${assessment.weight + '%'}">0%</td>
                             <td th:text="${assessment.examPeriod}">Exam Period</td>
                             <td th:text="${assessment.computerRequired ? 'Yes' : 'No'}">No</td>
                             <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
@@ -84,7 +84,7 @@
                         <tr th:each="assessment : ${semester == 1 ? firstSemesterAssessments : secondSemesterAssessments}" th:if="${assessment.curricularUnit.year == year && assessment.examPeriod == 'Resource Period'}">
                             <td th:text="${assessment.curricularUnit != null ? assessment.curricularUnit.nameUC : 'N/A'}">UC Name</td>
                             <td th:text="${assessment.type}">Assessment Type</td>
-                            <td th:text="${assessment.weight}">0</td>
+                            <td th:text="${assessment.weight + '%'}">0%</td>
                             <td th:text="${assessment.examPeriod}">Exam Period</td>
                             <td th:text="${assessment.computerRequired ? 'Yes' : 'No'}">No</td>
                             <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
@@ -122,7 +122,7 @@
                         <tr th:each="assessment : ${semester == 1 ? firstSemesterAssessments : secondSemesterAssessments}" th:if="${assessment.curricularUnit.year == year && assessment.examPeriod == 'Special Period'}">
                             <td th:text="${assessment.curricularUnit != null ? assessment.curricularUnit.nameUC : 'N/A'}">UC Name</td>
                             <td th:text="${assessment.type}">Assessment Type</td>
-                            <td th:text="${assessment.weight}">0</td>
+                            <td th:text="${assessment.weight + '%'}">0%</td>
                             <td th:text="${assessment.examPeriod}">Exam Period</td>
                             <td th:text="${assessment.computerRequired ? 'Yes' : 'No'}">No</td>
                             <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>

@@ -35,7 +35,7 @@
                 <label for="evaluation-type">Evaluation Type:</label>
                 <select name="assessmentType" id="evaluation-type" required onchange="highlightValidDates()">
                     <option value="Test" th:selected="${assessment.type == 'Test'}">Test</option>
-                    <option value="Final Exam" th:selected="${assessment.type == 'Final Exam'}">Final Exam</option>
+                    <option value="Final Test" th:selected="${assessment.type == 'Final Test'}">Final Test</option>
                     <option value="Work Developed Throughout the Semester" th:selected="${assessment.type == 'Work Developed Throughout the Semester'}">Work Developed Throughout the Semester</option>
                     <option value="Work Submission" th:selected="${assessment.type == 'Work Submission'}">Work Submission</option>
                     <option value="Group Work Submission" th:selected="${assessment.type == 'Group Work Submission'}">Group Work Submission</option>

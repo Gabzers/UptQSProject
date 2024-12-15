@@ -36,6 +36,15 @@
     <section id="usersList">
         <h2>Coordinator List</h2>
         <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Duration</th>
+                    <th>Username</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
             <tbody>
                 <!-- Iterate over coordinators of the logged-in director and display them -->
                 <tr th:each="coordinator : ${loggedInDirector.coordinators}">

@@ -8,23 +8,17 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Repository interface for accessing RoomUnit data.
+ * Repository interface for RoomUnit entity.
+ * Provides CRUD operations and query capabilities.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 @Repository
 public interface RoomUnitRepository extends JpaRepository<RoomUnit, Long> {
 
-    // Find rooms by designation
     List<RoomUnit> findByDesignation(String designation);
-
-    // Find rooms by building
     List<RoomUnit> findByBuilding(String building);
-
-    // Find rooms by material type
     List<RoomUnit> findByMaterialType(String materialType);
-
-    // Find rooms by a list of IDs
     List<RoomUnit> findAllById(Iterable<Long> ids);
-
-    // Find room by room number
     Optional<RoomUnit> findByRoomNumber(String roomNumber);
 }

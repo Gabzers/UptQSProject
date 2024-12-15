@@ -9,39 +9,21 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * Repository interface for CurricularUnit entity.
+ * Repository interface for AssessmentUnit entity.
  * Provides CRUD operations and query capabilities.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
-
 @Repository
 public interface AssessmentUnitRepository extends JpaRepository<AssessmentUnit, Long> {
-    // Método para buscar avaliações pela unidade curricular
     List<AssessmentUnit> findByCurricularUnitId(Long curricularUnitId);
-
-    // Método para buscar avaliação por unidade curricular e id da avaliação
     Optional<AssessmentUnit> findByCurricularUnitIdAndId(Long curricularUnitId, Long id);
-
-    // Add a repository method to fetch all assessments
     List<AssessmentUnit> findAll();
-
-    // Método para buscar avaliações por coordenador
     List<AssessmentUnit> findByCurricularUnitCoordinatorId(Long coordinatorId);
-
-    // Método para buscar avaliações por semestre
     List<AssessmentUnit> findByCurricularUnit_SemesterUnit_Id(Long semesterId);
-
-    // Método para buscar avaliações por sala
     List<AssessmentUnit> findByRooms_Id(Long roomId);
-
-    // Método para buscar avaliações por ano
     List<AssessmentUnit> findByCurricularUnit_Year(Integer year);
-
-    // Método para buscar avaliações por semestre
     List<AssessmentUnit> findByCurricularUnit_Semester(Integer semester);
-
-    // Método para buscar avaliações por ano, semestre e coordenador
     List<AssessmentUnit> findByCurricularUnit_YearAndCurricularUnit_SemesterAndCurricularUnit_CoordinatorId(int year, int semester, Long coordinatorId);
-
-    // Método para buscar avaliações de diferentes anos, mas do mesmo semestre e coordenador
     List<AssessmentUnit> findByCurricularUnit_SemesterAndCurricularUnit_CoordinatorIdAndCurricularUnit_YearNot(int semester, Long coordinatorId, int year);
 }

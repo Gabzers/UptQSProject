@@ -9,6 +9,8 @@ import java.util.Optional;
 /**
  * Repository interface for CoordinatorUnit entity.
  * Provides CRUD operations and query capabilities.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 @Repository
 public interface CoordinatorUnitRepository extends JpaRepository<CoordinatorUnit, Long> {

@@ -43,7 +43,7 @@
                     <tbody>
                         <tr th:each="evaluation : ${evaluations}" th:if="${evaluation.examPeriod == 'Teaching Period' || evaluation.examPeriod == 'Exam Period'}">
                             <td th:text="${evaluation.type}">Evaluation Type</td>
-                            <td th:text="${evaluation.weight}">0</td>
+                            <td th:text="${evaluation.weight + '%'}">0%</td>
                             <td th:text="${evaluation.examPeriod}">None</td>
                             <td th:text="${evaluation.classTime}">N/A</td>
                             <td>
@@ -102,7 +102,7 @@
                     <tbody>
                         <tr th:each="evaluation : ${evaluations}" th:if="${evaluation.examPeriod == 'Resource Period'}">
                             <td th:text="${evaluation.type}">Evaluation Type</td>
-                            <td th:text="${evaluation.weight}">0</td>
+                            <td th:text="${evaluation.weight + '%'}">0%</td>
                             <td th:text="${evaluation.examPeriod}">None</td>
                             <td th:text="${evaluation.classTime}">N/A</td>
                             <td>
@@ -155,7 +155,7 @@
                     <tbody>
                         <tr th:each="evaluation : ${evaluations}" th:if="${evaluation.examPeriod == 'Special Period'}">
                             <td th:text="${evaluation.type}">Evaluation Type</td>
-                            <td th:text="${evaluation.weight}">0</td>
+                            <td th:text="${evaluation.weight + '%'}">0%</td>
                             <td th:text="${evaluation.examPeriod}">None</td>
                             <td th:text="${evaluation.classTime}">N/A</td>
                             <td>

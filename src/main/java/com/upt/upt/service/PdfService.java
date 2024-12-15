@@ -19,6 +19,14 @@ import java.util.stream.Stream;
 @Service
 public class PdfService {
 
+    /**
+     * Generate a PDF for a specific year and semester for a coordinator.
+     * 
+     * @param coordinator the coordinator unit
+     * @param year the year
+     * @param semester the semester
+     * @return a byte array representing the generated PDF
+     */
     public byte[] generatePdfForYearAndSemester(CoordinatorUnit coordinator, Integer year, Integer semester) {
         Document document = new Document(PageSize.A4.rotate());
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -66,6 +74,14 @@ public class PdfService {
         return out.toByteArray();
     }
 
+    /**
+     * Generate a PDF for a specific year and semester for a director.
+     * 
+     * @param director the director unit
+     * @param year the year
+     * @param semester the semester
+     * @return a byte array representing the generated PDF
+     */
     public byte[] generatePdfForYearAndSemester(DirectorUnit director, Integer year, Integer semester) {
         Document document = new Document(PageSize.A4.rotate());
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -113,6 +129,14 @@ public class PdfService {
         return out.toByteArray();
     }
 
+    /**
+     * Generate a PDF for UCs for a specific semester.
+     * 
+     * @param semesterUnit the semester unit
+     * @param department the department
+     * @param semester the semester
+     * @return a byte array representing the generated PDF
+     */
     public byte[] generatePdfForUcs(SemesterUnit semesterUnit, String department, String semester) {
         Document document = new Document(PageSize.A4.rotate());
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -196,7 +220,7 @@ public class PdfService {
         for (AssessmentUnit assessment : assessments) {
             addCell(table, assessment.getCurricularUnit().getNameUC(), font);
             addCell(table, assessment.getType(), font);
-            addCell(table, String.valueOf(assessment.getWeight()), font);
+            addCell(table, assessment.getWeight() + "%", font);
             addCell(table, assessment.getExamPeriod(), font);
             addCell(table, assessment.getComputerRequired() ? "Yes" : "No", font);
             addCell(table, assessment.getClassTime() ? "Yes" : "No", font);
@@ -221,7 +245,7 @@ public class PdfService {
         for (AssessmentUnit assessment : assessments) {
             addCell(table, assessment.getCurricularUnit().getNameUC(), font);
             addCell(table, assessment.getType(), font);
-            addCell(table, String.valueOf(assessment.getWeight()), font);
+            addCell(table, assessment.getWeight() + "%", font);
             addCell(table, assessment.getExamPeriod(), font);
             addCell(table, assessment.getComputerRequired() ? "Yes" : "No", font);
             addCell(table, assessment.getClassTime() ? "Yes" : "No", font);

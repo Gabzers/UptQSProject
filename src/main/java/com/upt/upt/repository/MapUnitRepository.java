@@ -6,8 +6,10 @@ import org.springframework.stereotype.Repository;
 
 /**
  * Repository interface for MapUnit entity.
+ * Provides CRUD operations and query capabilities.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 @Repository
 public interface MapUnitRepository extends JpaRepository<MapUnit, Long> {
-    // Aqui você pode adicionar consultas personalizadas se necessário
 }

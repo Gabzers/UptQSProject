@@ -10,6 +10,8 @@ import java.util.Optional;
 
 /**
  * Service class for MapUnit.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 @Service
 public class MapUnitService {
@@ -17,32 +19,56 @@ public class MapUnitService {
     @Autowired
     private MapUnitRepository mapUnitRepository;
 
-    // Buscar todos os MapUnits
+    /**
+     * Retrieve all MapUnits.
+     * 
+     * @return a list of all MapUnits
+     */
     public List<MapUnit> getAllMapUnits() {
         return mapUnitRepository.findAll();
     }
 
-    // Buscar um MapUnit pelo ID
+    /**
+     * Retrieve a MapUnit by its ID.
+     * 
+     * @param id the ID of the MapUnit
+     * @return an Optional containing the MapUnit if found, or empty if not found
+     */
     public Optional<MapUnit> getMapUnitById(Long id) {
         return mapUnitRepository.findById(id);
     }
 
-    // Salvar um novo MapUnit
+    /**
+     * Save a new MapUnit.
+     * 
+     * @param mapUnit the MapUnit to be saved
+     * @return the saved MapUnit
+     */
     public MapUnit saveMapUnit(MapUnit mapUnit) {
         return mapUnitRepository.save(mapUnit);
     }
 
-    // Atualizar um MapUnit existente
+    /**
+     * Update an existing MapUnit.
+     * 
+     * @param id the ID of the MapUnit to be updated
+     * @param mapUnit the MapUnit with updated information
+     * @return the updated MapUnit, or null if the MapUnit with the given ID is not found
+     */
     public MapUnit updateMapUnit(Long id, MapUnit mapUnit) {
         if (mapUnitRepository.existsById(id)) {
             mapUnit.setId(id);
             return mapUnitRepository.save(mapUnit);
         } else {
-            return null;  // Se não encontrar o MapUnit com o ID, retorna null ou você pode lançar uma exceção
+            return null;
         }
     }
 
-    // Deletar um MapUnit
+    /**
+     * Delete a MapUnit by its ID.
+     * 
+     * @param id the ID of the MapUnit to be deleted
+     */
     public void deleteMapUnit(Long id) {
         mapUnitRepository.deleteById(id);
     }

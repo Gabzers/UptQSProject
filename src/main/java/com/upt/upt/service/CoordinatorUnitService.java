@@ -12,6 +12,8 @@ import java.util.Optional;
 
 /**
  * Service class for managing CoordinatorUnit entities.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 @Service
 public class CoordinatorUnitService {

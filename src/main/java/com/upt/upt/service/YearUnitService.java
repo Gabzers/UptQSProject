@@ -1,6 +1,5 @@
 package com.upt.upt.service;
 
-import com.upt.upt.entity.AssessmentUnit;
 import com.upt.upt.entity.DirectorUnit;
 import com.upt.upt.entity.MapUnit;
 import com.upt.upt.entity.SemesterUnit;
@@ -32,44 +31,107 @@ public class YearUnitService {
     @Autowired
     private MapUnitService mapUnitService;
 
+    /**
+     * Retrieve all YearUnits.
+     * 
+     * @return a list of all YearUnits
+     */
     public List<YearUnit> getAllYearUnits() {
         return yearUnitRepository.findAll();
     }
 
+    /**
+     * Retrieve a YearUnit by its ID.
+     * 
+     * @param id the ID of the YearUnit
+     * @return an Optional containing the YearUnit if found, or empty if not found
+     */
     public Optional<YearUnit> getYearUnitById(Long id) {
         return yearUnitRepository.findById(id);
     }
 
+    /**
+     * Save a new YearUnit.
+     * 
+     * @param yearUnit the YearUnit to be saved
+     * @return the saved YearUnit
+     */
     public YearUnit saveYearUnit(YearUnit yearUnit) {
         return yearUnitRepository.save(yearUnit);
     }
 
+    /**
+     * Delete a YearUnit by its ID.
+     * 
+     * @param id the ID of the YearUnit to be deleted
+     */
     public void deleteYearUnit(Long id) {
         yearUnitRepository.deleteById(id);
     }
 
+    /**
+     * Save a new SemesterUnit.
+     * 
+     * @param semesterUnit the SemesterUnit to be saved
+     * @return the saved SemesterUnit
+     */
     public SemesterUnit saveSemesterUnit(SemesterUnit semesterUnit) {
         return semesterUnitRepository.save(semesterUnit);
     }
 
+    /**
+     * Retrieve the most recent YearUnit.
+     * 
+     * @return an Optional containing the most recent YearUnit if found, or empty if not found
+     */
     public Optional<YearUnit> getMostRecentYearUnit() {
         return yearUnitRepository.findTopByOrderByIdDesc();
     }
 
+    /**
+     * Retrieve the most recent YearUnit by director ID.
+     * 
+     * @param directorId the ID of the director
+     * @return an Optional containing the most recent YearUnit if found, or empty if not found
+     */
     public Optional<YearUnit> getMostRecentYearUnitByDirector(Long directorId) {
         return yearUnitRepository.findTopByDirectorUnitIdOrderByIdDesc(directorId);
     }
 
+    /**
+     * Retrieve the current YearUnit by director ID.
+     * 
+     * @param directorId the ID of the director
+     * @return an Optional containing the current YearUnit if found, or empty if not found
+     */
     public Optional<YearUnit> getCurrentYearUnitByDirector(Long directorId) {
         return yearUnitRepository.findByDirectorUnitId(directorId).stream()
                 .filter(YearUnit::isCurrentYear)
                 .max((y1, y2) -> y1.getFirstSemester().getStartDate().compareTo(y2.getFirstSemester().getStartDate()));
     }
 
+    /**
+     * Retrieve a SemesterUnit by its ID.
+     * 
+     * @param id the ID of the SemesterUnit
+     * @return an Optional containing the SemesterUnit if found, or empty if not found
+     */
     public Optional<SemesterUnit> getSemesterUnitById(Long id) {
         return semesterUnitRepository.findById(id);
     }
 
+    /**
+     * Update an existing SemesterUnit.
+     * 
+     * @param semester the SemesterUnit to be updated
+     * @param startDate the new start date
+     * @param endDate the new end date
+     * @param examPeriodStart the new exam period start date
+     * @param examPeriodEnd the new exam period end date
+     * @param resitPeriodStart the new resit period start date
+     * @param resitPeriodEnd the new resit period end date
+     * @return the updated SemesterUnit
+     */
     public SemesterUnit updateSemester(SemesterUnit semester, String startDate, String endDate, String examPeriodStart, String examPeriodEnd, String resitPeriodStart, String resitPeriodEnd) {
         semester.setStartDate(startDate);
         semester.setEndDate(endDate);
@@ -90,6 +152,13 @@ public class YearUnitService {
         return savedSemester;
     }
 
+    /**
+     * Save a new YearUnit with its associated semesters.
+     * 
+     * @param yearUnit the YearUnit to be saved
+     * @param params the parameters for the semesters
+     * @param session the current HTTP session
+     */
     public void saveNewYear(YearUnit yearUnit, Map<String, String> params, HttpSession session) {
         SemesterUnit firstSemester = updateSemester(new SemesterUnit(), params.get("firstSemester.startDate"), params.get("firstSemester.endDate"), params.get("firstSemester.examPeriodStart"), params.get("firstSemester.examPeriodEnd"), params.get("firstSemester.resitPeriodStart"), params.get("firstSemester.resitPeriodEnd"));
         SemesterUnit secondSemester = updateSemester(new SemesterUnit(), params.get("secondSemester.startDate"), params.get("secondSemester.endDate"), params.get("secondSemester.examPeriodStart"), params.get("secondSemester.examPeriodEnd"), params.get("secondSemester.resitPeriodStart"), params.get("secondSemester.resitPeriodEnd"));
@@ -112,6 +181,14 @@ public class YearUnitService {
         saveYearUnit(yearUnit);
     }
 
+    /**
+     * Update an existing YearUnit.
+     * 
+     * @param id the ID of the YearUnit to be updated
+     * @param yearUnit the YearUnit with updated information
+     * @param params the parameters for the semesters
+     * @param session the current HTTP session
+     */
     public void updateYear(Long id, YearUnit yearUnit, Map<String, String> params, HttpSession session) {
         Optional<YearUnit> existingYearUnit = getYearUnitById(id);
         if (existingYearUnit.isPresent()) {
@@ -139,6 +216,14 @@ public class YearUnitService {
         }
     }
 
+    /**
+     * Validate the dates for a new YearUnit.
+     * 
+     * @param params the parameters for the semesters
+     * @param model the model to add error messages to
+     * @param directorId the ID of the director
+     * @return true if the dates are valid, false otherwise
+     */
     public boolean validateYearDates(Map<String, String> params, Model model, Long directorId) {
         LocalDate firstSemesterStartDate = LocalDate.parse(params.get("firstSemester.startDate"));
         LocalDate firstSemesterEndDate = LocalDate.parse(params.get("firstSemester.endDate"));
@@ -223,6 +308,14 @@ public class YearUnitService {
                (secondSemesterStartDate.isBefore(yearSecondSemesterEndDate) && secondSemesterEndDate.isAfter(yearFirstSemesterStartDate));
     }
 
+    /**
+     * Validate the dates for a new YearUnit.
+     * 
+     * @param params the parameters for the semesters
+     * @param model the model to add error messages to
+     * @param directorId the ID of the director
+     * @return true if the dates are valid, false otherwise
+     */
     public boolean validateNewYearDates(Map<String, String> params, Model model, Long directorId) {
         LocalDate firstSemesterStartDate = LocalDate.parse(params.get("firstSemester.startDate"));
         LocalDate firstSemesterEndDate = LocalDate.parse(params.get("firstSemester.endDate"));

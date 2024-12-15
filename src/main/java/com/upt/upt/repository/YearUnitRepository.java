@@ -7,6 +7,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Repository interface for YearUnit entity.
+ * Provides CRUD operations and query capabilities.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 @Repository
 public interface YearUnitRepository extends JpaRepository<YearUnit, Long> {
     Optional<YearUnit> findTopByOrderByFirstSemesterStartDateDesc();

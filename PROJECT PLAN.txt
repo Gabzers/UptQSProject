@@ -82,13 +82,9 @@ sala tem -:
 	
 
 FALTA:
--> segurança em passwords, encriptar
+-> corrigir feedback de UC(para curso) em assessments
 
--> ajeitar css <- masterindex
-
--> quando não ha lugares DISPONIVEIS na soma de salas, dizer q NÃO existe capacidade para esse numero de alunos.
-
--> editar avaliaçao sem feedack visual
+-> lista de EVALUATIONS colocar em % o weight, tal como todos os mapas
 
 -> *** ajustar nomes, resource e assessment em todo o projeto
 

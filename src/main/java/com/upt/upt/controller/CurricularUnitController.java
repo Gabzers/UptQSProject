@@ -7,7 +7,6 @@ import com.upt.upt.entity.UserType;
 import com.upt.upt.entity.YearUnit;
 import com.upt.upt.service.CurricularUnitService;
 import com.upt.upt.service.CoordinatorUnitService;
-import com.upt.upt.entity.AssessmentUnit;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -23,6 +22,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Comparator;
 
+/**
+ * Controller class for managing CurricularUnit entities.
+ */
 @Controller
 @RequestMapping("/coordinator")
 public class CurricularUnitController {
@@ -49,7 +51,13 @@ public class CurricularUnitController {
         return userType == UserType.COORDINATOR;
     }
 
-    // Mapeamento da URL "/coordinator"
+    /**
+     * Shows the course list for the coordinator.
+     * 
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @GetMapping("")
     public String showCourseList(Model model, HttpSession session) {
         if (!isCoordinator(session)) {
@@ -80,7 +88,14 @@ public class CurricularUnitController {
         return "coordinator_index"; // Retorna o nome do arquivo HTML "coordinator_index.html"
     }
 
-    // Remover a UC
+    /**
+     * Removes a CurricularUnit.
+     * 
+     * @param id the ID of the CurricularUnit to remove
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/remove-uc/{id}")
     public String removeCurricularUnit(@PathVariable("id") Long id, Model model, HttpSession session) {
         if (!isCoordinator(session)) {
@@ -91,6 +106,13 @@ public class CurricularUnitController {
         return "coordinator_confirmRemoveUC";
     }
 
+    /**
+     * Confirms the removal of a CurricularUnit.
+     * 
+     * @param id the ID of the CurricularUnit to remove
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/confirm-remove-uc/{id}")
     public String confirmRemoveCurricularUnit(@PathVariable("id") Long id, HttpSession session) {
         if (!isCoordinator(session)) {
@@ -100,7 +122,16 @@ public class CurricularUnitController {
         return "redirect:/coordinator";
     }
 
-    // Página de edição de UC
+    /**
+     * Shows the form for editing a CurricularUnit.
+     * 
+     * @param id the ID of the CurricularUnit to edit
+     * @param semester the semester of the CurricularUnit
+     * @param year the year of the CurricularUnit
+     * @param session the HTTP session
+     * @param model the model to add attributes to
+     * @return the view name
+     */
     @GetMapping("/coordinator_editUC")
     public String editUCForm(@RequestParam("id") Long id, @RequestParam("semester") Integer semester, @RequestParam(value = "ucYear", required = false) Integer year, HttpSession session, Model model) {
         if (!isCoordinator(session)) {
@@ -118,7 +149,21 @@ public class CurricularUnitController {
         }
     }
 
-    // Atualizar uma UC
+    /**
+     * Updates a CurricularUnit.
+     * 
+     * @param id the ID of the CurricularUnit to update
+     * @param nameUC the name of the CurricularUnit
+     * @param studentsNumber the number of students in the CurricularUnit
+     * @param evaluationType the evaluation type of the CurricularUnit
+     * @param attendance whether attendance is required for the CurricularUnit
+     * @param evaluationsCount the number of evaluations for the CurricularUnit
+     * @param year the year of the CurricularUnit
+     * @param semester the semester of the CurricularUnit
+     * @param session the HTTP session
+     * @param model the model to add attributes to
+     * @return the view name
+     */
     @PostMapping("/coordinator_editUC/{id}")
     public String updateCurricularUnit(
             @PathVariable("id") Long id,
@@ -158,7 +203,13 @@ public class CurricularUnitController {
         return curricularUnitService.updateCurricularUnit(id, nameUC, studentsNumber, evaluationType, attendance, evaluationsCount, year, semester, session, model);
     }
 
-    // Página de criação de UC
+    /**
+     * Shows the form for creating a new CurricularUnit.
+     * 
+     * @param session the HTTP session
+     * @param model the model to add attributes to
+     * @return the view name
+     */
     @GetMapping("/create-uc")
     public String createUC(HttpSession session, Model model) {
         if (!isCoordinator(session)) {
@@ -175,6 +226,13 @@ public class CurricularUnitController {
         }
     }
 
+    /**
+     * Gets the semester ID for a given semester.
+     * 
+     * @param semester the semester
+     * @param session the HTTP session
+     * @return the ResponseEntity containing the semester ID
+     */
     @GetMapping("/get-semester-id")
     @ResponseBody
     public ResponseEntity<?> getSemesterId(@RequestParam("semester") Integer semester, HttpSession session) {
@@ -184,7 +242,20 @@ public class CurricularUnitController {
         return curricularUnitService.getSemesterId(semester);
     }
 
-    // Criar nova UC
+    /**
+     * Creates a new CurricularUnit.
+     * 
+     * @param nameUC the name of the CurricularUnit
+     * @param studentsNumber the number of students in the CurricularUnit
+     * @param evaluationType the evaluation type of the CurricularUnit
+     * @param attendance whether attendance is required for the CurricularUnit
+     * @param evaluationsCount the number of evaluations for the CurricularUnit
+     * @param year the year of the CurricularUnit
+     * @param semester the semester of the CurricularUnit
+     * @param session the HTTP session
+     * @param model the model to add attributes to
+     * @return the view name
+     */
     @PostMapping("/create-uc")
     public String createCurricularUnit(
             @RequestParam("ucName") String nameUC,
@@ -202,6 +273,14 @@ public class CurricularUnitController {
         return curricularUnitService.createCurricularUnit(nameUC, studentsNumber, evaluationType, attendance, evaluationsCount, year, semester, session, model);
     }
 
+    /**
+     * Shows the evaluations for a CurricularUnit.
+     * 
+     * @param id the ID of the CurricularUnit
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @GetMapping("/coordinator_evaluationsUC")
     public String evaluationsUCCurricular(@RequestParam("id") Long id, Model model, HttpSession session) {
         if (!isCoordinator(session)) {

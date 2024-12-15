@@ -16,6 +16,8 @@ import java.time.LocalDateTime;
 
 /**
  * Service class for managing RoomUnit operations.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 @Service
 public class RoomUnitService {
@@ -207,22 +209,19 @@ public class RoomUnitService {
      * @return a list of available rooms
      */
     public List<RoomUnit> getAvailableRooms(int numStudents, boolean computerRequired, LocalDateTime startTime, LocalDateTime endTime) {
-        // Fetch and filter rooms based on criteria
         List<RoomUnit> availableRooms = roomUnitRepository.findAll().stream()
-                .filter(room -> room.getSeatsCount() > 0) // Ignorar salas com capacidade zero
+                .filter(room -> room.getSeatsCount() > 0)
                 .filter(room -> computerRequired
-                        ? room.getMaterialType().equals("Computers") // Só salas com computadores se necessário
-                        : !room.getMaterialType().equals("Computers")) // Excluir salas com computadores caso não seja necessário
-                .filter(room -> isRoomAvailable(room.getId(), startTime, endTime)) // Verificar disponibilidade da sala
+                        ? room.getMaterialType().equals("Computers")
+                        : !room.getMaterialType().equals("Computers"))
+                .filter(room -> isRoomAvailable(room.getId(), startTime, endTime))
                 .collect(Collectors.toList());
 
         List<RoomUnit> selectedRooms = new ArrayList<>();
         int remainingStudents = numStudents;
 
-        // Continuar alocando salas até que todos os alunos sejam alocados
         while (remainingStudents > 0 && !availableRooms.isEmpty()) {
-            final int students = remainingStudents; // Use a final variable within the lambda expression
-            // Ordenar as salas de acordo com a proximidade da capacidade ao número de alunos restantes
+            final int students = remainingStudents;
             availableRooms.sort((r1, r2) -> {
                 int diff1 = Math.abs(r1.getSeatsCount() - students);
                 int diff2 = Math.abs(r2.getSeatsCount() - students);
@@ -235,30 +234,26 @@ public class RoomUnitService {
                 remainingStudents -= bestRoom.getSeatsCount();
             }
 
-            // Remover a sala alocada da lista de disponíveis
             availableRooms.remove(bestRoom);
         }
 
-        // Retornar as salas alocadas, mesmo que não sejam suficientes
         return selectedRooms;
     }
 
     public List<RoomUnit> getAvailableRooms(int numStudents, boolean computerRequired, LocalDateTime startTime, LocalDateTime endTime, Long assessmentId) {
         List<RoomUnit> availableRooms = roomUnitRepository.findAll().stream()
-                .filter(room -> room.getSeatsCount() > 0) // Ignorar salas com capacidade zero
+                .filter(room -> room.getSeatsCount() > 0)
                 .filter(room -> computerRequired
-                        ? room.getMaterialType().equals("Computers") // Só salas com computadores se necessário
-                        : !room.getMaterialType().equals("Computers")) // Excluir salas com computadores caso não seja necessário
-                .filter(room -> isRoomAvailable(room.getId(), startTime, endTime, assessmentId)) // Verificar disponibilidade da sala
+                        ? room.getMaterialType().equals("Computers")
+                        : !room.getMaterialType().equals("Computers"))
+                .filter(room -> isRoomAvailable(room.getId(), startTime, endTime, assessmentId))
                 .collect(Collectors.toList());
 
         List<RoomUnit> selectedRooms = new ArrayList<>();
         int remainingStudents = numStudents;
 
-        // Continuar alocando salas até que todos os alunos sejam alocados
         while (remainingStudents > 0 && !availableRooms.isEmpty()) {
-            final int students = remainingStudents; // Use a final variable within the lambda expression
-            // Ordenar as salas de acordo com a proximidade da capacidade ao número de alunos restantes
+            final int students = remainingStudents;
             availableRooms.sort((r1, r2) -> {
                 int diff1 = Math.abs(r1.getSeatsCount() - students);
                 int diff2 = Math.abs(r2.getSeatsCount() - students);
@@ -271,11 +266,9 @@ public class RoomUnitService {
                 remainingStudents -= bestRoom.getSeatsCount();
             }
 
-            // Remover a sala alocada da lista de disponíveis
             availableRooms.remove(bestRoom);
         }
 
-        // Retornar as salas alocadas, mesmo que não sejam suficientes
         return selectedRooms;
     }
 

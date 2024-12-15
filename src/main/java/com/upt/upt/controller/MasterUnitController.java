@@ -18,6 +18,11 @@ import org.springframework.web.bind.annotation.*;
 
 import jakarta.servlet.http.HttpSession;
 
+/**
+ * Controller class for managing MasterUnit entities.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 @Controller
 @RequestMapping("/master")
 public class MasterUnitController {
@@ -39,6 +44,13 @@ public class MasterUnitController {
         return userType == UserType.MASTER;
     }
 
+    /**
+     * Lists all directors, masters, and rooms.
+     * 
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @GetMapping
     public String listDirectorsMastersAndRooms(Model model, HttpSession session) {
         if (!isMaster(session)) {
@@ -50,6 +62,12 @@ public class MasterUnitController {
         return "master_index";
     }
 
+    /**
+     * Shows the form to create a new master.
+     * 
+     * @param session the HTTP session
+     * @return the view name
+     */
     @GetMapping("/create-master")
     public String showCreateMasterForm(HttpSession session) {
         if (!isMaster(session)) {
@@ -58,6 +76,15 @@ public class MasterUnitController {
         return "master_addMaster";
     }
 
+    /**
+     * Creates a new master.
+     * 
+     * @param name the name of the master
+     * @param username the username of the master
+     * @param password the password of the master
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/create-master")
     public String createMaster(@RequestParam("master-name") String name, @RequestParam("master-username") String username, @RequestParam("master-password") String password, HttpSession session) {
         if (!isMaster(session)) {
@@ -77,6 +104,14 @@ public class MasterUnitController {
         }
     }
 
+    /**
+     * Shows the confirmation page to remove a master.
+     * 
+     * @param id the ID of the master to remove
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/remove-master/{id}")
     public String removeMaster(@PathVariable("id") Long id, Model model, HttpSession session) {
         if (!isMaster(session)) {
@@ -87,6 +122,13 @@ public class MasterUnitController {
         return "master_confirmRemoveMaster";
     }
 
+    /**
+     * Confirms the removal of a master.
+     * 
+     * @param id the ID of the master to remove
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/confirm-remove-master/{id}")
     public String confirmRemoveMaster(@PathVariable("id") Long id, HttpSession session) {
         if (!isMaster(session)) {
@@ -96,6 +138,14 @@ public class MasterUnitController {
         return "redirect:/master";
     }
 
+    /**
+     * Shows the form to edit an existing master.
+     * 
+     * @param id the ID of the master to edit
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @GetMapping("/edit-master")
     public String showEditMasterForm(@RequestParam("id") Long id, Model model, HttpSession session) {
         if (!isMaster(session)) {
@@ -109,6 +159,16 @@ public class MasterUnitController {
         return "redirect:/master?error=Master not found";
     }
 
+    /**
+     * Updates an existing master.
+     * 
+     * @param id the ID of the master to update
+     * @param name the name of the master
+     * @param username the username of the master
+     * @param password the password of the master
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/edit-master/{id}")
     public String updateMaster(@PathVariable("id") Long id, @RequestParam("master-name") String name, @RequestParam("master-username") String username, @RequestParam(value = "master-password", required = false) String password, HttpSession session) {
         if (!isMaster(session)) {
@@ -127,6 +187,14 @@ public class MasterUnitController {
         }
     }
 
+    /**
+     * Creates a new room.
+     * 
+     * @param params the request parameters
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/create-room")
     public String createRoom(@RequestParam Map<String, String> params, Model model, HttpSession session) {
         if (!isMaster(session)) {
@@ -150,6 +218,14 @@ public class MasterUnitController {
         }
     }
 
+    /**
+     * Edits an existing room.
+     * 
+     * @param params the request parameters
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/edit-room")
     public String editRoom(@RequestParam Map<String, String> params, Model model, HttpSession session) {
         if (!isMaster(session)) {
@@ -174,6 +250,14 @@ public class MasterUnitController {
         }
     }
 
+    /**
+     * Shows the confirmation page to remove a director.
+     * 
+     * @param id the ID of the director to remove
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/remove-director/{id}")
     public String removeDirector(@PathVariable("id") Long id, Model model, HttpSession session) {
         if (!isMaster(session)) {
@@ -184,6 +268,13 @@ public class MasterUnitController {
         return "master_confirmRemoveDirector";
     }
 
+    /**
+     * Confirms the removal of a director.
+     * 
+     * @param id the ID of the director to remove
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/confirm-remove-director/{id}")
     public String confirmRemoveDirector(@PathVariable("id") Long id, HttpSession session) {
         if (!isMaster(session)) {

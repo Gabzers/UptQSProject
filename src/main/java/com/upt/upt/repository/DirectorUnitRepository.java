@@ -9,9 +9,11 @@ import java.util.Optional;
 /**
  * Repository interface for DirectorUnit entity.
  * Provides CRUD operations and query capabilities.
+ * 
+ * @autor grupo 5 - 47719, 47713, 46697, 47752, 47004
  */
 @Repository
 public interface DirectorUnitRepository extends JpaRepository<DirectorUnit, Long> {
     DirectorUnit findByUsernameAndPassword(String username, String password);
-    Optional<DirectorUnit> findByUsername(String username); // Update to return Optional
+    Optional<DirectorUnit> findByUsername(String username);
 }

@@ -33,6 +33,13 @@ public class RoomUnitController {
         return userType == UserType.MASTER;
     }
 
+    /**
+     * Lists all rooms.
+     * 
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @GetMapping("/rooms")
     public String listRooms(Model model, HttpSession session) {
         if (!isMaster(session)) {
@@ -42,6 +49,12 @@ public class RoomUnitController {
         return "master_index";
     }
 
+    /**
+     * Shows the form to create a new room.
+     * 
+     * @param session the HTTP session
+     * @return the view name
+     */
     @GetMapping("/create-room")
     public String showCreateRoomForm(HttpSession session) {
         if (!isMaster(session)) {
@@ -50,6 +63,14 @@ public class RoomUnitController {
         return "master_addRoom";
     }
 
+    /**
+     * Shows the confirmation page to remove a room.
+     * 
+     * @param id the ID of the room to remove
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/remove-room/{id}")
     public String removeRoom(@PathVariable("id") Long id, Model model, HttpSession session) {
         if (!isMaster(session)) {
@@ -64,6 +85,13 @@ public class RoomUnitController {
         return "redirect:/master";
     }
 
+    /**
+     * Confirms the removal of a room.
+     * 
+     * @param id the ID of the room to remove
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/confirm-remove-room/{id}")
     public String confirmRemoveRoom(@PathVariable("id") Long id, HttpSession session) {
         if (!isMaster(session)) {
@@ -80,6 +108,15 @@ public class RoomUnitController {
         return "redirect:/master";
     }
 
+    /**
+     * Saves a new assessment.
+     * 
+     * @param params the request parameters
+     * @param roomIds the IDs of the rooms
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/save-assessment")
     public String saveAssessment(@RequestParam Map<String, String> params, @RequestParam List<Long> roomIds, Model model, HttpSession session) {
         if (!isMaster(session)) {
@@ -99,6 +136,16 @@ public class RoomUnitController {
         }
     }
 
+    /**
+     * Updates an existing assessment.
+     * 
+     * @param id the ID of the assessment to update
+     * @param params the request parameters
+     * @param roomIds the IDs of the rooms
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
     @PostMapping("/update-assessment")
     public String updateAssessment(@RequestParam Long id, @RequestParam Map<String, String> params, @RequestParam List<Long> roomIds, Model model, HttpSession session) {
         if (!isMaster(session)) {
