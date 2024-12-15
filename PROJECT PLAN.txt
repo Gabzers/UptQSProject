@@ -82,13 +82,13 @@ sala tem -:
 	
 
 FALTA:
--> sempre que exequível, quando existirem datas de provas em dias 
-seguidos de anos diferentes, devem respeitar as 24h para ser possível aos 
-estudantes com UC em atraso se apresentarem aos dois momentos de 
-avaliação;
--> mostrar quais dias e horas estao livres para uma avaliação daquele estilo
+-> mostrar quais dias e horas estao livres para uma avaliação daquele estilo / quando n houver salas disponiveis, ver no dia outra hora possivel para aquele interalo de tempo
+
+-> ordenar avaliaçoes em EVALUATIONSUC
 
 -> corrigir editar avaliação(n funciona)
+
+-> ao editar uc nao permitir alterar semester nem year caso haja avaliaçoes presentes
 
 -> *** ajustar nomes, resource e assessment em todo o projeto
 
