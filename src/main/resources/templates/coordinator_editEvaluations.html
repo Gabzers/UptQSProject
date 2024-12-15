@@ -23,10 +23,12 @@
 
             <!-- Display error message if present -->
             <div th:if="${error != null}" class="error-message" th:text="${error}"></div>
+            <div th:if="${param.error != null}" class="error-message" th:text="${param.error}"></div>
 
             <!-- Form to edit an existing evaluation -->
             <form th:if="${assessment != null}" th:action="@{/coordinator/coordinator_editEvaluations/{assessmentId}(assessmentId=${assessment.id})}" method="POST" onsubmit="return validateForm()">
                 <input type="hidden" name="curricularUnitId" th:value="${uc.id}">
+                <input type="hidden" name="ucEvaluationType" th:value="${uc.evaluationType}" />
                 <input type="hidden" name="assessmentId" th:value="${assessment.id}" />
 
                 <!-- Evaluation Type -->
