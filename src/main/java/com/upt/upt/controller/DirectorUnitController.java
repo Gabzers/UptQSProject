@@ -302,36 +302,39 @@ public class DirectorUnitController {
     /**
      * Generates a PDF for the specified year and semester.
      * 
-     * @param year the year number
+     * @param yearId the ID of the year
      * @param semester the semester number
      * @param session the HTTP session
      * @return the PDF response entity
      */
     @GetMapping("/director/map/pdf")
-    public ResponseEntity<byte[]> generatePdf(@RequestParam("year") Integer year, @RequestParam("semester") Integer semester, HttpSession session) {
+    public ResponseEntity<byte[]> generatePdf(@RequestParam("yearId") Long yearId, @RequestParam("semester") Integer semester, HttpSession session) {
         if (!isDirector(session)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
         Optional<DirectorUnit> directorOpt = verifyDirector(session);
         if (directorOpt.isPresent()) {
             DirectorUnit director = directorOpt.get();
-            YearUnit currentYear = director.getCurrentYear();
-            List<AssessmentUnit> assessments = (semester == 1 ? currentYear.getFirstSemester().getCurricularUnits() : currentYear.getSecondSemester().getCurricularUnits()).stream()
-                    .filter(uc -> uc.getYear().equals(year))
-                    .flatMap(uc -> uc.getAssessments().stream())
-                    .sorted((a1, a2) -> a1.getStartTime().compareTo(a2.getStartTime()))
-                    .collect(Collectors.toList());
-            if (assessments.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+            Optional<YearUnit> yearUnitOpt = yearUnitService.getYearUnitById(yearId);
+            if (yearUnitOpt.isPresent()) {
+                YearUnit yearUnit = yearUnitOpt.get();
+                List<AssessmentUnit> assessments = (semester == 1 ? yearUnit.getFirstSemester().getCurricularUnits() : yearUnit.getSecondSemester().getCurricularUnits()).stream()
+                        .flatMap(uc -> uc.getAssessments().stream())
+                        .sorted((a1, a2) -> a1.getStartTime().compareTo(a2.getStartTime()))
+                        .collect(Collectors.toList());
+                if (assessments.isEmpty()) {
+                    return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+                }
+                byte[] pdfContent = pdfService.generatePdfForYearAndSemester(director, yearUnit, semester);
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_PDF);
+                String semesterText = semester == 1 ? "1st" : "2nd";
+                String startDate = yearUnit.getFirstSemester().getStartDate();
+                headers.setContentDispositionFormData("attachment", "UPT_" + director.getDepartment() + "_" + startDate + "_" + yearId + "_" + semesterText + ".pdf");
+                return new ResponseEntity<>(pdfContent, headers, HttpStatus.OK);
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
             }
-            String ucName = assessments.get(0).getCurricularUnit().getNameUC();
-            byte[] pdfContent = pdfService.generatePdfForYearAndSemester(director, year, semester);
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_PDF);
-            String semesterText = semester == 1 ? "1st" : "2nd";
-            String startDate = currentYear.getFirstSemester().getStartDate();
-            headers.setContentDispositionFormData("attachment", "UPT_" + director.getDepartment() + "_" + startDate + "_" + year + "_" + semesterText + ".pdf");
-            return new ResponseEntity<>(pdfContent, headers, HttpStatus.OK);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }

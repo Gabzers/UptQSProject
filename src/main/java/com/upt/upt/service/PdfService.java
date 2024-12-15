@@ -82,7 +82,7 @@ public class PdfService {
      * @param semester the semester
      * @return a byte array representing the generated PDF
      */
-    public byte[] generatePdfForYearAndSemester(DirectorUnit director, Integer year, Integer semester) {
+    public byte[] generatePdfForYearAndSemester(DirectorUnit director, YearUnit yearUnit, Integer semester) {
         Document document = new Document(PageSize.A4.rotate());
         ByteArrayOutputStream out = new ByteArrayOutputStream();
 
@@ -108,7 +108,7 @@ public class PdfService {
             Font tableHeaderFont = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
             Font tableBodyFont = new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL);
 
-            Paragraph title = new Paragraph(director.getDepartment() + " - Assessment Map - Year " + year + " - " + (semester == 1 ? "1st Semester" : "2nd Semester"), titleFont);
+            Paragraph title = new Paragraph(director.getDepartment() + " - Assessment Map - Year " + yearUnit.getId() + " - " + (semester == 1 ? "1st Semester" : "2nd Semester"), titleFont);
             title.setAlignment(Element.ALIGN_CENTER);
             document.add(title);
             document.add(new Paragraph(" ")); // Add a blank line
@@ -118,7 +118,7 @@ public class PdfService {
             table.setWidths(new int[]{5, 4, 2, 3, 3, 2, 3, 3, 5, 2});
 
             addTableHeader(table, tableHeaderFont);
-            addRowsForDirector(table, director, year, semester, tableBodyFont);
+            addRowsForDirector(table, yearUnit, semester, tableBodyFont);
 
             document.add(table);
             document.close();
@@ -231,10 +231,8 @@ public class PdfService {
         }
     }
 
-    private void addRowsForDirector(PdfPTable table, DirectorUnit director, Integer year, Integer semester, Font font) {
-        YearUnit currentYear = director.getCurrentYear();
-        List<AssessmentUnit> assessments = (semester == 1 ? currentYear.getFirstSemester().getCurricularUnits() : currentYear.getSecondSemester().getCurricularUnits()).stream()
-                .filter(uc -> uc.getYear().equals(year))
+    private void addRowsForDirector(PdfPTable table, YearUnit yearUnit, Integer semester, Font font) {
+        List<AssessmentUnit> assessments = (semester == 1 ? yearUnit.getFirstSemester().getCurricularUnits() : yearUnit.getSecondSemester().getCurricularUnits()).stream()
                 .flatMap(uc -> uc.getAssessments().stream())
                 .sorted((a1, a2) -> a1.getStartTime().compareTo(a2.getStartTime()))
                 .collect(Collectors.toList());

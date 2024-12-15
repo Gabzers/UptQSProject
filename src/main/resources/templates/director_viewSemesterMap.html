@@ -25,7 +25,7 @@
         <section class="section" th:each="year : ${years}">
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <h2 th:text="'Assessments for Year ' + ${year}">Assessments for Year</h2>
-                <button class="pdf-button" th:data-year="${year}" th:data-semester="${semester}" onclick="downloadPdf(this)">Download PDF</button>
+                <button class="pdf-button" th:data-year-id="${yearId}" th:data-semester="${semester}" onclick="downloadPdf(this)">Download PDF</button>
             </div>
             <div th:if="${assessmentsByYear.get(year).size() > 0}">
                 <h3>Normal Period</h3>
@@ -155,9 +155,9 @@
 
     <script>
         function downloadPdf(button) {
-            const year = button.getAttribute('data-year');
+            const yearId = button.getAttribute('data-year-id');
             const semester = button.getAttribute('data-semester');
-            window.location.href = `/director/map/pdf?year=${year}&semester=${semester === '1st' ? 1 : 2}`;
+            window.location.href = `/director/map/pdf?yearId=${yearId}&semester=${semester === '1st' ? 1 : 2}`;
         }
     </script>
 </body>
