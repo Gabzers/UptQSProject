@@ -253,7 +253,7 @@ public class RoomUnitService {
             newOnlineRoom.setDesignation("Online Submission");
             newOnlineRoom.setMaterialType("Moodle");
             newOnlineRoom.setSeatsCount(0);
-            newOnlineRoom.setBuilding("Virtual");
+            newOnlineRoom.setBuilding("Online Submission");
             return roomUnitRepository.save(newOnlineRoom);
         }
     }

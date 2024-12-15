@@ -37,7 +37,7 @@ public class MapUnitController {
     }
 
     @GetMapping("/coordinator/map")
-    public String showAssessmentMap(Model model, HttpSession session) {
+    public String showAssessmentMap(@RequestParam("semester") Integer semester, Model model, HttpSession session) {
         if (!isCoordinator(session)) {
             return "redirect:/login?error=Unauthorized access";
         }
@@ -64,6 +64,9 @@ public class MapUnitController {
                 model.addAttribute("noNormalPeriodSecondSemester", assessmentService.noAssessmentsForPeriod(secondSemesterAssessments, "Teaching Period") && assessmentService.noAssessmentsForPeriod(secondSemesterAssessments, "Exam Period"));
                 model.addAttribute("noResourcePeriodSecondSemester", assessmentService.noAssessmentsForPeriod(secondSemesterAssessments, "Resource Period"));
                 model.addAttribute("noSpecialPeriodSecondSemester", assessmentService.noAssessmentsForPeriod(secondSemesterAssessments, "Special Period"));
+                List<Integer> years = coordinatorUnits.stream().map(CurricularUnit::getYear).distinct().collect(Collectors.toList());
+                model.addAttribute("years", years);
+                model.addAttribute("semester", semester);
             } else {
                 return "redirect:/login?error=Current year not found";
             }
