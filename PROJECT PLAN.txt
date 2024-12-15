@@ -82,9 +82,9 @@ sala tem -:
 	
 
 FALTA:
--> corrigir editar avaliação(n funciona) so alterar as rooms, caso se altere alguma data, ou clicar no botao ou pc ou class time
+-> editar avaliaçao sem feedack visual
 
--> ao editar uc nao permitir alterar semester nem year caso haja avaliaçoes presentes
+tentar apresentar as salas possiveis para se colocar 
 
 -> *** ajustar nomes, resource e assessment em todo o projeto
 
@@ -93,6 +93,6 @@ FALTA:
 
 __________________________________________________________________________
 NOTAS GABZ:
-- corrigir UptWebController depois (gabzers-> ta com stresses no controller?)
-- implementar UptWebConfigTest (talvez, mas acho que não é necessário)
+- corrigir UptWebController depois - gabzers-> ta com stresses no controller?
+- implementar UptWebConfigTest (talvez, mas acho que não é necessário) - nao me cheira gabzszsz
 - fazer amanha o MAP

@@ -162,6 +162,7 @@ public class CurricularUnitService {
             if (currentYear != null) {
                 SemesterUnit semesterUnit = curricularUnit.getSemester() == 1 ? currentYear.getFirstSemester() : currentYear.getSecondSemester();
                 semesterUnit.addCurricularUnit(curricularUnit);
+                curricularUnit.setSemesterUnit(semesterUnit);
             } else {
                 model.addAttribute("error", "Current year not found");
                 return null;
@@ -216,12 +217,24 @@ public class CurricularUnitService {
                     "ucEvaluationType", evaluationType,
                     "ucAttendance", attendance.toString(),
                     "ucEvaluationsCount", evaluationsCount.toString(),
-                    "ucYear", year.toString(),
+                    "ucYear", uc.getYear().toString(), // Mantém o ano atual
                     "ucSemester", semester.toString()
             ));
 
             if (!uc.getSemester().equals(semester)) {
-                updateCurricularUnitSemester(uc, semester, session);
+                Long coordinatorId = (Long) session.getAttribute("userId");
+                CoordinatorUnit coordinator = coordinatorUnitService.getCoordinatorById(coordinatorId)
+                        .orElseThrow(() -> new IllegalArgumentException("Coordinator not found"));
+                DirectorUnit director = coordinator.getDirectorUnit();
+                YearUnit currentYear = director.getCurrentYear();
+
+                SemesterUnit oldSemesterUnit = uc.getSemesterUnit();
+                oldSemesterUnit.removeCurricularUnit(uc);
+
+                SemesterUnit newSemesterUnit = semester == 1 ? currentYear.getFirstSemester() : currentYear.getSecondSemester();
+                newSemesterUnit.addCurricularUnit(uc);
+                uc.setSemesterUnit(newSemesterUnit);
+                uc.setSemester(semester); // Atualize o cu_semester
             }
 
             saveCurricularUnit(uc);

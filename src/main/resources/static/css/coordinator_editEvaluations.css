@@ -154,10 +154,6 @@ footer p {
     }
 }
 
-/* Valid date styles */
-.valid-date {
-    background-color: #d4edda;
-}
 
 /* Error message styles */
 .error-message {
@@ -167,53 +163,16 @@ footer p {
     font-size: 14px;
 }
 
-/* Flatpickr valid date styles */
-.flatpickr-day.valid-date {
-    background-color: #d4edda !important;
-    color: #000 !important;
-}
 
-/* Flatpickr styles */
-.flatpickr-calendar {
-    background-color: #2c3e50;
-    color: #ecf0f1;
-}
-
-.flatpickr-day {
-    color: #ecf0f1;
-}
-
-.flatpickr-day:hover {
-    background-color: #34495e;
-}
-
-.flatpickr-day.today {
-    background-color: #1abc9c;
-    color: #fff;
-}
-
-.flatpickr-day.selected {
-    background-color: #3498db;
-    color: #fff;
-}
-
-.flatpickr-day.disabled {
-    color: #7f8c8d;
-}
-
-.flatpickr-month {
-    background-color: #34495e;
-}
-
-.flatpickr-weekdays {
-    background-color: #34495e;
-}
-
-.flatpickr-weekday {
-    color: #ecf0f1;
-}
-
-.flatpickr-time {
-    background-color: #34495e;
-    color: #ecf0f1;
+/* Automatic Room Text */
+.automatic-room {
+    font-style: italic;
+    color: #555;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 12px; /* Make the text smaller */
 }

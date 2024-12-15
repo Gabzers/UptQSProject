@@ -51,17 +51,18 @@
 
                 <!-- Year of the UC -->
                 <label for="ucYear">Year:</label>
-                <select id="ucYear" name="ucYear" required>
+                <select id="ucYear" name="ucYear" required th:disabled="${uc.assessments.size() > 0}">
                     <option th:each="year : ${#numbers.sequence(1, coordinator.duration)}" th:value="${year}" th:text="${year + ' Year'}" th:selected="${uc.year == year}"></option>
                 </select>
                 <br><br>
 
                 <!-- Semester of the UC -->
                 <label for="ucSemester">Semester:</label>
-                <select id="ucSemester" name="ucSemester" required>
+                <select id="ucSemester" name="ucSemester" required th:disabled="${uc.assessments.size() > 0}">
                     <option value="1" th:selected="${uc.semester == 1}">1st Semester</option>
                     <option value="2" th:selected="${uc.semester == 2}">2nd Semester</option>
                 </select>
+                <p th:if="${uc.assessments.size() > 0}" class="warning-message">Year and Semester cannot be changed because there are existing assessments.</p>
                 <br><br>
 
                 <!-- Attendance Required -->

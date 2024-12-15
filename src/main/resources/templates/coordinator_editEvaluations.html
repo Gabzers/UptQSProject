@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Evaluation</title>
     <link rel="stylesheet" type="text/css" href="/css/coordinator_editEvaluations.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
     <link rel="icon" href="/images/upt-logo.png" type="image/png">
 </head>
 
@@ -23,6 +21,9 @@
         <section class="section">
             <h2>Edit Evaluation</h2>
 
+            <!-- Display error message if present -->
+            <div th:if="${error != null}" class="error-message" th:text="${error}"></div>
+
             <!-- Form to edit an existing evaluation -->
             <form th:if="${assessment != null}" th:action="@{/coordinator/coordinator_editEvaluations/{assessmentId}(assessmentId=${assessment.id})}" method="POST" onsubmit="return validateForm()">
                 <input type="hidden" name="curricularUnitId" th:value="${uc.id}">
@@ -32,7 +33,7 @@
                 <label for="evaluation-type">Evaluation Type:</label>
                 <select name="assessmentType" id="evaluation-type" required onchange="highlightValidDates()">
                     <option value="Test" th:selected="${assessment.type == 'Test'}">Test</option>
-                    <option value="Final Exam in Exam Period" th:selected="${assessment.type == 'Final Exam in Exam Period'}">Final Exam in Exam Period</option>
+                    <option value="Final Exam" th:selected="${assessment.type == 'Final Exam in Exam Period'}">Final Exam in Exam Period</option>
                     <option value="Work Developed Throughout the Semester" th:selected="${assessment.type == 'Work Developed Throughout the Semester'}">Work Developed Throughout the Semester</option>
                     <option value="Work Submission" th:selected="${assessment.type == 'Work Submission'}">Work Submission</option>
                     <option value="Group Work Submission" th:selected="${assessment.type == 'Group Work Submission'}">Group Work Submission</option>
@@ -60,37 +61,31 @@
                     <option value="Resource Period" th:selected="${assessment.examPeriod == 'Resource Period'}">Resource Period</option>
                     <option value="Special Period" th:selected="${assessment.examPeriod == 'Special Period'}">Special Period</option>
                 </select>
-                <span id="exam-period-error" class="error-message">Please select an exam period.</span>
                 <br><br>
 
                 <!-- Requires Computer -->
                 <label for="evaluation-computer-required">Computer Required:</label>
-                <input type="checkbox" id="evaluation-computer-required" name="assessmentComputerRequired" value="true" th:checked="${assessment.computerRequired}">
+                <input type="checkbox" id="evaluation-computer-required" name="assessmentComputerRequired" value="true" th:checked="${assessment.computerRequired}" onchange="resetDateTime()">
                 <br><br>
 
                 <!-- Class Time -->
                 <label for="evaluation-class-time">Class Time:</label>
-                <input type="checkbox" id="evaluation-class-time" name="assessmentClassTime" value="true" th:checked="${assessment.classTime}">
+                <input type="checkbox" id="evaluation-class-time" name="assessmentClassTime" value="true" th:checked="${assessment.classTime}" onchange="toggleRoomSelection()">
                 <br><br>
 
                 <!-- Start Date & Time -->
-                <label for="evaluation-date-start">Start Date & Time:</label>
-                <input type="text" name="assessmentStartTime" id="evaluation-date-start" th:value="${formattedStartTime}" required>
+                <label for="evaluation-date-start">Start Date & Time (08:00 - 23:59):</label>
+                <input type="datetime-local" name="assessmentStartTime" id="evaluation-date-start" th:value="${formattedStartTime}" required onchange="assignRoomAutomatically()">
                 <br><br>
 
                 <!-- End Date & Time -->
-                <label for="evaluation-date-end">End Date & Time:</label>
-                <input type="text" name="assessmentEndTime" id="evaluation-date-end" th:value="${formattedEndTime}" required>
+                <label for="evaluation-date-end">End Date & Time (08:00 - 23:59):</label>
+                <input type="datetime-local" name="assessmentEndTime" id="evaluation-date-end" th:value="${formattedEndTime}" required onchange="assignRoomAutomatically()">
                 <br><br>
 
                 <!-- Room -->
-                <label for="evaluation-room">Rooms:</label>
-                <select name="assessmentRoomIds" id="evaluation-room" multiple required>
-                    <option value="">Select Rooms</option>
-                    <th:block th:each="room : ${rooms}">
-                        <option th:value="${room.id}" th:text="${room.roomNumber + ' - ' + room.building}" th:selected="${assessment.rooms.contains(room)}"></option>
-                    </th:block>
-                </select>
+                <label for="evaluation-room">Room:</label>
+                <p class="automatic-room">Room will be selected automatically.</p>
                 <br><br>
 
                 <!-- Minimum Grade -->
@@ -100,7 +95,6 @@
 
                 <button type="submit">Update Evaluation</button>
             </form>
-            <p th:if="${error != null}" class="error-message" th:text="${error}"></p>
         </section>
     </main>
 
@@ -108,7 +102,6 @@
         <p><img src="/images/upt-logo.png" alt="Logo" style="height: 20px; vertical-align: middle; margin-right: 10px;">&copy; 2024 Universidade Portucalense Infante D. Henrique</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="/js/coordinator_editEvaluations.js"></script>
 </body>
 

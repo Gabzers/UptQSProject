@@ -7,6 +7,7 @@ import com.upt.upt.entity.UserType;
 import com.upt.upt.entity.YearUnit;
 import com.upt.upt.service.CurricularUnitService;
 import com.upt.upt.service.CoordinatorUnitService;
+import com.upt.upt.entity.AssessmentUnit;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -131,6 +132,19 @@ public class CurricularUnitController {
             Model model) {
         if (!isCoordinator(session)) {
             return "redirect:/login?error=Unauthorized access";
+        }
+        Optional<CurricularUnit> ucOpt = curricularUnitService.getCurricularUnitById(id);
+        if (ucOpt.isPresent()) {
+            CurricularUnit uc = ucOpt.get();
+            if (!uc.getAssessments().isEmpty()) {
+                year = uc.getYear();
+                semester = uc.getSemester();
+                model.addAttribute("error", "Year and Semester cannot be changed because there are existing assessments.");
+            } else {
+                // Atualize o semestre da UC, mantendo o ano atual
+                uc.setSemester(semester);
+                curricularUnitService.updateCurricularUnitSemester(uc, semester, session); // Atualize o semester_id
+            }
         }
         return curricularUnitService.updateCurricularUnit(id, nameUC, studentsNumber, evaluationType, attendance, evaluationsCount, year, semester, session, model);
     }
