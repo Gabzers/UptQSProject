@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluations - UC Management</title>
+    <link rel="stylesheet" type="text/css" href="/css/coordinator_evaluationsUC.css">
+    <link rel="icon" href="/images/upt-logo.png" type="image/png">
+</head>
+
+<body>
+    <header>
+        <h1><img src="/images/upt-logo.png" alt="Logo" style="height: 30px; vertical-align: middle;"> Evaluations for UC</h1>
+        <nav>
+            <button onclick="window.location.href='/coordinator'">Back</button>
+            <button
+                th:onclick="'window.location.href=\'/coordinator/coordinator_create_evaluation?curricularUnitId=' + ${uc.id} + '\''">Create
+                Evaluation</button>
+            <button onclick="window.location.href='/logout'">Logout</button>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="section">
+            <h2>Normal Period</h2>
+            <div th:if="${evaluations != null && evaluations.size() > 0}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Evaluation Type</th>
+                            <th>Weight</th>
+                            <th>Exam Period</th>
+                            <th>Class Time</th>
+                            <th>Rooms</th>
+                            <th>Start Date & Time</th>
+                            <th>End Date & Time</th>
+                            <th>Minimum Grade</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="evaluation : ${evaluations}" th:if="${evaluation.examPeriod == 'Teaching Period' || evaluation.examPeriod == 'Exam Period'}">
+                            <td th:text="${evaluation.type}">Evaluation Type</td>
+                            <td th:text="${evaluation.weight + '%'}">0%</td>
+                            <td th:text="${evaluation.examPeriod}">None</td>
+                            <td th:text="${evaluation.classTime}">N/A</td>
+                            <td>
+                                <ul>
+                                    <li th:each="room : ${evaluation.rooms}" th:text="${room.roomNumber + ' - ' + room.building}"></li>
+                                </ul>
+                            </td>
+                            <td th:text="${#temporals.format(evaluation.startTime, 'yyyy-MM-dd HH:mm')}">Start Date & Time</td>
+                            <td th:text="${#temporals.format(evaluation.endTime, 'yyyy-MM-dd HH:mm')}">End Date & Time</td>
+                            <td th:text="${evaluation.minimumGrade}">0.0</td>
+                            <td>
+                                <form th:action="@{/coordinator/coordinator_editEvaluations/{id}(id=${evaluation.id})}" method="GET" style="display:inline;">
+                                    <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
+                                    <button type="submit" class="edit">Edit</button>
+                                </form>
+                                <form th:action="@{/coordinator/delete-assessment/{id}(id=${evaluation.id})}" method="POST" style="display:inline;">
+                                    <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
+                                    <button type="submit" class="delete">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div th:if="${normalPeriodTotalWeight != 100}" style="color: red;">
+                    <p>The total weight of evaluations for Normal Period must be exactly 100%. Current weight: <span th:text="${normalPeriodTotalWeight}"></span>%</p>
+                </div>
+                <div th:if="${uc.evaluationType == 'Mixed' && normalPeriodAssessments.size() < 2}" style="color: red;">
+                    <p>For Mixed evaluation type, there must be at least 2 assessments in Normal Period. Current count: <span th:text="${normalPeriodAssessments.size()}"></span></p>
+                </div>
+                <div th:if="${uc.evaluationType == 'Continuous' && normalPeriodAssessments.size() < 3}" style="color: red;">
+                    <p>For Continuous evaluation type, there must be at least 3 assessments in Normal Period. Current count: <span th:text="${normalPeriodAssessments.size()}"></span></p>
+                </div>
+            </div>
+            <div th:if="${evaluations == null || evaluations.size() == 0}">
+                <p>No evaluations found for Normal Period.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Resource Period</h2>
+            <div th:if="${evaluations != null && evaluations.size() > 0}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Evaluation Type</th>
+                            <th>Weight</th>
+                            <th>Exam Period</th>
+                            <th>Class Time</th>
+                            <th>Rooms</th>
+                            <th>Start Date & Time</th>
+                            <th>End Date & Time</th>
+                            <th>Minimum Grade</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="evaluation : ${evaluations}" th:if="${evaluation.examPeriod == 'Resource Period'}">
+                            <td th:text="${evaluation.type}">Evaluation Type</td>
+                            <td th:text="${evaluation.weight + '%'}">0%</td>
+                            <td th:text="${evaluation.examPeriod}">None</td>
+                            <td th:text="${evaluation.classTime}">N/A</td>
+                            <td>
+                                <ul>
+                                    <li th:each="room : ${evaluation.rooms}" th:text="${room.roomNumber + ' - ' + room.building}"></li>
+                                </ul>
+                            </td>
+                            <td th:text="${#temporals.format(evaluation.startTime, 'yyyy-MM-dd HH:mm')}">Start Date & Time</td>
+                            <td th:text="${#temporals.format(evaluation.endTime, 'yyyy-MM-dd HH:mm')}">End Date & Time</td>
+                            <td th:text="${evaluation.minimumGrade}">0.0</td>
+                            <td>
+                                <form th:action="@{/coordinator/coordinator_editEvaluations/{id}(id=${evaluation.id})}" method="GET" style="display:inline;">
+                                    <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
+                                    <button type="submit" class="edit">Edit</button>
+                                </form>
+                                <form th:action="@{/coordinator/delete-assessment/{id}(id=${evaluation.id})}" method="POST" style="display:inline;">
+                                    <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
+                                    <button type="submit" class="delete">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div th:if="${resourcePeriodTotalWeight != 100}" style="color: red;">
+                    <p>The total weight of evaluations for Resource Period must be exactly 100%. Current weight: <span th:text="${resourcePeriodTotalWeight}"></span>%</p>
+                </div>
+            </div>
+            <div th:if="${evaluations == null || evaluations.size() == 0}">
+                <p>No evaluations found for Resource Period.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Special Period</h2>
+            <div th:if="${evaluations != null && evaluations.size() > 0}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Evaluation Type</th>
+                            <th>Weight</th>
+                            <th>Exam Period</th>
+                            <th>Class Time</th>
+                            <th>Rooms</th>
+                            <th>Start Date & Time</th>
+                            <th>End Date & Time</th>
+                            <th>Minimum Grade</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="evaluation : ${evaluations}" th:if="${evaluation.examPeriod == 'Special Period'}">
+                            <td th:text="${evaluation.type}">Evaluation Type</td>
+                            <td th:text="${evaluation.weight + '%'}">0%</td>
+                            <td th:text="${evaluation.examPeriod}">None</td>
+                            <td th:text="${evaluation.classTime}">N/A</td>
+                            <td>
+                                <ul>
+                                    <li th:each="room : ${evaluation.rooms}" th:text="${room.roomNumber + ' - ' + room.building}"></li>
+                                </ul>
+                            </td>
+                            <td th:text="${#temporals.format(evaluation.startTime, 'yyyy-MM-dd HH:mm')}">Start Date & Time</td>
+                            <td th:text="${#temporals.format(evaluation.endTime, 'yyyy-MM-dd HH:mm')}">End Date & Time</td>
+                            <td th:text="${evaluation.minimumGrade}">0.0</td>
+                            <td>
+                                <form th:action="@{/coordinator/coordinator_editEvaluations/{id}(id=${evaluation.id})}" method="GET" style="display:inline;">
+                                    <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
+                                    <button type="submit" class="edit">Edit</button>
+                                </form>
+                                <form th:action="@{/coordinator/delete-assessment/{id}(id=${evaluation.id})}" method="POST" style="display:inline;">
+                                    <input type="hidden" name="curricularUnitId" th:value="${uc.id}" />
+                                    <button type="submit" class="delete">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div th:if="${specialPeriodTotalWeight != 100}" style="color: red;">
+                    <p>The total weight of evaluations for Special Period must be exactly 100%. Current weight: <span th:text="${specialPeriodTotalWeight}"></span>%</p>
+                </div>
+            </div>
+            <div th:if="${evaluations == null || evaluations.size() == 0}">
+                <p>No evaluations found for Special Period.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><img src="/images/upt-logo.png" alt="Logo" style="height: 20px; vertical-align: middle; margin-right: 10px;">&copy; 2024 Universidade Portucalense Infante D. Henrique</p>
+    </footer>
+
+</body>
+
+</html>

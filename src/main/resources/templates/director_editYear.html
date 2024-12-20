@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Year</title>
+    <link rel="stylesheet" type="text/css" href="/css/director_editYear.css?v=1.0">
+    <link rel="icon" href="/images/upt-logo.png" type="image/png">
+</head>
+<body>
+    <header>
+        <h1>Edit Year</h1>
+        <nav>
+            <button onclick="location.href='/director'">Back</button>
+            <button onclick="location.href='/logout'">Logout</button>
+        </nav>
+    </header>
+    <main>
+        <form th:action="@{/director/update-year/{id}(id=${yearUnit.id})}" th:object="${yearUnit}" method="post">
+            <!-- Display error message if present -->
+            <div th:if="${error}" class="error-message">
+                <p th:text="${error}"></p>
+            </div>
+
+            <!-- Display overlap error message if present -->
+            <div th:if="${overlapError}" class="error-message">
+                <p th:text="${overlapError}"></p>
+            </div>
+
+            <section>
+                <h2>First Semester</h2>
+                <label for="firstSemester.startDate">Start Date</label>
+                <input type="date" id="firstSemester.startDate" th:field="*{firstSemester.startDate}">
+                <label for="firstSemester.endDate">End Date</label>
+                <input type="date" id="firstSemester.endDate" th:field="*{firstSemester.endDate}">
+                <label for="firstSemester.examPeriodStart">Exam Period Start</label>
+                <input type="date" id="firstSemester.examPeriodStart" th:field="*{firstSemester.examPeriodStart}">
+                <label for="firstSemester.examPeriodEnd">Exam Period End</label>
+                <input type="date" id="firstSemester.examPeriodEnd" th:field="*{firstSemester.examPeriodEnd}">
+                <label for="firstSemester.resitPeriodStart">Resit Period Start</label>
+                <input type="date" id="firstSemester.resitPeriodStart" th:field="*{firstSemester.resitPeriodStart}">
+                <label for="firstSemester.resitPeriodEnd">Resit Period End</label>
+                <input type="date" id="firstSemester.resitPeriodEnd" th:field="*{firstSemester.resitPeriodEnd}">
+            </section>
+            <section>
+                <h2>Second Semester</h2>
+                <label for="secondSemester.startDate">Start Date</label>
+                <input type="date" id="secondSemester.startDate" th:field="*{secondSemester.startDate}">
+                <label for="secondSemester.endDate">End Date</label>
+                <input type="date" id="secondSemester.endDate" th:field="*{secondSemester.endDate}">
+                <label for="secondSemester.examPeriodStart">Exam Period Start</label>
+                <input type="date" id="secondSemester.examPeriodStart" th:field="*{secondSemester.examPeriodStart}">
+                <label for="secondSemester.examPeriodEnd">Exam Period End</label>
+                <input type="date" id="secondSemester.examPeriodEnd" th:field="*{secondSemester.examPeriodEnd}">
+                <label for="secondSemester.resitPeriodStart">Resit Period Start</label>
+                <input type="date" id="secondSemester.resitPeriodStart" th:field="*{secondSemester.resitPeriodStart}">
+                <label for="secondSemester.resitPeriodEnd">Resit Period End</label>
+                <input type="date" id="secondSemester.resitPeriodEnd" th:field="*{secondSemester.resitPeriodEnd}">
+            </section>
+            <section>
+                <h2>Special Exam Period</h2>
+                <label for="specialExamStart">Special Exam Period Start</label>
+                <input type="date" id="specialExamStart" th:field="*{specialExamStart}">
+                <label for="specialExamEnd">Special Exam Period End</label>
+                <input type="date" id="specialExamEnd" th:field="*{specialExamEnd}">
+            </section>
+            <button type="submit">Save</button>
+        </form>
+    </main>
+    <footer>
+        <p><img src="/images/upt-logo.png" alt="Logo" style="height: 20px; vertical-align: middle; margin-right: 10px;">&copy; 2024 Universidade Portucalense Infante D. Henrique</p>
+    </footer>
+</body>
+</html>

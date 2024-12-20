@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Unit Course (UC)</title>
+    <link rel="stylesheet" type="text/css" href="/css/coordinator_editUC.css">
+    <link rel="icon" href="/images/upt-logo.png" type="image/png">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='/logout'">Logout</button>
+            <button onclick="window.location.href='/coordinator'">Back</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <h2>Edit Unit Course Details</h2>
+
+            <!-- Form to update the UC details -->
+            <form th:action="@{/coordinator/coordinator_editUC/{id}(id=${uc.id})}" method="POST">
+                <input type="hidden" name="ucYear" th:value="${year}">
+                <!-- Name of the UC -->
+                <label for="ucName">Name of UC:</label>
+                <input type="text" id="ucName" name="ucName" th:value="${uc.nameUC}" required>
+                <br><br>
+
+                <!-- Number of Students -->
+                <label for="ucNumStudents">Number of Students:</label>
+                <input type="number" id="ucNumStudents" name="ucNumStudents" th:value="${uc.studentsNumber}" th:disabled="${uc.assessments.size() > 0}" required>
+                <input type="hidden" name="ucNumStudents" th:value="${uc.studentsNumber}">
+                <p th:if="${uc.assessments.size() > 0}" class="warning-message">Number of students cannot be changed because there are existing assessments.</p>
+                <br><br>
+
+                <!-- Type of UC -->
+                <label for="ucEvaluationType">Type of UC:</label>
+                <select name="ucEvaluationType" id="ucEvaluationType" required onchange="updateEvaluationTypeAndMin(this.value)">
+                    <option value="" disabled>None Selected</option>
+                    <option value="Continuous" th:selected="${uc.evaluationType == 'Continuous'}">Continuous</option>
+                    <option value="Mixed" th:selected="${uc.evaluationType == 'Mixed'}">Mixed</option>
+                </select>
+                <br><br>
+
+                <!-- Number of Evaluations -->
+                <label for="ucEvaluationsCount">Number of Evaluations:</label>
+                <input type="number" id="ucEvaluationsCount" name="ucEvaluationsCount" min="0" th:value="${uc.evaluationsCount}" required onchange="updateEvaluationFields()">
+                <br><br>
+
+                <!-- Year of the UC -->
+                <label for="ucYear">Year:</label>
+                <select id="ucYear" name="ucYear" required th:disabled="${uc.assessments.size() > 0}">
+                    <option th:each="year : ${#numbers.sequence(1, coordinator?.duration ?: 1)}" th:value="${year}" th:text="${year + ' Year'}" th:selected="${uc.year == year}"></option>
+                </select>
+                <br><br>
+
+                <!-- Semester of the UC -->
+                <label for="ucSemester">Semester:</label>
+                <select id="ucSemester" name="ucSemester" required th:disabled="${uc.assessments.size() > 0}">
+                    <option value="1" th:selected="${uc.semester == 1}">1st Semester</option>
+                    <option value="2" th:selected="${uc.semester == 2}">2nd Semester</option>
+                </select>
+                <input type="hidden" name="ucSemester" th:value="${uc.semester}">
+                <p th:if="${uc.assessments.size() > 0}" class="warning-message">Year and Semester cannot be changed because there are existing assessments.</p>
+                <br><br>
+
+                <!-- Attendance Required -->
+                <label for="ucAttendance">Attendance Required:</label>
+                <input type="checkbox" id="ucAttendance" name="ucAttendance" th:checked="${uc.attendance}">
+                <br><br>
+
+                <!-- Dynamic Evaluation Fields -->
+                <div id="evaluation-list"></div>
+                <br><br>
+
+                <button type="submit">Update UC</button>
+            </form>
+        </section>
+
+        <!-- Error Message -->
+        <div th:if="${error != null}">
+            <p class="error-message" th:text="${error}"></p>
+        </div>
+    </main>
+
+    <footer>
+        <p><img src="/images/upt-logo.png" alt="Logo" style="height: 20px; vertical-align: middle; margin-right: 10px;">&copy; 2024 Universidade Portucalense Infante D. Henrique</p>
+    </footer>
+
+    <script>
+
+        window.onload = function () {
+            const numEvaluationsField = document.getElementById('ucEvaluationsCount');
+            const ucEvaluationTypeField = document.getElementById('ucEvaluationType');
+
+            // Update fields on page load
+            updateEvaluationTypeAndMin(ucEvaluationTypeField.value);
+
+            // Add listener for changes in UC type
+            ucEvaluationTypeField.addEventListener('change', function () {
+                updateEvaluationTypeAndMin(this.value);
+            });
+
+            // Initialize evaluation fields based on current number
+            updateEvaluationFields();
+        };
+
+        // Function to update evaluation type and minimum evaluations
+        function updateEvaluationTypeAndMin(typeUC) {
+            const numEvaluationsField = document.getElementById('ucEvaluationsCount');
+
+            if (typeUC === 'Mixed') {
+                numEvaluationsField.value = Math.max(numEvaluationsField.value, 2);
+                numEvaluationsField.setAttribute('min', 2);
+            } else if (typeUC === 'Continuous') {
+                numEvaluationsField.value = Math.max(numEvaluationsField.value, 3);
+                numEvaluationsField.setAttribute('min', 3);
+            }
+            updateEvaluationFields();
+        }
+    </script>
+</body>
+
+</html>

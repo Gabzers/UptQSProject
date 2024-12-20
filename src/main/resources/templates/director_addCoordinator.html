@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Coordinator</title>
+    <link rel="stylesheet" type="text/css" href="/css/director_addCoordinatorr.css">
+    <link rel="icon" href="/images/upt-logo.png" type="image/png">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='/logout'">Logout</button>
+            <button onclick="window.location.href='/director'">Back</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <h2>Create Coordinator</h2>
+
+            <!-- Error Message -->
+            <div th:if="${param.error}" class="error-message">
+                <p th:text="${param.error}"></p>
+            </div>
+            <div th:if="${param.yearError}" class="error-message">
+                <p th:text="${param.yearError}"></p>
+            </div>
+
+            <form action="/director/create-coordinator" method="POST">
+                <!-- Coordinator Name -->
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <!-- Course -->
+                <label for="course">Course:</label>
+                <input type="text" id="course" name="course" required>
+
+                <!-- Course Duration -->
+                <label for="duration">Course Duration (years):</label>
+                <input type="number" id="duration" name="duration" min="1" required>
+
+                <!-- Username -->
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <!-- Password -->
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <!-- Submit Button -->
+                <button type="submit">Create Coordinator</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p><img src="/images/upt-logo.png" alt="Logo" style="height: 20px; vertical-align: middle; margin-right: 10px;">&copy; 2024 Universidade Portucalense Infante D. Henrique</p>
+    </footer>
+
+</body>
+
+</html>

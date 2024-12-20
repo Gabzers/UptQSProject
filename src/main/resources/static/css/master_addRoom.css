@@ -1,11 +1,9 @@
-/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body of the page */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -15,9 +13,9 @@ body {
     height: 100vh;
     padding: 20px;
     flex-direction: column;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Header */
 header {
     position: absolute;
     top: 20px;
@@ -30,37 +28,37 @@ header {
 header button {
     background-color: #007bff;
     color: white;
-    padding: 8px 15px;
+    padding: 10px 20px;
     border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
     border: none;
     margin-left: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 header button:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
-/* Main container */
 main {
     width: 100%;
-    max-width: 400px; /* Limit the width of the form */
+    max-width: 400px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative; /* Position relative to place the buttons */
-    padding: 20px 20px 40px; /* Padding adjusted for better spacing */
+    position: relative;
+    padding: 20px 20px 40px;
+    animation: slideIn 0.5s ease-in-out;
 }
 
-/* Form Section */
 .section {
     display: flex;
     flex-direction: column;
-    align-items: stretch; /* Ensure inputs stretch to the full width */
+    align-items: stretch;
 }
 
-/* Form Labels and Inputs */
 label {
     font-size: 14px;
     color: #333;
@@ -69,7 +67,7 @@ label {
 }
 
 input, select {
-    width: 100%; /* Ensure the input and select fields take the full width */
+    width: 100%;
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ddd;
@@ -78,7 +76,7 @@ input, select {
     margin-bottom: 15px;
     background-color: #fff;
     color: #333;
-    appearance: none; /* Remove default browser styling for consistency */
+    appearance: none;
 }
 
 select {
@@ -94,24 +92,28 @@ select:focus {
     outline: none;
 }
 
-/* Submit Button */
-button[type="submit"] {
+header button, button[type="submit"] {
     background-color: #007bff;
     color: white;
-    padding: 12px 20px;
+    padding: 10px 20px;
     border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
-    width: 100%; /* Ensure the button takes the full width */
     border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+header button:hover, button[type="submit"]:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+button[type="submit"] {
+    width: 100%;
     margin-top: 10px;
 }
 
-button[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-/* Footer */
 footer {
     margin-top: 20px;
     text-align: center;
@@ -121,4 +123,24 @@ footer {
 
 footer p {
     margin: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Remove Assessment</title>
+    <link rel="stylesheet" type="text/css" href="/css/geral_confirmRemove.css">
+    <link rel="icon" href="/images/upt-logo.png" type="image/png">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='/logout'">Logout</button>
+            <button th:onclick="'window.location.href=\'/coordinator/coordinator_evaluationsUC?id=' + ${curricularUnitId} + '\''">Back</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <h2>Confirm Remove Assessment</h2>
+            <p th:text="${warning}"></p>
+            <form th:action="@{/coordinator/confirm-remove-assessment/{id}(id=${assessmentId})}" method="POST">
+                <input type="hidden" name="curricularUnitId" th:value="${curricularUnitId}">
+                <button type="submit">Yes, Remove Assessment</button>
+            </form>
+            <form th:action="@{/coordinator/coordinator_evaluationsUC}" method="GET">
+                <input type="hidden" name="id" th:value="${curricularUnitId}">
+                <button type="submit">Cancel</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p><img src="/images/upt-logo.png" alt="Logo" style="height: 20px; vertical-align: middle; margin-right: 10px;">&copy; 2024 Universidade Portucalense Infante D. Henrique</p>
+    </footer>
+</body>
+
+</html>

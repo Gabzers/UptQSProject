@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Director Panel</title>
+    <link rel="stylesheet" type="text/css" href="/css/director_index.css">
+    <link rel="icon" href="/images/upt-logo.png" type="image/png">
+</head>
+
+<body>
+    <header>
+        <h1><img src="/images/upt-logo.png" alt="Logo" style="height: 30px; vertical-align: middle;"> Director Panel</h1>
+        <!-- Buttons aligned together -->
+        <div class="buttons">
+            <!-- Add Coordinator Button -->
+            <button onclick="location.href='/director/create-coordinator'" id="addUserBtn">Add Coordinator</button>
+            <!-- Add Semester Button -->
+            <button onclick="location.href='/director/create-year'" id="newYear">New Year</button>
+            <!-- Logout Button -->
+            <button id="logoutBtn" onclick="location.href='/logout'">Logout</button>
+        </div>
+    </header>
+
+    <!-- Warning Message -->
+    <div th:if="${warning != null}" class="warning-message">
+        <p th:text="${warning}"></p>
+        <form th:action="@{/master/confirm-remove-room/{id}(id=${roomId})}" method="POST">
+            <button type="submit">Yes, Remove Room</button>
+        </form>
+        <button onclick="window.location.href='/master'">Cancel</button>
+    </div>
+
+    <!-- Coordinators List -->
+    <section id="usersList">
+        <h2>Coordinator List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Duration</th>
+                    <th>Username</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iterate over coordinators of the logged-in director and display them -->
+                <tr th:each="coordinator : ${loggedInDirector.coordinators}">
+                    <td th:text="${coordinator.name}">Name</td>
+                    <td th:text="${coordinator.course}">Course</td>
+                    <td th:text="${coordinator.duration}">Duration</td>
+                    <td th:text="${coordinator.username}">Username</td>
+                    <td>
+                        <button th:onclick="'location.href=\'/director/edit-coordinator?id=' + ${coordinator.id} + '\''" class="editBtn">Edit</button>
+                        <form th:action="@{/director/delete-coordinator/{id}(id=${coordinator.id})}" method="POST" style="display:inline;">
+                            <button type="submit" class="deleteBtn">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Current Year -->
+    <section>
+        <h2>Current Year</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Academic Year Start</th>
+                    <th>Special Exam Period Start</th>
+                    <th>Special Exam Period End</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${currentYear != null}">
+                    <td th:text="${currentYear.firstSemester.startDate}"></td>
+                    <td th:text="${currentYear.specialExamStart}"></td>
+                    <td th:text="${currentYear.specialExamEnd}"></td>
+                    <td>
+                        <button th:onclick="'location.href=\'/director/edit-year?id=' + ${currentYear.id} + '\''" class="editBtn">Edit</button>
+                        <button th:onclick="'location.href=\'/director/viewSemester/' + ${currentYear.id} + '\''" class="viewSemestersBtn">View Semester</button>
+                        <form th:action="@{/director/delete-year/{id}(id=${currentYear.id})}" method="POST" style="display:inline;">
+                            <button type="submit" class="deleteBtn">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Past Years List -->
+    <section>
+        <h2>Past Years</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Academic Year</th>
+                    <th>Special Exam Period Start</th>
+                    <th>Special Exam Period End</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="yearUnit : ${pastYears}">
+                    <td th:text="${yearUnit.firstSemester.startDate}"></td>
+                    <td th:text="${yearUnit.specialExamStart}"></td>
+                    <td th:text="${yearUnit.specialExamEnd}"></td>
+                    <td>
+                        <button th:onclick="'location.href=\'/director/viewSemester/' + ${yearUnit.id} + '\''" class="viewSemestersBtn">View Semesters</button>
+                        <form th:action="@{/director/delete-year/{id}(id=${yearUnit.id})}" method="POST" style="display:inline;">
+                            <button type="submit" class="deleteBtn">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        <p><img src="/images/upt-logo.png" alt="Logo" style="height: 20px; vertical-align: middle; margin-right: 10px;">&copy; 2024 Universidade Portucalense Infante D. Henrique</p>
+    </footer>
+</body>
+
+</html>

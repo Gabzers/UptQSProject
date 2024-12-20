@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Semesters - Academic Administration</title>
+    <link rel="stylesheet" type="text/css" href="/css/director_viewSemester.css">
+    <link rel="icon" href="/images/upt-logo.png" type="image/png">
+</head>
+
+<body>
+    <header>
+        <div class="logo-title-container">
+            <img src="/images/upt-logo.png" alt="Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">
+            <h1>View Semesters</h1>
+        </div>
+        <!-- Logout Button -->
+        <div class="button-container">
+            <button id="logoutBtn" onclick="location.href='/director'">Back</button>
+            <button id="logoutBtn" onclick="location.href='/logout'">Logout</button>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2>First Semester</h2>
+            <p><strong>Start Date:</strong> <span th:text="${firstSemester.startDate}"></span></p>
+            <p><strong>End Date:</strong> <span th:text="${firstSemester.endDate}"></span></p>
+            <p><strong>Exam Period Start:</strong> <span th:text="${firstSemester.examPeriodStart}"></span></p>
+            <p><strong>Exam Period End:</strong> <span th:text="${firstSemester.examPeriodEnd}"></span></p>
+            <p><strong>Resit Period Start:</strong> <span th:text="${firstSemester.resitPeriodStart}"></span></p>
+            <p><strong>Resit Period End:</strong> <span th:text="${firstSemester.resitPeriodEnd}"></span></p>
+            <div class="button-container right-align spaced">
+                <button th:onclick="'location.href=\'/director/ucs/1st/' + ${yearUnit.id} + '\''">UCs</button>
+                <button th:onclick="'location.href=\'/director/map/1st/' + ${yearUnit.id} + '\''">Open Map</button>
+            </div>
+        </section>
+
+        <section>
+            <h2>Second Semester</h2>
+            <p><strong>Start Date:</strong> <span th:text="${secondSemester.startDate}"></span></p>
+            <p><strong>End Date:</strong> <span th:text="${secondSemester.endDate}"></span></p>
+            <p><strong>Exam Period Start:</strong> <span th:text="${secondSemester.examPeriodStart}"></span></p>
+            <p><strong>Exam Period End:</strong> <span th:text="${secondSemester.examPeriodEnd}"></span></p>
+            <p><strong>Resit Period Start:</strong> <span th:text="${secondSemester.resitPeriodStart}"></span></p>
+            <p><strong>Resit Period End:</strong> <span th:text="${secondSemester.resitPeriodEnd}"></span></p>
+            <div class="button-container right-align spaced">
+                <button th:onclick="'location.href=\'/director/ucs/2nd/' + ${yearUnit.id} + '\''">UCs</button>
+                <button th:onclick="'location.href=\'/director/map/2nd/' + ${yearUnit.id} + '\''">Open Map</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><img src="/images/upt-logo.png" alt="Logo" style="height: 20px; vertical-align: middle; margin-right: 10px;">&copy; 2024 Universidade Portucalense Infante D. Henrique</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Master</title>
+    <link rel="stylesheet" type="text/css" href="/css/master_editMaster.css">
+    <link rel="icon" href="/images/upt-logo.png" type="image/png">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='/logout'">Logout</button>
+            <button onclick="window.location.href=document.referrer">Back</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <h2>Edit Master</h2>
+
+            <form th:action="@{/master/edit-master/{id}(id=${master.id})}" method="POST">
+                <!-- ID (hidden) -->
+                <input type="hidden" id="master-id" name="master-id" th:value="${master.id}">
+
+                <!-- Name -->
+                <label for="master-name">Name:</label>
+                <input type="text" id="master-name" name="master-name" th:value="${master.name}" required>
+
+                <!-- Username -->
+                <label for="master-username">Username:</label>
+                <input type="text" id="master-username" name="master-username" th:value="${master.username}" required>
+
+                <!-- Password -->
+                <label for="master-password">Password:</label>
+                <input type="password" id="master-password" name="master-password" placeholder="Enter new password">
+
+                <!-- Submit Button -->
+                <button type="submit">Update Master</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p><img src="/images/upt-logo.png" alt="Logo" style="height: 20px; vertical-align: middle; margin-right: 10px;">&copy; 2024 Universidade Portucalense Infante D. Henrique</p>
+    </footer>
+</body>
+
+</html>

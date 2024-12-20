@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course List - UC Management</title>
+    <link rel="stylesheet" type="text/css" href="/css/coordinator_index.css?v=0">
+    <link rel="icon" href="/images/upt-logo.png" type="image/png">
+    <style>
+        .invalid {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><img src="/images/upt-logo.png" alt="Logo" style="height: 30px; vertical-align: middle;"> Course List</h1>
+        <nav class="header-buttons">
+            <button onclick="window.location.href='/coordinator/create-uc'">Create UC</button>
+            <button onclick="window.location.href='/coordinator/map?semester=1'">1st Semester Map</button>
+            <button onclick="window.location.href='/coordinator/map?semester=2'">2nd Semester Map</button>
+            <button id="logoutBtn" onclick="window.location.href='/logout'">Logout</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <h2>Available Unit Courses (UCs) - First Semester</h2>
+            <div th:if="${firstSemesterUnits != null && firstSemesterUnits.size() > 0}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>UC Name</th>
+                            <th>Number of Students</th>
+                            <th>Evaluation Type</th>
+                            <th>Evaluations</th>
+                            <th>Curricular Year</th>
+                            <th>Attendance</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="uc : ${firstSemesterUnits}">
+                            <td th:text="${uc.nameUC}">UC Name</td>
+                            <td th:text="${uc.studentsNumber}" th:attr="data-assessments=${uc.assessments.size()}">0</td>
+                            <td th:text="${uc.evaluationType}">None</td>
+                            <td th:classappend="${uc.isMixedAndMissingExamPeriod() || uc.isEvaluationsCountMismatch() || uc.isTotalWeightInvalid() || (uc.evaluationType == 'Mixed' && uc.getNormalPeriodAssessments().size() < 2) || (uc.evaluationType == 'Continuous' && uc.getNormalPeriodAssessments().size() < 3)} ? 'invalid' : ''">
+                                <span th:text="${uc.assessments.size()} + ' / ' + ${uc.evaluationsCount}"></span>
+                            </td>
+                            <td th:text="${uc.year}">1</td>
+                            <td th:text="${uc.attendance}">0</td>
+                            <td>
+                                <button class="edit" th:onclick="'window.location.href=\'/coordinator/coordinator_editUC?id=' + ${uc.id} + '&semester=1' + '\''">Edit</button>
+                                <button class="edit" th:onclick="'window.location.href=\'/coordinator/coordinator_evaluationsUC?id=' + ${uc.id} + '\''">Evaluations</button>
+                                <form th:action="@{/coordinator/remove-uc/{id}(id=${uc.id})}" method="POST" style="display:inline;">
+                                    <button class="delete" type="submit">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p th:if="${firstSemesterUnits == null || firstSemesterUnits.size() == 0}">
+                No curricular units found for the first semester. Please create a new UC.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>Available Unit Courses (UCs) - Second Semester</h2>
+            <div th:if="${secondSemesterUnits != null && secondSemesterUnits.size() > 0}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>UC Name</th>
+                            <th>Number of Students</th>
+                            <th>Evaluation Type</th>
+                            <th>Evaluations</th>
+                            <th>Curricular Year</th>
+                            <th>Attendance</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="uc : ${secondSemesterUnits}">
+                            <td th:text="${uc.nameUC}">UC Name</td>
+                            <td th:text="${uc.studentsNumber}" th:attr="data-assessments=${uc.assessments.size()}">0</td>
+                            <td th:text="${uc.evaluationType}">None</td>
+                            <td th:classappend="${uc.isMixedAndMissingExamPeriod() || uc.isEvaluationsCountMismatch() || uc.isTotalWeightInvalid() || (uc.evaluationType == 'Mixed' && uc.getNormalPeriodAssessments().size() < 2) || (uc.evaluationType == 'Continuous' && uc.getNormalPeriodAssessments().size() < 3)} ? 'invalid' : ''">
+                                <span th:text="${uc.assessments.size()} + ' / ' + ${uc.evaluationsCount}"></span>
+                            </td>
+                            <td th:text="${uc.year}">1</td>
+                            <td th:text="${uc.attendance}">0</td>
+                            <td>
+                                <button class="edit" th:onclick="'window.location.href=\'/coordinator/coordinator_editUC?id=' + ${uc.id} + '&semester=2' + '\''">Edit</button>
+                                <button class="edit" th:onclick="'window.location.href=\'/coordinator/coordinator_evaluationsUC?id=' + ${uc.id} + '\''">Evaluations</button>
+                                <form th:action="@{/coordinator/remove-uc/{id}(id=${uc.id})}" method="POST" style="display:inline;">
+                                    <button class="delete" type="submit">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p th:if="${secondSemesterUnits == null || secondSemesterUnits.size() == 0}">
+                No curricular units found for the second semester. Please create a new UC.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p><img src="/images/upt-logo.png" alt="Logo" style="height: 20px; vertical-align: middle; margin-right: 10px;">&copy; 2024 Universidade Portucalense Infante D. Henrique</p>
+    </footer>
+
+</body>
+</html>

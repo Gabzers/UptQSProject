@@ -1,102 +1,91 @@
 package com.upt.upt;
 
-import com.upt.upt.service.CurricularUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
+import jakarta.servlet.http.HttpSession;
+import com.upt.upt.service.UserService;
+import com.upt.upt.entity.UserType;
 
+/**
+ * Controller class for handling web requests related to user authentication and session management.
+ * 
+ * @author grupo 5 - 47719, 47713, 46697, 47752, 47004
+ */
 @Controller
 public class UptWebController {
 
-    private final CurricularUnitService curricularUnitService;
-
     @Autowired
-    public UptWebController(CurricularUnitService curricularUnitService) {
-        this.curricularUnitService = curricularUnitService;
-    }
+    private UserService userService;
 
+    /**
+     * Redirects to the login page.
+     * 
+     * @return the redirect URL to the login page
+     */
     @GetMapping("/")
     public String home() {
-        return "redirect:/user"; // Redireciona para a URL correta
+        return "redirect:/login";
     }
 
+    /**
+     * Displays the login page.
+     * 
+     * @param error optional error message to display
+     * @param model the model to add attributes to
+     * @return the login page view name
+     */
     @GetMapping("/login")
-    public String login() {
-        return "redirect:/user"; // Redireciona para a URL correta
+    public String login(@RequestParam(value = "error", required = false) String error, Model model) {
+        if (error != null) {
+            model.addAttribute("error", "Invalid credentials");
+        }
+        return "login";
     }
 
-    @GetMapping("/backUser")
-    public String backUser() {
-        return "redirect:/user"; // Redireciona para a página user.html quando o botão "Back" é clicado
-    }
-
-    @GetMapping("/backMaster")
-    public String backMaster() {
-        return "redirect:/master"; // Redireciona para a página user.html quando o botão "Back" é clicado
-    }
-
-    @GetMapping("/backAdmin")
-    public String backAdmin() {
-        return "redirect:/admin"; // Redireciona para a página user.html quando o botão "Back" é clicado
-    }
-
+    /**
+     * Logs out the user by invalidating the session.
+     * 
+     * @param session the current HTTP session
+     * @return the redirect URL to the login page
+     */
     @GetMapping("/logout")
-    public String logout() {
-        return "login"; // Redireciona para a página login.html quando o botão "Back" é clicado
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login";
     }
 
-    @GetMapping("/createUC")
-    public String createUC() {
-        return "user_createUC"; // Redireciona para a página user_createUC.html
-    }
-
-    @GetMapping("/createMaster")
-    public String createMaster() {
-        return "master_addMaster"; // Redireciona para a página createUC.html
-    }
-
-    @GetMapping("/createAdmin")
-    public String createAdmin() {
-        return "master_addAdmin"; // Redireciona para a página createUC.html
-    }
-
-    @GetMapping("/viewSemester")
-    public String viewSemester() {
-        return "admin_viewSemester"; // Redireciona para a página createUC.html
-    }
-    
-    @GetMapping("/createRoom")
-    public String createRoom() {
-        return "master_addRoom"; // Redireciona para a página createUC.html
-    }
-    
-    @GetMapping("/master")
-    public String master() {
-        return "master_index"; // Redireciona para a página createUC.html
-    }
-
-    @GetMapping("/admin")
-    public String admin() {
-        return "admin_index"; // Redireciona para a página createUC.html
-    }
-
-    @GetMapping("/createUser")
-    public String createUser() {
-        return "admin_addUser"; // Redireciona para a página createUC.html
-    }
-
-    @GetMapping("/editUser")
-    public String editUser() {
-        return "admin_editUser"; // Redireciona para a página createUC.html
-    }
-
-    @GetMapping("/newYear")
-    public String newYear() {
-        return "admin_newYear"; // Redireciona para a página createUC.html
-    }
-
-    @GetMapping("/editYear")
-    public String editYear() {
-        return "admin_editYear"; // Redireciona para a página createUC.html
+    /**
+     * Validates the user login credentials and sets session attributes based on the user type.
+     * 
+     * @param username the username entered by the user
+     * @param password the password entered by the user
+     * @param session the current HTTP session
+     * @return the redirect URL based on the user type or an error message if validation fails
+     */
+    @PostMapping("/validate-login")
+    public String validateLogin(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session) {
+        UserType userType = userService.validateUser(username, password);
+        if (userType != null) {
+            Long userId = userService.getUserIdByUsername(username, userType);
+            session.setAttribute("userId", userId);
+            session.setAttribute("userType", userType);
+            session.setAttribute("username", username);
+            switch (userType) {
+                case MASTER:
+                    return "redirect:/master";
+                case DIRECTOR:
+                    return "redirect:/director";
+                case COORDINATOR:
+                    return "redirect:/coordinator";
+                default:
+                    return "redirect:/login?error=Invalid user type";
+            }
+        } else {
+            return "redirect:/login?error=Invalid credentials";
+        }
     }
 }

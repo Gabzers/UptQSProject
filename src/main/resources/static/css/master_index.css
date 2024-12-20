@@ -1,11 +1,9 @@
-/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body of the page */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -14,30 +12,30 @@ body {
     justify-content: space-between;
     height: 100vh;
     padding: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+    gap: 20px;
 }
 
-/* Header */
 header {
     display: flex;
-    justify-content: space-between; /* Positions title and buttons on opposite sides */
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
 
-h1 {
-    font-size: 24px;
-    color: #333;
-    text-align: left; /* Align title to the left */
-    flex-grow: 1;
-}
-
-/* Header Buttons */
 .header-buttons {
     display: flex;
     gap: 10px;
 }
 
-.button, #logoutBtn {
+h1 {
+    font-size: 24px;
+    color: #333;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.button, #logoutBtn, button {
     background-color: #007bff;
     color: white;
     padding: 10px 20px;
@@ -45,51 +43,68 @@ h1 {
     text-decoration: none;
     font-size: 16px;
     cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
-.button:hover, #logoutBtn:hover {
+.button:hover, #logoutBtn:hover, button:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
-/* Logout Button */
 #logoutBtn {
-    background-color: #dc3545; /* Red */
+    background-color: #dc3545;
 }
 
 #logoutBtn:hover {
-    background-color: #c82333; /* Darker red on hover */
+    background-color: #c82333;
 }
 
-/* Titles */
+.remove-button {
+    background-color: #dc3545;
+}
+
+.remove-button:hover {
+    background-color: #c82333;
+}
+
 h2 {
     color: #333;
     margin-bottom: 10px;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Main container */
 main {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    animation: slideIn 0.5s ease-in-out;
 }
 
-/* Sections inside the main */
 section {
     margin-bottom: 30px;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: slideIn 0.5s ease-in-out;
 }
 
-/* Table styling */
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 th, td {
@@ -105,51 +120,72 @@ th {
 
 tbody tr:hover {
     background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
 }
 
 tbody tr:nth-child(even) {
     background-color: #fafafa;
 }
 
-/* Styling for Edit and Remove buttons */
 button {
-    background-color: #007bff; /* Blue */
+    background-color: #007bff;
     color: white;
     border: none;
-    padding: 8px 16px;
+    padding: 10px 20px;
     margin: 0 5px;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
 
-/* Edit button specific styling */
 button:nth-child(1) {
-    background-color: #28a745; /* Green */
+    background-color: #007bff;
 }
 
 button:nth-child(1):hover {
-    background-color: #218838; /* Darker green */
+    background-color: #0056b3;
 }
 
-/* Remove button specific styling */
 button:nth-child(2) {
-    background-color: #dc3545; /* Red */
+    background-color: #007bff;
 }
 
 button:nth-child(2):hover {
-    background-color: #c82333; /* Darker red */
+    background-color: #0056b3;
 }
 
-/* Footer */
 footer {
     text-align: center;
     font-size: 14px;
     color: #555;
     margin-top: 30px;
     padding: 10px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }

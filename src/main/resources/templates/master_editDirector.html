@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Director</title>
+    <link rel="stylesheet" type="text/css" href="/css/master_editDirector.css">
+    <link rel="icon" href="/images/upt-logo.png" type="image/png">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='/logout'">Logout</button>
+            <button onclick="window.location.href=document.referrer">Back</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <h2>Edit Director</h2>
+
+            <!-- Use the correct POST URL and include the Director ID -->
+            <form th:action="@{/master/director-edit/{id}(id=${director.id})}" method="POST">
+                <!-- Director Name -->
+                <label for="director-name">Name:</label>
+                <input type="text" id="director-name" name="director-name" th:value="${director.name}" required>
+
+                <!-- Department -->
+                <label for="director-department">Department:</label>
+                <input type="text" id="director-department" name="director-department" th:value="${director.department}" required>
+
+                <!-- Username -->
+                <label for="director-username">Username:</label>
+                <input type="text" id="director-username" name="director-username" th:value="${director.username}" required>
+
+                <!-- Password -->
+                <label for="director-password">Password:</label>
+                <input type="password" id="director-password" name="director-password" placeholder="Enter new password">
+
+                <!-- Submit Button -->
+                <button type="submit">Update Director</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p><img src="/images/upt-logo.png" alt="Logo" style="height: 20px; vertical-align: middle; margin-right: 10px;">&copy; 2024 Universidade Portucalense Infante D. Henrique</p>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Evaluation</title>
+    <link rel="stylesheet" type="text/css" href="/css/coordinator_editEvaluations.css">
+    <link rel="icon" href="/images/upt-logo.png" type="image/png">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='/logout'">Logout</button>
+            <button th:onclick="'window.location.href=\'/coordinator/coordinator_evaluationsUC?id=' + ${uc.id} + '\''">Back</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <h2>Edit Evaluation</h2>
+
+            <!-- Display error message if present -->
+            <div th:if="${error != null}" class="error-message" th:text="${error}"></div>
+            <div th:if="${param.error != null}" class="error-message" th:text="${param.error}"></div>
+
+            <!-- Form to edit an existing evaluation -->
+            <form th:if="${assessment != null}" th:action="@{/coordinator/coordinator_editEvaluations/{assessmentId}(assessmentId=${assessment.id})}" method="POST" onsubmit="return validateForm()">
+                <input type="hidden" name="curricularUnitId" th:value="${uc.id}">
+                <input type="hidden" name="ucEvaluationType" th:value="${uc.evaluationType}" />
+                <input type="hidden" name="assessmentId" th:value="${assessment.id}" />
+
+                <!-- Evaluation Type -->
+                <label for="evaluation-type">Evaluation Type:</label>
+                <select name="assessmentType" id="evaluation-type" required onchange="highlightValidDates()">
+                    <option value="Test" th:selected="${assessment.type == 'Test'}">Test</option>
+                    <option value="Final Exam" th:selected="${assessment.type == 'Final Exam'}">Final Exam</option>
+                    <option value="Work Developed Throughout the Semester" th:selected="${assessment.type == 'Work Developed Throughout the Semester'}">Work Developed Throughout the Semester</option>
+                    <option value="Work Submission" th:selected="${assessment.type == 'Work Submission'}">Work Submission</option>
+                    <option value="Group Work Submission" th:selected="${assessment.type == 'Group Work Submission'}">Group Work Submission</option>
+                    <option value="Work Presentation" th:selected="${assessment.type == 'Work Presentation'}">Work Presentation</option>
+                    <option value="Group Work Presentation" th:selected="${assessment.type == 'Group Work Presentation'}">Group Work Presentation</option>
+                    <option value="Monograph" th:selected="${assessment.type == 'Monograph'}">Monograph</option>
+                    <option value="Individual Practical Exercise" th:selected="${assessment.type == 'Individual Practical Exercise'}">Individual Practical Exercise</option>
+                    <option value="Pitch" th:selected="${assessment.type == 'Pitch'}">Pitch</option>
+                    <option value="Oral Exam" th:selected="${assessment.type == 'Oral Exam'}">Oral Exam</option>
+                </select>
+                <br><br>
+
+                <!-- Weight -->
+                <label for="evaluation-weight">Weight (%):</label>
+                <input type="number" name="assessmentWeight" id="evaluation-weight" min="0" max="100" th:value="${assessment.weight}" required>
+                <br><br>
+
+                <!-- Exam Period -->
+                <label for="evaluation-exam-period">Exam Period:</label>
+                <select name="assessmentExamPeriod" id="evaluation-exam-period" required onchange="highlightValidDates()">
+                    <option value="">None</option>
+                    <option value="Teaching Period" th:selected="${assessment.examPeriod == 'Teaching Period'}">Teaching Period</option>
+                    <option value="Exam Period" th:selected="${assessment.examPeriod == 'Exam Period'}">Exam Period</option>
+                    <option value="Resource Period" th:selected="${assessment.examPeriod == 'Resource Period'}">Resource Period</option>
+                    <option value="Special Period" th:selected="${assessment.examPeriod == 'Special Period'}">Special Period</option>
+                </select>
+                <br><br>
+
+                <!-- Requires Computer -->
+                <label for="evaluation-computer-required">Computer Required:</label>
+                <input type="checkbox" id="evaluation-computer-required" name="assessmentComputerRequired" value="true" th:checked="${assessment.computerRequired}" onchange="resetDateTime()">
+                <br><br>
+
+                <!-- Class Time -->
+                <label for="evaluation-class-time">Class Time:</label>
+                <input type="checkbox" id="evaluation-class-time" name="assessmentClassTime" value="true" th:checked="${assessment.classTime}" onchange="toggleRoomSelection()">
+                <br><br>
+
+                <!-- Start Date & Time -->
+                <label for="evaluation-date-start">Start Date & Time (08:00 - 23:59):</label>
+                <input type="datetime-local" name="assessmentStartTime" id="evaluation-date-start" th:value="${formattedStartTime}" required onchange="assignRoomAutomatically()">
+                <br><br>
+
+                <!-- End Date & Time -->
+                <label for="evaluation-date-end">End Date & Time (08:00 - 23:59):</label>
+                <input type="datetime-local" name="assessmentEndTime" id="evaluation-date-end" th:value="${formattedEndTime}" required onchange="assignRoomAutomatically()">
+                <br><br>
+
+                <!-- Room -->
+                <label for="evaluation-room">Room:</label>
+                <p class="automatic-room">Room will be selected automatically.</p>
+                <br><br>
+
+                <!-- Minimum Grade -->
+                <label for="evaluation-minimum-grade">Minimum Grade:</label>
+                <input type="number" name="assessmentMinimumGrade" id="evaluation-minimum-grade" min="0" max="20" step="0.1" th:value="${assessment.minimumGrade}" required>
+                <br><br>
+
+                <button type="submit">Update Evaluation</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p><img src="/images/upt-logo.png" alt="Logo" style="height: 20px; vertical-align: middle; margin-right: 10px;">&copy; 2024 Universidade Portucalense Infante D. Henrique</p>
+    </footer>
+
+    <script src="/js/coordinator_editEvaluations.js"></script>
+</body>
+
+</html>

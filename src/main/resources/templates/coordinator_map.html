@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment Course Map - UC Management</title>
+    <link rel="stylesheet" type="text/css" href="/css/coordinator_map.css?v=0">
+    <link rel="icon" href="/images/upt-logo.png" type="image/png">
+</head>
+<body>
+    <header>
+        <div class="logo-title-container" style="display: flex; align-items: center;">
+            <img src="/images/upt-logo.png" alt="Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">
+            <h1 th:text="'Assessment Course Map - ' + (${semester.equals(1) ? '1st Semester' : '2nd Semester'})">Assessment Course Map</h1>
+        </div>
+        <nav class="header-buttons">
+            <button onclick="window.location.href='/coordinator'">Back</button>
+            <button id="logoutBtn" onclick="window.location.href='/logout'">Logout</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section" th:each="year : ${#lists.sort(years)}">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 th:text="'Assessments for Year ' + ${year}">Assessments for Year</h2>
+                <button class="pdf-button" th:onclick="|window.location.href='/coordinator/map/pdf?year=' + [[${year}]] + '&semester=' + [[${semester}]]|">Download PDF</button>
+            </div>
+            <div th:if="${semester == 1 ? firstSemesterAssessments.size() > 0 : secondSemesterAssessments.size() > 0}">
+                <h3>Normal Period</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>UC Name</th>
+                            <th>Assessment Type</th>
+                            <th>Weight</th>
+                            <th>Exam Period</th>
+                            <th>Computer Required</th>
+                            <th>Class Time</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Rooms</th>
+                            <th>Minimum Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="assessment : ${semester == 1 ? firstSemesterAssessments : secondSemesterAssessments}" th:if="${assessment.curricularUnit.year == year && (assessment.examPeriod == 'Teaching Period' || assessment.examPeriod == 'Exam Period')}">
+                            <td th:text="${assessment.curricularUnit != null ? assessment.curricularUnit.nameUC : 'N/A'}">UC Name</td>
+                            <td th:text="${assessment.type}">Assessment Type</td>
+                            <td th:text="${assessment.weight + '%'}">0%</td>
+                            <td th:text="${assessment.examPeriod}">Exam Period</td>
+                            <td th:text="${assessment.computerRequired ? 'Yes' : 'No'}">No</td>
+                            <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
+                            <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
+                            <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
+                            <td>
+                                <ul>
+                                    <li th:each="room : ${assessment.rooms}" th:text="${room.roomNumber + ' - ' + room.building}">Room</li>
+                                </ul>
+                            </td>
+                            <td th:text="${assessment.minimumGrade}">0.0</td>
+                        </tr>
+                        <tr th:if="${semester == 1 ? noNormalPeriodFirstSemester : noNormalPeriodSecondSemester}">
+                            <td colspan="10" class="no-assessments">No assessments listed for Normal Period.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>Resource Period</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>UC Name</th>
+                            <th>Assessment Type</th>
+                            <th>Weight</th>
+                            <th>Exam Period</th>
+                            <th>Computer Required</th>
+                            <th>Class Time</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Rooms</th>
+                            <th>Minimum Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="assessment : ${semester == 1 ? firstSemesterAssessments : secondSemesterAssessments}" th:if="${assessment.curricularUnit.year == year && assessment.examPeriod == 'Resource Period'}">
+                            <td th:text="${assessment.curricularUnit != null ? assessment.curricularUnit.nameUC : 'N/A'}">UC Name</td>
+                            <td th:text="${assessment.type}">Assessment Type</td>
+                            <td th:text="${assessment.weight + '%'}">0%</td>
+                            <td th:text="${assessment.examPeriod}">Exam Period</td>
+                            <td th:text="${assessment.computerRequired ? 'Yes' : 'No'}">No</td>
+                            <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
+                            <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
+                            <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
+                            <td>
+                                <ul>
+                                    <li th:each="room : ${assessment.rooms}" th:text="${room.roomNumber + ' - ' + room.building}">Room</li>
+                                </ul>
+                            </td>
+                            <td th:text="${assessment.minimumGrade}">0.0</td>
+                        </tr>
+                        <tr th:if="${semester == 1 ? noResourcePeriodFirstSemester : noResourcePeriodSecondSemester}">
+                            <td colspan="10" class="no-assessments">No assessments listed for Resource Period.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>Special Period</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>UC Name</th>
+                            <th>Assessment Type</th>
+                            <th>Weight</th>
+                            <th>Exam Period</th>
+                            <th>Computer Required</th>
+                            <th>Class Time</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Rooms</th>
+                            <th>Minimum Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="assessment : ${semester == 1 ? firstSemesterAssessments : secondSemesterAssessments}" th:if="${assessment.curricularUnit.year == year && assessment.examPeriod == 'Special Period'}">
+                            <td th:text="${assessment.curricularUnit != null ? assessment.curricularUnit.nameUC : 'N/A'}">UC Name</td>
+                            <td th:text="${assessment.type}">Assessment Type</td>
+                            <td th:text="${assessment.weight + '%'}">0%</td>
+                            <td th:text="${assessment.examPeriod}">Exam Period</td>
+                            <td th:text="${assessment.computerRequired ? 'Yes' : 'No'}">No</td>
+                            <td th:text="${assessment.classTime ? 'Yes' : 'No'}">No</td>
+                            <td th:text="${#temporals.format(assessment.startTime, 'yyyy-MM-dd HH:mm')}">Start Time</td>
+                            <td th:text="${#temporals.format(assessment.endTime, 'yyyy-MM-dd HH:mm')}">End Time</td>
+                            <td>
+                                <ul>
+                                    <li th:each="room : ${assessment.rooms}" th:text="${room.roomNumber + ' - ' + room.building}">Room</li>
+                                </ul>
+                            </td>
+                            <td th:text="${assessment.minimumGrade}">0.0</td>
+                        </tr>
+                        <tr th:if="${semester == 1 ? noSpecialPeriodFirstSemester : noSpecialPeriodSecondSemester}">
+                            <td colspan="10" class="no-assessments">No assessments listed for Special Period.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p th:if="${semester == 1 ? firstSemesterAssessments.size() == 0 : secondSemesterAssessments.size() == 0}">
+                No assessments found for the selected semester.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p><img src="/images/upt-logo.png" alt="Logo" style="height: 20px; vertical-align: middle; margin-right: 10px;">&copy; 2024 Universidade Portucalense Infante D. Henrique</p>
+    </footer>
+    
+</body>
+</html>
