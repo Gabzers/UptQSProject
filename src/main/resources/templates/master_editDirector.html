@@ -22,7 +22,7 @@
             <h2>Edit Director</h2>
 
             <!-- Use the correct POST URL and include the Director ID -->
-            <form th:action="@{/master/director-edit/{id}(id=${director.id})}" method="POST">
+            <form th:action="@{/master/edit-director/{id}(id=${director.id})}" method="POST">
                 <!-- Director Name -->
                 <label for="director-name">Name:</label>
                 <input type="text" id="director-name" name="director-name" th:value="${director.name}" required>

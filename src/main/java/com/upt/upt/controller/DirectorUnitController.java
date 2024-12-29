@@ -302,6 +302,29 @@ public class DirectorUnitController {
     }
 
     /**
+     * Updates a director.
+     * 
+     * @param id the ID of the director
+     * @param params the request parameters
+     * @param session the HTTP session
+     * @return the view name
+     */
+    @PostMapping("/master/edit-director/{id}")
+    public String updateDirector(@PathVariable("id") Long id, @RequestParam Map<String, String> params, HttpSession session) {
+        if (!verifyMaster(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
+        try {
+            DirectorUnit updatedDirector = directorUnitService.updateDirector(id, params);
+            directorUnitService.saveDirector(updatedDirector);
+            return "redirect:/master";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/master/edit-director?id=" + id + "&error=true";
+        }
+    }
+
+    /**
      * Generates a PDF for the specified year and semester.
      * 
      * @param yearId the ID of the year

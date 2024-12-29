@@ -54,9 +54,9 @@ public class PdfService {
 
             document.add(new Paragraph(" ")); // Add a blank line
 
-            Font titleFont = new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD);
-            Font tableHeaderFont = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
-            Font tableBodyFont = new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL);
+            Font titleFont = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
+            Font tableHeaderFont = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD);
+            Font tableBodyFont = new Font(Font.FontFamily.HELVETICA, 8, Font.NORMAL);
 
             Paragraph title = new Paragraph(coordinator.getCourse() + " - Assessment Map - Year " + year + " - " + (semester == 1 ? "1st Semester" : "2nd Semester"), titleFont);
             title.setAlignment(Element.ALIGN_CENTER);
@@ -66,6 +66,8 @@ public class PdfService {
             PdfPTable table = new PdfPTable(10);
             table.setWidthPercentage(100);
             table.setWidths(new int[]{5, 4, 2, 3, 3, 2, 3, 3, 5, 2});
+            table.setSpacingBefore(10f);
+            table.setSpacingAfter(10f);
 
             addTableHeader(table, tableHeaderFont);
             addRows(table, coordinator, year, semester, tableBodyFont);
@@ -109,9 +111,9 @@ public class PdfService {
 
             document.add(new Paragraph(" ")); // Add a blank line
 
-            Font titleFont = new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD);
-            Font tableHeaderFont = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
-            Font tableBodyFont = new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL);
+            Font titleFont = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
+            Font tableHeaderFont = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD);
+            Font tableBodyFont = new Font(Font.FontFamily.HELVETICA, 8, Font.NORMAL);
 
             Paragraph title = new Paragraph(director.getDepartment() + " - Assessment Map - Year " + yearUnit.getId() + " - " + (semester == 1 ? "1st Semester" : "2nd Semester"), titleFont);
             title.setAlignment(Element.ALIGN_CENTER);
@@ -164,9 +166,9 @@ public class PdfService {
 
             document.add(new Paragraph(" ")); // Add a blank line
 
-            Font titleFont = new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD);
-            Font tableHeaderFont = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
-            Font tableBodyFont = new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL);
+            Font titleFont = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
+            Font tableHeaderFont = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD);
+            Font tableBodyFont = new Font(Font.FontFamily.HELVETICA, 8, Font.NORMAL);
 
             Paragraph title = new Paragraph(department + " - UCs for " + semester + " Semester " + semesterUnit.getStartDate(), titleFont);
             title.setAlignment(Element.ALIGN_CENTER);
@@ -195,7 +197,8 @@ public class PdfService {
                     PdfPCell header = new PdfPCell();
                     header.setPhrase(new Phrase(columnTitle, font));
                     header.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    header.setPadding(8);
+                    header.setPadding(5);
+                    header.setBackgroundColor(BaseColor.LIGHT_GRAY);
                     table.addCell(header);
                 });
     }
@@ -273,7 +276,7 @@ public class PdfService {
 
     private void addCell(PdfPTable table, String text, Font font) {
         PdfPCell cell = new PdfPCell(new Phrase(text, font));
-        cell.setPadding(8);
+        cell.setPadding(5);
         table.addCell(cell);
     }
 }

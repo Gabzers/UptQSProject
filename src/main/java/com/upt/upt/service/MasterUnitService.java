@@ -101,6 +101,10 @@ public class MasterUnitService {
         MasterUnit master = getMasterById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid Master ID: " + id));
 
+        if (!master.getUsername().equals(username) && userService.usernameExists(username)) {
+            throw new IllegalArgumentException("Username already exists");
+        }
+
         master.setName(name);
         master.setUsername(username);
         if (password != null && !password.isEmpty()) {

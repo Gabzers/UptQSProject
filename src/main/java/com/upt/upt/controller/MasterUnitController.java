@@ -175,9 +175,6 @@ public class MasterUnitController {
             return "redirect:/login?error=Unauthorized access";
         }
         try {
-            if (userService.usernameExists(username)) {
-                throw new IllegalArgumentException("Username already exists");
-            }
             MasterUnit master = masterUnitService.updateMaster(id, name, username, password);
             masterUnitService.saveMaster(master);
             return "redirect:/master";

@@ -72,9 +72,14 @@ public class DirectorUnitService {
         DirectorUnit director = getDirectorById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid Director ID: " + id));
 
+        String newUsername = params.get("director-username");
+        if (!director.getUsername().equals(newUsername) && userService.usernameExists(newUsername)) {
+            throw new IllegalArgumentException("Username already exists");
+        }
+
         director.setName(params.get("director-name"));
         director.setDepartment(params.get("director-department"));
-        director.setUsername(params.get("director-username"));
+        director.setUsername(newUsername);
         if (params.get("director-password") != null && !params.get("director-password").isEmpty()) {
             director.setPassword(params.get("director-password"));
         }
