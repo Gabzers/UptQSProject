@@ -298,8 +298,13 @@ public class AssessmentUnitController {
         List<AssessmentUnit> assessmentsByCoordinator = assessmentUnitService.getAssessmentsByCoordinator(coordinatorId);
         for (AssessmentUnit assessment : assessmentsByCoordinator) {
             if (assessment.getStartTime().isBefore(endTime) && assessment.getEndTime().isAfter(startTime)) {
-                model.addAttribute("error", "Assessments of the same coordinator cannot overlap.");
-                return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=Assessments of the same coordinator cannot overlap.";
+                // Allow overlap if the existing assessment is of type "Work Submission", "Work Developed Throughout the Semester", or "Group Work Submission"
+                if (!assessment.getType().equals("Work Submission") && 
+                    !assessment.getType().equals("Work Developed Throughout the Semester") && 
+                    !assessment.getType().equals("Group Work Submission")) {
+                    model.addAttribute("error", "Assessments of the same coordinator cannot overlap.");
+                    return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId + "&error=Assessments of the same coordinator cannot overlap.";
+                }
             }
         }
 
@@ -546,8 +551,13 @@ public class AssessmentUnitController {
                 continue; // Skip validation for the same assessment
             }
             if (assessment.getStartTime().isBefore(endTime) && assessment.getEndTime().isAfter(startTime)) {
-                model.addAttribute("error", "Assessments of the same coordinator cannot overlap.");
-                return "redirect:/coordinator/coordinator_editEvaluations/" + id + "?curricularUnitId=" + curricularUnitId + "&error=Assessments of the same coordinator cannot overlap.";
+                // Allow overlap if the existing assessment is of type "Work Submission", "Work Developed Throughout the Semester", or "Group Work Submission"
+                if (!assessment.getType().equals("Work Submission") && 
+                    !assessment.getType().equals("Work Developed Throughout the Semester") && 
+                    !assessment.getType().equals("Group Work Submission")) {
+                    model.addAttribute("error", "Assessments of the same coordinator cannot overlap.");
+                    return "redirect:/coordinator/coordinator_editEvaluations/" + id + "?curricularUnitId=" + curricularUnitId + "&error=Assessments of the same coordinator cannot overlap.";
+                }
             }
         }
 
