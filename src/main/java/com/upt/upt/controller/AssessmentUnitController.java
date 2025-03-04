@@ -79,10 +79,6 @@ public class AssessmentUnitController {
         Optional<CurricularUnit> curricularUnit = curricularUnitService.getCurricularUnitById(curricularUnitId);
         if (curricularUnit.isPresent()) {
             CurricularUnit uc = curricularUnit.get();
-            if (uc.getEvaluationsCount() == uc.getAssessments().size()) {
-                return "redirect:/coordinator/coordinator_evaluationsUC?id=" + curricularUnitId
-                        + "&error=Evaluations already complete";
-            }
             model.addAttribute("uc", uc);
             model.addAttribute("rooms", roomUnitService.getAllRooms());
             if (error != null) {
@@ -164,10 +160,22 @@ public class AssessmentUnitController {
         }
 
         CurricularUnit uc = curricularUnit.get();
-        if (uc.getEvaluationsCount() == uc.getAssessments().size()) {
+        long normalAndExamPeriodCount = uc.getAssessments().stream()
+                .filter(a -> "Teaching Period".equals(a.getExamPeriod()) || "Exam Period".equals(a.getExamPeriod()))
+                .count();
+
+        if (normalAndExamPeriodCount >= uc.getEvaluationsCount() && !"Special Period".equals(assessmentExamPeriod) && !"Resource Period".equals(assessmentExamPeriod)) {
             model.addAttribute("error", "Evaluations already complete.");
             return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId
                     + "&error=Evaluations already complete.";
+        }
+
+        if (uc.getEvaluationsCount() == uc.getAssessments().size()) {
+            if (!"Special Period".equals(assessmentExamPeriod) && !"Resource Period".equals(assessmentExamPeriod)) {
+                model.addAttribute("error", "Evaluations already complete.");
+                return "redirect:/coordinator/coordinator_create_evaluation?curricularUnitId=" + curricularUnitId
+                        + "&error=Evaluations already complete.";
+            }
         }
 
         Long coordinatorId = (Long) session.getAttribute("userId");
