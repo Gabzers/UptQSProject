@@ -115,7 +115,10 @@ public class PdfService {
             Font tableHeaderFont = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD);
             Font tableBodyFont = new Font(Font.FontFamily.HELVETICA, 8, Font.NORMAL);
 
-            Paragraph title = new Paragraph(director.getDepartment() + " - Assessment Map - Year " + yearUnit.getId() + " - " + (semester == 1 ? "1st Semester" : "2nd Semester"), titleFont);
+            String semesterStartDate = semester == 1 ? yearUnit.getFirstSemester().getStartDate() : yearUnit.getSecondSemester().getStartDate();
+            String semesterEndDate = semester == 1 ? yearUnit.getFirstSemester().getEndDate() : yearUnit.getSecondSemester().getEndDate();
+
+            Paragraph title = new Paragraph(director.getDepartment() + " - Assessment Map - " + (semester == 1 ? "1st Semester" : "2nd Semester") + " (" + semesterStartDate + " to " + semesterEndDate + ")", titleFont);
             title.setAlignment(Element.ALIGN_CENTER);
             document.add(title);
             document.add(new Paragraph(" ")); // Add a blank line

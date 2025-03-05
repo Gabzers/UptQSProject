@@ -16,6 +16,7 @@
             <h1 th:text="'Assessment Course Map - ' + (${semester.equals('1st') ? '1st Semester' : '2nd Semester'})">Assessment Course Map</h1>
         </div>
         <nav class="header-buttons">
+            <button onclick="downloadPdf()">Download PDF</button>
             <button th:onclick="'window.location.href=\'/director/viewSemester/' + ${yearId} + '\''">Back</button>
             <button id="logoutBtn" onclick="window.location.href='/logout'">Logout</button>
         </nav>
@@ -25,7 +26,6 @@
         <section class="section" th:each="year : ${years}">
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <h2 th:text="'Assessments for Year ' + ${year}">Assessments for Year</h2>
-                <button class="pdf-button" th:data-year-id="${yearId}" th:data-semester="${semester}" onclick="downloadPdf(this)">Download PDF</button>
             </div>
             <div th:if="${assessmentsByYear.get(year).size() > 0}">
                 <h3>Normal Period</h3>
@@ -154,9 +154,9 @@
     </footer>
 
     <script>
-        function downloadPdf(button) {
-            const yearId = button.getAttribute('data-year-id');
-            const semester = button.getAttribute('data-semester');
+        function downloadPdf() {
+            const yearId = /*[[${yearId}]]*/ '[[${yearId}]]';
+            const semester = /*[[${semester}]]*/ '[[${semester}]]';
             window.location.href = `/director/map/pdf?yearId=${yearId}&semester=${semester === '1st' ? 1 : 2}`;
         }
     </script>
