@@ -66,6 +66,27 @@ public class RoomUnitController {
     }
 
     /**
+     * Shows the form to edit a room.
+     * 
+     * @param id the ID of the room to edit
+     * @param model the model to add attributes to
+     * @param session the HTTP session
+     * @return the view name
+     */
+    @GetMapping("/edit-room")
+    public String showEditRoomForm(@RequestParam("id") Long id, Model model, HttpSession session) {
+        if (!isMaster(session)) {
+            return "redirect:/login?error=Unauthorized access";
+        }
+        RoomUnit room = roomUnitService.getRoomById(id);
+        if (room != null) {
+            model.addAttribute("room", room);
+            return "master_editRoom";
+        }
+        return "redirect:/master";
+    }
+
+    /**
      * Shows the confirmation page to remove a room.
      * 
      * @param id the ID of the room to remove

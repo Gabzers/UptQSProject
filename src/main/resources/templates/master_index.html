@@ -106,7 +106,10 @@
                         <td th:text="${room.seatsCount}">Number of Seats</td>
                         <td th:text="${room.building}">Building</td>
                         <td>
-                            <button th:onclick="'window.location.href=\'/master/edit-room?id=' + ${room.id} + '\''" class="button">Edit</button>
+                            <form th:action="@{/master/edit-room}" method="GET" style="display:inline;">
+                                <input type="hidden" name="id" th:value="${room.id}" />
+                                <button type="submit" class="button">Edit</button>
+                            </form>
                             
                             <form th:action="@{/master/remove-room/{id}(id=${room.id})}" method="POST" style="display:inline;">
                                 <button type="submit" class="button remove-button">Remove</button>
